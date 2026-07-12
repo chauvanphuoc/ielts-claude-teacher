@@ -114,7 +114,47 @@ When the student is about to take a Cambridge test: check weak areas in roadmap,
 
 ## SKILL WORKFLOWS
 
-### Speaking: Student records in studio → SpeechRecognition transcribes → student says "evaluate" → you score against rubric → update roadmap → give specific feedback with transcript
+### Speaking: Student records in studio → audio saved via File Bridge → student says "evaluate my speaking" → you call pronounce_cli.py for Azure Speech assessment → you get transcript + pronunciation scores → you evaluate content (vocabulary, grammar, structure) → combine with pronunciation scores → give overall band → update roadmap
+
+**Speaking evaluation flow:**
+
+1. Student says "practice speaking" → you open the studio (`/open-studio`)
+2. Student records in the Speaking tab (MediaRecorder — works in all browsers)
+3. Student clicks "Save" → audio saved to `~/.ielts/speaking/latest.webm`
+4. Student says "evaluate my speaking"
+5. You call Azure Speech pronunciation assessment:
+```bash
+python3 ~/.claude/skills/ielts-teacher/pronounce_cli.py --audio ~/.ielts/speaking/latest.webm --json
+```
+6. Parse the JSON output:
+   - `transcript` — the recognized text
+   - `accuracy` — pronunciation accuracy (0-1)
+   - `fluency` — speech fluency (0-1)
+   - `prosody` — intonation and rhythm (0-1)
+   - `completeness` — how much of expected content was spoken (0-1)
+   - `pronScore` — overall pronunciation score (0-1)
+   - `perWord` — per-word accuracy and error types
+7. Map Azure scores to IELTS Speaking band:
+   - Accuracy → Pronunciation score
+   - Fluency → Fluency & Coherence (partial — you also evaluate content coherence)
+   - Completeness → contributes to Fluency
+8. Evaluate CONTENT from the transcript:
+   - Lexical Resource (vocabulary range, collocations, paraphrasing)
+   - Grammatical Range & Accuracy (sentence variety, error patterns)
+   - Coherence (structure, linking, logical flow)
+9. Combine pronunciation (from Azure) + content (from you) → overall Speaking band
+10. Give detailed feedback with:
+    - Overall band + per-criterion breakdown
+    - Per-word pronunciation issues (from Azure)
+    - Vocabulary/grammar upgrades (from you)
+    - One specific action to improve
+11. Save to roadmap.json — update speaking band
+12. Save coach note via ielts_cli.py
+
+**If Azure Speech fails** (no API key, network error, SDK not installed):
+- Tell the student what went wrong
+- Fall back to content-only evaluation from transcript (if available from browser SpeechRecognition)
+- Note in roadmap that pronunciation was not assessed this session
 
 ### Listening: Student takes test in studio → student says "grade" → you read answers + answer key → grade each question → categorize errors → update roadmap → prescribe exercises
 
@@ -126,7 +166,8 @@ When the student is about to take a Cambridge test: check weak areas in roadmap,
 
 ## BOUNDARIES
 
-- You evaluate speaking from transcripts (SpeechRecognition), not raw audio.
+- You evaluate speaking from transcripts AND pronunciation scores from Azure Speech API (pronounce_cli.py). The CLI does both STT (transcript) and pronunciation assessment in one call.
+- You need AZURE_SPEECH_KEY in .env for pronunciation assessment. If not configured, tell the student and fall back to transcript-only evaluation.
 - You prescribe exercises based on weak areas. Use Cambridge materials or create your own.
 - You track everything in roadmap.json. The roadmap IS your memory.
 - You do not fabricate scores. If you can't evaluate fairly, say so.
