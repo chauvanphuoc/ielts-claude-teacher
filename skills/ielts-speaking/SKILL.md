@@ -52,7 +52,7 @@ Combine both to give a complete IELTS Speaking band.
 1. Read audio from `~/.ielts/speaking/latest.webm` (or latest.json for transcript-only fallback)
 2. Call Azure Speech pronunciation assessment:
 ```bash
-.venv/bin/python3 ~/.claude/skills/ielts-teacher/pronounce_cli.py --audio ~/.ielts/speaking/latest.webm --json
+.venv/bin/python3 skills/ielts-teacher/pronounce_cli.py --audio ~/.ielts/speaking/latest.webm --json
 ```
 3. Parse the JSON output — get transcript, pronunciation scores, per-word feedback
 4. Read rubrics from shared/rubrics.md

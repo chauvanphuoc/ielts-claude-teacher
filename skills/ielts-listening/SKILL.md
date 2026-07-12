@@ -39,5 +39,5 @@ Grade listening test answers, categorize errors, prescribe targeted exercises.
 ## Roadmap Sync
 After grading, save via CLI:
 ```bash
-.venv/bin/python3 ~/.claude/skills/shared/ielts_cli.py listening add --test-name "<name>" --total-questions 40 --correct <n> --score <band> --section-scores '<json>' --question-type-errors '<json>' --key-errors '<json>'
+.venv/bin/python3 skills/shared/ielts_cli.py listening add --test-name "<name>" --total-questions 40 --correct <n> --score <band> --section-scores '<json>' --question-type-errors '<json>' --key-errors '<json>'
 ```

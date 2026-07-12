@@ -36,6 +36,6 @@ Analyze reading answers question by question. Extract synonym pairs. Classify er
 ## Roadmap Sync
 After analysis, save via CLI and update synonym library:
 ```bash
-.venv/bin/python3 ~/.claude/skills/shared/ielts_cli.py reading add --passage-title "<title>" --total-questions 40 --correct <n> --score <band> --question-types '<json>' --key-errors '<json>'
-.venv/bin/python3 ~/.claude/skills/shared/ielts_cli.py synonym add --word "<original>" --synonym "<paraphrase>" --context "<context>"
+.venv/bin/python3 skills/shared/ielts_cli.py reading add --passage-title "<title>" --total-questions 40 --correct <n> --score <band> --question-types '<json>' --key-errors '<json>'
+.venv/bin/python3 skills/shared/ielts_cli.py synonym add --word "<original>" --synonym "<paraphrase>" --context "<context>"
 ```

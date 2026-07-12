@@ -12,7 +12,7 @@ Usage:
   python3 server.py --port 9000  # custom port
 """
 
-import argparse, json, os, sys, shutil
+import argparse, json, os, sys, shutil, subprocess
 from pathlib import Path
 from datetime import datetime
 from http.server import HTTPServer, SimpleHTTPRequestHandler
@@ -21,14 +21,32 @@ from urllib.parse import urlparse, unquote
 IELTS_DIR = Path.home() / ".ielts"
 STUDIO_DIR = Path(__file__).resolve().parent
 
-# Single hardcoded root: textbook/
-_TEXTBOOK_CANDIDATES = [
-    STUDIO_DIR.parent.parent / "textbook",           # skills/ielts-teacher → ielts/textbook
-    STUDIO_DIR.parent.parent.parent / "textbook",    # .claude/skills/ → ielts/textbook
-]
-TEXTBOOK_DIR = next((d for d in _TEXTBOOK_CANDIDATES if d.exists()), _TEXTBOOK_CANDIDATES[0])
+# Find project root — the single source of truth for textbook/ and studio files.
+# Uses git to find the repo root, then looks for textbook/ under it.
+# This works regardless of where server.py is invoked from (project skills/,
+# .claude/skills/ symlink, or ~/.claude/skills/ copy).
+def _find_project_root():
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "--show-toplevel"],
+            capture_output=True, text=True, cwd=STUDIO_DIR, timeout=5
+        )
+        if result.returncode == 0:
+            return Path(result.stdout.strip())
+    except (subprocess.TimeoutExpired, OSError):
+        pass
+    # Fallback: walk up from STUDIO_DIR looking for textbook/
+    d = STUDIO_DIR
+    for _ in range(5):
+        if (d / "textbook").exists():
+            return d
+        d = d.parent
+    return STUDIO_DIR.parent.parent  # last resort
 
-for d in [IELTS_DIR, IELTS_DIR/"speaking", IELTS_DIR/"listening", IELTS_DIR/"writing"]:
+PROJECT_ROOT = _find_project_root()
+TEXTBOOK_DIR = PROJECT_ROOT / "textbook"
+
+for d in [IELTS_DIR, IELTS_DIR/"speaking", IELTS_DIR/"listening", IELTS_DIR/"writing", IELTS_DIR/"reading"]:
     d.mkdir(parents=True, exist_ok=True)
 
 

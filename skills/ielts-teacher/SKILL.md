@@ -27,10 +27,10 @@ The project uses a uv-managed virtual environment. The venv contains:
 
 ```bash
 # Correct — use .venv:
-.venv/bin/python3 ~/.claude/skills/shared/ielts_cli.py init
+.venv/bin/python3 skills/shared/ielts_cli.py init
 
 # Wrong — never do this (missing .venv):
-python3 ~/.claude/skills/shared/ielts_cli.py init
+python3 skills/shared/ielts_cli.py init
 ```
 
 If `.venv/bin/python3` is not found, tell the student:
@@ -63,16 +63,16 @@ You are NOT a persistent daemon. You only run when the student talks to you. Thi
 
 ## DATA PERSISTENCE
 
-**CLI path:** `.venv/bin/python3 ~/.claude/skills/shared/ielts_cli.py`
+**CLI path:** `.venv/bin/python3 skills/shared/ielts_cli.py`
 **Roadmap file:** `~/.ielts/roadmap.json`
 **Schema:** `shared/roadmap-schema.json`
-**HTML Studio:** `~/.claude/skills/ielts-teacher/ielts-studio.html`
-**File Bridge:** `.venv/bin/python3 ~/.claude/skills/ielts-teacher/server.py`
+**HTML Studio:** `skills/ielts-teacher/ielts-studio.html`
+**File Bridge:** `.venv/bin/python3 skills/ielts-teacher/server.py`
 
 ### Every Session Start
 
 ```bash
-.venv/bin/python3 ~/.claude/skills/shared/ielts_cli.py init
+.venv/bin/python3 skills/shared/ielts_cli.py init
 cat ~/.ielts/roadmap.json 2>/dev/null || echo "NO_ROADMAP"
 ```
 
@@ -103,7 +103,7 @@ Verify everything works: Python, CLI, data dir, roadmap, studio HTML, bridge ser
 ### /open-studio — Launch HTML Studio
 
 ```bash
-.venv/bin/python3 ~/.claude/skills/ielts-teacher/server.py &
+.venv/bin/python3 skills/ielts-teacher/server.py &
 sleep 1
 open http://localhost:8765/ielts-studio.html
 ```
@@ -145,7 +145,7 @@ When the student is about to take a Cambridge test: check weak areas in roadmap,
 4. Student says "evaluate my speaking"
 5. You call Azure Speech pronunciation assessment:
 ```bash
-.venv/bin/python3 ~/.claude/skills/ielts-teacher/pronounce_cli.py --audio ~/.ielts/speaking/latest.webm --json
+.venv/bin/python3 skills/ielts-teacher/pronounce_cli.py --audio ~/.ielts/speaking/latest.webm --json
 ```
 6. Parse the JSON output:
    - `transcript` — the recognized text
@@ -199,7 +199,7 @@ When the student is about to take a Cambridge test: check weak areas in roadmap,
 
 After every significant interaction:
 ```bash
-.venv/bin/python3 ~/.claude/skills/shared/ielts_cli.py memory add \
+.venv/bin/python3 skills/shared/ielts_cli.py memory add \
   --content "<one-sentence observation>" \
   --category <observation|weakness|strength|strategy> \
   --skill <writing|reading|listening|speaking|general> \

@@ -37,5 +37,5 @@ Evaluate essays against the official IELTS rubric. Reference shared/rubrics.md f
 ## Roadmap Sync
 After scoring, save via CLI:
 ```bash
-.venv/bin/python3 ~/.claude/skills/shared/ielts_cli.py writing add --task-type "Task 2" --topic "<topic>" --scores '<json>' --content "<essay>"
+.venv/bin/python3 skills/shared/ielts_cli.py writing add --task-type "Task 2" --topic "<topic>" --scores '<json>' --content "<essay>"
 ```
