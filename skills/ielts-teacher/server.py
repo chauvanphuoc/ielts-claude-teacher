@@ -36,7 +36,7 @@ for d in [IELTS_DIR, IELTS_DIR/"speaking", IELTS_DIR/"listening", IELTS_DIR/"wri
 
 def _build_materials():
     """Scan textbook/ recursively and return a manifest of everything found."""
-    manifest = {"root": str(TEXTBOOK_DIR), "sources": []}
+    manifest = {"root": str(TEXTBOOK_DIR), "sources": [], "totalSources": 0}
 
     if not TEXTBOOK_DIR.exists():
         return manifest
