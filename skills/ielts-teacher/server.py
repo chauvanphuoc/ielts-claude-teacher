@@ -1,20 +1,125 @@
 #!/usr/bin/env python3
-"""IELTS File Bridge Server — stdlib-only HTTP server for the HTML studio."""
+"""IELTS File Bridge Server — stdlib-only HTTP server for the HTML studio.
+
+Serves: HTML studio, textbook materials (MP3s, images, markdown), roadmap.json.
+Accepts: POST /save to persist studio results to ~/.ielts/.
+
+The /textbook directory is the single source of truth for all study materials.
+Everything under it is auto-discovered — no hardcoded subdirectory names.
+
+Usage:
+  python3 server.py              # default port 8765
+  python3 server.py --port 9000  # custom port
+"""
 
 import argparse, json, os, sys, shutil
 from pathlib import Path
 from datetime import datetime
 from http.server import HTTPServer, SimpleHTTPRequestHandler
-from urllib.parse import urlparse
+from urllib.parse import urlparse, unquote
 
 IELTS_DIR = Path.home() / ".ielts"
 STUDIO_DIR = Path(__file__).resolve().parent
-DOCS_DIR = Path(__file__).resolve().parent.parent.parent / "docs"
-CAMBRIDGE_MP3_DIR = DOCS_DIR / "Cambridge-IELTS-1"
-IELTS_45_AUDIO = DOCS_DIR / "IELTS-4-5" / "Audio"
+
+# Single hardcoded root: textbook/
+_TEXTBOOK_CANDIDATES = [
+    STUDIO_DIR.parent.parent / "textbook",           # skills/ielts-teacher → ielts/textbook
+    STUDIO_DIR.parent.parent.parent / "textbook",    # .claude/skills/ → ielts/textbook
+]
+TEXTBOOK_DIR = next((d for d in _TEXTBOOK_CANDIDATES if d.exists()), _TEXTBOOK_CANDIDATES[0])
 
 for d in [IELTS_DIR, IELTS_DIR/"speaking", IELTS_DIR/"listening", IELTS_DIR/"writing"]:
     d.mkdir(parents=True, exist_ok=True)
+
+
+# ── Auto-discover materials ──
+
+def _build_materials():
+    """Scan textbook/ recursively and return a manifest of everything found."""
+    manifest = {"root": str(TEXTBOOK_DIR), "sources": []}
+
+    if not TEXTBOOK_DIR.exists():
+        return manifest
+
+    for entry in sorted(TEXTBOOK_DIR.iterdir()):
+        if entry.name.startswith('.'):
+            continue
+
+        source = {
+            "name": entry.name,
+            "type": "directory" if entry.is_dir() else "file",
+            "path": entry.name,
+        }
+
+        if entry.is_dir():
+            # Collect all files in this source
+            files = {"mp3s": [], "images": [], "markdown": [], "pdfs": [], "other": []}
+            for f in sorted(entry.rglob("*")):
+                if f.is_file() and not f.name.startswith('.'):
+                    rel = str(f.relative_to(entry))
+                    if f.suffix.lower() == '.mp3':
+                        files["mp3s"].append(rel)
+                    elif f.suffix.lower() in ('.jpeg', '.jpg', '.png', '.gif', '.webp'):
+                        files["images"].append(rel)
+                    elif f.suffix.lower() == '.md':
+                        files["markdown"].append(rel)
+                    elif f.suffix.lower() == '.pdf':
+                        files["pdfs"].append(rel)
+                    else:
+                        files["other"].append(rel)
+
+            mp3_count = len(files["mp3s"])
+            img_count = len(files["images"])
+            md_count = len(files["markdown"])
+            source["files"] = files
+            source["summary"] = f"{mp3_count} mp3s, {img_count} images, {md_count} markdown"
+            source["totalFiles"] = mp3_count + img_count + md_count + len(files["pdfs"]) + len(files["other"])
+        else:
+            source["size"] = entry.stat().st_size
+
+        manifest["sources"].append(source)
+
+    manifest["totalSources"] = len(manifest["sources"])
+    return manifest
+
+_materials_cache = _build_materials()
+
+
+def _find_file_in_textbook(rel_path):
+    """Find a file anywhere under textbook/ by relative path."""
+    target = TEXTBOOK_DIR / rel_path
+    if target.exists():
+        return target
+    # Try case-insensitive match
+    parts = rel_path.split("/")
+    for entry in TEXTBOOK_DIR.rglob("*"):
+        if entry.is_file() and entry.name.lower() == Path(rel_path).name.lower():
+            return entry
+    return None
+
+
+def _guess_content_type(filename):
+    ext = Path(filename).suffix.lower()
+    return {
+        '.html': 'text/html; charset=utf-8',
+        '.css': 'text/css; charset=utf-8',
+        '.js': 'application/javascript; charset=utf-8',
+        '.json': 'application/json; charset=utf-8',
+        '.md': 'text/markdown; charset=utf-8',
+        '.txt': 'text/plain; charset=utf-8',
+        '.mp3': 'audio/mpeg',
+        '.wav': 'audio/wav',
+        '.webm': 'audio/webm',
+        '.ogg': 'audio/ogg',
+        '.jpeg': 'image/jpeg',
+        '.jpg': 'image/jpeg',
+        '.png': 'image/png',
+        '.gif': 'image/gif',
+        '.webp': 'image/webp',
+        '.svg': 'image/svg+xml',
+        '.pdf': 'application/pdf',
+        '.ico': 'image/x-icon',
+    }.get(ext, 'application/octet-stream')
 
 
 class BridgeHandler(SimpleHTTPRequestHandler):
@@ -25,11 +130,12 @@ class BridgeHandler(SimpleHTTPRequestHandler):
         if args[1] != '200':
             print(f"[bridge] {args[0]}", file=sys.stderr)
 
-    def _serve_file(self, path_obj, content_type):
-        if not path_obj.exists():
+    def _serve_file(self, path_obj, content_type=None):
+        if not path_obj or not path_obj.exists():
             return False
+        ct = content_type or _guess_content_type(str(path_obj))
         self.send_response(200)
-        self.send_header("Content-Type", content_type)
+        self.send_header("Content-Type", ct)
         self.send_header("Content-Length", str(path_obj.stat().st_size))
         self.send_header("Accept-Ranges", "bytes")
         self.end_headers()
@@ -37,48 +143,68 @@ class BridgeHandler(SimpleHTTPRequestHandler):
             shutil.copyfileobj(f, self.wfile)
         return True
 
+    def _serve_json(self, data):
+        body = json.dumps(data, indent=2, ensure_ascii=False).encode()
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
     def do_GET(self):
         parsed = urlparse(self.path)
-        path = parsed.path.lstrip("/")
+        path = unquote(parsed.path.lstrip("/"))
 
-        if path.startswith("audio/cambridge-1/"):
-            mp3 = CAMBRIDGE_MP3_DIR / path.replace("audio/cambridge-1/", "")
-            if self._serve_file(mp3, "audio/mpeg"): return
-            self.send_error(404, f"MP3 not found: {mp3.name}"); return
+        # ── /api/materials — manifest of all available study materials ──
+        if path == "api/materials":
+            self._serve_json(_materials_cache)
+            return
 
-        if path.startswith("audio/ielts-4-5/"):
-            mp3 = IELTS_45_AUDIO / path.replace("audio/ielts-4-5/", "")
-            if self._serve_file(mp3, "audio/mpeg"): return
-            self.send_error(404, f"MP3 not found: {mp3.name}"); return
+        # ── /api/materials/refresh — re-scan textbook/ ──
+        if path == "api/materials/refresh":
+            _materials_cache.clear()
+            _materials_cache.update(_build_materials())
+            self._serve_json({"status": "refreshed", "totalSources": _materials_cache["totalSources"]})
+            return
 
-        # Serve roadmap.json from ~/.ielts/
+        # ── /textbook/<anything> — serve any file from textbook/ ──
+        if path.startswith("textbook/"):
+            rel = path[len("textbook/"):]
+            f = _find_file_in_textbook(rel)
+            if f and self._serve_file(f): return
+            self.send_error(404, f"Not found in textbook: {rel}"); return
+
+        # ── /audio/<anything> — alias for /textbook/<source>/<audio-path>.mp3 ──
+        if path.startswith("audio/"):
+            rel = path[len("audio/"):]
+            f = _find_file_in_textbook(rel)
+            if f and self._serve_file(f): return
+            # Try searching for just the filename
+            filename = Path(rel).name
+            for entry in TEXTBOOK_DIR.rglob("*.mp3"):
+                if entry.name == filename:
+                    if self._serve_file(entry): return
+            self.send_error(404, f"Audio not found: {rel}"); return
+
+        # ── /roadmap.json — from ~/.ielts/ ──
         if path == "roadmap.json":
             roadmap = IELTS_DIR / "roadmap.json"
             if roadmap.exists():
                 if self._serve_file(roadmap, "application/json"): return
-            # Return empty JSON instead of 404 — prevents console noise
-            self.send_response(200)
-            self.send_header("Content-Type", "application/json")
-            self.send_header("Content-Length", "2")
-            self.end_headers()
-            self.wfile.write(b"{}")
+            self._serve_json({})
             return
 
-        # Favicon — return 204 (no content) to prevent 404 noise
+        # ── /favicon.ico ──
         if path == "favicon.ico":
             self.send_response(204); self.end_headers(); return
 
+        # ── Default: serve from studio directory ──
         if path == "" or path == "/":
             path = "ielts-studio.html"
 
         file_path = STUDIO_DIR / path
         if file_path.exists() and file_path.is_file():
-            ct = "text/html"
-            if path.endswith(".js"): ct = "application/javascript"
-            elif path.endswith(".css"): ct = "text/css"
-            elif path.endswith(".json"): ct = "application/json"
-            elif path.endswith(".webm"): ct = "audio/webm"
-            if self._serve_file(file_path, ct): return
+            if self._serve_file(file_path): return
 
         super().do_GET()
 
@@ -103,14 +229,10 @@ class BridgeHandler(SimpleHTTPRequestHandler):
             with open(dest, "w") as f:
                 json.dump(json_data, f, indent=2, ensure_ascii=False)
 
-            self.send_response(200)
-            self.send_header("Content-Type", "application/json")
-            self.send_header("Access-Control-Allow-Origin", "*")
-            self.end_headers()
-            self.wfile.write(json.dumps({
+            self._serve_json({
                 "status": "ok", "saved": [str(dest)],
                 "message": f"Saved. Switch to Claude and say 'evaluate my {skill}'."
-            }).encode())
+            })
         except json.JSONDecodeError as e:
             self.send_error(400, f"Invalid JSON: {e}")
         except Exception as e:
@@ -128,11 +250,15 @@ def main():
     p = argparse.ArgumentParser(description="IELTS File Bridge Server")
     p.add_argument("--port", type=int, default=8765)
     args = p.parse_args()
-    server = HTTPServer(("127.0.0.1", args.port), BridgeHandler)
+
     print(f"[bridge] http://localhost:{args.port}")
-    print(f"[bridge] Serving: {STUDIO_DIR}")
-    print(f"[bridge] MP3s: {CAMBRIDGE_MP3_DIR}")
-    print(f"[bridge] Data: {IELTS_DIR}")
+    print(f"[bridge] textbook: {TEXTBOOK_DIR} ({_materials_cache['totalSources']} sources)")
+    for s in _materials_cache["sources"]:
+        sz = s.get('size', 0)
+        print(f"[bridge]   {s['name']}: {s.get('summary', f'{sz} bytes')}")
+    print(f"[bridge] data: {IELTS_DIR}")
+
+    server = HTTPServer(("127.0.0.1", args.port), BridgeHandler)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
