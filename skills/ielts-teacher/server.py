@@ -51,6 +51,23 @@ class BridgeHandler(SimpleHTTPRequestHandler):
             if self._serve_file(mp3, "audio/mpeg"): return
             self.send_error(404, f"MP3 not found: {mp3.name}"); return
 
+        # Serve roadmap.json from ~/.ielts/
+        if path == "roadmap.json":
+            roadmap = IELTS_DIR / "roadmap.json"
+            if roadmap.exists():
+                if self._serve_file(roadmap, "application/json"): return
+            # Return empty JSON instead of 404 — prevents console noise
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", "2")
+            self.end_headers()
+            self.wfile.write(b"{}")
+            return
+
+        # Favicon — return 204 (no content) to prevent 404 noise
+        if path == "favicon.ico":
+            self.send_response(204); self.end_headers(); return
+
         if path == "" or path == "/":
             path = "ielts-studio.html"
 

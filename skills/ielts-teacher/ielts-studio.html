@@ -578,7 +578,7 @@ async function checkBridge() {
 /* ── Roadmap ── */
 async function loadRoadmap() {
   try {
-    const r = await fetch(BRIDGE_URL + '/../roadmap.json');
+    const r = await fetch(BRIDGE_URL + '/roadmap.json');
     if (r.ok) {
       roadmap = await r.json();
       renderRoadmap();
@@ -929,7 +929,7 @@ function setupKeyboardNav() {
 /* ── Poll for roadmap updates ── */
 setInterval(async () => {
   try {
-    const r = await fetch(BRIDGE_URL + '/../roadmap.json');
+    const r = await fetch(BRIDGE_URL + '/roadmap.json');
     if (r.ok) {
       const data = await r.json();
       if (JSON.stringify(data) !== JSON.stringify(roadmap)) {
