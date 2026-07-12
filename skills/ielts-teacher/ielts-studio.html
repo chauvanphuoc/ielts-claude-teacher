@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS Studio — Your Practice Space</title>
+<style>
+/* ── Design System ── */
+:root {
+  --bg-dark: #1a1a1c;
+  --bg-light: #fafaf8;
+  --text-primary: #1a1a1c;
+  --text-inverse: #f0eee8;
+  --accent: #c41e1e;
+  --accent-green: #2d6a4f;
+  --accent-amber: #b8860b;
+  --border: #d4d2cc;
+  --surface: #eeede9;
+  --muted: #6b6b68;
+  --font-heading: "Iowan Old Style", "Georgia", "Times New Roman", serif;
+  --font-body: "Charter", "Georgia", serif;
+  --font-mono: "Menlo", "Consolas", "Courier New", monospace;
+  --space-xs: 4px; --space-sm: 8px; --space-md: 16px;
+  --space-lg: 24px; --space-xl: 32px; --space-2xl: 48px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg-light);
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── Layout ── */
+#roadmap-panel {
+  width: 220px;
+  min-width: 220px;
+  background: var(--bg-dark);
+  color: var(--text-inverse);
+  padding: var(--space-lg) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+#main-workspace {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#mode-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-light);
+}
+
+#mode-tabs button {
+  flex: 1;
+  padding: var(--space-md);
+  border: none;
+  background: none;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--muted);
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+#mode-tabs button.active {
+  color: var(--text-primary);
+  border-bottom-color: var(--accent);
+}
+
+#mode-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-lg);
+}
+
+#status-bar {
+  padding: var(--space-sm) var(--space-md);
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ── Roadmap ── */
+#roadmap-panel h2 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  margin-bottom: var(--space-lg);
+  color: var(--text-inverse);
+}
+
+.band-bar { margin-bottom: var(--space-sm); }
+.band-bar .label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+.band-bar .track {
+  height: 8px;
+  background: #333;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.band-bar .fill {
+  height: 100%;
+  background: var(--accent-green);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+.band-bar.inactive .fill { background: #555; }
+.band-bar .fill.warning { background: var(--accent-amber); }
+
+#roadmap-panel .current-band {
+  text-align: center;
+  margin: var(--space-lg) 0;
+  font-family: var(--font-heading);
+  font-size: 48px;
+  color: var(--accent-green);
+}
+
+#roadmap-panel .target {
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: var(--space-lg);
+}
+
+#roads-panel .weak-list {
+  list-style: none;
+  font-size: 12px;
+  margin-top: var(--space-sm);
+}
+#roadmap-panel .weak-list li {
+  padding: 2px 0;
+  color: var(--accent-amber);
+}
+
+/* ── Speaking Mode ── */
+.speaking-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-2xl);
+  transition: background 0.3s;
+}
+
+.speaking-container.recording {
+  background: var(--bg-dark);
+  color: var(--text-inverse);
+  min-height: 100%;
+}
+
+.record-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 4px solid var(--accent);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.record-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.record-btn.recording {
+  border-color: var(--accent);
+  animation: pulse 1.5s infinite;
+}
+
+.record-btn.recording::after {
+  border-radius: 4px;
+  width: 24px; height: 24px;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(196, 30, 30, 0.4); }
+  50% { box-shadow: 0 0 0 20px rgba(196, 30, 30, 0); }
+}
+
+.timer {
+  font-family: var(--font-mono);
+  font-size: 36px;
+  margin: var(--space-lg) 0;
+}
+
+.transcript {
+  width: 100%;
+  max-width: 600px;
+  min-height: 150px;
+  padding: var(--space-md);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.8;
+  background: var(--bg-light);
+  margin-top: var(--space-lg);
+}
+
+.speaking-container.recording .transcript {
+  background: #2a2a2c;
+  color: var(--text-inverse);
+  border-color: #444;
+}
+
+.prompt-text {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  margin-bottom: var(--space-lg);
+  text-align: center;
+  max-width: 500px;
+}
+
+/* ── Listening Mode ── */
+.listening-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.audio-player {
+  width: 100%;
+  margin-bottom: var(--space-lg);
+}
+
+.audio-player audio {
+  width: 100%;
+}
+
+.test-selector {
+  margin-bottom: var(--space-lg);
+}
+
+.test-selector select {
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-body);
+  font-size: 16px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg-light);
+}
+
+.question-panel {
+  margin-top: var(--space-lg);
+}
+
+.question-item {
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.question-item .q-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  min-width: 40px;
+}
+
+.question-item input {
+  flex: 1;
+  padding: var(--space-sm);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 16px;
+}
+
+.question-item input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* ── Writing Diff Mode ── */
+.writing-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.writing-container textarea {
+  width: 100%;
+  min-height: 250px;
+  padding: var(--space-md);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.8;
+  resize: vertical;
+  margin-bottom: var(--space-md);
+}
+
+.diff-view {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.diff-panel {
+  padding: var(--space-md);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-light);
+}
+
+.diff-panel h3 {
+  font-family: var(--font-heading);
+  margin-bottom: var(--space-sm);
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.diff-panel .content {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+}
+
+.diff-panel .content .added {
+  background: #d4edda;
+  padding: 1px 2px;
+  border-radius: 2px;
+}
+
+.diff-panel .content .removed {
+  background: #f8d7da;
+  text-decoration: line-through;
+  padding: 1px 2px;
+  border-radius: 2px;
+}
+
+.diff-panel .content .changed {
+  background: #fff3cd;
+  padding: 1px 2px;
+  border-radius: 2px;
+}
+
+/* ── States ── */
+.empty-state {
+  text-align: center;
+  padding: var(--space-2xl);
+  color: var(--muted);
+}
+
+.empty-state .icon {
+  font-size: 48px;
+  margin-bottom: var(--space-md);
+}
+
+.loading-state {
+  text-align: center;
+  padding: var(--space-2xl);
+  color: var(--muted);
+}
+
+.error-state {
+  text-align: center;
+  padding: var(--space-lg);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  margin: var(--space-md);
+}
+
+.success-state {
+  text-align: center;
+  padding: var(--space-lg);
+  color: var(--accent-green);
+}
+
+/* ── Submit Button ── */
+.submit-btn {
+  padding: var(--space-sm) var(--space-xl);
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: var(--space-md);
+}
+
+.submit-btn:hover { opacity: 0.9; }
+.submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ── Responsive Gate ── */
+@media (max-width: 900px) {
+  body::before {
+    content: "IELTS Studio works best on a laptop or desktop. Please switch to a larger screen.";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--bg-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 18px;
+    padding: var(--space-xl);
+    text-align: center;
+    z-index: 9999;
+    color: var(--text-primary);
+  }
+  #roadmap-panel, #main-workspace { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── Roadmap Sidebar ── -->
+<aside id="roadmap-panel">
+  <h2>Your Roadmap</h2>
+  <div id="roadmap-loading" class="loading-state">Loading...</div>
+  <div id="roadmap-empty" class="empty-state" style="display:none">
+    <div class="icon">🗺️</div>
+    <p>No roadmap yet. Return to Claude and say "let's start studying."</p>
+  </div>
+  <div id="roadmap-content" style="display:none">
+    <div class="current-band" id="overall-band">--</div>
+    <div class="target" id="target-info"></div>
+    <div id="skill-bars"></div>
+    <div style="margin-top: var(--space-lg)">
+      <strong style="font-size:12px">⚠ Weak Areas</strong>
+      <ul class="weak-list" id="weak-list"></ul>
+    </div>
+  </div>
+</aside>
+
+<!-- ── Main Workspace ── -->
+<div id="main-workspace">
+  <nav id="mode-tabs">
+    <button data-mode="speaking" class="active">Speaking</button>
+    <button data-mode="listening">Listening</button>
+    <button data-mode="writing">Writing Diff</button>
+  </nav>
+
+  <div id="mode-content">
+    <!-- Speaking Panel -->
+    <div id="panel-speaking" class="speaking-container">
+      <div id="speaking-empty" class="empty-state">
+        <div class="icon">🎙️</div>
+        <p>Ready to practice speaking. Press record when you're ready.</p>
+      </div>
+      <div id="speaking-active" style="display:none;text-align:center;width:100%">
+        <div class="prompt-text" id="speaking-prompt">Part 1: Tell me about yourself.</div>
+        <button class="record-btn" id="record-btn" aria-label="Start recording" title="Press Space to start/stop"></button>
+        <div class="timer" id="speaking-timer">0:00</div>
+        <div class="transcript" id="speaking-transcript">
+          <em style="color:var(--muted)">Your speech will appear here as you speak...</em>
+        </div>
+        <button class="submit-btn" id="speaking-submit" disabled>Save & Ask Claude to Evaluate</button>
+      </div>
+      <div id="speaking-success" class="success-state" style="display:none">
+        ✓ Recording saved. Switch to Claude and say "evaluate my speaking."
+      </div>
+      <div id="speaking-error" class="error-state" style="display:none"></div>
+    </div>
+
+    <!-- Listening Panel -->
+    <div id="panel-listening" class="listening-container" style="display:none">
+      <div id="listening-empty" class="empty-state">
+        <div class="icon">🎧</div>
+        <p>Choose a Cambridge IELTS test to begin.</p>
+        <div class="test-selector">
+          <select id="test-select">
+            <option value="">-- Select a test --</option>
+          </select>
+        </div>
+      </div>
+      <div id="listening-active" style="display:none">
+        <div class="audio-player">
+          <audio id="audio-player" controls></audio>
+        </div>
+        <div class="question-panel" id="question-panel"></div>
+        <button class="submit-btn" id="listening-submit">Save Answers & Ask Claude to Grade</button>
+      </div>
+      <div id="listening-success" class="success-state" style="display:none">
+        ✓ Answers saved. Switch to Claude and say "grade my listening test."
+      </div>
+      <div id="listening-error" class="error-state" style="display:none"></div>
+    </div>
+
+    <!-- Writing Diff Panel -->
+    <div id="panel-writing" class="writing-container" style="display:none">
+      <div id="writing-empty" class="empty-state">
+        <div class="icon">✍️</div>
+        <p>Write or paste your essay below. Claude will evaluate it and show the upgraded version here.</p>
+      </div>
+      <textarea id="essay-input" placeholder="Type or paste your IELTS essay here...&#10;&#10;Task 2 example: Some people think that..."></textarea>
+      <button class="submit-btn" id="writing-submit" disabled>Submit Essay & Ask Claude to Evaluate</button>
+      <div class="diff-view" id="diff-view" style="display:none">
+        <div class="diff-panel" id="diff-original">
+          <h3>Your Essay</h3>
+          <div class="content" id="diff-original-content"></div>
+        </div>
+        <div class="diff-panel" id="diff-upgraded">
+          <h3>Band-Upgraded Version</h3>
+          <div class="content" id="diff-upgraded-content"></div>
+        </div>
+      </div>
+      <div id="writing-error" class="error-state" style="display:none"></div>
+    </div>
+  </div>
+
+  <div id="status-bar">
+    <span id="status-text">Ready</span>
+    <span id="status-band">Bridge: checking...</span>
+  </div>
+</div>
+
+<script>
+/* ── IELTS Studio — Application Logic ── */
+
+const BRIDGE_URL = 'http://localhost:8765';
+const IELTS_DIR = '/save';
+
+/* ── State ── */
+let currentMode = 'speaking';
+let isRecording = false;
+let mediaRecorder = null;
+let recognition = null;
+let speakingTimer = null;
+let speakingSeconds = 0;
+let transcript = '';
+let roadmap = null;
+
+/* ── Init ── */
+document.addEventListener('DOMContentLoaded', () => {
+  setupModeTabs();
+  setupSpeaking();
+  setupListening();
+  setupWriting();
+  loadRoadmap();
+  checkBridge();
+  setupKeyboardNav();
+});
+
+/* ── Bridge Check ── */
+async function checkBridge() {
+  try {
+    const r = await fetch(BRIDGE_URL + '/save', { method: 'OPTIONS' });
+    document.getElementById('status-band').textContent = 'Bridge: connected';
+  } catch(e) {
+    document.getElementById('status-band').textContent = 'Bridge: not running';
+  }
+}
+
+/* ── Roadmap ── */
+async function loadRoadmap() {
+  try {
+    const r = await fetch(BRIDGE_URL + '/../roadmap.json');
+    if (r.ok) {
+      roadmap = await r.json();
+      renderRoadmap();
+    } else {
+      showRoadmapEmpty();
+    }
+  } catch(e) {
+    // Roadmap will be loaded when bridge serves it, or shown as empty
+    document.getElementById('roadmap-loading').style.display = 'none';
+    document.getElementById('roadmap-empty').style.display = 'block';
+  }
+}
+
+function renderRoadmap() {
+  if (!roadmap || !roadmap.skills) { showRoadmapEmpty(); return; }
+  document.getElementById('roadmap-loading').style.display = 'none';
+  document.getElementById('roadmap-content').style.display = 'block';
+
+  const activeSkills = roadmap.learner?.activeSkills || ['writing','reading','listening','speaking'];
+  const skills = roadmap.skills;
+  const bands = Object.values(skills).filter(s => s.currentBand > 0).map(s => s.currentBand);
+  const overall = bands.length ? (bands.reduce((a,b) => a + b, 0) / bands.length).toFixed(1) : '--';
+
+  document.getElementById('overall-band').textContent = overall;
+  document.getElementById('target-info').textContent =
+    `Target: Band ${roadmap.learner?.targetBand || '?'} | ${roadmap.learner?.examDate || 'No exam date'}`;
+
+  const bars = document.getElementById('skill-bars');
+  bars.innerHTML = '';
+  const skillNames = { writing: 'Writing', reading: 'Reading', listening: 'Listening', speaking: 'Speaking' };
+  for (const [key, name] of Object.entries(skillNames)) {
+    const skill = skills[key];
+    const active = activeSkills.includes(key);
+    const band = skill?.currentBand || 0;
+    const pct = Math.min(100, (band / 9.0) * 100);
+    const cls = !active ? 'inactive' : (band < (roadmap.learner?.targetBand || 7) - 1 ? 'warning' : '');
+
+    bars.innerHTML += `
+      <div class="band-bar ${!active ? 'inactive' : ''}">
+        <div class="label"><span>${name} ${!active ? '(skipped)' : ''}</span><span>${band > 0 ? band.toFixed(1) : '--'}</span></div>
+        <div class="track"><div class="fill ${cls}" style="width:${pct}%"></div></div>
+      </div>`;
+  }
+
+  // Weak areas
+  const weakList = document.getElementById('weak-list');
+  weakList.innerHTML = '';
+  for (const [key, skill] of Object.entries(skills)) {
+    if (skill.weakAreas) {
+      skill.weakAreas.forEach(w => {
+        weakList.innerHTML += `<li>${skillNames[key]}: ${w.tag} (${Math.round(w.errorRate*100)}%)</li>`;
+      });
+    }
+  }
+  if (!weakList.innerHTML) weakList.innerHTML = '<li style="color:#888">No weak areas yet</li>';
+}
+
+function showRoadmapEmpty() {
+  document.getElementById('roadmap-loading').style.display = 'none';
+  document.getElementById('roadmap-empty').style.display = 'block';
+}
+
+/* ── Mode Tabs ── */
+function setupModeTabs() {
+  document.querySelectorAll('#mode-tabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#mode-tabs button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      switchMode(btn.dataset.mode);
+    });
+  });
+}
+
+function switchMode(mode) {
+  currentMode = mode;
+  document.getElementById('panel-speaking').style.display = mode === 'speaking' ? '' : 'none';
+  document.getElementById('panel-listening').style.display = mode === 'listening' ? '' : 'none';
+  document.getElementById('panel-writing').style.display = mode === 'writing' ? '' : 'none';
+  document.getElementById('status-text').textContent = mode.charAt(0).toUpperCase() + mode.slice(1) + ' mode';
+}
+
+/* ── Speaking ── */
+function setupSpeaking() {
+  const btn = document.getElementById('record-btn');
+  const submit = document.getElementById('speaking-submit');
+
+  btn.addEventListener('click', () => {
+    if (isRecording) stopRecording();
+    else startRecording();
+  });
+
+  submit.addEventListener('click', saveSpeaking);
+}
+
+async function startRecording() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+    // SpeechRecognition
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SpeechRecognition) {
+      recognition = new SpeechRecognition();
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      recognition.lang = 'en-US';
+      recognition.onresult = (e) => {
+        transcript = '';
+        for (let i = 0; i < e.results.length; i++) {
+          transcript += e.results[i][0].transcript + ' ';
+        }
+        document.getElementById('speaking-transcript').textContent = transcript || 'Listening...';
+      };
+      recognition.onerror = (e) => {
+        if (e.error !== 'no-speech') {
+          document.getElementById('speaking-transcript').textContent =
+            `[Speech recognition error: ${e.error}. Continue speaking — your audio is still being recorded.]`;
+        }
+      };
+      recognition.start();
+    }
+
+    // MediaRecorder
+    mediaRecorder = new MediaRecorder(stream);
+    const chunks = [];
+    mediaRecorder.ondataavailable = (e) => chunks.push(e.data);
+    mediaRecorder.onstop = () => {
+      stream.getTracks().forEach(t => t.stop());
+    };
+    mediaRecorder.start();
+
+    isRecording = true;
+    document.getElementById('record-btn').classList.add('recording');
+    document.getElementById('speaking-container')?.classList.add('recording');
+    document.querySelector('.speaking-container')?.classList.add('recording');
+    document.getElementById('speaking-empty').style.display = 'none';
+    document.getElementById('speaking-active').style.display = '';
+    document.getElementById('speaking-success').style.display = 'none';
+    document.getElementById('speaking-submit').disabled = true;
+
+    speakingSeconds = 0;
+    document.getElementById('speaking-timer').textContent = '0:00';
+    speakingTimer = setInterval(() => {
+      speakingSeconds++;
+      const m = Math.floor(speakingSeconds / 60);
+      const s = speakingSeconds % 60;
+      document.getElementById('speaking-timer').textContent = `${m}:${s.toString().padStart(2, '0')}`;
+      if (speakingSeconds >= 10) {
+        document.getElementById('speaking-submit').disabled = false;
+      }
+    }, 1000);
+
+    document.getElementById('status-text').textContent = 'Recording...';
+  } catch(e) {
+    document.getElementById('speaking-active').style.display = 'none';
+    document.getElementById('speaking-error').style.display = 'block';
+    document.getElementById('speaking-error').textContent =
+      'Microphone access denied. Enable in Chrome Settings → Privacy → Microphone, then reload this page.';
+  }
+}
+
+function stopRecording() {
+  isRecording = false;
+  if (recognition) { recognition.stop(); recognition = null; }
+  if (mediaRecorder) { mediaRecorder.stop(); mediaRecorder = null; }
+  if (speakingTimer) { clearInterval(speakingTimer); speakingTimer = null; }
+  document.getElementById('record-btn').classList.remove('recording');
+  document.querySelector('.speaking-container')?.classList.remove('recording');
+  document.getElementById('status-text').textContent = 'Recording stopped';
+
+  if (speakingSeconds < 10) {
+    document.getElementById('speaking-error').style.display = 'block';
+    document.getElementById('speaking-error').textContent =
+      'Recording too short for evaluation. Please record at least 10 seconds.';
+  }
+}
+
+async function saveSpeaking() {
+  if (isRecording) stopRecording();
+  if (!transcript.trim()) {
+    document.getElementById('speaking-error').style.display = 'block';
+    document.getElementById('speaking-error').textContent = 'No speech detected. Please try again.';
+    return;
+  }
+
+  const data = {
+    skill: 'speaking',
+    transcript: transcript,
+    duration: speakingSeconds,
+    date: new Date().toISOString(),
+    mode: 'practice'
+  };
+
+  try {
+    const r = await fetch(BRIDGE_URL + '/save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (r.ok) {
+      document.getElementById('speaking-active').style.display = 'none';
+      document.getElementById('speaking-success').style.display = 'block';
+      document.getElementById('status-text').textContent = 'Speaking saved';
+    } else {
+      throw new Error('Save failed: ' + r.status);
+    }
+  } catch(e) {
+    document.getElementById('speaking-error').style.display = 'block';
+    document.getElementById('speaking-error').textContent =
+      'Failed to save. Is the bridge server running? Check Claude and say "/ielts-check".';
+  }
+}
+
+/* ── Listening ── */
+function setupListening() {
+  loadTestList();
+  document.getElementById('test-select').addEventListener('change', loadTest);
+  document.getElementById('listening-submit').addEventListener('click', saveListening);
+}
+
+function loadTestList() {
+  const sel = document.getElementById('test-select');
+  // Cambridge IELTS 1 has 4 tests, each with 4 sections of MP3s
+  const tests = [
+    { name: 'Cambridge IELTS 1 — Test 1', sections: ['Test 1 - Section 1.mp3','Test 1 - Section 2.mp3','Test 1 - Section 3.mp3','Test 1 - Section 4.mp3'] },
+    { name: 'Cambridge IELTS 1 — Test 2', sections: ['Test 2 - Section 1.mp3','Test 2 - Section 2.mp3','Test 2 - Section 3.mp3','Test 2 - Section 4.mp3'] },
+    { name: 'Cambridge IELTS 1 — Test 3', sections: ['Test 3 - Section 1.mp3','Test 3 - Section 2.mp3','Test 3 - Section 3.mp3','Test 3 - Section 4.mp3'] },
+    { name: 'Cambridge IELTS 1 — Test 4', sections: ['Test 4 - Section 1.mp3','Test 4 - Section 2.mp3','Test 4 - Section 3.mp3','Test 4 - Section 4.mp3'] }
+  ];
+  tests.forEach((t, i) => {
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = t.name;
+    sel.appendChild(opt);
+  });
+}
+
+function loadTest() {
+  const idx = document.getElementById('test-select').value;
+  if (idx === '') return;
+
+  document.getElementById('listening-empty').style.display = 'none';
+  document.getElementById('listening-active').style.display = '';
+
+  const tests = [
+    ['Test 1 - Section 1.mp3','Test 1 - Section 2.mp3','Test 1 - Section 3.mp3','Test 1 - Section 4.mp3'],
+    ['Test 2 - Section 1.mp3','Test 2 - Section 2.mp3','Test 2 - Section 3.mp3','Test 2 - Section 4.mp3'],
+    ['Test 3 - Section 1.mp3','Test 3 - Section 2.mp3','Test 3 - Section 3.mp3','Test 3 - Section 4.mp3'],
+    ['Test 4 - Section 1.mp3','Test 4 - Section 2.mp3','Test 4 - Section 3.mp3','Test 4 - Section 4.mp3']
+  ];
+
+  const sections = tests[parseInt(idx)];
+  const audio = document.getElementById('audio-player');
+  audio.src = BRIDGE_URL + '/audio/cambridge-1/' + encodeURIComponent(sections[0]);
+
+  // Build question panel (10 questions per section, simplified)
+  const panel = document.getElementById('question-panel');
+  panel.innerHTML = '<h3 style="font-family:var(--font-heading);margin-bottom:var(--space-md)">Section 1 — Questions 1-10</h3>';
+  for (let i = 1; i <= 10; i++) {
+    panel.innerHTML += `
+      <div class="question-item">
+        <span class="q-num">Q${i}</span>
+        <input type="text" placeholder="Your answer..." data-q="${i}">
+      </div>`;
+  }
+
+  document.getElementById('status-text').textContent = 'Test loaded — press play';
+}
+
+async function saveListening() {
+  const inputs = document.querySelectorAll('#question-panel input');
+  const answers = {};
+  inputs.forEach(inp => { answers[inp.dataset.q] = inp.value; });
+
+  const data = {
+    skill: 'listening',
+    answers: answers,
+    test: document.getElementById('test-select').selectedOptions[0]?.textContent || 'Unknown test',
+    date: new Date().toISOString()
+  };
+
+  try {
+    const r = await fetch(BRIDGE_URL + '/save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (r.ok) {
+      document.getElementById('listening-active').style.display = 'none';
+      document.getElementById('listening-success').style.display = 'block';
+      document.getElementById('status-text').textContent = 'Answers saved';
+    } else {
+      throw new Error('Save failed');
+    }
+  } catch(e) {
+    document.getElementById('listening-error').style.display = 'block';
+    document.getElementById('listening-error').textContent = 'Failed to save. Is the bridge running?';
+  }
+}
+
+/* ── Writing ── */
+function setupWriting() {
+  document.getElementById('essay-input').addEventListener('input', () => {
+    document.getElementById('writing-submit').disabled =
+      document.getElementById('essay-input').value.trim().length < 50;
+  });
+  document.getElementById('writing-submit').addEventListener('click', saveWriting);
+}
+
+async function saveWriting() {
+  const essay = document.getElementById('essay-input').value.trim();
+  if (essay.length < 50) return;
+
+  const data = {
+    skill: 'writing',
+    essay: essay,
+    date: new Date().toISOString(),
+    taskType: 'Task 2'
+  };
+
+  try {
+    const r = await fetch(BRIDGE_URL + '/save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (r.ok) {
+      document.getElementById('status-text').textContent = 'Essay saved — switch to Claude for evaluation';
+      document.getElementById('writing-empty').style.display = 'none';
+    } else {
+      throw new Error('Save failed');
+    }
+  } catch(e) {
+    document.getElementById('writing-error').style.display = 'block';
+    document.getElementById('writing-error').textContent = 'Failed to save. Is the bridge running?';
+  }
+}
+
+/* ── Keyboard Nav ── */
+function setupKeyboardNav() {
+  document.addEventListener('keydown', (e) => {
+    if (e.code === 'Space' && currentMode === 'speaking' && e.target === document.body) {
+      e.preventDefault();
+      document.getElementById('record-btn').click();
+    }
+  });
+}
+
+/* ── Poll for roadmap updates ── */
+setInterval(async () => {
+  try {
+    const r = await fetch(BRIDGE_URL + '/../roadmap.json');
+    if (r.ok) {
+      const data = await r.json();
+      if (JSON.stringify(data) !== JSON.stringify(roadmap)) {
+        roadmap = data;
+        renderRoadmap();
+      }
+    }
+  } catch(e) { /* roadmap not available yet */ }
+}, 5000);
+
+/* ── Onboarding ── */
+window.addEventListener('load', () => {
+  const shown = sessionStorage.getItem('ielts-studio-onboarding-shown');
+  if (!shown) {
+    sessionStorage.setItem('ielts-studio-onboarding-shown', '1');
+    setTimeout(() => {
+      document.getElementById('status-text').textContent =
+        'Welcome! Record speaking, take a listening test, or write an essay. Then switch to Claude for evaluation.';
+    }, 500);
+  }
+});
+</script>
+</body>
+</html>

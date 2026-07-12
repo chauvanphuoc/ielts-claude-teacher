@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "IELTS Learning Roadmap",
+  "description": "Tracks a learner's progress from band 4.0 to 9.0 across all four skills with cross-skill pattern analysis.",
+  "type": "object",
+  "required": ["version", "learner", "skills", "history", "crossSkillPatterns"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Schema version for migration support",
+      "default": "1.0.0"
+    },
+    "learner": {
+      "type": "object",
+      "required": ["targetBand", "activeSkills"],
+      "properties": {
+        "targetBand": {
+          "type": "number",
+          "minimum": 4.0,
+          "maximum": 9.0,
+          "description": "Target IELTS overall band score"
+        },
+        "examDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Target exam date (YYYY-MM-DD), null if not set"
+        },
+        "activeSkills": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["writing", "reading", "listening", "speaking"] },
+          "description": "Skills the learner is actively studying. Can exclude skills (e.g. skip speaking).",
+          "minItems": 1
+        },
+        "startedAt": { "type": "string", "format": "date-time" },
+        "lastSessionAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "skills": {
+      "type": "object",
+      "description": "Per-skill band tracking, history, and weak areas",
+      "properties": {
+        "writing": { "$ref": "#/$defs/skillState" },
+        "reading": { "$ref": "#/$defs/skillState" },
+        "listening": { "$ref": "#/$defs/skillState" },
+        "speaking": { "$ref": "#/$defs/skillState" }
+      }
+    },
+    "history": {
+      "type": "array",
+      "description": "Chronological list of all practice sessions",
+      "items": { "$ref": "#/$defs/sessionRecord" }
+    },
+    "crossSkillPatterns": {
+      "type": "array",
+      "description": "Claude-identified patterns that span multiple skills",
+      "items": { "$ref": "#/$defs/crossSkillPattern" }
+    },
+    "coachNotes": {
+      "type": "array",
+      "description": "Claude's coaching observations across all sessions",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": { "type": "string", "format": "date-time" },
+          "category": { "type": "string", "enum": ["observation", "weakness", "strength", "strategy", "note"] },
+          "skill": { "type": "string" },
+          "content": { "type": "string" },
+          "priority": { "type": "string", "enum": ["high", "medium", "low"] }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "skillState": {
+      "type": "object",
+      "required": ["currentBand", "bandHistory", "weakAreas", "practiceCount"],
+      "properties": {
+        "currentBand": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 9.0,
+          "description": "Current estimated band for this skill. 0 = not yet assessed."
+        },
+        "bandHistory": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "date": { "type": "string", "format": "date" },
+              "band": { "type": "number" },
+              "source": { "type": "string", "description": "e.g. 'Cambridge 1 Test 2', 'practice essay #5'" }
+            }
+          }
+        },
+        "weakAreas": {
+          "type": "array",
+          "description": "Specific question types, error patterns, or sub-skills that need work",
+          "items": {
+            "type": "object",
+            "properties": {
+              "tag": { "type": "string", "description": "e.g. 'T/F/NG', 'spelling', 'MC-distractors', 'TR-main-ideas'" },
+              "errorRate": { "type": "number", "minimum": 0, "maximum": 1 },
+              "lastSeen": { "type": "string", "format": "date" },
+              "trend": { "type": "string", "enum": ["improving", "stable", "declining"] }
+            }
+          }
+        },
+        "practiceCount": { "type": "integer", "minimum": 0 },
+        "lastPracticeDate": { "type": "string", "format": "date" }
+      }
+    },
+    "sessionRecord": {
+      "type": "object",
+      "required": ["date", "skill", "activity"],
+      "properties": {
+        "date": { "type": "string", "format": "date-time" },
+        "skill": { "type": "string", "enum": ["writing", "reading", "listening", "speaking", "vocab", "diagnostic"] },
+        "activity": { "type": "string", "description": "e.g. 'essay-submit', 'test-complete', 'practice-recording'" },
+        "scores": { "type": "object", "description": "Skill-specific scores for this session" },
+        "duration": { "type": "integer", "description": "Minutes spent" },
+        "sourceMaterial": { "type": "string", "description": "e.g. 'Cambridge 1 Test 3' if from textbook" },
+        "notes": { "type": "string" }
+      }
+    },
+    "crossSkillPattern": {
+      "type": "object",
+      "required": ["id", "pattern", "affectedSkills", "identifiedAt"],
+      "properties": {
+        "id": { "type": "string" },
+        "pattern": { "type": "string", "description": "e.g. 'Difficulty distinguishing implied vs stated information'" },
+        "affectedSkills": { "type": "array", "items": { "type": "string" } },
+        "evidence": { "type": "string", "description": "How Claude connected the dots across skills" },
+        "prescription": { "type": "string", "description": "Targeted intervention that addresses the root cause" },
+        "identifiedAt": { "type": "string", "format": "date" },
+        "resolvedAt": { "type": "string", "format": "date", "description": "Null if still active" }
+      }
+    }
+  }
+}
