@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing Task 2 — Government Spending — IELTS Claude Teacher</title>
+<!--
+  writing-test.html — Writing workspace template.
+  Claude replaces {{PLACEHOLDERS}} with task prompt, saves to .ielts/lesson-plans/.
+
+  Student writes essay → real-time word counter → countdown timer →
+  "Save & Ask Claude to Evaluate" → POST to File Bridge → Claude evaluates.
+
+  Design: focused writing environment, minimal chrome, typography-driven.
+-->
+<style>
+  :root {
+    --color-bg: #fafaf9; --color-surface: #ffffff; --color-text-primary: #1a1a1a;
+    --color-text-secondary: #6b7280; --color-text-tertiary: #9ca3af; --color-border: #e5e7eb;
+    --color-border-hover: #d1d5db; --color-accent: #2563eb; --color-accent-hover: #1d4ed8;
+    --color-accent-bg: #eff6ff; --color-warning: #d97706; --color-warning-bg: #fffbeb;
+    --color-warning-text: #92400e; --color-error: #dc2626; --color-success: #059669;
+    --color-success-bg: #ecfdf5;
+    --radius-sm: 4px; --radius-md: 6px; --radius-lg: 8px;
+    --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --transition: 0.15s ease;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+  body { font-family: var(--font-stack); background: var(--color-bg); color: var(--color-text-primary); line-height: 1.6; }
+
+  /* ── Layout ── */
+  .container { max-width: 800px; margin: 0 auto; padding: 40px 24px 64px; }
+
+  /* ── Header ── */
+  .task-header { margin-bottom: 32px; }
+  .task-badge {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--color-accent); background: var(--color-accent-bg);
+    padding: 4px 10px; border-radius: var(--radius-sm); margin-bottom: 14px;
+  }
+  .task-title { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
+  .task-meta { font-size: 13px; color: var(--color-text-tertiary); display: flex; gap: 20px; }
+
+  /* ── Prompt card ── */
+  .prompt-card {
+    background: var(--color-surface); border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg); padding: 24px; margin-bottom: 28px;
+  }
+  .prompt-card h2 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+  .prompt-card p { font-size: 15px; line-height: 1.7; color: var(--color-text-secondary); }
+  .prompt-card .prompt-question {
+    margin-top: 12px; padding: 14px 18px; background: var(--color-accent-bg);
+    border-radius: var(--radius-md); font-size: 15px; font-weight: 600;
+    color: var(--color-text-primary); line-height: 1.6;
+  }
+  .prompt-image {
+    max-width: 100%; border-radius: var(--radius-md); margin-top: 14px;
+    border: 1px solid var(--color-border);
+  }
+
+  /* ── Timer bar ── */
+  .timer-bar {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+    padding: 12px 16px; background: var(--color-surface);
+    border: 1px solid var(--color-border); border-radius: var(--radius-md);
+  }
+  .timer-icon { font-size: 20px; }
+  .timer-display { font-size: 28px; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+  .timer-display.warning { color: var(--color-warning); }
+  .timer-display.danger { color: var(--color-error); animation: pulse 1s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+  .timer-label { font-size: 13px; color: var(--color-text-tertiary); }
+  .timer-actions { margin-left: auto; display: flex; gap: 8px; }
+  .btn-sm {
+    padding: 6px 14px; font-size: 12px; font-weight: 600;
+    font-family: var(--font-stack); border-radius: var(--radius-sm);
+    cursor: pointer; transition: all var(--transition); border: 1.5px solid var(--color-border);
+    background: var(--color-surface); color: var(--color-text-secondary);
+  }
+  .btn-sm:hover { border-color: #9ca3af; color: var(--color-text-primary); }
+
+  /* ── Editor area ── */
+  .editor-container { margin-bottom: 24px; }
+  .writing-textarea {
+    width: 100%; min-height: 420px; padding: 20px 22px;
+    font-size: 16px; font-family: var(--font-stack); line-height: 1.8;
+    color: var(--color-text-primary); background: var(--color-surface);
+    border: 1.5px solid var(--color-border); border-radius: var(--radius-lg);
+    resize: vertical; transition: border-color var(--transition);
+  }
+  .writing-textarea:focus {
+    outline: none; border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+  }
+  .writing-textarea::placeholder { color: var(--color-text-tertiary); }
+
+  /* ── Stats bar ── */
+  .stats-bar {
+    display: flex; align-items: center; gap: 20px;
+    padding: 10px 0; font-size: 13px; color: var(--color-text-secondary);
+  }
+  .stat { display: flex; align-items: center; gap: 6px; }
+  .stat-value { font-weight: 700; color: var(--color-text-primary); font-variant-numeric: tabular-nums; }
+  .stat-value.under { color: var(--color-warning); }
+  .stat-value.over { color: var(--color-success); }
+
+  /* ── Submit ── */
+  .submit-area { display: flex; align-items: center; gap: 14px; }
+  .btn-submit {
+    padding: 12px 32px; font-size: 15px; font-weight: 600;
+    font-family: var(--font-stack); color: white;
+    background: var(--color-accent); border: none;
+    border-radius: var(--radius-md); cursor: pointer;
+    transition: background var(--transition);
+  }
+  .btn-submit:hover { background: var(--color-accent-hover); }
+  .btn-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn-submit:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  .submit-hint { font-size: 13px; color: var(--color-text-tertiary); }
+
+  /* ── Saved confirmation ── */
+  .saved-banner {
+    display: none; margin-top: 16px; padding: 14px 18px;
+    background: var(--color-success-bg); border: 1px solid #6ee7b7;
+    border-radius: var(--radius-md); font-size: 14px; color: #065f46;
+  }
+  .saved-banner.visible { display: flex; align-items: center; gap: 12px; }
+  .saved-banner strong { font-weight: 700; }
+
+  /* ── Server warning ── */
+  .warning-banner {
+    display: none; margin-top: 16px; padding: 12px 16px;
+    background: var(--color-warning-bg); border: 1px solid #fcd34d;
+    border-radius: var(--radius-md); font-size: 13px; color: var(--color-warning-text);
+  }
+  .warning-banner.visible { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .btn-retry { padding: 6px 14px; font-size: 12px; font-weight: 600; font-family: var(--font-stack); color: var(--color-warning-text); background: white; border: 1px solid #fcd34d; border-radius: var(--radius-sm); cursor: pointer; white-space: nowrap; }
+  .btn-retry:hover { background: #fef3c7; }
+
+  :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+  @media (max-width: 720px) {
+    .container { padding: 20px 14px; }
+    .task-title { font-size: 20px; }
+    .writing-textarea { min-height: 300px; font-size: 15px; }
+    .timer-display { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container" role="main" aria-label="IELTS Writing Task">
+
+  <!-- ═══════════════ HEADER ═══════════════ -->
+  <header class="task-header">
+    <div class="task-badge">Writing · Task 2 · Opinion Essay</div>
+    <h1 class="task-title">Writing Task 2 — Government Spending</h1>
+    <div class="task-meta">
+      <span>Time: 40 minutes</span>
+      <span>Minimum: 250 words</span>
+      <span>Skill: Writing</span>
+    </div>
+  </header>
+
+  <!-- ═══════════════ PROMPT ═══════════════ -->
+  <div class="prompt-card">
+    <h2>Task Prompt</h2>
+    <div class="prompt-question">Some people think that governments should spend money on public transportation rather than on building new roads. To what extent do you agree or disagree with this statement? Give reasons for your answer and include any relevant examples from your own knowledge or experience.</div>
+    
+  </div>
+
+  <!-- ═══════════════ TIMER ═══════════════ -->
+  <div class="timer-bar" id="timer-bar">
+    <span class="timer-icon">&#9202;</span>
+    <span class="timer-display" id="timer-display">40:00</span>
+    <span class="timer-label" id="timer-label">remaining</span>
+    <div class="timer-actions">
+      <button class="btn-sm" onclick="pauseTimer()" id="btn-pause" aria-label="Pause timer">Pause</button>
+      <button class="btn-sm" onclick="resetTimer()" aria-label="Reset timer">Reset</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════ EDITOR ═══════════════ -->
+  <div class="editor-container">
+    <textarea
+      class="writing-textarea"
+      id="writing-area"
+      placeholder="Start writing your essay here..."
+      aria-label="Writing area"
+      autocomplete="off"
+      spellcheck="true"
+    ></textarea>
+  </div>
+
+  <!-- ═══════════════ STATS ═══════════════ -->
+  <div class="stats-bar">
+    <div class="stat">
+      Words: <span class="stat-value" id="word-count">0</span>
+      <span style="font-size:11px;color:var(--color-text-tertiary)">/ 250 min</span>
+    </div>
+    <div class="stat">
+      Characters: <span class="stat-value" id="char-count">0</span>
+    </div>
+    <div class="stat">
+      Paragraphs: <span class="stat-value" id="para-count">0</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════ SUBMIT ═══════════════ -->
+  <div class="submit-area">
+    <button type="button" class="btn-submit" id="btn-submit" onclick="saveEssay()">
+      Save & Ask Claude to Evaluate
+    </button>
+    <span class="submit-hint">Claude will grade your essay and give detailed feedback</span>
+  </div>
+
+  <div class="saved-banner" id="saved-banner" role="status">
+    <span>&#10003;</span>
+    <span><strong>Essay saved.</strong> Return to Claude and say <em>"chấm bài viết"</em> to get your score and feedback.</span>
+  </div>
+
+  <div class="warning-banner" id="warning-banner" role="alert">
+    <span>&#9888; Server not running. Essay saved locally.</span>
+    <button class="btn-retry" onclick="retrySave()">Start server.py and click Retry</button>
+  </div>
+
+</div>
+
+<!-- ═══════════════ DATA ═══════════════ -->
+<script>
+window.__TASK_TYPE__ = 'Task 2';
+window.__TIME_MINUTES__ = 40;
+window.__WORD_LIMIT__ = 250;
+window.__KC_TAGS__ = ["kc-write-tr", "kc-write-cc", "kc-write-lr", "kc-write-gra"];
+</script>
+
+<!-- ═══════════════ APP LOGIC ═══════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  var BRIDGE_URL = 'http://localhost:8765';
+  var totalSeconds = (window.__TIME_MINUTES__ || 20) * 60;
+  var remainingSeconds = totalSeconds;
+  var timerInterval = null;
+  var isPaused = false;
+  var countdownWarning = Math.round(totalSeconds * 0.25); // warn at 25% remaining
+
+  var timerDisplay = document.getElementById('timer-display');
+  var timerLabel = document.getElementById('timer-label');
+  var wordCountEl = document.getElementById('word-count');
+  var charCountEl = document.getElementById('char-count');
+  var paraCountEl = document.getElementById('para-count');
+  var textarea = document.getElementById('writing-area');
+  var savedBanner = document.getElementById('saved-banner');
+  var warningBanner = document.getElementById('warning-banner');
+  var btnSubmit = document.getElementById('btn-submit');
+  var btnPause = document.getElementById('btn-pause');
+
+  // ── Timer ──
+
+  function formatTime(seconds) {
+    var m = Math.floor(seconds / 60);
+    var s = seconds % 60;
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  function updateTimerDisplay() {
+    timerDisplay.textContent = formatTime(remainingSeconds);
+    timerDisplay.classList.remove('warning', 'danger');
+    if (remainingSeconds <= 60) {
+      timerDisplay.classList.add('danger');
+      timerLabel.textContent = 'time almost up!';
+    } else if (remainingSeconds <= countdownWarning) {
+      timerDisplay.classList.add('warning');
+      timerLabel.textContent = 'time running low';
+    } else {
+      timerLabel.textContent = 'remaining';
+    }
+  }
+
+  function startTimer() {
+    updateTimerDisplay();
+    timerInterval = setInterval(function() {
+      if (!isPaused) {
+        remainingSeconds--;
+        updateTimerDisplay();
+        if (remainingSeconds <= 0) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+          autoSave();
+        }
+      }
+    }, 1000);
+  }
+
+  window.pauseTimer = function() {
+    isPaused = !isPaused;
+    btnPause.textContent = isPaused ? 'Resume' : 'Pause';
+    if (isPaused) {
+      timerLabel.textContent = 'paused';
+    } else {
+      updateTimerDisplay();
+    }
+  };
+
+  window.resetTimer = function() {
+    if (confirm('Reset the timer? This will not delete your essay.')) {
+      remainingSeconds = totalSeconds;
+      isPaused = false;
+      btnPause.textContent = 'Pause';
+      updateTimerDisplay();
+    }
+  };
+
+  // ── Word counter ──
+
+  function updateStats() {
+    var text = textarea.value || '';
+    var trimmed = text.trim();
+    var words = trimmed ? trimmed.split(/\s+/).length : 0;
+    var chars = text.length;
+    var paras = trimmed ? trimmed.split(/\n\n+/).filter(function(p) { return p.trim(); }).length : 0;
+
+    wordCountEl.textContent = words;
+    charCountEl.textContent = chars;
+    paraCountEl.textContent = paras;
+
+    // Color word count relative to limit
+    var limit = window.__WORD_LIMIT__ || 150;
+    wordCountEl.classList.remove('under', 'over');
+    if (words < limit) {
+      wordCountEl.classList.add('under');
+    } else {
+      wordCountEl.classList.add('over');
+    }
+  }
+
+  textarea.addEventListener('input', updateStats);
+
+  // ── Save ──
+
+  function saveEssay() {
+    var text = textarea.value.trim();
+    if (!text) {
+      alert('Please write your essay before saving.');
+      return;
+    }
+
+    var words = text.split(/\s+/).length;
+    var limit = window.__WORD_LIMIT__ || 150;
+    if (words < limit) {
+      if (!confirm('Your essay is ' + words + ' words (minimum ' + limit + '). Save anyway?')) {
+        return;
+      }
+    }
+
+    var elapsed = totalSeconds - remainingSeconds;
+    var payload = {
+      skill: 'writing',
+      taskType: window.__TASK_TYPE__ || 'Task 2',
+      kcTags: window.__KC_TAGS__ || [],
+      date: new Date().toISOString(),
+      wordCount: words,
+      timeUsedSeconds: elapsed,
+      timeLimitSeconds: totalSeconds,
+      content: text
+    };
+
+    btnSubmit.disabled = true;
+    btnSubmit.textContent = 'Saving...';
+
+    fetch(BRIDGE_URL + '/save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(resp) {
+      if (!resp.ok) throw new Error('Server returned ' + resp.status);
+      return resp.json();
+    })
+    .then(function() {
+      localStorage.removeItem('pendingWriting');
+      savedBanner.classList.add('visible');
+      savedBanner.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      btnSubmit.textContent = 'Saved ✓';
+    })
+    .catch(function(err) {
+      console.warn('Save failed, storing locally:', err.message);
+      localStorage.setItem('pendingWriting', JSON.stringify(payload));
+      warningBanner.classList.add('visible');
+      btnSubmit.disabled = false;
+      btnSubmit.textContent = 'Save & Ask Claude to Evaluate';
+    });
+  }
+
+  function autoSave() {
+    var text = textarea.value.trim();
+    if (!text) return;
+    saveEssay();
+  }
+
+  window.retrySave = function() {
+    var pending = localStorage.getItem('pendingWriting');
+    if (!pending) { warningBanner.classList.remove('visible'); return; }
+    btnSubmit.disabled = true;
+    btnSubmit.textContent = 'Retrying...';
+    fetch(BRIDGE_URL + '/save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: pending
+    })
+    .then(function(resp) {
+      if (!resp.ok) throw new Error('Server returned ' + resp.status);
+      return resp.json();
+    })
+    .then(function() {
+      localStorage.removeItem('pendingWriting');
+      warningBanner.classList.remove('visible');
+      savedBanner.classList.add('visible');
+      btnSubmit.textContent = 'Saved ✓';
+    })
+    .catch(function(err) {
+      console.warn('Retry failed:', err.message);
+      btnSubmit.disabled = false;
+      btnSubmit.textContent = 'Save & Ask Claude to Evaluate';
+    });
+  };
+
+  window.saveEssay = saveEssay;
+
+  // ── Keyboard shortcut ──
+  document.addEventListener('keydown', function(e) {
+    if ((e.metaKey || e.ctrlKey) && e.key === 's') {
+      e.preventDefault();
+      saveEssay();
+    }
+  });
+
+  // ── Init ──
+  if (localStorage.getItem('pendingWriting')) {
+    warningBanner.classList.add('visible');
+  }
+  startTimer();
+  updateStats();
+})();
+</script>
+</body>
+</html>

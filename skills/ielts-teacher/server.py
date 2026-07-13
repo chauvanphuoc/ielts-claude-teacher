@@ -204,6 +204,16 @@ class BridgeHandler(SimpleHTTPRequestHandler):
                     if self._serve_file(entry): return
             self.send_error(404, f"Audio not found: {rel}"); return
 
+        # ── /lessons/<filename> — serve lesson plan HTML files from .ielts/lesson-plans/ ──
+        if path.startswith("lessons/"):
+            filename = path[len("lessons/"):]
+            if ".." in filename or "/" in filename:
+                self.send_error(403, "Invalid path"); return
+            lesson_file = IELTS_DIR / "lesson-plans" / filename
+            if lesson_file.exists() and lesson_file.is_file():
+                if self._serve_file(lesson_file, "text/html; charset=utf-8"): return
+            self.send_error(404, f"Lesson not found: {filename}"); return
+
         # ── /roadmap.json — from .ielts/ ──
         if path == "roadmap.json":
             roadmap = IELTS_DIR / "roadmap.json"
