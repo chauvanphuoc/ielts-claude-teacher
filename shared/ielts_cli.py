@@ -140,22 +140,13 @@ def cmd_init():
 def cmd_migrate_profile():
     """Migrate old roadmap.json → new student-profile.json.
 
-    Mapping (per design doc Appendix B):
-      learner.*              → direct map
-      skills.{s}.currentBand → direct map
-      skills.{s}.bandHistory → direct map
-      skills.{s}.weakAreas   → coachNotes entries
-      skills.{s}.practiceCount → direct map
-      skills.{s}.lastPracticeDate → direct map
-      kcMastery              → initialize empty (no old data)
-      vocabulary             → initialize empty
-      grammar                → initialize empty
-      lessonLibrary          → initialize empty
-      testHistory            → initialize empty
-      crossSkillPatterns     → initialize empty array
-      coachNotes             → map from old + add migration note
+    If student-profile.json already exists: only ADD new KCs from KC graph
+    without overwriting existing mastery data. Preserves all test history,
+    lesson library, vocabulary, grammar, and coach notes.
 
-    Creates backup of roadmap.json before migrating.
+    If student-profile.json does not exist: full migration from roadmap.json.
+
+    Creates backup before modifying.
     """
     if not ROADMAP_FILE.exists():
         print(json.dumps({"status": "error", "message": f"{ROADMAP_FILE} not found. Run init first."}))
@@ -166,7 +157,55 @@ def cmd_migrate_profile():
         print(json.dumps({"status": "error", "message": "roadmap.json is empty or corrupt."}))
         return 1
 
-    # Backup the old file
+    kc_graph = _load_json(KC_GRAPH_FILE)
+
+    # ── Incremental mode: profile exists, only sync new KCs ──
+    if PROFILE_FILE.exists():
+        profile = _load_json(PROFILE_FILE)
+        if not profile:
+            print(json.dumps({"status": "error", "message": "student-profile.json is corrupt."}))
+            return 1
+
+        _backup_file(PROFILE_FILE)
+        kcs_added = 0
+
+        for skill_name in ["listening", "reading", "writing", "speaking"]:
+            skill_kcs = kc_graph.get("skills", {}).get(skill_name, {}).get("kcs", []) if kc_graph else []
+            if skill_name not in profile["skills"]:
+                profile["skills"][skill_name] = {"currentBand": 0, "bandHistory": [], "practiceCount": 0, "lastPracticeDate": None, "kcMastery": {}}
+            if "kcMastery" not in profile["skills"][skill_name]:
+                profile["skills"][skill_name]["kcMastery"] = {}
+
+            mastery = profile["skills"][skill_name]["kcMastery"]
+            for kc in skill_kcs:
+                if kc["id"] not in mastery:
+                    mastery[kc["id"]] = {
+                        "level": "weak",
+                        "errorRate": 0.0,
+                        "attempts": 0,
+                        "lastTested": None,
+                        "nextReviewDate": None
+                    }
+                    kcs_added += 1
+
+        _save_json(PROFILE_FILE, profile)
+
+        result = {
+            "status": "ok",
+            "message": f"Incremental sync: {kcs_added} new KCs added",
+            "mode": "incremental",
+            "profile": str(PROFILE_FILE),
+            "summary": {
+                "kcsAdded": kcs_added,
+                "totalKCs": sum(len(profile["skills"][s].get("kcMastery", {})) for s in profile["skills"]),
+                "testHistoryPreserved": len(profile.get("testHistory", [])),
+                "diagnosticPreserved": profile["learner"].get("diagnosticCompleted", False)
+            }
+        }
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return 0
+
+    # ── Full migration mode: no profile exists yet ──
     backup_path = _backup_file(ROADMAP_FILE)
 
     # ── Build new student profile ──────────────────────────────────

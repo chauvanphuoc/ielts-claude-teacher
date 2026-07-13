@@ -220,8 +220,173 @@
     },
     "writing": {
       "name": "IELTS Writing",
-      "description": "60 minutes, 2 tasks. KCs will be defined in Phase 2 after Reading/Listening KCs are validated.",
-      "kcs": []
+      "description": "60 minutes, 2 tasks (Task 1: 150+ words describing a graph/chart/diagram, Task 2: 250+ words essay). Scored across 4 rubric criteria: Task Response (TR), Coherence & Cohesion (CC), Lexical Resource (LR), Grammatical Range & Accuracy (GRA). Unlike Reading, errorRate is derived from band gap between current and target band, not from right/wrong counts.",
+      "kcs": [
+        {
+          "id": "kc-write-tr",
+          "name": "Task Response (TR)",
+          "skill": "writing",
+          "status": "draft",
+          "description": "How fully and appropriately the candidate addresses the task. Task 1: identifies key features, supports with data, provides overview. Task 2: presents a clear position, develops main ideas with supporting evidence, addresses all parts of the question. The most heavily weighted criterion in determining the overall Writing band.",
+          "dependsOn": [],
+          "difficultyLevel": 2,
+          "commonErrors": [
+            "Task 1: listing every data point without identifying key trends or providing an overview paragraph",
+            "Task 2: going off-topic or addressing only part of the question — e.g., discussing advantages but forgetting disadvantages",
+            "Task 2: stating opinions without supporting them with specific examples or evidence",
+            "Task 1: writing under the minimum word count (150 words) — examiner penalizes this directly",
+            "Task 2: giving a balanced discussion when the question asks 'To what extent do you agree or disagree?' — must take a clear position"
+          ],
+          "exerciseTemplates": [
+            "Given a Task 2 question, write a position statement and 3 main ideas with one supporting example each — Claude checks if they address all parts of the question",
+            "Task 1 overview drill: given 3 different graphs, write only the overview paragraph (2-3 sentences) identifying the main trend",
+            "Paragraph purpose check: read a sample essay paragraph-by-paragraph and identify what each paragraph contributes to answering the question"
+          ],
+          "ieltsQuestionTypes": ["task-1-report", "task-2-essay"],
+          "bandRange": [4.0, 7.5],
+          "scoringNote": "errorRate for Writing is computed from band gap: gap = (targetBand - currentBand) / targetBand. A gap of 0.5 bands on a 7.0 target = errorRate of 0.07. ErrorRate accumulates across multiple writing submissions."
+        },
+        {
+          "id": "kc-write-cc",
+          "name": "Coherence & Cohesion (CC)",
+          "skill": "writing",
+          "status": "draft",
+          "description": "How logically the ideas are organized and connected. Includes: paragraph structure (one main idea per paragraph), logical progression of ideas, cohesive devices (linking words, referencing, substitution). Not just 'uses linking words' — overuse of connectors (However, Moreover, Furthermore) actually reduces the score.",
+          "dependsOn": [],
+          "difficultyLevel": 2,
+          "commonErrors": [
+            "Overusing basic connectors at the start of every sentence — 'Firstly... Secondly... Moreover... However... In conclusion...' — this reads as mechanical, not natural",
+            "Paragraphs with multiple unrelated ideas jumbled together — one paragraph should develop ONE main point",
+            "Missing logical flow between paragraphs — ideas jump from topic to topic without transition",
+            "Using referencing incorrectly — 'this', 'these', 'it' pointing to unclear antecedents",
+            "Writing paragraphs that are too short (1-2 sentences) or too long (10+ sentences without a clear focus)"
+          ],
+          "exerciseTemplates": [
+            "Paragraph reordering: given 5 jumbled sentences, arrange them into a logical paragraph — then add one transition sentence to the next paragraph",
+            "Connector audit: read a sample essay and replace mechanical connectors with natural referencing ('this approach', 'such policies', 'these developments')",
+            "Structure outline: given a Task 2 question, write only the topic sentence for each paragraph — Claude checks logical progression"
+          ],
+          "ieltsQuestionTypes": ["task-1-report", "task-2-essay"],
+          "bandRange": [4.0, 7.5],
+          "scoringNote": "CC is graded holistically per essay. errorRate derived from Claude's CC band assessment vs target."
+        },
+        {
+          "id": "kc-write-lr",
+          "name": "Lexical Resource (LR)",
+          "skill": "writing",
+          "status": "draft",
+          "description": "The range, accuracy, and appropriateness of vocabulary used. Includes: use of less common vocabulary, collocations (word partnerships), paraphrasing ability, spelling accuracy, word form precision. High-scoring essays use precise vocabulary and avoid repetition through paraphrasing.",
+          "dependsOn": ["kc-read-vocab-context"],
+          "difficultyLevel": 3,
+          "commonErrors": [
+            "Repeating the same basic words throughout the essay — 'important' used 6 times instead of varying with 'significant', 'crucial', 'essential', 'vital'",
+            "Using 'big words' incorrectly to sound impressive — a word used in the wrong context damages the score more than a simple word used correctly",
+            "Spelling errors on common IELTS vocabulary — 'accommodation', 'government', 'environment', 'nowadays'",
+            "Writing phrases that are grammatically correct but unnatural in English — direct translations from native language",
+            "Not using collocations — writing 'make a decision' as 'do a decision', 'heavy rain' as 'strong rain'"
+          ],
+          "exerciseTemplates": [
+            "Paraphrase drill: rewrite 5 sentences from a sample essay using different vocabulary while preserving meaning — Claude checks accuracy and naturalness",
+            "Collocation gap-fill: 10 sentences with missing collocations — select from word pairs like 'make/do', 'heavy/strong', 'high/tall'",
+            "Vocabulary upgrade: given a Band 5.0 paragraph, replace underlined words with higher-level alternatives — Claude shows a Band 7.0 version"
+          ],
+          "ieltsQuestionTypes": ["task-1-report", "task-2-essay"],
+          "bandRange": [4.0, 8.0],
+          "scoringNote": "LR benefits from vocabulary tracking in student profile (misspelledWords, weakTopics). Cross-references with reading vocabulary work."
+        },
+        {
+          "id": "kc-write-gra",
+          "name": "Grammatical Range & Accuracy (GRA)",
+          "skill": "writing",
+          "status": "draft",
+          "description": "The variety and correctness of sentence structures used. Includes: range of sentence types (simple, compound, complex), error density (how many errors per 100 words), error severity (do errors impede communication?), and punctuation accuracy. High bands require a mix of structures with few errors.",
+          "dependsOn": [],
+          "difficultyLevel": 2,
+          "commonErrors": [
+            "Writing only simple sentences — 'subject + verb + object' pattern repeated throughout, no complex structures",
+            "Frequent subject-verb agreement errors — 'the number of people are increasing' instead of 'is increasing'",
+            "Inconsistent verb tense within a paragraph — switching between past and present without reason",
+            "Article errors — missing 'a/an/the' or using them incorrectly (the most common error for non-native speakers)",
+            "Comma splices — joining two complete sentences with only a comma instead of using a period, semicolon, or conjunction"
+          ],
+          "exerciseTemplates": [
+            "Sentence combining: given 3 simple sentences, combine them into one grammatically correct complex sentence — Claude checks accuracy",
+            "Error correction: given a paragraph with 10 grammatical errors, identify and correct each one",
+            "Structure variety check: analyze your own essay — count simple vs compound vs complex sentences. Target: at least 40% complex"
+          ],
+          "ieltsQuestionTypes": ["task-1-report", "task-2-essay"],
+          "bandRange": [4.0, 7.5]
+        },
+        {
+          "id": "kc-write-gra-articles",
+          "name": "Article Usage (a/an/the)",
+          "skill": "writing",
+          "status": "draft",
+          "description": "Correct use of definite article (the), indefinite articles (a/an), and zero article. The most persistent error pattern for learners from languages without article systems (Chinese, Vietnamese, Japanese, Korean). Mastery requires understanding: specificity (the = known to reader), generality (a/an = one of many, zero article = general concept).",
+          "dependsOn": ["kc-write-gra"],
+          "difficultyLevel": 3,
+          "commonErrors": [
+            "Omitting 'the' before a specific noun already mentioned — 'I visited museum. Museum was crowded.'",
+            "Using 'the' with general plural nouns — 'The dogs are loyal animals' when meaning dogs in general",
+            "Confusing 'a' and 'an' based on spelling not sound — 'a hour' instead of 'an hour', 'an university' instead of 'a university'",
+            "Missing articles before singular countable nouns — 'He is teacher' instead of 'He is a teacher'",
+            "Overusing 'the' with abstract concepts — 'The happiness is important' instead of 'Happiness is important'"
+          ],
+          "exerciseTemplates": [
+            "Article gap-fill: 15 sentences with blanks where articles should go — fill in a/an/the or leave blank for zero article",
+            "Error detection: given a paragraph, circle every article error and explain the rule that was broken",
+            "Pattern drill: write 5 sentences about a specific topic, then rewrite them as general statements — observe how articles change"
+          ],
+          "ieltsQuestionTypes": ["task-1-report", "task-2-essay"],
+          "bandRange": [4.0, 6.5]
+        },
+        {
+          "id": "kc-write-gra-tenses",
+          "name": "Verb Tense Consistency",
+          "skill": "writing",
+          "status": "draft",
+          "description": "Accurate and consistent use of verb tenses within and across sentences. Includes: present/past/future distinction, perfect tenses (have done, had done), conditional forms, and tense agreement in complex sentences. Task 1 especially tests tense control — describing a graph showing past data requires consistent past tense.",
+          "dependsOn": ["kc-write-gra"],
+          "difficultyLevel": 3,
+          "commonErrors": [
+            "Switching between past and present tense mid-paragraph when describing the same data — 'The graph showed... it shows... the figures increased...'",
+            "Using present perfect incorrectly for completed past actions — 'I have visited Paris in 2019' instead of 'I visited Paris in 2019'",
+            "Forgetting to use past perfect for the earlier of two past events — 'By the time I arrived, the train left' instead of 'had left'",
+            "Using 'will' in if-clauses — 'If it will rain, I will stay home' instead of 'If it rains, I will stay home'",
+            "Task 1: describing a future projection with past tense — confusing forecast data with historical data"
+          ],
+          "exerciseTemplates": [
+            "Tense correction: given a paragraph with 8 verb tense errors, correct each one and explain the time relationship",
+            "Timeline writing: given a sequence of events on a timeline, write a paragraph using appropriate tenses — Claude checks consistency",
+            "Task 1 tense drill: given 3 graphs (past data, current comparison, future projection), write 2 sentences for each using the correct tense"
+          ],
+          "ieltsQuestionTypes": ["task-1-report", "task-2-essay"],
+          "bandRange": [4.0, 7.0]
+        },
+        {
+          "id": "kc-write-gra-complex",
+          "name": "Complex Sentence Structures",
+          "skill": "writing",
+          "status": "draft",
+          "description": "Ability to use a variety of sentence structures beyond simple sentences. Includes: subordinate clauses (although, while, because, which), conditional sentences (if/then, unless), relative clauses (who, that, where), passive voice for academic register, and nominalization (turning verbs into nouns for formal style). High bands require accurate use of complex structures, not just attempts.",
+          "dependsOn": ["kc-write-gra"],
+          "difficultyLevel": 4,
+          "commonErrors": [
+            "Attempting complex sentences but creating fragments — subordinate clause left alone as if it were a complete sentence",
+            "Overcomplicating sentences to the point of confusion — a 40-word sentence that the reader must re-read to understand",
+            "Using the wrong relative pronoun — 'The city which I was born' instead of 'The city where I was born'",
+            "Avoiding passive voice entirely — academic writing requires some passive constructions ('The experiment was conducted' not 'They conducted the experiment')",
+            "Writing only 'although' and 'because' sentences — never using 'despite', 'whereas', 'while', 'unless', 'provided that'"
+          ],
+          "exerciseTemplates": [
+            "Structure transformation: rewrite 5 simple sentences as complex sentences using different structures — Claude checks grammatical accuracy",
+            "Sentence deconstruction: take a 35-word Band 9 sentence, break it into its component clauses — understand how it's built",
+            "Pattern practice: write 3 sentences each using: although/while, if/unless, a relative clause, and passive voice"
+          ],
+          "ieltsQuestionTypes": ["task-1-report", "task-2-essay"],
+          "bandRange": [5.0, 8.0]
+        }
+      ]
     },
     "speaking": {
       "name": "IELTS Speaking",
