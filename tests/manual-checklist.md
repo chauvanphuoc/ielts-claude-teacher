@@ -127,7 +127,7 @@ Check off each item after verification.
   - Verify 400 error response
 
 - [ ] **CP-11: POST valid JSON**
-  - Send valid JSON, verify 200 and file written to ~/.ielts/
+  - Send valid JSON, verify 200 and file written to .ielts/
 
 - [ ] **CP-12: GET missing MP3**
   - Request /audio/cambridge-1/nonexistent.mp3

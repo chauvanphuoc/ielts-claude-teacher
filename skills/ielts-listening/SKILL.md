@@ -28,7 +28,7 @@ Grade listening test answers, categorize errors, prescribe targeted exercises.
 ```
 
 ## Workflow
-1. Read answers from ~/.ielts/listening/latest.json
+1. Read answers from .ielts/listening/latest.json
 2. Read answer key from docs/Cambridge-IELTS-1/textbook/Cambridge_IELTS_1.md (or relevant test)
 3. Grade each question, categorize each error using the taxonomy from shared/rubrics.md
 4. Give section-by-section breakdown

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T/F/NG Practice — The History of Tea — IELTS Claude Teacher</title>
+<style>
+  :root {
+    --color-bg: #fafaf9; --color-surface: #ffffff; --color-text-primary: #1a1a1a;
+    --color-text-secondary: #6b7280; --color-text-tertiary: #9ca3af; --color-border: #e5e7eb;
+    --color-border-hover: #d1d5db; --color-accent: #2563eb; --color-accent-hover: #1d4ed8;
+    --color-accent-bg: #eff6ff; --color-success: #059669; --color-success-bg: #ecfdf5;
+    --color-success-text: #065f46; --color-error: #dc2626; --color-error-bg: #fef2f2;
+    --color-error-text: #991b1b; --color-warning: #d97706; --color-warning-bg: #fffbeb;
+    --color-warning-text: #92400e; --radius-sm: 4px; --radius-md: 6px; --radius-lg: 8px;
+    --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --transition: 0.15s ease;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+  body { font-family: var(--font-stack); background: var(--color-bg); color: var(--color-text-primary); line-height: 1.6; }
+  .container { max-width: 680px; margin: 0 auto; padding: 48px 24px 64px; }
+  .test-header { margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--color-border); }
+  .test-badge { display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-accent); background: var(--color-accent-bg); padding: 4px 10px; border-radius: var(--radius-sm); margin-bottom: 16px; }
+  .test-title { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .test-instructions { font-size: 15px; color: var(--color-text-secondary); max-width: 560px; line-height: 1.6; }
+  .question-group { display: flex; flex-direction: column; gap: 28px; }
+  .question { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 20px 24px; transition: border-color var(--transition); position: relative; }
+  .question:hover { border-color: var(--color-border-hover); }
+  .question.unanswered { border-color: var(--color-warning); box-shadow: 0 0 0 1px var(--color-warning); }
+  .question-number { font-size: 12px; font-weight: 600; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+  .question-text { font-size: 16px; font-weight: 500; margin-bottom: 16px; line-height: 1.55; }
+  .options-row { display: flex; gap: 8px; }
+  .options-row .option { flex: 1; position: relative; }
+  .options-row .option input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .options-row .option label { display: block; text-align: center; padding: 10px 8px; font-size: 13px; font-weight: 600; color: var(--color-text-secondary); background: var(--color-bg); border: 1.5px solid var(--color-border); border-radius: var(--radius-md); cursor: pointer; transition: all var(--transition); user-select: none; }
+  .options-row .option label:hover { border-color: #9ca3af; color: var(--color-text-primary); }
+  .options-row .option input:focus-visible + label { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  .options-row .option input:checked + label.label-true { background: var(--color-success-bg); border-color: var(--color-success); color: var(--color-success); }
+  .options-row .option input:checked + label.label-false { background: var(--color-error-bg); border-color: var(--color-error); color: var(--color-error); }
+  .options-row .option input:checked + label.label-not-given { background: var(--color-warning-bg); border-color: var(--color-warning); color: var(--color-warning); }
+  .passage-box { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 20px 24px; margin-bottom: 36px; }
+  .passage-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+  .passage-text { font-size: 14px; line-height: 1.75; color: var(--color-text-secondary); }
+  .key-tip { background: var(--color-accent-bg); border: 1px solid #bfdbfe; border-radius: var(--radius-md); padding: 12px 16px; margin-bottom: 32px; font-size: 13px; color: #1e40af; line-height: 1.6; }
+  .key-tip strong { display: block; margin-bottom: 4px; font-size: 14px; }
+  .submit-area { margin-top: 40px; display: flex; align-items: center; gap: 16px; }
+  .btn-submit { padding: 12px 32px; font-size: 15px; font-weight: 600; font-family: var(--font-stack); color: white; background: var(--color-accent); border: none; border-radius: var(--radius-md); cursor: pointer; transition: background var(--transition); }
+  .btn-submit:hover { background: var(--color-accent-hover); }
+  .btn-submit:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+  .submit-hint { font-size: 13px; color: var(--color-text-tertiary); }
+  .validation-warning { display: none; margin-top: 12px; padding: 10px 14px; font-size: 13px; font-weight: 500; color: var(--color-warning-text); background: var(--color-warning-bg); border: 1px solid #fcd34d; border-radius: var(--radius-md); }
+  .validation-warning.visible { display: block; }
+  .results { display: none; margin-top: 40px; }
+  .results.visible { display: block; }
+  .results-header { padding: 20px 24px; border-radius: var(--radius-lg); margin-bottom: 24px; text-align: center; }
+  .results-header.needs-work { background: #fef3c7; border: 1px solid #fcd34d; }
+  .results-header.great-job { background: #d1fae5; border: 1px solid #6ee7b7; }
+  .results-score { font-size: 48px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+  .results-header.needs-work .results-score { color: #92400e; }
+  .results-header.great-job .results-score { color: #065f46; }
+  .results-label { font-size: 14px; font-weight: 600; margin: 4px 0 8px; }
+  .results-header.needs-work .results-label { color: #92400e; }
+  .results-header.great-job .results-label { color: #065f46; }
+  .results-message { font-size: 14px; line-height: 1.5; }
+  .results-header.needs-work .results-message { color: #78350f; }
+  .results-header.great-job .results-message { color: #064e3b; }
+  .result-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; border-radius: var(--radius-md); margin-bottom: 8px; font-size: 14px; }
+  .result-item.correct { background: var(--color-success-bg); color: var(--color-success-text); }
+  .result-item.incorrect { background: var(--color-error-bg); color: var(--color-error-text); }
+  .result-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; font-weight: 700; }
+  .warning-banner { display: none; margin-top: 16px; padding: 12px 16px; background: var(--color-warning-bg); border: 1px solid #fcd34d; border-radius: var(--radius-md); font-size: 13px; color: var(--color-warning-text); }
+  .warning-banner.visible { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .btn-retry { padding: 6px 14px; font-size: 12px; font-weight: 600; font-family: var(--font-stack); color: var(--color-warning-text); background: white; border: 1px solid #fcd34d; border-radius: var(--radius-sm); cursor: pointer; white-space: nowrap; }
+  .btn-retry:hover { background: #fef3c7; }
+  :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  @media (max-width: 720px) { .container { padding: 24px 16px; } .test-title { font-size: 22px; } .options-row { flex-direction: column; } }
+</style>
+</head>
+<body>
+
+<div class="container" role="main" aria-label="T/F/NG Practice">
+
+  <header class="test-header">
+    <div class="test-badge">Reading · True / False / Not Given</div>
+    <h1 class="test-title">The History of Tea</h1>
+    <p class="test-instructions">
+      Do the following statements agree with the information in the passage?
+      Write <strong>TRUE</strong> if the statement agrees with the passage,
+      <strong>FALSE</strong> if the statement contradicts the passage, or
+      <strong>NOT GIVEN</strong> if there is no information on this.
+    </p>
+  </header>
+
+  <div class="passage-box">
+    <div class="passage-title">&#9749; Tea: From Ancient China to the World</div>
+    <div class="passage-text">
+      <p>According to Chinese legend, tea was discovered accidentally by Emperor Shen Nung in 2737 BCE when leaves from a nearby tea bush fell into a pot of water he was boiling. However, the earliest reliable historical records of tea consumption date from the Tang Dynasty (618-907 CE), when tea became a popular beverage throughout China. During this period, <em>Cha Jing</em> (The Classic of Tea), the world's first book about tea, was written by Lu Yu, a scholar who spent years studying tea cultivation and preparation.</p>
+      <p>Tea spread beyond China through Buddhist monks who traveled between China, Korea, and Japan. The Japanese tea ceremony, <em>chanoyu</em>, developed in the 16th century under the influence of Zen Buddhism, transforming tea drinking from a simple refreshment into a spiritual practice. Unlike the Chinese, who preferred loose-leaf tea, the Japanese developed a powdered form called <em>matcha</em>, which remains central to the tea ceremony today.</p>
+      <p>Tea was introduced to Europe in the early 17th century by Portuguese and Dutch traders. It became enormously popular in Britain during the 18th century, partly due to the efforts of Catherine of Braganza, the Portuguese wife of King Charles II, who made tea-drinking fashionable at court. The British later established large tea plantations in India during the 19th century to compete with China's monopoly on tea production. Today, tea is the most widely consumed beverage in the world after water, with China remaining the largest producer.</p>
+    </div>
+  </div>
+
+  <div class="key-tip">
+    <strong>&#128161; Key Strategy for T/F/NG:</strong>
+    TRUE = the passage <strong>confirms</strong> this.<br>
+    FALSE = the passage says the <strong>opposite</strong>.<br>
+    NOT GIVEN = the passage <strong>doesn't mention</strong> this at all.<br>
+    If the passage <em>implies</em> the opposite but doesn't state it directly — it's still FALSE.
+  </div>
+
+  <form id="test-form" novalidate aria-label="Practice test questions">
+    <div class="question-group" id="questions-container"></div>
+
+    <div class="submit-area">
+      <button type="submit" class="btn-submit" id="btn-submit">Submit Answers</button>
+      <span class="submit-hint" id="submit-hint">5 questions</span>
+    </div>
+
+    <div class="validation-warning" id="validation-warning" role="alert">
+      Please answer all questions before submitting. <span id="unanswered-count"></span> question(s) remaining.
+    </div>
+  </form>
+
+  <section class="results" id="results" aria-live="polite" aria-label="Test results"></section>
+
+  <div class="warning-banner" id="warning-banner" role="alert">
+    <span>&#9888; Server not running. Results saved locally.</span>
+    <button class="btn-retry" onclick="retrySave()">Start server.py and click Retry</button>
+  </div>
+
+</div>
+
+<script>
+window.__TEST_DATA__ = [
+  {
+    "type": "true-false-not-given",
+    "number": 1,
+    "text": "The earliest reliable evidence of tea drinking comes from the Tang Dynasty.",
+    "correctAnswer": "TRUE",
+    "explanation": "Passage states: 'the earliest reliable historical records of tea consumption date from the Tang Dynasty (618-907 CE).' This is directly confirmed."
+  },
+  {
+    "type": "true-false-not-given",
+    "number": 2,
+    "text": "Emperor Shen Nung intentionally created tea as a medicinal beverage.",
+    "correctAnswer": "FALSE",
+    "explanation": "Passage says tea was discovered 'accidentally' when leaves fell into boiling water. 'Intentionally' contradicts 'accidentally' — so this is FALSE, not NOT GIVEN."
+  },
+  {
+    "type": "true-false-not-given",
+    "number": 3,
+    "text": "Lu Yu's book <em>Cha Jing</em> took more than ten years to complete.",
+    "correctAnswer": "NOT GIVEN",
+    "explanation": "The passage mentions Lu Yu wrote the book and 'spent years studying tea' but doesn't specify how long the book took to write. No information = NOT GIVEN."
+  },
+  {
+    "type": "true-false-not-given",
+    "number": 4,
+    "text": "The Japanese preferred loose-leaf tea, while the Chinese developed a powdered form.",
+    "correctAnswer": "FALSE",
+    "explanation": "Tricky! The passage says the OPPOSITE: 'Unlike the Chinese, who preferred loose-leaf tea, the Japanese developed a powdered form called matcha.' The statement swaps China and Japan. Since the passage directly contradicts this — it's FALSE."
+  },
+  {
+    "type": "true-false-not-given",
+    "number": 5,
+    "text": "Catherine of Braganza's influence helped popularize tea in British high society.",
+    "correctAnswer": "TRUE",
+    "explanation": "Passage states she 'made tea-drinking fashionable at court.' 'British high society' paraphrases 'at court' — the meaning matches. TRUE."
+  }
+];
+window.__KC_TAGS__ = ["kc-read-tfng"];
+</script>
+
+<script>
+(function() {
+  'use strict';
+  var questions = window.__TEST_DATA__ || [];
+  var kcTags = window.__KC_TAGS__ || [];
+  var BRIDGE_URL = 'http://localhost:8765';
+  var container = document.getElementById('questions-container');
+  var form = document.getElementById('test-form');
+  var resultsDiv = document.getElementById('results');
+  var warningBanner = document.getElementById('warning-banner');
+  var validationWarning = document.getElementById('validation-warning');
+  var unansweredCount = document.getElementById('unanswered-count');
+
+  function renderQuestions() {
+    container.innerHTML = '';
+    questions.forEach(function(q) {
+      var div = document.createElement('div');
+      div.className = 'question';
+      div.id = 'question-' + q.number;
+      var num = document.createElement('div');
+      num.className = 'question-number';
+      num.textContent = 'Question ' + q.number;
+      div.appendChild(num);
+      var text = document.createElement('div');
+      text.className = 'question-text';
+      text.innerHTML = q.text;
+      div.appendChild(text);
+      var row = document.createElement('div');
+      row.className = 'options-row';
+      row.setAttribute('role', 'radiogroup');
+      row.setAttribute('aria-label', 'Question ' + q.number + ' answer options');
+      ['TRUE', 'FALSE', 'NOT GIVEN'].forEach(function(value, idx) {
+        var opt = document.createElement('div');
+        opt.className = 'option';
+        var input = document.createElement('input');
+        input.type = 'radio';
+        input.name = 'q' + q.number;
+        input.id = 'q' + q.number + '-' + idx;
+        input.value = value;
+        input.setAttribute('data-question', q.number);
+        var label = document.createElement('label');
+        label.setAttribute('for', 'q' + q.number + '-' + idx);
+        label.textContent = value;
+        label.className = value === 'TRUE' ? 'label-true' : value === 'FALSE' ? 'label-false' : 'label-not-given';
+        opt.appendChild(input); opt.appendChild(label);
+        row.appendChild(opt);
+      });
+      div.appendChild(row);
+      container.appendChild(div);
+    });
+  }
+
+  function collectAnswers() {
+    var answers = {}, unanswered = [];
+    questions.forEach(function(q) {
+      var selected = document.querySelector('input[name="q' + q.number + '"]:checked');
+      if (selected) { answers[String(q.number)] = selected.value; }
+      else { unanswered.push(q.number); }
+    });
+    return { answers: answers, unanswered: unanswered };
+  }
+
+  function scoreAnswers(userAnswers) {
+    var total = questions.length, correct = 0, results = [];
+    questions.forEach(function(q) {
+      var ua = userAnswers[String(q.number)] || '(no answer)';
+      var isCorrect = ua === q.correctAnswer;
+      if (isCorrect) correct++;
+      results.push({ number: q.number, correct: isCorrect, userAnswer: ua, correctAnswer: q.correctAnswer, explanation: q.explanation || '' });
+    });
+    return { total: total, correct: correct, results: results };
+  }
+
+  function showResults(scoring) {
+    var pct = scoring.total > 0 ? Math.round((scoring.correct / scoring.total) * 100) : 0;
+    var isGood = pct >= 60;
+    var hc = isGood ? 'great-job' : 'needs-work';
+    var emoji = isGood ? '&#127775;' : '&#128170;';
+    var title = isGood ? 'Great work!' : 'Keep going!';
+    var message = isGood
+      ? 'You\'re making solid progress. Ready for the next challenge?'
+      : 'Each mistake here teaches you something valuable. Understanding WHY each answer is wrong is how you master T/F/NG.';
+    var html = '<div class="results-header ' + hc + '">';
+    html += '<div class="results-score">' + emoji + ' ' + scoring.correct + '/' + scoring.total + '</div>';
+    html += '<div class="results-label">' + title + '</div>';
+    html += '<div class="results-message">' + message + '</div></div>';
+    scoring.results.forEach(function(r) {
+      var cls = r.correct ? 'correct' : 'incorrect';
+      var icon = r.correct ? '&#10003;' : '&#10007;';
+      html += '<div class="result-item ' + cls + '">';
+      html += '<span class="result-icon">' + icon + '</span><span>';
+      html += '<strong>Q' + r.number + ' — ' + (r.correct ? 'Correct' : 'Incorrect') + '</strong>';
+      if (!r.correct) {
+        html += '<br>Your answer: <em>' + r.userAnswer + '</em> &rarr; Correct: <em>' + r.correctAnswer + '</em>';
+      }
+      if (r.explanation) html += '<br>' + r.explanation;
+      html += '</span></div>';
+    });
+    resultsDiv.innerHTML = html;
+    resultsDiv.classList.add('visible');
+    resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function highlightUnanswered(unanswered) {
+    document.querySelectorAll('.question.unanswered').forEach(function(el) { el.classList.remove('unanswered'); });
+    unanswered.forEach(function(num) {
+      var el = document.getElementById('question-' + num);
+      if (el) el.classList.add('unanswered');
+    });
+    if (unanswered.length > 0) {
+      var first = document.getElementById('question-' + unanswered[0]);
+      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  function saveResults(scoring) {
+    var payload = { skill: 'reading', kcTags: kcTags, testTitle: document.title, date: new Date().toISOString(), totalQuestions: scoring.total, correctCount: scoring.correct, score: Math.round((scoring.correct / scoring.total) * 100), results: scoring.results };
+    fetch(BRIDGE_URL + '/save', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+    .then(function(resp) { if (!resp.ok) throw new Error('Server returned ' + resp.status); return resp.json(); })
+    .then(function() { localStorage.removeItem('pendingResults'); })
+    .catch(function(err) { console.warn('Save failed:', err.message); localStorage.setItem('pendingResults', JSON.stringify(payload)); warningBanner.classList.add('visible'); });
+  }
+
+  window.retrySave = function() {
+    var pending = localStorage.getItem('pendingResults');
+    if (!pending) { warningBanner.classList.remove('visible'); return; }
+    fetch(BRIDGE_URL + '/save', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: pending })
+    .then(function(resp) { if (!resp.ok) throw new Error('Server returned ' + resp.status); return resp.json(); })
+    .then(function() { localStorage.removeItem('pendingResults'); warningBanner.classList.remove('visible'); })
+    .catch(function(err) { console.warn('Retry failed:', err.message); });
+  };
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var collected = collectAnswers();
+    if (collected.unanswered.length > 0) {
+      highlightUnanswered(collected.unanswered);
+      unansweredCount.textContent = collected.unanswered.length;
+      validationWarning.classList.add('visible');
+      return;
+    }
+    validationWarning.classList.remove('visible');
+    highlightUnanswered([]);
+    var inputs = form.querySelectorAll('input, select, button');
+    inputs.forEach(function(el) { el.disabled = true; });
+    var scoring = scoreAnswers(collected.answers);
+    showResults(scoring);
+    saveResults(scoring);
+  });
+
+  if (localStorage.getItem('pendingResults')) { warningBanner.classList.add('visible'); }
+  renderQuestions();
+})();
+</script>
+</body>
+</html>

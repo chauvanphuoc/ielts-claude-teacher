@@ -2,7 +2,7 @@
 """IELTS File Bridge Server — stdlib-only HTTP server for the HTML studio.
 
 Serves: HTML studio, textbook materials (MP3s, images, markdown), roadmap.json.
-Accepts: POST /save to persist studio results to ~/.ielts/.
+Accepts: POST /save to persist studio results to .ielts/.
 
 The /textbook directory is the single source of truth for all study materials.
 Everything under it is auto-discovered — no hardcoded subdirectory names.
@@ -18,7 +18,6 @@ from datetime import datetime
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from urllib.parse import urlparse, unquote
 
-IELTS_DIR = Path.home() / ".ielts"
 STUDIO_DIR = Path(__file__).resolve().parent
 
 # Find project root — the single source of truth for textbook/ and studio files.
@@ -44,6 +43,7 @@ def _find_project_root():
     return STUDIO_DIR.parent.parent  # last resort
 
 PROJECT_ROOT = _find_project_root()
+IELTS_DIR = PROJECT_ROOT / ".ielts"
 TEXTBOOK_DIR = PROJECT_ROOT / "textbook"
 
 for d in [IELTS_DIR, IELTS_DIR/"speaking", IELTS_DIR/"listening", IELTS_DIR/"writing", IELTS_DIR/"reading"]:
@@ -204,7 +204,7 @@ class BridgeHandler(SimpleHTTPRequestHandler):
                     if self._serve_file(entry): return
             self.send_error(404, f"Audio not found: {rel}"); return
 
-        # ── /roadmap.json — from ~/.ielts/ ──
+        # ── /roadmap.json — from .ielts/ ──
         if path == "roadmap.json":
             roadmap = IELTS_DIR / "roadmap.json"
             if roadmap.exists():

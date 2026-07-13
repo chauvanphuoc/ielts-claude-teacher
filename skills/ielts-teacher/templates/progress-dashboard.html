@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progress Dashboard — IELTS Claude Teacher</title>
+<!--
+  progress-dashboard.html — Visual progress tracking template.
+  Claude injects student profile JSON into {{PROFILE_DATA}}, saves to
+  .ielts/lesson-plans/, and opens in browser when student says "xem tiến độ".
+
+  Shows: radar chart (4 skills), band timeline, weak KCs, study calendar.
+  Empty state for students with < 3 sessions.
+-->
+<style>
+  :root {
+    --color-bg: #fafaf9; --color-surface: #ffffff; --color-text-primary: #1a1a1a;
+    --color-text-secondary: #6b7280; --color-text-tertiary: #9ca3af; --color-border: #e5e7eb;
+    --color-accent: #2563eb; --color-accent-hover: #1d4ed8;
+    --color-red: #ef4444; --color-amber: #f59e0b; --color-green: #10b981;
+    --color-blue: #3b82f6; --color-purple: #8b5cf6;
+    --radius-sm: 4px; --radius-md: 6px; --radius-lg: 8px;
+    --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+  body { font-family: var(--font-stack); background: var(--color-bg); color: var(--color-text-primary); line-height: 1.6; }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 48px 24px 64px; }
+
+  /* ── Header ── */
+  .dash-header { margin-bottom: 36px; }
+  .dash-title { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+  .dash-subtitle { font-size: 15px; color: var(--color-text-secondary); }
+  .dash-meta { display: flex; gap: 24px; margin-top: 14px; font-size: 13px; color: var(--color-text-tertiary); flex-wrap: wrap; }
+  .dash-meta span { white-space: nowrap; }
+
+  /* ── Grid ── */
+  .dash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 24px; }
+  .card.full-width { grid-column: 1 / -1; }
+  .card-title { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-secondary); margin-bottom: 20px; }
+
+  /* ── Radar chart ── */
+  .radar-container { display: flex; align-items: center; justify-content: center; padding: 8px 0; }
+  .radar-svg { width: 220px; height: 220px; }
+  .skill-labels { display: flex; justify-content: space-around; margin-top: 12px; font-size: 11px; font-weight: 600; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.03em; }
+  .skill-labels span { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+
+  /* ── Timeline ── */
+  .timeline { display: flex; flex-direction: column; }
+  .timeline-item { display: flex; align-items: center; gap: 12px; font-size: 14px; padding: 6px 0; }
+  .timeline-date { width: 72px; font-size: 12px; color: var(--color-text-tertiary); text-align: right; flex-shrink: 0; }
+  .timeline-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--color-accent); flex-shrink: 0; }
+  .timeline-band { font-weight: 700; font-size: 14px; width: 40px; }
+  .timeline-label { color: var(--color-text-secondary); font-size: 13px; }
+  .timeline-line { width: 1px; height: 18px; background: var(--color-border); margin-left: 77px; margin-right: 17px; }
+
+  /* ── KC progress bars ── */
+  .kc-list { display: flex; flex-direction: column; gap: 18px; }
+  .kc-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+  .kc-name { font-size: 14px; font-weight: 500; }
+  .kc-status { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
+  .kc-status.weak { color: var(--color-red); }
+  .kc-status.ok { color: var(--color-amber); }
+  .kc-status.mastered { color: var(--color-green); }
+  .progress-bar { height: 6px; background: #f3f4f6; border-radius: 3px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 3px; transition: width 0.5s ease; }
+  .progress-fill.weak { background: var(--color-red); }
+  .progress-fill.ok { background: var(--color-amber); }
+  .progress-fill.mastered { background: var(--color-green); }
+
+  /* ── Calendar heatmap ── */
+  .heatmap { display: flex; gap: 3px; flex-wrap: wrap; }
+  .heatmap-day { width: 14px; height: 14px; border-radius: 2px; background: #f3f4f6; font-size: 0; }
+  .heatmap-day.studied { background: #2563eb; }
+  .heatmap-day.studied-light { background: #bfdbfe; }
+  .heatmap-legend { display: flex; align-items: center; gap: 8px; margin-top: 12px; font-size: 12px; color: var(--color-text-tertiary); }
+  .legend-swatch { display: inline-block; width: 14px; height: 14px; border-radius: 2px; }
+
+  /* ── Empty state ── */
+  .empty-state { display: none; text-align: center; padding: 60px 20px; }
+  .empty-state.visible { display: block; }
+  .empty-icon { font-size: 48px; margin-bottom: 16px; }
+  .empty-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+  .empty-text { font-size: 14px; color: var(--color-text-secondary); margin-bottom: 20px; }
+  .empty-progress { width: 200px; height: 6px; background: #f3f4f6; border-radius: 3px; margin: 0 auto 16px; overflow: hidden; }
+  .empty-progress-fill { height: 100%; border-radius: 3px; background: var(--color-accent); transition: width 0.5s; }
+  .empty-cta { display: inline-block; padding: 10px 24px; font-size: 14px; font-weight: 600; color: white; background: var(--color-accent); border-radius: var(--radius-md); text-decoration: none; }
+
+  /* ── Responsive ── */
+  @media (max-width: 760px) {
+    .dash-grid { grid-template-columns: 1fr; }
+    .dash-title { font-size: 24px; }
+    .dash-meta { flex-direction: column; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container" role="main" aria-label="IELTS Progress Dashboard">
+
+  <!-- ═══════════════ DATA ═══════════════ -->
+  <script>window.__PROFILE__ = {{PROFILE_DATA}};</script>
+
+  <!-- ═══════════════ HEADER ═══════════════ -->
+  <header class="dash-header" id="dash-header"></header>
+
+  <!-- ═══════════════ EMPTY STATE ═══════════════ -->
+  <div class="empty-state" id="empty-state">
+    <div class="empty-icon">📊</div>
+    <div class="empty-title">Đang xây dựng hồ sơ của bạn...</div>
+    <div class="empty-text">Hoàn thành thêm vài buổi học và biểu đồ tiến độ của bạn sẽ xuất hiện ở đây.</div>
+    <div class="empty-progress"><div class="empty-progress-fill" id="empty-progress-fill"></div></div>
+    <div style="font-size:13px;color:var(--color-text-tertiary);margin-bottom:20px"><span id="empty-sessions">0</span> of 3 sessions completed</div>
+    <a class="empty-cta" href="#" onclick="window.close(); return false;">Làm bài test tiếp theo →</a>
+  </div>
+
+  <!-- ═══════════════ DASHBOARD ═══════════════ -->
+  <div class="dash-grid" id="dash-grid" style="display:none">
+
+    <!-- Radar -->
+    <div class="card" id="card-radar">
+      <div class="card-title">Tổng quan kỹ năng</div>
+      <div class="radar-container"><svg class="radar-svg" id="radar-svg" viewBox="0 0 220 220"></svg></div>
+      <div class="skill-labels" id="skill-labels"></div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="card" id="card-timeline">
+      <div class="card-title">Lịch sử điểm số</div>
+      <div class="timeline" id="timeline"></div>
+    </div>
+
+    <!-- Weak KCs -->
+    <div class="card" id="card-kcs">
+      <div class="card-title">Knowledge Components — Cần cải thiện</div>
+      <div class="kc-list" id="kc-list"></div>
+    </div>
+
+    <!-- Calendar -->
+    <div class="card" id="card-calendar">
+      <div class="card-title">Lịch học · <span id="calendar-month"></span></div>
+      <div class="heatmap" id="heatmap"></div>
+      <div class="heatmap-legend">
+        <span class="legend-swatch" style="background:#f3f4f6"></span> Chưa học
+        <span class="legend-swatch" style="background:#bfdbfe"></span> Có học
+        <span class="legend-swatch" style="background:#2563eb"></span> Học nhiều
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var profile = window.__PROFILE__ || {};
+  var learner = profile.learner || {};
+  var skills = profile.skills || {};
+  var testHistory = profile.testHistory || [];
+  var lessonLibrary = profile.lessonLibrary || {};
+  var coachNotes = profile.coachNotes || [];
+  var sessionsCompleted = learner.sessionsCompleted || testHistory.length || 0;
+
+  // ── Empty state check ──
+  if (sessionsCompleted < 3 && testHistory.length < 3) {
+    document.getElementById('empty-state').classList.add('visible');
+    document.getElementById('empty-sessions').textContent = Math.max(sessionsCompleted, testHistory.length);
+    document.getElementById('empty-progress-fill').style.width =
+      Math.min(100, Math.round(Math.max(sessionsCompleted, testHistory.length) / 3 * 100)) + '%';
+    return;
+  }
+
+  document.getElementById('dash-grid').style.display = 'grid';
+
+  // ── Header ──
+  var targetBand = learner.targetBand || 0;
+  var examDate = learner.examDate;
+  var daysRemaining = '';
+  if (examDate) {
+    var days = Math.ceil((new Date(examDate) - new Date()) / (1000 * 60 * 60 * 24));
+    if (days > 0) daysRemaining = ' · ' + days + ' ngày còn lại';
+  }
+
+  var lessonCount = (lessonLibrary.lessons || []).length;
+  var totalLessons = lessonLibrary.totalLessons || lessonCount;
+
+  document.getElementById('dash-header').innerHTML =
+    '<h1 class="dash-title">Tiến độ IELTS của bạn</h1>' +
+    '<p class="dash-subtitle">Mục tiêu: Band ' + targetBand + daysRemaining + '</p>' +
+    '<div class="dash-meta">' +
+      '<span>' + sessionsCompleted + ' buổi học</span>' +
+      '<span>' + testHistory.length + ' bài test</span>' +
+      '<span>' + totalLessons + ' giáo án</span>' +
+    '</div>';
+
+  // ── Radar chart ──
+  var skillNames = ['reading', 'listening', 'speaking', 'writing'];
+  var skillColors = ['#3b82f6', '#8b5cf6', '#f59e0b', '#ef4444'];
+  var skillLabelsVI = { reading: 'Reading', listening: 'Listening', speaking: 'Speaking', writing: 'Writing' };
+  var maxBand = 9.0;
+  var points = [];
+  var labelHtml = '';
+
+  skillNames.forEach(function(name, i) {
+    var band = (skills[name] && skills[name].currentBand) || 0;
+    var angle = (i * 90 - 90) * Math.PI / 180; // top, right, bottom, left
+    var r = band > 0 ? (band / maxBand) * 90 : 5;
+    var cx = 110, cy = 110;
+    var x = cx + r * Math.cos(angle);
+    var y = cy + r * Math.sin(angle);
+    points.push({ x: x, y: y, color: skillColors[i], band: band, name: skillLabelsVI[name] });
+    labelHtml += '<span style="color:' + skillColors[i] + '"><strong>' + skillLabelsVI[name] + '</strong>' + (band > 0 ? ' ' + band.toFixed(1) : ' --') + '</span>';
+  });
+
+  var svg = document.getElementById('radar-svg');
+  var html = '';
+  // Grid rings
+  [30, 60, 90].forEach(function(r) {
+    html += '<circle cx="110" cy="110" r="' + r + '" fill="none" stroke="#f3f4f6" stroke-width="1"/>';
+  });
+  // Diagonal axes
+  html += '<line x1="20" y1="110" x2="200" y2="110" stroke="#f3f4f6" stroke-width="1"/>';
+  html += '<line x1="110" y1="20" x2="110" y2="200" stroke="#f3f4f6" stroke-width="1"/>';
+  // Band labels
+  html += '<text x="113" y="25" font-size="9" fill="#d1d5db">9.0</text>';
+  html += '<text x="113" y="55" font-size="9" fill="#d1d5db">6.0</text>';
+  html += '<text x="113" y="85" font-size="9" fill="#d1d5db">3.0</text>';
+
+  // Data points
+  var polygonPoints = points.map(function(p) { return p.x + ',' + p.y; }).join(' ');
+  html += '<polygon points="' + polygonPoints + '" fill="rgba(59,130,246,0.08)" stroke="#93c5fd" stroke-width="1.5"/>';
+  points.forEach(function(p) {
+    html += '<circle cx="' + p.x + '" cy="' + p.y + '" r="5" fill="' + p.color + '" stroke="white" stroke-width="2"/>';
+  });
+
+  svg.innerHTML = html;
+  document.getElementById('skill-labels').innerHTML = labelHtml;
+
+  // ── Timeline ──
+  var timelineDiv = document.getElementById('timeline');
+  if (testHistory.length === 0 && !hasAnyHistory()) {
+    timelineDiv.innerHTML = '<p style="font-size:13px;color:var(--color-text-tertiary);text-align:center;padding:20px">Làm bài test đầu tiên để thấy lịch sử điểm số.</p>';
+  } else {
+    var entries = testHistory.slice(-8);
+    var html2 = '';
+    entries.forEach(function(t, i) {
+      var date = t.date ? new Date(t.date).toLocaleDateString('vi-VN', { month: 'short', day: 'numeric' }) : '--';
+      var band = t.band || t.score || 0;
+      var label = t.skill ? (t.skill.charAt(0).toUpperCase() + t.skill.slice(1)) : (t.source || 'Test');
+      html2 += '<div class="timeline-item">' +
+        '<span class="timeline-date">' + date + '</span>' +
+        '<span class="timeline-dot"></span>' +
+        '<span class="timeline-band">' + band.toFixed(1) + '</span>' +
+        '<span class="timeline-label">' + label + '</span>' +
+        '</div>';
+      if (i < entries.length - 1) html2 += '<div class="timeline-line"></div>';
+    });
+    timelineDiv.innerHTML = html2;
+  }
+
+  // ── Weak KCs ──
+  var kcListDiv = document.getElementById('kc-list');
+  var allKCs = [];
+  skillNames.forEach(function(skillName) {
+    var kcMastery = (skills[skillName] && skills[skillName].kcMastery) || {};
+    Object.keys(kcMastery).forEach(function(kcId) {
+      var kc = kcMastery[kcId];
+      if (kc.errorRate >= 0.15 && kc.attempts > 0) {
+        allKCs.push({
+          id: kcId,
+          skill: skillName,
+          errorRate: kc.errorRate,
+          level: kc.level,
+          attempts: kc.attempts
+        });
+      }
+    });
+  });
+  allKCs.sort(function(a, b) { return b.errorRate - a.errorRate; });
+  var topKCs = allKCs.slice(0, 8);
+
+  if (topKCs.length === 0) {
+    kcListDiv.innerHTML = '<p style="font-size:13px;color:var(--color-text-tertiary);text-align:center;padding:20px">Làm thêm bài test để thấy các KC cần cải thiện.</p>';
+  } else {
+    var html3 = '';
+    topKCs.forEach(function(kc) {
+      var name = kc.id.replace('kc-', '').replace(/-/g, ' ').replace(/\b\w/g, function(l) { return l.toUpperCase(); });
+      var masteryPct = Math.round((1 - kc.errorRate) * 100);
+      html3 += '<div class="kc-item"><div class="kc-header">' +
+        '<span class="kc-name">' + name + ' <span style="font-size:11px;color:var(--color-text-tertiary)">' + kc.skill + '</span></span>' +
+        '<span class="kc-status ' + kc.level + '">' + kc.level + ' · ' + masteryPct + '%</span>' +
+        '</div><div class="progress-bar"><div class="progress-fill ' + kc.level + '" style="width:' + masteryPct + '%"></div></div></div>';
+    });
+    kcListDiv.innerHTML = html3;
+  }
+
+  // ── Calendar heatmap ──
+  var now = new Date();
+  var year = now.getFullYear();
+  var month = now.getMonth();
+  document.getElementById('calendar-month').textContent =
+    now.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+
+  var daysInMonth = new Date(year, month + 1, 0).getDate();
+  var studyDates = {};
+  testHistory.forEach(function(t) {
+    if (t.date) {
+      var d = new Date(t.date).getDate();
+      studyDates[d] = (studyDates[d] || 0) + 1;
+    }
+  });
+
+  var heatmapDiv = document.getElementById('heatmap');
+  var hhtml = '';
+  for (var d = 1; d <= daysInMonth; d++) {
+    var cls = '';
+    if (studyDates[d] >= 2) cls = ' studied';
+    else if (studyDates[d] === 1) cls = ' studied-light';
+    hhtml += '<span class="heatmap-day' + cls + '">' + d + '</span>';
+  }
+  heatmapDiv.innerHTML = hhtml;
+
+  // ── Helper ──
+  function hasAnyHistory() {
+    return skillNames.some(function(s) {
+      return skills[s] && skills[s].bandHistory && skills[s].bandHistory.length > 0;
+    });
+  }
+})();
+</script>
+</body>
+</html>

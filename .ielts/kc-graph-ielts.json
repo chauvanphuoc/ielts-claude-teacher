@@ -1,0 +1,232 @@
+{
+  "version": "1.0.0",
+  "subject": "ielts",
+  "generatedBy": "/plan-eng-review implementation",
+  "generatedAt": "2026-07-13T21:45:00Z",
+  "skills": {
+    "reading": {
+      "name": "IELTS Reading",
+      "description": "60 minutes, 40 questions across 3 passages. Tests ability to understand main ideas, details, inferences, and writer's attitudes in academic texts.",
+      "kcs": [
+        {
+          "id": "kc-read-main-idea",
+          "name": "Understanding Main Ideas",
+          "skill": "reading",
+          "status": "draft",
+          "description": "Identifying the primary argument, theme, or purpose of a passage or paragraph. Understanding what the writer is trying to convey overall, not just individual facts.",
+          "dependsOn": [],
+          "difficultyLevel": 1,
+          "commonErrors": [
+            "Confusing a supporting detail with the main idea — the detail is evidence, not the point",
+            "Selecting the first sentence as the main idea when the main idea appears later in the paragraph",
+            "Choosing an answer that is too broad (beyond scope of passage) or too narrow (only covers one paragraph)",
+            "Missing the writer's overall argument because of focus on individual words"
+          ],
+          "exerciseTemplates": [
+            "Match each paragraph to its main idea from a list of headings",
+            "Read a paragraph and write one sentence summarizing it, then compare to model answer",
+            "For a given passage, identify which sentence in each paragraph states the main idea"
+          ],
+          "ieltsQuestionTypes": ["matching-headings", "multiple-choice-main-idea"],
+          "bandRange": [4.0, 5.5]
+        },
+        {
+          "id": "kc-read-detail",
+          "name": "Locating Specific Details",
+          "skill": "reading",
+          "status": "draft",
+          "description": "Finding and understanding specific facts, numbers, dates, names, or pieces of information explicitly stated in the passage. The answer is directly present in the text — no inference needed.",
+          "dependsOn": [],
+          "difficultyLevel": 1,
+          "commonErrors": [
+            "Scanning for exact keywords instead of paraphrased equivalents (e.g., searching for 'building' when passage says 'structure')",
+            "Selecting information from the wrong paragraph because a keyword appears in multiple places",
+            "Missing the answer because it's embedded in a complex sentence structure",
+            "Reading too slowly — trying to understand every word instead of scanning strategically"
+          ],
+          "exerciseTemplates": [
+            "Timed scanning drill: find 5 specific pieces of information in 2 minutes",
+            "Paraphrase matching: match 10 statements to their paraphrased equivalents in the passage",
+            "Short-answer questions based on explicitly stated facts"
+          ],
+          "ieltsQuestionTypes": ["short-answer", "sentence-completion", "table-completion", "note-completion", "diagram-labeling"],
+          "bandRange": [4.0, 6.0]
+        },
+        {
+          "id": "kc-read-inference",
+          "name": "Making Inferences",
+          "skill": "reading",
+          "status": "draft",
+          "description": "Reading between the lines — understanding what is implied but not directly stated. Distinguishing between what the passage explicitly says, what it suggests, and what is not mentioned at all. This is the foundation for T/F/NG and Y/N/NG question types.",
+          "dependsOn": ["kc-read-main-idea", "kc-read-detail"],
+          "difficultyLevel": 3,
+          "commonErrors": [
+            "Assuming information that is not stated — treating common knowledge or personal opinion as if it's in the passage",
+            "Confusing implication with direct statement — 'the passage suggests X' is different from 'the passage says X'",
+            "Failing to distinguish between FALSE (passage says the opposite) and NOT GIVEN (passage doesn't mention it at all)",
+            "Over-inferring — drawing conclusions that go beyond what the text reasonably supports"
+          ],
+          "exerciseTemplates": [
+            "For each statement, classify as STATED, IMPLIED, or NOT MENTIONED based on a short passage",
+            "Given a passage and 5 inferences, identify which are supported and which are not, with evidence",
+            "Read a paragraph and write 2 valid inferences and 2 invalid inferences"
+          ],
+          "ieltsQuestionTypes": ["true-false-not-given", "yes-no-not-given", "multiple-choice-inference"],
+          "bandRange": [5.5, 7.0]
+        },
+        {
+          "id": "kc-read-tfng",
+          "name": "True / False / Not Given",
+          "skill": "reading",
+          "status": "draft",
+          "description": "Evaluating whether factual statements agree with (TRUE), contradict (FALSE), or are not mentioned in (NOT GIVEN) the passage. The most distinctive and challenging IELTS Reading question type. Tests the ability to distinguish what the passage confirms, what it denies, and what it simply doesn't address.",
+          "dependsOn": ["kc-read-inference"],
+          "difficultyLevel": 3,
+          "commonErrors": [
+            "Selecting NOT GIVEN when the passage implies FALSE — the single most common error. If the passage says 'X causes Y' and the statement says 'X prevents Y', the answer is FALSE, not NOT GIVEN",
+            "Selecting FALSE when the passage mentions something similar but not contradictory — similar ≠ contradictory",
+            "Selecting TRUE when only part of the statement is supported — the ENTIRE statement must be true",
+            "Overthinking NOT GIVEN — if you can't find any mention after careful search, it IS NOT GIVEN",
+            "Letting personal knowledge influence the answer — IELTS tests passage comprehension, not general knowledge"
+          ],
+          "exerciseTemplates": [
+            "5-question T/F/NG set based on a short academic passage",
+            "Single-statement classification drill: 10 rapid-fire T/F/NG decisions with immediate feedback",
+            "Error analysis: given 5 incorrect T/F/NG answers with the passage, explain why each answer is wrong",
+            "Compare-and-contrast: same passage, identify 2 TRUE statements, 2 FALSE statements, and 2 NOT GIVEN statements"
+          ],
+          "ieltsQuestionTypes": ["true-false-not-given"],
+          "bandRange": [5.5, 7.5]
+        },
+        {
+          "id": "kc-read-ynng",
+          "name": "Yes / No / Not Given",
+          "skill": "reading",
+          "status": "draft",
+          "description": "Evaluating whether statements about the writer's views, opinions, or claims agree with (YES), contradict (NO), or are not expressed in (NOT GIVEN) the passage. Unlike T/F/NG which deals with facts, Y/N/NG deals with the writer's opinions and claims.",
+          "dependsOn": ["kc-read-inference"],
+          "difficultyLevel": 4,
+          "commonErrors": [
+            "Treating Y/N/NG as identical to T/F/NG — mixing up fact-based and opinion-based evaluation",
+            "Attributing a commonly-held opinion to the writer when the writer doesn't express it",
+            "Confusing the writer's report of someone else's view with the writer's own view",
+            "Missing hedging language ('may', 'could', 'perhaps') that weakens a claim"
+          ],
+          "exerciseTemplates": [
+            "5-question Y/N/NG set based on an argumentative passage",
+            "Writer's view identification: highlight sentences that express the writer's opinion vs. reported facts",
+            "Contrast drill: same statements against both T/F/NG and Y/N/NG rubrics — understand the difference"
+          ],
+          "ieltsQuestionTypes": ["yes-no-not-given"],
+          "bandRange": [6.0, 8.0]
+        },
+        {
+          "id": "kc-read-mc",
+          "name": "Multiple Choice",
+          "skill": "reading",
+          "status": "draft",
+          "description": "Selecting the correct answer from 4 options (A-D). Tests ability to understand detailed meaning, identify the writer's purpose, or choose the best title. Distractors are designed to be plausible — often containing words from the passage used in misleading ways.",
+          "dependsOn": ["kc-read-detail", "kc-read-inference"],
+          "difficultyLevel": 2,
+          "commonErrors": [
+            "Choosing the first plausible-sounding answer without checking all four options",
+            "Selecting an option that uses exact words from the passage but changes the meaning (word-matching trap)",
+            "Picking an option that is true in general but doesn't answer the specific question asked",
+            "Being distracted by an option that sounds academic or complex but is factually wrong",
+            "Running out of time because of over-analyzing each option"
+          ],
+          "exerciseTemplates": [
+            "5-question multiple choice set with detailed feedback explaining why each distractor is wrong",
+            "Distractor analysis: for each wrong option, explain what makes it tempting and why it's incorrect",
+            "Timed MC drill: 10 questions in 15 minutes, then review accuracy vs speed"
+          ],
+          "ieltsQuestionTypes": ["multiple-choice"],
+          "bandRange": [5.0, 7.0]
+        },
+        {
+          "id": "kc-read-gapfill",
+          "name": "Gap-Fill & Sentence Completion",
+          "skill": "reading",
+          "status": "draft",
+          "description": "Completing sentences, summaries, notes, tables, or diagrams by filling gaps with words from the passage. Tests ability to locate specific information and understand paraphrased relationships. Word limit is strictly enforced (e.g., NO MORE THAN TWO WORDS).",
+          "dependsOn": ["kc-read-detail"],
+          "difficultyLevel": 2,
+          "commonErrors": [
+            "Exceeding the word limit — writing 3 words when the instruction says NO MORE THAN TWO",
+            "Spelling errors — misspelled words are marked wrong even if the intended word is correct",
+            "Using words not from the passage — all answers must come directly from the text",
+            "Copying surrounding words incorrectly — paying attention to grammar (singular/plural, tense)",
+            "Missing the answer because the gap in the question uses different wording than the passage"
+          ],
+          "exerciseTemplates": [
+            "5-question gap-fill based on a passage excerpt with strict word limit enforcement",
+            "Summary completion: fill 8 gaps in a passage summary using words from the original text",
+            "Paraphrase matching warm-up: match gapped sentences to the original passage sentences"
+          ],
+          "ieltsQuestionTypes": ["sentence-completion", "summary-completion", "note-completion", "table-completion", "diagram-labeling", "flow-chart-completion"],
+          "bandRange": [4.0, 6.5]
+        },
+        {
+          "id": "kc-read-matching",
+          "name": "Matching Headings & Information",
+          "skill": "reading",
+          "status": "draft",
+          "description": "Matching headings to paragraphs (identifying the main theme of each paragraph) or matching specific pieces of information to the paragraph that contains them. Tests both global understanding (headings) and detailed search (information matching). There are always more headings than paragraphs.",
+          "dependsOn": ["kc-read-main-idea", "kc-read-detail"],
+          "difficultyLevel": 3,
+          "commonErrors": [
+            "Matching based on a single shared keyword rather than the overall meaning of the paragraph",
+            "Getting stuck on one difficult match and running out of time for the remaining questions",
+            "Not eliminating used headings — wasting time re-reading options already matched",
+            "For information matching: searching for exact words instead of paraphrased ideas",
+            "Matching a heading that covers only the first sentence, not the whole paragraph"
+          ],
+          "exerciseTemplates": [
+            "Matching headings: 6 paragraphs, 8 headings — match each paragraph to the best heading",
+            "Information matching: locate which paragraph (A-F) contains each of 5 specific pieces of information",
+            "Strategy drill: read only the first and last sentence of each paragraph, attempt heading matching, then verify with full reading"
+          ],
+          "ieltsQuestionTypes": ["matching-headings", "matching-information", "matching-features", "matching-sentence-endings"],
+          "bandRange": [5.5, 7.5]
+        },
+        {
+          "id": "kc-read-vocab-context",
+          "name": "Vocabulary in Context",
+          "skill": "reading",
+          "status": "draft",
+          "description": "Determining the meaning of unfamiliar words from the surrounding context. IELTS passages contain academic vocabulary — test-takers are not expected to know every word but must use context clues (surrounding sentences, examples, contrast signals) to infer meaning.",
+          "dependsOn": ["kc-read-inference"],
+          "difficultyLevel": 3,
+          "commonErrors": [
+            "Choosing the most common dictionary definition rather than the meaning that fits the context",
+            "Ignoring contrast signals ('however', 'although', 'rather than') that indicate the word means the opposite of what's expected",
+            "Not using the surrounding 2-3 sentences to build context — focusing only on the sentence containing the word",
+            "Giving up on a word too quickly — many difficult words are explained or exemplified in the following sentences"
+          ],
+          "exerciseTemplates": [
+            "Context clues drill: given 5 sentences with unfamiliar words, select the correct meaning from 4 options",
+            "Word-in-context: read a paragraph, identify 3 challenging words, and define them using only passage context",
+            "Contrast signal practice: identify contrast words (however, yet, although) and what they reveal about surrounding vocabulary"
+          ],
+          "ieltsQuestionTypes": ["multiple-choice-vocabulary", "matching-features-vocabulary"],
+          "bandRange": [5.0, 7.0]
+        }
+      ]
+    },
+    "listening": {
+      "name": "IELTS Listening",
+      "description": "30 minutes, 40 questions across 4 sections. KCs will be defined in Phase 2.",
+      "kcs": []
+    },
+    "writing": {
+      "name": "IELTS Writing",
+      "description": "60 minutes, 2 tasks. KCs will be defined in Phase 2 after Reading/Listening KCs are validated.",
+      "kcs": []
+    },
+    "speaking": {
+      "name": "IELTS Speaking",
+      "description": "11-14 minutes, 3 parts. KCs will be defined in Phase 2 after Reading/Listening KCs are validated.",
+      "kcs": []
+    }
+  }
+}
