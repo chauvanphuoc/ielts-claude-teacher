@@ -8,16 +8,17 @@
 (function() {
   'use strict';
 
-  // ── Configuration (set by template before loading this script) ──
-  var config = window.__TEST_CONFIG__ || {};
-  var questions = config.questions || [];
-  var kcTags = config.kcTags || [];
-  var skill = config.skill || 'reading';
-  var testTitle = config.testTitle || document.title;
-  var bridgeUrl = config.bridgeUrl || 'http://localhost:8765';
-  var sections = config.sections || null; // null = single-section (mini-test), array = multi-section (listening)
+  // ── Configuration — re-read from window.__TEST_CONFIG__ on each access
+  //    because listening templates set it asynchronously after script load.
+  function getConfig() { return window.__TEST_CONFIG__ || {}; }
+  function getQuestions() { return getConfig().questions || []; }
+  function getKcTags() { return getConfig().kcTags || []; }
+  function getSkill() { return getConfig().skill || 'reading'; }
+  function getTestTitle() { return getConfig().testTitle || document.title; }
+  function getBridgeUrl() { return getConfig().bridgeUrl || 'http://localhost:8765'; }
+  function getSections() { return getConfig().sections || null; }
   var currentSection = 0;
-  var totalSections = sections ? sections.length : 1;
+  function getTotalSections() { var s = getSections(); return s ? s.length : 1; }
 
   var container = document.getElementById('questions-container');
   var form = document.getElementById('test-form');
@@ -32,8 +33,9 @@
   // ============================================================
 
   function getQuestionsForSection() {
-    if (!sections) return questions;
-    return sections[currentSection].questions || [];
+    var s = getSections();
+    if (!s) return getQuestions();
+    return s[currentSection].questions || [];
   }
 
   function renderQuestions() {
@@ -590,9 +592,9 @@
 
   function saveResults(scoring) {
     var payload = {
-      skill: skill,
-      kcTags: kcTags,
-      testTitle: testTitle,
+      skill: getSkill(),
+      kcTags: getKcTags(),
+      testTitle: getTestTitle(),
       date: new Date().toISOString(),
       totalQuestions: scoring.total,
       correctCount: scoring.correct,
@@ -600,7 +602,7 @@
       results: scoring.results
     };
 
-    fetch(bridgeUrl + '/save', {
+    fetch(getBridgeUrl() + '/save', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -615,19 +617,19 @@
     })
     .catch(function(err) {
       console.warn('Save failed, storing in localStorage:', err.message);
-      localStorage.setItem('pendingResults_' + skill, JSON.stringify(payload));
+      localStorage.setItem('pendingResults_' + getSkill(), JSON.stringify(payload));
       if (warningBanner) warningBanner.classList.add('visible');
     });
   }
 
   window.retrySave = function() {
-    var pending = localStorage.getItem('pendingResults_' + skill);
+    var pending = localStorage.getItem('pendingResults_' + getSkill());
     if (!pending) {
       if (warningBanner) warningBanner.classList.remove('visible');
       return;
     }
 
-    fetch(bridgeUrl + '/save', {
+    fetch(getBridgeUrl() + '/save', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: pending
@@ -647,7 +649,7 @@
   };
 
   function clearPendingResults() {
-    localStorage.removeItem('pendingResults_' + skill);
+    localStorage.removeItem('pendingResults_' + getSkill());
   }
 
   // ============================================================
@@ -687,7 +689,7 @@
   }
 
   function updateSectionNav() {
-    for (var i = 0; i < totalSections; i++) {
+    for (var i = 0; i < getTotalSections(); i++) {
       var step = document.getElementById('section-step-' + i);
       if (!step) continue;
       step.classList.remove('active', 'done');
@@ -701,7 +703,7 @@
     }
     var label = document.getElementById('section-label');
     if (label) {
-      label.textContent = 'Section ' + (currentSection + 1) + ' of ' + totalSections;
+      label.textContent = 'Section ' + (currentSection + 1) + ' of ' + getTotalSections();
     }
   }
 
@@ -711,20 +713,20 @@
     var btnSubmit = document.getElementById('btn-submit');
 
     if (btnPrev) btnPrev.style.display = currentSection > 0 ? 'inline-block' : 'none';
-    if (btnNext) btnNext.style.display = currentSection < totalSections - 1 ? 'inline-block' : 'none';
-    if (btnSubmit) btnSubmit.style.display = currentSection === totalSections - 1 ? 'inline-block' : 'none';
+    if (btnNext) btnNext.style.display = currentSection < getTotalSections() - 1 ? 'inline-block' : 'none';
+    if (btnSubmit) btnSubmit.style.display = currentSection === getTotalSections() - 1 ? 'inline-block' : 'none';
   }
 
   window.nextSection = function() {
-    if (!sections) return;
+    if (!getSections()) return;
     if (!validateSection()) return;
-    if (currentSection < totalSections - 1) {
+    if (currentSection < getTotalSections() - 1) {
       showSection(currentSection + 1);
     }
   };
 
   window.prevSection = function() {
-    if (!sections) return;
+    if (!getSections()) return;
     if (currentSection > 0) {
       showSection(currentSection - 1);
     }
@@ -755,7 +757,7 @@
       e.preventDefault();
 
       // If multi-section, validate current section first
-      if (sections && currentSection < totalSections - 1) {
+      if (getSections() && currentSection < getTotalSections() - 1) {
         if (validateSection()) {
           showSection(currentSection + 1);
         }
@@ -783,7 +785,7 @@
       saveResults(scoring);
 
       // Show transcript if multi-section
-      if (sections && typeof window.showTranscript === 'function') {
+      if (getSections() && typeof window.showTranscript === 'function') {
         window.showTranscript();
       }
     });
@@ -793,13 +795,13 @@
   // INIT
   // ============================================================
 
-  var pending = localStorage.getItem('pendingResults_' + skill);
+  var pending = localStorage.getItem('pendingResults_' + getSkill());
   if (pending && warningBanner) {
     warningBanner.classList.add('visible');
   }
 
   renderQuestions();
-  if (sections) {
+  if (getSections()) {
     updateSectionNav();
     updateSectionButtons();
   }
@@ -830,7 +832,7 @@
     saveResults: saveResults,
     showSection: showSection,
     getCurrentSection: function() { return currentSection; },
-    getTotalSections: function() { return totalSections; }
+    getTotalSections: function() { return getTotalSections(); }
   };
 
 })();
