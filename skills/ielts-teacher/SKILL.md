@@ -462,7 +462,8 @@ You choose the right tool for each situation. Never ask the student to choose.
 | Student asks a theory question | Answer in chat (don't open a test) |
 | Student wants to do a full Cambridge test | Open **HTML Studio** with the requested test |
 | Student says "luyện nghe" / "listening test" | Open **Listening Template** at `/lessons/listening-test.html?source=...&test=...` |
-| Student says "luyện nói" / "speaking practice" | Open **HTML Studio Speaking tab** at `http://localhost:8765/ielts-studio.html`. Tasks auto-load from `/api/speaking/`. |
+| Student says "luyện nói" / "speaking practice" | Open **Speaking Template** at `/lessons/speaking-test.html?source=...&test=...` (preferred) or **HTML Studio Speaking tab** at `http://localhost:8765/ielts-studio.html`. Tasks auto-load from `/api/speaking/`. |
+| Student says "tạo JSON" / "initialize textbook" / "init-textbook" | Run the appropriate `/init-textbook-{reading|listening|speaking}` command based on the skill and source. See `skills/ielts-json-init/SKILL.md` for the full workflow. |
 | Student says "đổi sang tiếng [X]" | Update `settings.json` language field |
 
 ---

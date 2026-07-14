@@ -4,45 +4,37 @@ description: |
   Initialize JSON test files from textbook Markdown. Claude reads Cambridge IELTS
   textbook Markdown, parses questions/answers/images/tables, and generates structured
   JSON files that the HTML studio and Claude conversation mode can consume.
-  Usage: /initialize-json-textbook --source cambridge-1 --test 1 --skill reading
+  Unified commands: /init-textbook-{reading|listening|speaking} --source {dir}
 metadata:
-  version: 1.0.0
+  version: 2.0.0
 ---
 
 # Initialize JSON Textbook
 
-You convert Cambridge IELTS textbook Markdown into structured JSON test files.
+Convert Cambridge IELTS textbook Markdown into structured JSON test files.
+Supports **Reading**, **Listening**, and **Speaking**.
 
-## Purpose
+## Command Reference
 
-The textbook Markdown (e.g., `Cambridge_IELTS_1.md`, 4255 lines) contains all test content — passages, questions, images, tables, and answer keys — but in an unstructured format that neither the HTML studio nor Claude can programmatically consume.
+| Skill | Command | Output | Type |
+|-------|---------|--------|------|
+| Reading | `/init-textbook-reading --source X --test N` | `textbook/{X}/json/test-{N}-reading.json` | per-test |
+| Listening | `/init-textbook-listening --source X` | `shared/listening/listening_{X}.json` | per-source (all 4 tests) |
+| Speaking | `/init-textbook-speaking --source X` | `shared/speaking/speaking_{X}.json` | per-source (Claude-generated modern tasks + legacy extract) |
 
-Your job: read the Markdown, understand the structure, and generate a JSON file per test per skill that accurately represents every question, answer, image, and table.
-
-## Output Location
-
-```
-textbook/{source}/json/test-{n}-{skill}.json
-```
+**Multi-source:** `--source` maps to `textbook/{source}/` directory. Add any Cambridge IELTS book by creating a folder under `textbook/` (e.g., `cambridge-2`, `ielts-4-5`) with the textbook Markdown and audio files.
 
 Examples:
-- `textbook/cambridge-1/json/test-1-reading.json`
-- `textbook/cambridge-1/json/test-1-writing.json`
-- `textbook/cambridge-1/json/test-1-listening.json`
-- `shared/listening/listening_{source}.json` — **Listening: per-source consolidated** (all tests in one file)
-
-Schema reference: `textbook/cambridge-1/schema.json`
-
-## Usage
-
 ```
-/initialize-json-textbook --source cambridge-1 --test 1 --skill reading
+/init-textbook-reading --source cambridge-2 --test 1
+/init-textbook-listening --source cambridge-2
+/init-textbook-speaking --source cambridge-2
 ```
 
 The user may also say things like:
-- "tạo JSON cho Test 1 Reading"
-- "initialize test 1 reading from cambridge 1"
-- "generate json for practice test 1"
+- "tạo JSON cho Test 1 Reading từ cambridge 2"
+- "initialize listening for cambridge 2"  
+- "generate speaking tasks from cambridge 1"
 
 ## Workflow
 
@@ -252,3 +244,120 @@ Write to `shared/listening/listening_{source}.json`. Structure:
 ### Reference
 
 See `shared/listening/listening_cambridge-1.json` for a complete example (Test 1 fully extracted).
+
+## Speaking Extraction (/init-textbook-speaking)
+
+**Usage:** `/init-textbook-speaking --source cambridge-2`
+
+Speaking is fundamentally different from Reading/Listening: there are no answer keys (speaking is subjectively scored), and Cambridge IELTS 1 uses the old 5-part format where Part 3 (Elicitation) has the candidate asking questions — not the modern 3-part format. Claude must BOTH extract legacy tasks AND generate modern-format content.
+
+### Output Location
+
+```
+shared/speaking/speaking_{source}.json
+```
+
+Per-source consolidated (all tests in one file), same pattern as Listening.
+
+### Step 1: Read textbook markdown
+
+Read `textbook/{source}/textbook/Cambridge_IELTS_*.md`. Find all `#### **SPEAKING**` sections. There should be one per practice test (4 total for Cambridge books).
+
+### Step 2: Extract legacy tasks
+
+For each speaking section, extract:
+- **Candidate's Cue Card:** title, scenario text, role description, topics to ask about
+- **Interviewer's Notes:** description, prompt bullet points
+
+Store in `_legacyTask` field:
+```json
+{
+  "_legacyTask": {
+    "partType": "elicitation",
+    "title": "University Clubs and Associations",
+    "format": "Cambridge IELTS 1 (1996) — Part 3 Elicitation",
+    "scenario": "You have just arrived at a new university...",
+    "role": "Your examiner is a Student Union representative.",
+    "topicsToAsk": ["types of clubs", "meeting times", "benefits", "costs"],
+    "interviewerNotes": {
+      "description": "...",
+      "prompts": ["...", "..."]
+    }
+  }
+}
+```
+
+### Step 3: Generate modern 3-part tasks
+
+Based on the theme of each legacy task, Claude generates modern IELTS Speaking format:
+
+**Part 1 (Interview, 4-5 min):** 5 general questions on the topic theme. Questions should be personal and conversational — about the student's own experience.
+
+**Part 2 (Long Turn, 3-4 min):** A cue card with a topic + 4 bullet points. Include preparation time (60s) and speaking time (120s). The topic should relate to the legacy task theme but be framed for the CANDIDATE to speak about (not ask questions about).
+
+**Part 3 (Discussion, 4-5 min):** 6 follow-up discussion questions. More abstract — opinions, comparisons, predictions. Related to the Part 2 topic.
+
+### Step 4: Write JSON
+
+Write to `shared/speaking/speaking_{source}.json`. Structure:
+
+```json
+{
+  "source": "cambridge-2",
+  "generatedAt": "<ISO datetime>",
+  "generatedBy": "/init-textbook-speaking",
+  "tests": [
+    {
+      "testNumber": 1,
+      "parts": [
+        {
+          "partNumber": 1,
+          "partType": "interview",
+          "duration": "4-5 minutes",
+          "topic": "...",
+          "instructions": "Answer these questions about...",
+          "questions": ["...", "..."]
+        },
+        {
+          "partNumber": 2,
+          "partType": "long-turn",
+          "duration": "3-4 minutes",
+          "topic": "...",
+          "cueCard": {
+            "topic": "Describe...",
+            "bullets": ["what...", "how...", "why...", "and explain..."]
+          },
+          "preparationTime": 60,
+          "speakingTime": 120
+        },
+        {
+          "partNumber": 3,
+          "partType": "discussion",
+          "duration": "4-5 minutes",
+          "topic": "...",
+          "questions": ["...", "..."]
+        }
+      ],
+      "_legacyTask": { ... }
+    }
+  ],
+  "_validation": {
+    "testsPopulated": [1, 2, 3, 4],
+    "testsPending": [],
+    "modernPartsPerTest": 3,
+    "legacyTasksExtracted": 4
+  }
+}
+```
+
+### Step 5: Validation
+
+1. **Legacy tasks extracted:** exactly 4 tasks (one per practice test)
+2. **Modern parts:** 3 parts per test (interview, long-turn, discussion)
+3. **Content quality:** Part 1 has ≥4 questions, Part 2 cue card has ≥3 bullets, Part 3 has ≥4 questions
+4. **Themes match:** modern tasks relate to the legacy task themes
+5. **JSON schema:** all required fields present, part types correct
+
+### Reference
+
+See `shared/speaking/speaking_cambridge-1.json` for a complete example (all 4 tests with modern parts + legacy tasks).

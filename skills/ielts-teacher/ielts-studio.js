@@ -10,6 +10,9 @@ let recognition = null;
 let speakingTimer = null;
 let speakingSeconds = 0;
 let transcript = '';
+let audioChunks = [];       // collected audio data from MediaRecorder
+let audioBlob = null;       // final blob after recording stops
+let currentAudioMimeType = 'audio/webm';
 let roadmap = null;
 let currentTestData = null;  // loaded JSON test data
 let currentTestSource = 'cambridge-1';
@@ -381,9 +384,16 @@ async function startRecording() {
       recognition.start();
     }
     mediaRecorder = new MediaRecorder(stream);
-    const chunks = [];
-    mediaRecorder.ondataavailable = (e) => chunks.push(e.data);
-    mediaRecorder.onstop = () => { stream.getTracks().forEach(t => t.stop()); };
+    audioChunks = [];
+    audioBlob = null;
+    currentAudioMimeType = mediaRecorder.mimeType || 'audio/webm';
+    mediaRecorder.ondataavailable = (e) => { if (e.data.size > 0) audioChunks.push(e.data); };
+    mediaRecorder.onstop = () => {
+      stream.getTracks().forEach(t => t.stop());
+      if (audioChunks.length > 0) {
+        audioBlob = new Blob(audioChunks, { type: currentAudioMimeType });
+      }
+    };
     mediaRecorder.start();
 
     isRecording = true;
@@ -464,6 +474,23 @@ async function saveSpeaking() {
     date: new Date().toISOString(),
     mode: 'practice'
   };
+
+  // Attach audio blob as base64 if available
+  if (audioBlob && audioBlob.size > 0) {
+    try {
+      const base64 = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result.split(',')[1]);
+        reader.onerror = reject;
+        reader.readAsDataURL(audioBlob);
+      });
+      data.audioBase64 = base64;
+      data.audioMimeType = currentAudioMimeType;
+      data.audioSize = audioBlob.size;
+    } catch (e) {
+      console.warn('Failed to encode audio:', e);
+    }
+  }
 
   const result = await saveResult(data);
   if (!result.ok) return;
@@ -609,38 +636,50 @@ function setupReading() {
   document.getElementById('reading-submit').addEventListener('click', saveReading);
 }
 
-function loadReadingTestList() {
+async function loadReadingTestList() {
   const sel = document.getElementById('reading-test-select');
-  sel.innerHTML = '<option value="">-- Select a test --</option>';
-  const tests = [
-    { name: 'Cambridge IELTS 1 — Test 1', source: 'cambridge-1', number: 1 },
-    { name: 'Cambridge IELTS 1 — Test 2', source: 'cambridge-1', number: 2 },
-    { name: 'Cambridge IELTS 1 — Test 3', source: 'cambridge-1', number: 3 },
-    { name: 'Cambridge IELTS 1 — Test 4', source: 'cambridge-1', number: 4 }
-  ];
-  tests.forEach((t, i) => {
-    const opt = document.createElement('option');
-    opt.value = i;
-    opt.textContent = t.name;
-    sel.appendChild(opt);
-  });
+  sel.innerHTML = '<option value="">-- Loading... --</option>';
+  try {
+    const r = await fetch(BRIDGE_URL + '/api/reading/');
+    if (!r.ok) throw new Error('API error');
+    const data = await r.json();
+    const sources = data.sources || [];
+    sel.innerHTML = '<option value="">-- Select a test --</option>';
+    if (sources.length === 0) {
+      sel.innerHTML = '<option value="">-- No tests available --</option>';
+      return;
+    }
+    // Load tests from all sources
+    for (const src of sources) {
+      const r2 = await fetch(BRIDGE_URL + '/api/reading/' + src.id);
+      if (!r2.ok) continue;
+      const testData = await r2.json();
+      for (const t of (testData.tests || [])) {
+        const opt = document.createElement('option');
+        opt.value = JSON.stringify({ source: src.id, number: t.testNumber });
+        opt.textContent = `Cambridge IELTS ${src.id.replace('cambridge-', '')} — Test ${t.testNumber}`;
+        sel.appendChild(opt);
+      }
+    }
+    // Auto-select first test
+    if (sel.options.length > 1) {
+      sel.selectedIndex = 1;
+      onReadingTestChange();
+    }
+  } catch(e) {
+    sel.innerHTML = '<option value="">-- Error loading tests --</option>';
+  }
 }
 
-async function onReadingTestChange() {
-  const idx = document.getElementById('reading-test-select').value;
-  if (idx === '') return;
-
-  const tests = [
-    { source: 'cambridge-1', number: 1 },
-    { source: 'cambridge-1', number: 2 },
-    { source: 'cambridge-1', number: 3 },
-    { source: 'cambridge-1', number: 4 }
-  ];
-  const t = tests[parseInt(idx)];
-  currentTestSource = t.source;
-  currentTestNumber = t.number;
-
-  await loadReadingTest(t.source, t.number);
+function onReadingTestChange() {
+  const val = document.getElementById('reading-test-select').value;
+  if (!val) return;
+  try {
+    const t = JSON.parse(val);
+    currentTestSource = t.source;
+    currentTestNumber = t.number;
+    loadReadingTest(t.source, t.number);
+  } catch(e) { /* invalid value */ }
 }
 
 async function loadReadingTest(source, testNumber) {

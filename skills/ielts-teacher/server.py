@@ -12,7 +12,7 @@ Usage:
   python3 server.py --port 9000  # custom port
 """
 
-import argparse, json, os, sys, shutil, subprocess
+import argparse, base64, json, os, sys, shutil, subprocess
 from pathlib import Path
 from datetime import datetime
 from http.server import HTTPServer, SimpleHTTPRequestHandler
@@ -174,6 +174,99 @@ def _serve_skill_api(handler, skill, source_id=None):
     return True
 
 
+def _build_reading_sources():
+    """Scan textbook/*/json/test-*-reading.json for available reading sources."""
+    sources = []
+    if not TEXTBOOK_DIR.exists():
+        return sources
+    for source_dir in sorted(TEXTBOOK_DIR.iterdir()):
+        if source_dir.name.startswith('.') or not source_dir.is_dir():
+            continue
+        json_dir = source_dir / "json"
+        if not json_dir.exists():
+            continue
+        tests = sorted(json_dir.glob("test-*-reading.json"))
+        if tests:
+            sources.append({
+                "id": source_dir.name,
+                "testCount": len(tests),
+            })
+    return sources
+
+
+def _build_reading_tests(source_id):
+    """List reading tests for a textbook source. Returns list or None if not found."""
+    json_dir = TEXTBOOK_DIR / source_id / "json"
+    if not json_dir.exists():
+        return None
+    tests = []
+    for f in sorted(json_dir.glob("test-*-reading.json")):
+        try:
+            test_num = int(f.stem.split('-')[1])
+        except (IndexError, ValueError):
+            continue
+        tests.append({
+            "testNumber": test_num,
+            "file": str(f.relative_to(PROJECT_ROOT)),
+            "url": f"/textbook/{source_id}/json/{f.name}"
+        })
+    return tests if tests else None
+
+
+def _run_azure_pronunciation(audio_path):
+    """Try Azure Speech pronunciation assessment. Returns dict or None.
+    Converts WebM/MP4 audio to WAV via afconvert (macOS) if needed.
+    """
+    pronounce_cli = STUDIO_DIR / "pronounce_cli.py"
+    if not pronounce_cli.exists():
+        return {"error": "pronounce_cli.py not found"}
+
+    # Use .venv python if available (has azure-cognitiveservices-speech installed)
+    venv_python = PROJECT_ROOT / ".venv" / "bin" / "python3"
+    python_exe = str(venv_python) if venv_python.exists() else sys.executable
+
+    # Convert to WAV if not already WAV (browser produces WebM/MP4)
+    audio_to_assess = str(audio_path)
+    converted = None
+    if not str(audio_path).lower().endswith('.wav'):
+        converted = str(audio_path).replace('.webm', '.wav').replace('.mp4', '.wav')
+        try:
+            result = subprocess.run(
+                ["afconvert", "-f", "WAVE", "-d", "LEI16@16000",
+                 str(audio_path), converted],
+                capture_output=True, text=True, timeout=15
+            )
+            if result.returncode == 0:
+                audio_to_assess = converted
+            else:
+                # Fall back to original — let Azure SDK try to decode it
+                pass
+        except (subprocess.TimeoutExpired, FileNotFoundError):
+            pass  # afconvert not available — try original format
+
+    try:
+        result = subprocess.run(
+            [python_exe, str(pronounce_cli), "--audio", audio_to_assess, "--json"],
+            capture_output=True, text=True, timeout=30, cwd=str(PROJECT_ROOT)
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            return json.loads(result.stdout)
+        else:
+            err = result.stderr.strip() or result.stdout.strip() or "Unknown error"
+            return {"error": err[:200]}
+    except subprocess.TimeoutExpired:
+        return {"error": "Azure Speech timed out (30s)"}
+    except Exception as e:
+        return {"error": str(e)[:200]}
+    finally:
+        # Clean up converted file
+        if converted and os.path.exists(converted):
+            try:
+                os.remove(converted)
+            except OSError:
+                pass
+
+
 def _find_file_in_textbook(rel_path):
     """Find a file anywhere under textbook/ by relative path."""
     target = TEXTBOOK_DIR / rel_path
@@ -268,6 +361,23 @@ class BridgeHandler(SimpleHTTPRequestHandler):
                 _serve_skill_api(self, _sk, _source_id)
                 return
 
+        # ── /api/reading — list sources with reading JSON ──
+        if path == "api/reading" or path == "api/reading/":
+            self._serve_json({"sources": _build_reading_sources()})
+            return
+
+        # ── /api/reading/<source> — list reading tests for a source ──
+        if path.startswith("api/reading/"):
+            source_id = path[len("api/reading/"):].strip()
+            if ".." in source_id or "/" in source_id or "\\" in source_id:
+                self.send_error(403, "Invalid source name"); return
+            tests = _build_reading_tests(source_id)
+            if tests is not None:
+                self._serve_json({"source": source_id, "tests": tests})
+            else:
+                self.send_error(404, f"Reading source not found: {source_id}")
+            return
+
         # ── /textbook/<anything> — serve any file from textbook/ ──
         if path.startswith("textbook/"):
             rel = path[len("textbook/"):]
@@ -351,14 +461,49 @@ class BridgeHandler(SimpleHTTPRequestHandler):
             skill = json_data.get("skill", "unknown")
             dest = IELTS_DIR / skill / "latest.json"
             dest.parent.mkdir(parents=True, exist_ok=True)
+
+            # Save audio blob if present (speaking skill)
+            audio_saved = False
+            audio_base64 = json_data.pop("audioBase64", None)
+            audio_mime = json_data.pop("audioMimeType", None)
+            if audio_base64 and skill == "speaking":
+                try:
+                    audio_bytes = base64.b64decode(audio_base64)
+                    audio_dest = IELTS_DIR / skill / "latest.webm"
+                    with open(audio_dest, "wb") as af:
+                        af.write(audio_bytes)
+                    json_data["audioFile"] = str(audio_dest)
+                    json_data["audioSize"] = len(audio_bytes)
+                    audio_saved = True
+                except Exception as e:
+                    json_data["audioError"] = str(e)
+
             json_data["_savedAt"] = datetime.utcnow().isoformat() + "Z"
             with open(dest, "w") as f:
                 json.dump(json_data, f, indent=2, ensure_ascii=False)
 
-            self._serve_json({
+            # Auto-run Azure Speech pronunciation assessment if audio saved
+            azure_result = None
+            if audio_saved and skill == "speaking":
+                azure_result = _run_azure_pronunciation(audio_dest)
+
+            response = {
                 "status": "ok", "saved": [str(dest)],
-                "message": f"Saved. Switch to Claude and say 'evaluate my {skill}'."
-            })
+                "message": f"Saved. Switch to Claude and say 'evaluate my {skill}'.",
+                "audioSaved": audio_saved
+            }
+            if azure_result:
+                if azure_result.get("error"):
+                    response["azureError"] = azure_result["error"]
+                else:
+                    response["azureScores"] = {
+                        "pronScore": azure_result.get("pronScore"),
+                        "accuracy": azure_result.get("accuracy"),
+                        "fluency": azure_result.get("fluency"),
+                        "completeness": azure_result.get("completeness"),
+                        "transcript": azure_result.get("transcript"),
+                    }
+            self._serve_json(response)
         except json.JSONDecodeError as e:
             self.send_error(400, f"Invalid JSON: {e}")
         except Exception as e:

@@ -2,7 +2,7 @@
 """Speaking JSON Schema Validation Tests.
 
 Validates:
-  1. speaking_cambridge-1.json schema integrity
+  1. speaking_{source}.json schema integrity
   2. 4 tests extracted with modern 3-part format
   3. Each part has required fields by type
   4. Legacy tasks preserved with correct content
@@ -11,7 +11,7 @@ Validates:
   7. Edge cases: missing fields, empty parts
 
 Usage:
-  .venv/bin/python3 tests/test_speaking_json.py
+  .venv/bin/python3 tests/test_speaking_json.py --source cambridge-1
 """
 
 import json
@@ -19,7 +19,15 @@ import sys
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-SPEAKING_JSON_PATH = PROJECT_ROOT / "shared" / "speaking" / "speaking_cambridge-1.json"
+
+# Parse --source argument, default to cambridge-1
+SOURCE = "cambridge-1"
+args = sys.argv[1:]
+for i, arg in enumerate(args):
+    if arg == "--source" and i + 1 < len(args):
+        SOURCE = args[i + 1]
+
+SPEAKING_JSON_PATH = PROJECT_ROOT / "shared" / "speaking" / f"speaking_{SOURCE}.json"
 KC_GRAPH_PATH = PROJECT_ROOT / ".ielts" / "kc-graph-ielts.json"
 
 SUPPORTED_PART_TYPES = {"interview", "long-turn", "discussion"}
@@ -56,7 +64,7 @@ def test_top_level_fields():
     data = load_json(SPEAKING_JSON_PATH)
     for field in ["source", "generatedAt", "generatedBy", "tests", "_validation"]:
         assert field in data, f"Missing top-level field: {field}"
-    assert data["source"] == "cambridge-1"
+    assert data["source"] == SOURCE
     assert data["generatedBy"] == "/init-textbook-speaking"
 
 
