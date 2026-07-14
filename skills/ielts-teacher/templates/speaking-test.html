@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS Speaking Practice</title>
+<style>
+/* ── Design System ── */
+:root {
+  --bg: #fafaf8;
+  --bg-dark: #1a1a1c;
+  --surface: #eeede9;
+  --text: #1a1a1c;
+  --text-inverse: #f0eee8;
+  --accent: #c41e1e;
+  --accent-green: #2d6a4f;
+  --accent-amber: #b8860b;
+  --border: #d4d2cc;
+  --muted: #6b6b68;
+  --font-heading: "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --font-body: Charter, Georgia, serif;
+  --font-mono: Menlo, Consolas, "Courier New", monospace;
+  --space-xs: 4px; --space-sm: 8px; --space-md: 16px;
+  --space-lg: 24px; --space-xl: 32px; --space-2xl: 48px;
+  --radius: 6px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font-body);
+  font-size: 16px; line-height: 1.6;
+  color: var(--text); background: var(--bg);
+  min-height: 100vh;
+}
+/* ── Layout ── */
+.app-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--space-md) var(--space-xl);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.app-header h1 {
+  font-family: var(--font-heading); font-size: 20px; font-weight: normal;
+}
+.app-header .badge {
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px;
+}
+.container {
+  max-width: 780px; margin: 0 auto; padding: var(--space-xl) var(--space-lg);
+}
+/* ── Selector Bar ── */
+.selector-bar {
+  display: flex; gap: var(--space-md); align-items: center;
+  padding-bottom: var(--space-md); border-bottom: 1px solid var(--border);
+  margin-bottom: var(--space-lg);
+}
+.selector-bar label {
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px;
+}
+.selector-bar select {
+  padding: 6px var(--space-md); font-family: var(--font-body); font-size: 14px;
+  border: 1px solid var(--border); border-radius: 4px;
+  background: var(--bg); color: var(--text); cursor: pointer; min-width: 140px;
+}
+.selector-bar select:focus { outline: none; border-color: var(--accent); }
+.selector-bar select:disabled { opacity: 0.4; cursor: not-allowed; }
+/* ── Part Nav ── */
+.part-nav {
+  display: flex; gap: var(--space-xs); margin-bottom: var(--space-lg);
+}
+.part-nav button {
+  padding: 6px var(--space-md); border: 1px solid var(--border);
+  border-radius: 20px; background: transparent;
+  font-family: var(--font-heading); font-size: 13px; cursor: pointer;
+  color: var(--muted); transition: all 0.2s;
+}
+.part-nav button:hover { border-color: var(--accent); color: var(--text); }
+.part-nav button.active { background: var(--accent); color: white; border-color: var(--accent); }
+.part-nav button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* ── Cue Card ── */
+.cue-card {
+  background: var(--surface); border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: var(--space-xl); margin-bottom: var(--space-xl);
+}
+.cue-card .card-title {
+  font-family: var(--font-heading); font-size: 22px; line-height: 1.3;
+  margin-bottom: var(--space-md);
+}
+.cue-card .card-scenario {
+  font-size: 16px; line-height: 1.7; margin-bottom: var(--space-md);
+}
+.cue-card .card-role {
+  font-size: 15px; font-style: italic; color: var(--muted);
+  margin-bottom: var(--space-lg); padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--border);
+}
+.cue-card .card-topics-label {
+  font-family: var(--font-mono); font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.5px; color: var(--muted); margin-bottom: var(--space-sm);
+}
+.cue-card .card-topics { list-style: none; padding: 0; }
+.cue-card .card-topics li {
+  font-size: 15px; line-height: 1.8; padding-left: var(--space-md);
+  position: relative;
+}
+.cue-card .card-topics li::before {
+  content: '•'; position: absolute; left: 0; color: var(--accent); font-weight: bold;
+}
+.cue-card .card-questions { list-style: none; padding: 0; }
+.cue-card .card-questions li {
+  font-size: 15px; line-height: 1.8; padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--border);
+}
+.cue-card .card-questions li:last-child { border-bottom: none; }
+.cue-card .card-questions li .q-num {
+  font-family: var(--font-mono); font-size: 12px; color: var(--muted); margin-right: var(--space-sm);
+}
+/* ── Recording ── */
+.recording-area {
+  text-align: center; padding: var(--space-lg) 0;
+}
+.record-btn {
+  width: 72px; height: 72px; border-radius: 50%;
+  border: 4px solid var(--accent); background: transparent;
+  cursor: pointer; transition: all 0.2s; position: relative;
+  display: inline-block;
+}
+.record-btn::after {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px; height: 36px; border-radius: 50%; background: var(--accent);
+}
+.record-btn.recording {
+  border-color: var(--accent);
+  animation: pulse 1.5s infinite;
+}
+.record-btn.recording::after { border-radius: 4px; width: 22px; height: 22px; }
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(196, 30, 30, 0.4); }
+  50% { box-shadow: 0 0 0 20px rgba(196, 30, 30, 0); }
+}
+.record-hint {
+  font-size: 13px; color: var(--muted); margin-top: var(--space-sm);
+}
+.timer {
+  font-family: var(--font-mono); font-size: 32px; margin: var(--space-md) 0;
+}
+.transcript-box {
+  width: 100%; min-height: 120px; padding: var(--space-md);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.8;
+  background: var(--bg); margin: var(--space-md) 0; text-align: left;
+  white-space: pre-wrap; word-wrap: break-word;
+}
+.recording-active .cue-card,
+.recording-active .selector-bar,
+.recording-active .part-nav { opacity: 0.6; pointer-events: none; }
+/* ── Buttons ── */
+.btn {
+  padding: var(--space-sm) var(--space-xl); border: none; border-radius: 4px;
+  font-family: var(--font-heading); font-size: 16px; cursor: pointer;
+  transition: opacity 0.2s;
+}
+.btn:hover { opacity: 0.9; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-primary { background: var(--accent); color: white; }
+.btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+.btn-copy { background: var(--bg-dark); color: var(--text-inverse); font-size: 13px; padding: 4px var(--space-md); }
+/* ── Results Panel ── */
+.results-panel {
+  background: var(--bg-dark); color: var(--text-inverse);
+  border-radius: var(--radius); padding: var(--space-xl); margin-top: var(--space-lg);
+  display: none;
+}
+.results-panel h3 {
+  font-family: var(--font-heading); font-size: 20px; margin-bottom: var(--space-lg); font-weight: normal;
+}
+.score-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+.score-item {
+  text-align: center; padding: var(--space-md);
+  background: rgba(255,255,255,0.08); border-radius: var(--radius);
+}
+.score-item .score-value {
+  font-family: var(--font-heading); font-size: 36px;
+}
+.score-item .score-label {
+  font-family: var(--font-mono); font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.5px; color: #999;
+  margin-top: var(--space-xs);
+}
+.score-item.pron-score .score-value { color: var(--accent-green); }
+.score-item.accuracy .score-value { color: #5ba0d0; }
+.score-item.fluency .score-value { color: #c9a84c; }
+.claude-prompt-box {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius); padding: var(--space-md); margin-top: var(--space-lg);
+  display: flex; align-items: center; gap: var(--space-md);
+}
+.claude-prompt-box code {
+  font-family: var(--font-mono); font-size: 14px; flex: 1; word-break: break-all;
+}
+.copied-toast {
+  position: fixed; top: var(--space-md); right: var(--space-md);
+  background: var(--accent-green); color: white; padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius); font-family: var(--font-heading); font-size: 14px;
+  display: none; z-index: 999;
+}
+/* ── States ── */
+.empty-state, .loading-state, .error-state {
+  text-align: center; padding: var(--space-2xl); color: var(--muted);
+}
+.error-state { color: var(--accent); }
+.loading-state { font-style: italic; }
+.hidden { display: none !important; }
+/* ── Responsive gate ── */
+@media (max-width: 640px) {
+  body::before {
+    content: "IELTS Speaking Practice works best on a laptop or desktop. Please switch to a larger screen.";
+    position: fixed; inset: 0; background: var(--bg); display: flex;
+    align-items: center; justify-content: center;
+    font-family: var(--font-heading); font-size: 18px; padding: var(--space-xl);
+    text-align: center; z-index: 9999; color: var(--text);
+  }
+  .app-header, .container { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="app-header">
+  <h1>IELTS Speaking Practice</h1>
+  <span class="badge" id="status-badge">Ready</span>
+</div>
+
+<div class="container">
+
+  <!-- Selector Bar -->
+  <div class="selector-bar" id="selector-bar">
+    <label for="source-select">Source</label>
+    <select id="source-select" aria-label="Select textbook source">
+      <option value="">-- Loading --</option>
+    </select>
+    <label for="test-select">Test</label>
+    <select id="test-select" aria-label="Select test" disabled>
+      <option value="">-- Select --</option>
+    </select>
+  </div>
+
+  <!-- Part Navigation -->
+  <nav class="part-nav hidden" id="part-nav" role="tablist" aria-label="Speaking parts"></nav>
+
+  <!-- Cue Card -->
+  <div class="cue-card hidden" id="cue-card" aria-live="polite"></div>
+
+  <!-- Empty State -->
+  <div class="empty-state" id="empty-state">
+    <p style="font-size:18px;margin-bottom:var(--space-sm)">No speaking tasks available.</p>
+    <p style="font-size:14px">Return to Claude and say:<br>
+    <code style="font-family:var(--font-mono);font-size:13px">create a speaking mini test about [topic]</code></p>
+  </div>
+
+  <!-- Loading State -->
+  <div class="loading-state hidden" id="loading-state">Loading task...</div>
+
+  <!-- Error State -->
+  <div class="error-state hidden" id="error-state" role="alert">
+    <p id="error-msg"></p>
+    <button class="btn btn-secondary" id="error-retry" style="margin-top:var(--space-md)">Retry</button>
+  </div>
+
+  <!-- Recording Area -->
+  <div class="recording-area hidden" id="recording-area">
+    <button class="record-btn" id="record-btn" aria-label="Start recording" title="Press Space to start/stop"></button>
+    <div class="record-hint">Press <strong>Space</strong> or click to record</div>
+    <div class="timer" id="timer">0:00</div>
+    <div class="transcript-box" id="transcript-box">
+      <em style="color:var(--muted)">Your speech will appear here as you speak...</em>
+    </div>
+    <button class="btn btn-primary" id="save-btn" disabled>Save &amp; Evaluate</button>
+  </div>
+
+  <!-- Results Panel -->
+  <div class="results-panel" id="results-panel">
+    <h3>Pronunciation Assessment</h3>
+    <div class="score-grid" id="score-grid"></div>
+    <div id="results-transcript" style="margin-bottom:var(--space-lg);font-size:14px;line-height:1.8;color:#ccc"></div>
+    <p style="color:var(--accent-amber);font-size:14px" id="azure-status"></p>
+    <div class="claude-prompt-box" id="claude-prompt-box">
+      <code id="claude-prompt">evaluate my speaking</code>
+      <button class="btn btn-copy" id="copy-prompt-btn">Copy</button>
+    </div>
+    <p style="font-size:12px;color:#999;margin-top:var(--space-sm)">Paste into Claude (⌘V) for full content evaluation with KC mapping.</p>
+  </div>
+
+</div>
+
+<div class="copied-toast" id="copied-toast">Copied! Paste into Claude (⌘V)</div>
+
+<script>
+/* ── State ── */
+const BRIDGE_URL = 'http://localhost:8765';
+let speakingTaskData = null;
+let currentPart = 1;
+let currentTestNumber = 1;
+let currentSource = '';
+let isRecording = false;
+let mediaRecorder = null;
+let recognition = null;
+let timerInterval = null;
+let seconds = 0;
+let transcript = '';
+let audioBlob = null;
+let audioMimeType = 'audio/webm';
+
+/* ── Init ── */
+document.addEventListener('DOMContentLoaded', () => {
+  loadSources();
+  setupRecording();
+  document.getElementById('save-btn').addEventListener('click', saveAndEvaluate);
+  document.getElementById('copy-prompt-btn').addEventListener('click', copyPrompt);
+  document.getElementById('error-retry').addEventListener('click', () => loadSources());
+  document.getElementById('source-select').addEventListener('change', onSourceChange);
+  document.getElementById('test-select').addEventListener('change', onTestChange);
+  document.getElementById('part-nav').addEventListener('click', e => {
+    const btn = e.target.closest('button[data-part]');
+    if (btn) selectPart(parseInt(btn.dataset.part));
+  });
+  document.addEventListener('keydown', e => {
+    if (e.code === 'Space' && e.target === document.body) {
+      e.preventDefault();
+      if (isRecording) stopRecording(); else startRecording();
+    }
+  });
+});
+
+/* ── Source/Test Loading ── */
+async function loadSources() {
+  const sel = document.getElementById('source-select');
+  sel.innerHTML = '<option value="">-- Loading --</option>';
+  sel.disabled = true;
+  hideAll();
+  document.getElementById('loading-state').classList.remove('hidden');
+
+  try {
+    const r = await fetch(BRIDGE_URL + '/api/speaking/');
+    if (!r.ok) throw new Error('API error: ' + r.status);
+    const data = await r.json();
+    const sources = data.sources || [];
+    if (sources.length === 0) {
+      document.getElementById('loading-state').classList.add('hidden');
+      document.getElementById('empty-state').classList.remove('hidden');
+      return;
+    }
+    sel.innerHTML = sources.map(s => `<option value="${s.id}">${s.id}</option>`).join('');
+    sel.disabled = false;
+    sel.value = sources[0].id;
+    onSourceChange();
+  } catch(e) {
+    showError('Failed to load speaking sources. Is the server running?');
+  }
+}
+
+async function onSourceChange() {
+  const sourceId = document.getElementById('source-select').value;
+  if (!sourceId) return;
+  currentSource = sourceId;
+  const testSel = document.getElementById('test-select');
+  testSel.innerHTML = '<option value="">-- Loading --</option>';
+  testSel.disabled = true;
+  hideAll();
+  document.getElementById('loading-state').classList.remove('hidden');
+
+  try {
+    const r = await fetch(BRIDGE_URL + '/api/speaking/' + sourceId);
+    if (!r.ok) throw new Error('Source not found');
+    speakingTaskData = await r.json();
+    const tests = speakingTaskData.tests || [];
+    testSel.innerHTML = tests.map(t => `<option value="${t.testNumber}">Test ${t.testNumber}</option>`).join('');
+    testSel.disabled = false;
+    testSel.value = tests[0].testNumber;
+    onTestChange();
+  } catch(e) {
+    showError('Failed to load tasks. Is the server running?');
+  }
+}
+
+function onTestChange() {
+  const testNum = parseInt(document.getElementById('test-select').value);
+  if (!testNum || !speakingTaskData) return;
+  currentTestNumber = testNum;
+  selectPart(1);
+}
+
+function selectPart(partNum) {
+  const test = speakingTaskData?.tests?.find(t => t.testNumber === currentTestNumber);
+  if (!test) return;
+  const part = test.parts?.find(p => p.partNumber === partNum);
+  if (!part) return;
+  currentPart = partNum;
+  renderCueCard(part);
+  renderPartNav(test);
+  document.getElementById('loading-state').classList.add('hidden');
+  document.getElementById('empty-state').classList.add('hidden');
+  document.getElementById('error-state').classList.add('hidden');
+  document.getElementById('results-panel').style.display = 'none';
+  document.getElementById('cue-card').classList.remove('hidden');
+  document.getElementById('part-nav').classList.remove('hidden');
+  document.getElementById('recording-area').classList.remove('hidden');
+  updateStatus('Ready');
+}
+
+function renderPartNav(test) {
+  const nav = document.getElementById('part-nav');
+  nav.innerHTML = test.parts.map(p => {
+    const label = p.partType === 'interview' ? `Part ${p.partNumber}` :
+                  p.partType === 'long-turn' ? `Part ${p.partNumber} · Cue Card` :
+                  `Part ${p.partNumber} · Discussion`;
+    return `<button role="tab" aria-selected="${p.partNumber === currentPart}" data-part="${p.partNumber}" class="${p.partNumber === currentPart ? 'active' : ''}">${label}</button>`;
+  }).join('');
+}
+
+function renderCueCard(part) {
+  const card = document.getElementById('cue-card');
+  if (part.partType === 'interview') {
+    card.innerHTML = `<div class="card-title">${esc(part.topic)}</div>
+      <div class="card-scenario">${esc(part.instructions)}</div>
+      <ol class="card-questions">${part.questions.map((q,i) => `<li><span class="q-num">${i+1}.</span>${esc(q)}</li>`).join('')}</ol>`;
+  } else if (part.partType === 'long-turn') {
+    const cc = part.cueCard;
+    card.innerHTML = `<div class="card-title">${esc(cc.topic)}</div>
+      <div class="card-scenario">${part.preparationTime}s preparation · up to ${Math.floor(part.speakingTime/60)} min speaking</div>
+      <div class="card-role">Take one minute to prepare. Make notes if you wish.</div>
+      <div class="card-topics-label">You should say:</div>
+      <ul class="card-topics">${cc.bullets.map(b => `<li>${esc(b)}</li>`).join('')}</ul>`;
+  } else if (part.partType === 'discussion') {
+    card.innerHTML = `<div class="card-title">${esc(part.topic)}</div>
+      <div class="card-scenario">Discuss these questions related to the Part 2 topic.</div>
+      <ol class="card-questions">${part.questions.map((q,i) => `<li><span class="q-num">${i+1}.</span>${esc(q)}</li>`).join('')}</ol>`;
+  }
+}
+
+/* ── Recording ── */
+function setupRecording() {
+  document.getElementById('record-btn').addEventListener('click', () => {
+    if (isRecording) stopRecording(); else startRecording();
+  });
+}
+
+async function startRecording() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SR) {
+      recognition = new SR();
+      recognition.continuous = true; recognition.interimResults = true; recognition.lang = 'en-US';
+      recognition.onresult = e => {
+        transcript = ''; for (let i = 0; i < e.results.length; i++) transcript += e.results[i][0].transcript + ' ';
+        document.getElementById('transcript-box').textContent = transcript || 'Listening...';
+      };
+      recognition.onerror = e => {
+        if (e.error !== 'no-speech') document.getElementById('transcript-box').textContent = `[Speech error: ${e.error}]`;
+      };
+      recognition.start();
+    }
+    mediaRecorder = new MediaRecorder(stream);
+    audioMimeType = mediaRecorder.mimeType || 'audio/webm';
+    const chunks = [];
+    mediaRecorder.ondataavailable = e => { if (e.data.size > 0) chunks.push(e.data); };
+    mediaRecorder.onstop = () => {
+      stream.getTracks().forEach(t => t.stop());
+      if (chunks.length > 0) audioBlob = new Blob(chunks, { type: audioMimeType });
+    };
+    mediaRecorder.start();
+
+    isRecording = true; seconds = 0;
+    document.getElementById('record-btn').classList.add('recording');
+    document.body.classList.add('recording-active');
+    document.getElementById('timer').textContent = '0:00';
+    document.getElementById('save-btn').disabled = true;
+    document.getElementById('results-panel').style.display = 'none';
+    timerInterval = setInterval(() => {
+      seconds++; const m = Math.floor(seconds/60), s = seconds%60;
+      document.getElementById('timer').textContent = `${m}:${s.toString().padStart(2,'0')}`;
+      if (seconds >= 10) document.getElementById('save-btn').disabled = false;
+    }, 1000);
+    updateStatus('Recording...');
+  } catch(e) {
+    showError('Microphone access denied. Enable in browser settings and reload.');
+  }
+}
+
+function stopRecording() {
+  isRecording = false;
+  if (recognition) { recognition.stop(); recognition = null; }
+  if (mediaRecorder) { mediaRecorder.stop(); mediaRecorder = null; }
+  if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+  document.getElementById('record-btn').classList.remove('recording');
+  document.body.classList.remove('recording-active');
+  updateStatus(seconds < 10 ? 'Too short — record at least 10s' : 'Recording stopped');
+}
+
+/* ── Save & Evaluate ── */
+async function saveAndEvaluate() {
+  if (isRecording) stopRecording();
+  if (!transcript.trim()) { showError('No speech detected. Please try again.'); return; }
+
+  const saveBtn = document.getElementById('save-btn');
+  saveBtn.disabled = true; saveBtn.textContent = 'Saving...';
+  updateStatus('Evaluating...');
+
+  let taskTitle = '';
+  if (speakingTaskData) {
+    const test = speakingTaskData.tests.find(t => t.testNumber === currentTestNumber);
+    if (test) {
+      const part = test.parts.find(p => p.partNumber === currentPart);
+      if (part) taskTitle = part.partType === 'long-turn' ? (part.cueCard?.topic || '') : (part.topic || '');
+    }
+  }
+
+  const data = {
+    skill: 'speaking', source: currentSource, testNumber: currentTestNumber,
+    partNumber: currentPart, taskTitle, transcript, duration: seconds,
+    date: new Date().toISOString(), mode: 'practice'
+  };
+
+  if (audioBlob && audioBlob.size > 0) {
+    try {
+      const base64 = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result.split(',')[1]);
+        reader.onerror = reject;
+        reader.readAsDataURL(audioBlob);
+      });
+      data.audioBase64 = base64;
+      data.audioMimeType = audioMimeType;
+    } catch(e) { console.warn('Audio encode failed:', e); }
+  }
+
+  try {
+    const r = await fetch(BRIDGE_URL + '/save', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data)
+    });
+    if (!r.ok) throw new Error('Save failed: ' + r.status);
+    const result = await r.json();
+
+    document.getElementById('recording-area').classList.add('hidden');
+    document.getElementById('results-panel').style.display = 'block';
+    updateStatus('Evaluated');
+
+    // Build Claude prompt
+    const promptParts = [`evaluate my speaking`];
+    if (taskTitle) promptParts.push(taskTitle);
+    document.getElementById('claude-prompt').textContent = promptParts.join(' — ');
+
+    // Show Azure pronunciation scores
+    const grid = document.getElementById('score-grid');
+    const azStatus = document.getElementById('azure-status');
+    if (result.azureScores) {
+      const s = result.azureScores;
+      grid.innerHTML = `
+        <div class="score-item pron-score"><div class="score-value">${(s.pronScore*100).toFixed(0)}</div><div class="score-label">Pron Score</div></div>
+        <div class="score-item accuracy"><div class="score-value">${(s.accuracy*100).toFixed(0)}</div><div class="score-label">Accuracy</div></div>
+        <div class="score-item fluency"><div class="score-value">${(s.fluency*100).toFixed(0)}</div><div class="score-label">Fluency</div></div>
+        <div class="score-item"><div class="score-value">${(s.completeness*100).toFixed(0)}</div><div class="score-label">Completeness</div></div>`;
+      if (s.transcript) document.getElementById('results-transcript').textContent = 'Transcript: ' + s.transcript;
+      azStatus.textContent = 'Pronunciation assessed by Azure Speech';
+    } else if (result.azureError) {
+      grid.innerHTML = '<div class="score-item" style="grid-column:1/-1"><p>Pronunciation assessment unavailable</p></div>';
+      azStatus.textContent = result.azureError;
+    } else {
+      grid.innerHTML = '<div class="score-item" style="grid-column:1/-1"><p>No audio recorded — pronunciation not assessed</p></div>';
+      azStatus.textContent = 'Record with microphone for pronunciation scores';
+    }
+
+    saveBtn.textContent = 'Save & Evaluate';
+    saveBtn.disabled = false;
+  } catch(e) {
+    showError('Failed to save. Is the server running?');
+    saveBtn.textContent = 'Save & Evaluate';
+    saveBtn.disabled = false;
+  }
+}
+
+function copyPrompt() {
+  const text = document.getElementById('claude-prompt').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const toast = document.getElementById('copied-toast');
+    toast.style.display = 'block';
+    setTimeout(() => toast.style.display = 'none', 2000);
+  });
+}
+
+/* ── Helpers ── */
+function hideAll() {
+  ['cue-card','part-nav','recording-area','empty-state','loading-state','error-state'].forEach(id => {
+    document.getElementById(id).classList.add('hidden');
+  });
+  document.getElementById('results-panel').style.display = 'none';
+}
+
+function showError(msg) {
+  hideAll();
+  document.getElementById('error-state').classList.remove('hidden');
+  document.getElementById('error-msg').textContent = msg;
+}
+
+function updateStatus(text) {
+  document.getElementById('status-badge').textContent = text;
+}
+
+function esc(s) {
+  if (!s) return '';
+  const div = document.createElement('div');
+  div.textContent = s;
+  return div.innerHTML;
+}
+</script>
+</body>
+</html>
