@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """IELTS File Bridge Server — stdlib-only HTTP server for the HTML studio.
 
-Serves: HTML studio, textbook materials (MP3s, images, markdown), roadmap.json.
+Serves: HTML studio, textbook materials (MP3s, images, markdown), student profile.
 Accepts: POST /save to persist studio results to .ielts/.
 
 The /textbook directory is the single source of truth for all study materials.
@@ -422,11 +422,15 @@ class BridgeHandler(SimpleHTTPRequestHandler):
                 self.send_error(403, "Invalid path"); return
             self.send_error(404, f"Lesson not found: {filename}"); return
 
-        # ── /roadmap.json — from .ielts/ ──
+        # ── /roadmap.json — serve student-profile.json (backward compat) ──
+        # roadmap.json v1 was superseded by student-profile.json v2.
+        # The HTML studio reads learner.targetBand, learner.examDate,
+        # learner.activeSkills, and skills.{}.currentBand — all present
+        # at the same paths in student-profile.json.
         if path == "roadmap.json":
-            roadmap = IELTS_DIR / "roadmap.json"
-            if roadmap.exists():
-                if self._serve_file(roadmap, "application/json"): return
+            profile = IELTS_DIR / "student-profile.json"
+            if profile.exists():
+                if self._serve_file(profile, "application/json"): return
             self._serve_json({})
             return
 

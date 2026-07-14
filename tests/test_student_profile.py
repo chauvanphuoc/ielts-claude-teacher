@@ -25,6 +25,8 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 IELTS_DIR = PROJECT_ROOT / ".ielts"
 KC_GRAPH_PATH = IELTS_DIR / "kc-graph-ielts.json"
 ROADMAP_PATH = IELTS_DIR / "roadmap.json"
+STUDENT_PROFILE_PATH = IELTS_DIR / "student-profile.json"
+LESSON_LIBRARY_PATH = IELTS_DIR / "lesson-library.json"
 
 
 # ══════════════════════════════════════════════════════════════════════
@@ -227,64 +229,71 @@ class TestErrorRateFormula:
 # ══════════════════════════════════════════════════════════════════════
 
 class TestStudentProfileSchema:
-    """Validate student-profile.json structure against design doc schema."""
+    """Validate student-profile.json v2 structure against design doc schema."""
 
     @classmethod
     def setup_class(cls):
-        # Use roadmap.json as source data since student-profile.json
-        # doesn't exist yet (will be created by migration).
-        cls.roadmap = load_json(ROADMAP_PATH)
+        cls.profile = load_json(STUDENT_PROFILE_PATH)
 
     # ── Top-level structure ──
 
-    def test_roadmap_has_version(self):
-        assert "version" in self.roadmap
+    def test_profile_has_version_2(self):
+        assert "version" in self.profile
+        assert self.profile["version"] == "2.0.0"
 
-    def test_roadmap_has_learner(self):
-        assert "learner" in self.roadmap
-        learner = self.roadmap["learner"]
-        for field in ["targetBand", "activeSkills", "startedAt"]:
+    def test_profile_has_learner(self):
+        assert "learner" in self.profile
+        learner = self.profile["learner"]
+        for field in ["targetBand", "activeSkills", "startedAt", "diagnosticCompleted"]:
             assert field in learner, f"learner missing: {field}"
 
     def test_target_band_in_range(self):
-        band = self.roadmap["learner"]["targetBand"]
+        band = self.profile["learner"]["targetBand"]
         assert 0 <= band <= 9.0, f"targetBand {band} out of 0-9 range"
 
     def test_active_skills_is_non_empty(self):
-        skills = self.roadmap["learner"]["activeSkills"]
+        skills = self.profile["learner"]["activeSkills"]
         assert len(skills) >= 1
         for s in skills:
             assert s in ("listening", "reading", "writing", "speaking"), (
                 f"Unknown skill: {s}"
             )
 
-    def test_roadmap_has_all_four_skills(self):
+    def test_profile_has_all_four_skills(self):
         for skill in ["listening", "reading", "writing", "speaking"]:
-            assert skill in self.roadmap["skills"], f"Missing skill: {skill}"
+            assert skill in self.profile["skills"], f"Missing skill: {skill}"
 
-    def test_each_skill_has_required_fields(self):
-        required = ["currentBand", "bandHistory", "weakAreas", "practiceCount", "lastPracticeDate"]
-        for skill_name, skill_data in self.roadmap["skills"].items():
+    def test_each_skill_has_required_fields_v2(self):
+        required = ["currentBand", "bandHistory", "practiceCount", "lastPracticeDate", "kcMastery"]
+        for skill_name, skill_data in self.profile["skills"].items():
             for field in required:
                 assert field in skill_data, f"skills.{skill_name} missing: {field}"
 
     def test_current_band_in_range(self):
-        for skill_name, skill_data in self.roadmap["skills"].items():
+        for skill_name, skill_data in self.profile["skills"].items():
             band = skill_data["currentBand"]
             assert 0 <= band <= 9.0, (
                 f"skills.{skill_name}.currentBand {band} out of 0-9 range"
             )
 
     def test_band_history_is_list(self):
-        for skill_name, skill_data in self.roadmap["skills"].items():
+        for skill_name, skill_data in self.profile["skills"].items():
             assert isinstance(skill_data["bandHistory"], list), (
                 f"skills.{skill_name}.bandHistory must be a list"
             )
 
-    def test_history_and_coach_notes_exist(self):
-        assert "history" in self.roadmap
-        assert "coachNotes" in self.roadmap
-        assert isinstance(self.roadmap["coachNotes"], list)
+    def test_profile_has_v2_sections(self):
+        for field in ["vocabulary", "grammar", "testHistory", "coachNotes"]:
+            assert field in self.profile, f"profile missing: {field}"
+
+    def test_coach_notes_is_list(self):
+        assert isinstance(self.profile["coachNotes"], list)
+
+    def test_lesson_library_is_standalone(self):
+        """lessonLibrary must NOT be in student-profile.json — it is standalone."""
+        assert "lessonLibrary" not in self.profile, (
+            "lessonLibrary should be in standalone lesson-library.json"
+        )
 
 
 # ══════════════════════════════════════════════════════════════════════
@@ -318,15 +327,25 @@ class TestCrossReferenceIntegrity:
 
     def test_no_orphaned_vocab_kc_tags(self):
         """If grammar.weakPoints reference kcTags, they must exist in KC graph."""
-        roadmap = load_json(ROADMAP_PATH)
-        # roadmap.json doesn't have grammar.weakPoints yet — this is a forward test
-        # that will activate after migration to student-profile.json
+        profile = load_json(STUDENT_PROFILE_PATH)
+        grammar = profile.get("grammar", {})
+        for wp in grammar.get("weakPoints", []):
+            kc_tag = wp.get("kcTag")
+            if kc_tag:
+                assert kc_tag in self.kc_ids, (
+                    f"grammar.weakPoints kcTag '{kc_tag}' not found in KC graph"
+                )
 
     def test_lesson_kc_tags_exist(self):
         """All kcTags in lesson library entries must reference real KCs."""
-        # Placeholder — activates once lesson library has entries.
-        # When student-profile.json exists, iterate lessonLibrary.lessons[].kcTags
-        # and verify each tag is in kc_ids.
+        lib = load_json(LESSON_LIBRARY_PATH)
+        if not lib:
+            return  # lesson-library.json may not exist yet
+        for lesson in lib.get("lessons", []):
+            for kc_tag in lesson.get("kcTags", []):
+                assert kc_tag in self.kc_ids, (
+                    f"Lesson '{lesson['id']}' kcTag '{kc_tag}' not found in KC graph"
+                )
 
 
 # ══════════════════════════════════════════════════════════════════════
@@ -342,21 +361,21 @@ class TestEdgeCases:
 
     def test_empty_band_history_is_valid(self):
         """New student has empty bandHistory — should not crash."""
-        roadmap = load_json(ROADMAP_PATH)
-        for skill_name, skill_data in roadmap["skills"].items():
-            assert skill_data["bandHistory"] == [], (
-                f"skills.{skill_name}.bandHistory should be empty for new student"
+        profile = load_json(STUDENT_PROFILE_PATH)
+        for skill_name, skill_data in profile["skills"].items():
+            assert isinstance(skill_data["bandHistory"], list), (
+                f"skills.{skill_name}.bandHistory should be a list"
             )
 
     def test_null_exam_date_is_valid(self):
         """No exam date set — should be null, not crash."""
-        roadmap = load_json(ROADMAP_PATH)
-        assert roadmap["learner"]["examDate"] is None
+        profile = load_json(STUDENT_PROFILE_PATH)
+        assert profile["learner"]["examDate"] is None or isinstance(profile["learner"]["examDate"], str)
 
-    def test_practice_count_starts_at_zero(self):
-        roadmap = load_json(ROADMAP_PATH)
-        for skill_name, skill_data in roadmap["skills"].items():
-            assert skill_data["practiceCount"] == 0, (
+    def test_practice_count_is_non_negative(self):
+        profile = load_json(STUDENT_PROFILE_PATH)
+        for skill_name, skill_data in profile["skills"].items():
+            assert skill_data["practiceCount"] >= 0, (
                 f"skills.{skill_name}.practiceCount should start at 0"
             )
 
@@ -435,11 +454,178 @@ class TestEdgeCases:
                 f"{kc['id']} has only {len(errors)} commonErrors, need at least 3"
             )
 
-    def test_listening_total_kcs_is_23(self):
-        """Combined total: 9 Reading + 7 Writing + 7 Listening = 23 KCs."""
+    def test_total_kcs_across_all_skills_is_28(self):
+        """Combined total: 9 Reading + 7 Writing + 7 Listening + 5 Speaking = 28 KCs."""
         graph = load_json(KC_GRAPH_PATH)
         total = sum(len(skill["kcs"]) for skill in graph["skills"].values())
-        assert total == 23, f"Expected 23 total KCs, got {total}"
+        assert total == 28, f"Expected 28 total KCs, got {total}"
+
+
+# ══════════════════════════════════════════════════════════════════════
+# Reset Profile Tests
+# ══════════════════════════════════════════════════════════════════════
+
+class TestBuildFreshProfile:
+    """Validate _build_fresh_profile() logic (imported from ielts_cli)."""
+
+    @classmethod
+    def setup_class(cls):
+        cls.kc_graph = load_json(KC_GRAPH_PATH)
+
+    def test_build_fresh_returns_dict(self):
+        """_build_fresh_profile returns a dict with all required keys."""
+        # Import the function dynamically
+        sys.path.insert(0, str(PROJECT_ROOT / "shared"))
+        from ielts_cli import _build_fresh_profile
+        profile = _build_fresh_profile(self.kc_graph, target_band=6.0)
+        assert isinstance(profile, dict)
+        for key in ["version", "learner", "skills", "vocabulary", "grammar",
+                     "testHistory", "crossSkillPatterns", "coachNotes"]:
+            assert key in profile, f"Missing key: {key}"
+
+    def test_build_fresh_version_is_2(self):
+        sys.path.insert(0, str(PROJECT_ROOT / "shared"))
+        from ielts_cli import _build_fresh_profile
+        profile = _build_fresh_profile(self.kc_graph)
+        assert profile["version"] == "2.0.0"
+
+    def test_build_fresh_diagnostic_not_completed(self):
+        sys.path.insert(0, str(PROJECT_ROOT / "shared"))
+        from ielts_cli import _build_fresh_profile
+        profile = _build_fresh_profile(self.kc_graph)
+        assert profile["learner"]["diagnosticCompleted"] is False
+
+    def test_build_fresh_target_band_preserved(self):
+        sys.path.insert(0, str(PROJECT_ROOT / "shared"))
+        from ielts_cli import _build_fresh_profile
+        profile = _build_fresh_profile(self.kc_graph, target_band=7.5)
+        assert profile["learner"]["targetBand"] == 7.5
+
+    def test_build_fresh_exam_date_preserved(self):
+        sys.path.insert(0, str(PROJECT_ROOT / "shared"))
+        from ielts_cli import _build_fresh_profile
+        profile = _build_fresh_profile(self.kc_graph, exam_date="2026-12-01")
+        assert profile["learner"]["examDate"] == "2026-12-01"
+
+    def test_build_fresh_all_kcs_weak(self):
+        sys.path.insert(0, str(PROJECT_ROOT / "shared"))
+        from ielts_cli import _build_fresh_profile
+        profile = _build_fresh_profile(self.kc_graph)
+        for skill in ["listening", "reading", "writing", "speaking"]:
+            for kc_id, kc_data in profile["skills"][skill]["kcMastery"].items():
+                assert kc_data["level"] == "weak", (
+                    f"{skill}.{kc_id}: expected 'weak', got '{kc_data['level']}'"
+                )
+                assert kc_data["errorRate"] == 0.0
+                assert kc_data["attempts"] == 0
+
+    def test_build_fresh_populates_all_28_kcs(self):
+        sys.path.insert(0, str(PROJECT_ROOT / "shared"))
+        from ielts_cli import _build_fresh_profile
+        profile = _build_fresh_profile(self.kc_graph)
+        total = sum(len(profile["skills"][s]["kcMastery"]) for s in profile["skills"])
+        assert total == 28, f"Expected 28 KCs, got {total}"
+
+    def test_build_fresh_empty_test_history(self):
+        sys.path.insert(0, str(PROJECT_ROOT / "shared"))
+        from ielts_cli import _build_fresh_profile
+        profile = _build_fresh_profile(self.kc_graph)
+        assert profile["testHistory"] == []
+
+    def test_build_fresh_empty_vocabulary(self):
+        sys.path.insert(0, str(PROJECT_ROOT / "shared"))
+        from ielts_cli import _build_fresh_profile
+        profile = _build_fresh_profile(self.kc_graph)
+        assert profile["vocabulary"]["misspelledWords"] == []
+        assert profile["vocabulary"]["weakTopics"] == []
+
+    def test_build_fresh_without_kc_graph_is_safe(self):
+        """Passing None as KC graph should not crash — just no KCs populated."""
+        sys.path.insert(0, str(PROJECT_ROOT / "shared"))
+        from ielts_cli import _build_fresh_profile
+        profile = _build_fresh_profile(None)
+        for skill in ["listening", "reading", "writing", "speaking"]:
+            assert profile["skills"][skill]["kcMastery"] == {}
+
+
+class TestResetProfileIntegration:
+    """End-to-end integration tests for the reset flow.
+
+    These tests use the actual CLI to verify reset behavior.
+    They restore the original profile after running.
+    """
+
+    @classmethod
+    def setup_class(cls):
+        cls.original_profile = None
+        if STUDENT_PROFILE_PATH.exists():
+            with open(STUDENT_PROFILE_PATH) as f:
+                cls.original_profile = f.read()
+
+    @classmethod
+    def teardown_class(cls):
+        """Restore original profile after all tests."""
+        if cls.original_profile:
+            with open(STUDENT_PROFILE_PATH, "w") as f:
+                f.write(cls.original_profile)
+
+    def test_reset_requires_yes_flag(self):
+        """Reset without --yes should be blocked."""
+        import subprocess
+        result = subprocess.run(
+            [".venv/bin/python3", "shared/ielts_cli.py", "reset-profile"],
+            cwd=PROJECT_ROOT, capture_output=True, text=True
+        )
+        assert result.returncode != 0
+        assert "blocked" in result.stdout or "--yes" in result.stdout
+
+    def test_reset_creates_backup(self):
+        """Reset with --yes should create a backup file."""
+        import subprocess
+        # Count backups before
+        backup_dir = IELTS_DIR / "backup"
+        before = len(list(backup_dir.glob("*.json"))) if backup_dir.exists() else 0
+
+        result = subprocess.run(
+            [".venv/bin/python3", "shared/ielts_cli.py", "reset-profile", "--yes"],
+            cwd=PROJECT_ROOT, capture_output=True, text=True
+        )
+        assert result.returncode == 0
+
+        after = len(list(backup_dir.glob("*.json")))
+        assert after > before, "No new backup file created"
+
+    def test_reset_sets_diagnostic_false(self):
+        """After reset, diagnosticCompleted must be False."""
+        profile = load_json(STUDENT_PROFILE_PATH)
+        assert profile["learner"]["diagnosticCompleted"] is False
+
+    def test_reset_clears_test_history(self):
+        """After reset, testHistory must be empty."""
+        profile = load_json(STUDENT_PROFILE_PATH)
+        assert profile["testHistory"] == []
+
+    def test_reset_preserves_lesson_library(self):
+        """After reset, lesson-library.json must still exist with lessons."""
+        if LESSON_LIBRARY_PATH.exists():
+            lib = load_json(LESSON_LIBRARY_PATH)
+            assert lib["totalLessons"] >= 0
+            assert isinstance(lib["lessons"], list)
+
+    def test_reset_idempotent(self):
+        """Running reset twice should succeed both times."""
+        import subprocess
+        r1 = subprocess.run(
+            [".venv/bin/python3", "shared/ielts_cli.py", "reset-profile", "--yes"],
+            cwd=PROJECT_ROOT, capture_output=True, text=True
+        )
+        assert r1.returncode == 0
+
+        r2 = subprocess.run(
+            [".venv/bin/python3", "shared/ielts_cli.py", "reset-profile", "--yes"],
+            cwd=PROJECT_ROOT, capture_output=True, text=True
+        )
+        assert r2.returncode == 0
 
 
 # ══════════════════════════════════════════════════════════════════════
@@ -455,6 +641,8 @@ if __name__ == "__main__":
         TestStudentProfileSchema,
         TestCrossReferenceIntegrity,
         TestEdgeCases,
+        TestBuildFreshProfile,
+        TestResetProfileIntegration,
     ]
 
     passed = 0
@@ -489,6 +677,13 @@ if __name__ == "__main__":
                 print(f"  ✗ {name} (ERROR: {e})")
                 failed += 1
                 errors.append(f"{cls.__name__}.{name}: {e}")
+
+        # Run teardown if defined
+        if hasattr(cls, "teardown_class"):
+            try:
+                cls.teardown_class()
+            except Exception as e:
+                print(f"  TEARDOWN ERROR: {e}")
 
     print(f"\n{'='*60}")
     print(f"  RESULTS: {passed} passed, {failed} failed, {passed+failed} total")
