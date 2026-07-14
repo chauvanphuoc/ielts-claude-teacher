@@ -294,16 +294,26 @@ Keep this to 3-4 sentences maximum. The real learning happens by doing.
 
 ### 4.3 — Open the Test
 
+**Mini test (Claude-generated practice):**
 ```bash
 open .ielts/lesson-plans/lesson-{date}-{seq}.html
 ```
 
-If it's a full Cambridge test (not a mini test), open the HTML Studio instead:
+**Full Cambridge Reading/Writing test — HTML Studio:**
 ```bash
 .venv/bin/python3 skills/ielts-teacher/server.py &
 sleep 1
 open http://localhost:8765/ielts-studio.html
 ```
+
+**Full Cambridge Listening test — Listening Template:**
+```bash
+.venv/bin/python3 skills/ielts-teacher/server.py &
+sleep 1
+open "http://localhost:8765/lessons/listening-test.html?source=cambridge-1&test=1"
+```
+
+The listening template loads structured JSON from `/api/listening/{source}`, renders an audio player with the correct MP3 file per section, and handles all 6 listening question types (multiple-choice-image, gap-fill, form-completion, matching-checkboxes, etc.). The student navigates 4 sections, answers questions while listening, and submits. Results are saved to `.ielts/listening/latest.json`.
 
 ### 4.4 — Wait for Student
 
@@ -442,6 +452,7 @@ You choose the right tool for each situation. Never ask the student to choose.
 | Student says "xem tiến độ" / "progress" | Show **progress dashboard** |
 | Student asks a theory question | Answer in chat (don't open a test) |
 | Student wants to do a full Cambridge test | Open **HTML Studio** with the requested test |
+| Student says "luyện nghe" / "listening test" | Open **Listening Template** at `/lessons/listening-test.html?source=...&test=...` |
 | Student says "đổi sang tiếng [X]" | Update `settings.json` language field |
 
 ---
@@ -475,15 +486,69 @@ These workflows from v1 are preserved for specific skill interactions.
 4. Show rewritten version at target band level
 5. Update `skills.writing` in student-profile.json
 
-### Listening Evaluation
+### Listening Evaluation (Full Cambridge Test)
 
-1. Student takes test in HTML Studio Listening tab
-2. Student says "grade my listening test"
-3. Read answers from `.ielts/listening/latest.json`
-4. Compare against answer keys from Cambridge JSON test data
-5. Categorize errors: spelling, numbers, distractors, etc.
-6. Map to KCs: `kc-listen-spelling`, `kc-listen-numbers`, `kc-listen-distractor`
-7. Update `skills.listening` + `kcMastery` in student-profile.json
+The listening template (`listening-test.html`) loads structured JSON from `/api/listening/{source}`, plays MP3 audio per section, and saves answers to `.ielts/listening/latest.json` via POST /save.
+
+**Step 1 — Read results:**
+```bash
+cat .ielts/listening/latest.json 2>/dev/null || echo "NO_RESULTS"
+```
+
+If `NO_RESULTS` or no File Bridge server running: ask the student to tell you their answers directly in chat.
+
+**Step 2 — Load answer keys from listening JSON:**
+```bash
+cat shared/listening/listening_{source}.json 2>/dev/null || echo "NO_JSON"
+```
+
+The JSON contains per-section answer keys with `acceptable` alternatives (e.g., `"roads"` with `["roads", "road system"]`).
+
+**Step 3 — Grade each question:**
+- Compare user answer to answer key (case-insensitive, whitespace-normalized)
+- Check `acceptableAnswers` if exact match fails
+- Mark correct/wrong per question
+
+**Step 4 — Categorize errors by KC:**
+| Error Pattern | KC Tag |
+|---|---|
+| Spelling mistake (e.g., "accomodation" → "accommodation") | `kc-listen-spelling` |
+| Wrong number/date/price (e.g., 15 vs 50, missing £) | `kc-listen-numbers` |
+| Chose first answer before speaker corrected (distractor) | `kc-listen-distractor` |
+| Wrong MC option (paraphrase mismatch) | `kc-listen-mc` |
+| Exceeded word limit or wrong form field | `kc-listen-gapfill` |
+| Wrong location on map/diagram | `kc-listen-map` |
+| Misunderstood speaker's opinion/attitude | `kc-listen-inference` |
+
+**Step 5 — Section-by-section breakdown:**
+Present per-section scores with error categorization:
+```
+📊 Test 1 Results:
+  Section 1: 8/10 — 2 errors (spelling: Q6 "Prescot", numbers: Q9)
+  Section 2: 6/11 — 5 errors (distractor: Q16, Q18; spelling: Q20; gapfill: Q14, Q21)
+  Section 3: 7/10 — 3 errors (MC: Q23, Q24; inference: Q31)
+  Section 4: 5/10 — 5 errors (MC: Q37, Q39, Q40; inference: Q33; gapfill: Q35)
+  📊 Total: 26/41 → Band 6.0
+```
+
+**Step 6 — Map to listening KCs and update profile:**
+- Group errors by KC tag
+- Compute `session_errorRate = session_errors / session_total` per KC
+- Update `kcMastery` in `skills.listening` using the cumulative errorRate formula (see Phase 5.3)
+- Update `skills.listening.currentBand` based on total score
+- Append to `testHistory` in student-profile.json
+
+**Step 7 — Present KC-level insights:**
+"Bạn mất nhiều điểm nhất ở Spelling (3 lỗi — 'Prescot', 'Foutain', 'instruments') và Distractor Awareness (2 lỗi — Q16, Q18: chọn đáp án đầu tiên trước khi speaker sửa). Tập trung vào kc-listen-spelling và kc-listen-distractor buổi sau."
+
+**Step 8 — Update profile and add coach note:**
+```bash
+.venv/bin/python3 shared/ielts_cli.py memory add \
+  --content "Listening Test 1: 26/41 (Band 6.0). Weakest: spelling (3 errors), distractors (2 errors). Top KCs to address: kc-listen-spelling, kc-listen-distractor." \
+  --category observation \
+  --skill listening \
+  --priority high
+```
 
 ### Reading Evaluation (Full Cambridge Test)
 
