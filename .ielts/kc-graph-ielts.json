@@ -552,8 +552,126 @@
     },
     "speaking": {
       "name": "IELTS Speaking",
-      "description": "11-14 minutes, 3 parts. KCs will be defined in Phase 2 after Reading/Listening KCs are validated.",
-      "kcs": []
+      "description": "11-14 minutes, 3 parts. Speaking KCs use subjective scoring (Claude evaluation). errorRate = clamp((targetBand - scoredBand) / targetBand, 0, 1). targetBand=0 → skip KC update.",
+      "scoringModel": "subjective",
+      "errorRateFormula": "clamp((targetBand - scoredBand) / targetBand, 0, 1)",
+      "kcs": [
+        {
+          "id": "kc-speak-fluency",
+          "name": "Fluency & Coherence",
+          "skill": "speaking",
+          "status": "draft",
+          "scoringModel": "subjective",
+          "description": "Speaking at a natural pace without excessive hesitation, self-correction, or filler words. Organizing ideas logically with appropriate cohesive devices.",
+          "dependsOn": [],
+          "difficultyLevel": 2,
+          "commonErrors": [
+            "Frequent use of fillers (um, uh, like, you know)",
+            "Long pauses between ideas disrupting flow",
+            "Excessive self-correction breaking sentence rhythm",
+            "Ideas presented as a list without linking words (and, and, and)",
+            "Speaking too slowly or too quickly for natural comprehension"
+          ],
+          "exerciseTemplates": [
+            "1-minute impromptu speaking on a random topic",
+            "Record and count filler words — target: < 3 per minute",
+            "Shadowing exercise: repeat after native speaker, matching pace",
+            "Storytelling chain: speak for 2 minutes connecting 3 given words"
+          ]
+        },
+        {
+          "id": "kc-speak-pronunciation",
+          "name": "Pronunciation Accuracy",
+          "skill": "speaking",
+          "status": "draft",
+          "scoringModel": "subjective",
+          "description": "Producing clear, intelligible speech with appropriate phonemes, word stress, sentence stress, and intonation patterns. Accent is acceptable as long as speech is easily understood.",
+          "dependsOn": [],
+          "difficultyLevel": 2,
+          "commonErrors": [
+            "Mispronouncing common IELTS vocabulary (e.g., 'accommodation', 'government')",
+            "Flat intonation — no rise/fall to signal questions vs statements",
+            "Incorrect word stress (e.g., DEvelop instead of deVELop)",
+            "Final consonant dropping (e.g., 'tes' instead of 'test')",
+            "L1 interference — applying native language sound patterns to English"
+          ],
+          "exerciseTemplates": [
+            "Minimal pairs drill (ship/sheep, bed/bad, thin/tin)",
+            "Shadowing with intonation focus — mark stress and pitch changes",
+            "Read aloud 50 common IELTS words, Azure Speech check each",
+            "Sentence stress practice: 'I didn't say HE stole the money' (7 meanings)"
+          ]
+        },
+        {
+          "id": "kc-speak-lexical",
+          "name": "Lexical Resource (Vocabulary Range)",
+          "skill": "speaking",
+          "status": "draft",
+          "scoringModel": "subjective",
+          "description": "Using a range of vocabulary appropriate to the topic, including less common words, collocations, and idiomatic expressions. Paraphrasing effectively when a specific word is unknown.",
+          "dependsOn": [],
+          "difficultyLevel": 3,
+          "commonErrors": [
+            "Overusing basic adjectives (good, bad, big, small, nice)",
+            "Repeating the same word instead of using synonyms",
+            "Using 'very + adjective' instead of a precise word (very big → enormous)",
+            "Incorrect collocations (e.g., 'make a mistake' → 'do a mistake')",
+            "Inability to paraphrase — pausing or giving up when word is unknown"
+          ],
+          "exerciseTemplates": [
+            "Topic vocabulary brainstorming: list 10 words for a given topic in 60s",
+            "Synonym replacement drill: rewrite sentences replacing basic words",
+            "Collocation gap-fill: match verbs to their natural noun partners",
+            "Paraphrase challenge: describe an object without using its name"
+          ]
+        },
+        {
+          "id": "kc-speak-grammar",
+          "name": "Grammatical Range & Accuracy",
+          "skill": "speaking",
+          "status": "draft",
+          "scoringModel": "subjective",
+          "description": "Using a mix of simple and complex sentence structures with reasonable accuracy. Errors should not impede communication. Higher bands require error-free sentences and flexible use of complex structures.",
+          "dependsOn": [],
+          "difficultyLevel": 3,
+          "commonErrors": [
+            "Subject-verb agreement errors (e.g., 'he go' instead of 'he goes')",
+            "Inconsistent verb tense within a response",
+            "Missing articles (a/an/the) or using wrong article",
+            "Overreliance on simple sentences — no subordination",
+            "Word order errors in complex sentences"
+          ],
+          "exerciseTemplates": [
+            "Tense consistency drill: retell a past event without tense shifts",
+            "Sentence combining: merge 3 simple sentences into 1 complex",
+            "Conditional chain: 'If I won the lottery, I would...' extended 4 steps",
+            "Error correction: listen to own recording, find and fix grammar errors"
+          ]
+        },
+        {
+          "id": "kc-speak-coherence",
+          "name": "Coherent Response Structure",
+          "skill": "speaking",
+          "status": "draft",
+          "scoringModel": "subjective",
+          "description": "Structuring spoken responses with clear organization: introduction, main points with supporting details, and conclusion. Using discourse markers to guide the listener. Staying on topic and developing ideas fully.",
+          "dependsOn": ["kc-speak-fluency"],
+          "difficultyLevel": 3,
+          "commonErrors": [
+            "Wandering off-topic or giving irrelevant details",
+            "Missing structure — no clear beginning, middle, end",
+            "Answer too short — single sentence without development",
+            "Circular answers — restating the same point in different words",
+            "No discourse markers — listener can't follow the logic"
+          ],
+          "exerciseTemplates": [
+            "PEEL paragraph structure drill: Point → Explain → Example → Link",
+            "Part 2 cue card practice: 1 min prep → 2 min structured response",
+            "Discourse marker gap-fill: insert appropriate connectors into a transcript",
+            "Answer expansion: take a 1-sentence answer → expand to 4 sentences"
+          ]
+        }
+      ]
     }
   }
 }

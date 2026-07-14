@@ -50,8 +50,9 @@ SHARED_DIR = PROJECT_ROOT / "shared"
 for d in [IELTS_DIR, IELTS_DIR/"speaking", IELTS_DIR/"listening", IELTS_DIR/"writing", IELTS_DIR/"reading"]:
     d.mkdir(parents=True, exist_ok=True)
 
-# Ensure shared/listening/ exists
-(SHARED_DIR / "listening").mkdir(parents=True, exist_ok=True)
+# Ensure shared skill directories exist
+for skill_dir in ["listening", "speaking"]:
+    (SHARED_DIR / skill_dir).mkdir(parents=True, exist_ok=True)
 
 
 # ── Auto-discover materials ──
@@ -107,22 +108,23 @@ def _build_materials():
 _materials_cache = _build_materials()
 
 
-# ── Auto-discover listening sources ──
+# ── Auto-discover skill sources (listening, speaking, etc.) ──
 
-def _build_listening_sources():
-    """Scan shared/listening/ for available listening JSON files."""
+def _build_skill_sources(skill):
+    """Scan shared/{skill}/ for {skill}_*.json files. Returns metadata list."""
     sources = []
-    listening_dir = SHARED_DIR / "listening"
-    if not listening_dir.exists():
+    skill_dir = SHARED_DIR / skill
+    if not skill_dir.exists():
         return sources
 
-    for entry in sorted(listening_dir.iterdir()):
+    for entry in sorted(skill_dir.iterdir()):
         if entry.name.startswith('.') or entry.suffix != '.json':
             continue
-        # Extract source name from filename: listening_{source}.json → source
+        # Extract source name from filename: {skill}_{source}.json → source
         name = entry.stem  # e.g., "listening_cambridge-1"
-        if name.startswith("listening_"):
-            name = name[len("listening_"):]
+        prefix = f"{skill}_"
+        if name.startswith(prefix):
+            name = name[len(prefix):]
         try:
             with open(entry, "r", encoding="utf-8") as f:
                 data = json.load(f)
@@ -131,7 +133,6 @@ def _build_listening_sources():
                 "file": str(entry.relative_to(PROJECT_ROOT)),
                 "testCount": len(data.get("tests", [])),
                 "generatedAt": data.get("generatedAt", ""),
-                "audioBasePath": data.get("audioBasePath", "")
             })
         except (json.JSONDecodeError, OSError):
             sources.append({
@@ -142,7 +143,35 @@ def _build_listening_sources():
 
     return sources
 
-_listening_sources_cache = _build_listening_sources()
+# Pre-build caches for skills that have content
+_skill_sources_cache = {}
+for _skill in ["listening", "speaking"]:
+    _cache = _build_skill_sources(_skill)
+    if _cache:
+        _skill_sources_cache[_skill] = _cache
+
+
+def _serve_skill_api(handler, skill, source_id=None):
+    """Handle /api/{skill}[/{source}] — generic across listening, speaking, etc.
+    Returns True if the request was handled, False if the handler should continue.
+    """
+    # Security: prevent path traversal
+    if source_id is not None:
+        if ".." in source_id or "/" in source_id or "\\" in source_id:
+            handler.send_error(403, "Invalid source name")
+            return True
+        if not source_id:
+            handler._serve_json({"sources": _skill_sources_cache.get(skill, [])})
+            return True
+        json_path = SHARED_DIR / skill / f"{skill}_{source_id}.json"
+        if json_path.exists() and json_path.is_file():
+            handler._serve_file(json_path, "application/json; charset=utf-8")
+            return True
+        handler.send_error(404, f"{skill.capitalize()} source not found: {source_id}")
+        return True
+    # List sources
+    handler._serve_json({"sources": _skill_sources_cache.get(skill, [])})
+    return True
 
 
 def _find_file_in_textbook(rel_path):
@@ -227,24 +256,17 @@ class BridgeHandler(SimpleHTTPRequestHandler):
             self._serve_json({"status": "refreshed", "totalSources": _materials_cache["totalSources"]})
             return
 
-        # ── /api/listening — list available listening sources ──
-        if path == "api/listening" or path == "api/listening/":
-            self._serve_json({"sources": _listening_sources_cache})
-            return
-
-        # ── /api/listening/<source> — serve listening JSON for a source ──
-        if path.startswith("api/listening/"):
-            source_id = path[len("api/listening/"):].strip()
-            # Security: prevent path traversal
-            if ".." in source_id or "/" in source_id or "\\" in source_id:
-                self.send_error(403, "Invalid source name"); return
-            if not source_id:
-                self._serve_json({"sources": _listening_sources_cache})
+        # ── /api/{skill} — list available sources for a skill ──
+        # ── /api/{skill}/<source> — serve skill JSON for a source ──
+        for _sk in ["listening", "speaking"]:
+            _api_prefix = f"api/{_sk}"
+            if path == _api_prefix or path == _api_prefix + "/":
+                _serve_skill_api(self, _sk)
                 return
-            json_path = SHARED_DIR / "listening" / f"listening_{source_id}.json"
-            if json_path.exists() and json_path.is_file():
-                if self._serve_file(json_path, "application/json; charset=utf-8"): return
-            self.send_error(404, f"Listening source not found: {source_id}"); return
+            if path.startswith(_api_prefix + "/"):
+                _source_id = path[len(_api_prefix + "/"):].strip()
+                _serve_skill_api(self, _sk, _source_id)
+                return
 
         # ── /textbook/<anything> — serve any file from textbook/ ──
         if path.startswith("textbook/"):

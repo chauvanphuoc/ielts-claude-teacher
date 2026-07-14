@@ -39,23 +39,54 @@
   <div id="mode-content">
     <!-- Speaking Panel -->
     <div id="panel-speaking" class="speaking-container">
-      <div id="speaking-empty" class="empty-state">
-        <div class="icon">🎙️</div>
-        <p>Ready to practice speaking. Press record when you're ready.</p>
+      <!-- Task Selector Bar -->
+      <div class="task-selector" id="speaking-selector">
+        <label for="speaking-source">Source</label>
+        <select id="speaking-source" aria-label="Select textbook source">
+          <option value="">-- Loading... --</option>
+        </select>
+        <label for="speaking-test">Test</label>
+        <select id="speaking-test" aria-label="Select test" disabled>
+          <option value="">-- Select a test --</option>
+        </select>
       </div>
+
+      <!-- Part Navigation -->
+      <nav class="part-nav" id="part-nav" role="tablist" aria-label="Speaking parts" style="display:none">
+        <button role="tab" aria-selected="false" data-part="1">Part 1</button>
+        <button role="tab" aria-selected="false" data-part="2">Part 2</button>
+        <button role="tab" aria-selected="false" data-part="3">Part 3</button>
+      </nav>
+
+      <!-- Cue Card Area -->
+      <div class="cue-card" id="cue-card" style="display:none" aria-live="polite"></div>
+
+      <!-- Empty State (no tasks) -->
+      <div id="speaking-empty" class="empty-state" style="display:none">
+        <div class="icon">&#x1F4CB;</div>
+        <p>No speaking tasks available yet.</p>
+        <p style="font-size:14px;margin-top:var(--space-sm)">Return to Claude and say:<br><code style="font-family:var(--font-mono);font-size:13px">/init-textbook-speaking --source cambridge-1</code></p>
+      </div>
+
+      <!-- Recording Area -->
       <div id="speaking-active" style="display:none;text-align:center;width:100%">
-        <div class="prompt-text" id="speaking-prompt">Part 1: Tell me about yourself.</div>
         <button class="record-btn" id="record-btn" aria-label="Start recording" title="Press Space to start/stop"></button>
         <div class="timer" id="speaking-timer">0:00</div>
         <div class="transcript" id="speaking-transcript">
           <em style="color:var(--muted)">Your speech will appear here as you speak...</em>
         </div>
-        <button class="submit-btn" id="speaking-submit" disabled>Save & Ask Claude to Evaluate</button>
+        <button class="submit-btn" id="speaking-submit" disabled>Save &amp; Ask Claude to Evaluate</button>
       </div>
+
+      <!-- Success State -->
       <div id="speaking-success" class="success-state" style="display:none">
-        ✓ Recording saved. Switch to Claude and say "evaluate my speaking."
+        <p style="font-size:18px">&#x2713; Recording saved.</p>
+        <p style="margin-top:var(--space-sm)">Switch to Claude and say:<br><strong>"evaluate my speaking"</strong></p>
+        <div id="speaking-success-detail" style="margin-top:var(--space-md);font-size:13px;color:var(--muted)"></div>
       </div>
-      <div id="speaking-error" class="error-state" style="display:none"></div>
+
+      <!-- Error State -->
+      <div id="speaking-error" class="error-state" style="display:none" role="alert"></div>
     </div>
 
     <!-- Listening Panel -->

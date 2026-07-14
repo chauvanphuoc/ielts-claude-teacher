@@ -14,6 +14,9 @@ let roadmap = null;
 let currentTestData = null;  // loaded JSON test data
 let currentTestSource = 'cambridge-1';
 let currentTestNumber = 1;
+let speakingTaskData = null;   // loaded speaking JSON
+let currentSpeakingPart = 1;   // 1, 2, or 3
+let speakingSources = [];      // available speaking sources from /api/speaking/
 
 /* ── Init ── */
 document.addEventListener('DOMContentLoaded', () => {
@@ -119,6 +122,28 @@ function switchMode(mode) {
   document.getElementById('panel-writing').style.display = mode === 'writing' ? '' : 'none';
   document.getElementById('panel-reading').style.display = mode === 'reading' ? '' : 'none';
   document.getElementById('status-text').textContent = mode.charAt(0).toUpperCase() + mode.slice(1) + ' mode';
+  if (mode === 'speaking' && !speakingTaskData) loadSpeakingSources();
+}
+
+/* ── Shared Save Helper ── */
+async function saveResult(data) {
+  try {
+    const r = await fetch(BRIDGE_URL + '/save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (!r.ok) throw new Error('Save failed: ' + r.status);
+    return { ok: true };
+  } catch(e) {
+    const skill = data.skill || 'unknown';
+    const el = document.getElementById(skill + '-error');
+    if (el) {
+      el.style.display = 'block';
+      el.textContent = 'Failed to save. Is the bridge server running? Check Claude and say "/ielts-check".';
+    }
+    return { ok: false, error: e };
+  }
 }
 
 /* ── Speaking ── */
@@ -130,6 +155,205 @@ function setupSpeaking() {
     else startRecording();
   });
   submit.addEventListener('click', saveSpeaking);
+
+  // Task selector
+  document.getElementById('speaking-source').addEventListener('change', onSourceChange);
+  document.getElementById('speaking-test').addEventListener('change', onTestChange);
+
+  // Part navigation — click + keyboard
+  const partNav = document.getElementById('part-nav');
+  partNav.addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-part]');
+    if (btn) selectSpeakingPart(parseInt(btn.dataset.part));
+  });
+  partNav.addEventListener('keydown', (e) => {
+    const btns = [...partNav.querySelectorAll('button[data-part]')];
+    const idx = btns.indexOf(document.activeElement);
+    if (e.key === 'ArrowRight' && idx < btns.length - 1) { btns[idx + 1].focus(); e.preventDefault(); }
+    if (e.key === 'ArrowLeft' && idx > 0) { btns[idx - 1].focus(); e.preventDefault(); }
+  });
+}
+
+/* ── Speaking: Task Loading ── */
+async function loadSpeakingSources() {
+  const sourceSelect = document.getElementById('speaking-source');
+  sourceSelect.innerHTML = '<option value="">-- Loading... --</option>';
+  sourceSelect.disabled = true;
+
+  try {
+    const r = await fetch(BRIDGE_URL + '/api/speaking/');
+    if (!r.ok) throw new Error('API error: ' + r.status);
+    const data = await r.json();
+    speakingSources = data.sources || [];
+
+    if (speakingSources.length === 0) {
+      showSpeakingEmpty();
+      return;
+    }
+
+    sourceSelect.innerHTML = speakingSources.map(s =>
+      `<option value="${s.id}">${s.id}</option>`
+    ).join('');
+    sourceSelect.disabled = false;
+
+    // Auto-select first source and load it
+    sourceSelect.value = speakingSources[0].id;
+    onSourceChange();
+  } catch (e) {
+    showSpeakingError('Failed to load speaking sources. Is the bridge server running?',
+      () => loadSpeakingSources());
+    sourceSelect.innerHTML = '<option value="">-- Error --</option>';
+    sourceSelect.disabled = true;
+  }
+}
+
+function showSpeakingEmpty() {
+  document.getElementById('speaking-selector').style.display = '';
+  document.getElementById('speaking-source').innerHTML = '<option value="">-- No sources --</option>';
+  document.getElementById('speaking-source').disabled = true;
+  document.getElementById('cue-card').style.display = 'none';
+  document.getElementById('part-nav').style.display = 'none';
+  document.getElementById('speaking-empty').style.display = '';
+  document.getElementById('speaking-active').style.display = 'none';
+  document.getElementById('speaking-success').style.display = 'none';
+}
+
+function showSpeakingError(msg, retryFn) {
+  const card = document.getElementById('cue-card');
+  card.style.display = '';
+  card.className = 'cue-card error-card';
+  card.innerHTML = `
+    <p>&#x26A0; ${msg}</p>
+    ${retryFn ? '<button class="retry-btn">Retry</button>' : ''}
+  `;
+  if (retryFn) card.querySelector('.retry-btn').addEventListener('click', retryFn);
+  document.getElementById('part-nav').style.display = 'none';
+  document.getElementById('speaking-active').style.display = 'block';
+  document.getElementById('speaking-empty').style.display = 'none';
+  document.getElementById('speaking-success').style.display = 'none';
+  document.getElementById('speaking-error').style.display = 'none';
+}
+
+async function onSourceChange() {
+  const sourceId = document.getElementById('speaking-source').value;
+  if (!sourceId) return;
+
+  const testSelect = document.getElementById('speaking-test');
+  testSelect.innerHTML = '<option value="">-- Loading... --</option>';
+  testSelect.disabled = true;
+
+  // Show loading in cue card
+  const card = document.getElementById('cue-card');
+  card.style.display = '';
+  card.className = 'cue-card loading-card';
+  card.innerHTML = 'Loading task...';
+  document.getElementById('part-nav').style.display = 'none';
+  document.getElementById('speaking-empty').style.display = 'none';
+  document.getElementById('speaking-success').style.display = 'none';
+  document.getElementById('speaking-error').style.display = 'none';
+
+  try {
+    const r = await fetch(BRIDGE_URL + '/api/speaking/' + sourceId);
+    if (!r.ok) throw new Error('Source not found: ' + r.status);
+    speakingTaskData = await r.json();
+
+    const tests = speakingTaskData.tests || [];
+    testSelect.innerHTML = tests.map(t =>
+      `<option value="${t.testNumber}">Test ${t.testNumber}</option>`
+    ).join('');
+    testSelect.disabled = false;
+
+    // Auto-select first test
+    testSelect.value = tests[0].testNumber;
+    onTestChange();
+  } catch (e) {
+    showSpeakingError('Failed to load tasks for ' + sourceId + '. Is the bridge server running?',
+      () => onSourceChange());
+    testSelect.innerHTML = '<option value="">-- Error --</option>';
+    testSelect.disabled = true;
+  }
+}
+
+function onTestChange() {
+  const testNum = parseInt(document.getElementById('speaking-test').value);
+  if (!testNum || !speakingTaskData) return;
+
+  const test = speakingTaskData.tests.find(t => t.testNumber === testNum);
+  if (!test) return;
+
+  // Store test reference for rendering
+  currentTestSource = document.getElementById('speaking-source').value;
+  currentTestNumber = testNum;
+
+  // Show part nav and cue card
+  document.getElementById('part-nav').style.display = '';
+  document.getElementById('cue-card').style.display = '';
+  document.getElementById('cue-card').className = 'cue-card';
+  document.getElementById('speaking-empty').style.display = 'none';
+  document.getElementById('speaking-error').style.display = 'none';
+  document.getElementById('speaking-success').style.display = 'none';
+
+  // Auto-select Part 1
+  selectSpeakingPart(1);
+}
+
+function selectSpeakingPart(partNum) {
+  if (!speakingTaskData) return;
+  const test = speakingTaskData.tests.find(t => t.testNumber === currentTestNumber);
+  if (!test) return;
+
+  const part = test.parts.find(p => p.partNumber === partNum);
+  if (!part) return;
+
+  currentSpeakingPart = partNum;
+  renderSpeakingPart(part);
+
+  // Update pill active state
+  const partNav = document.getElementById('part-nav');
+  partNav.querySelectorAll('button[data-part]').forEach(btn => {
+    const isActive = parseInt(btn.dataset.part) === partNum;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+  });
+
+  // Show recording UI if not already visible
+  if (document.getElementById('speaking-active').style.display === 'none') {
+    document.getElementById('speaking-active').style.display = '';
+  }
+}
+
+function renderSpeakingPart(part) {
+  const card = document.getElementById('cue-card');
+  card.className = 'cue-card';
+
+  if (part.partType === 'interview') {
+    card.innerHTML = `
+      <div class="card-title">${part.topic}</div>
+      <div class="card-scenario">${part.instructions}</div>
+      <ol class="card-questions">
+        ${part.questions.map((q, i) => `<li><span class="q-num">${i + 1}.</span>${q}</li>`).join('')}
+      </ol>
+    `;
+  } else if (part.partType === 'long-turn') {
+    const cc = part.cueCard;
+    card.innerHTML = `
+      <div class="card-title">${cc.topic}</div>
+      <div class="card-scenario">You have ${part.preparationTime} second${part.preparationTime !== 1 ? 's' : ''} to prepare and up to ${Math.floor(part.speakingTime / 60)} minute${part.speakingTime > 60 ? 's' : ''} to speak.</div>
+      <div class="card-role">Take one minute to prepare. Make notes if you wish.</div>
+      <div class="card-topics-label">You should say:</div>
+      <ul class="card-topics">
+        ${cc.bullets.map(b => `<li>${b}</li>`).join('')}
+      </ul>
+    `;
+  } else if (part.partType === 'discussion') {
+    card.innerHTML = `
+      <div class="card-title">${part.topic}</div>
+      <div class="card-scenario">Discuss these questions related to the Part 2 topic.</div>
+      <ol class="card-questions">
+        ${part.questions.map((q, i) => `<li><span class="q-num">${i + 1}.</span>${q}</li>`).join('')}
+      </ol>
+    `;
+  }
 }
 
 async function startRecording() {
@@ -168,7 +392,10 @@ async function startRecording() {
     document.getElementById('speaking-empty').style.display = 'none';
     document.getElementById('speaking-active').style.display = '';
     document.getElementById('speaking-success').style.display = 'none';
-    document.getElementById('speaking-submit').disabled = true;
+    // Keep cue card + selector + part nav visible during recording
+    document.getElementById('speaking-selector').style.display = '';
+    document.getElementById('cue-card').style.display = '';
+    document.getElementById('part-nav').style.display = '';
 
     speakingSeconds = 0;
     document.getElementById('speaking-timer').textContent = '0:00';
@@ -213,80 +440,123 @@ async function saveSpeaking() {
     document.getElementById('speaking-error').textContent = 'No speech detected. Please try again.';
     return;
   }
+
+  // Get task context for the current part
+  let taskTitle = '';
+  if (speakingTaskData) {
+    const test = speakingTaskData.tests.find(t => t.testNumber === currentTestNumber);
+    if (test) {
+      const part = test.parts.find(p => p.partNumber === currentSpeakingPart);
+      if (part) {
+        taskTitle = part.partType === 'long-turn' ? (part.cueCard?.topic || '') : (part.topic || '');
+      }
+    }
+  }
+
   const data = {
     skill: 'speaking',
+    source: currentTestSource,
+    testNumber: currentTestNumber,
+    partNumber: currentSpeakingPart,
+    taskTitle: taskTitle,
     transcript: transcript,
     duration: speakingSeconds,
     date: new Date().toISOString(),
     mode: 'practice'
   };
-  try {
-    const r = await fetch(BRIDGE_URL + '/save', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
-    if (r.ok) {
-      document.getElementById('speaking-active').style.display = 'none';
-      document.getElementById('speaking-success').style.display = 'block';
-      document.getElementById('status-text').textContent = 'Speaking saved';
-    } else {
-      throw new Error('Save failed: ' + r.status);
-    }
-  } catch(e) {
-    document.getElementById('speaking-error').style.display = 'block';
-    document.getElementById('speaking-error').textContent =
-      'Failed to save. Is the bridge server running? Check Claude and say "/ielts-check".';
-  }
+
+  const result = await saveResult(data);
+  if (!result.ok) return;
+
+  document.getElementById('speaking-active').style.display = 'none';
+  document.getElementById('speaking-success').style.display = 'block';
+  document.getElementById('status-text').textContent = 'Speaking saved';
+
+  // Context-aware success detail
+  const detail = document.getElementById('speaking-success-detail');
+  const wordCount = transcript.trim().split(/\s+/).length;
+  const mins = Math.floor(speakingSeconds / 60);
+  const secs = speakingSeconds % 60;
+  const durationStr = mins > 0 ? `${mins}:${secs.toString().padStart(2, '0')}` : `${secs}s`;
+  detail.innerHTML = `
+    ${taskTitle ? '<div style="font-weight:600;margin-bottom:4px">' + taskTitle + '</div>' : ''}
+    <div>Duration: ${durationStr} &middot; Words: ~${wordCount}</div>
+  `;
 }
 
 /* ── Listening ── */
 function setupListening() {
-  loadTestList();
+  loadListeningTestList();
   document.getElementById('test-select').addEventListener('change', loadTest);
   document.getElementById('listening-submit').addEventListener('click', saveListening);
 }
 
-function loadTestList() {
+async function loadListeningTestList() {
   const sel = document.getElementById('test-select');
-  const tests = [
-    { name: 'Cambridge IELTS 1 — Test 1', sections: ['Test 1 - Section 1.mp3','Test 1 - Section 2.mp3','Test 1 - Section 3.mp3','Test 1 - Section 4.mp3'] },
-    { name: 'Cambridge IELTS 1 — Test 2', sections: ['Test 2 - Section 1.mp3','Test 2 - Section 2.mp3','Test 2 - Section 3.mp3','Test 2 - Section 4.mp3'] },
-    { name: 'Cambridge IELTS 1 — Test 3', sections: ['Test 3 - Section 1.mp3','Test 3 - Section 2.mp3','Test 3 - Section 3.mp3','Test 3 - Section 4.mp3'] },
-    { name: 'Cambridge IELTS 1 — Test 4', sections: ['Test 4 - Section 1.mp3','Test 4 - Section 2.mp3','Test 4 - Section 3.mp3','Test 4 - Section 4.mp3'] }
-  ];
-  tests.forEach((t, i) => {
-    const opt = document.createElement('option');
-    opt.value = i;
-    opt.textContent = t.name;
-    sel.appendChild(opt);
-  });
+  sel.innerHTML = '<option value="">-- Loading... --</option>';
+  try {
+    const r = await fetch(BRIDGE_URL + '/api/listening/');
+    if (!r.ok) throw new Error('API error');
+    const data = await r.json();
+    const sources = data.sources || [];
+    sel.innerHTML = '<option value="">-- Select a test --</option>';
+    if (sources.length === 0) {
+      sel.innerHTML = '<option value="">-- No tests available --</option>';
+      return;
+    }
+    // Load first source's tests
+    const sourceId = sources[0].id;
+    const r2 = await fetch(BRIDGE_URL + '/api/listening/' + sourceId);
+    if (!r2.ok) throw new Error('Source not found');
+    const testData = await r2.json();
+    (testData.tests || []).forEach((t, i) => {
+      const opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = `Cambridge IELTS 1 — Test ${t.testNumber}`;
+      opt.dataset.source = sourceId;
+      opt.dataset.test = t.testNumber;
+      sel.appendChild(opt);
+    });
+  } catch(e) {
+    sel.innerHTML = '<option value="">-- Error loading tests --</option>';
+  }
 }
 
-function loadTest() {
-  const idx = document.getElementById('test-select').value;
-  if (idx === '') return;
+async function loadTest() {
+  const opt = document.getElementById('test-select').selectedOptions[0];
+  if (!opt || !opt.value) return;
+  const sourceId = opt.dataset.source;
+  const testNum = parseInt(opt.dataset.test);
+
   document.getElementById('listening-empty').style.display = 'none';
   document.getElementById('listening-active').style.display = '';
-  const tests = [
-    ['Test 1 - Section 1.mp3','Test 1 - Section 2.mp3','Test 1 - Section 3.mp3','Test 1 - Section 4.mp3'],
-    ['Test 2 - Section 1.mp3','Test 2 - Section 2.mp3','Test 2 - Section 3.mp3','Test 2 - Section 4.mp3'],
-    ['Test 3 - Section 1.mp3','Test 3 - Section 2.mp3','Test 3 - Section 3.mp3','Test 3 - Section 4.mp3'],
-    ['Test 4 - Section 1.mp3','Test 4 - Section 2.mp3','Test 4 - Section 3.mp3','Test 4 - Section 4.mp3']
-  ];
-  const sections = tests[parseInt(idx)];
-  const audio = document.getElementById('audio-player');
-  audio.src = BRIDGE_URL + '/audio/cambridge-1/' + encodeURIComponent(sections[0]);
-  const panel = document.getElementById('question-panel');
-  panel.innerHTML = '<h3 style="font-family:var(--font-heading);margin-bottom:var(--space-md)">Section 1 — Questions 1-10</h3>';
-  for (let i = 1; i <= 10; i++) {
-    panel.innerHTML += `
-      <div class="question-item">
-        <span class="q-num">Q${i}</span>
-        <input type="text" placeholder="Your answer..." data-q="${i}">
-      </div>`;
+
+  try {
+    const r = await fetch(BRIDGE_URL + '/api/listening/' + sourceId);
+    if (!r.ok) throw new Error('Source not found');
+    const testData = await r.json();
+    const test = testData.tests.find(t => t.testNumber === testNum);
+    if (!test || !test.sections || !test.sections[0]) return;
+
+    const firstSection = test.sections[0];
+    const audio = document.getElementById('audio-player');
+    audio.src = BRIDGE_URL + '/audio/' + sourceId + '/' + encodeURIComponent(firstSection.audioFile);
+
+    const panel = document.getElementById('question-panel');
+    const questions = firstSection.questions || [];
+    panel.innerHTML = `<h3 style="font-family:var(--font-heading);margin-bottom:var(--space-md)">${firstSection.title}</h3>`;
+    questions.forEach(q => {
+      panel.innerHTML += `
+        <div class="question-item">
+          <span class="q-num">Q${q.number}</span>
+          <input type="text" placeholder="Your answer..." data-q="${q.number}">
+        </div>`;
+    });
+    document.getElementById('status-text').textContent = 'Test loaded — press play';
+  } catch(e) {
+    document.getElementById('listening-error').style.display = 'block';
+    document.getElementById('listening-error').textContent = 'Failed to load test. Is the bridge server running?';
   }
-  document.getElementById('status-text').textContent = 'Test loaded — press play';
 }
 
 async function saveListening() {
@@ -299,23 +569,12 @@ async function saveListening() {
     test: document.getElementById('test-select').selectedOptions[0]?.textContent || 'Unknown test',
     date: new Date().toISOString()
   };
-  try {
-    const r = await fetch(BRIDGE_URL + '/save', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
-    if (r.ok) {
-      document.getElementById('listening-active').style.display = 'none';
-      document.getElementById('listening-success').style.display = 'block';
-      document.getElementById('status-text').textContent = 'Answers saved';
-    } else {
-      throw new Error('Save failed');
-    }
-  } catch(e) {
-    document.getElementById('listening-error').style.display = 'block';
-    document.getElementById('listening-error').textContent = 'Failed to save. Is the bridge running?';
-  }
+  const result = await saveResult(data);
+  if (!result.ok) return;
+
+  document.getElementById('listening-active').style.display = 'none';
+  document.getElementById('listening-success').style.display = 'block';
+  document.getElementById('status-text').textContent = 'Answers saved';
 }
 
 /* ── Writing ── */
@@ -336,22 +595,11 @@ async function saveWriting() {
     date: new Date().toISOString(),
     taskType: 'Task 2'
   };
-  try {
-    const r = await fetch(BRIDGE_URL + '/save', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
-    if (r.ok) {
-      document.getElementById('status-text').textContent = 'Essay saved — switch to Claude for evaluation';
-      document.getElementById('writing-empty').style.display = 'none';
-    } else {
-      throw new Error('Save failed');
-    }
-  } catch(e) {
-    document.getElementById('writing-error').style.display = 'block';
-    document.getElementById('writing-error').textContent = 'Failed to save. Is the bridge running?';
-  }
+  const result = await saveResult(data);
+  if (!result.ok) return;
+
+  document.getElementById('status-text').textContent = 'Essay saved — switch to Claude for evaluation';
+  document.getElementById('writing-empty').style.display = 'none';
 }
 
 /* ── Reading ── */
@@ -688,23 +936,12 @@ async function saveReading() {
     date: new Date().toISOString()
   };
 
-  try {
-    const r = await fetch(BRIDGE_URL + '/save', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
-    if (r.ok) {
-      document.getElementById('reading-active').style.display = 'none';
-      document.getElementById('reading-success').style.display = 'block';
-      document.getElementById('status-text').textContent = 'Reading answers saved';
-    } else {
-      throw new Error('Save failed');
-    }
-  } catch(e) {
-    document.getElementById('reading-error').style.display = 'block';
-    document.getElementById('reading-error').textContent = 'Failed to save. Is the bridge running?';
-  }
+  const result = await saveResult(data);
+  if (!result.ok) return;
+
+  document.getElementById('reading-active').style.display = 'none';
+  document.getElementById('reading-success').style.display = 'block';
+  document.getElementById('status-text').textContent = 'Reading answers saved';
 }
 
 /* ── Utility ── */

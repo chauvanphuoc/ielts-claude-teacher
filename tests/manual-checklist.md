@@ -55,6 +55,48 @@ Check off each item after verification.
   - Try to skip all 4 skills, verify Claude requires at least 1
 
 ### Speaking Practice
+
+- [ ] **SP-1: Task auto-load on tab switch**
+  - Open HTML Studio, click Speaking tab
+  - Verify source dropdown auto-populates with "cambridge-1"
+  - Verify test dropdown auto-populates and auto-selects "Test 1"
+  - Verify Part 1 cue card renders with interview questions
+  - Verify Part 2 and Part 3 pills are clickable and load correct content
+
+- [ ] **SP-2: Task selector manual selection**
+  - Change source dropdown (if multiple available)
+  - Verify test dropdown updates
+  - Change test dropdown manually
+  - Verify cue card updates to new test's Part 1
+
+- [ ] **SP-3: Part navigation keyboard**
+  - Click Part 1 pill, press ArrowRight → Part 2 should focus
+  - Press ArrowRight again → Part 3 should focus
+  - Press ArrowLeft → Part 2 should focus
+  - Press Enter/Space on focused pill → cue card updates
+
+- [ ] **SP-4: Empty state — no speaking sources**
+  - Delete shared/speaking/speaking_cambridge-1.json
+  - Reload Speaking tab
+  - Verify empty state shows "No speaking tasks available yet" with CLI command
+  - Restore JSON file
+
+- [ ] **SP-5: Error state — API unavailable**
+  - Stop server.py
+  - Reload Speaking tab
+  - Verify error card shows "Failed to load speaking sources" with retry button
+  - Start server, click retry → verify tasks load
+
+- [ ] **SP-6: Save with task context**
+  - Record speaking for >10 seconds with a task loaded
+  - Click "Save & Ask Claude to Evaluate"
+  - Check .ielts/speaking/latest.json
+  - Verify it contains: source, testNumber, partNumber, taskTitle, transcript, duration
+
+- [ ] **SP-7: Success message shows task context**
+  - After save, verify success state shows task title, duration, word count
+  - Verify CTA text: "Switch to Claude and say: evaluate my speaking"
+
 - [ ] **UF-5: Mic permission denied**
   - Deny mic permission in browser
   - Click record, verify error message with instructions

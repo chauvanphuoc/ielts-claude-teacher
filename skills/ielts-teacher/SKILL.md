@@ -315,6 +315,15 @@ open "http://localhost:8765/lessons/listening-test.html?source=cambridge-1&test=
 
 The listening template loads structured JSON from `/api/listening/{source}`, renders an audio player with the correct MP3 file per section, and handles all 6 listening question types (multiple-choice-image, gap-fill, form-completion, matching-checkboxes, etc.). The student navigates 4 sections, answers questions while listening, and submits. Results are saved to `.ielts/listening/latest.json`.
 
+**Full Cambridge Speaking test — HTML Studio Speaking tab:**
+```bash
+.venv/bin/python3 skills/ielts-teacher/server.py &
+sleep 1
+open http://localhost:8765/ielts-studio.html
+```
+
+The Speaking tab auto-loads tasks from `/api/speaking/{source}`, displays the cue card (scenario, role, topics) with Part 1/2/3 navigation pills. The student reads the cue card, records their response, and submits. Results are saved to `.ielts/speaking/latest.json` with task context (source, testNumber, partNumber, taskTitle, transcript, duration).
+
 ### 4.4 — Wait for Student
 
 Tell the student: "Làm xong thì bảo tôi chấm bài nhé."
@@ -453,6 +462,7 @@ You choose the right tool for each situation. Never ask the student to choose.
 | Student asks a theory question | Answer in chat (don't open a test) |
 | Student wants to do a full Cambridge test | Open **HTML Studio** with the requested test |
 | Student says "luyện nghe" / "listening test" | Open **Listening Template** at `/lessons/listening-test.html?source=...&test=...` |
+| Student says "luyện nói" / "speaking practice" | Open **HTML Studio Speaking tab** at `http://localhost:8765/ielts-studio.html`. Tasks auto-load from `/api/speaking/`. |
 | Student says "đổi sang tiếng [X]" | Update `settings.json` language field |
 
 ---
@@ -461,22 +471,88 @@ You choose the right tool for each situation. Never ask the student to choose.
 
 These workflows from v1 are preserved for specific skill interactions.
 
-### Speaking Evaluation
+### Speaking Evaluation (Full Cambridge Test)
 
-1. Student records in HTML Studio Speaking tab → audio saved via File Bridge
-2. Student says "evaluate my speaking"
-3. Call Azure Speech pronunciation assessment:
-   ```bash
-   .venv/bin/python3 skills/ielts-teacher/pronounce_cli.py --audio .ielts/speaking/latest.webm --json
-   ```
-4. Parse JSON: `transcript`, `accuracy`, `fluency`, `prosody`, `completeness`, `pronScore`, `perWord`
-5. Map Azure scores to IELTS Speaking band criteria
-6. Evaluate content from transcript (Lexical Resource, Grammatical Range, Coherence)
-7. Combine pronunciation (Azure) + content (Claude) → overall Speaking band
-8. Update `skills.speaking` in student-profile.json
-9. Present detailed feedback with per-word pronunciation issues + vocabulary/grammar upgrades
+The Speaking tab auto-loads tasks from `/api/speaking/{source}`, displays cue cards with Part 1/2/3 navigation, records audio + transcript via browser SpeechRecognition, and saves results to `.ielts/speaking/latest.json` with task context.
 
-**If Azure Speech fails:** Tell student, fall back to transcript-only content evaluation from browser SpeechRecognition.
+**Step 1 — Read results:**
+```bash
+cat .ielts/speaking/latest.json 2>/dev/null || echo "NO_RESULTS"
+```
+
+If `NO_RESULTS` or no File Bridge server running: ask the student to tell you what they said directly in chat.
+
+**Step 2 — Read the save payload:**
+The `latest.json` contains: `skill`, `source`, `testNumber`, `partNumber`, `taskTitle`, `transcript`, `duration`, `date`, `mode`.
+
+**Step 3 — Call Azure Speech pronunciation assessment:**
+```bash
+.venv/bin/python3 skills/ielts-teacher/pronounce_cli.py --audio .ielts/speaking/latest.webm --json
+```
+
+Parse JSON output: `transcript`, `accuracy`, `fluency`, `prosody`, `completeness`, `pronScore`, `intonation`, `perWord`.
+
+**If Azure Speech fails:** Fall back to transcript-only content evaluation from browser SpeechRecognition. Note: "Pronunciation not assessed — Azure Speech unavailable."
+
+**Step 4 — Map Azure scores to IELTS Pronunciation band:**
+Use the mapping table from `skills/ielts-speaking/SKILL.md`:
+- PronScore ≥ 0.90 → Band 8.0-9.0
+- PronScore 0.80-0.89 → Band 7.0-7.5
+- PronScore 0.65-0.79 → Band 6.0-6.5
+- PronScore 0.50-0.64 → Band 5.0-5.5
+- PronScore 0.35-0.49 → Band 4.0-4.5
+- PronScore < 0.35 → Band < 4.0
+
+**Step 5 — Evaluate content from transcript (Claude analysis):**
+- Lexical Resource: vocabulary range, collocations, paraphrasing (maps to `kc-speak-lexical`)
+- Grammatical Range & Accuracy: sentence variety, error patterns (maps to `kc-speak-grammar`)
+- Fluency & Coherence: filler words, hesitation, logical flow (maps to `kc-speak-fluency` and `kc-speak-coherence`)
+
+**Step 6 — Compute overall Speaking band:**
+Average of 4 dimensions: Fluency & Coherence (weight 1.0), Lexical Resource (weight 1.0), Grammatical Range (weight 1.0), Pronunciation (weight 1.0).
+
+**Step 7 — Map to speaking KCs and update profile:**
+Speaking uses **subjective scoring** (Claude evaluation), not auto-scored right/wrong. The errorRate formula differs from Reading/Listening:
+
+```
+session_errorRate = clamp((targetBand - scoredBand) / targetBand, 0, 1)
+```
+
+If `targetBand <= 0`: skip KC update (no target set yet).
+
+Each speaking KC gets its errorRate from the corresponding dimension:
+- `kc-speak-fluency` → Fluency & Coherence band
+- `kc-speak-pronunciation` → Pronunciation band  
+- `kc-speak-lexical` → Lexical Resource band
+- `kc-speak-grammar` → Grammatical Range & Accuracy band
+- `kc-speak-coherence` → Fluency & Coherence band (coherence component)
+
+Update `kcMastery` in `skills.speaking` using the cumulative errorRate formula:
+```
+new_errorRate = (kc.attempts * kc.errorRate + session_errorRate) / (kc.attempts + 1)
+new_attempts = kc.attempts + 1
+new_level = derive from new_errorRate (≥0.40 = weak, 0.15-0.39 = ok, <0.15 = mastered)
+```
+
+Update `skills.speaking.currentBand` based on overall speaking band.
+Append to `testHistory` in student-profile.json.
+
+**Step 8 — Present detailed feedback:**
+- Per-dimension band scores with specific evidence from the transcript
+- Filler word count and examples
+- Vocabulary highlights (good usage) and upgrade suggestions
+- Grammar error patterns
+- Per-word pronunciation issues from Azure (if available)
+
+**Step 9 — Update profile and add coach note:**
+```bash
+.venv/bin/python3 shared/ielts_cli.py memory add \
+  --content "Speaking ${testTitle}: Overall Band ${overallBand}. Dimensions: FC=${fc}, LR=${lr}, GR=${gra}, P=${pron}. Top KCs to address: ${weakestKCs}." \
+  --category observation \
+  --skill speaking \
+  --priority high
+```
+
 
 ### Writing Evaluation
 

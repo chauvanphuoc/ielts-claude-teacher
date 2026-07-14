@@ -151,7 +151,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: var(--space-2xl);
+  padding: var(--space-lg);
+  max-width: 780px;
+  margin: 0 auto;
   transition: background 0.3s;
 }
 
@@ -159,6 +161,233 @@ body {
   background: var(--bg-dark);
   color: var(--text-inverse);
   min-height: 100%;
+  max-width: none;
+  padding: var(--space-2xl);
+}
+
+/* ── Task Selector Bar ── */
+.task-selector {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+  width: 100%;
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+}
+
+.task-selector label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-right: 2px;
+}
+
+.task-selector select {
+  padding: 6px var(--space-md);
+  font-family: var(--font-body);
+  font-size: 14px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg-light);
+  color: var(--text-primary);
+  cursor: pointer;
+  min-width: 140px;
+}
+
+.task-selector select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.task-selector select:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── Part Navigation Pills ── */
+.part-nav {
+  display: flex;
+  gap: var(--space-xs);
+  width: 100%;
+  padding: var(--space-md) 0;
+}
+
+.part-nav button {
+  padding: 6px var(--space-md);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: transparent;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--muted);
+  transition: all 0.2s;
+}
+
+.part-nav button:hover {
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
+.part-nav button.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.part-nav button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ── Cue Card ── */
+.cue-card {
+  width: 100%;
+  max-width: 680px;
+  background: var(--surface);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: var(--space-xl);
+  margin: var(--space-md) 0 var(--space-lg) 0;
+}
+
+.cue-card .card-title {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.cue-card .card-scenario {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.cue-card .card-role {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--border);
+}
+
+.cue-card .card-topics-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  margin-bottom: var(--space-sm);
+}
+
+.cue-card .card-topics {
+  list-style: none;
+  padding: 0;
+}
+
+.cue-card .card-topics li {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-primary);
+  padding-left: var(--space-md);
+  position: relative;
+}
+
+.cue-card .card-topics li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.cue-card .card-questions {
+  list-style: none;
+  padding: 0;
+}
+
+.cue-card .card-questions li {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-primary);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.cue-card .card-questions li:last-child {
+  border-bottom: none;
+}
+
+.cue-card .card-questions li .q-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  margin-right: var(--space-sm);
+}
+
+/* Recording dark-mode override for cue card */
+.speaking-container.recording .cue-card {
+  background: #2a2a2c;
+  border-left-color: var(--accent);
+}
+
+.speaking-container.recording .cue-card .card-title,
+.speaking-container.recording .cue-card .card-scenario,
+.speaking-container.recording .cue-card .card-topics li,
+.speaking-container.recording .cue-card .card-questions li {
+  color: var(--text-inverse);
+}
+
+.speaking-container.recording .cue-card .card-role {
+  color: #999;
+  border-bottom-color: #444;
+}
+
+.speaking-container.recording .cue-card .card-questions li {
+  border-bottom-color: #444;
+}
+
+/* Cue card state variants */
+.cue-card.loading-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.cue-card.error-card {
+  border-left-color: var(--accent-amber);
+  color: var(--accent);
+}
+
+.cue-card.error-card .retry-btn {
+  margin-top: var(--space-md);
+  padding: 6px var(--space-lg);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--accent);
+  font-family: var(--font-heading);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.cue-card.error-card .retry-btn:hover {
+  background: var(--accent);
+  color: white;
 }
 
 .record-btn {
