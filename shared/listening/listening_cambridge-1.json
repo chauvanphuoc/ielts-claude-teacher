@@ -19,12 +19,24 @@
               "number": 1, "type": "multiple-choice-image",
               "text": "What does her briefcase look like?",
               "image": "_page_17_Picture_12.jpeg",
+              "options": [
+                {"label": "A", "image": "_page_17_Picture_12.jpeg"},
+                {"label": "B", "image": "_page_17_Picture_13.jpeg"},
+                {"label": "C", "image": "_page_17_Picture_14.jpeg"},
+                {"label": "D", "image": "_page_17_Picture_15.jpeg"}
+              ],
               "correctAnswer": "A"
             },
             {
               "number": 2, "type": "multiple-choice-image",
               "text": "Which picture shows the distinguishing features?",
               "image": "_page_17_Picture_14.jpeg",
+              "options": [
+                {"label": "A", "image": "_page_17_Picture_14.jpeg"},
+                {"label": "B", "image": "_page_17_Picture_15.jpeg"},
+                {"label": "C", "image": "_page_18_Picture_1.jpeg"},
+                {"label": "D", "image": "_page_18_Picture_2.jpeg"}
+              ],
               "correctAnswer": "C"
             },
             {
@@ -42,12 +54,24 @@
               "number": 4, "type": "multiple-choice-image",
               "text": "Where was she standing when she lost her briefcase?",
               "image": "_page_18_Picture_2.jpeg",
+              "options": [
+                {"label": "A", "image": "_page_18_Picture_2.jpeg"},
+                {"label": "B", "image": "_page_18_Picture_3.jpeg"},
+                {"label": "C", "image": "_page_18_Picture_4.jpeg"},
+                {"label": "D", "image": "_page_18_Picture_5.jpeg"}
+              ],
               "correctAnswer": "D"
             },
             {
               "number": 5, "type": "multiple-choice-image",
               "text": "What time was it when she lost her briefcase?",
               "image": "_page_18_Picture_4.jpeg",
+              "options": [
+                {"label": "A", "image": "_page_18_Picture_4.jpeg"},
+                {"label": "B", "image": "_page_18_Picture_5.jpeg"},
+                {"label": "C", "image": "_page_18_Picture_6.jpeg"},
+                {"label": "D", "image": "_page_18_Picture_7.jpeg"}
+              ],
               "correctAnswer": "C"
             },
             { "number": 6, "type": "gap-fill", "text": "Name: Mary _______", "correctAnswer": "Prescott", "acceptableAnswers": ["Prescott"], "note": "must be correct spelling with capital P" },

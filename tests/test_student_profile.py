@@ -383,6 +383,64 @@ class TestEdgeCases:
             "Y/N/NG should be higher difficulty than T/F/NG"
         )
 
+    # ── Listening KC tests ──
+
+    def test_listening_has_seven_kcs(self):
+        """Listening skill should have exactly 7 KCs."""
+        graph = load_json(KC_GRAPH_PATH)
+        kcs = graph["skills"]["listening"]["kcs"]
+        assert len(kcs) == 7, f"Expected 7 listening KCs, got {len(kcs)}"
+
+    def test_listening_kc_ids_follow_convention(self):
+        """Listening KC IDs must follow kc-listen-{slug} pattern."""
+        graph = load_json(KC_GRAPH_PATH)
+        for kc in graph["skills"]["listening"]["kcs"]:
+            assert kc["id"].startswith("kc-listen-"), (
+                f"{kc['id']} does not follow kc-listen-{{slug}} convention"
+            )
+
+    def test_listening_kc_dependencies_are_intra_skill(self):
+        """Listening KCs must only depend on other listening KCs (no cross-skill dependencies)."""
+        graph = load_json(KC_GRAPH_PATH)
+        listening_ids = {kc["id"] for kc in graph["skills"]["listening"]["kcs"]}
+        for kc in graph["skills"]["listening"]["kcs"]:
+            for dep in kc.get("dependsOn", []):
+                assert dep in listening_ids, (
+                    f"{kc['id']} has cross-skill dependency: {dep}"
+                )
+
+    def test_listening_foundational_kcs_are_lower_difficulty(self):
+        """Foundational listening KCs (spelling, numbers, distractor) should be L1-L3."""
+        graph = load_json(KC_GRAPH_PATH)
+        kcs = {kc["id"]: kc for kc in graph["skills"]["listening"]["kcs"]}
+        for kc_id in ["kc-listen-spelling", "kc-listen-numbers", "kc-listen-distractor"]:
+            assert kcs[kc_id]["difficultyLevel"] <= 3, (
+                f"{kc_id} is foundational, should be L1-L3, got L{kcs[kc_id]['difficultyLevel']}"
+            )
+
+    def test_listening_gapfill_depends_on_spelling_and_numbers(self):
+        """kc-listen-gapfill should depend on both spelling and numbers KCs."""
+        graph = load_json(KC_GRAPH_PATH)
+        kcs = {kc["id"]: kc for kc in graph["skills"]["listening"]["kcs"]}
+        deps = kcs["kc-listen-gapfill"]["dependsOn"]
+        assert "kc-listen-spelling" in deps, "gapfill should depend on spelling"
+        assert "kc-listen-numbers" in deps, "gapfill should depend on numbers"
+
+    def test_listening_all_have_common_errors(self):
+        """Every listening KC must have at least 3 common errors."""
+        graph = load_json(KC_GRAPH_PATH)
+        for kc in graph["skills"]["listening"]["kcs"]:
+            errors = kc.get("commonErrors", [])
+            assert len(errors) >= 3, (
+                f"{kc['id']} has only {len(errors)} commonErrors, need at least 3"
+            )
+
+    def test_listening_total_kcs_is_23(self):
+        """Combined total: 9 Reading + 7 Writing + 7 Listening = 23 KCs."""
+        graph = load_json(KC_GRAPH_PATH)
+        total = sum(len(skill["kcs"]) for skill in graph["skills"].values())
+        assert total == 23, f"Expected 23 total KCs, got {total}"
+
 
 # ══════════════════════════════════════════════════════════════════════
 # Run standalone (no pytest needed)

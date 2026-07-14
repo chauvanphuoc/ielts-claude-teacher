@@ -160,7 +160,89 @@ Check off each item after verification.
 - [ ] Bridge server starts without errors
 - [ ] /ielts-check returns all PASS
 
+## Listening Test Paths (10 paths)
+
+### Template Loading
+- [ ] **L-M1: Listening template loads with valid source+test params**
+  1. Start server: `.venv/bin/python3 skills/ielts-teacher/server.py`
+  2. Open `http://localhost:8765/lessons/listening-test.html?source=cambridge-1&test=1`
+  3. Verify: test title shows "Cambridge IELTS 1 — Test 1"
+  4. Verify: 4 section steps visible in nav
+  5. Verify: Section 1 questions render (10 questions)
+
+- [ ] **L-M2: Listening template shows error state for invalid source**
+  1. Open `http://localhost:8765/lessons/listening-test.html?source=nonexistent&test=1`
+  2. Verify: error state visible with message about missing source
+  3. Verify: loading spinner disappears
+
+- [ ] **L-M3: Listening template shows error state for missing test**
+  1. Open `http://localhost:8765/lessons/listening-test.html?source=cambridge-1&test=99`
+  2. Verify: error state visible with "Test not found" message
+  3. Verify: available test numbers shown
+
+### Audio Player
+- [ ] **L-M4: Audio player loads MP3 for section**
+  1. Open test 1 section 1
+  2. Verify: audio player shows loading spinner initially
+  3. Verify: play button appears after audio loads
+  4. Verify: time display shows current/total
+
+- [ ] **L-M5: Audio player keyboard controls**
+  1. Click play button
+  2. Press Space → verify audio pauses
+  3. Press Space again → verify audio resumes
+  4. Press ArrowRight → verify seek forward 5s
+  5. Press ArrowLeft → verify seek backward 5s
+  6. Press M → verify mute toggles
+
+- [ ] **L-M6: Audio player error state**
+  1. (Simulate by renaming an MP3 file temporarily)
+  2. Verify: audio error message visible
+  3. Verify: play button becomes warning icon
+
+### Section Navigation
+- [ ] **L-M7: Section nav updates progress**
+  1. Answer all questions in section 1
+  2. Click "Next Section"
+  3. Verify: section 1 step shows "done" (green check)
+  4. Verify: section 2 step shows "active" (blue)
+  5. Verify: audio switches to section 2 MP3
+  6. Verify: new questions render for section 2
+
+- [ ] **L-M8: Section nav validation blocks navigation**
+  1. Leave some questions unanswered in section 1
+  2. Click "Next Section"
+  3. Verify: warning appears about unanswered questions
+  4. Verify: unanswered questions highlighted with warning border
+  5. Verify: stays on section 1
+
+### Submit & Results
+- [ ] **L-M9: Submit shows results with section scores**
+  1. Navigate to section 4, answer all questions
+  2. Click "Submit Answers"
+  3. Verify: results display with per-question correct/incorrect
+  4. Verify: transcript panel appears below results
+  5. Verify: warning banner appears (server not running fallback)
+  6. Start server.py, click Retry → verify results saved
+
+- [ ] **L-M10: Transcript toggle works**
+  1. After submitting, click "Show Transcript"
+  2. Verify: transcript content expands
+  3. Verify: Q-markers (Q1, Q2) are highlighted in amber
+  4. Click again → verify: transcript collapses
+
+### JSON Integrity
+- [ ] **L-A1: Listening JSON valid**
+  1. Run: `.venv/bin/python3 tests/test_listening_json.py`
+  2. Verify: all 15 tests pass
+
+### KC Graph
+- [ ] **L-A2: Listening KCs in graph**
+  1. Run: `.venv/bin/python3 tests/test_student_profile.py`
+  2. Verify: 7 listening KC tests pass
+  3. Verify: total 44 tests pass
+
 ---
 
 Run before each ship. Check all boxes or document failures.
-Last run: __________  |  Passed: __/28  |  By: __________
+Last run: __________  |  Passed: __/40  |  By: __________
