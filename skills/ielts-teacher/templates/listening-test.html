@@ -246,9 +246,9 @@
     // Initialize audio
     initAudio();
 
-    // Render first section
+    // Render first section directly (don't use showSection — it has early-return guard)
     currentSection = 0;
-    window.IELTS.showSection(0);
+    window.IELTS.renderQuestions();
     updateHeaderForSection(0);
 
     // Show transcript after submit
