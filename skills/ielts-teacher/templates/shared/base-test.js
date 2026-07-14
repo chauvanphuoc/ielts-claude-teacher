@@ -325,9 +325,30 @@
       row.forEach(function(cell) {
         var td = document.createElement('td');
         if (cell.input) {
-          td.innerHTML = '<input type="text" class="form-input" name="q' + q.number + '-' + cell.key +
-            '" data-question="' + q.number + '" data-key="' + cell.key +
-            '" aria-label="' + escapeHtml(cell.label || cell.key) + '" autocomplete="off" spellcheck="false">';
+          // Support prefix text before input (e.g., "£___" or "___ Road")
+          if (cell.prefix) {
+            var prefixSpan = document.createElement('span');
+            prefixSpan.textContent = cell.prefix;
+            prefixSpan.style.cssText = 'margin-right:4px;';
+            td.appendChild(prefixSpan);
+          }
+          var input = document.createElement('input');
+          input.type = 'text';
+          input.className = 'form-input';
+          input.name = 'q' + q.number + '-' + cell.key;
+          input.setAttribute('data-question', q.number);
+          input.setAttribute('data-key', cell.key);
+          input.setAttribute('aria-label', cell.label || cell.key);
+          input.setAttribute('autocomplete', 'off');
+          input.setAttribute('spellcheck', 'false');
+          td.appendChild(input);
+          // Support suffix text after input (e.g., "Road" after address number)
+          if (cell.suffix) {
+            var suffixSpan = document.createElement('span');
+            suffixSpan.textContent = ' ' + cell.suffix;
+            suffixSpan.style.cssText = 'margin-left:4px;';
+            td.appendChild(suffixSpan);
+          }
         } else {
           td.textContent = cell.text || '';
         }

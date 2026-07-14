@@ -339,6 +339,12 @@ def validate_listening_json(json_path, audio_dir):
             for q in questions:
                 if q["type"] == "matching-checkboxes":
                     adj_q += q.get("selectCount", len(q.get("correctAnswers", [])))
+                elif q["type"] == "form-completion":
+                    # Count each input cell as a separate question
+                    for row in q.get("rows", []):
+                        for cell in row:
+                            if cell.get("input"):
+                                adj_q += 1
                 else:
                     adj_q += 1
 

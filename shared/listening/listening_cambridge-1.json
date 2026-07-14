@@ -74,11 +74,22 @@
               ],
               "correctAnswer": "C"
             },
-            { "number": 6, "type": "gap-fill", "text": "Name: Mary _______", "correctAnswer": "Prescott", "acceptableAnswers": ["Prescott"], "note": "must be correct spelling with capital P" },
-            { "number": 7, "type": "gap-fill", "text": "Address: Flat 2, (7) _______ Road, Canterbury", "correctAnswer": "41" },
-            { "number": 8, "type": "gap-fill", "text": "Address (continued): Flat 2, 41 (8) _______ Road, Canterbury", "correctAnswer": "Fountain", "acceptableAnswers": ["Fountain"], "note": "must have capital F" },
-            { "number": 9, "type": "gap-fill", "text": "Telephone: (9) _______", "correctAnswer": "752239" },
-            { "number": 10, "type": "gap-fill", "text": "Estimated value of lost item: (10) £_______", "correctAnswer": "£65", "acceptableAnswers": ["£65", "65"] }
+            {
+              "number": 6,
+              "type": "form-completion",
+              "text": "Complete the form. Write NO MORE THAN THREE WORDS for each answer.",
+              "headers": ["PERSONAL DETAILS FORM", ""],
+              "rows": [
+                [{"text": "Name:"}, {"text": "Mary", "input": true, "key": "surname", "label": "Surname", "correctAnswer": "Prescott", "acceptableAnswers": ["Prescott"], "note": "must be correct spelling with capital P"}],
+                [{"text": "Address:"}, {"text": "Flat 2"}],
+                [{"text": ""}, {"input": true, "key": "address_number", "label": "Address Number", "correctAnswer": "41", "suffix": "Road"}],
+                [{"text": ""}, {"input": true, "key": "address_street", "label": "Street Name", "correctAnswer": "Fountain", "acceptableAnswers": ["Fountain"], "note": "must have capital F"}],
+                [{"text": ""}, {"text": "Canterbury"}],
+                [{"text": "Telephone:"}, {"input": true, "key": "telephone", "label": "Telephone", "correctAnswer": "752239"}],
+                [{"text": "Estimated value of lost item:"}, {"input": true, "key": "value", "label": "Estimated value", "prefix": "£", "correctAnswer": "£65", "acceptableAnswers": ["£65", "65"]}]
+              ],
+              "correctAnswer": "Prescott"
+            }
           ],
           "transcript": "",
           "answerKey": [
