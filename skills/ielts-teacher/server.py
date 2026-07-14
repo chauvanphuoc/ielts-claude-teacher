@@ -267,6 +267,7 @@ class BridgeHandler(SimpleHTTPRequestHandler):
 
         # ── /lessons/<filename> — serve lesson plan HTML files from .ielts/lesson-plans/ ──
         # ── /lessons/shared/<file> — serve shared template assets (CSS, JS) ──
+        # ── /lessons/<filename> — also checks templates/ directory for built-in templates ──
         if path.startswith("lessons/"):
             filename = path[len("lessons/"):]
             # Shared template assets (base-test.css, base-test.js)
@@ -275,12 +276,18 @@ class BridgeHandler(SimpleHTTPRequestHandler):
                 if shared_file.exists() and shared_file.is_file():
                     if self._serve_file(shared_file): return
                 self.send_error(404, f"Shared asset not found: {filename}"); return
-            # Lesson plan HTML files (no subdirectories allowed)
-            if ".." in filename or "/" in filename:
+            # Built-in templates (listening-test.html, etc.) from templates/ directory
+            if ".." not in filename and "/" not in filename:
+                # Check templates/ directory first
+                template_file = STUDIO_DIR / "templates" / filename
+                if template_file.exists() and template_file.is_file():
+                    if self._serve_file(template_file, "text/html; charset=utf-8"): return
+                # Fall back to lesson-plans/
+                lesson_file = IELTS_DIR / "lesson-plans" / filename
+                if lesson_file.exists() and lesson_file.is_file():
+                    if self._serve_file(lesson_file, "text/html; charset=utf-8"): return
+            else:
                 self.send_error(403, "Invalid path"); return
-            lesson_file = IELTS_DIR / "lesson-plans" / filename
-            if lesson_file.exists() and lesson_file.is_file():
-                if self._serve_file(lesson_file, "text/html; charset=utf-8"): return
             self.send_error(404, f"Lesson not found: {filename}"); return
 
         # ── /roadmap.json — from .ielts/ ──

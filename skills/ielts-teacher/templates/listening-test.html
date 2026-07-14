@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listening Test — IELTS Claude Teacher</title>
+<!--
+  listening-test.html — IELTS Listening practice template.
+  Served via server.py at /lessons/listening-test.html?source=cambridge-1&test=1
+
+  Loads structured JSON from /api/listening/{source}, renders audio player
+  + section navigation + 6 question renderers. Posts results to File Bridge.
+
+  Uses shared base-test.css + base-test.js for design system and app logic.
+
+  Design: typography-driven, desktop-first, semantic colors, keyboard accessible.
+  Audio: HTML5 <audio>, keyboard controls (Space=play/pause, Arrows=seek).
+  A11y: aria-current='step', aria-live='polite' for results, aria-label on all inputs.
+-->
+<link rel="stylesheet" href="/lessons/shared/base-test.css">
+</head>
+<body>
+
+<div class="container-wide" role="main" aria-label="IELTS Listening Practice Test">
+
+  <!-- ═══════════════ HEADER ═══════════════ -->
+  <header class="test-header">
+    <div class="test-badge" aria-label="Skill and section">
+      Listening · <span id="header-section-info">Loading...</span>
+    </div>
+    <h1 class="test-title" id="test-title">Cambridge IELTS — Listening</h1>
+    <p class="test-instructions" id="test-instructions"></p>
+  </header>
+
+  <!-- ═══════════════ LOADING STATE ═══════════════ -->
+  <div class="loading-state visible" id="loading-state" role="status" aria-live="polite">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Loading test data...</div>
+  </div>
+
+  <!-- ═══════════════ ERROR STATE ═══════════════ -->
+  <div class="empty-state" id="error-state" role="alert">
+    <div class="empty-state-icon" aria-hidden="true">&#9888;&#65039;</div>
+    <div class="empty-state-title" id="error-title">Unable to load test</div>
+    <div class="empty-state-desc" id="error-desc">Check that the server is running and the source exists.</div>
+  </div>
+
+  <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+  <div id="main-content" style="display:none">
+
+    <!-- AUDIO PLAYER -->
+    <div class="audio-player" id="audio-player" role="region" aria-label="Audio player">
+      <div class="audio-spinner" id="audio-spinner"></div>
+      <button class="audio-btn" id="audio-btn" aria-label="Play audio" title="Play/Pause (Space)">
+        <span id="audio-btn-icon">&#9654;</span>
+      </button>
+      <div class="audio-progress" id="audio-progress"
+           role="slider" aria-label="Audio progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+           tabindex="0" title="Seek (← → arrows)">
+        <div class="audio-progress-fill" id="audio-progress-fill"></div>
+      </div>
+      <span class="audio-time" id="audio-time">0:00 / 0:00</span>
+      <button class="audio-volume" id="audio-volume-btn" aria-label="Mute audio" title="Mute/Unmute">&#128264;</button>
+      <div class="audio-error-msg" id="audio-error-msg" role="alert"></div>
+    </div>
+
+    <!-- SECTION NAVIGATION -->
+    <div class="section-nav" id="section-nav" role="navigation" aria-label="Test sections"></div>
+    <div class="section-label" id="section-label">Section 1 of 4</div>
+
+    <!-- QUESTIONS -->
+    <form id="test-form" novalidate aria-label="Listening test questions">
+      <div class="question-group" id="questions-container">
+        <!-- Rendered by base-test.js -->
+      </div>
+
+      <!-- Section navigation buttons -->
+      <div class="section-nav-buttons">
+        <button type="button" class="btn-nav btn-nav-prev" id="btn-prev-section" onclick="prevSection()">&#8592; Previous Section</button>
+        <button type="button" class="btn-nav btn-nav-next" id="btn-next-section" onclick="nextSection()">Next Section &#8594;</button>
+      </div>
+
+      <!-- Submit (shown on last section) -->
+      <div class="submit-area">
+        <button type="submit" class="btn-submit" id="btn-submit" style="display:none">Submit Answers</button>
+        <span class="submit-hint" id="submit-hint"></span>
+      </div>
+
+      <!-- Validation warning -->
+      <div class="validation-warning" id="validation-warning" role="alert">
+        Please answer all questions before continuing. <span id="unanswered-count"></span> question(s) remaining.
+      </div>
+    </form>
+
+    <!-- RESULTS -->
+    <section class="results" id="results" aria-live="polite" aria-label="Test results"></section>
+
+    <!-- TRANSCRIPT PANEL -->
+    <div class="transcript-panel" id="transcript-panel">
+      <button class="transcript-toggle" id="transcript-toggle-btn"
+              onclick="toggleTranscript()" aria-expanded="false" aria-controls="transcript-content">
+        <span>Show Transcript</span>
+      </button>
+      <div class="transcript-content" id="transcript-content"></div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════ SERVER WARNING ═══════════════ -->
+  <div class="warning-banner" id="warning-banner" role="alert">
+    <span>&#9888; Server not running. Results saved locally.</span>
+    <button class="btn-retry" onclick="retrySave()">Start server.py and click Retry</button>
+  </div>
+
+</div>
+
+<!-- ═══════════════ SHARED APP LOGIC ═══════════════ -->
+<script src="/lessons/shared/base-test.js"></script>
+
+<!-- ═══════════════ LISTENING-SPECIFIC LOGIC ═══════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  // ── Parse URL params ──
+  var params = new URLSearchParams(window.location.search);
+  var sourceId = params.get('source') || 'cambridge-1';
+  var testNumber = parseInt(params.get('test') || '1', 10);
+
+  // ── State ──
+  var testData = null;
+  var allSections = [];
+  var currentSection = 0;
+  var totalSections = 0;
+  var audio = null;
+  var audioContext = null;
+  var isPlaying = false;
+  var isMuted = false;
+  var audioLoaded = false;
+  var bridgeUrl = 'http://localhost:8765';
+
+  // ── DOM refs ──
+  var $ = function(id) { return document.getElementById(id); };
+  var loadingState = $('loading-state');
+  var errorState = $('error-state');
+  var mainContent = $('main-content');
+  var audioPlayer = $('audio-player');
+  var audioBtn = $('audio-btn');
+  var audioBtnIcon = $('audio-btn-icon');
+  var audioSpinner = $('audio-spinner');
+  var audioProgress = $('audio-progress');
+  var audioProgressFill = $('audio-progress-fill');
+  var audioTime = $('audio-time');
+  var audioVolumeBtn = $('audio-volume-btn');
+  var audioErrorMsg = $('audio-error-msg');
+  var sectionNav = $('section-nav');
+  var sectionLabel = $('section-label');
+  var testTitle = $('test-title');
+  var testInstructions = $('test-instructions');
+  var headerSectionInfo = $('header-section-info');
+  var transcriptPanel = $('transcript-panel');
+  var transcriptContent = $('transcript-content');
+
+  // ── Load test data ──
+  function loadTestData() {
+    var url = bridgeUrl + '/api/listening/' + sourceId;
+    fetch(url)
+      .then(function(resp) {
+        if (!resp.ok) throw new Error('HTTP ' + resp.status + ': ' + resp.statusText);
+        return resp.json();
+      })
+      .then(function(data) {
+        testData = data;
+        initTest();
+      })
+      .catch(function(err) {
+        console.error('Failed to load test data:', err);
+        showError('Unable to load test data',
+          'Could not load listening test from "' + sourceId + '". ' +
+          'Make sure the server is running (python3 server.py) and the source has been initialized ' +
+          'with /init-textbook-listening --source ' + sourceId + '. ' +
+          'Error: ' + err.message);
+      });
+  }
+
+  function showError(title, desc) {
+    if (loadingState) loadingState.classList.remove('visible');
+    if (mainContent) mainContent.style.display = 'none';
+    if (errorState) {
+      errorState.classList.add('visible');
+      var et = document.getElementById('error-title');
+      var ed = document.getElementById('error-desc');
+      if (et) et.textContent = title;
+      if (ed) ed.textContent = desc;
+    }
+  }
+
+  // ── Initialize test ──
+  function initTest() {
+    // Find the requested test
+    var test = null;
+    (testData.tests || []).forEach(function(t) {
+      if (t.testNumber === testNumber) test = t;
+    });
+
+    if (!test) {
+      showError('Test not found',
+        'Test ' + testNumber + ' does not exist in source "' + sourceId + '". ' +
+        'Available tests: ' + (testData.tests || []).map(function(t) { return t.testNumber; }).join(', '));
+      return;
+    }
+
+    allSections = test.sections || [];
+    totalSections = allSections.length;
+
+    if (totalSections === 0) {
+      showError('No sections found', 'Test ' + testNumber + ' has no sections.');
+      return;
+    }
+
+    // Update header
+    testTitle.textContent = 'Cambridge IELTS ' + sourceId.replace('cambridge-', '') + ' — Test ' + testNumber;
+
+    // Build section nav
+    buildSectionNav();
+
+    // Configure base-test.js
+    window.__TEST_CONFIG__ = {
+      questions: [], // not used directly — sections provide questions
+      kcTags: [],
+      skill: 'listening',
+      testTitle: testTitle.textContent,
+      bridgeUrl: bridgeUrl,
+      sections: allSections.map(function(sec, idx) {
+        return {
+          title: sec.title || ('Section ' + (idx + 1)),
+          questions: sec.questions || []
+        };
+      })
+    };
+
+    // Show content, hide loading
+    if (loadingState) loadingState.classList.remove('visible');
+    if (mainContent) mainContent.style.display = 'block';
+
+    // Initialize audio
+    initAudio();
+
+    // Render first section
+    currentSection = 0;
+    window.IELTS.showSection(0);
+    updateHeaderForSection(0);
+
+    // Show transcript after submit
+    window.showTranscript = function() {
+      if (transcriptPanel) transcriptPanel.classList.add('visible');
+    };
+
+    // Override onSectionChange for audio switching
+    window.onSectionChange = function(n) {
+      updateHeaderForSection(n);
+      switchAudio(n);
+    };
+  }
+
+  // ── Section navigation UI ──
+  function buildSectionNav() {
+    if (!sectionNav) return;
+    sectionNav.innerHTML = '';
+
+    allSections.forEach(function(sec, idx) {
+      var step = document.createElement('div');
+      step.className = 'section-step';
+      step.id = 'section-step-' + idx;
+      step.textContent = (idx + 1);
+      step.title = sec.title || ('Section ' + (idx + 1));
+      step.setAttribute('role', 'button');
+      step.setAttribute('aria-label', 'Go to ' + (sec.title || ('Section ' + (idx + 1))));
+      step.setAttribute('tabindex', '0');
+
+      step.addEventListener('click', function() {
+        if (idx !== currentSection) {
+          window.IELTS.showSection(idx);
+        }
+      });
+      step.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if (idx !== currentSection) {
+            window.IELTS.showSection(idx);
+          }
+        }
+      });
+
+      sectionNav.appendChild(step);
+
+      // Connector between steps
+      if (idx < totalSections - 1) {
+        var connector = document.createElement('div');
+        connector.className = 'section-connector';
+        connector.id = 'section-connector-' + idx;
+        sectionNav.appendChild(connector);
+      }
+    });
+
+    updateSectionNavUI(0);
+  }
+
+  function updateSectionNavUI(n) {
+    for (var i = 0; i < totalSections; i++) {
+      var step = document.getElementById('section-step-' + i);
+      if (!step) continue;
+      step.classList.remove('active', 'done');
+      if (i < n) step.classList.add('done');
+      else if (i === n) {
+        step.classList.add('active');
+        step.setAttribute('aria-current', 'step');
+      } else {
+        step.removeAttribute('aria-current');
+      }
+
+      var connector = document.getElementById('section-connector-' + i);
+      if (connector) {
+        connector.classList.toggle('done', i < n);
+      }
+    }
+    if (sectionLabel) {
+      sectionLabel.textContent = 'Section ' + (n + 1) + ' of ' + totalSections;
+    }
+  }
+
+  function updateHeaderForSection(n) {
+    if (n < 0 || n >= totalSections) return;
+    var sec = allSections[n];
+    if (headerSectionInfo) {
+      headerSectionInfo.textContent = 'Section ' + (n + 1) + ' of ' + totalSections;
+    }
+    if (testInstructions) {
+      testInstructions.textContent = sec.instructions || '';
+    }
+    currentSection = n;
+    updateSectionNavUI(n);
+
+    // Update section buttons and submit
+    var btnPrev = $('btn-prev-section');
+    var btnNext = $('btn-next-section');
+    var btnSubmit = $('btn-submit');
+
+    if (btnPrev) btnPrev.style.display = n > 0 ? 'inline-block' : 'none';
+    if (btnNext) btnNext.style.display = n < totalSections - 1 ? 'inline-block' : 'none';
+    if (btnSubmit) btnSubmit.style.display = n === totalSections - 1 ? 'inline-block' : 'none';
+  }
+
+  // ═══════════════ AUDIO PLAYER ═══════════════
+
+  function initAudio() {
+    audio = new Audio();
+    audio.preload = 'auto';
+
+    audio.addEventListener('loadstart', function() {
+      audioLoaded = false;
+      if (audioPlayer) audioPlayer.classList.add('loading');
+      if (audioSpinner) audioSpinner.style.display = 'block';
+      if (audioBtn) audioBtn.style.display = 'none';
+    });
+
+    audio.addEventListener('loadeddata', function() {
+      audioLoaded = true;
+      if (audioPlayer) audioPlayer.classList.remove('loading', 'error');
+      if (audioSpinner) audioSpinner.style.display = 'none';
+      if (audioBtn) audioBtn.style.display = 'flex';
+      updateTimeDisplay();
+    });
+
+    audio.addEventListener('error', function() {
+      audioLoaded = false;
+      if (audioPlayer) {
+        audioPlayer.classList.add('error');
+        audioPlayer.classList.remove('loading');
+      }
+      if (audioSpinner) audioSpinner.style.display = 'none';
+      if (audioBtn) audioBtn.style.display = 'flex';
+      if (audioErrorMsg) {
+        audioErrorMsg.textContent = 'Audio file not found or cannot be played. Check that the MP3 file exists.';
+      }
+      if (audioBtnIcon) audioBtnIcon.innerHTML = '&#9888;';
+    });
+
+    audio.addEventListener('timeupdate', function() {
+      updateProgress();
+      updateTimeDisplay();
+    });
+
+    audio.addEventListener('play', function() {
+      isPlaying = true;
+      if (audioBtnIcon) audioBtnIcon.innerHTML = '&#9646;&#9646;';
+      if (audioBtn) audioBtn.classList.add('playing');
+    });
+
+    audio.addEventListener('pause', function() {
+      isPlaying = false;
+      if (audioBtnIcon) audioBtnIcon.innerHTML = '&#9654;';
+      if (audioBtn) audioBtn.classList.remove('playing');
+    });
+
+    audio.addEventListener('ended', function() {
+      isPlaying = false;
+      if (audioBtnIcon) audioBtnIcon.innerHTML = '&#9654;';
+      if (audioBtn) audioBtn.classList.remove('playing');
+    });
+
+    audio.addEventListener('volumechange', function() {
+      isMuted = audio.muted || audio.volume === 0;
+      if (audioVolumeBtn) {
+        audioVolumeBtn.innerHTML = isMuted ? '&#128263;' : '&#128264;';
+      }
+    });
+
+    // Load first section audio
+    switchAudio(0);
+  }
+
+  function switchAudio(n) {
+    if (!audio || n < 0 || n >= totalSections) return;
+    var sec = allSections[n];
+    var audioFile = sec.audioFile;
+    if (!audioFile) {
+      console.warn('No audio file for section', n + 1);
+      return;
+    }
+
+    var audioBasePath = testData.audioBasePath || ('textbook/' + sourceId);
+    var audioUrl = bridgeUrl + '/' + audioBasePath + '/' + audioFile;
+
+    if (audio.src !== audioUrl) {
+      audio.src = audioUrl;
+      audio.load();
+      if (audioPlayer) {
+        audioPlayer.classList.remove('error');
+        audioPlayer.classList.add('loading');
+      }
+      if (audioSpinner) audioSpinner.style.display = 'block';
+      if (audioBtn) audioBtn.style.display = 'none';
+      if (audioErrorMsg) audioErrorMsg.textContent = '';
+    }
+  }
+
+  function togglePlay() {
+    if (!audio || !audioLoaded) return;
+    if (audio.error) return;
+    if (isPlaying) {
+      audio.pause();
+    } else {
+      audio.play().catch(function(err) {
+        console.warn('Play failed:', err.message);
+      });
+    }
+  }
+
+  function toggleMute() {
+    if (!audio) return;
+    audio.muted = !audio.muted;
+  }
+
+  function seekRelative(seconds) {
+    if (!audio || !audioLoaded) return;
+    audio.currentTime = Math.max(0, Math.min(audio.duration || 0, audio.currentTime + seconds));
+  }
+
+  function updateProgress() {
+    if (!audio || !audio.duration) return;
+    var pct = (audio.currentTime / audio.duration) * 100;
+    if (audioProgressFill) audioProgressFill.style.width = pct + '%';
+    if (audioProgress) {
+      audioProgress.setAttribute('aria-valuenow', Math.round(pct));
+    }
+  }
+
+  function updateTimeDisplay() {
+    if (!audioTime) return;
+    var cur = audio && audio.currentTime ? formatTime(audio.currentTime) : '0:00';
+    var dur = audio && audio.duration && isFinite(audio.duration) ? formatTime(audio.duration) : '0:00';
+    audioTime.textContent = cur + ' / ' + dur;
+  }
+
+  function formatTime(seconds) {
+    var m = Math.floor(seconds / 60);
+    var s = Math.floor(seconds % 60);
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  // ── Audio controls event handlers ──
+  if (audioBtn) {
+    audioBtn.addEventListener('click', togglePlay);
+  }
+
+  if (audioVolumeBtn) {
+    audioVolumeBtn.addEventListener('click', toggleMute);
+  }
+
+  if (audioProgress) {
+    audioProgress.addEventListener('click', function(e) {
+      if (!audio || !audio.duration) return;
+      var rect = audioProgress.getBoundingClientRect();
+      var pct = (e.clientX - rect.left) / rect.width;
+      audio.currentTime = pct * audio.duration;
+    });
+  }
+
+  // ── Global keyboard controls ──
+  document.addEventListener('keydown', function(e) {
+    // Only handle if not typing in an input
+    var tag = document.activeElement ? document.activeElement.tagName : '';
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') {
+      // Allow arrow keys in inputs for navigation, but Space still controls audio
+      if (e.key === ' ' && tag === 'INPUT') return; // let space work in text inputs
+      return;
+    }
+
+    switch (e.key) {
+      case ' ':
+        e.preventDefault();
+        togglePlay();
+        break;
+      case 'ArrowLeft':
+        e.preventDefault();
+        seekRelative(-5);
+        break;
+      case 'ArrowRight':
+        e.preventDefault();
+        seekRelative(5);
+        break;
+      case 'm':
+      case 'M':
+        if (!e.ctrlKey && !e.metaKey) {
+          e.preventDefault();
+          toggleMute();
+        }
+        break;
+    }
+  });
+
+  // ── Transcript toggle ──
+  window.toggleTranscript = function() {
+    if (!transcriptPanel) return;
+
+    // Load transcript content for current section on first open
+    if (!transcriptPanel.classList.contains('open') && allSections[currentSection]) {
+      var transcript = allSections[currentSection].transcript || '';
+      if (transcript && transcriptContent) {
+        // Highlight Q-markers
+        var highlighted = transcript.replace(/Q(\d+)/g, '<mark class="transcript-answer-marker">Q$1</mark>');
+        transcriptContent.innerHTML = highlighted;
+      } else if (transcriptContent) {
+        transcriptContent.innerHTML = '<em>No transcript available for this section.</em>';
+      }
+    }
+
+    transcriptPanel.classList.toggle('open');
+    var toggleBtn = $('transcript-toggle-btn');
+    if (toggleBtn) {
+      toggleBtn.setAttribute('aria-expanded', transcriptPanel.classList.contains('open') ? 'true' : 'false');
+    }
+  };
+
+  // ── Override save results to include source/test metadata ──
+  var originalSaveResults = window.IELTS.saveResults;
+  window.IELTS.saveResults = function(scoring) {
+    // Extend payload with listening-specific metadata
+    var payload = {
+      skill: 'listening',
+      kcTags: [],
+      testTitle: testTitle.textContent,
+      source: sourceId,
+      testNumber: testNumber,
+      date: new Date().toISOString(),
+      totalQuestions: scoring.total,
+      correctCount: scoring.correct,
+      score: scoring.total > 0 ? Math.round((scoring.correct / scoring.total) * 100) : 0,
+      sectionScores: {},
+      results: scoring.results
+    };
+
+    // Per-section scores
+    if (allSections) {
+      allSections.forEach(function(sec, idx) {
+        var secQuestions = sec.questions || [];
+        var secNums = secQuestions.map(function(q) { return q.number; });
+        var secResults = scoring.results.filter(function(r) {
+          return secNums.indexOf(r.number) !== -1;
+        });
+        var secCorrect = secResults.filter(function(r) { return r.correct; }).length;
+        payload.sectionScores['section' + (idx + 1)] = { correct: secCorrect, total: secResults.length };
+      });
+    }
+
+    fetch(bridgeUrl + '/save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(resp) {
+      if (!resp.ok) throw new Error('Server returned ' + resp.status);
+      return resp.json();
+    })
+    .then(function() {
+      console.log('Listening results saved');
+      localStorage.removeItem('pendingResults_listening');
+      var wb = $('warning-banner');
+      if (wb) wb.classList.remove('visible');
+    })
+    .catch(function(err) {
+      console.warn('Save failed, storing in localStorage:', err.message);
+      localStorage.setItem('pendingResults_listening', JSON.stringify(payload));
+      var wb = $('warning-banner');
+      if (wb) wb.classList.add('visible');
+    });
+  };
+
+  // ── Intercept section change to update UI ──
+  var originalShowSection = window.IELTS.showSection;
+  window.IELTS.showSection = function(n) {
+    if (n === currentSection) return;
+    // Save current section answers?
+    if (n < 0 || n >= totalSections) return;
+    currentSection = n;
+    if (typeof window.__TEST_CONFIG__ !== 'undefined') {
+      window.IELTS.renderQuestions();
+    }
+    updateHeaderForSection(n);
+    switchAudio(n);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // ── Check for pending results ──
+  var pending = localStorage.getItem('pendingResults_listening');
+  if (pending) {
+    var wb = $('warning-banner');
+    if (wb) wb.classList.add('visible');
+  }
+
+  // ── Start ──
+  loadTestData();
+
+})();
+</script>
+
+</body>
+</html>
