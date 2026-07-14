@@ -18,6 +18,7 @@ Usage:
   .venv/bin/python3 shared/ielts_cli.py lesson-library add --id ... --title ... --skill ... --file ...
   .venv/bin/python3 shared/ielts_cli.py lesson-library mark-used --id ...
   .venv/bin/python3 shared/ielts_cli.py migrate-lesson-library
+  .venv/bin/python3 shared/ielts_cli.py reset-profile --yes
 """
 
 import argparse
@@ -171,6 +172,74 @@ def _scan_lesson_html(filepath: Path) -> dict | None:
 
 
 # ── Commands ───────────────────────────────────────────────────────
+
+def _build_fresh_profile(kc_graph: dict | None, target_band: float = 0, exam_date: str | None = None) -> dict:
+    """Build a fresh student-profile.json v2.0.0 from a KC graph.
+
+    Used by both cmd_migrate_profile (full migration path) and
+    cmd_reset_profile. Returns a complete profile dict with all KCs
+    at default state (weak, 0 attempts).
+    """
+    learner = {
+        "targetBand": target_band,
+        "examDate": exam_date,
+        "activeSkills": ["listening", "reading", "writing", "speaking"],
+        "startedAt": _now(),
+        "lastSessionAt": _now(),
+        "sessionsCompleted": 0,
+        "diagnosticCompleted": False
+    }
+
+    skills = {}
+    for skill_name in ["listening", "reading", "writing", "speaking"]:
+        skills[skill_name] = {
+            "currentBand": 0,
+            "bandHistory": [],
+            "practiceCount": 0,
+            "lastPracticeDate": None,
+            "kcMastery": {}
+        }
+
+    # Populate kcMastery from KC graph
+    if kc_graph:
+        for skill_name in ["listening", "reading", "writing", "speaking"]:
+            skill_kcs = kc_graph.get("skills", {}).get(skill_name, {}).get("kcs", [])
+            for kc in skill_kcs:
+                skills[skill_name]["kcMastery"][kc["id"]] = {
+                    "level": "weak",
+                    "errorRate": 0.0,
+                    "attempts": 0,
+                    "lastTested": None,
+                    "nextReviewDate": None
+                }
+
+    profile = {
+        "version": "2.0.0",
+        "learner": learner,
+        "skills": skills,
+        "vocabulary": {
+            "misspelledWords": [],
+            "weakTopics": [],
+            "lastVocabReview": None
+        },
+        "grammar": {
+            "weakPoints": []
+        },
+        "testHistory": [],
+        "crossSkillPatterns": [],
+        "coachNotes": [
+            {
+                "date": _now(),
+                "category": "system",
+                "skill": "general",
+                "content": "Fresh profile created via reset.",
+                "priority": "low"
+            }
+        ]
+    }
+
+    return profile
+
 
 def cmd_init():
     """Initialize .ielts/ directory structure."""
@@ -521,6 +590,139 @@ def cmd_validate():
     return 1 if errors else 0
 
 
+def cmd_reset_profile(args):
+    """Reset student-profile.json to factory-fresh state.
+
+    Backs up current profile (if exists), then writes a fresh v2.0.0
+    profile with all KCs at default state. Cleans up legacy auxiliary
+    files and transient test results. Does NOT touch lesson-library.json
+    or lesson-plans/ — the teaching library survives resets.
+
+    Requires --yes flag to confirm (one-way door — data cannot be
+    recovered except from backup).
+    """
+    if not getattr(args, 'yes', False):
+        print(json.dumps({
+            "status": "blocked",
+            "message": "Reset requires --yes flag. This is a one-way operation. "
+                       "Your current profile will be backed up to .ielts/backup/."
+        }, ensure_ascii=False))
+        return 1
+
+    kc_graph = _load_json(KC_GRAPH_FILE)
+    if not kc_graph:
+        print(json.dumps({
+            "status": "error",
+            "message": f"{KC_GRAPH_FILE} not found. Cannot build fresh profile without KC graph."
+        }, ensure_ascii=False))
+        return 1
+
+    # ── Backup current profile ──
+    backup_path = None
+    if PROFILE_FILE.exists():
+        backup_path = _backup_file(PROFILE_FILE)
+        old_profile = _load_json(PROFILE_FILE)
+        old_target = (old_profile or {}).get("learner", {}).get("targetBand", 0)
+        old_exam = (old_profile or {}).get("learner", {}).get("examDate")
+    else:
+        old_target = 0
+        old_exam = None
+
+    # Preserve target band and exam date from args or old profile
+    target_band = getattr(args, 'target_band', None)
+    if target_band is None:
+        target_band = old_target
+    exam_date = getattr(args, 'exam_date', None)
+    if exam_date is None:
+        exam_date = old_exam
+
+    # ── Build and save fresh profile ──
+    profile = _build_fresh_profile(kc_graph, target_band, exam_date)
+
+    # Add reset note to coach notes
+    profile["coachNotes"].insert(0, {
+        "date": _now(),
+        "category": "system",
+        "skill": "general",
+        "content": f"Profile reset. Backup: {backup_path.name if backup_path else 'none'}",
+        "priority": "high"
+    })
+
+    _save_json(PROFILE_FILE, profile)
+
+    # ── Cleanup legacy files ──
+    legacy_files = [
+        IELTS_DIR / "roadmap.json",
+        IELTS_DIR / "config.json",
+        IELTS_DIR / "progress.json",
+        IELTS_DIR / "memories.json",
+        IELTS_DIR / "errors.json",
+        IELTS_DIR / "vocab.json",
+        IELTS_DIR / "synonyms.json",
+    ]
+    cleaned_legacy = []
+    for fp in legacy_files:
+        if fp.exists():
+            try:
+                fp.unlink()
+                cleaned_legacy.append(fp.name)
+            except OSError:
+                pass
+
+    # ── Clear transient latest.json files ──
+    transient_skills = ["listening", "reading", "writing", "speaking"]
+    cleaned_transient = []
+    for skill in transient_skills:
+        skill_dir = IELTS_DIR / skill
+        if not skill_dir.exists():
+            continue
+        # Clear latest.json
+        latest = skill_dir / "latest.json"
+        if latest.exists():
+            try:
+                latest.unlink()
+                cleaned_transient.append(f"{skill}/latest.json")
+            except OSError:
+                pass
+        # Clear latest.webm (speaking)
+        latest_webm = skill_dir / "latest.webm"
+        if latest_webm.exists():
+            try:
+                latest_webm.unlink()
+                cleaned_transient.append(f"{skill}/latest.webm")
+            except OSError:
+                pass
+        # Clear archive directory
+        archive_dir = skill_dir / "archive"
+        if archive_dir.exists():
+            try:
+                for af in archive_dir.iterdir():
+                    if af.is_file():
+                        af.unlink()
+                cleaned_transient.append(f"{skill}/archive/*")
+            except OSError:
+                pass
+
+    # ── Report ──
+    total_kcs = sum(len(profile["skills"][s]["kcMastery"]) for s in profile["skills"])
+    result = {
+        "status": "ok",
+        "message": "Profile reset complete. Diagnostic will run on next session.",
+        "backup": str(backup_path) if backup_path else None,
+        "profile": str(PROFILE_FILE),
+        "summary": {
+            "targetBand": target_band,
+            "diagnosticCompleted": False,
+            "totalKCs": total_kcs,
+            "lessonLibraryPreserved": LESSON_LIBRARY_FILE.exists(),
+            "cleanedLegacy": cleaned_legacy,
+            "cleanedTransient": cleaned_transient
+        }
+    }
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    return 0
+
+
 def cmd_backup():
     """Create a zip backup of .ielts/."""
     output = PROJECT_ROOT / f"ielts-backup-{datetime.now().strftime('%Y%m%d-%H%M%S')}.zip"
@@ -832,6 +1034,12 @@ def main():
     p_ll_mark = p_ll_sub.add_parser("mark-used", help="Increment timesUsed for a lesson")
     p_ll_mark.add_argument("--id", required=True, help="Lesson ID")
 
+    # reset-profile
+    p_reset = sub.add_parser("reset-profile", help="Factory reset student-profile.json to initial state")
+    p_reset.add_argument("--yes", action="store_true", help="Confirm reset (required — one-way operation)")
+    p_reset.add_argument("--target-band", type=float, help="Target band for new profile (default: preserve from old)")
+    p_reset.add_argument("--exam-date", help="Exam date for new profile (default: preserve from old)")
+
     # migrate-lesson-library (one-time)
     sub.add_parser("migrate-lesson-library", help="Migrate lessonLibrary from student-profile.json to standalone file")
 
@@ -871,6 +1079,8 @@ def main():
         else:
             print("Usage: ielts_cli.py lesson-library [list|sync|add|mark-used]")
             return 1
+    elif args.command == "reset-profile":
+        return cmd_reset_profile(args)
     elif args.command == "migrate-lesson-library":
         return cmd_migrate_lesson_library()
     else:
