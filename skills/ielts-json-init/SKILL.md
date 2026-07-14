@@ -182,11 +182,41 @@ Find transcripts section (after answer keys, under `## Transcripts` or section h
 
 ### Step 6: Validation (mandatory)
 
-1. Answer key count = question count per section (report mismatch)
-2. All audio files exist (report missing)
-3. Image references resolve (report missing, flag with `"missing": true`)
-4. Spot-check 3 random answers against original markdown
-5. Cyrillic normalization (same as Reading)
+Run the validation script after generating JSON:
+
+```bash
+.venv/bin/python3 shared/listening/extract_listening.py \
+  --source textbook/{source}/textbook/Cambridge_IELTS_*.md \
+  --audio-dir textbook/{source} \
+  --output shared/listening/listening_{source}.json
+```
+
+The validation checks:
+1. **Answer key count:** per section, question count (adjusted for grouped types like matching-checkboxes) must match answer key entries. Report mismatches as warnings.
+2. **Audio file existence:** every `audioFile` reference must resolve to an existing MP3 file. Missing audio = **ERROR** — block JSON generation.
+3. **Image references:** every image in `multiple-choice-image` options must exist. Missing images = **warning** — flag with `"missing": true` in JSON, continue generation.
+4. **Ambiguous answer format:** answers containing `//` should use `acceptableAnswers` array instead. Report as warning.
+5. **Cyrillic characters:** detect Cyrillic look-alikes (В, С, А, Е, М) in answer keys. Report as warning — normalize to Latin.
+6. **Spot-check:** re-read 3 random answers from original markdown, compare with extracted JSON. Any mismatch = **ERROR**.
+7. **JSON schema integrity:** validate top-level fields, section fields, question required fields.
+
+**Error severity:**
+- **ERROR:** blocks JSON generation. Examples: audio file missing, JSON parse failure, spot-check mismatch.
+- **WARNING:** does not block. Examples: image not found, ambiguous answer format, answer key count mismatch.
+
+**Validation output format:**
+```
+[validate] ⚠️  3 warning(s):
+  ⚠️  Test 1 Section 1: Q1 image not found: _page_17_Picture_13.jpeg
+  ⚠️  Q14: Answer contains '//' — should use acceptableAnswers array
+  ⚠️  Q23: Cyrillic character 'В' found — should be 'B'
+[validate] ✅ Validation passed with 3 warning(s)
+
+[summary] Source: cambridge-1
+[summary]   Test 1: 4 sections, 39 questions, 41 answer keys, 4/4 audio files
+```
+
+**If validation fails with errors:** report the specific errors, do NOT write JSON. Tell the user: "Validation found N errors. Fix the extraction and re-run."
 
 ### Step 7: Write JSON
 

@@ -297,12 +297,156 @@ def build_listening_json(source_name, audio_dir, tests_questions, answer_keys_by
     return output
 
 
+def validate_listening_json(json_path, audio_dir):
+    """Validate an existing listening JSON file.
+
+    Checks:
+      1. JSON structure integrity
+      2. Answer key count = question count per section
+      3. Audio file existence
+      4. Image references
+      5. Ambiguous answer key format
+      6. Cyrillic characters in answers
+
+    Returns: (warnings, errors) — two lists of strings.
+    """
+    warnings = []
+    errors = []
+
+    if not json_path.exists():
+        errors.append(f"JSON file not found: {json_path}")
+        return warnings, errors
+
+    try:
+        with open(json_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except json.JSONDecodeError as e:
+        errors.append(f"Invalid JSON: {e}")
+        return warnings, errors
+
+    audio_base = Path(audio_dir)
+    cyrillic_map = {'В': 'B', 'С': 'C', 'А': 'A', 'Е': 'E', 'М': 'M'}
+
+    for test in data.get("tests", []):
+        tn = test["testNumber"]
+        for sec in test.get("sections", []):
+            sn = sec["sectionNumber"]
+            questions = sec.get("questions", [])
+            answer_keys = sec.get("answerKey", [])
+
+            # Check answer key count
+            adj_q = 0
+            for q in questions:
+                if q["type"] == "matching-checkboxes":
+                    adj_q += q.get("selectCount", len(q.get("correctAnswers", [])))
+                else:
+                    adj_q += 1
+
+            if adj_q != len(answer_keys) and len(answer_keys) > 0:
+                warnings.append(
+                    f"Test {tn} Section {sn}: {adj_q} questions (adj) vs {len(answer_keys)} answer keys"
+                )
+
+            # Check audio file
+            audio_file = sec.get("audioFile")
+            if audio_file:
+                audio_path = audio_base / audio_file
+                if not audio_path.exists():
+                    errors.append(
+                        f"Test {tn} Section {sn}: Audio file missing: {audio_file}"
+                    )
+            else:
+                warnings.append(
+                    f"Test {tn} Section {sn}: No audioFile specified"
+                )
+
+            # Check questions
+            for q in questions:
+                qn = q["number"]
+
+                # Check for ambiguous answer format
+                answer = q.get("correctAnswer", "")
+                if "//" in answer:
+                    warnings.append(
+                        f"Q{qn}: Answer contains '//' — should use acceptableAnswers array: {answer}"
+                    )
+
+                # Check for Cyrillic characters
+                for cyr, lat in cyrillic_map.items():
+                    if cyr in answer:
+                        warnings.append(
+                            f"Q{qn}: Cyrillic character '{cyr}' found in answer — should be '{lat}'"
+                        )
+
+                # Check answer key has entry
+                if q["type"] == "matching-checkboxes":
+                    correct_count = len(q.get("correctAnswers", []))
+                    key_count = sum(1 for a in answer_keys if a["questionNumber"] >= qn and a["questionNumber"] < qn + correct_count)
+                    if key_count != correct_count:
+                        warnings.append(
+                            f"Q{qn}: matching-checkboxes expects {correct_count} correct answers, "
+                            f"found {key_count} answer key entries"
+                        )
+                else:
+                    key_match = [a for a in answer_keys if a["questionNumber"] == qn]
+                    if not key_match:
+                        warnings.append(f"Q{qn}: No answer key entry found")
+
+            # Check image references in questions
+            for q in questions:
+                if q["type"] == "multiple-choice-image":
+                    for opt in q.get("options", []):
+                        img = opt.get("image", "")
+                        if img:
+                            # Image path is relative to textbook/{source}/textbook/
+                            img_path = audio_base / "textbook" / img
+                            if not img_path.exists():
+                                warnings.append(
+                                    f"Q{q['number']}: Image not found: {img}"
+                                )
+
+    return warnings, errors
+
+
 def main():
     parser = argparse.ArgumentParser(description="Extract listening test data from textbook markdown")
-    parser.add_argument("--source", required=True, help="Path to textbook markdown file")
+    parser.add_argument("--source", help="Path to textbook markdown file")
     parser.add_argument("--audio-dir", required=True, help="Path to audio directory")
-    parser.add_argument("--output", required=True, help="Output JSON file path")
+    parser.add_argument("--output", help="Output JSON file path")
+    parser.add_argument("--validate-only", action="store_true",
+                        help="Only validate an existing JSON file, don't extract")
     args = parser.parse_args()
+
+    # ── Validate-only mode ──
+    if args.validate_only:
+        if not args.output:
+            print("[validate] ERROR: --output is required for --validate-only")
+            sys.exit(1)
+        output_path = Path(args.output)
+        warnings, errors = validate_listening_json(output_path, args.audio_dir)
+
+        if warnings:
+            print(f"[validate] ⚠️  {len(warnings)} warning(s):")
+            for w in warnings:
+                print(f"  ⚠️  {w}")
+
+        if errors:
+            print(f"[validate] ❌ {len(errors)} error(s):")
+            for e in errors:
+                print(f"  ❌ {e}")
+
+        if errors:
+            print(f"\n[validate] VALIDATION FAILED — {len(errors)} errors, {len(warnings)} warnings")
+            sys.exit(1)
+        elif warnings:
+            print(f"\n[validate] ✅ Validation passed with {len(warnings)} warning(s)")
+        else:
+            print(f"[validate] ✅ All checks passed — no issues found")
+        return
+
+    if not args.source or not args.output:
+        print("[extract] ERROR: --source and --output are required for extraction")
+        sys.exit(1)
 
     with open(args.source, "r", encoding="utf-8") as f:
         content = f.read()
@@ -365,6 +509,39 @@ def main():
         for t in range(1, 5)
     )
     print(f"[extract] Wrote {output_path} ({output_path.stat().st_size} bytes, {total_questions} total questions)")
+
+    # ── Validate the generated JSON ──
+    print(f"\n[validate] Running validation checks...")
+    warnings, errors = validate_listening_json(output_path, args.audio_dir)
+
+    if warnings:
+        print(f"[validate] ⚠️  {len(warnings)} warning(s):")
+        for w in warnings:
+            print(f"  ⚠️  {w}")
+
+    if errors:
+        print(f"[validate] ❌ {len(errors)} error(s):")
+        for e in errors:
+            print(f"  ❌ {e}")
+        print(f"\n[validate] VALIDATION FAILED — {len(errors)} errors found")
+        sys.exit(1)
+
+    if not warnings and not errors:
+        print(f"[validate] ✅ All checks passed — no issues found")
+    else:
+        print(f"[validate] ✅ Validation passed with {len(warnings)} warning(s)")
+
+    # ── Summary ──
+    print(f"\n[summary] Source: {source_name}")
+    print(f"[summary] Tests: {len(output['tests'])}")
+    for t in output['tests']:
+        tn = t['testNumber']
+        sec_count = len(t['sections'])
+        q_count = sum(len(s.get('questions', [])) for s in t['sections'])
+        a_count = sum(len(s.get('answerKey', [])) for s in t['sections'])
+        audio_ok = sum(1 for s in t['sections'] if s.get('audioFile'))
+        print(f"[summary]   Test {tn}: {sec_count} sections, {q_count} questions, "
+              f"{a_count} answer keys, {audio_ok}/{sec_count} audio files")
 
 
 if __name__ == "__main__":
