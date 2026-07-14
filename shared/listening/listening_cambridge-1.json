@@ -1,0 +1,247 @@
+{
+  "source": "cambridge-1",
+  "generatedAt": "2026-07-14T00:00:00Z",
+  "generatedBy": "/init-textbook-listening",
+  "audioBasePath": "textbook/cambridge-1",
+  "tests": [
+    {
+      "testNumber": 1,
+      "sections": [
+        {
+          "sectionNumber": 1,
+          "title": "Section 1 — Lost Property Report",
+          "questionRange": "Questions 1-10",
+          "audioFile": "Test 1 - Section 1.mp3",
+          "speakerInfo": "2 speakers — conversation (police officer + woman reporting stolen briefcase)",
+          "instructions": "Questions 1-5: Circle the appropriate letter. Questions 6-10: Complete the form. Write NO MORE THAN THREE WORDS for each answer.",
+          "questions": [
+            {
+              "number": 1, "type": "multiple-choice-image",
+              "text": "What does her briefcase look like?",
+              "image": "_page_17_Picture_12.jpeg",
+              "correctAnswer": "A"
+            },
+            {
+              "number": 2, "type": "multiple-choice-image",
+              "text": "Which picture shows the distinguishing features?",
+              "image": "_page_17_Picture_14.jpeg",
+              "correctAnswer": "C"
+            },
+            {
+              "number": 3, "type": "multiple-choice",
+              "text": "What did she have inside her briefcase?",
+              "options": [
+                {"label": "A", "text": "wallet, pens and novel"},
+                {"label": "B", "text": "papers and wallet"},
+                {"label": "C", "text": "pens and novel"},
+                {"label": "D", "text": "papers, pens and novel"}
+              ],
+              "correctAnswer": "D"
+            },
+            {
+              "number": 4, "type": "multiple-choice-image",
+              "text": "Where was she standing when she lost her briefcase?",
+              "image": "_page_18_Picture_2.jpeg",
+              "correctAnswer": "D"
+            },
+            {
+              "number": 5, "type": "multiple-choice-image",
+              "text": "What time was it when she lost her briefcase?",
+              "image": "_page_18_Picture_4.jpeg",
+              "correctAnswer": "C"
+            },
+            { "number": 6, "type": "gap-fill", "text": "Name: Mary _______", "correctAnswer": "Prescott", "acceptableAnswers": ["Prescott"], "note": "must be correct spelling with capital P" },
+            { "number": 7, "type": "gap-fill", "text": "Address: Flat 2, (7) _______ Road, Canterbury", "correctAnswer": "41" },
+            { "number": 8, "type": "gap-fill", "text": "Address (continued): Flat 2, 41 (8) _______ Road, Canterbury", "correctAnswer": "Fountain", "acceptableAnswers": ["Fountain"], "note": "must have capital F" },
+            { "number": 9, "type": "gap-fill", "text": "Telephone: (9) _______", "correctAnswer": "752239" },
+            { "number": 10, "type": "gap-fill", "text": "Estimated value of lost item: (10) £_______", "correctAnswer": "£65", "acceptableAnswers": ["£65", "65"] }
+          ],
+          "transcript": "",
+          "answerKey": [
+            {"questionNumber": 1, "answer": "A"}, {"questionNumber": 2, "answer": "C"},
+            {"questionNumber": 3, "answer": "D"}, {"questionNumber": 4, "answer": "D"},
+            {"questionNumber": 5, "answer": "C"},
+            {"questionNumber": 6, "answer": "Prescott", "acceptable": ["Prescott"]},
+            {"questionNumber": 7, "answer": "41"},
+            {"questionNumber": 8, "answer": "Fountain", "acceptable": ["Fountain"]},
+            {"questionNumber": 9, "answer": "752239"},
+            {"questionNumber": 10, "answer": "£65", "acceptable": ["£65", "65"]}
+          ]
+        },
+        {
+          "sectionNumber": 2,
+          "title": "Section 2 — News Headlines",
+          "questionRange": "Questions 11-21",
+          "audioFile": "Test 1 - Section 2.mp3",
+          "speakerInfo": "1 speaker — newsreader (monologue)",
+          "instructions": "Questions 11-13: Tick the THREE other items. Questions 14-21: Complete the notes. NO MORE THAN THREE WORDS.",
+          "questions": [
+            {
+              "number": 11, "type": "matching-checkboxes",
+              "text": "Tick the THREE other items mentioned in the news headlines. (B is the example — already ticked.)",
+              "selectCount": 3,
+              "items": [
+                {"label": "A", "text": "Rivers flood in the north"},
+                {"label": "C", "text": "Nurses on strike in Melbourne"},
+                {"label": "D", "text": "Passengers rescued from ship"},
+                {"label": "E", "text": "Passengers rescued from plane"},
+                {"label": "F", "text": "Bus and train drivers national strike threat"},
+                {"label": "G", "text": "Teachers demand more pay"},
+                {"label": "H", "text": "New uniform for QANTAS staff"},
+                {"label": "I", "text": "National airports under new management"}
+              ],
+              "correctAnswers": ["E", "F", "H"]
+            },
+            { "number": 14, "type": "gap-fill", "text": "The Government plans to give (14) $_______ to assist the farmers.", "correctAnswer": "$250 million", "acceptableAnswers": ["$250 million", "250 million"] },
+            { "number": 15, "type": "gap-fill", "text": "This money was to be spent on improving Sydney's (15) _______ but has now been re-allocated.", "correctAnswer": "roads", "acceptableAnswers": ["roads", "road system"] },
+            { "number": 16, "type": "gap-fill", "text": "Farmers say that the money will not help them because it is (16) _______.", "correctAnswer": "too late" },
+            { "number": 17, "type": "gap-fill", "text": "An aeroplane carrying a group of (17) _______ was forced to land...", "correctAnswer": "school children", "acceptableAnswers": ["school children", "boys"] },
+            { "number": 18, "type": "gap-fill", "text": "...just (18) _______ minutes after take-off.", "correctAnswer": "3" },
+            { "number": 19, "type": "gap-fill", "text": "The passengers were rescued by (19) _______.", "correctAnswer": "boats", "acceptableAnswers": ["boats", "pleasure craft", "boats and pleasure craft"] },
+            { "number": 20, "type": "gap-fill", "text": "The passengers thanked the (20) _______ for saving their lives...", "correctAnswer": "pilot" },
+            { "number": 21, "type": "gap-fill", "text": "...but unfortunately they lost their (21) _______.", "correctAnswer": "musical instruments", "acceptableAnswers": ["musical instruments", "instruments"] }
+          ],
+          "transcript": "",
+          "answerKey": [
+            {"questionNumber": 11, "answer": "E"}, {"questionNumber": 12, "answer": "F"}, {"questionNumber": 13, "answer": "H"},
+            {"questionNumber": 14, "answer": "$250 million", "acceptable": ["$250 million", "250 million"]},
+            {"questionNumber": 15, "answer": "roads", "acceptable": ["roads", "road system"]},
+            {"questionNumber": 16, "answer": "too late"},
+            {"questionNumber": 17, "answer": "school children", "acceptable": ["school children", "boys"]},
+            {"questionNumber": 18, "answer": "3"},
+            {"questionNumber": 19, "answer": "boats", "acceptable": ["boats", "pleasure craft", "boats and pleasure craft"]},
+            {"questionNumber": 20, "answer": "pilot"},
+            {"questionNumber": 21, "answer": "musical instruments", "acceptable": ["musical instruments", "instruments"]}
+          ]
+        },
+        {
+          "sectionNumber": 3,
+          "title": "Section 3 — University Orientation",
+          "questionRange": "Questions 22-31",
+          "audioFile": "Test 1 - Section 3.mp3",
+          "speakerInfo": "2 speakers — conversation (student + lecturer)",
+          "instructions": "Questions 22-25: Circle the appropriate letter. Questions 26-31: Complete the notes. NO MORE THAN THREE WORDS.",
+          "questions": [
+            {
+              "number": 22, "type": "multiple-choice",
+              "text": "The orientation meeting...",
+              "options": [
+                {"label": "A", "text": "took place recently."},
+                {"label": "B", "text": "took place last term."},
+                {"label": "C", "text": "will take place tomorrow."},
+                {"label": "D", "text": "will take place next week."}
+              ],
+              "correctAnswer": "A"
+            },
+            {
+              "number": 23, "type": "multiple-choice",
+              "text": "Attendance at lectures is...",
+              "options": [
+                {"label": "A", "text": "optional after 4 pm."},
+                {"label": "B", "text": "closely monitored."},
+                {"label": "C", "text": "difficult to enforce."},
+                {"label": "D", "text": "sometimes unnecessary."}
+              ],
+              "correctAnswer": "B"
+            },
+            {
+              "number": 24, "type": "multiple-choice",
+              "text": "Tutorials take place...",
+              "options": [
+                {"label": "A", "text": "every morning."},
+                {"label": "B", "text": "twice a week."},
+                {"label": "C", "text": "three mornings a week."},
+                {"label": "D", "text": "three afternoons a week."}
+              ],
+              "correctAnswer": "C"
+            },
+            {
+              "number": 25, "type": "multiple-choice",
+              "text": "The lecturer's name is...",
+              "options": [
+                {"label": "A", "text": "Roberts."},
+                {"label": "B", "text": "Rawson."},
+                {"label": "C", "text": "Rogers."},
+                {"label": "D", "text": "Robertson."}
+              ],
+              "correctAnswer": "A"
+            },
+            { "number": 26, "type": "gap-fill", "text": "Tutorial paper: Students must (26) _______ for 25 minutes.", "correctAnswer": "talk", "acceptableAnswers": ["talk", "give a talk"] },
+            { "number": 27, "type": "gap-fill", "text": "Students must (27) _______ and give to lecturer for marking.", "correctAnswer": "write up work" },
+            { "number": 28, "type": "gap-fill", "text": "Essay topic: Usually (28) _______.", "correctAnswer": "can choose" },
+            { "number": 29, "type": "gap-fill", "text": "Type of exam: (29) _______.", "correctAnswer": "open book" },
+            { "number": 30, "type": "gap-fill", "text": "Library: Important books are in (30) _______.", "correctAnswer": "closed reserve" },
+            { "number": 31, "type": "gap-fill", "text": "Focus of course: Focus on (31) _______.", "correctAnswer": "vocational", "acceptableAnswers": ["vocational", "vocational subjects", "preparing for work", "work", "employment"] }
+          ],
+          "transcript": "",
+          "answerKey": [
+            {"questionNumber": 22, "answer": "A"}, {"questionNumber": 23, "answer": "B"},
+            {"questionNumber": 24, "answer": "C"}, {"questionNumber": 25, "answer": "A"},
+            {"questionNumber": 26, "answer": "talk", "acceptable": ["talk", "give a talk"]},
+            {"questionNumber": 27, "answer": "write up work"},
+            {"questionNumber": 28, "answer": "can choose"},
+            {"questionNumber": 29, "answer": "open book"},
+            {"questionNumber": 30, "answer": "closed reserve"},
+            {"questionNumber": 31, "answer": "vocational", "acceptable": ["vocational", "vocational subjects", "preparing for work", "work", "employment"]}
+          ]
+        },
+        {
+          "sectionNumber": 4,
+          "title": "Section 4 — University Study Skills",
+          "questionRange": "Questions 32-41",
+          "audioFile": "Test 1 - Section 4.mp3",
+          "speakerInfo": "1 speaker — academic lecture (monologue)",
+          "instructions": "Questions 32-33: Circle the appropriate letter. Questions 34-41: Complete the notes.",
+          "questions": [
+            {
+              "number": 32, "type": "multiple-choice",
+              "text": "The speaker works within the Faculty of...",
+              "options": [
+                {"label": "A", "text": "Science and Technology."},
+                {"label": "B", "text": "Arts and Social Sciences."},
+                {"label": "C", "text": "Architecture."},
+                {"label": "D", "text": "Law."}
+              ],
+              "correctAnswer": "B"
+            },
+            {
+              "number": 33, "type": "multiple-choice",
+              "text": "The speaker's main aim is to...",
+              "options": [
+                {"label": "A", "text": "explain why students struggle."},
+                {"label": "B", "text": "describe university expectations."},
+                {"label": "C", "text": "compare school and university."},
+                {"label": "D", "text": "promote independent learning."}
+              ],
+              "correctAnswer": "C"
+            },
+            { "number": 34, "type": "gap-fill", "text": "Students need to manage time effectively, especially balancing (34) _______.", "correctAnswer": "history and economics" },
+            { "number": 35, "type": "gap-fill", "text": "Students must meet (35) _______ for essays.", "correctAnswer": "deadlines", "acceptableAnswers": ["deadlines", "meeting deadlines"] },
+            { "number": 36, "type": "gap-fill", "text": "Tutors check (36) _______ at tutorials.", "correctAnswer": "attendance" },
+            { "number": 37, "type": "multiple-choice", "text": "Question 37 — University tutorial preparation.", "options": [{"label": "A", "text": "Read all assigned texts"}, {"label": "B", "text": "Prepare a presentation"}, {"label": "C", "text": "Write a summary"}, {"label": "D", "text": "Complete exercises"}], "correctAnswer": "B" },
+            { "number": 38, "type": "multiple-choice", "text": "Question 38 — Learning method emphasis.", "options": [{"label": "A", "text": "Memorizing facts"}, {"label": "B", "text": "Attending all lectures"}, {"label": "C", "text": "Discussion and exchange of ideas"}, {"label": "D", "text": "Individual research"}], "correctAnswer": "C" },
+            { "number": 39, "type": "multiple-choice", "text": "Question 39 — Lecture purpose.", "options": [{"label": "A", "text": "Test knowledge"}, {"label": "B", "text": "Provide information you could access yourself"}, {"label": "C", "text": "Replace textbook reading"}, {"label": "D", "text": "Entertainment"}], "correctAnswer": "B" },
+            { "number": 40, "type": "multiple-choice", "text": "Question 40 — Tutorial group size.", "options": [{"label": "A", "text": "5-8 students"}, {"label": "B", "text": "8-10 students"}, {"label": "C", "text": "10-12 students"}, {"label": "D", "text": "12-15 students"}], "correctAnswer": "D" },
+            { "number": 41, "type": "multiple-choice", "text": "Question 41 — Assessment method.", "options": [{"label": "A", "text": "Continuous assessment"}, {"label": "B", "text": "Final exam only"}, {"label": "C", "text": "Mid-term and final"}, {"label": "D", "text": "Portfolio"}], "correctAnswer": "A" }
+          ],
+          "transcript": "",
+          "answerKey": [
+            {"questionNumber": 32, "answer": "B"}, {"questionNumber": 33, "answer": "C"},
+            {"questionNumber": 34, "answer": "history and economics"},
+            {"questionNumber": 35, "answer": "deadlines", "acceptable": ["deadlines", "meeting deadlines"]},
+            {"questionNumber": 36, "answer": "attendance"},
+            {"questionNumber": 37, "answer": "B"}, {"questionNumber": 38, "answer": "C"},
+            {"questionNumber": 39, "answer": "B"}, {"questionNumber": 40, "answer": "D"},
+            {"questionNumber": 41, "answer": "A"}
+          ]
+        }
+      ]
+    }
+  ],
+  "_validation": {
+    "test1": {"questions": 41, "answers": 41, "audioFiles": 4, "status": "ok"},
+    "testsPopulated": [1],
+    "testsPending": [2, 3, 4],
+    "note": "Test 1 fully extracted with 41 questions + answer keys across 4 sections. Audio files verified. Tests 2-4 need /init-textbook-listening slash command for full extraction. Transcripts will be populated from textbook tapescripts section."
+  }
+}

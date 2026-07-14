@@ -205,8 +205,16 @@ class BridgeHandler(SimpleHTTPRequestHandler):
             self.send_error(404, f"Audio not found: {rel}"); return
 
         # ── /lessons/<filename> — serve lesson plan HTML files from .ielts/lesson-plans/ ──
+        # ── /lessons/shared/<file> — serve shared template assets (CSS, JS) ──
         if path.startswith("lessons/"):
             filename = path[len("lessons/"):]
+            # Shared template assets (base-test.css, base-test.js)
+            if filename.startswith("shared/") and ".." not in filename:
+                shared_file = STUDIO_DIR / "templates" / filename
+                if shared_file.exists() and shared_file.is_file():
+                    if self._serve_file(shared_file): return
+                self.send_error(404, f"Shared asset not found: {filename}"); return
+            # Lesson plan HTML files (no subdirectories allowed)
             if ".." in filename or "/" in filename:
                 self.send_error(403, "Invalid path"); return
             lesson_file = IELTS_DIR / "lesson-plans" / filename

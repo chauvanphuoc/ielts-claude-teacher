@@ -29,6 +29,7 @@ Examples:
 - `textbook/cambridge-1/json/test-1-reading.json`
 - `textbook/cambridge-1/json/test-1-writing.json`
 - `textbook/cambridge-1/json/test-1-listening.json`
+- `shared/listening/listening_{source}.json` — **Listening: per-source consolidated** (all tests in one file)
 
 Schema reference: `textbook/cambridge-1/schema.json`
 
@@ -135,3 +136,89 @@ Write to `textbook/{source}/json/test-{n}-{skill}.json` following the schema at 
 - **Question count mismatch:** If Markdown has 40 questions but answer keys have 38, report the mismatch and list which question numbers are missing from the answer key.
 - **Image file not found:** If `![] (filename.jpeg)` references an image that doesn't exist in the textbook directory, still include the src in JSON but add a `"missing": true` flag.
 - **Multiple acceptable answers (//):** Store the full `"answer1//answer2"` string in answerKeys. Scoring logic handles splitting.
+
+## Listening Extraction (/init-textbook-listening)
+
+**Usage:** `/init-textbook-listening --source cambridge-1`
+
+Listening is fundamentally different from Reading: all content must be extracted from the textbook because audio files are the test material. Claude cannot invent listening questions.
+
+### Output Location
+
+```
+shared/listening/listening_{source}.json
+```
+
+This is per-source consolidated (all 4 tests in one file) — unlike Reading which is per-test. Rationale: audio files are source-level resources, transcripts cross-reference sections, and consolidated size (~60-80KB) is manageable.
+
+### Step 1: Read textbook markdown
+
+Read `textbook/{source}/textbook/Cambridge_IELTS_*.md`. Find all `#### **LISTENING**` sections.
+
+### Step 2: For each test, extract 4 sections
+
+Each section contains:
+- Section header: `#### SECTION X Questions Y-Z`
+- Instructions: `*Complete the form...*` (italicized text)
+- Questions with types: multiple-choice, multiple-choice-image (picture options), gap-fill, form-completion, matching-checkboxes (select N of M)
+- Image references: `![](_page_XX_Picture_YY.jpeg)`
+
+### Step 3: Extract answer keys
+
+Find `#### **LISTENING KEYS**` section. Parse bullet-point answers under `#### *Section N*` headers. Handle:
+- Single answers: `- A`
+- Multi-answer: `- E F in any order` → split to individual
+- Alternatives: `roads//road system` → `["roads", "road system"]`
+- Annotations: `Prescott (*must be correct spelling with capital "P"*)` → strip annotation, keep answer + note
+
+### Step 4: Map audio files
+
+Audio files follow naming convention: `Test {N} - Section {S}.mp3`
+Validate each file exists in `textbook/{source}/`.
+
+### Step 5: Extract transcripts
+
+Find transcripts section (after answer keys, under `## Transcripts` or section headers with dialogue text). Store inline in each section's `transcript` field. Preserve Q-marker annotations (Q1, Q2) for answer position highlighting.
+
+### Step 6: Validation (mandatory)
+
+1. Answer key count = question count per section (report mismatch)
+2. All audio files exist (report missing)
+3. Image references resolve (report missing, flag with `"missing": true`)
+4. Spot-check 3 random answers against original markdown
+5. Cyrillic normalization (same as Reading)
+
+### Step 7: Write JSON
+
+Write to `shared/listening/listening_{source}.json`. Structure:
+
+```json
+{
+  "source": "cambridge-1",
+  "generatedAt": "<ISO datetime>",
+  "generatedBy": "/init-textbook-listening",
+  "audioBasePath": "textbook/cambridge-1",
+  "tests": [
+    {
+      "testNumber": 1,
+      "sections": [
+        {
+          "sectionNumber": 1,
+          "title": "Section 1 — ...",
+          "questionRange": "Questions 1-10",
+          "audioFile": "Test 1 - Section 1.mp3",
+          "speakerInfo": "...",
+          "instructions": "...",
+          "questions": [...],
+          "transcript": "...",
+          "answerKey": [...]
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Reference
+
+See `shared/listening/listening_cambridge-1.json` for a complete example (Test 1 fully extracted).
