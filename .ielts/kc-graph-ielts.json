@@ -215,8 +215,170 @@
     },
     "listening": {
       "name": "IELTS Listening",
-      "description": "30 minutes, 40 questions across 4 sections. KCs will be defined in Phase 2.",
-      "kcs": []
+      "description": "30 minutes, 40 questions across 4 sections. Tests ability to understand spoken English in social, academic, and training contexts. KCs cover error patterns observed in student answers: spelling, numbers, distractor awareness, question-type-specific skills. Like Reading, errorRate = wrong/total (auto-scored against answer key).",
+      "kcs": [
+        {
+          "id": "kc-listen-spelling",
+          "name": "Spelling Accuracy",
+          "skill": "listening",
+          "status": "draft",
+          "description": "Writing down words with correct spelling as heard in the audio. IELTS Listening penalises all spelling errors — even minor ones. Common pitfalls: double letters (accommodation, committee), silent letters (government, Wednesday), homophones (there/their, to/too/two), and British vs American spelling differences (colour/color).",
+          "dependsOn": [],
+          "difficultyLevel": 1,
+          "commonErrors": [
+            "Double-letter omissions: writing 'accomodation' instead of 'accommodation', 'comitee' instead of 'committee'",
+            "Silent letter omissions: writing 'goverment' instead of 'government', 'Wensday' instead of 'Wednesday'",
+            "Homophone confusion: writing 'their' when the answer is 'there', especially under time pressure",
+            "Adding extra letters from mishearing: 'Febuary' instead of 'February', 'libary' instead of 'library'",
+            "Inconsistent capitalisation: proper nouns (names, places) must start with capital letters as specified in the audio"
+          ],
+          "exerciseTemplates": [
+            "Dictation drill: listen to 10 IELTS-common words, write them down, check spelling — repeat for persistently wrong words",
+            "Spelling pattern practice: group misspelled words by pattern (double letters, silent letters, ie/ei) and drill each group",
+            "Proofreading: given 10 sentences with one spelling error each, identify and correct — simulates post-listening answer check"
+          ],
+          "ieltsQuestionTypes": ["gap-fill", "form-completion", "note-completion", "sentence-completion", "short-answer"],
+          "bandRange": [4.0, 7.0]
+        },
+        {
+          "id": "kc-listen-numbers",
+          "name": "Numbers, Dates & Prices",
+          "skill": "listening",
+          "status": "draft",
+          "description": "Accurately capturing numerical information from audio: telephone numbers, dates, prices, times, addresses, and quantities. Speakers often use alternative formats (fifteen vs fifty, two thousand five hundred vs twenty-five hundred). Key skill: distinguishing -teen from -ty endings (thirteen vs thirty).",
+          "dependsOn": [],
+          "difficultyLevel": 2,
+          "commonErrors": [
+            "Teen/ty confusion: writing 15 when speaker says 50 (or vice versa) — the most frequent number error in IELTS Listening",
+            "Currency symbol omission or wrong placement: writing '65' instead of '£65', or '$65' when speaker says '65 pounds'",
+            "Telephone number digit errors: mishearing double digits (77 vs 7), missing digits in long numbers, wrong grouping",
+            "Date format confusion: writing '5/6' when the answer requires '5th June' or 'June 5th'",
+            "Time format errors: writing '5.30' instead of '5:30', confusing 12-hour and 24-hour formats"
+          ],
+          "exerciseTemplates": [
+            "Number dictation: listen to 20 spoken numbers (telephone, prices, dates) at increasing speed, write them down",
+            "Teen/ty discrimination drill: 10 minimal pairs (13/30, 14/40, etc.) — identify which was spoken",
+            "Form-filling with numbers: complete a personal details form from audio — name, phone, address number, price"
+          ],
+          "ieltsQuestionTypes": ["form-completion", "note-completion", "gap-fill", "table-completion"],
+          "bandRange": [4.0, 6.5]
+        },
+        {
+          "id": "kc-listen-distractor",
+          "name": "Distractor Awareness",
+          "skill": "listening",
+          "status": "draft",
+          "description": "Recognising when a speaker says something, then corrects or changes it. IELTS Listening tests this heavily: the first answer heard is often NOT the correct one. Speaker patterns: 'I'll meet you at 5... no, actually, 5:30', 'It costs £15... wait, £50? No, £15 is right.' The student must follow the conversation to its conclusion, not lock onto the first number/word mentioned.",
+          "dependsOn": [],
+          "difficultyLevel": 3,
+          "commonErrors": [
+            "Selecting the first answer mentioned: writing down the first number/name/place the speaker says, before the correction",
+            "Missing the correction signal words: 'no', 'actually', 'wait', 'I mean', 'sorry', 'rather than', 'instead of'",
+            "Confusion when the speaker changes their mind twice: 'It's on Tuesday... no, Wednesday... actually, let me check — yes, Tuesday'",
+            "Assuming the question order matches the audio order: sometimes the distractor for Q5 appears before the answer for Q4",
+            "Panic-writing: when hearing a familiar word, immediately writing it down without waiting to hear if it's the actual answer"
+          ],
+          "exerciseTemplates": [
+            "Distractor spotting: listen to 5 short dialogues where the speaker corrects themselves — write down BOTH the initial and final answer",
+            "Correction signal word bank: listen and write down every correction word you hear ('no', 'actually', 'wait', etc.) — builds awareness",
+            "Two-pass listening: first listen to identify where corrections happen, second listen to capture only final answers"
+          ],
+          "ieltsQuestionTypes": ["multiple-choice", "gap-fill", "form-completion", "matching"],
+          "bandRange": [5.0, 7.5]
+        },
+        {
+          "id": "kc-listen-mc",
+          "name": "Multiple Choice Listening",
+          "skill": "listening",
+          "status": "draft",
+          "description": "Selecting the correct answer from 3-4 options while listening. Unlike Reading MC where you can re-read the text, Listening MC requires simultaneous listening and reading. Key skills: pre-reading questions before audio plays, identifying paraphrased equivalents of options in the audio, and eliminating distractors that use exact words from options in misleading ways.",
+          "dependsOn": ["kc-listen-distractor"],
+          "difficultyLevel": 3,
+          "commonErrors": [
+            "Choosing the option that uses exact words from the audio (word-matching trap) — IELTS correct answers are usually paraphrased",
+            "Not pre-reading the options before the audio starts — missing the context needed to listen for the right information",
+            "Getting stuck on one question: spending too long thinking about Q3 while the audio has moved on to Q4 and Q5",
+            "Selecting an option because it's partially true — the ENTIRE option must match what the speaker says",
+            "Being misled by the speaker mentioning all options: 'Some say A, others think B, but the evidence shows C'"
+          ],
+          "exerciseTemplates": [
+            "Pre-reading drill: given 5 MC questions with 10 seconds per question to read options before audio — then answer",
+            "Paraphrase matching: match 10 spoken statements to their paraphrased written equivalents from a list of options",
+            "Distractor analysis: for a completed MC test, explain why each wrong option was tempting and what the speaker actually said"
+          ],
+          "ieltsQuestionTypes": ["multiple-choice"],
+          "bandRange": [5.0, 7.5]
+        },
+        {
+          "id": "kc-listen-gapfill",
+          "name": "Form, Note & Table Completion",
+          "skill": "listening",
+          "status": "draft",
+          "description": "Completing forms, notes, tables, or summaries by filling gaps with words from the audio. Word limit is strictly enforced (NO MORE THAN TWO/THREE WORDS). Tests ability to predict answer type from context (name? number? date?), listen for specific information, and capture it accurately within the word limit.",
+          "dependsOn": ["kc-listen-spelling", "kc-listen-numbers"],
+          "difficultyLevel": 2,
+          "commonErrors": [
+            "Exceeding the word limit: writing 3 words when the instruction says NO MORE THAN TWO — instant zero for that question",
+            "Writing unnecessary words: including articles (a/an/the) or prepositions that push the answer over the word limit",
+            "Missing the answer because the gap in the question uses different wording than the audio (paraphrase gap)",
+            "Spelling or capitalisation errors: 'fountain' instead of 'Fountain' when the form requires a proper noun",
+            "Not predicting answer type: failing to look at surrounding words to guess whether the answer is a name, number, or date"
+          ],
+          "exerciseTemplates": [
+            "Word-limit discipline: same audio, answer first with unlimited words, then reduce to exactly the word limit",
+            "Prediction drill: cover the audio, look at the form/notes, write down what TYPE of answer each gap expects (name/number/date/place)",
+            "Speed gap-fill: complete a section under strict time conditions, then review against transcript for word-limit violations"
+          ],
+          "ieltsQuestionTypes": ["form-completion", "note-completion", "table-completion", "sentence-completion", "summary-completion", "flow-chart-completion"],
+          "bandRange": [4.0, 6.5]
+        },
+        {
+          "id": "kc-listen-map",
+          "name": "Map, Plan & Diagram Labeling",
+          "skill": "listening",
+          "status": "draft",
+          "description": "Following spoken directions to label a map, plan, or diagram. Tests spatial listening: understanding prepositions of place (next to, opposite, behind, in front of), direction language (turn left, go straight, head north), and the ability to track a moving reference point through a physical space.",
+          "dependsOn": ["kc-listen-distractor"],
+          "difficultyLevel": 4,
+          "commonErrors": [
+            "Losing track of the reference point: the speaker describes a route or layout — losing your place on the map means missing subsequent answers",
+            "Confusing similar-sounding landmarks: 'the oak tree' vs 'the old tree', 'the main gate' vs 'the mane gate'",
+            "Missing direction changes: the speaker says 'turn left at the entrance' but the student continues straight on the map",
+            "Not orienting to the map before listening: failing to identify the starting point (usually marked 'You are here') and major landmarks",
+            "Misinterpreting spatial prepositions: 'opposite' vs 'next to', 'behind' vs 'in front of', 'between' vs 'among'"
+          ],
+          "exerciseTemplates": [
+            "Map orientation: study a labelled map for 30 seconds before audio — identify starting point, compass directions, and 5 landmarks",
+            "Direction-following drill: listen to route descriptions and trace the path on a map — check if you reached the correct endpoint",
+            "Preposition bank: given a map, write 10 sentences describing locations using different prepositions (opposite, adjacent to, southeast of...)"
+          ],
+          "ieltsQuestionTypes": ["diagram-labeling", "map-labeling", "plan-labeling"],
+          "bandRange": [5.5, 8.0]
+        },
+        {
+          "id": "kc-listen-inference",
+          "name": "Speaker Attitude & Inference",
+          "skill": "listening",
+          "status": "draft",
+          "description": "Understanding what the speaker implies, feels, or intends — beyond the literal words. Section 3 (academic discussion) and Section 4 (lecture) especially test this: identifying the speaker's opinion, agreement/disagreement, certainty/doubt, and the purpose of statements. Relies on tone of voice, hedging language (might, could, perhaps), and discourse markers (however, on the other hand).",
+          "dependsOn": ["kc-listen-distractor"],
+          "difficultyLevel": 4,
+          "commonErrors": [
+            "Taking every statement at face value: missing sarcasm, hesitation, or hedging that changes the meaning",
+            "Confusing the speaker's report of someone else's opinion with their own opinion",
+            "Missing agreement/disagreement signals: 'That's a fair point but...' = disagreement; 'Exactly, and also...' = agreement",
+            "Over-interpreting: inferring an attitude that isn't supported by what the speaker actually said",
+            "Ignoring tone and stress: a word stressed differently can completely change the meaning ('I NEVER said that' vs 'I never said THAT')"
+          ],
+          "exerciseTemplates": [
+            "Attitude identification: listen to 5 short extracts, for each write: speaker's opinion (for/against/neutral) + evidence from audio",
+            "Hedging language bank: listen to an academic lecture extract, write down every hedging word (might, could, perhaps, tends to, somewhat)",
+            "Agreement/disagreement drill: listen to 10 exchanges, classify each as agreement, disagreement, partial agreement, or topic change"
+          ],
+          "ieltsQuestionTypes": ["multiple-choice", "matching"],
+          "bandRange": [6.0, 8.5]
+        }
+      ]
     },
     "writing": {
       "name": "IELTS Writing",
