@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS Reading Practice</title>
+<style>
+:root {
+  --bg: #fafaf8; --surface: #eeede9; --text: #1a1a1c;
+  --accent: #c41e1e; --accent-green: #2d6a4f; --accent-amber: #b8860b;
+  --border: #d4d2cc; --muted: #6b6b68;
+  --font-heading: "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --font-body: Charter, Georgia, serif;
+  --font-mono: Menlo, Consolas, "Courier New", monospace;
+  --space-xs: 4px; --space-sm: 8px; --space-md: 16px;
+  --space-lg: 24px; --space-xl: 32px; --radius: 6px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: var(--text); background: var(--bg); }
+.app-header { display: flex; align-items: center; justify-content: space-between; padding: var(--space-md) var(--space-xl); border-bottom: 1px solid var(--border); }
+.app-header h1 { font-family: var(--font-heading); font-size: 20px; font-weight: normal; }
+.app-header .badge { font-family: var(--font-mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+/* Selector */
+.selector-bar { display: flex; gap: var(--space-md); align-items: center; padding: var(--space-md) var(--space-xl); border-bottom: 1px solid var(--border); }
+.selector-bar label { font-family: var(--font-mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.selector-bar select { padding: 6px var(--space-md); font-family: var(--font-body); font-size: 14px; border: 1px solid var(--border); border-radius: 4px; background: var(--bg); color: var(--text); cursor: pointer; min-width: 140px; }
+.selector-bar select:focus { outline: none; border-color: var(--accent); }
+/* Layout */
+.reading-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 0; height: calc(100vh - 100px); overflow: hidden; }
+.passage-panel { overflow-y: auto; padding: var(--space-lg) var(--space-xl); border-right: 1px solid var(--border); }
+.passage-panel h3 { font-family: var(--font-heading); font-size: 22px; margin-bottom: var(--space-lg); line-height: 1.3; }
+.passage-text { font-size: 15px; line-height: 1.9; white-space: pre-wrap; }
+.passage-image { max-width: 100%; margin: var(--space-md) 0; border-radius: 4px; }
+.passage-image.missing { border: 1px dashed var(--border); padding: var(--space-lg); text-align: center; color: var(--muted); font-style: italic; display: block; }
+.questions-panel { overflow-y: auto; padding: var(--space-lg) var(--space-xl); }
+.question-group { margin-bottom: var(--space-xl); padding-bottom: var(--space-lg); border-bottom: 2px solid var(--border); }
+.question-group:last-child { border-bottom: none; }
+.question-group h4 { font-family: var(--font-heading); font-size: 16px; margin-bottom: var(--space-xs); }
+.question-group .instructions { font-style: italic; color: var(--muted); margin-bottom: var(--space-md); font-size: 14px; }
+.reading-question { margin-bottom: var(--space-md); padding: var(--space-sm) 0; }
+.reading-question .q-text { font-weight: 600; margin-bottom: var(--space-xs); font-size: 15px; }
+.reading-question .q-options { display: flex; flex-direction: column; gap: 2px; margin-top: var(--space-xs); }
+.reading-question .q-options label { display: flex; align-items: center; gap: var(--space-sm); padding: 3px 0; cursor: pointer; font-size: 15px; }
+.reading-question .q-options input[type="radio"] { accent-color: var(--accent); }
+.reading-question .q-input { width: 100%; max-width: 300px; padding: var(--space-sm); border: 1px solid var(--border); border-radius: 4px; font-family: var(--font-body); font-size: 15px; margin-top: var(--space-xs); }
+.reading-question .q-input:focus { outline: none; border-color: var(--accent); }
+.reading-question .q-image { max-width: 100%; max-height: 200px; margin: var(--space-sm) 0; border-radius: 4px; }
+.reading-question .q-image.missing { border: 1px dashed var(--border); padding: var(--space-md); color: var(--muted); font-style: italic; display: inline-block; }
+/* Word list */
+.word-list { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-md); margin-bottom: var(--space-lg); }
+.word-list h5 { font-family: var(--font-heading); font-size: 13px; margin-bottom: var(--space-sm); color: var(--muted); }
+.word-list .words { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+.word-list .word-chip { background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 2px 8px; font-size: 13px; font-family: var(--font-mono); }
+/* Gap text */
+.gap-text { font-size: 15px; line-height: 2.2; margin-bottom: var(--space-md); padding: var(--space-md); background: var(--surface); border-radius: var(--radius); }
+.gap-text input { width: 120px; padding: 2px 6px; border: 1px solid var(--accent); border-radius: 3px; font-family: var(--font-body); font-size: 14px; background: var(--bg); }
+/* Buttons */
+.btn { padding: var(--space-sm) var(--space-xl); border: none; border-radius: 4px; font-family: var(--font-heading); font-size: 16px; cursor: pointer; transition: opacity 0.2s; }
+.btn:hover { opacity: 0.9; } .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-primary { background: var(--accent); color: white; }
+.btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+/* Sticky submit */
+.submit-bar { position: sticky; bottom: 0; background: var(--bg); border-top: 1px solid var(--border); padding: var(--space-md) var(--space-xl); display: flex; justify-content: space-between; align-items: center; }
+.score-badge { font-family: var(--font-heading); font-size: 18px; }
+.score-badge.good { color: var(--accent-green); } .score-badge.ok { color: var(--accent-amber); } .score-badge.weak { color: var(--accent); }
+/* Results */
+.results-panel { padding: var(--space-lg) var(--space-xl); border-top: 1px solid var(--border); display: none; }
+.results-panel h3 { font-family: var(--font-heading); margin-bottom: var(--space-md); }
+.results-item { padding: var(--space-xs) 0; font-size: 15px; display: flex; justify-content: space-between; max-width: 500px; }
+.results-item.correct { color: var(--accent-green); } .results-item.wrong { color: var(--accent); }
+/* States */
+.empty-state, .loading-state { text-align: center; padding: var(--space-2xl); color: var(--muted); }
+.error-state { text-align: center; padding: var(--space-lg); color: var(--accent); }
+.hidden { display: none !important; }
+/* Responsive gate */
+@media (max-width: 700px) {
+  body::before { content: "IELTS Reading Practice works best on a laptop or desktop."; position: fixed; inset: 0; background: var(--bg); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 18px; padding: var(--space-xl); text-align: center; z-index: 9999; }
+  .app-header, .selector-bar, .reading-layout { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="app-header">
+  <h1>IELTS Reading Practice</h1>
+  <span class="badge" id="status-badge">Ready</span>
+</div>
+
+<div class="selector-bar" id="selector-bar">
+  <label for="source-select">Source</label>
+  <select id="source-select" aria-label="Select source"><option value="">-- Loading --</option></select>
+  <label for="test-select">Test</label>
+  <select id="test-select" aria-label="Select test" disabled><option value="">-- Select --</option></select>
+</div>
+
+<div class="reading-layout hidden" id="reading-layout">
+  <div class="passage-panel" id="passage-panel"></div>
+  <div class="questions-panel" id="questions-panel"></div>
+</div>
+
+<div class="empty-state" id="empty-state">
+  <p style="font-size:18px;margin-bottom:var(--space-sm)">No reading tests available.</p>
+  <p style="font-size:14px">Return to Claude and say:<br><code style="font-family:var(--font-mono);font-size:13px">/init-textbook-reading --source cambridge-1 --test 1</code></p>
+</div>
+
+<div class="loading-state hidden" id="loading-state">Loading test...</div>
+<div class="error-state hidden" id="error-state" role="alert"><p id="error-msg"></p></div>
+
+<div class="submit-bar hidden" id="submit-bar">
+  <span class="score-badge" id="score-badge"></span>
+  <div>
+    <button class="btn btn-secondary" id="grade-btn" style="margin-right:var(--space-sm)">Check Answers</button>
+    <button class="btn btn-primary" id="save-btn">Save &amp; Ask Claude to Grade</button>
+  </div>
+</div>
+
+<div class="results-panel" id="results-panel">
+  <h3>Results</h3>
+  <div id="results-list"></div>
+  <div id="results-summary" style="margin-top:var(--space-md);font-weight:600"></div>
+</div>
+
+<script>
+const BRIDGE_URL = 'http://localhost:8765';
+let currentSource = '';
+let currentTestNumber = 0;
+let testData = null;
+let userAnswers = {};
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadSources();
+  document.getElementById('source-select').addEventListener('change', onSourceChange);
+  document.getElementById('test-select').addEventListener('change', onTestChange);
+  document.getElementById('grade-btn').addEventListener('click', gradeAnswers);
+  document.getElementById('save-btn').addEventListener('click', saveReading);
+});
+
+async function loadSources() {
+  const sel = document.getElementById('source-select');
+  try {
+    const r = await fetch(BRIDGE_URL + '/api/reading/');
+    if (!r.ok) throw new Error('API error');
+    const data = await r.json();
+    if (!data.sources || data.sources.length === 0) {
+      sel.innerHTML = '<option value="">-- No sources --</option>';
+      document.getElementById('empty-state').classList.remove('hidden');
+      return;
+    }
+    sel.innerHTML = data.sources.map(s => `<option value="${s.id}">${s.id}</option>`).join('');
+    sel.value = data.sources[0].id;
+    onSourceChange();
+  } catch(e) { showError('Failed to load sources. Is the server running?'); }
+}
+
+async function onSourceChange() {
+  currentSource = document.getElementById('source-select').value;
+  if (!currentSource) return;
+  const tSel = document.getElementById('test-select');
+  tSel.innerHTML = '<option value="">-- Loading --</option>'; tSel.disabled = true;
+  hideAll(); document.getElementById('loading-state').classList.remove('hidden');
+  try {
+    const r = await fetch(BRIDGE_URL + '/api/reading/' + currentSource);
+    if (!r.ok) throw new Error('Source not found');
+    const data = await r.json();
+    tSel.innerHTML = (data.tests || []).map(t => `<option value="${t.testNumber}">Test ${t.testNumber}</option>`).join('');
+    tSel.disabled = false;
+    if (data.tests && data.tests.length > 0) { tSel.value = data.tests[0].testNumber; onTestChange(); }
+  } catch(e) { showError('Failed to load tests.'); }
+}
+
+async function onTestChange() {
+  currentTestNumber = parseInt(document.getElementById('test-select').value);
+  if (!currentTestNumber) return;
+  hideAll(); document.getElementById('loading-state').classList.remove('hidden');
+  try {
+    const url = `${BRIDGE_URL}/textbook/${currentSource}/json/test-${currentTestNumber}-reading.json`;
+    const r = await fetch(url);
+    if (!r.ok) throw new Error('Test not found: ' + r.status);
+    testData = await r.json();
+    renderTest();
+    document.getElementById('loading-state').classList.add('hidden');
+    document.getElementById('reading-layout').classList.remove('hidden');
+    document.getElementById('submit-bar').classList.remove('hidden');
+    document.getElementById('status-badge').textContent = `Test ${currentTestNumber}`;
+    // Restore answers from session
+    const key = `reading-test-${currentSource}-${currentTestNumber}`;
+    const saved = sessionStorage.getItem(key);
+    if (saved) { userAnswers = JSON.parse(saved); restoreAnswers(); }
+    else { userAnswers = {}; }
+    document.getElementById('results-panel').style.display = 'none';
+    document.getElementById('score-badge').textContent = '';
+  } catch(e) { showError('Failed to load test. Run /init-textbook-reading in Claude first.'); }
+}
+
+function hideAll() {
+  document.getElementById('reading-layout').classList.add('hidden');
+  document.getElementById('submit-bar').classList.add('hidden');
+  document.getElementById('empty-state').classList.add('hidden');
+  document.getElementById('error-state').classList.add('hidden');
+  document.getElementById('results-panel').style.display = 'none';
+}
+
+function showError(msg) {
+  hideAll(); document.getElementById('loading-state').classList.add('hidden');
+  document.getElementById('error-state').classList.remove('hidden');
+  document.getElementById('error-msg').textContent = msg;
+}
+
+function renderTest() {
+  const passages = testData.skills?.reading?.passages || [];
+  if (!passages.length) return;
+  const passage = passages[0]; // Show first passage
+  let html = `<h3>${esc(passage.title)}</h3>`;
+  if (passage.images) passage.images.forEach(img => {
+    html += `<img src="${BRIDGE_URL}/textbook/${currentSource}/textbook/${img.src}" alt="${esc(img.alt||'')}" class="passage-image" onerror="this.classList.add('missing');this.outerHTML='<div class=passage-image missing>Image not available</div>'">`;
+  });
+  html += `<div class="passage-text">${esc(passage.text)}</div>`;
+  document.getElementById('passage-panel').innerHTML = html;
+
+  // Questions
+  const qp = document.getElementById('questions-panel');
+  qp.innerHTML = '';
+  passage.questionGroups.forEach(qg => {
+    const div = document.createElement('div'); div.className = 'question-group';
+    div.innerHTML = `<h4>${esc(qg.heading)}</h4><p class="instructions">${esc(qg.instructions)}</p>`;
+    // Word list
+    if (qg.wordList?.words?.length) {
+      div.innerHTML += `<div class="word-list"><h5>Word List</h5><div class="words">${qg.wordList.words.map(w => `<span class="word-chip">${esc(w)}</span>`).join('')}</div></div>`;
+    }
+    qg.questions.forEach(q => { div.appendChild(renderQuestion(q, qg.questionType)); });
+    qp.appendChild(div);
+  });
+}
+
+function renderQuestion(q, groupType) {
+  const div = document.createElement('div'); div.className = 'reading-question';
+  const qType = q.type || groupType;
+  let imgHtml = '';
+  if (q.images?.length) {
+    imgHtml = q.images.map(img => `<img src="${BRIDGE_URL}/textbook/${currentSource}/textbook/${img.src}" alt="${esc(img.alt||'')}" class="q-image" onerror="this.classList.add('missing');this.outerHTML='<div class=q-image missing>Image not available</div>'">`).join('');
+  }
+  const savedVal = userAnswers[q.number] || '';
+  switch (qType) {
+  case 'multiple-choice': case 'multiple-choice-image':
+    div.innerHTML = `<div class="q-text">${q.number}. ${esc(q.text)}</div>${imgHtml}<div class="q-options">${(q.options||[]).map(o => `<label><input type="radio" name="q-${q.number}" data-q="${q.number}" value="${esc(o.label)}" ${savedVal===o.label?'checked':''}> <span><strong>${esc(o.label)}</strong> ${esc(o.text)}</span></label>`).join('')}</div>`; break;
+  case 'true-false-not-given':
+    div.innerHTML = `<div class="q-text">${q.number}. ${esc(q.text)}</div><div class="q-options">${['TRUE','FALSE','NOT GIVEN'].map(v => `<label><input type="radio" name="q-${q.number}" data-q="${q.number}" value="${v}" ${savedVal===v?'checked':''}> ${v}</label>`).join('')}</div>`; break;
+  case 'yes-no-not-given':
+    div.innerHTML = `<div class="q-text">${q.number}. ${esc(q.text)}</div><div class="q-options">${['YES','NO','NOT GIVEN'].map(v => `<label><input type="radio" name="q-${q.number}" data-q="${q.number}" value="${v}" ${savedVal===v?'checked':''}> ${v}</label>`).join('')}</div>`; break;
+  case 'matching':
+    div.innerHTML = `<div class="q-text">${q.number}. ${esc(q.text)}</div><div class="q-options">${(q.options||[]).map(o => `<label><input type="radio" name="q-${q.number}" data-q="${q.number}" value="${esc(o.label)}" ${savedVal===o.label?'checked':''}> <span><strong>${esc(o.label)}</strong> — ${esc(o.text)}</span></label>`).join('')}</div>`; break;
+  default: // gap-fill, short-answer, etc.
+    div.innerHTML = `<div class="q-text">${q.number}. ${esc(q.text)}</div>${imgHtml}<input type="text" data-q="${q.number}" class="q-input" placeholder="Your answer..." value="${esc(savedVal)}">`; break;
+  }
+  // Auto-save on input
+  div.querySelectorAll('input').forEach(inp => {
+    inp.addEventListener('change', () => collectAnswers());
+    inp.addEventListener('input', () => collectAnswers());
+  });
+  return div;
+}
+
+function collectAnswers() {
+  userAnswers = {};
+  document.querySelectorAll('[data-q]').forEach(inp => {
+    if (inp.type === 'radio') { if (inp.checked) userAnswers[inp.dataset.q] = inp.value; }
+    else { if (inp.value.trim()) userAnswers[inp.dataset.q] = inp.value.trim(); }
+  });
+  const key = `reading-test-${currentSource}-${currentTestNumber}`;
+  sessionStorage.setItem(key, JSON.stringify(userAnswers));
+}
+
+function restoreAnswers() {
+  document.querySelectorAll('[data-q]').forEach(inp => {
+    const val = userAnswers[inp.dataset.q];
+    if (!val) return;
+    if (inp.type === 'radio') { if (inp.value === val) inp.checked = true; }
+    else { inp.value = val; }
+  });
+}
+
+function gradeAnswers() {
+  collectAnswers();
+  const answerKeys = testData?.answerKeys?.reading || {};
+  const results = []; let correct = 0; let total = 0;
+  for (const [passageId, keys] of Object.entries(answerKeys)) {
+    for (const [qNum, expected] of Object.entries(keys)) {
+      total++;
+      const userAns = (userAnswers[qNum] || '').trim();
+      const expectedStr = String(expected).trim();
+      const isCorrect = userAns.toLowerCase() === expectedStr.toLowerCase();
+      if (isCorrect) correct++;
+      results.push({ num: qNum, user: userAns || '(blank)', expected: expectedStr, correct: isCorrect });
+    }
+  }
+  const panel = document.getElementById('results-panel');
+  panel.style.display = 'block';
+  panel.querySelector('#results-list').innerHTML = results.map(r =>
+    `<div class="results-item ${r.correct ? 'correct' : 'wrong'}"><span>Q${r.num}: ${r.user}</span><span>→ ${r.expected} ${r.correct ? '✓' : '✗'}</span></div>`
+  ).join('');
+  const pct = total > 0 ? Math.round(correct/total*100) : 0;
+  const cls = pct >= 80 ? 'good' : pct >= 60 ? 'ok' : 'weak';
+  panel.querySelector('#results-summary').innerHTML = `${correct}/${total} correct (${pct}%)`;
+  document.getElementById('score-badge').textContent = `${correct}/${total} — ${pct}%`;
+  document.getElementById('score-badge').className = `score-badge ${cls}`;
+}
+
+async function saveReading() {
+  collectAnswers();
+  if (Object.keys(userAnswers).length === 0) { showError('Please answer at least one question.'); return; }
+  const data = { skill: 'reading', testSource: currentSource, testNumber: currentTestNumber, answers: userAnswers, date: new Date().toISOString() };
+  const result = await saveResult(data);
+  if (result.ok) {
+    document.getElementById('status-badge').textContent = 'Answers saved';
+    gradeAnswers();
+  }
+}
+
+async function saveResult(data) {
+  try {
+    const r = await fetch(BRIDGE_URL + '/save', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(data) });
+    if (!r.ok) throw new Error('Save failed: ' + r.status);
+    return { ok: true };
+  } catch(e) {
+    showError('Failed to save. Is the server running?');
+    return { ok: false, error: e };
+  }
+}
+
+function esc(s) { if (!s) return ''; const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+</script>
+</body>
+</html>

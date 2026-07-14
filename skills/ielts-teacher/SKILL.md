@@ -324,6 +324,22 @@ open http://localhost:8765/ielts-studio.html
 
 The Speaking tab auto-loads tasks from `/api/speaking/{source}`, displays the cue card (scenario, role, topics) with Part 1/2/3 navigation pills. The student reads the cue card, records their response, and submits. Results are saved to `.ielts/speaking/latest.json` with task context (source, testNumber, partNumber, taskTitle, transcript, duration).
 
+**Full Cambridge Reading test — Reading Template:**
+```bash
+.venv/bin/python3 skills/ielts-teacher/server.py &
+sleep 1
+open http://localhost:8765/lessons/reading-test.html
+```
+
+The Reading template auto-loads from `/api/reading/`, displays passage on the left + questions on the right in a two-column layout. Supports all question types: multiple-choice, T/F/NG, Y/N/NG, gap-fill, matching, short-answer. Self-scoring via "Check Answers" compares against answer keys from JSON. Results saved to `.ielts/reading/latest.json` via POST /save.
+
+**Reading Mini Test (Claude-generated practice targeting a specific KC):**
+```bash
+open .ielts/lesson-plans/reading-lesson-{date}-{seq}.html
+```
+
+When the student is weak on a reading KC (e.g., `kc-read-tfng`), Claude can create a mini test HTML file with a short passage + 5 targeted questions. Use the same structure as `reading-test.html` but embed the passage text and questions directly (no JSON loading needed). The mini test includes self-scoring and POST /save. This is the same pattern as writing mini tests.
+
 ### 4.4 — Wait for Student
 
 Tell the student: "Làm xong thì bảo tôi chấm bài nhé."
@@ -463,6 +479,7 @@ You choose the right tool for each situation. Never ask the student to choose.
 | Student wants to do a full Cambridge test | Open **HTML Studio** with the requested test |
 | Student says "luyện nghe" / "listening test" | Open **Listening Template** at `/lessons/listening-test.html?source=...&test=...` |
 | Student says "luyện nói" / "speaking practice" | Open **Speaking Template** at `/lessons/speaking-test.html?source=...&test=...` (preferred) or **HTML Studio Speaking tab** at `http://localhost:8765/ielts-studio.html`. Tasks auto-load from `/api/speaking/`. |
+| Student says "luyện đọc" / "reading test" | Open **Reading Template** at `/lessons/reading-test.html`. Tasks auto-load from `/api/reading/`. For mini tests targeting a specific KC, generate an HTML file in `.ielts/lesson-plans/` (see Reading Mini Test below). |
 | Student says "tạo JSON" / "initialize textbook" / "init-textbook" | Run the appropriate `/init-textbook-{reading|listening|speaking}` command based on the skill and source. See `skills/ielts-json-init/SKILL.md` for the full workflow. |
 | Student says "đổi sang tiếng [X]" | Update `settings.json` language field |
 
