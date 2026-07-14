@@ -45,9 +45,13 @@ def _find_project_root():
 PROJECT_ROOT = _find_project_root()
 IELTS_DIR = PROJECT_ROOT / ".ielts"
 TEXTBOOK_DIR = PROJECT_ROOT / "textbook"
+SHARED_DIR = PROJECT_ROOT / "shared"
 
 for d in [IELTS_DIR, IELTS_DIR/"speaking", IELTS_DIR/"listening", IELTS_DIR/"writing", IELTS_DIR/"reading"]:
     d.mkdir(parents=True, exist_ok=True)
+
+# Ensure shared/listening/ exists
+(SHARED_DIR / "listening").mkdir(parents=True, exist_ok=True)
 
 
 # ── Auto-discover materials ──
@@ -101,6 +105,44 @@ def _build_materials():
     return manifest
 
 _materials_cache = _build_materials()
+
+
+# ── Auto-discover listening sources ──
+
+def _build_listening_sources():
+    """Scan shared/listening/ for available listening JSON files."""
+    sources = []
+    listening_dir = SHARED_DIR / "listening"
+    if not listening_dir.exists():
+        return sources
+
+    for entry in sorted(listening_dir.iterdir()):
+        if entry.name.startswith('.') or entry.suffix != '.json':
+            continue
+        # Extract source name from filename: listening_{source}.json → source
+        name = entry.stem  # e.g., "listening_cambridge-1"
+        if name.startswith("listening_"):
+            name = name[len("listening_"):]
+        try:
+            with open(entry, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            sources.append({
+                "id": name,
+                "file": str(entry.relative_to(PROJECT_ROOT)),
+                "testCount": len(data.get("tests", [])),
+                "generatedAt": data.get("generatedAt", ""),
+                "audioBasePath": data.get("audioBasePath", "")
+            })
+        except (json.JSONDecodeError, OSError):
+            sources.append({
+                "id": name,
+                "file": str(entry.relative_to(PROJECT_ROOT)),
+                "error": "Failed to parse JSON"
+            })
+
+    return sources
+
+_listening_sources_cache = _build_listening_sources()
 
 
 def _find_file_in_textbook(rel_path):
@@ -184,6 +226,25 @@ class BridgeHandler(SimpleHTTPRequestHandler):
             _materials_cache.update(_build_materials())
             self._serve_json({"status": "refreshed", "totalSources": _materials_cache["totalSources"]})
             return
+
+        # ── /api/listening — list available listening sources ──
+        if path == "api/listening" or path == "api/listening/":
+            self._serve_json({"sources": _listening_sources_cache})
+            return
+
+        # ── /api/listening/<source> — serve listening JSON for a source ──
+        if path.startswith("api/listening/"):
+            source_id = path[len("api/listening/"):].strip()
+            # Security: prevent path traversal
+            if ".." in source_id or "/" in source_id or "\\" in source_id:
+                self.send_error(403, "Invalid source name"); return
+            if not source_id:
+                self._serve_json({"sources": _listening_sources_cache})
+                return
+            json_path = SHARED_DIR / "listening" / f"listening_{source_id}.json"
+            if json_path.exists() and json_path.is_file():
+                if self._serve_file(json_path, "application/json; charset=utf-8"): return
+            self.send_error(404, f"Listening source not found: {source_id}"); return
 
         # ── /textbook/<anything> — serve any file from textbook/ ──
         if path.startswith("textbook/"):
