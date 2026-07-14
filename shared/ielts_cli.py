@@ -13,6 +13,11 @@ Usage:
   .venv/bin/python3 shared/ielts_cli.py settings set language en
   .venv/bin/python3 shared/ielts_cli.py status
   .venv/bin/python3 shared/ielts_cli.py backup
+  .venv/bin/python3 shared/ielts_cli.py lesson-library list
+  .venv/bin/python3 shared/ielts_cli.py lesson-library sync
+  .venv/bin/python3 shared/ielts_cli.py lesson-library add --id ... --title ... --skill ... --file ...
+  .venv/bin/python3 shared/ielts_cli.py lesson-library mark-used --id ...
+  .venv/bin/python3 shared/ielts_cli.py migrate-lesson-library
 """
 
 import argparse
@@ -36,6 +41,8 @@ ROADMAP_FILE = IELTS_DIR / "roadmap.json"
 PROFILE_FILE = IELTS_DIR / "student-profile.json"
 KC_GRAPH_FILE = IELTS_DIR / "kc-graph-ielts.json"
 SETTINGS_FILE = IELTS_DIR / "settings.json"
+LESSON_LIBRARY_FILE = IELTS_DIR / "lesson-library.json"
+LESSON_PLANS_DIR = IELTS_DIR / "lesson-plans"
 
 
 # ── Utilities ──────────────────────────────────────────────────────
@@ -79,6 +86,88 @@ def _backup_file(path: Path):
     backup_path = BACKUP_DIR / f"{stem}-{datetime.now().strftime('%Y%m%d-%H%M%S')}.json"
     shutil.copy2(path, backup_path)
     return backup_path
+
+
+# ── Lesson Library Helpers ─────────────────────────────────────────
+
+def _scan_lesson_html(filepath: Path) -> dict | None:
+    """Extract lesson metadata from an HTML file.
+
+    Reads <title> for the lesson title, looks for <meta name="kc-tags">
+    for KC tags, and infers skill from filename or KC tag prefixes.
+    Returns None if the file can't be read or isn't a lesson.
+    """
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read(4096)  # first 4KB is enough for head
+    except (IOError, OSError):
+        return None
+
+    # Extract title from <title> tag
+    import re
+    title_match = re.search(r"<title>(.*?)</title>", content)
+    title = title_match.group(1).strip() if title_match else filepath.stem
+
+    # Strip the " — IELTS Claude Teacher" suffix
+    title = re.sub(r"\s*[—–-]\s*IELTS Claude Teacher\s*$", "", title)
+
+    # Extract KC tags from <meta name="kc-tags">
+    kc_match = re.search(r'<meta\s+name="kc-tags"\s+content="([^"]*)"', content)
+    kc_tags = []
+    if kc_match:
+        kc_tags = [t.strip() for t in kc_match.group(1).split(",") if t.strip()]
+
+    # Infer skill from KC tags or filename
+    skill = "general"
+    if kc_tags:
+        for tag in kc_tags:
+            if tag.startswith("kc-read"):
+                skill = "reading"; break
+            elif tag.startswith("kc-listen"):
+                skill = "listening"; break
+            elif tag.startswith("kc-write"):
+                skill = "writing"; break
+            elif tag.startswith("kc-speak"):
+                skill = "speaking"; break
+    else:
+        # Infer from filename
+        name_lower = filepath.stem.lower()
+        if "writing" in name_lower:
+            skill = "writing"
+        elif "listening" in name_lower:
+            skill = "listening"
+        elif "speaking" in name_lower:
+            skill = "speaking"
+        elif "reading" in name_lower:
+            skill = "reading"
+        elif "diagnostic" in name_lower:
+            skill = "general"
+        elif "dashboard" in name_lower:
+            skill = "general"
+
+    # Extract creation date from filename pattern: *-YYYYMMDD-*.html
+    date_match = re.search(r"(\d{4})(\d{2})(\d{2})", filepath.stem)
+    if date_match:
+        created_at = f"{date_match.group(1)}-{date_match.group(2)}-{date_match.group(3)}T12:00:00Z"
+    else:
+        # Fall back to file modification time
+        from datetime import timezone
+        mtime = filepath.stat().st_mtime
+        created_at = datetime.fromtimestamp(mtime, tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    lesson_id = filepath.stem
+
+    return {
+        "id": lesson_id,
+        "title": title,
+        "kcTags": kc_tags,
+        "skill": skill,
+        "file": str(filepath.relative_to(PROJECT_ROOT)),
+        "createdAt": created_at,
+        "source": "generated",
+        "timesUsed": 0,
+        "lastUsed": None
+    }
 
 
 # ── Commands ───────────────────────────────────────────────────────
@@ -131,6 +220,15 @@ def cmd_init():
             "history": [],
             "crossSkillPatterns": [],
             "coachNotes": []
+        })
+
+    # Create lesson-library.json if missing (separate from student profile —
+    # survives profile resets, protects the self-reinforcing learning loop)
+    if not LESSON_LIBRARY_FILE.exists():
+        _save_json(LESSON_LIBRARY_FILE, {
+            "version": "1.0.0",
+            "totalLessons": 0,
+            "lessons": []
         })
 
     print(json.dumps({"status": "ok", "message": "IELTS data directory initialized", "path": str(IELTS_DIR)}))
@@ -366,8 +464,8 @@ def cmd_validate():
     if not profile:
         errors.append("student-profile.json not found. Run migrate-profile first.")
     else:
-        # Required top-level fields
-        for field in ["version", "learner", "skills", "vocabulary", "grammar", "lessonLibrary", "testHistory", "coachNotes"]:
+        # Required top-level fields (lessonLibrary moved to standalone lesson-library.json)
+        for field in ["version", "learner", "skills", "vocabulary", "grammar", "testHistory", "coachNotes"]:
             if field not in profile:
                 errors.append(f"student-profile.json missing field: {field}")
 
@@ -438,6 +536,219 @@ def cmd_backup():
     return 0
 
 
+# ── Lesson Library Commands ─────────────────────────────────────────
+
+def cmd_lesson_library_list():
+    """List all lessons in the library."""
+    lib = _load_json(LESSON_LIBRARY_FILE)
+    if not lib:
+        print(json.dumps({"status": "ok", "totalLessons": 0, "lessons": []}))
+        return 0
+
+    # Verify each lesson's HTML file still exists
+    available = []
+    missing = []
+    for lesson in lib.get("lessons", []):
+        fp = PROJECT_ROOT / lesson["file"]
+        if fp.exists():
+            available.append(lesson)
+        else:
+            missing.append(lesson["id"])
+
+    result = {
+        "status": "ok",
+        "totalLessons": len(available),
+        "lessons": available
+    }
+    if missing:
+        result["warnings"] = [f"File missing for: {', '.join(missing)}"]
+
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    return 0
+
+
+def cmd_lesson_library_add(args):
+    """Add a lesson entry to the library."""
+    lib = _load_json(LESSON_LIBRARY_FILE, {"version": "1.0.0", "totalLessons": 0, "lessons": []})
+
+    # Parse KC tags
+    kc_tags = []
+    if args.kc_tags:
+        kc_tags = [t.strip() for t in args.kc_tags.split(",")]
+
+    lesson = {
+        "id": args.id,
+        "title": args.title,
+        "kcTags": kc_tags,
+        "skill": args.skill,
+        "file": args.file,
+        "createdAt": args.date if args.date else _now(),
+        "source": args.source if args.source else "generated",
+        "timesUsed": 0,
+        "lastUsed": None
+    }
+
+    # Add triggerError if provided
+    if hasattr(args, 'trigger_error') and args.trigger_error:
+        lesson["triggerError"] = args.trigger_error
+
+    # Check for duplicates
+    existing_ids = {l["id"] for l in lib["lessons"]}
+    if lesson["id"] in existing_ids:
+        # Update existing entry
+        for i, l in enumerate(lib["lessons"]):
+            if l["id"] == lesson["id"]:
+                lib["lessons"][i] = lesson
+                break
+        action = "updated"
+    else:
+        lib["lessons"].append(lesson)
+        action = "added"
+
+    lib["totalLessons"] = len(lib["lessons"])
+    _save_json(LESSON_LIBRARY_FILE, lib)
+
+    print(json.dumps({"status": "ok", "action": action, "id": lesson["id"], "totalLessons": lib["totalLessons"]}, ensure_ascii=False))
+    return 0
+
+
+def cmd_lesson_library_mark_used(args):
+    """Increment timesUsed for a lesson."""
+    lib = _load_json(LESSON_LIBRARY_FILE)
+    if not lib:
+        print(json.dumps({"status": "error", "message": "lesson-library.json not found. Run init first."}))
+        return 1
+
+    for lesson in lib["lessons"]:
+        if lesson["id"] == args.id:
+            lesson["timesUsed"] = lesson.get("timesUsed", 0) + 1
+            lesson["lastUsed"] = _today()
+            _save_json(LESSON_LIBRARY_FILE, lib)
+            print(json.dumps({"status": "ok", "id": args.id, "timesUsed": lesson["timesUsed"], "lastUsed": lesson["lastUsed"]}, ensure_ascii=False))
+            return 0
+
+    print(json.dumps({"status": "error", "message": f"Lesson '{args.id}' not found in library."}))
+    return 1
+
+
+def cmd_lesson_library_sync():
+    """Scan .ielts/lesson-plans/ and rebuild lesson-library.json.
+
+    Preserves usage stats (timesUsed, lastUsed) for existing lessons.
+    Adds new lessons found on disk. Warns about lessons in the library
+    whose HTML files no longer exist.
+    """
+    lib = _load_json(LESSON_LIBRARY_FILE, {"version": "1.0.0", "totalLessons": 0, "lessons": []})
+
+    # Build lookup of existing lessons by id
+    existing = {}
+    for l in lib["lessons"]:
+        existing[l["id"]] = l
+
+    # Scan disk
+    new_lessons = []
+    disk_ids = set()
+
+    if LESSON_PLANS_DIR.exists():
+        for fp in sorted(LESSON_PLANS_DIR.glob("*.html")):
+            meta = _scan_lesson_html(fp)
+            if meta is None:
+                continue
+
+            disk_ids.add(meta["id"])
+
+            if meta["id"] in existing:
+                # Preserve usage stats
+                old = existing[meta["id"]]
+                meta["timesUsed"] = old.get("timesUsed", 0)
+                meta["lastUsed"] = old.get("lastUsed")
+                # Update KC tags if newly discovered
+                if not meta["kcTags"] and old.get("kcTags"):
+                    meta["kcTags"] = old["kcTags"]
+                if meta["skill"] == "general" and old.get("skill", "general") != "general":
+                    meta["skill"] = old["skill"]
+            else:
+                # New lesson found on disk
+                pass
+
+            new_lessons.append(meta)
+    else:
+        _ensure_dir(LESSON_PLANS_DIR)
+
+    # Check for orphaned entries (in library but file missing)
+    orphaned = set(existing.keys()) - disk_ids
+    warnings = []
+    if orphaned:
+        warnings.append(f"Orphaned entries (file missing): {', '.join(sorted(orphaned))}")
+
+    lib["lessons"] = new_lessons
+    lib["totalLessons"] = len(new_lessons)
+    _save_json(LESSON_LIBRARY_FILE, lib)
+
+    result = {
+        "status": "ok",
+        "totalLessons": lib["totalLessons"],
+        "added": len(disk_ids - set(existing.keys())),
+        "preserved": len(disk_ids & set(existing.keys())),
+        "orphaned": len(orphaned)
+    }
+    if warnings:
+        result["warnings"] = warnings
+
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    return 0
+
+
+def cmd_migrate_lesson_library():
+    """One-time migration: extract lessonLibrary from student-profile.json
+    and write to standalone lesson-library.json. Removes lessonLibrary
+    from student-profile.json after successful migration.
+    """
+    profile = _load_json(PROFILE_FILE)
+    if not profile:
+        print(json.dumps({"status": "error", "message": "student-profile.json not found."}))
+        return 1
+
+    old_library = profile.get("lessonLibrary")
+    if old_library is None:
+        print(json.dumps({"status": "ok", "message": "No lessonLibrary in student-profile.json. Nothing to migrate."}))
+        return 0
+
+    # Backup both files
+    _backup_file(PROFILE_FILE)
+    if LESSON_LIBRARY_FILE.exists():
+        _backup_file(LESSON_LIBRARY_FILE)
+
+    # Write standalone lesson library
+    lib = {
+        "version": "1.0.0",
+        "totalLessons": old_library.get("totalLessons", len(old_library.get("lessons", []))),
+        "lessons": old_library.get("lessons", [])
+    }
+    _save_json(LESSON_LIBRARY_FILE, lib)
+
+    # Remove lessonLibrary from profile
+    del profile["lessonLibrary"]
+    _save_json(PROFILE_FILE, profile)
+
+    # Now sync from disk to find any orphaned lessons
+    sync_result = json.loads(json.dumps({"status": "ok"}))  # placeholder
+    # Run sync to pick up lessons on disk that weren't tracked
+    if LESSON_PLANS_DIR.exists():
+        disk_count = len(list(LESSON_PLANS_DIR.glob("*.html")))
+    else:
+        disk_count = 0
+
+    print(json.dumps({
+        "status": "ok",
+        "message": "Lesson library migrated to standalone file",
+        "migrated": lib["totalLessons"],
+        "filesOnDisk": disk_count,
+        "note": "Run 'lesson-library sync' to scan disk for orphaned lessons"
+    }, ensure_ascii=False, indent=2))
+    return 0
+
+
 def cmd_status():
     """Output a brief status summary."""
     profile = _load_json(PROFILE_FILE)
@@ -465,7 +776,8 @@ def cmd_status():
     if sessions:
         parts.append(f"📚 {sessions} sessions")
 
-    lesson_count = profile.get("lessonLibrary", {}).get("totalLessons", 0)
+    lesson_lib = _load_json(LESSON_LIBRARY_FILE)
+    lesson_count = (lesson_lib or {}).get("totalLessons", 0) if lesson_lib else 0
     if lesson_count:
         parts.append(f"📝 {lesson_count} lessons")
 
@@ -503,6 +815,26 @@ def main():
     # status
     sub.add_parser("status", help="Show brief status summary")
 
+    # lesson-library
+    p_ll = sub.add_parser("lesson-library", help="Lesson library management")
+    p_ll_sub = p_ll.add_subparsers(dest="ll_action")
+    p_ll_sub.add_parser("list", help="List all lessons")
+    p_ll_sub.add_parser("sync", help="Scan lesson-plans/ and rebuild library")
+    p_ll_add = p_ll_sub.add_parser("add", help="Add a lesson entry")
+    p_ll_add.add_argument("--id", required=True, help="Lesson ID (e.g., lesson-20260713-001)")
+    p_ll_add.add_argument("--title", required=True, help="Lesson title")
+    p_ll_add.add_argument("--skill", required=True, choices=["reading", "listening", "writing", "speaking", "general"])
+    p_ll_add.add_argument("--file", required=True, help="Relative path to HTML file")
+    p_ll_add.add_argument("--kc-tags", help="Comma-separated KC tag IDs")
+    p_ll_add.add_argument("--date", help="Creation date (ISO format)")
+    p_ll_add.add_argument("--source", help="Source (generated/cambridge/manual)")
+    p_ll_add.add_argument("--trigger-error", help="Error that triggered this lesson")
+    p_ll_mark = p_ll_sub.add_parser("mark-used", help="Increment timesUsed for a lesson")
+    p_ll_mark.add_argument("--id", required=True, help="Lesson ID")
+
+    # migrate-lesson-library (one-time)
+    sub.add_parser("migrate-lesson-library", help="Migrate lessonLibrary from student-profile.json to standalone file")
+
     args = parser.parse_args()
 
     if args.command is None:
@@ -527,6 +859,20 @@ def main():
         return cmd_backup()
     elif args.command == "status":
         return cmd_status()
+    elif args.command == "lesson-library":
+        if args.ll_action == "list":
+            return cmd_lesson_library_list()
+        elif args.ll_action == "sync":
+            return cmd_lesson_library_sync()
+        elif args.ll_action == "add":
+            return cmd_lesson_library_add(args)
+        elif args.ll_action == "mark-used":
+            return cmd_lesson_library_mark_used(args)
+        else:
+            print("Usage: ielts_cli.py lesson-library [list|sync|add|mark-used]")
+            return 1
+    elif args.command == "migrate-lesson-library":
+        return cmd_migrate_lesson_library()
     else:
         parser.print_help()
         return 1

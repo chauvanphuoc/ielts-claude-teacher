@@ -48,10 +48,11 @@ All data lives in `.ielts/` at the project root. These files are your memory bet
 
 | File | Purpose | Load on every session |
 |------|---------|----------------------|
-| `.ielts/student-profile.json` | **Single source of truth** — learner state, KC mastery, vocabulary, grammar, lesson library, test history, coach notes | **YES — always** |
+| `.ielts/student-profile.json` | **Single source of truth** — learner state, KC mastery, vocabulary, grammar, test history, coach notes | **YES — always** |
 | `.ielts/kc-graph-ielts.json` | Knowledge Component taxonomy — what KCs exist and their dependencies | **YES — always** |
+| `.ielts/lesson-library.json` | **Lesson library** — all Claude-generated lessons with KC tags, usage stats. Survives profile resets. | **YES — always** |
 | `.ielts/settings.json` | Language preference, teacher personality | **YES — always** |
-| `.ielts/lesson-plans/` | Claude-generated HTML mini tests | Load index from profile |
+| `.ielts/lesson-plans/` | Claude-generated HTML mini tests | Load index from lesson-library.json |
 
 **CLI:** `.venv/bin/python3 shared/ielts_cli.py`
 **HTML Studio:** `skills/ielts-teacher/ielts-studio.html` (for full Cambridge tests)
@@ -130,7 +131,8 @@ If warnings only: note them, continue.
 Read these files (they are your memory):
 1. `.ielts/student-profile.json` — **always read first**
 2. `.ielts/kc-graph-ielts.json` — KC taxonomy and dependencies
-3. `.ielts/settings.json` — language preference
+3. `.ielts/lesson-library.json` — lesson index with KC tags and usage stats
+4. `.ielts/settings.json` — language preference
 
 ### 1.3 — Display Welcome Summary
 
@@ -242,7 +244,13 @@ Decide what to teach and how.
 
 ### 3.1 — Query Lesson Library
 
-Check `lessonLibrary.lessons` in student-profile.json for lessons tagged with the selected KCs.
+Check `lessons` in `.ielts/lesson-library.json` for lessons tagged with the selected KCs. Query via CLI:
+
+```bash
+.venv/bin/python3 shared/ielts_cli.py lesson-library list
+```
+
+Or read the file directly: `cat .ielts/lesson-library.json`
 
 ### 3.2 — Decision: Reuse or Create
 
@@ -267,7 +275,17 @@ Check `lessonLibrary.lessons` in student-profile.json for lessons tagged with th
    - `{{QUESTION_TYPE_LABEL}}` → question type (T/F/NG, Multiple Choice, etc.)
    - `{{QUESTIONS_COUNT}}` → number
 5. Save to `.ielts/lesson-plans/lesson-{date}-{seq}.html`
-6. Update `lessonLibrary` in student-profile.json with the new lesson entry
+6. Register the lesson in `.ielts/lesson-library.json`:
+   ```bash
+   .venv/bin/python3 shared/ielts_cli.py lesson-library add \
+     --id "lesson-{date}-{seq}" \
+     --title "{TEST_TITLE value}" \
+     --skill {reading|listening|writing|speaking|general} \
+     --file ".ielts/lesson-plans/lesson-{date}-{seq}.html" \
+     --kc-tags "{kc-tag-1},{kc-tag-2}" \
+     --source generated \
+     --trigger-error "{brief error description}"
+   ```
 
 ### 3.4 — Never Exceed 3 New Lessons Per Session
 
@@ -408,7 +426,11 @@ Rename `.ielts/{skill}/latest.json` to `.ielts/{skill}/archive/{date}-{testTitle
 
 ### 5.6 — Update Lesson Library
 
-Increment `timesUsed` and update `lastUsed` for the lesson in `lessonLibrary`.
+Increment `timesUsed` and update `lastUsed` for the lesson:
+
+```bash
+.venv/bin/python3 shared/ielts_cli.py lesson-library mark-used --id "{lesson-id}"
+```
 
 ### 5.7 — Check for Escalation
 
@@ -688,6 +710,7 @@ Example: "Section 3 có 5 câu Multiple Choice. Dựa trên lịch sử của b�
 - **Never fabricate scores.** If you can't evaluate fairly, say so.
 - **Context budget:** Profile + KC graph + template + this SKILL.md ≈ 40-50KB. If profile exceeds 100KB, load only: KC mastery summary + last 5 test history + active coach notes.
 - **Always update student-profile.json after every session.** It is your memory — if you don't write to it, you forget.
+- **Lesson library survives resets.** `.ielts/lesson-library.json` is separate from student-profile.json. Lessons you create accumulate over time — the library only grows, never resets. This is how you get better at teaching.
 
 ---
 
@@ -705,6 +728,12 @@ Example: "Section 3 có 5 câu Multiple Choice. Dựa trên lịch sử của b�
 
 # Coach memory
 .venv/bin/python3 shared/ielts_cli.py memory add --content "..." --category observation --skill reading --priority high
+
+# Lesson library
+.venv/bin/python3 shared/ielts_cli.py lesson-library list
+.venv/bin/python3 shared/ielts_cli.py lesson-library sync
+.venv/bin/python3 shared/ielts_cli.py lesson-library add --id "..." --title "..." --skill reading --file ".ielts/lesson-plans/..." --kc-tags "kc-read-tfng"
+.venv/bin/python3 shared/ielts_cli.py lesson-library mark-used --id "..."
 
 # HTML Studio (full Cambridge tests)
 .venv/bin/python3 skills/ielts-teacher/server.py &
