@@ -401,14 +401,22 @@ def validate_listening_json(json_path, audio_dir):
             # Check image references in questions
             for q in questions:
                 if q["type"] == "multiple-choice-image":
+                    # Check question-level image (single-image mode)
+                    q_img = q.get("image", "")
+                    if q_img:
+                        img_path = audio_base / "textbook" / q_img
+                        if not img_path.exists():
+                            warnings.append(
+                                f"Q{q['number']}: Question image not found: {q_img}"
+                            )
+                    # Check option-level images (individual image mode)
                     for opt in q.get("options", []):
                         img = opt.get("image", "")
                         if img:
-                            # Image path is relative to textbook/{source}/textbook/
                             img_path = audio_base / "textbook" / img
                             if not img_path.exists():
                                 warnings.append(
-                                    f"Q{q['number']}: Image not found: {img}"
+                                    f"Q{q['number']}: Option image not found: {img}"
                                 )
 
     return warnings, errors

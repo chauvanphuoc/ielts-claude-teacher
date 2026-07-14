@@ -160,49 +160,104 @@
   }
 
   function renderMCImage(container, q) {
-    var grid = document.createElement('div');
-    grid.className = 'options-image-grid';
-    grid.setAttribute('role', 'radiogroup');
-    grid.setAttribute('aria-label', 'Question ' + q.number + ' answer options');
+    // Check if individual option images exist (future textbooks may have them)
+    var hasIndividualImages = (q.options || []).some(function(opt) { return opt.image; });
 
-    (q.options || []).forEach(function(opt, idx) {
-      var div = document.createElement('div');
-      div.className = 'option-img';
+    if (hasIndividualImages) {
+      // Image grid mode: each option has its own image
+      var grid = document.createElement('div');
+      grid.className = 'options-image-grid';
+      grid.setAttribute('role', 'radiogroup');
+      grid.setAttribute('aria-label', 'Question ' + q.number + ' answer options');
 
-      var input = document.createElement('input');
-      input.type = 'radio';
-      input.name = 'q' + q.number;
-      input.id = 'q' + q.number + '-' + idx;
-      input.value = opt.label;
-      input.setAttribute('data-question', q.number);
+      (q.options || []).forEach(function(opt, idx) {
+        var div = document.createElement('div');
+        div.className = 'option-img';
 
-      var label = document.createElement('label');
-      label.setAttribute('for', 'q' + q.number + '-' + idx);
+        var input = document.createElement('input');
+        input.type = 'radio';
+        input.name = 'q' + q.number;
+        input.id = 'q' + q.number + '-img-' + idx;
+        input.value = opt.label;
+        input.setAttribute('data-question', q.number);
 
-      var img = document.createElement('img');
-      img.src = opt.imageUrl || '';
-      img.alt = 'Option ' + opt.label;
-      img.setAttribute('loading', 'lazy');
-      img.onerror = function() {
-        this.style.display = 'none';
-        var fallback = document.createElement('div');
-        fallback.style.cssText = 'padding:40px 20px;text-align:center;font-size:13px;color:#9ca3af;';
-        fallback.textContent = 'Image not available';
-        this.parentNode.insertBefore(fallback, this.nextSibling);
-      };
+        var label = document.createElement('label');
+        label.setAttribute('for', 'q' + q.number + '-img-' + idx);
 
-      var imgLabel = document.createElement('div');
-      imgLabel.className = 'img-label';
-      imgLabel.textContent = opt.label;
+        var img = document.createElement('img');
+        img.src = opt.image || '';
+        img.alt = 'Option ' + opt.label;
+        img.setAttribute('loading', 'lazy');
+        img.onerror = function() {
+          this.style.display = 'none';
+          var fallback = document.createElement('div');
+          fallback.style.cssText = 'padding:40px 20px;text-align:center;font-size:13px;color:#9ca3af;';
+          fallback.textContent = 'Image not available';
+          this.parentNode.insertBefore(fallback, this.nextSibling);
+        };
 
-      label.appendChild(img);
-      label.appendChild(imgLabel);
-      div.appendChild(input);
-      div.appendChild(label);
-      grid.appendChild(div);
-    });
+        var imgLabel = document.createElement('div');
+        imgLabel.className = 'img-label';
+        imgLabel.textContent = opt.label;
 
-    container.appendChild(grid);
+        label.appendChild(img);
+        label.appendChild(imgLabel);
+        div.appendChild(input);
+        div.appendChild(label);
+        grid.appendChild(div);
+      });
+
+      container.appendChild(grid);
+    } else {
+      // Single-image mode: show the question image, then text radio buttons below
+      if (q.image) {
+        var imgDiv = document.createElement('div');
+        imgDiv.className = 'question-image';
+        var img = document.createElement('img');
+        img.src = '/textbook/' + (window.__TEST_CONFIG__ && window.__TEST_CONFIG__.sourceId || 'cambridge-1') + '/textbook/' + q.image;
+        img.alt = 'Question ' + q.number + ' image';
+        img.setAttribute('loading', 'lazy');
+        img.onerror = function() {
+          this.style.display = 'none';
+          var fb = document.createElement('div');
+          fb.className = 'question-image-fallback';
+          fb.textContent = 'Image not available — refer to textbook page';
+          this.parentNode.appendChild(fb);
+        };
+        imgDiv.appendChild(img);
+        container.appendChild(imgDiv);
+      }
+
+      // Text radio buttons below the image
+      var row = document.createElement('div');
+      row.className = 'options-vertical';
+      row.setAttribute('role', 'radiogroup');
+      row.setAttribute('aria-label', 'Question ' + q.number + ' answer options');
+
+      (q.options || []).forEach(function(opt, idx) {
+        var div = document.createElement('div');
+        div.className = 'option-mc';
+
+        var input = document.createElement('input');
+        input.type = 'radio';
+        input.name = 'q' + q.number;
+        input.id = 'q' + q.number + '-' + idx;
+        input.value = opt.label;
+        input.setAttribute('data-question', q.number);
+
+        var label = document.createElement('label');
+        label.setAttribute('for', 'q' + q.number + '-' + idx);
+        var labelText = opt.label;
+        if (opt.text) labelText += ' ' + opt.text;
+        label.innerHTML = '<span class="option-label-marker">' + escapeHtml(opt.label) + '</span>' + (opt.text ? ' ' + escapeHtml(opt.text) : '');
+
+        div.appendChild(input);
+        div.appendChild(label);
+        row.appendChild(div);
+      });
+
+      container.appendChild(row);
+    }
   }
 
   function renderGapFill(container, q) {

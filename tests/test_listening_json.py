@@ -178,9 +178,12 @@ def test_mc_questions_have_options():
                     if len(opts) < 2:
                         issues.append(f"Q{q['number']}: {q['type']} has < 2 options")
                     if q["type"] == "multiple-choice-image":
-                        for opt in opts:
-                            if "image" not in opt:
-                                issues.append(f"Q{q['number']}: image MC option missing image field")
+                        # Single-image mode: question has 'image' field, options are text labels
+                        # Individual-image mode: each option has its own 'image' field
+                        has_question_image = "image" in q
+                        has_option_images = all("image" in opt for opt in opts)
+                        if not has_question_image and not has_option_images:
+                            issues.append(f"Q{q['number']}: image MC has no image (need question.image or option.image)")
 
     assert not issues, f"MC option issues: {issues}"
 

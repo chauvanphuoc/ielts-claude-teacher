@@ -369,7 +369,32 @@ body {
 }
 
 /* ============================================================
-   MULTIPLE CHOICE — IMAGE (listening)
+   QUESTION IMAGE (listening — single image above text options)
+   ============================================================ */
+.question-image {
+  margin-bottom: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: white;
+}
+.question-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+}
+.question-image-fallback {
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-text-tertiary);
+  background: var(--color-bg);
+}
+
+/* ============================================================
+   MULTIPLE CHOICE — IMAGE GRID (listening — individual option images)
    ============================================================ */
 .options-image-grid {
   display: grid;
