@@ -4,7 +4,7 @@ description: |
   Initialize JSON test files from textbook Markdown. Claude reads Cambridge IELTS
   textbook Markdown, parses questions/answers/images/tables, and generates structured
   JSON files that the HTML studio and Claude conversation mode can consume.
-  Unified commands: /init-textbook-{reading|listening|speaking} --source {dir}
+  Unified commands: /init-textbook-{reading|listening|speaking|writing} --source {dir}
 metadata:
   version: 2.0.0
 ---
@@ -12,7 +12,7 @@ metadata:
 # Initialize JSON Textbook
 
 Convert Cambridge IELTS textbook Markdown into structured JSON test files.
-Supports **Reading**, **Listening**, and **Speaking**.
+Supports **Reading**, **Listening**, **Speaking**, and **Writing**.
 
 ## Command Reference
 
@@ -21,6 +21,7 @@ Supports **Reading**, **Listening**, and **Speaking**.
 | Reading | `/init-textbook-reading --source X --test N` | `textbook/{X}/json/test-{N}-reading.json` | per-test |
 | Listening | `/init-textbook-listening --source X` | `shared/listening/listening_{X}.json` | per-source (all 4 tests) |
 | Speaking | `/init-textbook-speaking --source X` | `shared/speaking/speaking_{X}.json` | per-source (Claude-generated modern tasks + legacy extract) |
+| Writing | `/init-textbook-writing --source X` | `shared/writing/writing_{X}.json` | per-source (academic + general training) |
 
 **Multi-source:** `--source` maps to `textbook/{source}/` directory. Add any Cambridge IELTS book by creating a folder under `textbook/` (e.g., `cambridge-2`, `ielts-4-5`) with the textbook Markdown and audio files.
 
@@ -29,12 +30,15 @@ Examples:
 /init-textbook-reading --source cambridge-2 --test 1
 /init-textbook-listening --source cambridge-2
 /init-textbook-speaking --source cambridge-2
+/init-textbook-writing --source cambridge-2
 ```
 
 The user may also say things like:
 - "tạo JSON cho Test 1 Reading từ cambridge 2"
 - "initialize listening for cambridge 2"  
 - "generate speaking tasks from cambridge 1"
+- "tạo JSON writing từ cambridge 1"
+- "initialize writing tasks for cambridge 2"
 
 ## Workflow
 
@@ -128,6 +132,11 @@ Write to `textbook/{source}/json/test-{n}-{skill}.json` following the schema at 
 - **Question count mismatch:** If Markdown has 40 questions but answer keys have 38, report the mismatch and list which question numbers are missing from the answer key.
 - **Image file not found:** If `![] (filename.jpeg)` references an image that doesn't exist in the textbook directory, still include the src in JSON but add a `"missing": true` flag.
 - **Multiple acceptable answers (//):** Store the full `"answer1//answer2"` string in answerKeys. Scoring logic handles splitting.
+- **Writing — Image file not found:** If `![] (filename.jpeg)` references an image that doesn't exist, still include the src in JSON but add `"missing": true` flag.
+- **Writing — No model answers:** If the textbook has no model answers section, or only some tasks have model answers, set `modelAnswer: null` and populate `_modelAnswerNote` explaining which tasks lack model answers.
+- **Writing — Mixed formatting (bold vs non-bold task headers):** Cambridge IELTS 1 uses inconsistent formatting: Test 1 uses `#### **WRITING TASK 1**` (bold), Tests 2-4 use `#### WRITING TASK 1` (non-bold). Use flexible matching: `####\s*\*?\*?WRITING TASK [12]\*?\*?`.
+- **Writing — General Training vs Academic detection:** The 5th `#### **WRITING**` belongs to General Training, NOT a 5th practice test. Detect by checking if the section is under `### Practice Test N` (Academic) or `### General Training Module` (GT).
+- **Writing — Sub-headings within Task 1:** Some Task 1 sections have descriptive sub-headings (e.g., `#### **Expenditure on fast foods**`) between the prompt and images. Only `WRITING TASK` headers indicate task boundaries.
 
 ## Listening Extraction (/init-textbook-listening)
 
@@ -361,3 +370,189 @@ Write to `shared/speaking/speaking_{source}.json`. Structure:
 ### Reference
 
 See `shared/speaking/speaking_cambridge-1.json` for a complete example (all 4 tests with modern parts + legacy tasks).
+
+## Writing Extraction (/init-textbook-writing)
+
+**Usage:** `/init-textbook-writing --source cambridge-1`
+
+Writing extraction differs from Reading/Listening: there are no correct/incorrect answer keys (writing is subjectively scored using band descriptors TR/CC/LR/GRA). The JSON captures task prompts, images, and model answers for reference. Cambridge IELTS 1 includes both Academic (4 tests) and General Training (standalone) writing modules.
+
+### Output Location
+
+```
+shared/writing/writing_{source}.json
+```
+
+Per-source consolidated (all 4 tests + General Training in one file), same pattern as Listening/Speaking.
+
+### Step 1: Read textbook markdown
+
+Read `textbook/{source}/textbook/Cambridge_IELTS_*.md`. The entire file is needed because model answers appear in a separate section at the end.
+
+### Step 2: Locate Academic Writing sections
+
+Find all `#### **WRITING**` sections within `### Practice Test N` boundaries. In Cambridge 1, there are 4 academic writing sections (Tests 1-4), one per test. A 5th `#### **WRITING**` (line ~2417) belongs to the General Training module and must be handled separately (see Step 4).
+
+**Task header patterns (all must be handled):**
+- `#### **WRITING TASK 1**` — bold, with asterisks (Test 1)
+- `#### **WRITING TASK 2**` — bold, with asterisks (Test 1)
+- `#### WRITING TASK 1` — non-bold (Tests 2, 3, 4)
+- `#### WRITING TASK 2` — non-bold (Tests 2, 3, 4)
+
+**Task boundary detection:** A task section runs from its `WRITING TASK {N}` header until the next `WRITING TASK {N}` header, `#### **SPEAKING**`, `### Practice Test N`, or `### General Training Module`.
+
+### Step 3: Extract task content
+
+For each task, extract:
+
+| Field | Source | Notes |
+|-------|--------|-------|
+| `taskNumber` | Heading | Parse N from `WRITING TASK {N}` |
+| `taskType` | Content heuristics | `"report"` (chart/table/diagram/map description), `"letter"` (GT Task 1), `"essay"` (Task 2) |
+| `duration` | `*You should spend about {N} minutes*` | May or may not be italicized |
+| `wordLimit` | `*write at least {N} words*` | 150 for Task 1, 250 for Task 2 |
+| `promptDescription` | Text describing the topic | Multi-paragraph — the chart/table description or essay topic |
+| `promptInstruction` | Text describing the task | "Write a report for a university lecturer..." or "Present a written argument..." |
+| `images` | `![](_page_XX_...)` references | Collect all images between task header and next boundary. Check file existence. |
+| `rubricDimensions` | Always `["TR", "CC", "LR", "GRA"]` | Writing tasks are scored on all 4 dimensions |
+
+**Task type detection:**
+```
+If promptInstruction contains "report for a university lecturer" → "report"
+If promptInstruction contains "letter" OR task is in GT module Task 1 → "letter"
+If promptInstruction contains "argument" OR "essay" OR "topic" → "essay"
+Default Task 1 → "report" (academic), Default Task 2 → "essay"
+```
+
+**Image handling:** Some Task 1 prompts have sub-headings between the prompt and images (e.g., Test 3 has `#### **Expenditure on fast foods by income groups**` and `#### **Consumption of fast foods 1970-1990**`). Do NOT treat these as task boundaries — they are descriptive labels for chart images. Only `WRITING TASK` headers mark boundaries.
+
+### Step 4: Extract General Training Writing
+
+Find the 5th `#### **WRITING**` marker (line ~2417 in Cambridge 1). This appears under `### General Training Module` — NOT inside a numbered practice test.
+
+**Detection:** Check section context — if the writing section is NOT within `### Practice Test N` boundaries, it's General Training. Confirm by checking if Task 1 mentions "Write a letter" (GT) vs "Write a report" (Academic).
+
+Extract GT Task 1 (letter) and Task 2 (essay). Store in `generalTraining.tasks` array — separate from numbered academic tests. GT tasks do NOT have a `testNumber`.
+
+**GT-specific fields:**
+- `salutation`: parsed from `Begin your letter as follows: *Dear Sir,*` (Task 1 letter only)
+- `addressNote`: `"You do NOT need to write your own address."` if present
+
+### Step 5: Extract Model Answers
+
+Find `#### **WRITING: MODEL ANSWERS**` at the end of the textbook (line ~4102 in Cambridge 1).
+
+**Sub-sections:**
+1. `#### **ACADEMIC WRITING MODULE**` — model answers for academic tasks
+   - Each entry labeled `Practice Test N, Writing Task M`
+   - Followed by `*Model answer {N} words*` then the answer text
+2. `#### **GENERAL TRAINING WRITING MODULE**` — model answers for GT tasks
+   - `Writing Task 1` / `Writing Task 2` headers
+   - Same `*Model answer {N} words*` pattern
+
+**Matching logic:**
+1. For Academic: parse `Practice Test N, Writing Task M` → find matching `testNumber` and `taskNumber` → set `modelAnswer` inline on the matched task
+2. For GT: match by `taskNumber` in `generalTraining.tasks`
+3. Tasks without model answers → `modelAnswer: null`
+
+**Model answer extraction:**
+- Read from `*Model answer {N} words*` until the next section marker (`####`, `###`, or `![](`)
+- Preserve paragraph breaks (`\n\n`)
+- For letters (GT Task 1): extract salutation and closing as structured fields
+- The textbook repeats the prompt before each model answer — do NOT re-extract the prompt
+
+**Model answer fields:**
+```json
+{
+  "wordCount": 165,
+  "content": "The chart shows that..."
+}
+```
+
+For GT Task 1 letters, add `salutation` and `closing` fields.
+
+### Step 6: Validation (mandatory)
+
+Before writing the JSON file, run these checks:
+
+1. **Task count:** Academic: 4 tests × 2 tasks = 8 tasks expected. General Training: 2 tasks expected (may be 0 for textbooks without GT module).
+2. **Image references:** Every `![](` image referenced in tasks must exist at `textbook/{source}/textbook/{filename}`. Missing images → flag in `_validation.missingImages` with `"missing": true` on the image object (WARNING, does not block).
+3. **Model answer coverage:** Report "X of Y tasks have model answers."
+4. **Required fields:** Every task must have `taskNumber`, `taskType`, `promptDescription`, `promptInstruction`, `wordLimit`, `duration`, `rubricDimensions`.
+5. **Spot-check:** Re-read 2 random task prompts from original markdown, compare verbatim with extracted JSON. Any mismatch = ERROR (blocks generation).
+6. **JSON schema integrity:** Validate top-level fields, test structure, task required fields.
+7. **Cyrillic normalization:** Apply same normalization as other skills (В→B, С→C, А→A, Е→E, М→M).
+
+**Validation output format:**
+```
+[validate] ✅ 4 academic tests, 8 tasks extracted
+[validate] ✅ 2 General Training tasks extracted
+[validate] ✅ 4 model answers matched (Academic Test 3 Tasks 1+2, GT Tasks 1+2)
+[validate] ⚠️  1 warning(s):
+  ⚠️  Test 2 Task 1: image _page_56_Picture_7.jpeg not found
+[validate] ✅ 2/2 spot-checks passed
+[validate] ✅ JSON schema integrity verified
+
+[summary] Source: cambridge-1
+[summary]   Academic: 4 tests, 8 tasks, 5 images, 2 model answers
+[summary]   General Training: 2 tasks, 0 images, 2 model answers
+[summary]   Overall: 10 tasks, 5 images, 4 model answers
+```
+
+### Step 7: Write JSON
+
+Write to `shared/writing/writing_{source}.json`. Create `shared/writing/` directory if it doesn't exist. Use 2-space indentation.
+
+```json
+{
+  "source": "cambridge-1",
+  "generatedAt": "<ISO datetime>",
+  "generatedBy": "/init-textbook-writing",
+  "academic": {
+    "tests": [
+      {
+        "testNumber": 1,
+        "tasks": [
+          {
+            "taskNumber": 1,
+            "taskType": "report",
+            "duration": "20 minutes",
+            "wordLimit": 150,
+            "promptDescription": "The charts below show the results of a survey...",
+            "promptInstruction": "Write a report for a university lecturer...",
+            "images": [{"src": "_page_36_Figure_6.jpeg", "alt": "", "missing": false}],
+            "modelAnswer": null,
+            "rubricDimensions": ["TR", "CC", "LR", "GRA"]
+          },
+          {
+            "taskNumber": 2,
+            "taskType": "essay",
+            "duration": "40 minutes",
+            "wordLimit": 250,
+            "promptDescription": "There are many different types of music...",
+            "promptInstruction": "Present a written argument or case...",
+            "images": [],
+            "modelAnswer": null,
+            "rubricDimensions": ["TR", "CC", "LR", "GRA"]
+          }
+        ]
+      }
+    ]
+  },
+  "generalTraining": {
+    "tasks": []
+  },
+  "_validation": {
+    "academicTestsExtracted": 4,
+    "academicTasksExtracted": 8,
+    "generalTrainingTasksExtracted": 2,
+    "modelAnswersMatched": 0,
+    "totalImages": 5,
+    "missingImages": []
+  }
+}
+```
+
+### Reference
+
+See `shared/listening/listening_cambridge-1.json` and `shared/speaking/speaking_cambridge-1.json` for the per-source consolidated pattern that writing follows.

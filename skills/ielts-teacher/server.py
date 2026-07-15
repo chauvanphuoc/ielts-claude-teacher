@@ -51,7 +51,7 @@ for d in [IELTS_DIR, IELTS_DIR/"speaking", IELTS_DIR/"listening", IELTS_DIR/"wri
     d.mkdir(parents=True, exist_ok=True)
 
 # Ensure shared skill directories exist
-for skill_dir in ["listening", "speaking"]:
+for skill_dir in ["listening", "speaking", "writing"]:
     (SHARED_DIR / skill_dir).mkdir(parents=True, exist_ok=True)
 
 
@@ -145,7 +145,7 @@ def _build_skill_sources(skill):
 
 # Pre-build caches for skills that have content
 _skill_sources_cache = {}
-for _skill in ["listening", "speaking"]:
+for _skill in ["listening", "speaking", "writing"]:
     _cache = _build_skill_sources(_skill)
     if _cache:
         _skill_sources_cache[_skill] = _cache
@@ -351,7 +351,7 @@ class BridgeHandler(SimpleHTTPRequestHandler):
 
         # ── /api/{skill} — list available sources for a skill ──
         # ── /api/{skill}/<source> — serve skill JSON for a source ──
-        for _sk in ["listening", "speaking"]:
+        for _sk in ["listening", "speaking", "writing"]:
             _api_prefix = f"api/{_sk}"
             if path == _api_prefix or path == _api_prefix + "/":
                 _serve_skill_api(self, _sk)
