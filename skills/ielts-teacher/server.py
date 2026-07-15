@@ -422,6 +422,16 @@ class BridgeHandler(SimpleHTTPRequestHandler):
                 self.send_error(403, "Invalid path"); return
             self.send_error(404, f"Lesson not found: {filename}"); return
 
+        # ── /test-html/<filename> — serve generated section HTML files ──
+        if path.startswith("test-html/"):
+            filename = path[len("test-html/"):]
+            if ".." in filename or "/" in filename or "\\" in filename:
+                self.send_error(403, "Invalid path"); return
+            html_file = IELTS_DIR / "test-html" / filename
+            if html_file.exists() and html_file.is_file():
+                if self._serve_file(html_file, "text/html; charset=utf-8"): return
+            self.send_error(404, f"Test HTML not found: {filename}"); return
+
         # ── /roadmap.json — serve student-profile.json (backward compat) ──
         # roadmap.json v1 was superseded by student-profile.json v2.
         # The HTML studio reads learner.targetBand, learner.examDate,
