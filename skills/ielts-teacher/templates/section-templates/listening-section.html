@@ -813,6 +813,8 @@ body {
   var $ = function(id) { return document.getElementById(id); };
   var mainContent = $('main-content');
   var questionsContainer = $('questions-container');
+  // Debug: expose state for QA diagnostics
+  window.__DBG__ = { qLen: questions.length, hasContainer: !!questionsContainer, readyState: document.readyState };
   var btnCheck = $('btn-check');
   var btnToggleAnswers = $('btn-toggle-answers');
   var scoreBadge = $('score-badge');
@@ -1819,10 +1821,24 @@ body {
   }
 
   // ============================================================
-  // INIT
+  // INIT — wait for DOM readiness (handles headless browsers)
   // ============================================================
-  renderAllQuestions();
-  initAudio();
+  function init() {
+    try {
+      renderAllQuestions();
+      initAudio();
+    } catch(e) {
+      var c = document.getElementById('questions-container');
+      if (c) c.innerHTML = '<div class=\"error-state\"><div class=\"empty-state-icon\">&#9888;</div><div class=\"empty-state-title\">JS Error</div><div class=\"empty-state-desc\">' + e.message.replace(/</g,'&lt;') + '</div></div>';
+      console.error('IIFE init error:', e);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 
 })();
 </script>

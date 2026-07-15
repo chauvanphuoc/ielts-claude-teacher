@@ -404,13 +404,19 @@ def render_html(section: NormalizedSection) -> str:
         "QUESTION_COUNT": str(section.question_count),
     }
 
-    # Add skill-specific extra placeholders (JSON-encode complex values)
+    # Add skill-specific extra placeholders
+    # JS-context placeholders: used in <script> as JS values → JSON-encode
+    JS_CONTEXT_KEYS = {"TRANSCRIPT", "PASSAGE_IMAGES", "IMAGES"}
     for key, value in section.extra.items():
         if isinstance(value, (list, dict)):
             placeholders[key] = json.dumps(value, ensure_ascii=False)
         elif isinstance(value, str):
-            # Escape template delimiters in user content
-            placeholders[key] = escape_template_content(value)
+            if key in JS_CONTEXT_KEYS:
+                # JSON-encode for JS context: "" → valid JS empty string
+                placeholders[key] = json.dumps(escape_template_content(value), ensure_ascii=False)
+            else:
+                # HTML context: plain string, escape template delimiters only
+                placeholders[key] = escape_template_content(value)
         elif value is None:
             placeholders[key] = "null"
         else:

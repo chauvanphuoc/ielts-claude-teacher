@@ -1366,10 +1366,21 @@ body {
   if (pending && warningBanner) warningBanner.classList.remove('hidden');
 
   // ============================================================
-  // INIT
+  // INIT — wait for DOM readiness
   // ============================================================
-  renderPassageImages();
-  renderAllQuestions();
+  function init() {
+    try {
+      renderPassageImages();
+      renderAllQuestions();
+    } catch(e) {
+      var c = document.getElementById('questions-container');
+      if (c) c.innerHTML = '<div class="error-state"><div class="empty-state-icon">&#9888;</div><div class="empty-state-title">JS Error</div><div class="empty-state-desc">' + e.message.replace(/</g,'&lt;') + '</div></div>';
+      console.error('IIFE init error:', e);
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else { init(); }
 
 })();
 </script>

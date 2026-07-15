@@ -376,10 +376,14 @@ body { font-family: var(--font-stack); background: var(--color-bg); color: var(-
   var pending = localStorage.getItem('pendingResults_speaking_section');
   if (pending && $('warning-banner')) $('warning-banner').classList.remove('hidden');
 
-  // ── Init ──
-  renderQuestions();
-  renderCueCard();
-  renderTimers();
+  // ── Init (wait for DOM) ──
+  function init() {
+    try { renderQuestions(); renderCueCard(); renderTimers(); }
+    catch(e) { console.error('IIFE init error:', e); }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else { init(); }
 })();
 </script>
 </body>
