@@ -4,11 +4,11 @@ Section-level HTML test generator.
 Reads JSON textbook data -> renders self-contained HTML files (one per section).
 
 Usage:
-  python3 shared/generate_test_html.py --skill listening --source cambridge-1 --test 1 --section 1
-  python3 shared/generate_test_html.py --skill reading --source cambridge-1 --test 1 --section 1
-  python3 shared/generate_test_html.py --skill listening --source cambridge-1 --all
-  python3 shared/generate_test_html.py --source cambridge-1 --all-skills
-  python3 shared/generate_test_html.py --skill writing --source cambridge-1 --test 1 --section 1 --module generalTraining
+  .venv/bin/python3 shared/generate_test_html.py --skill listening --source cambridge-1 --test 1 --section 1
+  .venv/bin/python3 shared/generate_test_html.py --skill reading --source cambridge-1 --test 1 --section 1
+  .venv/bin/python3 shared/generate_test_html.py --skill listening --source cambridge-1 --all
+  .venv/bin/python3 shared/generate_test_html.py --source cambridge-1 --all-skills
+  .venv/bin/python3 shared/generate_test_html.py --skill writing --source cambridge-1 --test 1 --section 1 --module generalTraining
 
 Output: .ielts/test-html/{source}_{skill}_test-{n}_section-{s}.html
 """

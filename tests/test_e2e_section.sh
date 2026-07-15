@@ -25,7 +25,7 @@ echo "-- Flow 1: Single section generation --"
 # Clean any existing file
 rm -f "$OUT_DIR/cambridge-1_listening_test-1_section-1.html"
 
-python3 "$GEN_SCRIPT" --skill listening --source cambridge-1 --test 1 --section 1 --force > /dev/null 2>&1
+.venv/bin/python3 "$GEN_SCRIPT" --skill listening --source cambridge-1 --test 1 --section 1 --force > /dev/null 2>&1
 FILE="$OUT_DIR/cambridge-1_listening_test-1_section-1.html"
 [ -f "$FILE" ] && pass "File created: $FILE" || fail "File created" "missing: $FILE"
 [ -s "$FILE" ] && pass "File has content ($(wc -c < "$FILE") bytes)" || fail "File has content" "empty file"
@@ -55,23 +55,23 @@ except: print('ERROR')
 [ "$QCOUNT" != "NOT_FOUND" ] && [ "$QCOUNT" != "ERROR" ] && pass "Index updated: $QCOUNT questions" || fail "Index updated" "got: $QCOUNT"
 
 # Verify --force overwrite works
-python3 "$GEN_SCRIPT" --skill listening --source cambridge-1 --test 1 --section 1 --force > /dev/null 2>&1
+.venv/bin/python3 "$GEN_SCRIPT" --skill listening --source cambridge-1 --test 1 --section 1 --force > /dev/null 2>&1
 [ -f "$FILE" ] && pass "--force overwrite works" || fail "--force overwrite" "file missing after force"
 
 # Verify overwrite without --force fails
-python3 "$GEN_SCRIPT" --skill listening --source cambridge-1 --test 1 --section 1 2>/dev/null && fail "--force required" "should have failed without --force" || pass "--force required (correctly fails)"
-python3 "$GEN_SCRIPT" --skill listening --source cambridge-1 --test 1 --section 1 --force > /dev/null 2>&1 && pass "--force allows overwrite" || fail "--force allows overwrite" "failed"
+.venv/bin/python3 "$GEN_SCRIPT" --skill listening --source cambridge-1 --test 1 --section 1 2>/dev/null && fail "--force required" "should have failed without --force" || pass "--force required (correctly fails)"
+.venv/bin/python3 "$GEN_SCRIPT" --skill listening --source cambridge-1 --test 1 --section 1 --force > /dev/null 2>&1 && pass "--force allows overwrite" || fail "--force allows overwrite" "failed"
 
 echo ""
 
 # ── Flow 2: Generate --all and verify index ──
 echo "-- Flow 2: Batch generation (--all) --"
 
-python3 "$GEN_SCRIPT" --skill reading --source cambridge-1 --all --force > /dev/null 2>&1
+.venv/bin/python3 "$GEN_SCRIPT" --skill reading --source cambridge-1 --all --force > /dev/null 2>&1
 READING_COUNT=$(ls "$OUT_DIR"/cambridge-1_reading_*.html 2>/dev/null | wc -l | tr -d ' ')
 [ "$READING_COUNT" -gt 0 ] && pass "Reading batch: $READING_COUNT files" || fail "Reading batch" "no files generated"
 
-python3 "$GEN_SCRIPT" --skill listening --source cambridge-1 --all --force > /dev/null 2>&1
+.venv/bin/python3 "$GEN_SCRIPT" --skill listening --source cambridge-1 --all --force > /dev/null 2>&1
 LISTENING_COUNT=$(ls "$OUT_DIR"/cambridge-1_listening_*.html 2>/dev/null | wc -l | tr -d ' ')
 [ "$LISTENING_COUNT" -ge 4 ] && pass "Listening batch: $LISTENING_COUNT files" || fail "Listening batch" "expected >=4, got $LISTENING_COUNT"
 
@@ -89,7 +89,7 @@ echo ""
 # ── Flow 3: --all-skills and content validation ──
 echo "-- Flow 3: Full batch (--all-skills) --"
 
-python3 "$GEN_SCRIPT" --source cambridge-1 --all-skills --force > /dev/null 2>&1
+.venv/bin/python3 "$GEN_SCRIPT" --source cambridge-1 --all-skills --force > /dev/null 2>&1
 TOTAL=$(ls "$OUT_DIR"/cambridge-1_*.html 2>/dev/null | wc -l | tr -d ' ')
 [ "$TOTAL" -ge 20 ] && pass "All skills batch: $TOTAL total files" || fail "All skills batch" "expected >=20, got $TOTAL"
 

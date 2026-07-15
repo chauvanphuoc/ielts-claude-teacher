@@ -10,7 +10,7 @@ Open the generated HTML file in a browser, go through each item, check PASS or F
 
 ```bash
 # Generate all test HTML files
-python3 shared/generate_test_html.py --source cambridge-1 --all-skills --force
+.venv/bin/python3 shared/generate_test_html.py --source cambridge-1 --all-skills --force
 
 # Start server (required for listening audio + POST /save)
 python3 skills/ielts-teacher/server.py
@@ -207,7 +207,7 @@ File: `.ielts/test-html/cambridge-1_writing_test-1_section-1.html`
 
 ```bash
 # Generate all files
-python3 shared/generate_test_html.py --source cambridge-1 --all-skills --force
+.venv/bin/python3 shared/generate_test_html.py --source cambridge-1 --all-skills --force
 
 # Verify output
 echo "=== File counts ==="

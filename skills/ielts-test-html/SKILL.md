@@ -76,7 +76,7 @@ Call the Python script with decomposed arguments:
 
 ```bash
 # Single section
-python3 shared/generate_test_html.py \
+.venv/bin/python3 shared/generate_test_html.py \
   --skill {skill} \
   --source {textbook_name} \
   --test {test_num} \
@@ -85,7 +85,7 @@ python3 shared/generate_test_html.py \
   [--force]
 
 # Batch: all sections for a skill
-python3 shared/generate_test_html.py \
+.venv/bin/python3 shared/generate_test_html.py \
   --skill {skill} \
   --source {textbook_name} \
   --all \
