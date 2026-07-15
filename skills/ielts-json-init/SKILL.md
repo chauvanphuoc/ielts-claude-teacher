@@ -106,6 +106,83 @@ Answer keys are in a separate section at the end of the textbook, under `### Ans
 
 **Skip tutorial text:** Between answer tables there are "Suggested approach" tutorial blocks. Only parse lines that start with `|` and contain a question number.
 
+### Step 5b: Extract Pedagogy Metadata (Reading only)
+
+After extracting answer keys, find the corresponding answer key section at the end of the textbook. For each passage, extract the "Skills tested" table and "Suggested approach" to build `_pedagogy` metadata. This bridges the textbook's pedagogical content with the KC Graph (`.ielts/kc-graph-ielts.json`).
+
+**5b.1 — Find "Skills tested" table:**
+
+In the answer keys section, each passage has a table with headers `| Questions | Task | Skills tested |`. Match by passage title/name.
+
+**5b.2 — Map skills → KC IDs:**
+
+For each question group in the table:
+- Read the skills listed (e.g., "skimming for information, ability to paraphrase")
+- Map each skill to a KC ID using the reference table below
+- Set `kcsTested` array with the mapped KC IDs
+
+**KC Mapping Reference:**
+
+| Textbook skill description | KC ID |
+|---|---|
+| skimming/scanning for information | `kc-read-detail` |
+| detailed understanding of text | `kc-read-detail` |
+| paraphrase / re-word / understanding paraphrase | `kc-read-vocab-context` |
+| identifying attitude and opinion | `kc-read-inference` |
+| understanding gist | `kc-read-main-idea` |
+| identifying main ideas / noting main ideas | `kc-read-main-idea` |
+| identifying supporting points | `kc-read-detail` |
+| Yes/No/Not Given logic | `kc-read-ynng` |
+| True/False/Not Given logic | `kc-read-tfng` |
+| understanding cause and effect | `kc-read-inference` |
+| understanding inference | `kc-read-inference` |
+| following a chronological account | `kc-read-detail` |
+| matching (items/headings/features/causes) | `kc-read-matching` |
+| multiple choice | `kc-read-mc` |
+| completing gaps/tables/notes/summaries | `kc-read-gapfill` |
+| selecting factors | `kc-read-matching` |
+| understanding description/characteristics | `kc-read-detail` |
+
+If a skill description doesn't clearly match any KC, look up the KC descriptions in `.ielts/kc-graph-ielts.json` and pick the closest match. When in doubt, prefer `kc-read-detail` (most general reading KC).
+
+**5b.3 — Extract "Suggested approach":**
+
+Located after the Skills tested table, under `#### Suggested approach` or `#### *Suggested approach*` or `#### **Suggested approach**`:
+- Read the strategy steps (bullet points)
+- Summarize into 1-2 sentences (≤150 characters total)
+- Focus on the UNIQUE strategy for this question type — skip generic advice like "read the rubric carefully" or "check your answers"
+- Write in English (target: IELTS student)
+
+**strategySummary examples:**
+- Good: "Skim for match names (italicized = easier to spot). Match meaning, not exact words. Rubric allows reuse."
+- Good: "Scan for paraphrase of missing words; use the word list as clues — eliminate used words first. NB: more words than spaces."
+- Bad: "Read the task rubric carefully. Decide what information is best to skim for. Skim through the text." (too generic, >150 chars)
+
+**5b.4 — Write `_pedagogy` into `answerKeys` block:**
+
+```json
+"answerKeys": {
+  "reading": {
+    "passage-1": { "1": "preserve", ... },
+    "_pedagogy": {
+      "qg-r1-1": {
+        "kcsTested": ["kc-read-detail", "kc-read-gapfill", "kc-read-vocab-context"],
+        "strategySummary": "Skim for paraphrase of missing words; the word list is your clue — eliminate used words first."
+      },
+      "qg-r1-2": {
+        "kcsTested": ["kc-read-matching", "kc-read-detail"],
+        "strategySummary": "Skim for match names (italicized = easier to spot). Match meaning, not exact words."
+      }
+    }
+  }
+}
+```
+
+- Key = questionGroup ID from `passage.questionGroups[].id` (e.g., `qg-r1-1`, `qg-r1-2`)
+- `kcsTested`: array of KC IDs from `.ielts/kc-graph-ielts.json` reading KCs
+- `strategySummary`: 1-2 sentences, ≤150 characters
+- Every questionGroup in the passage must have an entry
+
 ### Step 6: Verification (mandatory)
 
 Before writing the JSON file, run these checks:
@@ -117,6 +194,14 @@ Before writing the JSON file, run these checks:
 5. Report: "Generated [N] questions across [P] passages, [M] images, [K] answer key entries. Spot-checks: 3/3 passed."
 
 If any count mismatches or spot-check fails: report the specific error and regenerate the affected section.
+
+6. **_pedagogy validation (Reading only):**
+   - Every questionGroup ID has a corresponding `_pedagogy` entry (count check: N questionGroups → N _pedagogy entries)
+   - Every KC ID in `kcsTested` exists in `.ielts/kc-graph-ielts.json` — read the KC graph and verify
+   - Every `strategySummary` is ≤150 characters
+   - Spot-check 2 passages: compare `strategySummary` with the textbook's Suggested approach — verify it captures the key strategy, not generic advice
+
+7. Report: "Generated [N] questions across [P] passages, [M] images, [K] answer key entries, [_P] pedagogy entries. Spot-checks: 3/3 passed."
 
 ### Step 7: Write JSON
 

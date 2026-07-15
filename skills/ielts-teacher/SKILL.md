@@ -673,9 +673,13 @@ Present per-section scores with error categorization:
 2. Student says "grade my reading test"
 3. Read answers from `.ielts/reading/latest.json`
 4. Compare against answer keys from Cambridge JSON test data
-5. Map each question to its KC
-6. Update `skills.reading` + `kcMastery` in student-profile.json
-7. Present per-passage scores, error patterns, and KC-level analysis
+5. **Map each wrong question to its KC using `_pedagogy`:**
+   - For each wrong answer, find its questionGroup → lookup `answerKeys._pedagogy[questionGroupId]`
+   - `kcsTested` = the exact KCs to flag as weak — use this directly, don't guess from questionType
+   - `strategySummary` = quote this directly in your feedback to the student
+   - **Fallback if no `_pedagogy`:** infer KCs from question type using `.ielts/kc-graph-ielts.json` `ieltsQuestionTypes` field
+6. Update `skills.reading` + `kcMastery` in student-profile.json using `kcsTested`
+7. Present per-passage scores, error patterns, and KC-level analysis with strategy tips from `strategySummary`
 
 ---
 

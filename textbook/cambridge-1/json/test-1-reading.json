@@ -342,6 +342,36 @@
         "38": "H",
         "39": "C",
         "40": "D"
+      },
+      "_pedagogy": {
+        "qg-r1-1": {
+          "kcsTested": ["kc-read-detail", "kc-read-gapfill", "kc-read-vocab-context"],
+          "strategySummary": "Skim for paraphrase of missing words; the word list is your clue — eliminate used words first. NB: more words than spaces."
+        },
+        "qg-r1-2": {
+          "kcsTested": ["kc-read-matching", "kc-read-detail", "kc-read-vocab-context"],
+          "strategySummary": "Skim for match names (italicized = easier to spot). Match meaning, not exact words. Rubric allows reuse of matches."
+        },
+        "qg-r2-1": {
+          "kcsTested": ["kc-read-ynng", "kc-read-inference", "kc-read-main-idea", "kc-read-vocab-context"],
+          "strategySummary": "YES = passage confirms, NO = passage contradicts, NOT GIVEN = not mentioned. Focus on identifying writer's attitude and opinion."
+        },
+        "qg-r2-2": {
+          "kcsTested": ["kc-read-mc", "kc-read-detail", "kc-read-main-idea", "kc-read-inference"],
+          "strategySummary": "Skim for factual information; eliminate options that contradict the passage. Identify main and supporting points."
+        },
+        "qg-r2-3": {
+          "kcsTested": ["kc-read-matching", "kc-read-detail", "kc-read-main-idea", "kc-read-inference"],
+          "strategySummary": "Only 3 factors are correct. Scan from 3rd paragraph for signals that the writer doubts the document (e.g., 'first failing')."
+        },
+        "qg-r3-1": {
+          "kcsTested": ["kc-read-gapfill", "kc-read-detail", "kc-read-main-idea"],
+          "strategySummary": "Follow the chronological account through the passage. Note main ideas for each period. Write NO MORE THAN THREE WORDS."
+        },
+        "qg-r3-2": {
+          "kcsTested": ["kc-read-matching", "kc-read-detail", "kc-read-inference", "kc-read-vocab-context"],
+          "strategySummary": "Work from List A (causes come first chronologically). Skim for each cause, scan List B for its effect. One correct effect per cause."
+        }
       }
     }
   }

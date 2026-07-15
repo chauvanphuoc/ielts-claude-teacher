@@ -28,10 +28,14 @@ Analyze reading answers question by question. Extract synonym pairs. Classify er
 ## Workflow
 1. Grade each question against the answer key
 2. For each wrong answer: identify question type, explain why it's wrong, quote the passage evidence
-3. Extract synonym pairs from the passage → save to CLI
-4. Classify errors by type using the taxonomy from shared/rubrics.md
-5. Output the JSON block above
-6. Tell student: "Analysis saved. Say 'update my roadmap' to sync with your teacher."
+3. **Look up `_pedagogy` for each wrong answer's questionGroup** — if the JSON has `answerKeys._pedagogy`:
+   - `kcsTested`: these are the KCs to flag as weak for this student
+   - `strategySummary`: use this as the basis for study advice (quote it directly)
+   - If no `_pedagogy` entry exists for the questionGroup, fall back to inferring KCs from question type using the KC graph
+4. Extract synonym pairs from the passage → save to CLI
+5. Classify errors by type using the taxonomy from shared/rubrics.md
+6. Output the JSON block above
+7. Tell student: "Analysis saved. Say 'update my roadmap' to sync with your teacher."
 
 ## Roadmap Sync
 After analysis, save via CLI and update synonym library:
