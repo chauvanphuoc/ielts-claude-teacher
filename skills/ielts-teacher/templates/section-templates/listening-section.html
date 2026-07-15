@@ -737,7 +737,7 @@ body {
       <button class="btn btn-primary" id="btn-check" disabled>Check Answers</button>
       <button class="btn btn-secondary" id="btn-toggle-answers" disabled>&#128274; Show Answers</button>
       <span class="score-badge hidden" id="score-badge"></span>
-      <div class="teacher-hint">Teacher: Ctrl+Shift+U to verify answers directly</div>
+      <div class="teacher-hint">Teacher: Cmd+Shift+U (Mac) / Ctrl+Shift+U (Win) to verify answers directly</div>
     </div>
 
     <!-- RESULTS PANEL -->
@@ -1750,9 +1750,9 @@ body {
     });
   }
 
-  // Teacher bypass: Ctrl+Shift+U — direct PIN entry without answering
+  // Teacher bypass: Ctrl+Shift+U (Win/Linux) or Cmd+Shift+U (Mac)
   document.addEventListener('keydown', function(e) {
-    if (e.ctrlKey && e.shiftKey && e.key === 'U') {
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'U') {
       e.preventDefault();
       showPinModal();
     }
