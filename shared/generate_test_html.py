@@ -208,9 +208,9 @@ def load_listening_section(source: str, test_num: int, section_num: int) -> Norm
     )
 
 
-def load_reading_section(source: str, test_num: int, section_num: int) -> NormalizedSection:
+def load_reading_section(source: str, test_id: str, section_num: int) -> NormalizedSection:
     """Extract one reading passage from per-test JSON."""
-    json_path = PROJECT_ROOT / SKILL_JSON_PATHS["reading"].format(source=source, test=test_num)
+    json_path = PROJECT_ROOT / SKILL_JSON_PATHS["reading"].format(source=source, test=test_id)
     if not json_path.exists():
         raise FileNotFoundError(f"Reading JSON not found: {json_path}")
 
@@ -223,7 +223,7 @@ def load_reading_section(source: str, test_num: int, section_num: int) -> Normal
     question_groups = passage.get("questionGroups", [])
     total_questions = sum(len(g.get("questions", [])) for g in question_groups)
 
-    title = f"Cambridge IELTS {source.replace('cambridge-', '')} — Reading Test {test_num}, Passage {section_num}"
+    title = f"Cambridge IELTS {source.replace('cambridge-', '')} — Reading Test {test_id}, Passage {section_num}"
     answer_keys = data.get("answerKeys", {}).get("reading", {})
 
     return NormalizedSection(
@@ -234,7 +234,7 @@ def load_reading_section(source: str, test_num: int, section_num: int) -> Normal
         section_data=question_groups,
         answer_keys=answer_keys,
         source=source,
-        test_number=test_num,
+        test_number=test_id,
         section_number=section_num,
         question_count=total_questions,
         extra_placeholders={
@@ -366,14 +366,14 @@ LOADERS = {
 }
 
 
-def load_section(skill: str, source: str, test_num: int, section_num: int, module: str = "academic") -> NormalizedSection:
+def load_section(skill: str, source: str, test_id: str, section_num: int, module: str = "academic") -> NormalizedSection:
     """Dispatch to the correct loader based on skill."""
     loader = LOADERS.get(skill)
     if not loader:
         raise ValueError(f"Unknown skill: {skill}. Valid: {list(LOADERS.keys())}")
     if skill == "writing":
-        return loader(source, test_num, section_num, module)
-    return loader(source, test_num, section_num)
+        return loader(source, test_id, section_num, module)
+    return loader(source, test_id, section_num)
 
 
 # ---- Template rendering ---------------------------------------------
@@ -434,8 +434,8 @@ def render_html(section: NormalizedSection) -> str:
 
 # ---- Output ----------------------------------------------------------
 
-def output_path(source: str, skill: str, test_num: int, section_num: int) -> Path:
-    filename = f"{source}_{skill}_test-{test_num}_section-{section_num}.html"
+def output_path(source: str, skill: str, test_id: str, section_num: int) -> Path:
+    filename = f"{source}_{skill}_test-{test_id}_section-{section_num}.html"
     _ensure_dir(TEST_HTML_DIR)
     return TEST_HTML_DIR / filename
 
@@ -508,13 +508,13 @@ def discover_sections(skill: str, source: str, module: str = "academic") -> list
             json_dir = PROJECT_ROOT / "shared" / "reading" / source
             if json_dir.exists():
                 for f in sorted(json_dir.glob("test-*.json")):
-                    m = re.search(r'test-(\d+)\.json', f.name)
+                    m = re.search(r'test-(.+)\.json', f.name)
                     if m:
-                        test_num = int(m.group(1))
+                        test_id = m.group(1)
                         data = json.loads(f.read_text())
                         passages = data.get("skills", {}).get("reading", {}).get("passages", [])
                         for i in range(len(passages)):
-                            sections.append((test_num, i + 1))
+                            sections.append((test_id, i + 1))
         else:
             json_path_str = SKILL_JSON_PATHS[skill].format(source=source)
             json_path = PROJECT_ROOT / json_path_str
@@ -556,7 +556,7 @@ def main():
                         help="Skill to generate test for (required unless --all-skills)")
     parser.add_argument("--source", required=True,
                         help="Textbook source (e.g., cambridge-1)")
-    parser.add_argument("--test", type=int, help="Test number (required unless --all)")
+    parser.add_argument("--test", type=str, help="Test number or ID (required unless --all)")
     parser.add_argument("--section", type=int, help="Section/Passage/Part/Task number (required unless --all)")
     parser.add_argument("--module", choices=["academic", "generalTraining"], default="academic",
                         help="Writing module (writing skill only, default: academic)")
@@ -586,17 +586,17 @@ def main():
 
         print(f"Generating {len(sections)} HTML files for {args.skill}/{args.source}...")
         generated = 0
-        for test_num, section_num in sections:
+        for test_id, section_num in sections:
             try:
-                section = load_section(args.skill, args.source, test_num, section_num, args.module)
+                section = load_section(args.skill, args.source, test_id, section_num, args.module)
                 html = render_html(section)
-                out = output_path(args.source, args.skill, test_num, section_num)
+                out = output_path(args.source, args.skill, test_id, section_num)
                 write_html(out, html, force=args.force)
                 update_index(section, out)
                 print(f"  OK  {out.name}  ({section.question_count} questions)")
                 generated += 1
             except Exception as e:
-                print(f"  FAIL  test-{test_num}_section-{section_num}: {e}", file=sys.stderr)
+                print(f"  FAIL  test-{test_id}_section-{section_num}: {e}", file=sys.stderr)
 
         print(f"\nDone: {generated}/{len(sections)} files generated.")
         print(f"Output: {TEST_HTML_DIR}/")
@@ -612,17 +612,17 @@ def main():
                 print(f"{skill}: No sections found — skipping")
                 continue
             print(f"\n{skill}: {len(sections)} sections")
-            for test_num, section_num in sections:
+            for test_id, section_num in sections:
                 try:
-                    section = load_section(skill, args.source, test_num, section_num, args.module)
+                    section = load_section(skill, args.source, test_id, section_num, args.module)
                     html = render_html(section)
-                    out = output_path(args.source, skill, test_num, section_num)
+                    out = output_path(args.source, skill, test_id, section_num)
                     write_html(out, html, force=args.force)
                     update_index(section, out)
                     print(f"  OK  {out.name}  ({section.question_count} questions)")
                     total += 1
                 except Exception as e:
-                    print(f"  FAIL  test-{test_num}_section-{section_num}: {e}", file=sys.stderr)
+                    print(f"  FAIL  test-{test_id}_section-{section_num}: {e}", file=sys.stderr)
 
         print(f"\nDone: {total} files generated across all skills.")
         print(f"Output: {TEST_HTML_DIR}/")

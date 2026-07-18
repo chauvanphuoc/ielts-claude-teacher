@@ -18,7 +18,9 @@ Supports **Reading**, **Listening**, **Speaking**, and **Writing**.
 
 | Skill | Command | Output | Type |
 |-------|---------|--------|------|
-| Reading | `/init-textbook-reading --source X --test N` | `shared/reading/{X}/test-{N}.json` | per-test |
+| Reading | `/init-textbook-reading --source X --test N` | `shared/reading/{X}/test-{N}.json` | per-test (Academic 1-4) |
+| Reading (GT) | `/init-textbook-reading --source X --test gt-{N/a/b}` | `shared/reading/{X}/test-gt-{N/a/b}.json` | per-test (General Training) |
+| Reading (other) | `/init-textbook-reading --source X --test other-{N}` | `shared/reading/{X}/test-other-{N}.json` | per-test (fallback) |
 | Listening | `/init-textbook-listening --source X` | `shared/listening/listening_{X}.json` | per-source (all 4 tests) |
 | Speaking | `/init-textbook-speaking --source X` | `shared/speaking/speaking_{X}.json` | per-source (Claude-generated modern tasks + legacy extract) |
 | Writing | `/init-textbook-writing --source X` | `shared/writing/writing_{X}.json` | per-source (academic + general training) |
@@ -28,6 +30,8 @@ Supports **Reading**, **Listening**, **Speaking**, and **Writing**.
 Examples:
 ```
 /init-textbook-reading --source cambridge-2 --test 1
+/init-textbook-reading --source cambridge-1 --test gt-1
+/init-textbook-reading --source cambridge-2 --test gt-a
 /init-textbook-listening --source cambridge-2
 /init-textbook-speaking --source cambridge-2
 /init-textbook-writing --source cambridge-2
@@ -42,13 +46,27 @@ The user may also say things like:
 
 ## Workflow
 
+### Step 0: Detect heading level for test boundaries
+
+Claude reads the entire textbook markdown file. Find headings that contain "Practice Test N" or "TEST N" (e.g., `## Practice Test 1`, `## TEST 1`, `### Practice Test 1`). Note the heading level used (`##`, `###`, or `####`). This is `TEST_LEVEL` — the markdown heading level that delimits test boundaries in this specific textbook.
+
+- Cambridge IELTS 1: `## Practice Test N` (level 2)
+- Cambridge IELTS 2: `## TEST N` (level 2)
+- Other textbooks may use `###` (level 3) or `####` (level 4)
+
+If no "Practice Test"/"TEST" headings are found, default to `TEST_LEVEL = 2` (`##`).
+
+All subsequent test-boundary detection uses `TEST_LEVEL`, not a hardcoded `##`.
+
 ### Step 1: Read the textbook Markdown
 
 Read the file at `textbook/{source}/textbook/Cambridge_IELTS_{N}.md`. For large files (>3000 lines), read in chunks focused on the target test and skill.
 
 ### Step 2: Locate the target test
 
-Find the test using the marker `### Practice Test {N}`. Only parse content for the requested test number.
+Find the test using the marker at `TEST_LEVEL` (from Step 0) containing "Practice Test {N}" or "TEST {N}". Only parse content for the requested test number.
+
+For non-Academic tests (General Training, etc.), the testId is a string like `gt-1`, `gt-a`, `gt-b`, or `other-{N}`. See Step 3b for detection rules.
 
 ### Step 3: Locate the target skill
 
@@ -59,6 +77,69 @@ Find the skill section using one of these markers (order of preference):
 4. `#### WRITING TASK 1` — alternative Writing marker
 
 **Important:** `#### READING PASSAGE N` is the primary navigation marker for Reading sections. The heading `#### **READING**` may not exist in all tests.
+
+### Step 3b: Detect non-Academic reading sections (Other Tests)
+
+After locating Academic Practice Tests 1-4, scan the remaining headings at `TEST_LEVEL` (from Step 0) that are NOT "Practice Test N" / "TEST N". These may be General Training or other reading modules.
+
+**Detection rules (context-based, not text-based):**
+
+For each heading at `TEST_LEVEL`:
+1. Check if the section below it contains reading content:
+   - Has `### READING` or `### SECTION 1` → this is a reading module
+   - Has `#### READING PASSAGE N` → Academic (already handled in Step 3)
+   - Otherwise → skip (not a reading section)
+
+2. Classify the testId:
+   - Heading contains "General Training":
+     - Has "Test A" / "Test B" indicator → `testId = "gt-{a/b}"` (lowercase letter from heading)
+     - No A/B indicator → `testId = "gt-{N}"` (sequential counter, starting from 1)
+   - Does not match any known pattern → `testId = "other-{N}"` (sequential fallback)
+
+**testId convention (all values are strings):**
+
+| Type | testId | Example |
+|------|--------|---------|
+| Academic | `"1"`, `"2"`, `"3"`, `"4"` | `--test 1` |
+| GT (letter) | `"gt-a"`, `"gt-b"` | `--test gt-a` |
+| GT (sequential) | `"gt-1"`, `"gt-2"` | `--test gt-1` |
+| Fallback | `"other-1"`, `"other-2"` | `--test other-1` |
+
+**GT Section structure differences from Academic:**
+
+- GT uses `### SECTION N` (not `#### READING PASSAGE N`)
+- GT uses `##### Questions N-M` for question groups
+- GT may have `#### PART ONE/TWO/THREE` subsections
+- GT answer keys are under `### TEST A` / `### GENERAL TRAINING` (not `### PRACTICE TEST N`)
+
+**Example: Cambridge IELTS 1 General Training**
+
+```
+## General Training Module          ← TEST_LEVEL heading, non-Academic
+  ### READING
+    #### PART ONE                   ← subsection
+      ##### Questions 1-4           ← question group
+    #### PART TWO
+    #### PART THREE
+```
+→ `testId = "gt-1"` (GT with no letter indicator, sequential)
+
+**Example: Cambridge IELTS 2 General Training Test A**
+
+```
+## General Training: Reading and Writing Test A  ← contains "General Training" + "Test A"
+  ### SECTION 1 Questions 1-13                   ← reading section (not PASSAGE)
+  ### SECTION 2 Questions 14-26
+  ### SECTION 3 Questions 27-40
+```
+→ `testId = "gt-a"` (extracted letter from "Test A")
+
+**Command usage:**
+```
+/init-textbook-reading --source cambridge-1 --test gt-1
+/init-textbook-reading --source cambridge-2 --test gt-a
+/init-textbook-reading --source cambridge-2 --test gt-b
+```
 
 ### Step 4: Parse questions
 

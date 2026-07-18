@@ -123,7 +123,7 @@ body { font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: 
 <script>
 const BRIDGE_URL = 'http://localhost:8765';
 let currentSource = '';
-let currentTestNumber = 0;
+let currentTestId = '';
 let testData = null;
 let userAnswers = {};
 
@@ -162,18 +162,18 @@ async function onSourceChange() {
     const r = await fetch(BRIDGE_URL + '/api/reading/' + currentSource);
     if (!r.ok) throw new Error('Source not found');
     const data = await r.json();
-    tSel.innerHTML = (data.tests || []).map(t => `<option value="${t.testNumber}">Test ${t.testNumber}</option>`).join('');
+    tSel.innerHTML = (data.tests || []).map(t => `<option value="${t.testId}">Test ${t.testId}</option>`).join('');
     tSel.disabled = false;
-    if (data.tests && data.tests.length > 0) { tSel.value = data.tests[0].testNumber; onTestChange(); }
+    if (data.tests && data.tests.length > 0) { tSel.value = data.tests[0].testId; onTestChange(); }
   } catch(e) { showError('Failed to load tests.'); }
 }
 
 async function onTestChange() {
-  currentTestNumber = parseInt(document.getElementById('test-select').value);
-  if (!currentTestNumber) return;
+  currentTestId = document.getElementById('test-select').value;
+  if (!currentTestId) return;
   hideAll(); document.getElementById('loading-state').classList.remove('hidden');
   try {
-    const url = `${BRIDGE_URL}/api/reading/${currentSource}/test/${currentTestNumber}`;
+    const url = `${BRIDGE_URL}/api/reading/${currentSource}/test/${currentTestId}`;
     const r = await fetch(url);
     if (!r.ok) throw new Error('Test not found: ' + r.status);
     testData = await r.json();
@@ -181,9 +181,9 @@ async function onTestChange() {
     document.getElementById('loading-state').classList.add('hidden');
     document.getElementById('reading-layout').classList.remove('hidden');
     document.getElementById('submit-bar').classList.remove('hidden');
-    document.getElementById('status-badge').textContent = `Test ${currentTestNumber}`;
+    document.getElementById('status-badge').textContent = `Test ${currentTestId}`;
     // Restore answers from session
-    const key = `reading-test-${currentSource}-${currentTestNumber}`;
+    const key = `reading-test-${currentSource}-${currentTestId}`;
     const saved = sessionStorage.getItem(key);
     if (saved) { userAnswers = JSON.parse(saved); restoreAnswers(); }
     else { userAnswers = {}; }
@@ -266,7 +266,7 @@ function collectAnswers() {
     if (inp.type === 'radio') { if (inp.checked) userAnswers[inp.dataset.q] = inp.value; }
     else { if (inp.value.trim()) userAnswers[inp.dataset.q] = inp.value.trim(); }
   });
-  const key = `reading-test-${currentSource}-${currentTestNumber}`;
+  const key = `reading-test-${currentSource}-${currentTestId}`;
   sessionStorage.setItem(key, JSON.stringify(userAnswers));
 }
 
@@ -308,7 +308,7 @@ function gradeAnswers() {
 async function saveReading() {
   collectAnswers();
   if (Object.keys(userAnswers).length === 0) { showError('Please answer at least one question.'); return; }
-  const data = { skill: 'reading', testSource: currentSource, testNumber: currentTestNumber, answers: userAnswers, date: new Date().toISOString() };
+  const data = { skill: 'reading', testSource: currentSource, testId: currentTestId, answers: userAnswers, date: new Date().toISOString() };
   const result = await saveResult(data);
   if (result.ok) {
     document.getElementById('status-badge').textContent = 'Answers saved';

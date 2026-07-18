@@ -199,14 +199,14 @@ def _build_reading_tests(source_id):
         return None
     tests = []
     for f in sorted(json_dir.glob("test-*.json")):
-        m = re.match(r'test-(\d+)\.json$', f.name)
+        m = re.match(r'test-(.+)\.json$', f.name)
         if not m:
             continue
-        test_num = int(m.group(1))
+        test_id = m.group(1)
         tests.append({
-            "testNumber": test_num,
+            "testId": test_id,
             "file": str(f.relative_to(PROJECT_ROOT)),
-            "url": f"/api/reading/{source_id}/test/{test_num}"
+            "url": f"/api/reading/{source_id}/test/{test_id}"
         })
     return tests if tests else None
 

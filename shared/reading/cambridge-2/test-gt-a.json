@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "source": "cambridge-2",
+    "testNumber": "gt-a"
+  },
+  "skills": {
+    "reading": {
+      "passages": [
+        {
+          "title": "GT gt-a",
+          "questionGroups": [
+            {
+              "id": "qg-gt-a-1",
+              "questions": [
+                {
+                  "number": 1,
+                  "text": "Q1 gt-a",
+                  "type": "tfng"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "answerKeys": {
+    "reading": {
+      "section-1": {
+        "1": "TRUE"
+      }
+    }
+  }
+}
