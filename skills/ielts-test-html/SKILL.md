@@ -62,7 +62,7 @@ Extract from the user's request:
 Before calling the Python script, verify:
 1. **JSON source exists** — check the JSON file path on disk:
    - Listening: `shared/listening/listening_{textbook}.json`
-   - Reading: `textbook/{textbook}/json/test-{test}-reading.json`
+   - Reading: `shared/reading/{textbook}/test-{test}.json`
    - Speaking: `shared/speaking/speaking_{textbook}.json`
    - Writing: `shared/writing/writing_{textbook}.json`
 2. **HTML template exists** — check `skills/ielts-teacher/templates/section-templates/{skill}-section.html`

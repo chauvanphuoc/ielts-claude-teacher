@@ -12,7 +12,7 @@ Usage:
   python3 server.py --port 9000  # custom port
 """
 
-import argparse, base64, json, os, sys, shutil, subprocess
+import argparse, base64, json, os, re, sys, shutil, subprocess
 from pathlib import Path
 from datetime import datetime
 from http.server import HTTPServer, SimpleHTTPRequestHandler
@@ -175,17 +175,15 @@ def _serve_skill_api(handler, skill, source_id=None):
 
 
 def _build_reading_sources():
-    """Scan textbook/*/json/test-*-reading.json for available reading sources."""
+    """Scan shared/reading/{source}/test-*.json for available reading sources."""
     sources = []
-    if not TEXTBOOK_DIR.exists():
+    reading_dir = SHARED_DIR / "reading"
+    if not reading_dir.exists():
         return sources
-    for source_dir in sorted(TEXTBOOK_DIR.iterdir()):
+    for source_dir in sorted(reading_dir.iterdir()):
         if source_dir.name.startswith('.') or not source_dir.is_dir():
             continue
-        json_dir = source_dir / "json"
-        if not json_dir.exists():
-            continue
-        tests = sorted(json_dir.glob("test-*-reading.json"))
+        tests = sorted(source_dir.glob("test-*.json"))
         if tests:
             sources.append({
                 "id": source_dir.name,
@@ -195,20 +193,20 @@ def _build_reading_sources():
 
 
 def _build_reading_tests(source_id):
-    """List reading tests for a textbook source. Returns list or None if not found."""
-    json_dir = TEXTBOOK_DIR / source_id / "json"
+    """List reading tests for a source. Returns list or None if not found."""
+    json_dir = SHARED_DIR / "reading" / source_id
     if not json_dir.exists():
         return None
     tests = []
-    for f in sorted(json_dir.glob("test-*-reading.json")):
-        try:
-            test_num = int(f.stem.split('-')[1])
-        except (IndexError, ValueError):
+    for f in sorted(json_dir.glob("test-*.json")):
+        m = re.match(r'test-(\d+)\.json$', f.name)
+        if not m:
             continue
+        test_num = int(m.group(1))
         tests.append({
             "testNumber": test_num,
             "file": str(f.relative_to(PROJECT_ROOT)),
-            "url": f"/textbook/{source_id}/json/{f.name}"
+            "url": f"/api/reading/{source_id}/test/{test_num}"
         })
     return tests if tests else None
 
@@ -365,6 +363,22 @@ class BridgeHandler(SimpleHTTPRequestHandler):
         if path == "api/reading" or path == "api/reading/":
             self._serve_json({"sources": _build_reading_sources()})
             return
+
+        # ── /api/reading/<source>/test/<N> — serve reading test JSON (BEFORE /api/reading/<source>) ──
+        if path.startswith("api/reading/") and "/test/" in path:
+            parts = path[len("api/reading/"):].split("/test/")
+            if len(parts) == 2:
+                src_id, test_id = parts
+                if ".." in src_id or "/" in src_id or "\\" in src_id:
+                    self.send_error(403, "Invalid source name"); return
+                if ".." in test_id or "/" in test_id or "\\" in test_id:
+                    self.send_error(403, "Invalid test id"); return
+                json_path = SHARED_DIR / "reading" / src_id / f"test-{test_id}.json"
+                if json_path.exists() and json_path.is_file():
+                    self._serve_file(json_path, "application/json; charset=utf-8")
+                else:
+                    self.send_error(404, f"Reading test not found: {src_id}/test/{test_id}")
+                return
 
         # ── /api/reading/<source> — list reading tests for a source ──
         if path.startswith("api/reading/"):

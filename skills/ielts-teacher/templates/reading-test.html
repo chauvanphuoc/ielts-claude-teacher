@@ -173,7 +173,7 @@ async function onTestChange() {
   if (!currentTestNumber) return;
   hideAll(); document.getElementById('loading-state').classList.remove('hidden');
   try {
-    const url = `${BRIDGE_URL}/textbook/${currentSource}/json/test-${currentTestNumber}-reading.json`;
+    const url = `${BRIDGE_URL}/api/reading/${currentSource}/test/${currentTestNumber}`;
     const r = await fetch(url);
     if (!r.ok) throw new Error('Test not found: ' + r.status);
     testData = await r.json();

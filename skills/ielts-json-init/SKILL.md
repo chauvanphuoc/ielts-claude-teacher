@@ -18,7 +18,7 @@ Supports **Reading**, **Listening**, **Speaking**, and **Writing**.
 
 | Skill | Command | Output | Type |
 |-------|---------|--------|------|
-| Reading | `/init-textbook-reading --source X --test N` | `textbook/{X}/json/test-{N}-reading.json` | per-test |
+| Reading | `/init-textbook-reading --source X --test N` | `shared/reading/{X}/test-{N}.json` | per-test |
 | Listening | `/init-textbook-listening --source X` | `shared/listening/listening_{X}.json` | per-source (all 4 tests) |
 | Speaking | `/init-textbook-speaking --source X` | `shared/speaking/speaking_{X}.json` | per-source (Claude-generated modern tasks + legacy extract) |
 | Writing | `/init-textbook-writing --source X` | `shared/writing/writing_{X}.json` | per-source (academic + general training) |
@@ -205,11 +205,11 @@ If any count mismatches or spot-check fails: report the specific error and regen
 
 ### Step 7: Write JSON
 
-Write to `textbook/{source}/json/test-{n}-{skill}.json` following the schema at `textbook/cambridge-1/schema.json`. Use 2-space indentation.
+Write to `shared/reading/{source}/test-{n}.json` following the schema at `shared/reading/schema.json`. Use 2-space indentation. Create the `shared/reading/{source}/` directory if it doesn't exist.
 
 ## Example: Test 1 Reading already exists
 
-`textbook/cambridge-1/json/test-1-reading.json` has been generated and can serve as a reference for the expected output format. It contains 3 passages, 40 questions, and all answer keys with Cyrillic normalization applied.
+`shared/reading/cambridge-1/test-1.json` has been generated and can serve as a reference for the expected output format. It contains 3 passages, 40 questions, and all answer keys with Cyrillic normalization applied.
 
 ## Edge Cases
 

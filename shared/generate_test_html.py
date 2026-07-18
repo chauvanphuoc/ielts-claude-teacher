@@ -32,9 +32,11 @@ TEMPLATE_DIR = PROJECT_ROOT / "skills" / "ielts-teacher" / "templates" / "sectio
 DEFAULT_PIN = "1234567890"
 
 # ---- JSON source paths per skill ------------------------------------
+READING_JSON_PATH = "shared/reading/{source}/test-{test}.json"
+
 SKILL_JSON_PATHS = {
     "listening": "shared/listening/listening_{source}.json",
-    "reading": "textbook/{source}/json/test-{test}-reading.json",
+    "reading": READING_JSON_PATH,
     "speaking": "shared/speaking/speaking_{source}.json",
     "writing": "shared/writing/writing_{source}.json",
 }
@@ -501,12 +503,12 @@ def discover_sections(skill: str, source: str, module: str = "academic") -> list
     sections = []
     try:
         if skill == "reading":
-            # Reading is per-test: scan textbook/{source}/json/test-*-reading.json
+            # Reading is per-test: scan shared/reading/{source}/test-*.json
             import re
-            json_dir = PROJECT_ROOT / f"textbook/{source}/json"
+            json_dir = PROJECT_ROOT / "shared" / "reading" / source
             if json_dir.exists():
-                for f in sorted(json_dir.glob("test-*-reading.json")):
-                    m = re.search(r'test-(\d+)-reading\.json', f.name)
+                for f in sorted(json_dir.glob("test-*.json")):
+                    m = re.search(r'test-(\d+)\.json', f.name)
                     if m:
                         test_num = int(m.group(1))
                         data = json.loads(f.read_text())
