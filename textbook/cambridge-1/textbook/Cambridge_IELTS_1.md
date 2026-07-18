@@ -1,7 +1,3 @@
-![](_page_0_Picture_0.jpeg)
-
-![](_page_0_Picture_1.jpeg)
-
 # CAMBRIDGE
 
 PRACTICE TESTS FOR
@@ -10,35 +6,10 @@ VANESSA JAKEMAN CLARE McDOWELL
 
 SELF-STUDY EDITION
 
-CAMBRIDGE UNIVERSITY PRESS Вторая страница обложки
 
-## **Cambridge Practice Tests for IELTS 1**
+## Cambridge Practice Tests for IELTS 1
 
-*Vanessa Jakeman Clare McDowell*
-
-![](_page_2_Picture_2.jpeg)
-
-#### PUBLISHED BY THF PRESS SYNDICATE OF THE UNIVERSITY OF CAMBRIDGE The Pitt Building Trumpington Street Cambridge CB2 1RP United Kingdom
-
-#### CAMBRIDGE UNIVERSITY PRESS
-
-The Edinburgh Building, Cambridge CB2 2RU, United Kingdom 40 West 20th Street, New York, NY 10011-4211, USA 10 Stamford Road, Oakleigh, Melbourne 3166, Australia
-
-© Cambridge University Press 1996
-
-This book is in copyright. Subject to statutory exception and to the provisions of relevant collective licensing agreements, no reproduction of any part may take place without the written permission of Cambridge University Press.
-
-First published 1996 Third printing 1997
-
-Printed in the United Kingdom at the University Press, Cambridge
-
-ISBN 0 521 49767 1 Self-Study Student`s Book ISBN 0 521 49766 3 Set of 2 cassettes
-
-#### **Copyright**
-
-The law allows a reader to make a single copy of part of a book for purposes of private study. It does not allow the copying of entire books or the making of multiple copies of extracts. Written permission for any such copying must always be obtained from the publisher in advance.
-
-### **Contents**
+### Contents
 
 | Acknowledgements<br>iv                             |
 |----------------------------------------------------|
@@ -52,44 +23,22 @@ The law allows a reader to make a single copy of part of a book for purposes of 
 | Answer keys<br>130                                 |
 | Sample answer sheets<br>153                        |
 
-### Acknowledgements
-
-We would like to thank the staff and students of the following institutions for their assistance in trialling these materials:
-
-Wollongong English Language Centre; Australian College of English, Sydney; Hong Kong Polytechnic; Waratah Education Centre, Sydney; International House, Queensland; Milton English Language Centre, Sydney; Oxford Academy of English.
-
-In addition, a number of our non-English speaking friends were kind enough to trial the materials in their early formats
-
-The authors and publishers are grateful to the following for permission to reproduce copyright material.
-
-*Focus* magazine for the extract on pp. 20-21 from *A spark, a flint: how fire lept to life; BBC WILDLIFE Magazine* for the extract on pp. 24-5 from *Showboat as Ark; The Guardian* for the extract on pp. 28-9 from *Architecture — Reaching for the Sky* by Ruth Coleman and for the graphs on pp. 31 and 72; Geoff Maslen for the extract on pp. 40-41 from *The Rights of the Left,* published by *Good Weekend* magazine; *National Geographic* magazine for the extract and map on pp. 44-5 from *America's Beekeepers: Hives for Hire* by Alan Mairson, *National Geographic,* May 1993, and for the extract on pp. 80-81 from *Glass: Capturing the Dance of Light* by William S Ellis, *National Geographic,* December 1993; the extract on pp. 48-9 is reprinted from *The Tourist Gaze, ©* John Urry 1990, by permission of Sage Publications Ltd; *The European* for the extract on pp. 60-61 from *Spoken Corpus Conies to Life,* for the extract on pp. 64-5 from *Hobbits happy as homes go underground,* and for the extract on pp. 84-5 from *Why some women cross the finish line ahead of men* by Andrew Crisp; The Royal Zoological Society of New South Wales for the extract on pp. 87-8 from an article by Hugh Possmgham in *Conservation of Australia's Forest Fauna;* Moulmex/Swan for the extract and illustrations on pp. 94-5 from *Instructions for a Moulmex Iron;* Cambridge Coach Services for the extract on p. 96; International Students House for the extracts on p. 99 and p. 101 from the *International Students' A-Z: A guide to studying and living in London;* Gore and Osment Publications for the diagram on p 51 and the extract on pp. 102-3 from *The Science and Technology Project Book; BBC Good Food Magazine* for the extract from *Space Invaders, BBC Good Food Magazine,* January 1995, on which Practice Test 3, Listening, Section 4 is based; University of Westminster for the extract from *Getting it right: Essential information for international students* on which Practice Test 4, Listening, Section 2 is based: the IELTS Reading and Listening answer sheets are reproduced by permission of the University of Cambridge Local Examinations Syndicate.
-
-*Photographs* p. 20 The Science Photo Library/Adam Hart Davis; p. 80 (top) Image Bank; p. 80 (bottom) Damien Lovegrove.
-
-The illustration on p. 84 is reproduced by permission of Mm Cooper/*The European.* The drawings are by Julian Page. Maps and diagrams by HardLines.
-
-Book design by Peter Ducker MSTD
-
-The cassette recording was produced by James Richardson at Studio AVP, London
-
 ### Introduction
 
-#### **TO THE STUDENT**
-
-#### **About the book**
+#### About the book
 
 This book has been written for candidates preparing for the revised version of the International English Language Testing System, known as IELTS. This is a test designed to assess the English language skills of non-English speaking students seeking to study in an English speaking country.
 
-#### **Aims of the book**
+#### Aims of the book
 
 - to prepare you for the test by familiarising you with the types of texts and tasks that you will meet in the IELTS test, and the level and style of language used in the test.
 - to help you prepare for your studies at university or college by introducing you to the types of communication tasks which you are likely to meet in English speaking study environment.
 
-#### **Content of the book**
+#### Content of the book
 
 The book contains four complete sample IELTS tests, each comprising Listening and Speaking modules and Academic Reading and Writing modules. In addition there is one set of the General Training Reading and Writing modules. (NB all candidates do the same Listening and Speaking modules.) To accompany the tests there is an answer key at the back of the book and you should refer to this after you have attempted each of the practice tests. Also included is an annotated copy of the listening tapescripts with the appropriate sections highlighted to help you to check your answers. In addition, you will find one model answer for each type of writing task to guide you with your writing. There is a comprehensive key for the Reading and Listening sections, but if you are in any doubt about your answers, talk to a teacher or an English speaking friend. Where you are required to answer in your own words, the answer must be accurate in both meaning as well as grammar in order to be scored correct.
 
-#### **Benefits of studying for IELTS**
+#### Benefits of studying for IELTS
 
 By studying for IELTS you will not only be preparing for the test but also for your future as a student in an English speaking environment. The test is designed to assess your ability to understand and produce written and spoken language in an educational context. The book makes reference to the ways in which university study is organised in many English speaking countries and the types of academic tasks you will be expected to perform.
 
@@ -100,21 +49,21 @@ By studying for IELTS you will not only be preparing for the test but also for y
 - Listening to and comprehending spoken language in both lecture format as well as formal and informal conversational style
 - Speaking to colleagues and lecturers on general and given topics in formal and informal situations
 
-#### **Description of the test**
+#### Description of the test
 
 There are two versions of the IELTS test:
 
-#### **Academic Module**
+#### Academic Module
 
 for students seeking entry to a university or institution of higher education offering degree and diploma courses
 
-#### **General Training Module**
+#### General Training Module
 
 for students seeking entry to a secondary school or to vocational training courses
 
 *Note: All candidates must take a test for each of the four skills: listening, reading, writing and speaking. All candidates take the same Listening and Speaking modules but may choose between the Academic or General Training versions of the Reading and Writing sections of the test. You should seek advice from a teacher or a student adviser if you are in any doubt about whether to sit for the Academic modules or the General Training modules. The two do not carry the same weight and are not interchangeable.*
 
-#### **Test format**
+#### Test format
 
 **Listening** 4 sections, around 40 questions 30 minutes + transfer time
 
@@ -126,11 +75,11 @@ for students seeking entry to a secondary school or to vocational training cours
 
 **Total test time** 2 hours 45 minutes
 
-#### **WHAT DOES THE TEST CONSIST OF?**
+#### WHAT DOES THE TEST CONSIST OF?
 
-#### **The Listening Module**
+#### The Listening Module
 
-#### **Requirements**
+#### Requirements
 
 You must listen to four separate sections and answer questions as you listen. You will hear the tape *once only.*
 
@@ -138,13 +87,13 @@ There will be between 38 and 42 questions. The test will take about 30 minutes. 
 
 The level of difficulty of the texts and tasks increases through the paper.
 
-#### **Situation types**
+#### Situation types
 
 The first two sections are based on social situations. There will be a conversation between two speakers and then a monologue.
 
  The second two sections are related to an educational or training context. There will be a conversation with up to four speakers and a lecture or talk of general academic interest.
 
-#### **Question types**
+#### Question types
 
 You will meet a variety of question types which may include:
 
@@ -154,9 +103,9 @@ You will meet a variety of question types which may include:
 - · labelling a diagram which has numbered parts
 - · matching
 
-#### **Academic Reading Module**
+#### Academic Reading Module
 
-#### **Requirements**
+#### Requirements
 
 You must read three reading passages with a total of 1 500 to 2 500 words.
 
@@ -164,13 +113,13 @@ There will be between 38 and 42 questions. You will have 60 minutes to answer al
 
 The level of difficulty of the texts and tasks increases through the paper.
 
-#### **Types of material**
+#### Types of material
 
 Magazines, journals, textbooks and newspapers.
 
 Topics are not discipline specific but all are in a style appropriate and accessible to candidates entering postgraduate and undergraduate courses.
 
-#### **Question types**
+#### Question types
 
 You will meet a variety of question types which may include:
 
@@ -228,9 +177,9 @@ You will also be judged on your ability to:
 - use English grammar and syntax accurately
 - use appropriate language in terms of register, style and content
 
-#### **General Training Reading Module**
+#### General Training Reading Module
 
-#### **Requirements**
+#### Requirements
 
 You must answer questions on three sections of increasing difficulty with a total of 1,500 to 2,500 words.
 
@@ -238,7 +187,7 @@ There will be between 38 and 42 questions. You will have 60 minutes to answer al
 
 The level of difficulty of the texts and tasks increases through the paper.
 
-#### **Types of material**
+#### Types of material
 
 Notices, advertisements, booklets, newspapers, leaflets, timetables, books and magazine articles.
 
@@ -248,7 +197,7 @@ Notices, advertisements, booklets, newspapers, leaflets, timetables, books and m
 
 *Section 3* General reading extended prose with emphasis on descriptive and instructive texts of general interest
 
-#### **Question types**
+#### Question types
 
 You will meet a variety of question types, which may include:
 
@@ -262,9 +211,9 @@ You will meet a variety of question types, which may include:
 - matching lists
 - matching phrases
 
-#### **General Training Writing Module**
+#### General Training Writing Module
 
-#### **Requirements**
+#### Requirements
 
 You must complete two writing tasks. You will have 60 minutes to complete both tasks.
 
@@ -272,7 +221,7 @@ You should spend about 20 minutes on Task 1 and write at least 150 words.
 
 You should spend about 40 minutes on Task 2 and write at least 250 words.
 
-#### **Task types**
+#### Task types
 
 *Task 1*
 
@@ -309,33 +258,33 @@ You will also be judged on your ability to:
 - use English grammar and syntax accurately
 - use appropriate language in terms of register, style and content
 
-#### **The Speaking Module**
+#### The Speaking Module
 
-#### **Requirements**
+#### Requirements
 
 You will have to talk to an examiner for about 15 minutes. The interview will be recorded. It is in 5 parts:
 
-#### **1** Introduction
+#### 1 Introduction
 
 — Basic introductions
 
-#### **2** Extended discourse
+#### 2 Extended discourse
 
 — You will talk at some length about general topics of relevance or interest which will involve explanation and description.
 
-#### **3** Elicitation
+#### 3 Elicitation
 
 — You will be given a cue card which describes a situation or problem. You must ask the examiner questions to obtain information.
 
-#### **4** Speculation and attitudes
+#### 4 Speculation and attitudes
 
 — You will be asked to talk about your plans or proposed course of study. You should demonstrate your ability to speculate or defend a point of view.
 
-#### **5** Conclusion
+#### 5 Conclusion
 
 — The interview comes to an end.
 
-#### **Assessment criteria**
+#### Assessment criteria
 
 You will be assessed on the following criteria:
 
@@ -347,51 +296,51 @@ You will be assessed on the following criteria:
 - structural accuracy
 - intelligibility
 
-#### **How is IELTS scored?**
+#### How is IELTS scored?
 
 IELTS provides a profile of your ability to use English. In other words your IELTS result will consist of a score in each of the four skills (listening, reading, writing, speaking) which is then averaged to give the Overall Band Score or final mark. Performance is rated in each skill on a scale of 9 to 1. The nine overall Bands and their descriptive statements are as follows:
 
-#### **9 Expert user**
+#### 9 Expert user
 
 Has fully operational command of the language: appropriate, accurate and fluent with complete understanding.
 
-#### **8 Very good user**
+#### 8 Very good user
 
 Has fully operational command of the language with only occasional unsystematic inaccuracies and inappropriacies. Misunderstandings may occur in unfamiliar situations. Handles complex detailed argumentation well.
 
-#### **7 Good user**
+#### 7 Good user
 
 Has operational command of the language, though with occasional inaccuracies, inappropriacies and misunderstandings in some situations. Generally handles complex language well and understands detailed reasoning.
 
-#### **6 Competent user**
+#### 6 Competent user
 
 Has generally effective command of the language despite inaccuracies, inappropriacies and misunderstandings. Can use and understand fairly complex language, particularly in familiar situations.
 
-#### **5 Modest user**
+#### 5 Modest user
 
 Has partial command of the language, coping with overall meaning in most situations, though is likely to make many mistakes. Should be able to handle basic communication in own field.
 
-#### **4 Limited user**
+#### 4 Limited user
 
 Basic competence is limited to familiar situations. Has frequent problems in understanding and expression. Is not able to use complex language.
 
-#### **3 Extremely limited user**
+#### 3 Extremely limited user
 
 Conveys and understands only general meaning in very familiar situations. Frequent breakdowns in communication occur.
 
-#### **2 Intermittent user**
+#### 2 Intermittent user
 
 No real communication is possible except for the most basic information using isolated words or short formulae in familiar situations and to meet immediate needs. Has great difficulty understanding spoken and written English.
 
-#### **1 Non user**
+#### 1 Non user
 
 Essentially has no ability to use the language beyond possibly a few isolated words.
 
-#### **0 Did not attempt the test**
+#### 0 Did not attempt the test
 
 No assessable information provided.
 
-#### **What is the pass mark?**
+#### What is the pass mark?
 
 There is no fixed pass mark in IELTS. The institution you want to enter will decide whether your score is appropriate for the demands of the course of study or training you want to undertake. However, as a general rule, scores below Band 5 in any one skill are considered too low for academic
 
@@ -399,103 +348,118 @@ study; scores above Band 6 are deemed to be adequate to good. Overall Band score
 
 *For further information about the test, see the IELTS Handbook available from all test centres and also from UCLES (University of Cambridge Local Examinations Syndicate), from I DP Education Australia and from British Council Centres.*
 
-#### **HOW TO USE THIS BOOK**
+#### HOW TO USE THIS BOOK
 
 The tests in this book are similar in length, format and content to the real test, but success in these tests will not guarantee success in the real test. It often seems easier to work on practice materials than to sit the tests themselves because you are not under the same pressure.
 
-#### **Timing**
+#### Timing
 
 In order to maximise your use of these tests, you should make a note of the time it takes you to answer each of the sections. As you progress through the book, be stricter with yourself about the time you allow yourself to complete the sections.
 
-#### **Answer sheets**
+#### Answer sheets
 
 When you sit for the real IELTS test, you will have answer sheets on which to write your answers. A sample of these is given at the end of this book. To help you prepare for the test, we suggest that you write your answers on separate sheets of paper, rather than in the book itself.
 
-#### **Answer keys**
+#### Answer keys
 
-#### *Listening*
+#### Listening
 
 In addition to the answer key, you will find tapescripts for all of the listening passages. These have been annotated to show where in the text the answer to each question can be found. There is very often a signpost word which will cue your listening. Look out for these signposts. Remember, the answers are usually short and never more than three words. Read the questions carefully, in the time provided on the tape, before you listen to each section of the tape.
 
-#### *Introdution*
+#### Introduction
 
-#### *Reading*
+#### Reading
 
 You will meet a number of different question types in the IELTS test. It is a useful strategy to become familiar with them and learn how best to approach them. The answer keys at the back of this book not only provide you with the answer to each question, but also give a suggested approach to each type of question, so take the time to work through them carefully.
 
-#### *Writing*
+#### Writing
 
 You will find four sample answers to the writing tasks, one for each task type on each module. These have been included to give you an *idea* of the type of writing expected. However, there will be alternative approaches to each question and the model answers given should not be seen as prescriptive. Look carefully at the description of the writing test (given above in the Introduction) to see exactly which criteria you should be paying attention to in each task.
 
-#### *Speaking*
+#### Speaking
 
 The sample speaking tasks are to help you prepare for part 3 of the Speaking test. Remember that the examiner will expect you to show how much English you know and it is up to you to demonstrate that. You are expected to ask a lot of questions in part 3 and the examiner will not speak very much and may even appear to be "unhelpful" at times, to encourage you to ask more questions. The sample speaking tasks include suggested examiner's prompts so that you can see how the interaction might unfold. It may be a useful preparation strategy to work with a friend and practise the interview format in this way, using the sample tasks in the book.
 
-### **Practice Tests**
+### Practice Tests
 
-### Practice Test 1
+## Practice Test 1
 
-#### **LISTENING**
+### LISTENING
 
 #### SECTION 1 Questions 1-10
 
-#### Questions 1-5
+##### Questions 1-5
 
 *Circle the appropriate letter.*
-
-#### *Example*
-
-What has the woman lost?
-
-**A** a briefcase **C** a handbag
-
-**B** a suitcase **D** a wallet
 
 **1** What does her briefcase look like?
 
 ![](_page_17_Picture_12.jpeg)
 
+- **A**
+- **B**
+- **C**
+- **D**
+
 **2** Which picture shows the distinguishing features?
 
 ![](_page_17_Picture_14.jpeg)
 
+- **A**
+- **B**
+- **C**
+- **D**
+
 **3** What did she have inside her briefcase?
 
-**A** wallet, pens and novel **C** pens and novel
-
-**B** papers and wallet **D** papers, pens and novel
+- **A** wallet, pens and novel 
+- **C** pens and novel
+- **B** papers and wallet 
+- **D** papers, pens and novel
 
 **4** Where was she standing when she lost her briefcase?
 
 ![](_page_18_Picture_2.jpeg)
 
+- **A**
+- **B**
+- **C**
+- **D**
+
 **5** What time was it when she lost her briefcase?
 
 ![](_page_18_Picture_4.jpeg)
 
-#### Questions 6-10
+- **A**
+- **B**
+- **C**
+- **D**
+
+##### Questions 6-10
 
 *Complete the form Write NO MORE THAN THREE WORDS for each answer.*
 
 | PERSONAL DETAILS FORM                |              |  |
 |--------------------------------------|--------------|--|
-| Name:                                | Mary<br>(6)  |  |
+| Name:                                | Mary (6)______  |  |
 | Address:                             | Flat 2       |  |
-|                                      | (7) (8) Road |  |
+|                                      | (7)_____ (8)_____ Road |  |
 |                                      | Canterbury   |  |
-| Telephone:                           | (9)          |  |
+| Telephone:                           | (9)______          |  |
 | Estimated value of lost item: (10) £ |              |  |
 
-#### **SECTION 2** *Questions 11-21*
+![](_page_18_Picture_5a.jpeg)
 
-#### Questions 11-13
+#### SECTION 2 Questions 11-21
+
+##### Questions 11-13
 
 *Tick the THREE other items which are mentioned in the news headlines.*
 
 |   | NEWS HEADLINES                                |   |
 |---|-----------------------------------------------|---|
 | A | Rivers flood in the north                     |   |
-| B | Example<br>Money promised for drought victims | ü |
+| B | Example <br> Money promised for drought victims | x |
 | C | Nurses on strike in Melbourne                 |   |
 | D | Passengers rescued from ship                  |   |
 | E | Passengers rescued from plane                 |   |
@@ -505,35 +469,32 @@ What has the woman lost?
 | I | National airports under new management        |   |
 |   |                                               |   |
 
-#### Questions 14-21
+##### Questions 14-21
 
 *Complete the notes below by writing NO MORE THAN THREE WORDS in the spaces provided.*
 
-| The Government plans to give (14) \$ to assist the               |
-|------------------------------------------------------------------|
-| farmers. This money was to be spent on improving Sydney's        |
-| (15) but has now been re-allocated.                              |
-| Australia has experienced its worst drought in over fifty years. |
-| Farmers say that the money will not help them because it is      |
-| (16)                                                             |
-|                                                                  |
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+  <p>The Government plans to give (14) \$ _____________ to assist the farmers. This money was to be spent on improving Sydney's (15)____________ but has now been re-allocated.</p>
+  <p>Australia has experienced its worst drought in over fifty years. Farmers say that the money will not help them because it is (16)____________</p>
+</div>
 
-An aeroplane which was carrying a group of **(17)** .................................................. was forced to land just **(18)** ................................................. minutes after take-off. The passengers were rescued by **(19)** ............................................................ **.** The operation was helped because of the good weather. The passengers thanked the **(20)** ............................................................... for saving their lives but unfortunately they lost their **(21)** .................................................................. **.**
+<br>
 
-#### **SECTION 3** *Questions 22-31*
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+  An aeroplane which was carrying a group of (17).................................................. was forced to land just (18)................................................. minutes after take-off. 
+  
+  <br>
+  
+  The passengers were rescued by **(19)** ............................................................ **.** The operation was helped because of the good weather. The passengers thanked the **(20)** ............................................................... for saving their lives but unfortunately they lost their **(21)** .................................................................. **.**
+</div>
 
-#### Questions 22-25
+
+#### SECTION 3 Questions 22-31
+
+##### Questions 22-25
 
 *Circle the appropriate letter.*
 
-#### *Example*
-
-The student is looking for the School of
-
-- **A** Fine Arts.
-- **B** Economic History.
-- **C** Economics.
-- **D** Accountancy.
 - **22** The orientation meeting
   - **A** took place recently.
   - **B** took place last term.
@@ -555,23 +516,22 @@ The student is looking for the School of
   - **C** Rogers.
   - **D** Robertson.
 
-#### Questions 26-31
+##### Questions 26-31
 
 *Complete the notes below using NO MORE THAN THREE WORDS.*
 
-| Course requirements:                                                                          |
-|-----------------------------------------------------------------------------------------------|
-| Tutorial paper:                                                                               |
-| •A piece of work ON<br>A given topic. Students must:<br>•<br>(26)<br><br>for<br>25<br>minutes |
-| •<br>(27)<br>• give to lecturer for marking                                                   |
-| Essay topic:<br>Usually<br>(28)                                                               |
-| Type of exam:<br>(29)                                                                         |
-| Library:<br>Important books are in<br>(30)<br>                                                |
-| Focus of course:<br>Focus on<br>(31)                                                          |
+![](_page_23_Figure_26-31.jpeg)
 
-#### **SECTION 4** *Questions 32-41*
+- **(26)**________________
+- **(27)**________________
+- **(28)**________________
+- **(29)**________________
+- **(30)**________________
+- **(31)**________________
 
-#### Questions 32-33
+#### SECTION 4 Questions 32-41
+
+##### Questions 32-33
 
 *Circle the appropriate letter.*
 
@@ -586,23 +546,19 @@ The student is looking for the School of
   - **C** divisions.
   - **D** departments.
 
-#### Questions 34-36
+##### Questions 34-36
 
 *Complete the notes m NO MORE THAN THREE WORDS.*
 
-| The subjects taken in the first semester in<br>this course are psychology, sociology, |
-|---------------------------------------------------------------------------------------|
-| (34) and                                                                              |
-|                                                                                       |
-| Students may have problems with                                                       |
-| (35)<br>and                                                                           |
-| (36)<br>                                                                              |
-|                                                                                       |
-|                                                                                       |
+![](_page_24_Picture_2a.jpeg)
 
-#### Questions 37-41
+- **(34)** ______ and _____
+- **(35)** ______
+- **(36)** ______
 
-#### *Circle the appropriate letter.*
+##### Questions 37-41
+
+Circle the appropriate letter.
 
 - **37** The speaker says students can visit her
   - **A** every morning.
@@ -630,11 +586,13 @@ The student is looking for the School of
   - **C** warn students about the difficulties of studying.
   - **D** guide students round the university.
 
-#### **READING PASSAGE 1**
+### READING
+#### READING PASSAGE 1
 
 *You should spend about 20 minutes on Questions 1-15 which are based on Reading Passage 1 below*
 
-### A spark, a flint: How fire leapt to life
+A spark, a flint: How fire leapt to life
+
 
 **The control of fire was the first and perhaps greatest of humanity's steps towards a life-enhancing technology**
 
@@ -672,15 +630,16 @@ The Americans, however, can claim several "firsts" in match technology and marke
 
 Other American innovations include an antiafterglow solution to prevent the match from smouldering after it has been blown out; and the waterproof match, which lights after eight hours in water.
 
-#### Questions 1-8
+##### Questions 1-8
 
 *Complete the summary below. Choose your answers from the box at the bottom of the page and write them in boxes 1 8 on your answer sheet.*
 
 *NB There are more words than spaces so you will not use them all You may use any of the words more than once.*
 
-#### **EARLY FIRE-LIGHTING METHODS**
 
-Primitive societies saw fire as a ... *(Example)* ... gift. *Answer* heavenly
+> Primitive societies saw fire as a ... *(Example)* ... gift. *Answer* heavenly
+
+**EARLY FIRE-LIGHTING METHODS**
 
 They tried to ... **(1)** ... burning logs or charcoal ... **(2)** ... that they could create fire themselves. It is suspected that the first man-made flames were produced by ... **(3)** ...
 
@@ -690,17 +649,17 @@ The very first fire-lighting methods involved the creation of ... **(4) ...** by
 |------------------------------------------------------------------------------|------------------------------------------------------------------------|--------------------------------------------------------------------|
 | Mexicans<br>despite<br>sunlight<br>percussion<br>unaware<br>heating<br>until | random<br>preserve<br>lacking<br>chance<br>without<br>Eskimos<br>smoke | rotating<br>realising<br>heavenly<br>friction<br>make<br>surprised |
 
-#### Questions 9-15
+##### Questions 9-15
 
 *Look at the following notes that have been made about the matches described in Reading Passage 1. Decide which type of match (A-H) corresponds with each description and write your answers in boxes 9 15 on your answer sheet.*
 
 *NB There are more matches than descriptions so you will not use them all. You may use any match more than once.*
 
-| Example<br>could be lit after soaking in water | Answer<br>H |  |
+| Example | Answer |  |
 |------------------------------------------------|-------------|--|
-|                                                |             |  |
+|  could be lit after soaking in water                                              |       H      |  |
 
-#### **NOTES**
+NOTES
 
 - **9** made using a less poisonous type of phosphorus
 - **10** identical to a previous type of match
@@ -710,7 +669,8 @@ The very first fire-lighting methods involved the creation of ... **(4) ...** by
 - **14** relied on an airtight glass container
 - 15 made with the help of an army design
 
-#### **Types of Matches**
+Types of Matches
+
 
 - A the Ethereal Match
 - B the Instantaneous Lightbox
@@ -721,11 +681,11 @@ The very first fire-lighting methods involved the creation of ... **(4) ...** by
 - G book matches
 - H waterproof matches
 
-#### **READING PASSAGE 2**
+#### READING PASSAGE 2
 
 *You should spend about 20 minutes on Questions 16-28 which are based on Reading Passage 2 below.*
 
-### *Zoo conservation programmes*
+**Zoo conservation programmes**
 
 One of London Zoo's recent advertisements caused me some irritation, so patently did it distort reality. Headlined "Without zoos you might as well tell these animals to get stuffed", it was bordered with illustrations of several endangered species and went on to extol the myth that without zoos like London Zoo these animals "will almost certainly disappear forever". With the zoo world's rather mediocre record on conservation, one might be forgiven for being slightly sceptical about such an advertisement.
 
@@ -739,7 +699,7 @@ Even assuming that the WZCS's 1,000 core zoos are all of a high standard complet
 
 Today approximately 16 species might be said to have been "saved" by captive breeding programmes, although a number of these can hardly be looked upon as resounding successes. Beyond that, about a further 20 species are being seriously considered for zoo conservation programmes. Given that the international conference at London Zoo was held 30 years ago, this is pretty slow progress, and a long way off Tudge's target of 2,000.
 
-#### Questions 16-22
+##### Questions 16-22
 
 *Do the following statements agree with the views of the writer in Reading Passage 2? In boxes 16-22 write*
 
@@ -759,7 +719,7 @@ Today approximately 16 species might be said to have been "saved" by captive bre
 - **21** Colin Tudge was dissatisfied with the treatment of animals at London Zoo.
 - **22** The number of successful zoo conservation programmes is unsatisfactory.
 
-#### Questions 23-25
+##### Questions 23-25
 
 *Choose the appropriate letters A-D and write them in boxes 23-25 on your answer sheet.*
 
@@ -768,7 +728,8 @@ Today approximately 16 species might be said to have been "saved" by captive bre
   - **B** to identify zoos suitable for conservation practice
   - **C** to provide funds for zoos in underdeveloped countries
   - **D** to list the endangered species of the world
-- 24 Why does the writer refer to Robin Hill Adventure Park?
+
+- **24** Why does the writer refer to Robin Hill Adventure Park?
   - A to support the Isle of Wight local council
   - B to criticise the 1981 Zoo Licensing Act
   - C to illustrate a weakness in the WZCS document
@@ -780,11 +741,11 @@ Today approximately 16 species might be said to have been "saved" by captive bre
   - **C** prejudiced
   - **D** accepting
 
-#### Questions 26-28
+##### Questions 26-28
 
 *The writer mentions a number oj factors H hich lead him to doubt the value of the WZCS document Which THREE of the following factors are mentioned? Write your answers (A-F) in boxes 26-28 on your answer sheet.*
 
-#### **List of Factors**
+List of Factors
 
 - **A** the number of unregistered zoos in the world
 - **B** the lack of money in developing countries
@@ -793,11 +754,12 @@ Today approximately 16 species might be said to have been "saved" by captive bre
 - **E** the unrealistic aim of the **WZCS** in view of the number of species "saved" to date
 - **F** the policies of **WZCS** zoo managers
 
-#### **READING PASSAGE 3**
+#### READING PASSAGE 3
 
 *You should spend about 20 minutes on Questions 29-40 which are based on Reading Passage 3 below.*
 
-### **ARCHITECTURE - Reaching for the Sky**
+**ARCHITECTURE - Reaching for the Sky**
+
 
 Architecture is the art and science of designing buildings and structures. A building reflects the scientific and technological achievements of the age as well as the ideas and aspirations of the designer and client. The appearance of individual buildings, however, is often controversial.
 
@@ -805,47 +767,39 @@ The use of an architectural style cannot be said to start or finish on a specifi
 
 Instead of using timber, stone and traditional building techniques, architects began to explore ways of creating buildings by using the latest technology and materials such as steel, glass and concrete strengthened steel bars, known as reinforced concrete. Technological advances also helped bring about the decline of rural industries and an increase in urban populations as people moved to the towns to work in the new factories. Such rapid and uncontrolled growth helped to turn parts of cities into slums.
 
-By the 1920s architects throughout Europe were reacting against the
-
-conditions created by industrialisation. A new style of architecture emerged to reflect more idealistic notions for the future. It was made possible by new materials and construction techniques and was known as Modernism.
+By the 1920s architects throughout Europe were reacting against the conditions created by industrialisation. A new style of architecture emerged to reflect more idealistic notions for the future. It was made possible by new materials and construction techniques and was known as Modernism.
 
 By the 1930s many buildings emerging from this movement were designed in the International Style. This was largely characterised by the bold use of new materials and simple, geometric forms, often with white walls supported by stiltlike pillars. These were stripped of unnecessary decoration that would detract from their primary purpose — to be used or lived in.
 
 Walter Gropius, Charles Jeanneret (better known as Le Corbusier) and Ludwig Mies van der Rohe were among the most influential of the many architects who contributed to the development of Modernism in the first half of the century. But the economic depression of the 1930s and the second world war (1939-45) prevented their ideas from being widely realised until the economic conditions improved and war-torn cities had to be rebuilt. By the 1950s, the International Style had developed into a universal approach to building, which standardised the appearance of new buildings in cities across the world.
 
-Unfortunately, this Modernist interest in geometric simplicity and function became exploited for profit. The rediscovery of
-
-quick-and-easy-to-handle reinforced concrete and an improved ability to prefabricate building sections meant that builders could meet the budgets of commissioning authorities and handle a renewed demand for development quickly and cheaply. But this led to many badly designed buildings, which discredited the original aims of Modernism.
+Unfortunately, this Modernist interest in geometric simplicity and function became exploited for profit. The rediscovery of quick-and-easy-to-handle reinforced concrete and an improved ability to prefabricate building sections meant that builders could meet the budgets of commissioning authorities and handle a renewed demand for development quickly and cheaply. But this led to many badly designed buildings, which discredited the original aims of Modernism.
 
 Influenced by Le Corbusier's ideas on town planning, every large British city built multi-storey housing estates in the 1960s. Massproduced, low-cost high-rises seemed to offer a solution to the problem of housing a growing inner-city population. But far from meeting human needs, the new estates often proved to be windswept deserts lacking essential social facilities and services. Many of these buildings were poorly designed and constructed and have since been demolished.
 
-By the 1970s, a new respect for the place of buildings within the existing townscape arose. Preserving historic buildings or keeping only their facades (or fronts) grew common. Architects also began to make more use of building styles and materials that were traditional to the area. The architectural style usually referred to as High Tech was also emerging. It
+By the 1970s, a new respect for the place of buildings within the existing townscape arose. Preserving historic buildings or keeping only their facades (or fronts) grew common. Architects also began to make more use of building styles and materials that were traditional to the area. The architectural style usually referred to as High Tech was also emerging. It celebrated scientific and engineering achievements by openly parading the sophisticated techniques used in construction. Such buildings are commonly made of metal and glass; examples are Stansted airport and the Lloyd's building in London.
 
-celebrated scientific and engineering achievements by openly parading the sophisticated techniques used in construction. Such buildings are commonly made of metal and glass; examples are Stansted airport and the Lloyd's building in London.
-
-Disillusionment at the failure of many of the poor imitations of Modernist architecture led to interest in various styles and ideas from the past and present. By the 1980s the coexistence of
-
-different styles of architecture in the same building became known as Post Modern. Other architects looked back to the classical tradition. The trend in architecture now favours smaller scale building design that reflects a growing public awareness of environmental issues such as energy efficiency. Like the Modernists, people today recognise that a well designed environment improves the quality of life but is not necessarily achieved by adopting one well defined style of architecture.
+Disillusionment at the failure of many of the poor imitations of Modernist architecture led to interest in various styles and ideas from the past and present. By the 1980s the coexistence of different styles of architecture in the same building became known as Post Modern. Other architects looked back to the classical tradition. The trend in architecture now favours smaller scale building design that reflects a growing public awareness of environmental issues such as energy efficiency. Like the Modernists, people today recognise that a well designed environment improves the quality of life but is not necessarily achieved by adopting one well defined style of architecture.
 
 Twentieth century architecture will mainly be remembered for its tall buildings. They have been made possible by the development of light steel frames and safe passenger lifts. They originated in the US over a century ago to help meet the demand for more economical use of land. As construction techniques improved, the skyscraper became a reality.
 
-**Ruth Coleman** 
+*Ruth Coleman*
 
-#### Questions 29-35
+##### Questions 29-35
 
 Complete the table below using information from Reading Passage 3. Write **NO MORE THAN THREE WORDS** for each answer. Write your answers in boxes 29-35 on your answer sheet.
 
 | PERIOD              | STYLE OF<br>PERIOD      | BUILDING<br>MATERIALS     | CHARACTERISTICS                  |
 |---------------------|-------------------------|---------------------------|----------------------------------|
-| Before 18th century | Example<br>traditional  | (29)                      |                                  |
+| Before 18th century | Example<br>traditional  | (29)_____________         |                                  |
 | 1920s               | introduction of (30)    | steel, glass and concrete | exploration of latest technology |
-| 1930s -<br>1950s    | (31)                    |                           | geometric forms                  |
-| 1960s               | decline of<br>Modernism | pre-fabricated sections   | (32)                             |
-| 1970s               | end of Modernist<br>era | traditional materials     | (33) of historic buildings       |
-| 1970s               | beginning of (34) era   | metal and glass           | sophisticated techniques paraded |
-| 1980s               | Post-Modernism          |                           | (35)                             |
+| 1930s -1950s        | (31)_____________       |                           | geometric forms                  |
+| 1960s               | decline of Modernism | pre-fabricated sections   | (32)_____________                |
+| 1970s               | end of Modernist    era | traditional materials     | (33)_____ of historic buildings       |
+| 1970s               | beginning of (34)______ era   | metal and glass           | sophisticated techniques paraded |
+| 1980s               | Post-Modernism          |                           | (35)__________                   |
 
-#### Questions 36-40
+##### Questions 36-40
 
 *Reading Passage 3 describes a number of cause and effect relationships. Match each Cause (36-40) in List A, with its Effect (A-H) in List B.*
 
@@ -853,30 +807,16 @@ Complete the table below using information from Reading Passage 3. Write **NO MO
 
 *NB There are more effects in List B than you will need, so you will not use all of them. You may use any effect more than once if you wish.*
 
-#### *List A* **CAUSES**
+| List A CAUSES | List B EFFECTS |
+|---|---|
+| **36** A rapid movement of people from rural areas to cities is triggered by technological advance.<br>**37** Buildings become simple and functional.<br>**38** An economic depression and the second world war hit Europe.<br>**39** Multi-storey housing estates are built according to contemporary ideas on town planning.<br>**40** Less land must be used for building. | **A** The quality of life is improved.<br>**B** Architecture reflects the age.<br>**C** A number of these have been knocked down.<br>**D** Light steel frames and lifts are developed.<br>**E** Historical buildings are preserved.<br>**F** All decoration is removed.<br>**G** Parts of cities become slums.<br>**H** Modernist ideas cannot be put into practice until the second half of the 20th century. |
 
-- **36** A rapid movement of people from rural areas to cities is triggered by technological advance.
-- **37** Buildings become simple and functional.
-- **38** An economic depression and the second world war hit Europe.
-- **39** Multi-storey housing estates are built according to contemporary ideas on town planning.
-- **40** Less land must be used for building.
+### WRITING
 
-#### *List* B EFFECTS
+#### WRITING TASK 1
 
-- **A** The quality of life is improved.
-- **B** Architecture reflects the age.
-- **C** A number of these have been knocked down.
-- **D** Light steel frames and lifts are developed.
-- **E** Historical buildings are preserved.
-- **F** All decoration is removed.
-- **G** Parts of cities become slums.
-- **H** Modernist ideas cannot be put into practice until the second half of the 20th century.
+You should spend about 20 minutes on this task.
 
-#### **WRITING**
-
-#### **WRITING TASK 1**
-
-*You should spend about 20 minutes on this task.*
 
 *The charts below show the results of a survey of adult education. The first chart shows the reasons why adults decide to study. The pie chart shows how people think the costs of adult education should be shared.*
 
@@ -884,11 +824,13 @@ Complete the table below using information from Reading Passage 3. Write **NO MO
 
 ![](_page_36_Figure_6.jpeg)
 
-#### **WRITING TASK 2**
+#### WRITING TASK 2
 
-*You should spend about 40 minutes on this task.*
+You should spend about 40 minutes on this task.
 
-*Present a written argument or case to an educated reader with no specialist knowledge of the following topic:*
+
+Present a written argument or case to an educated reader with no specialist knowledge of the following topic:
+
 
 *There are many different types of music in the world today. Why do we need music? Is the traditional music of a country more important than the International music that is heard everywhere nowadays?*
 
@@ -896,27 +838,33 @@ Complete the table below using information from Reading Passage 3. Write **NO MO
 
 *Use your own ideas, knowledge and experience and support your arguments with examples and relevant evidence.*
 
-#### **SPEAKING**
+### SPEAKING
 
-#### **CANDIDATE'S CUE CARD Task 1**
+#### Task 1
 
-#### **UNIVERSITY CLUBS AND ASSOCIATIONS**
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+CANDIDATE'S CUE CARD - Task 1
+
+**UNIVERSITY CLUBS AND ASSOCIATIONS**
 
 **You have just arrived at a new university. It is orientation week and you want to know about the different clubs and associations you can join. Your examiner is a Student Union representative.**
 
-Ask the examiner about: types of clubs
+Ask the examiner about: 
+- types of clubs
+- meeting times
+- benefits costs
+</div>
 
-meeting times
+<br>
 
-benefits costs
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+**INTERVIEWER'S NOTES**
 
-#### **IINTERVIEWER'S NOTES**
+**UNIVERSITY CLUBS AND ASSOCIATIONS**
 
-#### **UNIVERSITY CLUBS AND ASSOCIATIONS**
+**Prompts for interviewer**
 
-#### **Prompts for interviewer**
-
-#### **Overseas Students Club**
+**Overseas Students Club**
 
 • Meets once a week in Student
 
@@ -926,25 +874,28 @@ Centre, near Library *All welcome*
 
 • Financial contributions welcome
 
-#### **Chess Club**
+**Chess Club**
 
-• Meets once a week in Library *Not suitable for beginners*
+• Meets once a week in Library:  *Not suitable for beginners*
 
-• Plays other universities *Serious players only*
+• Plays other universities: *Serious players only*
 
 • No subscription
 
-#### **Table Tennis Club**
+**Table Tennis Club**
 
 • Meets every day at lunch-time in student area near canteen *All welcome*
 
 • Arranges tournaments
 
 • \$5.00 subscription
+</div>
 
-### Practice Test 2
+![](_page_39_Picture_1a.jpeg)
 
-#### **LISTENING**
+## Practice Test 2
+
+### LISTENING
 
 #### SECTION 1 Questions 1-10
 
@@ -952,42 +903,44 @@ Centre, near Library *All welcome*
 
 | KATE                                      |                       |
 |-------------------------------------------|-----------------------|
-| Her first impressions of the<br>town      | Quiet<br>Example      |
+| Her first impressions of the town      | Example: Quiet      |
 | Type of accommodation                     | (1)                   |
-| Her feelings about the<br>accommodation   | (2)                   |
-| Her feelings about the other<br>students  | (3)                   |
+| Her feelings about the accommodation   | (2)                   |
+| Her feelings about the other students  | (3)                   |
 | Name of course                            | Environmental Studies |
-| Difficulties experienced on the<br>course | (4)                   |
-| Suggestions for improving the<br>course   | (5)                   |
+| Difficulties experienced on the course | (4)                   |
+| Suggestions for improving the course   | (5)                   |
 
 | LUKI                                    |                    |
 |-----------------------------------------|--------------------|
 | First type of accommodation             | (6)                |
-| Problem with the first<br>accommodation | (7)                |
-| Second type of<br>accommodation         | (8)                |
+| Problem with the first accommodation | (7)                |
+| Second type of accommodation         | (8)                |
 | Name of course                          | (9)                |
-| Comments about the<br>course            | Computer room busy |
-| Suggestions for improving the<br>course | (10)               |
+| Comments about the course            | Computer room busy |
+| Suggestions for improving the course | (10)               |
 
 #### SECTION 2 Questions 11-20
 
 *Complete the notes below. Use NO MORE THAN THREE WORDS for each answer.*
 
-| There are many kinds of bicycles available:                                    |
-|--------------------------------------------------------------------------------|
-| racing<br>touring<br>(11)<br><br>ordinary                                      |
-| They vary in price and (12)                                                    |
-| Prices range from \$50.00 to (13)                                              |
-| Single speed cycles are suitable for (14)                                      |
-| Three speed cycles are suitable for (15)                                       |
-| Five and ten speed cycles are suitable for longer distances, hills<br>and (16) |
-| Ten speed bikes are better because they are (17) in<br>price but (18)          |
-| Buying a cycle is like (19)                                                    |
-| The size of the bicycle is determined by the size of<br>the (20)               |
+![](_page_41_Picture_1a.jpeg)
+
+- **(11)**_______________
+- **(12)**_______________
+- **(13)**_______________
+- **(14)**_______________
+- **(15)**_______________
+- **(16)**_______________
+- **(17)**_______________
+- **(18)**_______________
+- **(19)**_______________
+- **(20)**_______________
+
 
 #### SECTION 3 Questions 21-32
 
-#### Questions 21-24
+##### Questions 21-24
 
 *Circle the correct answer.*
 
@@ -1012,40 +965,68 @@ Centre, near Library *All welcome*
   - **C** China.
   - **D** Africa.
 
-#### Questions 25-30
+##### Questions 25-30
 
 *Complete Martin's notes Use NO MORE THAN THREE WORDS for each answer.*
 
-| Commercially grown<br>banana plant                                                                              |  |
-|-----------------------------------------------------------------------------------------------------------------|--|
-| Each banana tree produces<br>(25)<br>of bananas.                                                                |  |
-| On modern plantations in tropical<br>conditions a tree can bear fruit after<br>(26)                             |  |
-| Banana trees prefer to grow (27) and they require<br>rich soil and (28) The fruit is often protected by<br>(29) |  |
-| Ripe bananas emit a gas which helps other (30)                                                                  |  |
+![](_page_43_Picture_1a.jpeg)
 
-#### Questions 31 and 32
+- **(25)**_______________
+- **(26)**_______________
+- **(27)**_______________
+- **(28)**_______________
+- **(29)**_______________
+- **(30)**_______________
+
+
+##### Questions 31 and 32
 
 *Circle the TWO correct boxes.*
 
 ![](_page_42_Figure_6.jpeg)
 
+- **(31)**___________
+- **(32)**___________
+
+List:
+- **A** Europe
+- **B** Asia
+- **C** New Zealand
+- **D** Australia
+- **E** Other 
+
+
 #### SECTION 4 Questions 33-41
 
-#### Questions 33-35
+##### Questions 33-35
 
 *Circle the correct answer*
 
-|    |        | According to the first speaker:                                |        |                                                         |
-|----|--------|----------------------------------------------------------------|--------|---------------------------------------------------------|
-| 33 |        | The focus of the lecture series is on                          |        |                                                         |
-|    | A<br>B | organising work and study.<br>maintaining a healthy lifestyle. | C<br>D | coping with homesickness.<br>settling in at university. |
-| 34 |        | The lecture will be given by                                   |        |                                                         |
-|    | A<br>B | the president of the Union.<br>the campus doctor.              | C<br>D | a sports celebrity.<br>a health expert.                 |
-|    |        | According to the second speaker:                               |        |                                                         |
-| 35 |        | This week's lecture is on                                      |        |                                                         |
-|    | A      | campus food.                                                   | C      | sensible eating.                                        |
 
-#### Questions 36-39
+**According to the first speaker:**
+
+- **33** The focus of the lecture series is on
+  - A organising work and study.
+  - B maintaining a healthy lifestyle.
+  - C coping with homesickness.
+  - D settling in at university.
+
+- **34** The lecture will be given by
+  - A the president of the Union.
+  - B the campus doctor.
+  - C a sports celebrity.
+  - D a health expert.
+
+**According to the second speaker:**
+
+- **35** This week's lecture is on
+  - A campus food.
+  - B dieting
+  - C sensible eating.
+  - D saving money
+
+
+##### Questions 36-39
 
 *Complete the notes. Write NO MORE THAN THREE WORDS for each answer.*
 
@@ -1054,30 +1035,35 @@ Centre, near Library *All welcome*
 | A balanced diet                                                        |
 |------------------------------------------------------------------------|
 | A balanced diet will give you enough vitamins for normal daily living. |
-| Vitamins in food can be lost through (36)                              |
+| Vitamins in food can be lost through (36)________                      |
 | Types of vitamins:                                                     |
 | (a) Fat soluble vitamins are stored by the body.                       |
-| (b) Water soluble vitamins - not stored, so you need                   |
-| a (37)                                                                 |
+| (b) Water soluble vitamins - not stored, so you need a (37)___________                  |
 | Getting enough vitamins                                                |
-| Eat (38) of foods.                                                     |
+| Eat (38)_________ of foods.                                            |
 | Buy plenty of vegetables and store them in                             |
-| (39)                                                                   |
+| (39)__________                                                         |
 |                                                                        |
 
-#### Questions 40-41
+##### Questions 40-41
 
 *Complete the diagram by writing NO MORE THAN THREE WORDS in the boxes provided.*
 
 ![](_page_44_Picture_3.jpeg)
 
-#### **READING**
+- **(40)**______________
+- **(41)**______________
 
-#### **READING PASSAGE 1**
+**READING**
+
+
+### READING
+#### READING PASSAGE 1
 
 *You should spend about 20 minutes on Questions 1-12 which are based on Reading Passage 1 below.*
 
-### Right and left-handedness in humans
+Right and left-handedness in humans
+
 
 Why do humans, virtually alone among all animal species, display a distinct left or right-handedness? Not even our closest relatives among the apes possess such decided lateral asymmetry, as psychologists call it. Yet about 90 per cent of every human population that has ever lived appears to have been right-handed. Professor Bryan Turner at Deakin University has studied the research literature on left-handedness and found that handedness goes with sidedness. So nine out of ten people are right-handed and eight are right-footed. He noted that this distinctive asymmetry in the human population is itself systematic. "Humans think in categories: black and white, up and down, left and right. It"s a system of signs that enables us to categorise phenomena that are essentially ambiguous.'
 
@@ -1085,9 +1071,7 @@ Research has shown that there is a genetic or inherited element to handedness. B
 
 What then makes people left-handed if it is not simply genetic? Other factors must be at work and researchers have turned to the brain for clues. In the 1860s the French surgeon and anthropologist, Dr Paul Broca, made the remarkable finding that patients who had lost their powers of speech as a result of a stroke (a blood clot in the brain) had paralysis of the right half of their body. He noted that since the left hemisphere of the brain controls the right half of the body, and vice versa, the brain damage must have been in the brain's left hemisphere. Psychologists now believe that among right-handed people, probably 95 per cent have their language centre in the left hemisphere, while 5 per cent have rightsided language. Left-handers, however, do not show the reverse pattern but instead a majority also have their language in the left hemisphere. Some 30 per cent have right hemisphere language.
 
-Dr Brinkman, a brain researcher at the Australian National University in Canberra, has suggested that evolution of speech went with right-handed preference. According to Brinkman, as the brain evolved, one side
-
-became specialised for fine control of movement (necessary for producing speech) and along with this evolution came righthand preference. According to Brinkman, most left-handers have left hemisphere dominance but also some capacity in the right hemisphere. She has observed that if a left-handed person is brain-damaged in the left hemisphere, the recovery of speech is quite often better and this is explained by the fact that left-handers have a more bilateral speech function.
+Dr Brinkman, a brain researcher at the Australian National University in Canberra, has suggested that evolution of speech went with right-handed preference. According to Brinkman, as the brain evolved, one side became specialised for fine control of movement (necessary for producing speech) and along with this evolution came righthand preference. According to Brinkman, most left-handers have left hemisphere dominance but also some capacity in the right hemisphere. She has observed that if a left-handed person is brain-damaged in the left hemisphere, the recovery of speech is quite often better and this is explained by the fact that left-handers have a more bilateral speech function.
 
 In her studies of macaque monkeys, Brinkman has noticed that primates (monkeys) seem to learn a hand preference from their mother in the first year of life but this could be one hand or the other. In humans, however, the specialisation in (unction of the two hemispheres results in anatomical differences: areas that are involved with the production of speech are usually larger on the left side than on the right. Since monkeys have not acquired the art of speech, one would not expect to see such a variation but Brinkman claims to have discovered a trend in monkeys towards the asymmetry that is evident in the human brain.
 
@@ -1097,7 +1081,7 @@ The results of this research may be some consolation to left-handers who have fo
 
 *Geoff Maslen*
 
-#### Questions 1-7
+##### Questions 1-7
 
 *Use the information in the text to match the people (listed A-E) with the opinions (listed 1-7) below. Write the appropriate letter (A-E) in boxes 1-7 on your answer sheet. Some people match more than one opinion.*
 
@@ -1109,7 +1093,7 @@ The results of this research may be some consolation to left-handers who have fo
 
 | Example                                                                            | Answer |
 |------------------------------------------------------------------------------------|--------|
-| Monkeys do not show a species specific preference for<br>left or right-handedness. | B      |
+| Monkeys do not show a species specific preference for left or right-handedness. | B      |
 
 - **1** Human beings started to show a preference for right-handedness whenthey first developed language.
 - **2** Society is prejudiced against left-handed people.
@@ -1119,17 +1103,17 @@ The results of this research may be some consolation to left-handers who have fo
 - **6** The two sides of the brain develop different functions before birth.
 - **7** Asymmetry is a common feature of the human body.
 
-#### Questions 8-10
+##### Questions 8-10
 
 *Using the information in the passage, complete the table below. Write your answers in boxes 8 10 on your answer sheet.*
 
 |                                                   | Percentage of children left-handed |
 |---------------------------------------------------|------------------------------------|
-| One parent left-handed<br>One parent right-handed | (8)                                |
-| Both parents left-handed                          | (9)                                |
-| Both parents right-handed                         | (10)                               |
+| One parent left-handed<br>One parent right-handed | (8)_________                       |
+| Both parents left-handed                          | (9)_________                       |
+| Both parents right-handed                         | (10)________                       |
 
-#### Questions 11-12
+##### Questions 11-12
 
 *Choose the appropriate letters A-D and write them in boxes 11 and 12 on your answer sheet.*
 
@@ -1144,17 +1128,13 @@ The results of this research may be some consolation to left-handers who have fo
   - **C** are untrustworthy.
   - **D** are good tennis players.
 
-#### **READING PASSAGE 2**
+#### READING PASSAGE 2
 
 You should spend about 20 minutes on **Questions** 13-27 which are based on Reading Passage 2 below.
 
 ![](_page_49_Figure_3.jpeg)
 
-Of the 2,000 commercial beekeepers in the United States about half migrate This pays off in two ways Moving north in the summer and south in the winter lets bees work a longer blooming season, making more honey — and
-
-money — for their keepers. Second, beekeepers can carry their hives to farmers who need bees to pollinate their crops. Every spring a migratory beekeeper in California may move up to 160 million bees to
-
-flowering fields in Minnesota and every winter his family may haul the hives back to California, where farmers will rent the bees to pollinate almond and cherry trees.
+Of the 2,000 commercial beekeepers in the United States about half migrate This pays off in two ways Moving north in the summer and south in the winter lets bees work a longer blooming season, making more honey — and money — for their keepers. Second, beekeepers can carry their hives to farmers who need bees to pollinate their crops. Every spring a migratory beekeeper in California may move up to 160 million bees to flowering fields in Minnesota and every winter his family may haul the hives back to California, where farmers will rent the bees to pollinate almond and cherry trees.
 
 Migratory beekeeping is nothing new. The ancient Egyptians moved clay hives, probably on rafts, down the Nile to follow the bloom and nectar flow as it moved toward Cairo. In the 1880s North American beekeepers experimented with the same idea, moving bees on barges along the Mississippi and on waterways in Florida, but their lighter, wooden hives kept falling into the water. Other keepers tried the railroad and horse-drawn wagons, but that didn't prove practical. Not until the 1920s when cars and trucks became affordable and roads improved, did migratory beekeeping begin to catch on.
 
@@ -1170,45 +1150,35 @@ After this, approximately a quarter of the hives weakened by disease, mites, or 
 
 Adapted from "America's Beekeepers: Hives for Hire" by Alan Mairson, National Geographic.
 
-#### Questions 13-19
+##### Questions 13-19
 
 *The flow chart below outlines the movements of the migratory beekeeper as described in Reading Passage 2*
 
 *Complete the flow chart Choose your answers from the box at the bottom of the page and write your answers in boxes 13 19 on your answer sheet.*
 
-#### **BEEKEEPER MOVEMENTS**
+![](_page_52_Picture_1a.jpeg)
 
-*Example Answer*
+- **(13)**______________
+- **(14)**______________
+- **(15)**______________
+- **(16)**______________
+- **(17)**______________
+- **(18)**______________
+- **(19)**______________
 
-In February, Californian farmers hire bees to help ...........................................almond trees. pollinate
-
-![](_page_51_Picture_9.jpeg)
-
-In March, beekeepers **... (13) ...** for migration at night when the hives are **... (14) ...** and the bees are generally tranquil. A little **... (15) ...** can ensure that this is the case.
-
-![](_page_51_Picture_11.jpeg)
-
-They transport their hives to orange groves where farmers **... (16) ...** beekeepers for placing them on their land. Here the bees make honey.
-
-![](_page_51_Picture_13.jpeg)
-
-After three weeks, the supers can be taken to a warehouse where **... (17) ...** are used to remove the wax and extract the honey from the **... (18) ... .**
-
-![](_page_51_Picture_15.jpeg)
-
-After the honey collection, the old hives are rejected. Good double hives are **... (19) ...** and re-queened and the beekeeper transports them to their summer base.
-
-#### **List of Words/Phrases**
-
-smoke chemicals pay barrels protection charge set off light split pollinate machines supers combs screen prepare full empty queens
-
-#### Questions 20-23
+##### Questions 20-23
 
 *Label the diagram below Choose ONE OR TWO WORDS from the Reading Passage for each answer Write your answers in boxes 20-23 on your answer sheet.*
 
 ![](_page_52_Picture_3.jpeg)
 
-#### Questions 24-27
+- **(20)**______________
+- **(21)**______________
+- **(22)**______________
+- **(23)**______________
+
+
+##### Questions 24-27
 
 *Do the following statements agree with the information given in Reading Passage 2? In boxes 24-27 write.*
 
@@ -1219,55 +1189,70 @@ smoke chemicals pay barrels protection charge set off light split pollinate mach
 - **26** Bees keep honey for themselves in the bottom of the hive.
 - **27** The honey is spun to make it liquid.
 
-#### **READING PASSAGE 3**
+#### READING PASSAGE 3
 
 You should spend about 20 minutes on **Questions 28-41** which are based on Reading Passage 3 below.
 
-### **TOURISM**
+**TOURISM**
 
-- A Tourism, holidaymaking and travel are these days more significant social phenomena than most commentators have considered On the face of it there could not be a more trivial subject for a book And indeed since social scientists have had considerable difficulty explaining weightier topics such as work or politics it might be thought that they would have great difficulties in accounting for more trivial phenomena such as holidaymakmg However there are interesting parallels with the study of deviance This involves the investigation of bizarre and idiosyncratic social practices which happen to be defined as deviant in some societies but not necessarily in others The assumption is that the investigation of deviance can reveal interesting and significant aspects of normal societies It could be said that a similar analysis can be applied to tourism
-- B Tourism is a leisure activity which presupposes its opposite namely regulated and organised work It is one manifestation of how work and leisure are organised as separate and regulated spheres of social practice in modern societies Indeed acting as a tourist is one of the defining characteristics of being modern' and the popular concept of tourism is that it is organised within particular places and occurs for regularised periods of time Tourist relationships arise from a movement of people to and their stay in various destinations This necessarily involves some movement that is the journey and a period of stay in a new place or places The journey and the stay are by definition outside the normal places of residence and work and are of a short term and temporary nature and there is a clear intention to return "home within a relatively short period of time
-- **C** A substantial proportion of the population of modern societies engages in such tourist
+A 
 
-- practices new socialised forms of provision have developed in order to cope with the mass character of the gazes of tourists as opposed to the individual character of travel Places are chosen to be visited and be gazed upon because there is an anticipation especially through daydreaming and fantasy of intense pleasures, either on a different scale or involving different senses from those customarily encountered Such anticipation is constructed and sustained through a variety of non-tourist practices such as films TV literature, magazines records and videos which construct and reinforce this daydreaming
-- **D** Tourists tend to visit features of landscape and townscape which separate them off from everyday experience Such aspects are viewed because they are taken to be in some sense out of the ordinary The viewing of these tourist sights often involves different forms of social patterning with a much greater sensitivity to visual elements of landscape or townscape than is normally found in everyday life People linger over these sights in a way that they would not normally do in their home environment and the vision is objectified or captured through photographs postcards films and so on which enable the memory to be endlessly reproduced and recaptured
-- **E** One of the earliest dissertations on the subject of tourism is Boorstins analysis of the pseudo event (1964) where he argues that contemporary Americans cannot experience reality' directly but thrive on "pseudo events Isolated from the host environment and the local people the mass tourist travels in guided groups and finds pleasure in inauthentic contrived attractions gullibly enjoying the pseudo events and disregarding the real world outside Over time the images generated of different tourist sights come to constitute a closed self-perpetuating system of illusions which provide the tourist with the basis for selecting and
+Tourism, holidaymaking and travel are these days more significant social phenomena than most commentators have considered On the face of it there could not be a more trivial subject for a book And indeed since social scientists have had considerable difficulty explaining weightier topics such as work or politics it might be thought that they would have great difficulties in accounting for more trivial phenomena such as holidaymakmg However there are interesting parallels with the study of deviance This involves the investigation of bizarre and idiosyncratic social practices which happen to be defined as deviant in some societies but not necessarily in others The assumption is that the investigation of deviance can reveal interesting and significant aspects of normal societies It could be said that a similar analysis can be applied to tourism
 
-evaluating potential places to visit Such visits are made says Boorstin, within the "environmental bubble of the familiar American style hotel which insulates the tourist from the strangeness of the host environment
+B 
 
-**F** To service the burgeoning tourist industry, an array of professionals has developed who attempt to reproduce ever-new objects for the tourist to look at These objects or places are located in a complex and changing hierarchy This depends upon the interplay between, on the one hand, competition between interests involved in
+Tourism is a leisure activity which presupposes its opposite namely regulated and organised work It is one manifestation of how work and leisure are organised as separate and regulated spheres of social practice in modern societies Indeed acting as a tourist is one of the defining characteristics of being modern' and the popular concept of tourism is that it is organised within particular places and occurs for regularised periods of time Tourist relationships arise from a movement of people to and their stay in various destinations This necessarily involves some movement that is the journey and a period of stay in a new place or places The journey and the stay are by definition outside the normal places of residence and work and are of a short term and temporary nature and there is a clear intention to return "home within a relatively short period of time
 
-the provision of such objects and, on the other hand changing class, gender, and generational distinctions of taste within the potential population of visitors It has been said that to be a tourist is one of the characteristics of the "modern experience Not to go away is like not possessing a car or a nice house Travel is a marker of status in modern societies and is also thought to be necessary for good health The role of the professional, therefore, is to cater for the needs and tastes of the tourists in accordance with their class and overall expectations
+C
 
-#### Questions 28-32
+A substantial proportion of the population of modern societies engages in such tourist practices new socialised forms of provision have developed in order to cope with the mass character of the gazes of tourists as opposed to the individual character of travel Places are chosen to be visited and be gazed upon because there is an anticipation especially through daydreaming and fantasy of intense pleasures, either on a different scale or involving different senses from those customarily encountered Such anticipation is constructed and sustained through a variety of non-tourist practices such as films TV literature, magazines records and videos which construct and reinforce this daydreaming
+
+D
+
+Tourists tend to visit features of landscape and townscape which separate them off from everyday experience Such aspects are viewed because they are taken to be in some sense out of the ordinary The viewing of these tourist sights often involves different forms of social patterning with a much greater sensitivity to visual elements of landscape or townscape than is normally found in everyday life People linger over these sights in a way that they would not normally do in their home environment and the vision is objectified or captured through photographs postcards films and so on which enable the memory to be endlessly reproduced and recaptured
+
+E
+
+One of the earliest dissertations on the subject of tourism is Boorstins analysis of the pseudo event (1964) where he argues that contemporary Americans cannot experience reality' directly but thrive on "pseudo events Isolated from the host environment and the local people the mass tourist travels in guided groups and finds pleasure in inauthentic contrived attractions gullibly enjoying the pseudo events and disregarding the real world outside Over time the images generated of different tourist sights come to constitute a closed self-perpetuating system of illusions which provide the tourist with the basis for selecting and evaluating potential places to visit Such visits are made says Boorstin, within the "environmental bubble of the familiar American style hotel which insulates the tourist from the strangeness of the host environment
+
+F
+
+To service the burgeoning tourist industry, an array of professionals has developed who attempt to reproduce ever-new objects for the tourist to look at These objects or places are located in a complex and changing hierarchy This depends upon the interplay between, on the one hand, competition between interests involved in the provision of such objects and, on the other hand changing class, gender, and generational distinctions of taste within the potential population of visitors It has been said that to be a tourist is one of the characteristics of the "modern experience Not to go away is like not possessing a car or a nice house Travel is a marker of status in modern societies and is also thought to be necessary for good health The role of the professional, therefore, is to cater for the needs and tastes of the tourists in accordance with their class and overall expectations
+
+##### Questions 28-32
 
 *Raiding Passage 3 has 6 paragraphs (A-F) Choose the most suitable heading for each paragraph from the list of headings below Write the appropriate numbers (i-ix) in boxes 28 32 on your answer sheet Paragraph D has been done for you as an example.*
 
 *NB There are more headings than paragraphs so you will not use all of them You may use any heading more than once.*
 
-#### **List of Headings**
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; ">
+**List of Headings**
 
-- i The politics of tourism
-- ii The cost of tourism
-- iii Justifying the study of tourism
-- iv Tourism contrasted with travel
-- v The essence of modern tourism
-- vi Tourism versus leisure
-- vii The artificiality of modern tourism
-- viii The role of modern tour guides
-- ix Creating an alternative to the everyday experience
-- **28** Paragraph A
-- **29** Paragraph B
-- **30** Paragraph C
+i The politics of tourism <br>
+ii The cost of tourism <br>
+iii Justifying the study of tourism <br>
+iv Tourism contrasted with travel <br>
+v The essence of modern tourism <br>
+vi Tourism versus leisure <br>
+vii The artificiality of modern tourism <br>
+viii The role of modern tour guides <br>
+ix Creating an alternative to the everyday experience <br>
+</div>
+
+<br>
 
 | Example     | Answer |
 |-------------|--------|
 | Paragraph D | ix     |
 
-- **31** Paragraph E
-- **32** Paragraph F
 
-#### Questions 33-37
+- **28** Paragraph A ___________
+- **29** Paragraph B ___________
+- **30** Paragraph C ___________
+- **31** Paragraph E ___________
+- **32** Paragraph F ___________
+
+##### Questions 33-37
 
 *Do the following statements agree with the views of the writer in Reading Passage 3? In boxes 33-37 write*
 
@@ -1283,7 +1268,7 @@ the provision of such objects and, on the other hand changing class, gender, and
 - **36** Tourists focus more on places they visit than those at home.
 - **37** Tour operators try to cheat tourists.
 
-#### Questions 38-41
+##### Questions 38-41
 
 *Chose one phrase (A-H) from the list of phrases to complete each key point below. Write the appropriate letters (A-H) in boxes 38-41 on your answer sheet.*
 
@@ -1296,15 +1281,25 @@ the provision of such objects and, on the other hand changing class, gender, and
 - **40** People view tourist landscapes in a different way from ...
 - **41** Group tours encourage participants to look at ...
 
-|                  | List of Phrases                                                                                                                                                 |                  |                                                                                                                                                                    |  |  |  |
-|------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|--|--|--|
-| A<br>B<br>C<br>D | local people and their environment.<br>the expectations of tourists.<br>the phenomena of holidaymaking.<br>the distinction we make between<br>work and leisure. | E<br>F<br>G<br>H | the individual character of travel.<br>places seen in everyday life.<br>photographs which recapture our<br>holidays.<br>sights designed specially for<br>tourists. |  |  |  |
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+  <strong>List of Phrases</strong><br>
+  A local people and their environment.<br>
+  B the expectations of tourists.<br>
+  C the phenomena of holidaymaking.<br>
+  D the distinction we make between work and leisure.<br>
+  E the individual character of travel.<br>
+  F places seen in everyday life.<br>
+  G photographs which recapture our holidays.<br>
+  H sights designed specially for tourists.
+</div>
 
-#### **WRITING**
 
-#### **WRITING TASK 1**
+### WRITING
+
+#### WRITING TASK 1
 
 You should spend about 20 minutes on this task.
+
 
 *The diagram below shows how the Australian Bureau of Meteorology collects up-to-the-minute information on the weather in order to produce reliable forecasts.*
 
@@ -1314,11 +1309,13 @@ You should write at least 150 words.
 
 ![](_page_56_Picture_7.jpeg)
 
-#### **WRITING TASK 2**
+#### WRITING TASK 2
 
 You should spend about 40 minutes on this task.
 
+
 Present a written argument or case to an educated reader with no specialist knowledge of the following topic.
+
 
 *Should wealthy nations be required to share their wealth among poorer nations by providing such things as food and education? Or is it the responsibility of the governments of poorer nations to look after their citizens themselves?*
 
@@ -1326,23 +1323,32 @@ You should write at least 250 words.
 
 Use your own ideas, knowledge and experience and support your arguments with examples and with relevant evidence.
 
-#### **SPEAKING**
+### SPEAKING
 
-#### **CANDIDATE'S CUE CARD Task 2**
+#### Task 2
 
-#### **ASKING FOR AN EXTENSION**
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+**ASKING FOR AN EXTENSION**
 
 **You have to give in a piece of work to your lecturer next Wednesday. You need two more weeks to prepare the assignment because you have had difficulty obtaining the reference books. Your examiner is your lecturer. Find out if you can have an extension.**
 
-Ask the examiner about: regulations regarding late work
+Ask the examiner about: 
+
+regulations regarding late work
 
 possibility of having more time
 
-different sources for books/information assistance with writing for overseas students
+different sources for books/information 
 
-#### **INTERVIEWER'S NOTES**
+assistance with writing for overseas students
+</div>
 
-#### **ASKING FOR AN EXTENSION**
+<br>
+
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+**INTERVIEWER'S NOTES**
+
+**ASKING FOR AN EXTENSION**
 
 **The student is seeking extra time for an assignment.**
 
@@ -1353,24 +1359,18 @@ different sources for books/information assistance with writing for overseas stu
 
 After some resistance, agree to an extension of one week.
 
-### Practice Test 3
+</div>
 
-#### **LISTENING**
+## Practice Test 3
 
-#### **SECTION 1** *Questions 1-12*
+### LISTENING
 
-#### *Questions 1-4*
+#### SECTION 1 Questions 1-12
+
+##### Questions 1-4
 
 *Circle the appropriate letter*
 
-#### *Example*
-
-How does the woman travel every day?
-
-- **A** by car
-- **B** by bus
-- **C** on foot
-- **D** by train
 - **1** What are the parking regulations on campus?
   - **A** undergraduate parking allowed
   - **B** postgraduate parking allowed
@@ -1391,26 +1391,35 @@ How does the woman travel every day?
 
 ![](_page_60_Picture_2.jpeg)
 
-### Questions 5-10
+  - **A**
+  - **B**
+  - **C**
+  - **D**
+
+##### Questions 5-10
 
 Complete the application form using NO MORE THAN THREE WORDS
 
 | Application for parking sticker |
 |---------------------------------|
-| Name (5)                        |
-| Address (6) Flat 13             |
-| Suburb (7)                      |
-| Faculty (8)                     |
-| Registration number (9)         |
-| Make of car (10)                |
+| Name (5)_____________                        |
+| Address (6) Flat 13 _____________             |
+| Suburb (7)_____________                      |
+| Faculty (8)_____________                     |
+| Registration number (9)_____________         |
+| Make of car (10)_____________                |
 
-#### Questions 11-12
+##### Questions 11-12
 
-| <b>11</b> Cashier's office opens at | $\mathbf{A}$ | 12.15  | В | 2.00 | C | 2.15 | <b>D</b> 4.30 |
-|-------------------------------------|--------------|--------|---|------|---|------|---------------|
-| 12 Where must the sticker be        | disp         | layed? |   |      |   |      | •••••         |
+- **11** Cashier's office opens at
+  - A 12:15
+  - B 2:00
+  - C 2:15
+  - D 4:30
+- **12** Where must the sticker be displayed? __________________
 
-#### **SECTION 2** *Questions 13-23*
+
+#### SECTION 2 Questions 13-23
 
 *Complete the notes below using NO MORE THAN THREE WORDS for each answer.*
 
@@ -1428,13 +1437,11 @@ Complete the application form using NO MORE THAN THREE WORDS
 | Cost of family membership of the museum                              | (22)                 |
 | "Passengers and the Sea" includes a collection of                    | (23)                 |
 
-#### **SECTION 3** *Questions 24-32*
+#### SECTION 3 Questions 24-32
 
-#### *Questions 24-27*
+##### Questions 24-27
 
-| Click the correct answer |  |  |
-|--------------------------|--|--|
-|--------------------------|--|--|
+Click the correct answer
 
 - **24** Mark is going to talk briefly about
   - A marketing new products.
@@ -1457,88 +1464,131 @@ Complete the application form using NO MORE THAN THREE WORDS
   - C sell cheap seats.
   - D improve the service.
 
-#### *Questions 28-32*
+##### Questions 28-32
 
 *Complete the notes using NO MORE THAN THREE WORDS for each answer*
 
-| Two reasons for the new approach to pricing are:           |
-|------------------------------------------------------------|
-| (28) and                                                   |
-| (29)                                                       |
-| In future people will be able to book airline tickets (30) |
-| Also being marketed m this way are (31) and                |
-| (32)                                                       |
-|                                                            |
 
-#### **SECTION 4** *Questions 33-42*
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+  Two reasons for the new approach to pricing are:<br>
+  (28) _________________________________________ and<br>
+  (29) _________________________________________ <br>
+  In future people will be able to book airline tickets (30)_________ <br>
+  Also being marketed in this way are (31)_____________________________ and<br>
+  (32)___________________________________________
+</div>
 
-#### *Questions 33-37*
+
+#### SECTION 4 Questions 33-42
+
+##### Questions 33-37
 
 *Complete the table Write NO MORE THAN THREE WORDS for each answer*
 
 | SPACE MANAGEMENT               |                                              |  |  |
 |--------------------------------|----------------------------------------------|--|--|
 | RESEARCH METHOD                | INFORMATION PROVIDED                         |  |  |
-| Questionnaires                 | what customers think about<br>(33)           |  |  |
-| (34)                           | how customers move around supermarket aisles |  |  |
-| Eye movement<br>(35)           | the most eye-catching areas of the shop      |  |  |
-| Computer programs<br>e.g. (36) | the best (37)<br>for an article in the shop  |  |  |
+| Questionnaires                 | what customers think about<br>(33)__________           |  |  |
+| (34)__________                           | how customers move around supermarket aisles |  |  |
+| Eye movement<br>(35)____________           | the most eye-catching areas of the shop      |  |  |
+| Computer programs<br>e.g. (36)____________ | the best (37)_____________ <br>for an article in the shop  |  |  |
 
-#### *Questions 38-42*
+##### Questions 38-42
 
 *Label the cliagiam Wiite NO MORE THAN THREE WORDS for each anmer*
 
-### **A SUPERMARKET AISLE**
+![](_page_65_Picture_1a.jpeg)
 
-| ENTRANCE<br>First shelves -customers<br>usually<br>(38)<br>these.        |                                                                                           | EXIT<br>Checkout - often used<br>to sell<br>(42)<br>       |
-|--------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|------------------------------------------------------------|
-|                                                                          | AISLE<br>Products placed here<br>sell well particularly<br>if they are placed<br>(39)<br> |                                                            |
-|                                                                          | These areas are<br>known as<br>(40)<br>                                                   |                                                            |
-| Gondola end -prime<br>position:<br>used to launch launch<br>new products |                                                                                           | Gondola end —<br>often find<br>(41)<br><br>displayed here. |
+- **38** _____________
+- **39** _____________
+- **40** _____________
+- **41** _____________
+- **42** _____________
 
-#### **READING**
 
-#### **READING PASSAGE 1**
+### READING
+#### READING PASSAGE 1
 
 *You should spend about 20 minutes on Questions 1-12 which are based on Reading Passage 2 below.*
 
-### SPOKEN CORPUS COMES TO LIFE
+SPOKEN CORPUS COMES TO LIFE
 
-- A The compiling of dictionaries has been historically the provenance of studious professorial types - usually bespectacled - who love to pore over weighty tomes and make pronouncements on the finer nuances of meaning. They were probably good at crosswords and definitely knew a lot of words, but the image was always rather dry and dusty. The latest technology, and simple technology at that, is revolutionising the content of dictionaries and the way they are put together.
-- B For the first time, dictionary publishers are incorporating real, spoken English into their data. It gives lexicographers (people who write dictionaries) access to a more vibrant, up-to-date vernacular language which has never really been studied before. In one project, 150 volunteers each agreed to discreetly tie a Walkman recorder to their waist and leave it running for anything up to two weeks. Every conversation they had was recorded. When the data was collected, the length of tapes was 35 times the depth of the Atlantic Ocean. Teams of audio typists transcribed the tapes to produce a computerised database of ten million words.
-- C This has been the basis along with an existing written corpus for the Language Activator dictionary, described by lexicographer Professor Randolph Quirk as "the book the world has been waiting for". It shows advanced foreign learners of English how the language is really used. In the dictionary, key words such as "eat" are followed by related phrases such as "wolf down" or "be a picky eater", allowing the student to choose the appropriate phrase.
-- D "This kind of research would be impossible without computers," said Delia Summers, a director of dictionaries. "It has transformed the way lexicographers work. If you look at the word "like", you may intuitively think that the first and most frequent meaning is the verb, as in "I like swimming". It is not. It is the preposition, as in: "she walked like a duck". Just because a word or phrase is
+A
 
-- used doesn't mean it ends up in a dictionary. The sifting out process is as vital as ever. But the database does allow lexicographers to search for a word and find out how frequently it is used - something that could only be guessed at intuitively before.
-- E Researchers have found that written English works in a very different way to spoken English. The phrase "say what you like" literally means "feel free to say anything you want", but in reality it is used, evidence shows, by someone to prevent the other person voicing disagreement. The phrase "it"s a question of crops up on the database over and over again. It has nothing to do with enquiry, but it's one of the most frequent English phrases which has never been in a language learner's dictionary before: it is now.
-- F The Spoken Corpus computer shows how inventive and humorous people are when they are using language by twisting familiar phrases for effect. It also reveals the power of the pauses and noises we use to play for time, convey emotion, doubt and irony.
-- G For the moment, those benefiting most from the Spoken Corpus are foreign learners. "Computers allow lexicographers to search quickly through more examples of real English," said Professor Geoffrey Leech of Lancaster University. "They allow dictionaries to be more accurate and give a feel for how language is being used." The Spoken Corpus is part of the larger British National Corpus, an initiative carried out by several groups involved in the production of language learning materials: publishers, universities and the British Library.
+The compiling of dictionaries has been historically the provenance of studious professorial types - usually bespectacled - who love to pore over weighty tomes and make pronouncements on the finer nuances of meaning. They were probably good at crosswords and definitely knew a lot of words, but the image was always rather dry and dusty. The latest technology, and simple technology at that, is revolutionising the content of dictionaries and the way they are put together.
 
-#### *Questions 1-6*
+B
+
+For the first time, dictionary publishers are incorporating real, spoken English into their data. It gives lexicographers (people who write dictionaries) access to a more vibrant, up-to-date vernacular language which has never really been studied before. In one project, 150 volunteers each agreed to discreetly tie a Walkman recorder to their waist and leave it running for anything up to two weeks. Every conversation they had was recorded. When the data was collected, the length of tapes was 35 times the depth of the Atlantic Ocean. Teams of audio typists transcribed the tapes to produce a computerised database of ten million words.
+
+C
+
+This has been the basis along with an existing written corpus for the Language Activator dictionary, described by lexicographer Professor Randolph Quirk as "the book the world has been waiting for". It shows advanced foreign learners of English how the language is really used. In the dictionary, key words such as "eat" are followed by related phrases such as "wolf down" or "be a picky eater", allowing the student to choose the appropriate phrase.
+
+D
+
+"This kind of research would be impossible without computers," said Delia Summers, a director of dictionaries. "It has transformed the way lexicographers work. If you look at the word "like", you may intuitively think that the first and most frequent meaning is the verb, as in "I like swimming". It is not. It is the preposition, as in: "she walked like a duck". Just because a word or phrase is used doesn't mean it ends up in a dictionary. The sifting out process is as vital as ever. But the database does allow lexicographers to search for a word and find out how frequently it is used - something that could only be guessed at intuitively before.
+
+E
+
+Researchers have found that written English works in a very different way to spoken English. The phrase "say what you like" literally means "feel free to say anything you want", but in reality it is used, evidence shows, by someone to prevent the other person voicing disagreement. The phrase "it"s a question of crops up on the database over and over again. It has nothing to do with enquiry, but it's one of the most frequent English phrases which has never been in a language learner's dictionary before: it is now.
+
+F
+
+The Spoken Corpus computer shows how inventive and humorous people are when they are using language by twisting familiar phrases for effect. It also reveals the power of the pauses and noises we use to play for time, convey emotion, doubt and irony.
+
+G
+
+For the moment, those benefiting most from the Spoken Corpus are foreign learners. "Computers allow lexicographers to search quickly through more examples of real English," said Professor Geoffrey Leech of Lancaster University. "They allow dictionaries to be more accurate and give a feel for how language is being used." The Spoken Corpus is part of the larger British National Corpus, an initiative carried out by several groups involved in the production of language learning materials: publishers, universities and the British Library.
+
+##### Questions 1-6
 
 *Reading Passage 1 has seven paragraphs (A-G). Choose the most suitable heading for each paragraph from the list of headings below. Write the appropriate numbers (i-xi) in boxes 1-6 on your answer sheet. Paragraph C has been done for you as an example.*
 
 *NB There are more headings than paragraphs so you will not use all of them. You may use any heading more than once.*
 
-### **List of Headings i** Grammar is corrected **ii** New method of research **iii** Technology learns from dictionaries **iv** Non-verbal content **v** The first study of spoken language **vi** Traditional lexicographical methods **vii** Written English tells the truth **viii** New phrases enter dictionary **ix** A cooperative research project **x** Accurate word frequency counts **xi** Alternative expressions provided
+List of Headings i Grammar is corrected ii New method of research iii Technology learns from dictionaries iv Non-verbal content v The first study of spoken language vi Traditional lexicographical methods vii Written English tells the truth viii New phrases enter dictionary ix A cooperative research project x Accurate word frequency counts xi Alternative expressions provided
 
-- **1** Paragraph A
-- **2** Paragraph B
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; ">
+  <strong>List of Headings</strong><br>
+  i Grammar is corrected<br>
+  ii New method of research<br>
+  iii Technology learns from dictionaries<br>
+  iv Non-verbal content<br>
+  v The first study of spoken language<br>
+  vi Traditional lexicographical methods<br>
+  vii Written English tells the truth<br>
+  viii New phrases enter dictionary<br>
+  ix A cooperative research project<br>
+  x Accurate word frequency counts<br>
+  xi Alternative expressions provided
+</div>
 
-| Example     | Answer |
-|-------------|--------|
-| Paragraph C | xi     |
+<br>
 
-- **3** Paragraph D
-- **4** Paragraph E
-- **5** Paragraph F
-- **6** Paragraph G
+    | Example     | Answer |
+    |-------------|--------|
+    | Paragraph C | xi     |
 
-#### *Questions 7-11*
+
+- **1** Paragraph A _______
+- **2** Paragraph B _______
+- **3** Paragraph D _______
+- **4** Paragraph E _______
+- **5** Paragraph F _______
+- **6** Paragraph G _______
+
+##### Questions 7-11
 
 *The diagram below illustrates the information provided in paragraphs B-F of Reading Passage 1 Complete the labels on the diagram with an appropriate word or words Use NO MORE THAN THREE WORDS for each space Write your answers in boxes 7 11 on your answer sheet*
 
 ![](_page_68_Figure_3.jpeg)
+
+- **7** __________
+- **8** __________
+- **9** __________
+- **10** __________
+- **11** __________
 
 *Choose the appropriate letter A-D and write it in box 12 on your answer sheet*
 
@@ -1548,52 +1598,47 @@ Complete the application form using NO MORE THAN THREE WORDS
   - **C** To show how dictionaries have progressed over the years.
   - **D** To compare the content of different dictionaries
 
-#### **READING PASSAGE 2**
+#### READING PASSAGE 2
 
 *You should spend about 20 minutes on Questions 13-26 which are based on Reading Passage 2 below.*
 
-### **Moles happy as homes go underground**
+**Moles happy as homes go underground**
 
 - **A** The first anybody knew about Dutchman Frank Siegmund and his family was when workmen tramping through a field found a narrow steel chimney protruding through the grass. Closer inspection revealed a chink of sky-light window among the thistles, and when amazed investigators moved down the side of the hill they came across a pine door complete with leaded diamond glass and a brass knocker set into an underground building. The Siegmunds had managed to live undetected for six years outside the border town of Breda, in Holland. They are the latest in a clutch of individualistic homemakers who have burrowed underground in search of tranquillity.
 - **B** Most, falling foul of strict building regulations, have been forced to dismantle their individualistic homes and return to more conventional lifestyles. But subterranean suburbia, Dutch-style, is about to become respectable and chic. Seven luxury homes cosseted away inside a high earth-covered noise embankment next to the main Tilburg city road recently went on the market for \$296,500 each. The foundations had yet to be dug, but customers queued up to buy the unusual part-submerged houses, whose back wall consists of a grassy mound and whose front is a long glass gallery.
-- **C** The Dutch are not the only would-be
-
-- moles. Growing numbers of Europeans are burrowing below ground to create houses, offices, discos and shopping malls. It is already proving a way of life in extreme climates; in winter months in Montreal, Canada, for instance, citizens can escape the cold in an underground complex complete with shops and even health clinics. In Tokyo builders are planning a massive underground city to be begun in the next decade, and underground shopping malls are already common in Japan, where 90 percent of the population is squeezed into 20 percent of the landspace.
+- **C** The Dutch are not the only would-be moles. Growing numbers of Europeans are burrowing below ground to create houses, offices, discos and shopping malls. It is already proving a way of life in extreme climates; in winter months in Montreal, Canada, for instance, citizens can escape the cold in an underground complex complete with shops and even health clinics. In Tokyo builders are planning a massive underground city to be begun in the next decade, and underground shopping malls are already common in Japan, where 90 percent of the population is squeezed into 20 percent of the landspace.
 - **D** Building big commercial buildings underground can be a way to avoid disfiguring or threatening a beautiful or "environmentally sensitive" landscape. Indeed many of the buildings which consume most land -such as cinemas, supermarkets, theatres, warehouses or libraries -have no need to be on the surface since they do not need windows.
-- **E** There are big advantages, too, when it comes to private homes. A development of 194 houses which would take up 14 hectares of land above ground would occupy 2.7 hectares below it, while the number of roads would be halved. Under several metres of earth, noise is minimal and insulation is excellent. "We get 40 to 50 enquiries a week," says Peter Carpenter, secretary of the British Earth Sheltering Association, which builds
-
-- similar homes in Britain. "People see this as a way of building for the future." An underground dweller himself, Carpenter has never paid a heating bill, thanks to solar panels and natural insulation.
+- **E** There are big advantages, too, when it comes to private homes. A development of 194 houses which would take up 14 hectares of land above ground would occupy 2.7 hectares below it, while the number of roads would be halved. Under several metres of earth, noise is minimal and insulation is excellent. "We get 40 to 50 enquiries a week," says Peter Carpenter, secretary of the British Earth Sheltering Association, which builds similar homes in Britain. "People see this as a way of building for the future." An underground dweller himself, Carpenter has never paid a heating bill, thanks to solar panels and natural insulation.
 - **F** In Europe the obstacle has been conservative local authorities and developers who prefer to ensure quick sales with conventional mass produced housing. But the Dutch development was greeted with undisguised relief by South Limburg planners because of Holland's chronic shortage of land. It was the Tilburg architect Jo Hurkmans who hit on the idea of making use of noise embankments on main roads. His twofloored, four-bedroomed, twobathroomed detached homes are now taking shape. "They are not so much below the earth as in it," he says. "All the light will come through the glass front, which runs from the second floor ceiling to the ground. Areas which do not need much natural lighting are at the back. The living accommodation is to the front so nobody notices that the back is dark."
-- **G** In the US, where energy-efficient homes became popular after the oil crisis of 1973, 10,000 underground houses have been built. A terrace of five homes, Britain's first subterranean development, is under way in Nottinghamshire. Italy's outstanding example of subterranean architecture is the Olivetti residential centre in Ivrea. Commissioned by
-
-- Roberto Olivetti in 1969, it comprises 82 one-bedroomed apartments and 12 maisonettes and forms a house/ hotel for Olivetti employees. It is built into a hill and little can be seen from outside except a glass facade. Patnzia Vallecchi, a resident since 1992, says it is little different from living in a conventional apartment.
+- **G** In the US, where energy-efficient homes became popular after the oil crisis of 1973, 10,000 underground houses have been built. A terrace of five homes, Britain's first subterranean development, is under way in Nottinghamshire. Italy's outstanding example of subterranean architecture is the Olivetti residential centre in Ivrea. Commissioned by Roberto Olivetti in 1969, it comprises 82 one-bedroomed apartments and 12 maisonettes and forms a house/ hotel for Olivetti employees. It is built into a hill and little can be seen from outside except a glass facade. Patnzia Vallecchi, a resident since 1992, says it is little different from living in a conventional apartment.
 - **H** Not everyone adapts so well, and in Japan scientists at the Shimizu Corporation have developed "space creation" systems which mix light, sounds, breezes and scents to stimulate people who spend long periods below ground. Underground offices in Japan are being equipped with "virtual" windows and mirrors, while underground departments in the University of Minnesota have periscopes to reflect views and light.
 - **I** But Frank Siegmund and his family love their hobbit lifestyle. Their home evolved when he dug a cool room for his bakery business in a hill he had created. During a heatwave they took to sleeping there. "We felt at peace and so close to nature," he says. "Gradually I began adding to the rooms. It sounds strange but we are so close to the earth we draw strength from its vibrations. Our children love it; not every child can boast of being watched through their playroom windows by rabbits.
 
-#### *Questions 13-20*
+##### Questions 13-20
 
 *Reading Passage 2 has nine paragraphs (A-I). Choose the most suitable heading for each paragraph from the list of headings below. Write the appropriate numbers (i-xii) in boxes 13 20 on your answer sheet. Paragraph A has been done for you as an example.*
 
 *NB There are more headings than paragraphs so you will not use all of them.*
 
-#### **List of Headings**
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; ">
+  <strong>List of Headings</strong><br>
+  <strong>i</strong> A designer describes his houses<br>
+  <strong>ii</strong> Most people prefer conventional housing<br>
+  <strong>iii</strong> Simulating a natural environment<br>
+  <strong>iv</strong> How an underground family home developed<br>
+  <strong>v</strong> Demands on space and energy are reduced<br>
+  <strong>vi</strong> The plans for future homes<br>
+  <strong>vii</strong> Worldwide examples of underground living accommodation<br>
+  <strong>viii</strong> Some buildings do not require natural light<br>
+  <strong>ix</strong> Developing underground services around the world<br>
+  <strong>x</strong> Underground living improves health<br>
+  <strong>xi</strong> Homes sold before completion<br>
+  <strong>xii</strong> An underground home is discovered
+</div>
 
-- **i** A designer describes his houses
-- **ii** Most people prefer conventional housing
-- **iii** Simulating a natural environment
-- **iv** How an underground family home developed
-- **v** Demands on space and energy are reduced
-- **vi** The plans for future homes
-- **vii** Worldwide examples of underground living accommodation
-- **viii** Some buildings do not require natural light
-- **ix** Developing underground services around the world
-- **x** Underground living improves health
-- **xi** Homes sold before completion
-- **xii** An underground home is discovered
-
-| Example     | Answer |
-|-------------|--------|
-| Paragraph A | xii    |
+      | Example     | Answer |
+      |-------------|--------|
+      | Paragraph A | xii    |
 
 - **13** Paragraph B
 - **14** Paragraph C
@@ -1604,7 +1649,7 @@ Complete the application form using NO MORE THAN THREE WORDS
 - **19** Paragraph H
 - **20** Paragraph I
 
-#### *Questions 21-26*
+##### Questions 21-26
 
 *Complete the sentences below with words taken from the reading passage. Use NO MORE THAN THREE WORDS for each answer. Write your answers in boxes 21-26 on your answer sheet.*
 
@@ -1615,27 +1660,23 @@ Complete the application form using NO MORE THAN THREE WORDS
 - **25** Japanese scientists are helping people ... underground life.
 - **26** Frank Siegmund's first underground room was used for ...
 
-#### **READING PASSAGE 3**
+#### READING PASSAGE 3
 
 You should spend about 20 minutes on **Questions 27-38** which are based on Reading Passage 3 below.
 
-A Workaholic Economy
+**A Workaholic Economy**
 
 FOR THE first century or so of the industrial revolution, increased productivity led to decreases in working hours. Employees who had been putting in 12-hour days, six days a week, found their time on the job shrinking to 10 hours daily, then, finally, to eight hours, five days a week. Only a generation ago social planners worried about what people would do with all this new-found free time. In the US, at least, it seems they need not have bothered.
 
 Although the output per hour of work has more than doubled since 1945, leisure seems reserved largely for the unemployed and underemployed. Those who work full-time spend as much time on the job as they did at the end of World War II. In fact, working hours have increased noticeably since 1970 — perhaps because real wages have stagnated since that year. Bookstores now abound with manuals describing how to manage time and cope with stress.
 
-There are several reasons for lost leisure. Since 1979, companies have responded to improvements in the business climate by having employees work overtime rather than by hiring extra personnel, says economist Juliet B. Schor of Harvard University. Indeed, the current economic recovery has gained a certain amount of notoriety for its "jobless" nature:
-
-increased production has been almost entirel} decoupled from employment. Some firms are even downsizing as their profits climb. "All things being equal, we"d be better off spreading around the work,' observes labour economist Ronald G. Ehrenberg of Cornell University.
+There are several reasons for lost leisure. Since 1979, companies have responded to improvements in the business climate by having employees work overtime rather than by hiring extra personnel, says economist Juliet B. Schor of Harvard University. Indeed, the current economic recovery has gained a certain amount of notoriety for its "jobless" nature: increased production has been almost entirel decoupled from employment. Some firms are even downsizing as their profits climb. "All things being equal, we"d be better off spreading around the work,' observes labour economist Ronald G. Ehrenberg of Cornell University.
 
 Yet a host of factors pushes employers to hire fewer workers for more hours and, at the same time, compels workers to spend more time on the job. Most of those incentives involve what Ehrenberg calls the structure of compensation: quirks in the way salaries and benefits are organised that make it more profitable to ask 40 employees to labour an extra hour each than to hire one more worker to do the same 40-hour job.
 
 Professional and managerial employees supply the most obvious lesson along these lines. Once people are on salary, their cost to a firm is the same whether they spend 35 hours a week in the office or 70. Diminishing returns may eventually set in as overworked employees lose efficiency or leave for more arable pastures. But in the short run, the employer's incentive is clear.
 
-Even hourly employees receive benefits - such as pension contributions and medical insurance - that are not tied to the number of hours they work. Therefore, it *is* more
-
-profitable for employers to work their existing employees harder.
+Even hourly employees receive benefits - such as pension contributions and medical insurance - that are not tied to the number of hours they work. Therefore, it *is* more profitable for employers to work their existing employees harder.
 
 For all that employees complain about long hours, they, too, have reasons not to trade money for leisure. "People who work reduced hours pay a huge penalty in career terms," Schor maintains. "It"s taken as a negative signal' about their commitment to the firm.' [Lotte] Bailyn [of Massachusetts Institute of Technology] adds that many corporate managers find it difficult to measure the contribution of their underlings to a firm's well-being, so they use the number of hours worked as a proxy for output. "Employees know this," she says, and they adjust their behavior accordingly.
 
@@ -1647,7 +1688,7 @@ It may take even more than changes in the financial and cultural structures of e
 
 *Paul Walluh*
 
-#### *Questions 27-32*
+##### Questions 27-32
 
 *Do the following statements agree with the views of the writer in Reading Passage 3? In boxes 27-32 write*
 
@@ -1662,7 +1703,7 @@ It may take even more than changes in the financial and cultural structures of e
 - **31** Bailyn's research shows that part-time employees work more efficiently.
 - **32** Increased leisure time would benefit two-career households.
 
-#### *Questions 33-34*
+##### Questions 33-34
 
 *Choose the appropriate letters A-D and write them in boxes 33 and 34 on your answer sheet.*
 
@@ -1677,11 +1718,11 @@ It may take even more than changes in the financial and cultural structures of e
   - **C** the future is dependent on technological advances.
   - **D** they do not wish to return to the humble post-war era.
 
-#### *Questions 35-38*
+##### Questions 35-38
 
 *The writer mentions a number of factors that have resulted, in employees working longer hours. Which FOUR of the following factors are mentioned? Write your answers (A-H) in boxes 35-38 on your answer sheet.*
 
-#### **List of Factors**
+List of Factors
 
 - **A** Books are available to help employees cope with stress.
 - **B** Extra work is offered to existing employees.
@@ -1692,11 +1733,13 @@ It may take even more than changes in the financial and cultural structures of e
 - **G** Managers estimate staff productivity in terms of hours worked.
 - **H** Employees value a career more than a family.
 
-#### **WRITING**
 
-#### **WRITING TASK 1**
+### WRITING
+
+#### WRITING TASK 1
 
 You should spend about 20 minutes on this task
+
 
 *The chart below shows the amount of money per week spent on fast foods in Britain. The graph shows the trends in consumption of fast foods.*
 
@@ -1704,19 +1747,23 @@ You should spend about 20 minutes on this task
 
 You should write at least 150 words.
 
-#### **Expenditure on fast foods by income groups**
+Expenditure on fast foods by income groups
+
 
 ![](_page_77_Figure_8.jpeg)
 
-#### **Consumption of fast foods 1970 -1990**
+Consumption of fast foods 1970 -1990
+
 
 ![](_page_77_Figure_10.jpeg)
 
-#### **WRITING TASK 2**
+#### WRITING TASK 2
 
 You should spend about 40 minutes on this task.
 
+
 Present a written argument or case to an educated reader with no specialist knowledge of the following topic:
+
 
 *News editors decide what to broadcast on television and what to print in newspapers. What factors do you think influence these decisions? Do we become used to bad news? Would it be better if more good news was reported?*
 
@@ -1724,27 +1771,34 @@ You should write at least 250 words.
 
 Use your own ideas, knowledge and experience and support your arguments with examples and relevant evidence.
 
-#### **SPEAKING**
+### SPEAKING
 
-#### **CANDIDATE`S CUE CARD**
+#### Task 3
 
-#### **Task 3**
-
-#### **THE PUBLIC HOLIDAY**
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+**THE PUBLIC HOLIDAY**
 
 **There will soon be a public holiday in the country your examiner comes from. You want to find out about the holiday.**
 
-Ask the examiner about: the name of the public holiday
+Ask the examiner about: 
 
-the significance of the holiday availability of services on the day
+the name of the public holiday
 
- (banks/shops/cinemas) things for visitors to do
+the significance of the holiday 
+
+availability of services on the day (banks/shops/cinemas) 
+
+things for visitors to do
 
 how she/he plans to spend the day
 
-#### **INTERVIEWER`S NOTES**
+</div><br>
 
-#### **THE PUBLIC HOLIDAY**
+
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+**INTERVIEWER'S NOTES**
+
+**THE PUBLIC HOLIDAY**
 
 Choose a lesser known public holiday from your country. Be prepared to provide some accurate information on the history and significance of the day. If in-country, tell the candidate how you will spend the day.
 
@@ -1752,69 +1806,93 @@ If you are in a non-English speaking country, tell the candidate how people norm
 
 Provide information about the availability of shops, services and banks on the day.
 
-### Practice Test 4
+</div>
 
-#### **LISTENING**
+## Practice Test 4
 
-#### **SECTION 1** *Questions 1-12*
+### LISTENING
 
-#### *Questions 1-5*
+#### SECTION 1 Questions 1-12
+
+##### Questions 1-5
 
 *Circle the appropriate letter*
 
-*Example* What are the students looking for?
+    *Example* What are the students looking for?
 
-- **A** Main Hall **C** Old Hall
-- **B** Great Hall **D** Old Building
+    - **A** Main Hall 
+    - **B** Great Hall 
+    - **C** Old Hall
+    - **D** Old Building
 
 **1** Where is the administration building?
 
 ![](_page_80_Picture_11.jpeg)
 
-- **2** How many people are waiting in the queue?
-- **A** 50 **B** 100 **C** 200 **D** 300
+  - **A**
+  - **B**
+  - **C**
+  - **D**
+
+**2** How many people are waiting in the queue?
+  - **A** 50 
+  - **B** 100 
+  - **C** 200 
+  - **D** 300
 
 **3** What does the woman order for lunch?
 
 ![](_page_80_Picture_18.jpeg)
 
+
 **4** What does the woman order to drink?
 
 ![](_page_81_Picture_2.jpeg)
 
+  - **A**
+  - **B**
+  - **C**
+  - **D**
+
 **5** How much money does the woman give the man?
 
-**A** \$2.00 **B** \$3.00 **C** \$3.50 **D** \$5.00
+  - **A** \$2.00 
+  - **B** \$3.00 
+  - **C** \$3.50 
+  - **D** \$5.00
 
-#### *Questions 6-10*
+##### Questions 6-10
 
 *Complete the registration form using NO MORE THAN THREE WORDS.*
 
-| Name of student: | (6)         |
-|------------------|-------------|
-| Address:         | (7) Flat 5/ |
-| Town:            | (8)         |
-| Tel:             | (9)         |
-| Course:          | (10)        |
-|                  |             |
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+  Name of student: (6)________ <br>
+  Address: (7) Flat 5/________________<br>
+  Town: (8)________________<br>
+  Tel: (9)_________________<br>
+  Course: (10)______________
+</div>
 
-#### *Questions 11-12*
+##### Questions 11-12
 
 **11** What did the man buy for her to eat?
 
 ![](_page_81_Picture_13.jpeg)
 
 - 12 What must the students do as part of registration at the university?
-- **A** Check the notice board in the Law Faculty.
-- **B** Find out about lectures.
-- **C** Organise tutorial groups.
-- **D** Pay the union fees.
+  - **A** Check the notice board in the Law Faculty.
+  - **B** Find out about lectures.
+  - **C** Organise tutorial groups.
+  - **D** Pay the union fees.
 
-#### **SECTION 2** *Questions 13-21*
+#### SECTION 2 Questions 13-21
 
 *Complete the notes. Write NO MORE THAN THREE WORDS for each answer.*
 
-### **STUDENT BANKING**
+![](_page_83_Picture_1a.jpeg)
+
+STUDENT BANKING
+
 
 | Recommended Banks    | Location              |
 |----------------------|-----------------------|
@@ -1825,39 +1903,45 @@ Provide information about the availability of shops, services and banks on the d
 
 Note: May not be allowed all facilities given to resident students.
 
-#### **Funding**
+Funding
+
 
 - Must provide (14) .................................... I can support myself.
 - Services will depend on personal circumstances and discretion of Bank Manager.
 
-#### **Opening an account**
+Opening an account
+
 
 - Take with me: (15) *.....*............................... and letter of enrolment.
 - Recommended account: (16) .........................................................
 - Bank supplies: (17) ................................ and chequecard which guarantees cheques.
 
-#### **Other services**
+Other services
+
 
 - Cashcard: (you can (18) ....................................... cash at any time.)
 - Switch/Delta cards: (take the money (19) .......................... the account.)
 
-#### **Overdraft**
+Overdraft
+
 
 - Must have (20) ....................................................
 - •Sometimes must pay interest.
 
-#### **Opening times**
+Opening times
+
 
 - Most banks open until (21) ...................................... during the week.
 - Some open for a limited time on Saturdays.
 
-#### **SECTION 3** *Questions 22-31*
+#### SECTION 3 Questions 22-31
 
-#### *Questions 22-25*
+##### Questions 22-25
 
 *Complete the factsheet. Write NO MORE THAN THREE WORDS for each answer.*
 
-### *FACTSHEET - Aluminium Cans*
+FACTSHEET - Aluminium Cans
+
 
 - (22) ............................................ produced every day in the US more cans produced than nails or (23) .......................................................
 - each can weighs 0.48 ounces thinner than two
@@ -1865,144 +1949,152 @@ Note: May not be allowed all facilities given to resident students.
 - can take more than 90 pounds of pressure per square inch over
 - (25) ............................................ the pressure of a car tyre
 
-#### *Questions 26-31*
+##### Questions 26-31
 
 *Label the aluminium can. Write NO MORE THAN THREE WORDS for each answer.*
 
 ![](_page_83_Figure_12.jpeg)
 
-#### **SECTION 4** *Questions 32-42*
+- **(26)** __________
+- **(27)** __________ reflective surface of aluminium can easily be decorated
+- **(28)** __________ to withstand pressure
+- **(29)** __________
+- **(30)** __________ of total weight
+- **(31)** __________ at base
 
-#### *Questions 32-42*
+#### SECTION 4 Questions 32-42
 
-**Purpose of the mini lecture**
+##### Questions 32-42
 
 *Complete the lecture notes. Use NO MORE THAN THREE WORDS for each answer.*
 
-To experience To find out about
+![](_page_85_Picture_1a.jpeg)
 
-|   | (32)                                     |      | (33) |
-|---|------------------------------------------|------|------|
-|   |                                          |      |      |
-|   | The three strands of Sports Studies are: |      |      |
-| a | Sports psychology                        |      |      |
-| b | Sports (34)                              |      |      |
-| c | Sports physiology                        |      |      |
-| a | The psychologists work with              |      |      |
-|   |                                          |      |      |
-| a | The psychologists work with (35)         |      |      |
-|   | They want to discover what               | (36) |      |
-| b | Sports marketing looks at                | (37) |      |
-|   | Sport now competes with                  | (38) |      |
-|   | Spectators want                          | (39) |      |
-| c | Sports physiology is also known as       |      |      |
-|   |                                          | (40) |      |
-|   | Macro levels look at                     | (41) |      |
-|   | Micro level looks at                     | (42) |      |
-|   |                                          |      |      |
+- **(32)**_____________
+- **(33)**_____________
+- **(34)**_____________
+- **(35)**_____________
+- **(36)**_____________
+- **(37)**_____________
+- **(38)**_____________
+- **(39)**_____________
+- **(40)**_____________
+- **(41)**_____________
+- **(42)**_____________
 
-#### **READING**
-
-#### **READING PASSAGE 1**
+### READING
+#### READING PASSAGE 1
 
 *You should spend about 20 minutes on Questions 1-13 which are based on Reading Passage 1 below*
 
-## GLASS
+GLASS
 
-### CAPTURING THE DANCE OF LIGHT
 
-**A** Glass, in one form or another, has long been in noble service to humans As one of the most widely used of manufactured materials, and certainly the most versatile, it can be as imposing as a telescope mirror the width of a tennis court or as small and simple as a marble rolling across dirt The uses of this
+CAPTURING THE DANCE OF LIGHT
 
-adaptable material have been broadened dramatically by new technologies glass fibre optics — more than eight million miles carrying telephone and television signals across nations, glass ceramics serving as the nose cones of missiles and as crowns for teeth; tiny glass beads taking radiation doses inside the body to specific organs, even a new type of glass fashioned of nuclear waste in order to dispose of that unwanted material.
 
-**B** On the horizon are optical computers These could store programs and process information by means of light - pulses from tiny lasers - rather than electrons And the pulses would travel over glass fibres, not copper wire These machines could function hundreds of times faster than today's electronic computers and hold vastly more information Today fibre optics are used to obtain a clearer image of smaller and smaller objects than ever before - even bacterial
+**A** Glass, in one form or another, has long been in noble service to humans As one of the most widely used of manufactured materials, and certainly the most versatile, it can be as imposing as a telescope mirror the width of a tennis court or as small and simple as a marble rolling across dirt The uses of this adaptable material have been broadened dramatically by new technologies glass fibre optics — more than eight million miles carrying telephone and television signals across nations, glass ceramics serving as the nose cones of missiles and as crowns for teeth; tiny glass beads taking radiation doses inside the body to specific organs, even a new type of glass fashioned of nuclear waste in order to dispose of that unwanted material.
 
 ![](_page_85_Picture_9.jpeg)
 
-- viruses. A new generation of optical instruments is emerging that can provide detailed imaging of the inner workings of cells. It is the surge in fibre optic use and in liquid crystal displays that has set the U.S. glass industry (a 16 billion dollar business employing some 150,000 workers) to building new plants to meet demand.
-- **C** But it is not only in technology and commerce that glass has widened its horizons. The use of glass as art, a tradition spins back at least to Roman times, is also booming. Nearly everywhere, it seems, men and women are blowing glass and creating works of art. «I didn't sell a piece of glass until 1975,» Dale Chihuly said, smiling, for in the 18 years since the end of the dry spell, he has become one of the most financially successful artists of the 20th century. He now has a new commission - a glass sculpture for the headquarters building of a pizza company - for which his fee is half a million dollars.
-- **D** But not all the glass technology that touches our lives is ultra-modern. Consider the simple light bulb; at the turn of the century most light bulbs were hand blown, and the cost of one was equivalent to half a day's pay for the average worker. In effect, the invention of the ribbon machine by Corning in the 1920s lighted a nation. The price of a bulb plunged. Small wonder that the machine has been called one of the great mechanical achievements of all time. Yet it is very simple: a narrow ribbon of molten glass travels over a moving belt of steel in which there are holes. The glass sags through the holes and into waiting moulds. Puffs of compressed air then
+**B** On the horizon are optical computers These could store programs and process information by means of light - pulses from tiny lasers - rather than electrons And the pulses would travel over glass fibres, not copper wire These machines could function hundreds of times faster than today's electronic computers and hold vastly more information Today fibre optics are used to obtain a clearer image of smaller and smaller objects than ever before - even bacterial viruses. A new generation of optical instruments is emerging that can provide detailed imaging of the inner workings of cells. It is the surge in fibre optic use and in liquid crystal displays that has set the U.S. glass industry (a 16 billion dollar business employing some 150,000 workers) to building new plants to meet demand.
 
-- shape the glass. In this way, the envelope of a light bulb is made by a single machine at the rate of 66,000 an hour, as compared with 1,200 a day produced by a team of four glassblowers.
-- **E** The secret of the versatility of glass lies in its interior structure. Although it is rigid, and thus like a solid, the atoms are arranged in a random disordered fashion, characteristic of a liquid. In the melting process, the atoms in the raw materials are disturbed from their normal position in the molecular structure; before they can find their way back to crystalline arrangements the glass cools. This looseness in molecular structure gives the material what engineers call tremendous "formability" which allows technicians to tailor glass to whatever they need.
-- **F** Today, scientists continue to experiment with new glass mixtures and building designers test their imaginations with applications of special types of glass. A London architect, Mike Davies, sees even more dramatic buildings using molecular chemistry. "Glass is the great building material of the future, the «dynamic skin»,' he said. "Think of glass that has been treated to react to electric currents going through it, glass that will change from clear to opaque at the push of a button, that gives you instant curtains. Think of how the tall buildings in New York could perform a symphony of colours as the glass in them is made to change colours instantly." Glass as instant curtains is available now, but the cost is exorbitant. As for the glass changing colours instantly, that may come true. Mike Davies's vision may indeed be on the way to fulfilment.
+**C** But it is not only in technology and commerce that glass has widened its horizons. The use of glass as art, a tradition spins back at least to Roman times, is also booming. Nearly everywhere, it seems, men and women are blowing glass and creating works of art. «I didn't sell a piece of glass until 1975,» Dale Chihuly said, smiling, for in the 18 years since the end of the dry spell, he has become one of the most financially successful artists of the 20th century. He now has a new commission - a glass sculpture for the headquarters building of a pizza company - for which his fee is half a million dollars.
 
-#### *Questions 1-5*
+**D** But not all the glass technology that touches our lives is ultra-modern. Consider the simple light bulb; at the turn of the century most light bulbs were hand blown, and the cost of one was equivalent to half a day's pay for the average worker. In effect, the invention of the ribbon machine by Corning in the 1920s lighted a nation. The price of a bulb plunged. Small wonder that the machine has been called one of the great mechanical achievements of all time. Yet it is very simple: a narrow ribbon of molten glass travels over a moving belt of steel in which there are holes. The glass sags through the holes and into waiting moulds. Puffs of compressed air then shape the glass. In this way, the envelope of a light bulb is made by a single machine at the rate of 66,000 an hour, as compared with 1,200 a day produced by a team of four glassblowers.
+
+**E** The secret of the versatility of glass lies in its interior structure. Although it is rigid, and thus like a solid, the atoms are arranged in a random disordered fashion, characteristic of a liquid. In the melting process, the atoms in the raw materials are disturbed from their normal position in the molecular structure; before they can find their way back to crystalline arrangements the glass cools. This looseness in molecular structure gives the material what engineers call tremendous "formability" which allows technicians to tailor glass to whatever they need.
+
+**F** Today, scientists continue to experiment with new glass mixtures and building designers test their imaginations with applications of special types of glass. A London architect, Mike Davies, sees even more dramatic buildings using molecular chemistry. "Glass is the great building material of the future, the «dynamic skin»,' he said. "Think of glass that has been treated to react to electric currents going through it, glass that will change from clear to opaque at the push of a button, that gives you instant curtains. Think of how the tall buildings in New York could perform a symphony of colours as the glass in them is made to change colours instantly." Glass as instant curtains is available now, but the cost is exorbitant. As for the glass changing colours instantly, that may come true. Mike Davies's vision may indeed be on the way to fulfilment.
+
+##### Questions 1-5
 
 *Reading Passage 1 has six paragraphs (A-F). Choose the most suitable heading/or each paragraph from the list of headings below. Write the appropriate numbers (i-x) in boxes 1-5 on your answer sheet. Paragraph A has been done for you as an example.*
 
 *NB There are more headings than paragraphs so you will not use all of them. You may use any heading more at once.*
 
-| Example     | Answer |
-|-------------|--------|
-| Paragraph A | x      |
+    | Example     | Answer |
+    |-------------|--------|
+    | Paragraph A | x      |
 
-#### List of Headings
 
-- **i** Growth in the market for glass crafts
-- **ii** Computers and their dependence on glass
-- **iii** What makes glass so adaptable
-- **iv** Historical development of glass
-- **v** Scientists' dreams cost millions
-- **vi** Architectural experiments with glass
-- **vii** Glass art galleries flourish
-- **viii** Exciting innovations in fibre optics
-- **ix** A former glass technology
-- x Everyday uses of glass
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+  <strong>List of Headings</strong><br>
+  <strong>i</strong> Growth in the market for glass crafts<br>
+  <strong>ii</strong> Computers and their dependence on glass<br>
+  <strong>iii</strong> What makes glass so adaptable<br>
+  <strong>iv</strong> Historical development of glass<br>
+  <strong>v</strong> Scientists' dreams cost millions<br>
+  <strong>vi</strong> Architectural experiments with glass<br>
+  <strong>vii</strong> Glass art galleries flourish<br>
+  <strong>viii</strong> Exciting innovations in fibre optics<br>
+  <strong>ix</strong> A former glass technology<br>
+  <strong>x</strong> Everyday uses of glass
+</div><br>
+
 - 1 Paragraph B
 - 2 Paragraph C
 - 3 Paragraph D
 - 4 Paragraph E
 - 5 Paragraph F
 
-#### *Questions 6-8*
+##### Questions 6-8
 
 *The diagram below shows the principle of Coming's ribbon machine. Label the diagram by selecting NO MORE THAN THREE WORDS from the Reading Passage to fill each numbered space. Write your answers in boxes 6-8 on your answer sheet.*
 
 ![](_page_88_Picture_3.jpeg)
 
-#### *Questions 9-13*
+- **(6)**___________
+- **(7)**___________
+- **(8)**___________
+
+##### Questions 9-13
 
 *Look at the list below of the uses of glass. According to the passage, state whether these uses exist today, will exist in the future or are not mentioned by the writer. In boxes 9-13 write*
 
-- *A if the uses exist today*
-- *B if the uses will exist in the future*
-- *C if the uses are not mentioned by the writer*
-- **9** dental fittings
-- **10** optical computers
-- **11** sculptures
-- **12** fashions
-- **13** curtains
+*A if the uses exist today* <br>
+*B if the uses will exist in the future* <br>
+*C if the uses are not mentioned by the writer* <br>
 
-#### **READING PASSAGE 2**
+- **9** dental fittings _____________
+- **10** optical computers _____________
+- **11** sculptures _____________
+- **12** fashions _____________
+- **13** curtains _____________
+
+#### READING PASSAGE 2
 
 *You should spend about 20 minutes on Questions 14-27 which are based on Reading Passage 2 below*
 
-## Why some women cross the finish line ahead of men
+
+**Why some women cross the finish line ahead of men**
 
 ![](_page_89_Picture_4.jpeg)
 
-#### **RECRUITMENT**
+RECRUITMENT
+
 
 The course is tougher but women are staying the distance, reports **Andrew Crisp.**
 
 **A** Women who apply for jobs in middle or senior management have a higher success rate than men, according to an employment survey. But of course far fewer of them apply for these positions. The study, by recruitment consultants NB Selection, shows that while one in six men who appear on interview shortlists get jobs, the figure rises to one in four for women.
 
-**B** The study concentrated on applications for management positions in the \$45,000 to \$110,000 salary range and found that women are more successful than men in both the private and public sectors Dr Elisabeth Marx from London-based NB Selection described the findings as
+**B** The study concentrated on applications for management positions in the \$45,000 to \$110,000 salary range and found that women are more successful than men in both the private and public sectors Dr Elisabeth Marx from London-based NB Selection described the findings as encouraging for women, in that they send a positive message to them to apply for interesting management positions. But she added, "We should not lose sight of the fact that significantly fewer women apply for senior positions in comparison with men."
 
-- encouraging for women, in that they send a positive message to them to apply for interesting management positions. But she added, "We should not lose sight of the fact that significantly fewer women apply for senior positions in comparison with men."
-- C Reasons for higher success rates among women are difficult to isolate. One explanation suggested is that if a woman candidate manages to get on a shortlist, then she has probably already proved herself to be an exceptional candidate. Dr Marx said that when women apply for positions they tend to be better qualified than their male counterparts but are more selective and conservative in their job search. Women tend to research thoroughly before applying for positions or attending interviews. Men, on the other hand, seem to rely on their ability to sell themselves and to convince employers that any shortcomings they have will not prevent them from doing a good job.
-- D Managerial and executive progress made by women is confirmed by the annual survey of boards of directors carried out by Korn/Ferry/Carre/ Orban International. This year the survey shows a doubling of the number of women serving as non-executive directors compared with the previous year. However, progress remains painfully slow and there were still only 18 posts filled by women out of a total of 354 nonexecutive positions surveyed. Hilary Sears, a partner with Korn/Ferry, said, "Women have raised the level of grades we are employed in but we have still not broken through barriers to the top."
+**C** Reasons for higher success rates among women are difficult to isolate. One explanation suggested is that if a woman candidate manages to get on a shortlist, then she has probably already proved herself to be an exceptional candidate. Dr Marx said that when women apply for positions they tend to be better qualified than their male counterparts but are more selective and conservative in their job search. Women tend to research thoroughly before applying for positions or attending interviews. Men, on the other hand, seem to rely on their ability to sell themselves and to convince employers that any shortcomings they have will not prevent them from doing a good job.
 
-- E In Europe a recent feature of corporate life in the recession has been the delayering of management structures. Sears said that this has halted progress for women in as much as de-layering has taken place either where women are working or in layers they aspire to. Sears also noted a positive trend from the recession, which has been the growing number of women who have started up on their own.
-- F In business as a whole, there are a number of factors encouraging the prospect of greater equality in the workforce. Demographic trends suggest that the number of women going into employment is steadily increasing. In addition a far greater number of women are now passing through higher education, making them better qualified to move into management positions.
-- G Organisations such as the European Women's Management Development Network provide a range of opportunities for women to enhance their skills and contacts. Through a series of both pan-European and national workshops and conferences the barriers to women in employment are being broken down. However, Ariane Berthoin Antal, director of the International Institute for Organisational Change of Archamps in France, said that there is only anecdotal evidence of changes in recruitment patterns. And she said, "It"s still so hard for women to even get on to shortlists -there are so many hurdles and barriers.' Antal agreed that there have been some positive signs but said "Until there is a belief among employers, until they value the difference, nothing will change."
+**D** Managerial and executive progress made by women is confirmed by the annual survey of boards of directors carried out by Korn/Ferry/Carre/ Orban International. This year the survey shows a doubling of the number of women serving as non-executive directors compared with the previous year. However, progress remains painfully slow and there were still only 18 posts filled by women out of a total of 354 nonexecutive positions surveyed. Hilary Sears, a partner with Korn/Ferry, said, "Women have raised the level of grades we are employed in but we have still not broken through barriers to the top."
 
-#### *Questions 14-19*
+**E** In Europe a recent feature of corporate life in the recession has been the delayering of management structures. Sears said that this has halted progress for women in as much as de-layering has taken place either where women are working or in layers they aspire to. Sears also noted a positive trend from the recession, which has been the growing number of women who have started up on their own.
+
+**F** In business as a whole, there are a number of factors encouraging the prospect of greater equality in the workforce. Demographic trends suggest that the number of women going into employment is steadily increasing. In addition a far greater number of women are now passing through higher education, making them better qualified to move into management positions.
+
+**G** Organisations such as the European Women's Management Development Network provide a range of opportunities for women to enhance their skills and contacts. Through a series of both pan-European and national workshops and conferences the barriers to women in employment are being broken down. However, Ariane Berthoin Antal, director of the International Institute for Organisational Change of Archamps in France, said that there is only anecdotal evidence of changes in recruitment patterns. And she said, "It"s still so hard for women to even get on to shortlists -there are so many hurdles and barriers.' Antal agreed that there have been some positive signs but said "Until there is a belief among employers, until they value the difference, nothing will change."
+
+##### Questions 14-19
 
 *Reading Passage 2 has 7 paragraphs (A-G). State which paragraph discusses each of the points below. Write the appropriate letter (A-G) in boxes 14-19 on your answer sheet.*
 
-*Example* Answer The salary range studied in the NB Selection survey. B
+    *Example* Answer The salary range studied in the NB Selection survey. **B**
 
 - **14** The drawbacks of current company restructuring patterns.
 - **15** Associations that provide support for professional women.
@@ -2011,19 +2103,20 @@ The course is tougher but women are staying the distance, reports **Andrew Crisp
 - **18** Reasons why more women are being employed in the business sector.
 - **19** The improvement in female numbers on company management structures.
 
-#### *Questions 20-23*
+##### Questions 20-23
 
 *The author makes reference to three consultants in the Reading Passage. Which of the list of points below do these consultants make? In boxes 20-23 write*
 
-- *M if the point is made by Dr Marx*
-- *S if the point is made by Hilary Sears*
-- *A if the point is made by Ariane Berthoin Antal*
+*M if the point is made by Dr Marx* <br>
+*S if the point is made by Hilary Sears*  <br>
+*A if the point is made by Ariane Berthoin Antal*  <br>
+
 - **20** Selection procedures do not favour women.
 - **21** The number of female-run businesses is increasing.
 - **22** Male applicants exceed female applicants for top posts.
 - **23** Women hold higher positions now than they used to.
 
-#### *Questions 24-27*
+##### Questions 24-27
 
 *Using NO MORE THAN THREE WORDS answer the following questions. Write your answers in boxes 24-27 on your answer sheet.*
 
@@ -2032,33 +2125,38 @@ The course is tougher but women are staying the distance, reports **Andrew Crisp
 - **26** What information tells us that more women are working nowadays?
 - **27** Which group of people should change their attitude to recruitment?
 
-#### **READING PASSAGE 3**
+#### READING PASSAGE 3
 
 *You should spend about 20 minutes on Questions 28-39 which are based on Reading Passage 3 below.*
 
-### **Population viability analysis**
+Population viability analysis
 
-#### **Part A**
+
+**Part A**
+
 
 To make political decisions about the extent and type of forestry in a region it is important to understand the consequences of those decisions. One tool for assessing the impact of forestry on the ecosystem is population viability analysis (PVA). This is a tool for predicting the probability that a species will become extinct in a particular region over a specific period. It has been successfully used in the United States to provide input into resource exploitation decisions and assist wildlife managers and there is now enormous potential for using population viability to assist wildlife management in Australia's forests.
 
 A species becomes extinct when the last individual dies. This observation is a useful starting point for any discussion of extinction as it highlights the role of luck and chance in the extinction process. To make a prediction about extinction we need to understand the processes that can contribute to it and these fall into four broad categories which are discussed below.
 
-#### **Part B**
+**Part B**
 
 - A Early attempts to predict population viability were based on demographic uncertainty Whether an individual survives from one year to the next will largely be a matter of chance. Some pairs may produce several young in a single year while others may produce none in that same year. Small populations will fluctuate enormously because of the random nature of birth and death and these chance fluctuations can cause species extinctions even if, on average, the population size should increase. Taking only this uncertainty of ability to reproduce into account, extinction is unlikely if the number of individuals in a population is above about 50 and the population is growing.
+
 - B Small populations cannot avoid a certain amount of inbreeding. This is particularly true if there is a very small number of one sex. For example, if there are only 20 individuals of a species and only one is a male, all future individuals in the species must be descended from that one male. For most animal species such individuals are less likely to survive and reproduce. Inbreeding increases the chance of extinction.
 
 - C Variation within a species is the raw material upon which natural selection acts. Without genetic variability a species lacks the capacity to evolve and cannot adapt to changes in its environment or to new predators and new diseases. The loss of genetic diversity associated with reductions in population size will contribute to the likelihood of extinction.
+
 - D Recent research has shown that other factors need to be considered. Australia's environment fluctuates enormously from year to year. These fluctuations add yet another degree of uncertainty to the survival of many species. Catastrophes such as fire, flood, drought or epidemic may reduce population sizes to a small fraction of their average level. When allowance is made for these two additional elements of uncertainty the population size necessary to be confident of persistence for a few hundred years may increase to several thousand.
 
-#### **Part C**
+**Part C**
+
 
 Beside these processes we need to bear in mind the distribution of a population. A species that occurs in five isolated places each containing 20 individuals will not have the same probability of extinction as a species with a single population of 100 individuals in a single locality.
 
 Where logging occurs (that is, the cutting down of forests for timber) forestdependent creatures in that area will be forced to leave. Ground-dwelling herbivores may return within a decade. However, arboreal marsupials (that is animals which live in trees) may not recover to pre-logging densities for over a century. As more forests are logged, animal population sizes will be reduced further. Regardless of the theory or model that we choose, a reduction in population size decreases the genetic diversity of a population and increases the probability of extinction because of any or all of the processes listed above. It is therefore a scientific fact that increasing the area that is loaded in any region will increase the probability that forest-dependent animals will become extinct.
 
-#### *Questions 28-31*
+##### Questions 28-31
 
 *Do the following statements agree with the views of the writer in Part A of Reading Passage 3? In boxes 28-31 on your answer sheet write*
 
@@ -2066,17 +2164,12 @@ Where logging occurs (that is, the cutting down of forests for timber) forestdep
 
 *NOT GIVEN if it is impossible to say what the writer thinks about this*
 
-| Example<br>Answer                                                                                    |
-|------------------------------------------------------------------------------------------------------|
-| A link exist between the consequences of decisions and<br>the decision making process itself.<br>YES |
-|                                                                                                      |
-
 - **28** Scientists are interested in the effect of forestry on native animals.
 - **29** PVA has been used in Australia for many years.
 - **30** A species is said to be extinct when only one individual exists.
 - **31** Extinction is a naturally occurring phenomenon.
 
-#### *Questions 32-35*
+##### Questions 32-35
 
 These questions are based on Part B of Reading Passage 3.
 
@@ -2084,12 +2177,28 @@ These questions are based on Part B of Reading Passage 3.
 
 *NB There are more processes than paragraphs so you will not use all of them.*
 
-|          |                            |                | Processes                                                                 |
-|----------|----------------------------|----------------|---------------------------------------------------------------------------|
-| 32<br>33 | Paragraph A<br>Paragraph B | i<br>ii<br>iii | Loss of ability to adapt<br>Natural disasters<br>An imblance of the sexes |
-| 34<br>35 | Paragraph C<br>Paragraph D | iv<br>v<br>vi  | Human disasters<br>Evolution<br>The haphazard nature of<br>reproduction   |
 
-#### *Questions 36-38*
+<div style="display: flex; gap: 20px;">
+  <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;  flex: 1;">
+    <strong>Paragraphs</strong><br>
+    32 Paragraph A: ______<br>
+    33 Paragraph B: ______<br>
+    34 Paragraph C: ______<br>
+    35 Paragraph D: ______
+  </div>
+  <div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; flex: 1;">
+    <strong>Processes</strong><br>
+    i Loss of ability to adapt<br>
+    ii Natural disasters<br>
+    iii An imbalance of the sexes<br>
+    iv Human disasters<br>
+    v Evolution<br>
+    vi The haphazard nature of reproduction
+  </div>
+</div>
+
+
+##### Questions 36-38
 
 *Based on your reading of Part C, complete the sentences below with words taken from the passage. Use NO MORE THAN THREE WORDS for each answer. Write your answers in boxes 36-38 on your answer sheet.*
 
@@ -2099,7 +2208,7 @@ Survival of a species depends on a balance between the size of a population and 
 
 The likelihood that animals which live in forests will become extinct is increased when **... (38) ...**
 
-#### *Question 39*
+##### Question 39
 
 *Choose the appropriate letter A-D and write it in box 39 on your answer sheet.*
 
@@ -2109,11 +2218,12 @@ The likelihood that animals which live in forests will become extinct is increas
   - **C** An economic rationale for the logging of forests
   - **D** Preventive measures for the extinction of a species
 
-#### **WRITING**
+### WRITING
 
-#### **WRITING TASK 1**
+#### WRITING TASK 1
 
 You should spend about 20 minutes on this task.
+
 
 *Chorleywood is a village near London whose population has increased steadily since the middle of the nineteenth century. The map below shows the development of the village.*
 
@@ -2127,7 +2237,9 @@ You should write at least 150 words.
 
 You should spend about 40 minutes on this task.
 
+
 Present a written argument or case to an educated reader with no specialist knowledge of the following topic:
+
 
 *The idea of having a single career is becoming an old fashioned one. The new fashion mil be to have several careers or ways of earning money and further education will be something that continues throughout life.*
 
@@ -2135,25 +2247,31 @@ You should write at least 250 words.
 
 Use your own ideas, knowledge and experience and support your arguments with examples and relevant evidence.
 
-#### **SPEAKING**
+### SPEAKING
 
-#### **CANDIDATE`S CUE CARD Task 4**
+#### Task 4
 
-#### **THE EXCURSION**
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+
+**THE EXCURSION**
 
 **The Overseas Students` Club is organising an excursion to a local tourist spot. You are thinking of joining the exursion. Your examiner is one of the organisers.**
 
-Ask the examiner about: destination
+Ask the examiner about: 
+
+destination
 
 means of transport length of excursion
 
 cost meals
 
 clothing/equipment
+</div><br>
 
-#### **INTERVIEWER`S NOTES**
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+**INTERVIEWER'S NOTES**
 
-#### **THE EXCURSION**
+**THE EXCURSION**
 
 **Select an authentic tourist destination about two hours` drive from your city. Provide the following information according to local facts:**
 
@@ -2163,64 +2281,32 @@ clothing/equipment
 - **•** Suggest appropriate local cost
 - Meals not provided students can buy or bring food
 - Walking shoes recommended
+</div>
 
-### General Training Module
+## General Training Module
 
-#### **PART ONE**
+### READING
+
+#### PART ONE
 
 *You are advised to spend 20 minutes on Questions 1-14. First, read the text below and answer Questions 1-8.*
 
-### **YOUR MOULEX IRON**
+![](_page_100_Picture_1a.jpeg)
 
-![](_page_99_Picture_4.jpeg)
 
-#### **A Filling the reservoir**
-
-Your iron is designed to function using tap water. However, it will last longer if you use distilled water.
-
-- Always unplug the iron before filling the reservoir.
-- Always empty the reservoir after use.
-
-#### **B Temperature and steam control**
-
-Your Moulex iron has two buttons which control the intensity of heat produced by the iron. You can, therefore, adjust the temperature of the iron and the amount of steam being given off depending upon the type of fabric being ironed.
-
-- Turn the steam control to the desired intensity.
-- Turn the thermostat control to the desired temperature.
-
-*Important: If your iron produces droplets of water instead of giving off steam, your temperature control is set too low.*
-
-#### **C Spray button**
-
-This button activates a jet of cold water which allows you to iron out any unintentional creases. Press the button for one second.
-
-#### **D Pressing button**
-
-This button activates a super shot of steam which momentarily gives you an additional 40g of steam when needed.
-
-*Important: Do not use this more than five successive times.*
-
-#### **E Suits etc**.
-
-It is possible to use this iron in a vertical position so that you can remove creases from clothes on coathangers or from curtains. Turning the thermostat control and the steam button to maximum, hold the iron in a vertical position close to the fabric but without touching it. Hold down the pressing button for a maximum of one second. The steam produced is not always visible but is still able to remove creases.
-
-*Important: Hold the iron at a sufficient distance from silk and wool to avoid all risk of scorching Do not attempt to remove creases from an item of clothing that is being worn, always use a coathanger.*
-
-#### **F Auto-clean**
-
-In order that your iron does not become furred up, Moulex have integrated an auto-clean system and we advise you to use it very regularly (1-2 times per month).
-
-- Turn the steam control to the off position.
-- Fill the reservoir and turn the thermostat control to maximum.
-- As soon as the indicator light goes out, unplug the iron and, holding it over the sink, turn the steam control to auto-clean. Any calcium deposits will be washed out by the steam. Continue the procedure until the reservoir is empty.
-
-#### *Questions 1-4*
+##### Questions 1-4
 
 *Match the pictures below to the appropriate section in the instructions. Write the correct letter A-F in boxes 1-4 on your answer sheet.*
 
 ![](_page_100_Picture_3.jpeg)
 
-#### *Questions 5-8*
+- **(1)** ______
+- **(2)** ______
+- **(3)** ______
+- **(4)** ______
+
+
+##### Questions 5-8
 
 *Answer the following questions on the Moulex iron using NO MORE THAN THREE WORDS. Write your answers in boxes 5-8 on your answer sheet.*
 
@@ -2229,37 +2315,47 @@ In order that your iron does not become furred up, Moulex have integrated an aut
 - **7** What should you do if your iron starts to drip water?
 - **8** What could damage your iron if you do not clean it?
 
+
+
+##### Questions 9-14
+
 *Now, read the information below and answer Questions 9-14.*
 
-### CLASSIC TOURS - COACH BREAK INFORMATION
+**CLASSIC TOURS - COACH BREAK INFORMATION**
 
-#### **Luggage**
+
+**Luggage**
+
 
 We ask you to keep luggage down to one medium-sized suitcase per person, but a small holdall can also be taken on board the coach.
 
-#### **Seat Allocation**
+**Seat Allocation**
+
 
 Requests for particular seats can be made on most coach breaks when booking, but since allocations are made on a first come first served basis, early booking is advisable. When bookings are made with us you will be offered the best seats that are available on the coach at that time.
 
-#### **Travel Documents**
+**Travel Documents**
+
 
 When you have paid your deposit we will send to you all the necessary documents and labels, so that you receive them in good time before the coach break departure date. Certain documents, for example air or boat tickets, may have to be retained and your driver or courier will then issue them to you at the relevant point.
 
-#### **Special Diets**
+**Special Diets**
+
 
 If you require a special diet you must inform us at the time of booking with a copy of the diet. This will be notified to the hotel or hotels on your coach break, but on certain coach breaks the hotels used are tourist class and whilst offering value for money within the price range, they may not have the full facilities to cope with special diets. Any extra costs incurred must be paid to the hotel by yourself before departure from the hotel.
 
-#### **Accommodation**
+**Accommodation**
+
 
 Many of our coach breaks now include, within the price, accommodation with private facilities, and this will be indicated on the coach break page. Other coach breaks have a limited number of rooms with private facilities which, subject to availability, can be reserved and guaranteed at the time of booking - the supplementary charge shown in the price panel will be added to your account.
 
 On any coach break there are only a limited number of single rooms. When a single room is available it may be subject to a supplementary charge and this will be shown on the brochure page.
 
-#### **Entertainment**
+**Entertainment**
+
 
 Some of our hotels arrange additional entertainment which could include music, dancing, film shows, etc. The nature and frequency of the entertainment presented is at the discretion of the hotel and therefore not guaranteed and could be withdrawn if there is a lack of demand or insufficient numbers in the hotel.
 
-#### *Questions 9-14*
 
 *Choose the appropriate letters A-D and write them in boxes 9-14 on your answer sheet.*
 
@@ -2294,19 +2390,21 @@ Some of our hotels arrange additional entertainment which could include music, d
   - **C** use your own personal bathroom.
   - **D** see a film if you want to.
 
-#### **PART TWO**
+#### PART TWO
 
-#### *You are advised to spend 20 minutes on Questions 15-29.*
 
-#### *Questions 15-21*
+You are advised to spend 20 minutes on Questions 15-29.
+
+
+##### Questions 15-21
 
 *Look at the article Clubs for Students. Which club would you contact for each of the requirements below? Write the appropriate letter A-G in boxes 15-21 on your answer sheet. You may use each letter more than once.*
 
 *The first one has been done for you as an example.*
 
-| Example                                       | Answer |  |
-|-----------------------------------------------|--------|--|
-| You wish to go swimming at 7am every morning. | G      |  |
+      | Example                                       | Answer |  |
+      |-----------------------------------------------|--------|--|
+      | You wish to go swimming at 7am every morning. | G      |  |
 
 - **15** You would like to take Spanish classes.
 - **16** You want to join a club that has international branches.
@@ -2316,15 +2414,18 @@ Some of our hotels arrange additional entertainment which could include music, d
 - **20** You are interested in finding out about part-time work.
 - **21** You want to meet some English people who have started their careers.
 
-### CLUBS FOR STUDENTS
+CLUBS FOR STUDENTS
+
 
 There are a variety of Clubs which provide social and cultural activities for those wishing to meet others with similar interests from the same or from different national backgrounds.
 
-#### **A Commonwealth Trust**
+A Commonwealth Trust
+
 
 Organised discussion meetings, learned talks, cultural events excursions to places of interest and invitations to major British diary events Open to overseas visitors and students.
 
-#### **B Charles Peguy Centre**
+B Charles Peguy Centre
+
 
 French youth centre providing advice, support and information to young Europeans aged between 18-30. Facilities include an information and advice service regarding education, work placement and general welfare rights. Moreover the centre holds a database of jobs, accommodation and au pair placements specifically in London. Members may use a fax machine a copier and computers for CVs.
 
@@ -2332,31 +2433,38 @@ Hours Monday: 14.00-17.00 Tuesday-Friday: 10.00-17.00
 
 Membership: £35 per year, plus £5 per month.
 
-#### **C Kensington Committee of Friendship for Overseas Students**
+C Kensington Committee of Friendship for Overseas Students
+
 
 KCOF is the society for young people from all countries. Each month there are some 40 parties, discos, visits to theatres, concerts, walks and other gatherings where you will be able to meet lots of people. A new programme is sent each month directly to members (£5 to join in October, less later in the year). Events are free or at low often reduced prices. Office open 10.30-17.30 weekdays only
 
-#### **D Royal Overseas League**
+D Royal Overseas League
+
 
 Open 365 days per year, this is a club with facilities in London and Edinburgh with restaurants, bars and accommodation.
 
 There are branches around the world and 57 reciprocal clubs world-wide. Quarterly magazine, literary lectures, annual music and art competitions, and summer and winter programme of events for members. Membership fees overseas students aged 17- 24 £47 per year + initial joining fee £23.50; others £70 per year + initial joining fee £35 (half price after July). Further information from the Membership Secretary.
 
-#### **E YMCA London Central**
+E YMCA London Central
+
 
 Facilities include photography art drama, pottery, language courses, badminton, squash, exercise to music, circuit training, sports clinic, fitness testing and other activities.
 
 Hours weekdays 07.00-22.30, weekends 10.00-21.00. Membership fees: aged 16-17 £25 per year plus attendance charge of £1 30 per visit; aged 18-19 £213 per year; aged 20- 25 £366 per year
 
-#### **F London Inter-Varsity Club (IVC)**
+F London Inter-Varsity Club (IVC)
+
 
 IVC is an activities and social club with a varied range of events, from cycling and drama to windsurfing and yoga. Most members are young English professionals, but overseas visitors are welcome. The club arranges restaurant meals, dancing and parties, weekends away around Britain, plus a weekly club night in a Covent Garden bar. There are usually over 25 different events every week run by IVG members for IVC members. To find out more, telephone the club or write (Freepost) to the office.
 
-#### **G Central Club**
+G Central Club
+
 
 Provides accommodation and club facilities. No membership fee. Coffee shop open for all meals swimming pool (open 06.00), multigym, hairdressing salon.
 
-#### *Questions 22-29*
+
+
+##### Questions 22-29
 
 *Read the article on International Students House and look at the statements below. In boxes 22-29 on your answer sheet write*
 
@@ -2366,10 +2474,10 @@ Provides accommodation and club facilities. No membership fee. Coffee shop open 
 
 *The first one has been done for you as an example.*
 
-| Example                                        | Answer |
-|------------------------------------------------|--------|
-| Answer The club is for overseas students only. | FALSE  |
-|                                                |        |
+      | Example                                        | Answer |
+      |------------------------------------------------|--------|
+      | Answer The club is for overseas students only. | FALSE  |
+      |                                                |        |
 
 - **22** The club has long-term dormitory accommodation.
 - **23** Membership must be renewed monthly.
@@ -2380,17 +2488,20 @@ Provides accommodation and club facilities. No membership fee. Coffee shop open 
 - **28** You must make an appointment to see the Students Adviser.
 - **29** There will be a surcharge for accommodation over the Christmas period.
 
-### INTERNATIONAL STUDENTS HOUSE
+INTERNATIONAL STUDENTS HOUSE
+
 
 International Students House is a unique club and accommodation centre for British and overseas students in London. It is located in the heart of London's West End and is close to all public transport facilities.
 
-#### **ACCOMMODATION**
+ACCOMMODATION
+
 
 - \* comfortable accommodation for up to 450 people in single, twin, 3/4 bedded and multi-bedded rooms
 - \* 44 self-contained flats for married students and families
 - \* long and short stays welcomed
 
-#### **MEMBERSHIP**
+MEMBERSHIP
+
 
 Club membership is open to all fulltime students, professional trainees, student nurses and au pairs. Membership costs are kept to an absolute minimum to enable the widest possible access. You can join for as little as one month and for up to one year at a time. Membership entitles you to use the various facilities of the House. It has:
 
@@ -2404,63 +2515,61 @@ Club membership is open to all fulltime students, professional trainees, student
 
 Club Room. This is an opportunity for you to meet the staff and other club members, enjoy a free cup of coffee and find out all about what's going on. You can take advantage of special membership offers. (Useful tip: bring along 3 passport size photographs if you wish to take out membership.)
 
-#### **ADVICE SERVICE**
+ADVICE SERVICE
+
 
 Thanks to the support of STA Travel and in association with LCOS (the London Conference on Overseas Students) International Students House now provides the service of an International Students Adviser. This new welfare service is open to all students at London's bona-fide academic institutions. It aims to provide welfare support to help students overcome any personal or practical difficulties they may be experiencing whilst studying in Britain. One of the key features of the Advice Service is that the Adviser can be seen during the evenings until about 8 pm, Monday to Thursday.
 
-#### **CHRISTMAS & NEW YEAR**
+CHRISTMAS & NEW YEAR
+
 
 Unable to get home for Christmas? How about joining in the fun at International Students House! Check out our special programme of activity taking place over the Christmas period. Even come and stay - the House will be offering reduced accommodation rates for students wishing to spend a few days in London over Christmas. We'll also have an exciting New Year's Eve party so come and join us and ring in the new year in the spirit of internationalism.
 
-#### **PART THREE**
+#### PART THREE
 
-#### **READING PASSAGE 3**
+
+READING PASSAGE 3
+
 
 *You should spend about 20 minutes on Questions 30-41 which are based on the Reading Passage below.*
 
-## PAPER RECYCLING
+PAPER RECYCLING
+
 
 - **A** Paper is different from other waste produce because it comes from a sustainable resource: trees. Unlike the minerals and oil used to make plastics and metals, trees are replaceable. Paper is also biodegradable, so it does not pose as much threat to the environment when it is discarded. While 45 out of every 100 tonnes of wood fibre used to make paper in Australia comes from waste paper, the rest comes directly from virgin fibre from forests and plantations. By world standards this is a good performance since the world-wide average is 33 per cent waste paper. Governments have encouraged waste paper collection and sorting schemes and at the same time, the paper industry has responded by developing new recycling technologies that have paved the way for even greater utilisation of used fibre. As a result, industry's use of recycled fibres is expected to increase at twice the rate of virgin fibre over the coming years.
+
 - **B** Already, waste paper constitutes 70% of paper used for packaging and advances in the technology required to remove ink from the paper have allowed a higher recycled content in newsprint and writing paper. To achieve the benefits of
 
 - recycling, the community must also contribute. We need to accept a change in the quality of paper products; for example stationery may be less white and of a rougher texture. There also needs to be support from the community for waste paper collection programs. Not only do we need to make the paper available to collectors but it also needs to be separated into different types and sorted from contaminants such as staples, paperclips, string and other miscellaneous items.
+
 - **C** There are technical limitations to the amount of paper which can be recycled and some paper products cannot be collected for re-use. These include paper in the form of books and permanent records, photographic paper and paper which is badly contaminated. The four most common sources of paper for recycling are factories and retail stores which gather large amounts of packaging material in which goods are delivered, also offices which have unwanted business documents and computer output, paper converters and printers and lastly households which discard newspapers and packaging material. The paper manufacturer pays a price for the paper and may also incur the collection cost.
 
-- **D** Once collected, the paper has to be sorted by hand by people trained to recognise various types of paper. This is necessary because some types of paper can only be made from particular kinds of recycled fibre. The sorted paper then has to be repulped or mixed with water and broken down into its individual fibres. This mixture is called stock and may contain a wide variety of contaminating materials, particularly if it is made from mixed waste paper which has had little sorting. Various machinery is used to remove other materials from the stock. After passing through the repulping process, the fibres from printed waste paper are grey in colour because the printing ink has soaked into the individual fibres. This recycled material can only be used in products where the grey colour does not matter, such as cardboard boxes but if the grey colour is not acceptable, the fibres must be de-inked. This involves adding chemicals such as caustic soda or other alkalis, soaps and detergents, water-hardening agents such as calcium chloride, frothing agents and
-- bleaching agents. Before the recycled fibres can be made into paper they must be refined or treated in such a way that they bond together.
+- **D** Once collected, the paper has to be sorted by hand by people trained to recognise various types of paper. This is necessary because some types of paper can only be made from particular kinds of recycled fibre. The sorted paper then has to be repulped or mixed with water and broken down into its individual fibres. This mixture is called stock and may contain a wide variety of contaminating materials, particularly if it is made from mixed waste paper which has had little sorting. Various machinery is used to remove other materials from the stock. After passing through the repulping process, the fibres from printed waste paper are grey in colour because the printing ink has soaked into the individual fibres. This recycled material can only be used in products where the grey colour does not matter, such as cardboard boxes but if the grey colour is not acceptable, the fibres must be de-inked. This involves adding chemicals such as caustic soda or other alkalis, soaps and detergents, water-hardening agents such as calcium chloride, frothing agents and bleaching agents. Before the recycled fibres can be made into paper they must be refined or treated in such a way that they bond together.
+
 - **E** Most paper products must contain some virgin fibre as well as recycled fibres and unlike glass, paper cannot be recycled indefinitely. Most paper is down-cycled which means that a product made from recycled paper is of an inferior quality to the original paper. Recycling paper is beneficial in that it saves some of the energy, labour and capital that goes into producing virgin pulp. However, recycling requires the use of fossil fuel, a non-renewable energy source, to collect the waste paper from the community and to process it to produce new paper. And the recycling process still creates emissions which require treatment before they can be disposed of safely. Nevertheless, paper recycling is an important economical and environmental practice but one which must be carried out in a rational and viable manner for it to be useful to both industry and the community.
 
-#### *Questions 30-36*
+##### Questions 30-36
 
 *Complete the summary below of the first two paragraphs of the Reading Passage. Choose ONE OR TWO WORDS from the Reading Passage for each answer. Write your answers in boxes 30-36 on your answer sheet.*
 
-#### **SUMMARY**
-
-*Example*
-
-From the point of view of recycling, paper has two advantages over minerals and **oil**
+SUMMARY
 
 in that firstly it comes from a resource which is ... **(30)** ... and secondly it is less threatening to our environment when we throw it away because it is ... **(31)** ... Although Australia's record in the re-use of waste paper is good, it is still necessary to use a combination of recycled fibre and ... **(32)** .. to make new paper. The paper industry has contributed positively and people have also been encouraged by ... **(33)** ... to collect their waste on a regular basis. One major difficulty is the removal of ink from used paper but ... **(34)** ... are being made in this area. However, we need to learn to accept paper which is generally of a lower ... **(35)** ... than before and to sort our waste paper by removing .. **(36)** .. before discarding it for collection.
 
-#### *Questions 37-41*
+
+##### Questions 37-41
 
 *Look at paragraphs C, D, and E and, using the information in the passage, complete the flow chart below. Write your answers in boxes 37-41 on your answer sheet. Use ONE OR TWO WORDS for each answer.*
 
-| Waste paper collected from:   | The paper is then |
-|-------------------------------|-------------------|
-| Factories<br>→                | (38)              |
-| Retail stores                 |                   |
-| (37)                          |                   |
-| Paper converters and printers | ↓                 |
-| Households                    | and               |
-|                               | (39)              |
-|                               | by adding water   |
-|                               | ↓                 |
-| The fibres are then           | Chemicals are     |
-| ←<br>(41)<br>                 | added in order to |
-|                               | (40)              |
+![](_page_104_Picture_1a.jpeg)
 
-#### **WRITING**
+- **(37)** _________
+- **(38)** _________
+- **(39)** _________
+- **(40)** _________
+- **(41)** _________
+
+### WRITING
 
 #### WRITING TASK 1
 
@@ -2486,176 +2595,257 @@ As part of a class assigment you have to write about the following topic:
 
 You should write at least 250 words.
 
-### **Tapescripts**
+## TAPESCRIPTS
 
-#### **PRACTICE TEST 1**
+### PRACTICE TEST 1
 
-#### **SECTION 1**
+#### SECTION 1
+R = Receptionist
 
-| W = Woman<br>P = Police Officer<br>R:<br>Good evening, City Police Station. Can I help you?<br>W:<br>Oh hello, I'd like to report a stolen briefcase, please.<br>Example<br>R:<br>Just a minute and I'll put you through.<br>Repeat<br>P:<br>Lost property. Can I help you?<br>W:<br>Oh, yes. I've had my briefcase stolen.<br>P:<br>OK … I'll take some details … Tell me what it looks like, first of all.<br>W:<br>Well … it's a soft leather one, you know, not a heavy box-type like a man's.<br>P:<br>Mmm … and how does it close?<br>W:<br>It's got buckles at the front two of them They're gold-plated ones.<br>Q1<br>P:<br>Fine … Was it locked?<br>W:<br>No, I'm afraid not.<br>P:<br>Never mind. Any distinguishing features?<br>W:<br>Pardon?<br>P:<br>Any marks or badges on it that make it stand out?<br>W:<br>Only the brand name.<br>P:<br>And where's that?<br>W:<br>It's on the back … at the bottom in the left-hand corner. It's Sagi. Oh and<br>Q2<br>there's a scratch … it's quite bad but small … directly above the brand<br>name. I did it recently putting it on my bike.<br>P:<br>Right, got that. So, what did you have inside the briefcase?<br>W:<br>Well all my papers from college. It's so frustrating but, thank goodness for<br>computers, I haven't lost them completely!<br>P:<br>Yes, you're lucky.<br>W:<br>I had my wallet in my pocket so I didn't lose that but there were also my pens<br>Q3<br>which I got for my birthday and a novel I was planning to read on the train.<br>P:<br>Right. Where exactly did you lose the briefcase?<br>W:<br>Well … I couldn't believe it. I was standing on the platform … it was right<br>next to me.<br>P:<br>You were holding it?<br>W:<br>I'd just put it down on the floor but I could almost feel it beside me. I was<br>Q4<br>watching for my tram because sometimes it comes early and then next time I | R = Receptionist                   |  |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------|--|
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                    |  |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | looked, my briefcase wasn't there. |  |
-| P:<br>And what time was this?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |                                    |  |
-| W:<br>Ah … it was … it must have been about 5.20 … no a bit later. I'd say 5.30<br>Q5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |                                    |  |
+W = Woman
 
-because it was just getting crowded and the train normally comes at about twenty-five to six.
+P = Police Officer
 
---------------------------------------------------------------------------------------
+R: Good evening, City Police Station. Can I help you?
 
-- P: Right, if you'll just give me some personal details ...
-- W: Yes.
-- P: What name is it?
-- W: I'm Mary Prescott.
-- P: Can you spell that?
-- W: Yes, it's P-R E-S-C-O-T-T. *Q6*
-- P: And your address?
-- W: Flat 2, 41, Fountain Road, Canterbury. *Qs 7 and 8*
-- P: Fountain Road.
-- W: Yes, number 41.
-- P: And have you got a contact telephone number?
-- W: Yes, it's 7-5 double 2-3-9.
-- P: 7-5-double 239. Fine. One last question what would you say the value of *Q9* your briefcase is?
-- W: Including the contents?
-- P: Yes, Just a rough estimate is fine.
-- W: I'm not sure. Well, the briefcase itself is quite new; I bought it last month for £40. I suppose about £65. The contents are worth about 20 or 25 pounds at *Q10* least.
-- P: That's fine. Well, if you could come down to the station tomorrow, you can sign this form and have a look at what we've got here.
-- W: OK, thanks. 'Bye.
-- P: Goodbye.
+W: Oh hello, I'd like to report a stolen briefcase, please. (Example)
 
-#### **SECTION 2**
+R: Just a minute and I'll put you through.
 
-*Newsreader:* This is the 6 o'clock news for Tuesday 25 November. And first the headlines:
+Repeat
 
-| The Prime Minister has promised to help the drought stricken farmers in the        | Example |
-|------------------------------------------------------------------------------------|---------|
-| northern part of the country who haven't seen rain for nearly two years. And in    |         |
-| Sydney a group of school children are successfully rescued from a plane which      | Q11     |
-| landed in the sea shortly after take-off. Transport workers are on strike in       |         |
-| Melbourne over a pay claim and the strike looks set to spread to other states. And | Q12     |
-| on a fashionable note, there s to be a new look for the staff of QANTAS,           | Q13     |
-| Australia's national airline.                                                      |         |
-|                                                                                    |         |
+P: Lost property. Can I help you?
 
---------------------------------------------------------------------------------------
+W: Oh, yes. I've had my briefcase stolen.
 
-The Prime Minister has pledged today that he will make two hundred and fifty *Q14* million dollars available to help the drought stricken farmers who have not seen ram for years, get through the next five years. Money that was to have been spent on the re-structuring of Sydney's road system has been re-allocated to what the *Q15* P:rime Minister described as 'a more worthy cause'. Farmers are to receive financial assistance to help see them through the worst drought in over 50 years. Many farmers feel that while the money is welcome it has come too late to save *Q16* them and their farms from financial ruin and are angry that the government did not act sooner.
+P: OK ... I'll take some details ... Tell me what it looks like, first of all.
 
-A group of school children who were travelling in a privately chartered *Q17* aeroplane from Sydney to Queensland to take part in a musical concert found themselves swimming for the shore when their aeroplane had to land in the sea just three minutes after taking off from Sydney airport. The pilot managed to *Q18* bring the aircraft and its 50 passengers down safely in the calm waters of Botany Bay where boats and pleasurecraft were able to come to the rescue of the boys. *Q19* The fact that it was a weekend meant that there were hundreds of boats in the bay enjoying the good weather and this undoubtedly helped the rescue operation. 'We owe our lives to the skill of the pilot,' said one of the boys, but the *Q20* pilot replied modestly that it was 'all part of a day's work'. However, all their *Q21* musical instruments were lost and they never got to play at their concert.
+W: Well ... it's a soft leather one, you know, not a heavy box-type like a man's.
 
-#### **SECTION 3**
+P: Mmm ... and how does it close?
 
+W: It's got buckles at the front ... two of them. They're gold-plated ones. (Q1)  
+
+P: Fine ... Was it locked?  
+
+W: No, I'm afraid not.  
+
+P: Never mind. Any distinguishing features?  
+
+W: Pardon?  
+
+P: Any marks or badges on it that make it stand out?  
+
+W: Only the brand name.  
+
+P: And where's that?  
+
+W: It's on the back ... at the bottom in the left-hand corner. It's Sagi. Oh and there's a scratch ... it's quite bad but small ... directly above the brand name. I did it recently putting it on my bike. (Q2)  
+
+P: Right, got that. So, what did you have inside the briefcase?
+
+W: Well all my papers from college. It's so frustrating but, thank goodness for computers, I haven't lost them completely!
+
+P: Yes, you're lucky.
+
+W: I had my wallet in my pocket so I didn't lose that but there were also my pens which I got for my birthday and a novel I was planning to read on the train. (Q3)
+
+P: Right. Where exactly did you lose the briefcase?
+
+W: Well ... I couldn't believe it. I was standing on the platform ... it was right next to me.
+
+P: You were holding it?
+
+W: I'd just put it down on the floor but I could almost feel it beside me. I was watching for my tram because sometimes it comes early and then next time I looked, my briefcase wasn't there. (Q4)
+
+P: And what time was this?
+
+W: Ah ... it was ... it must have been about 5.20 ... no a bit later. I'd say 5.30 (Q5)
+
+because it was just getting crowded and the train normally comes at about twenty-five to six.  
+
+P: Right, if you’ll just give me some personal details ...  
+
+W: Yes.  
+
+P: What name is it?  
+
+W: I’m Mary Prescott.  
+
+P: Can you spell that?  
+
+W: Yes, it’s P-R E-S-C-O-T-T. (Q6)  
+
+P: And your address?
+
+W: Flat 2, 41, Fountain Road, Canterbury. (Qs 7 and 8)
+
+P: Fountain Road.
+
+W: Yes, number 41.
+
+P: And have you got a contact telephone number?
+
+W: Yes, it’s 7-5 double 2-3-9.
+
+P: 7-5-double 239. Fine. One last question — what would you say the value of (Q9) your briefcase is?  
+
+W: Including the contents?  
+
+P: Yes, Just a rough estimate is fine.  
+
+W: I’m not sure. Well, the briefcase itself is quite new; I bought it last month for £40. I suppose about £65. The contents are worth about 20 or 25 pounds at least. (Q10)  
+
+P: That’s fine. Well, if you could come down to the station tomorrow, you can sign this form and have a look at what we’ve got here.
+
+W: OK, thanks. 'Bye.
+
+P: Goodbye.
+
+#### SECTION 2
+
+Newsreader: This is the 6 o’clock news for Tuesday 25 November. And first the headlines:
+
+The Prime Minister has promised to help the drought stricken farmers in the northern part of the country who haven’t seen rain for nearly two years. (Example)
+
+And in Sydney a group of school children are successfully rescued from a plane which landed in the sea shortly after take-off. (Q11)
+
+Transport workers are on strike in Melbourne over a pay claim and the strike looks set to spread to other states. (Q12)
+
+And on a fashionable note, there s to be a new look for the staff of QANTAS, Australia’s national airline. (Q13)
+
+The Prime Minister has pledged today that he will make two hundred and fifty million dollars available to help the drought stricken farmers who have not seen rain for years, get through the next five years. (Q14)
+
+Money that was to have been spent on the re-structuring of Sydney’s road system has been re-allocated to what the Prime Minister described as 'a more worthy cause'. (Q15)
+
+Farmers are to receive financial assistance to help see them through the worst drought in over 50 years. Many farmers feel that while the money is welcome it has come too late to save (Q16)
+
+them and their farms from financial ruin and are angry that the government did not act sooner.
+
+A group of school children who were travelling in a privately chartered aeroplane from Sydney to Queensland to take part in a musical concert found themselves swimming for the shore when their aeroplane had to land in the sea just three minutes after taking off from Sydney airport. The pilot managed to bring the aircraft and its 50 passengers down safely in the calm waters of Botany Bay where boats and pleasurecraft were able to come to the rescue of the boys. The fact that it was a weekend meant that there were hundreds of boats in the bay enjoying the good weather and this undoubtedly helped the rescue operation. 'We owe our lives to the skill of the pilot,' said one of the boys, but the pilot replied modestly that it was 'all part of a day’s work'. However, all their musical instruments were lost and they never got to play at their concert.
+
+
+
+#### SECTION 3
 M = male student
 
 F = female lecturer
 
-- M: Hello can I come in?
-- F: Oh yes, come in. How can I help you?
-- M: I was looking for the Economics office. I've been all over the Arts Faculty *Example* building looking for it but I could only find the School of Accounting and Economic History. Is this the right place?
-- F: Yes this is the School of Economics.
-- M: Oh good. Um, I'm a new student and I was wondering if someone could give me some information.
-- F: Well I might be able to help. I lecture on that program. What do you need to Know?
-- M: Quite a few things, actually. Firstly, how many lectures a week do I have to Attend?
-- F: Ah, well, the Economics I course is a double unit so there are two lectures a week and one tutorial. The lectures are scheduled for Tuesday and Thursday.
-- M: What time?
-- F: Let me see … You know this information is all in the handout which you *Q22* should have received yesterday at the orientation meeting.
-- M: Oh, was there a meeting yesterday? I didn't know about that … no one mentioned …
-- F: Yes, there was, but never mind. Now lectures are at four m the afternoon.
-- M: Four's a bit late. I've got a part time job that starts at four thirty.
-- F: Well, you can't be in two places at once, can you, and attendance at lectures *Q23* is necessary. We expect at least 90% attendance at this university you know.
-- M: 90%! That's high. Do they enforce that rule?
-- F: Yes, we do. We're pretty strict about it actually.
-- M: And what times have been set down for the tutorials do you have that Information?
-- F: That's a very well attended course so there's a number of tutorial times.
+M: Hello can I come in?
 
-#### *Practice Test 1*
+F: Oh yes, come in. How can I help you?
 
-|          | Monday,<br>Wednesday and Friday, all at 9 o'clock. Yours will be allocated at<br>the first lecture.                      | Q24 |
-|----------|--------------------------------------------------------------------------------------------------------------------------|-----|
-| M:<br>F: | Can't I choose the time?<br>Maybe, maybe not You'll have to talk to the lecturer on the course.                          | Q25 |
-| M:       | Dr. Roberts is his name.<br>Oh, OK.<br>                                                                                  |     |
-| F:       | Anything else I can help you with while you're here?                                                                     |     |
-| M:       | Well, yes, actually. Do you know what the course requirements are? I mean,<br>how much work is expected for this course? |     |
-| F:       | Well, you have to complete a tutorial paper.                                                                             |     |
-| M:       | What does that involve?                                                                                                  |     |
-| F:       | Well, it's a piece of work on a given topic based on some set reading texts.                                             |     |
-|          | You'll have to give a small talk to your tutorial group                                                                  | Q26 |
-| M:       | How long does that have to be?                                                                                           |     |
-| F:       | Oh, about 25 minutes usually.                                                                                            |     |
-| M:       | I have to talk for 25 minutes?                                                                                           |     |
-| F:       | Yes, that's right. And then you have to write up your piece of work and give<br>it to the lecturer to be marked.         | Q27 |
-| M:       | Right. And is that all?                                                                                                  |     |
-| F:       | No. You also have to complete a 3,000 word essay on a topic.                                                             |     |
-| M:       | Can I choose the topic?                                                                                                  |     |
-| F:       | Yes, usually you can.                                                                                                    | Q28 |
-| M:       | Right. That shouldn't be too bad.                                                                                        |     |
-| F:       | And in addition to that there is an exam.                                                                                |     |
-| M:       | An exam! What sort of exam?                                                                                              |     |
-| F:       | Well, it's an open book exam.                                                                                            | Q29 |
-| M:       | Does that mean I can have the text book with me during the exam?                                                         |     |
-| F:       | Yes, that's right.                                                                                                       |     |
-| M:       | And can you give me any idea about the content of the first year of<br>Economics so that I can get into some reading?    |     |
-| F:       | Well, you'll be getting the reading list next week when lectures start. All the<br>books are in the library.             |     |
-| M:       | Yes, but won't everyone else take them out as soon as they get the reading<br>list too?                                  |     |
-| F:       | Well, yes, they might. But most of the important ones are held in Closed                                                 | Q30 |
-|          | Reserve that's a part of the library where you can go to read books but<br>you can't take them out of the building.      |     |
-| M:       | What did you call that section of the library?                                                                           |     |
-| F:       | Closed Reserve. However, we do recommend that you buy the core books.                                                    |     |
-|          | You'll find them useful and you'll need them for the exam.                                                               |     |
-| M:       | Yes, I suppose I will. But what is the focus of the course?                                                              |     |
-| F:       | Well, the course at this university has a vocational focus, that is a focus on                                           | Q31 |
-|          | preparing its graduates for work, so we're orientated very much towards<br>employment.                                   |     |
-| M:       | So my chances of getting a job are good?                                                                                 |     |
-| F:       | Well, provided you get good results.                                                                                     |     |
-| M:       | Well look thanks for your time. You've been really helpful.                                                              |     |
+M: I was looking for the Economics office. I’ve been all over the Arts Faculty building looking for it but I could only find the School of Accounting and Economic History. Is this the right place? (Example)  
 
-F: That's fine. See you next week then.
+F: Yes this is the School of Economics.  
 
-#### **SECTION 4**
+M: Oh good. Um, I’m a new student and I was wondering if someone could give me some information.  
 
-#### *Lecturer:*
+F: Well I might be able to help. I lecture on that program. What do you need to Know?  
 
-Good morning and welcome to the University of Westlands. My name is Marcia Mayhew and I'm the co-ordmator of the Bachelor of Social Science degree. This morning I'd like to tell you about the structure of the university and about some of the requirements of the degree that you're about to enter. The Bachelor of Social Science is in one faculty within the university, that is the faculty where I *Q32* work, known as Arts and Social Sciences. Here on this campus we also have the faculties of Architecture, Law and Science and Technology among others. It's important to know something about the structure of the faculty because, as you go through your course, you may need to call on members of the staff to help you. At the top of the faculty we have a dean and below the dean we have three *Q33* divisions; each division has a divisional head and your degree is located in the Division of Social Sciences. Within each of the divisions, there are the departments and each of these offers the different degrees. For instance two of the departments which offer the major subjects for your award are Sociology and Psychology. Each has a departmental head but for practical purposes the people you are going to see the most of are myself as co-ordinator of the social sciences degree and the actual lecturers who are teaching the subjects that you are taking. For instance in the first semester you'll be doing four subjects psychology sociology history and *Q34* economics. If you have any problems or difficulties, not that I'm anticipating you will, but you never know, then you should go and see your lecturers. For instance, you may find that you can't meet a deadline for an essay or perhaps you re having *Q35* problems with attendance. These seem to be the two most common problems that *Q36* students face. -------------------------------------------------------------------------------------- If your lecturers are unavailable, you can always come and see me in *my* office.
+M: Quite a few things, actually. Firstly, how many lectures a week do I have to Attend?  
+
+F: Ah, well, the Economics I course is a double unit so there are two lectures a week and one tutorial. The lectures are scheduled for Tuesday and Thursday.  
+
+M: What time?
+
+F: Let me see … You know this information is all in the handout which you should have received yesterday at the orientation meeting. (Q22)
+
+M: Oh, was there a meeting yesterday? I didn’t know about that … no one mentioned …
+
+F: Yes, there was, but never mind. Now lectures are at four in the afternoon.
+
+M: Four’s a bit late. I’ve got a part time job that starts at four thirty.
+
+F: Well, you can’t be in two places at once, can you, and attendance at lectures is necessary. We expect at least 90% attendance at this university you know. (Q23)
+
+M: 90%! That’s high. Do they enforce that rule?  
+
+F: Yes, we do. We’re pretty strict about it actually.  
+
+M: And what times have been set down for the tutorials — do you have that Information?  
+
+F: That’s a very well attended course so there’s a number of tutorial times.
+
+Monday, Wednesday and Friday, all at 9 o’clock. Yours will be allocated at the first lecture. (Q24)
+
+M: Can’t I choose the time?
+
+F: Maybe, maybe not... You’ll have to talk to the lecturer on the course. Dr. Roberts is his name. (Q25)
+
+M: Oh, OK.  
+
+F: Anything else I can help you with while you’re here?  
+
+M: Well, yes, actually. Do you know what the course requirements are? I mean, how much work is expected for this course?  
+
+F: Well, you have to complete a tutorial paper.  
+
+M: What does that involve?  
+
+F: Well, it’s a piece of work on a given topic based on some set reading texts. You’ll have to give a small talk to your tutorial group ... (Q26)  
+
+M: How long does that have to be?
+
+F: Oh, about 25 minutes usually.
+
+M: I have to talk for 25 minutes?
+
+F: Yes, that’s right. And then you have to write up your piece of work and give it to the lecturer to be marked. (Q27)
+
+M: Right. And is that all?
+
+F: No. You also have to complete a 3,000 word essay on a topic.
+
+M: Can I choose the topic?
+
+F: Yes, usually you can. (Q28)
+
+M: Right. That shouldn’t be too bad.
+
+F: And in addition to that there is an exam.
+
+M: An exam! What sort of exam?
+
+F: Well, it’s an open book exam. (Q29)  
+
+M: Does that mean I can have the text book with me during the exam?  
+
+F: Yes, that’s right.  
+
+M: And can you give me any idea about the content of the first year of Economics so that I can get into some reading?  
+
+F: Well, you’ll be getting the reading list next week when lectures start. All the books are in the library.  
+
+M: Yes, but won’t everyone else take them out as soon as they get the reading list too?  
+
+F: Well, yes, they might. But most of the important ones are held in Closed Reserve ... that’s a part of the library where you can go to read books but you can’t take them out of the building. (Q30)  
+
+M: What did you call that section of the library?
+
+F: Closed Reserve. However, we do recommend that you buy the core books. You’ll find them useful and you’ll need them for the exam.
+
+M: Yes, I suppose I will. But what is the focus of the course?
+
+F: Well, the course at this university has a vocational focus, that is a focus on preparing its graduates for work, so we’re orientated very much towards employment. (Q31)
+
+M: So my chances of getting a job are good?
+
+F: Well, provided you get good results.
+
+M: Well look thanks for your time. You’ve been really helpful.
+
+#### SECTION 4
+
+**Lecturer:**
+
+Good morning and welcome to the University of Westlands. My name is Marcia Mayhew and I'm the co-ordmator of the Bachelor of Social Science degree. This morning I'd like to tell you about the structure of the university and about some of the requirements of the degree that you're about to enter. The Bachelor of Social Science is in one faculty within the university, that is the faculty where I *Q32* work, known as Arts and Social Sciences. Here on this campus we also have the faculties of Architecture, Law and Science and Technology among others. It's important to know something about the structure of the faculty because, as you go through your course, you may need to call on members of the staff to help you. At the top of the faculty we have a dean and below the dean we have three *Q33* divisions; each division has a divisional head and your degree is located in the Division of Social Sciences. Within each of the divisions, there are the departments and each of these offers the different degrees. For instance two of the departments which offer the major subjects for your award are Sociology and Psychology. Each has a departmental head but for practical purposes the people you are going to see the most of are myself as co-ordinator of the social sciences degree and the actual lecturers who are teaching the subjects that you are taking. For instance in the first semester you'll be doing four subjects psychology sociology history and *Q34* economics. If you have any problems or difficulties, not that I'm anticipating you will, but you never know, then you should go and see your lecturers. For instance, you may find that you can't meet a deadline for an essay or perhaps you re having *Q35* problems with attendance. These seem to be the two most common problems that *Q36* students face. 
+
+If your lecturers are unavailable, you can always come and see me in *my* office.
 
 I'm available on Wednesday and Thursday mornings and on Friday afternoons *Q37* Outside these hours, perhaps you could ring the secretary and make an appointment. Now you'll note that all of the subjects which you undertake in the first year are composed of lectures and tutorials. A lecture is about an hour long and a tutorial usually runs for about two hours. A lecture is rather like what I am doing now where one person will talk to all of you together on a subject. We do ask you to try to attend the lectures.
 
-A tutorial is perhaps where most of the learning occurs at a university. You will be divided into groups of between 12 and 15 students and each week one of you will have to present a piece of work to the group as a whole and then the group will discuss what you've said. It's this discussion, this exchange of ideas, which *Q38* really constitutes the basis of university learning, in my view. Listening to lectures in many ways is just giving you information that you could access for yourself in
-
-#### *Practice Test 2*
-
-the library but the discussion at the tutorial is very important. This doesn't mean that you shouldn't go to the lectures though!
+A tutorial is perhaps where most of the learning occurs at a university. You will be divided into groups of between 12 and 15 students and each week one of you will have to present a piece of work to the group as a whole and then the group will discuss what you've said. It's this discussion, this exchange of ideas, which *Q38* really constitutes the basis of university learning, in my view. Listening to lectures in many ways is just giving you information that you could access for yourself in the library but the discussion at the tutorial is very important. This doesn't mean that you shouldn't go to the lectures though!
 
 Other factors to be particularly concerned about are the structure of essays and delivery of written material and in particular I would like to mention the question of plagiarism. Plagiarism is taking other people's work without acknowledging it, that is, without saying where it comes from. Of course all essays are based on research done by other people but you must remember to attribute the work to the *Q39* original writer. And while it's a good idea to work with other people don't hand in work which is exactly the same as your friend's work because we will notice! If you don't acknowledge the source of your information then you run the risk of *Q40* failing the subject or in very serious cases you might be denied entry to the university.
 
@@ -2663,110 +2853,115 @@ Last but not least, stay in touch with us. If things are getting you down, don't
 
 *standing of the talk*
 
-#### **PRACTICE TEST 2**
+### PRACTICE TEST 2
 
-#### **SECTION 1**
+#### SECTION 1
+C = Counsellor  
 
-C = Counsellor
+K = Kate  
 
-K = Kate
+L = Luki  
 
-L = Luki
+C: Hi there, Kate. Come on in. How are you today?  
 
-- C: Hi there, Kate. Come on in. How are you today?
-- K: Fine thanks.
-- C: Hi, Luki. Hows things?
-- L: OK.
-- C: Well, as I explained on the phone, Im a Counsellor here at the Student Services section of the university and Im interviewing overseas students to help me draw up a guide for new students so Id be grateful if you could tell me a little about your time since youve been here in Cambridge.
-- K: Right.
-- L: Good idea.
-- C: Now, Kate lets start with you. OK, um this is your second semester isnt It? Could you tell us something about your first impressions of the town when you arrived?
-- K: Yeah well first of all I was struck by how quiet it is here in the evening Example Repeat
-- C: Yes, I suppose Cambridge is a quiet place. Where did you live when you first arrived?
-- K: Well, I went straight into student accommodation; it was a kind of student Q1 hostel.
-- C: Ah right, so you didnt have to worry about doing your own cooking or anything like that?
+K: Fine thanks.  
 
-| K:<br>C: | No, but sometimes I wished I had! The food at the hostel was awful.<br>Oh dear. But how were the other students?                                           | Q2  |
-|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|
-| K:       | To be honest I haven't managed to make many friends even though the place<br>is full. People seem to keep to themselves; they're not really very friendly. | Q3  |
-| C:       | Oh I'm sorry to hear that. Well, what about the actual course? You're<br>studying … uh?                                                                    |     |
-| K:       | I'm doing a Masters by coursework in Environmental Studies.                                                                                                |     |
-| C:       | Ah, right, and how are you finding that?                                                                                                                   |     |
-| K:       | Yeah, well, it's been pretty good really. I've enjoyed the course, but I feel                                                                              |     |
-|          | there hasn't been enough contact with the lecturers. They all seem to be                                                                                   | Q4  |
-|          | incredibly busy. The only chance I've really had to talk to them was on the                                                                                |     |
-|          | field trip.                                                                                                                                                |     |
-| C:       | Well that's no good. Could anything be done to improve the course in your<br>opinion?                                                                      |     |
-| K:       | Well … I think it would be helpful to have meetings with lecturers on the<br>course. Say once a fortnight — something like that.                           | Q5  |
-| C:       | Regular meetings. Yes that could certainly help. Now Kate, we'll come back.                                                                                |     |
-|          | to you in a minute, but I'd just like to ask Luki some questions.                                                                                          |     |
-| C:       | <br>Luki, Where are you from?                                                                                                                              |     |
-| L:       | I am from Indonesia.                                                                                                                                       |     |
-| C:       | And how did you find Cambridge when you first arrived?                                                                                                     |     |
-| L:       | Well, I like it here. I think the city is very beautiful.                                                                                                  |     |
-| C:       | What about your accommodation? Was that OK?                                                                                                                |     |
-| L:       | Yes, OK. At first I stayed with a family for three months. They were very                                                                                  | Q6  |
-|          | kind to me but they had three young children and I found it difficult to                                                                                   | Q7  |
-|          | study                                                                                                                                                      |     |
-| C:       | Right, I see.                                                                                                                                              |     |
-| L:       | So after three months I moved out and now I live with two other students in                                                                                |     |
-|          | a student house. It's much cheaper and we like it there.                                                                                                   | Q8  |
-| C:       | Good, and what about your studies? What are you studying?                                                                                                  |     |
-| L:       | I'm doing a Bachelor of Computing.                                                                                                                         | Q9  |
-| C:       | Computing. I see. Um, apart from the language difficulties, if you can                                                                                     |     |
-|          | separate them, how have you found the course?                                                                                                              |     |
-| L:       | OK, but …                                                                                                                                                  |     |
-| C:       | Yes, go on.                                                                                                                                                |     |
-| L:       | Well, the main difficulty for me is getting time on the computers in the                                                                                   |     |
-|          | computer room. It's always busy and this makes it very hard to do my                                                                                       |     |
-|          | practical work.                                                                                                                                            |     |
-| C:       | Yes, I'm sure it would. Can you reserve time in the computer room?                                                                                         |     |
-| L:       | No, you can't … but it would certainly help if we could<br>reserve computer                                                                                |     |
-|          | time.                                                                                                                                                      | Q10 |
-| C:       | Yes. I'll look into that and see if something can't be done to improve things                                                                              |     |
-|          | over there. Now let's go back to Kate                                                                                                                      |     |
+C: Hi, Luki. How’s things?  
 
-#### **SECTION 2**
+L: OK.  
 
-#### *Radio presenter:*
+C: Well, as I explained on the phone, I’m a Counsellor here at the Student Services section of the university and I’m interviewing overseas students to help me draw up a guide for new students so I’d be grateful if you could tell me a little about your time since you’ve been here in Cambridge.  
 
-Well, last week we talked about buying camping equipment and today I'd like to talk to you about buying a bicycle. A simple enough exercise, you might imagine, but there are lots of things to look out for to make sure you get the best deal for
+K: Right.
 
-| your money.                                                                                 |     |
-|---------------------------------------------------------------------------------------------|-----|
-| Well, the range of bicycles is enormous — there are racing bikes, touring bikes,            |     |
-| mountain bikes or just plain ordinary bikes for riding round town. They vary                | Q11 |
-| enormously in two basic ways: price and quality. This means that the choice you             | Q12 |
-| make will probably be determined by the amount of money you want to pay, your               |     |
-| own personal needs, what is actually available or a compromise of all three things.         |     |
-| However, in broad terms you can spend anything from \$50 to \$2,000 on a bike so,           | Q13 |
-| you'll need to know what you are looking for.                                               |     |
-| Single speed cycles — that is bikes with no gears, are really only suited to short,         |     |
-| casual rides. Their attraction is their simplicity and reliability. After years of          | Q14 |
-| neglect they still manage to function, though not always too efficiently. If it's basic     |     |
-| transport you're after then you can't go wrong.                                             |     |
-| Three speed cycles on the other hand are all that is really necessary for most              |     |
-| town riding, going to the shops and things like that. Like the single speed bike            | Q15 |
-| they are simple and reliable. If you are going to be going up and down lots of              |     |
-| hills, then you'll probably want something more efficient.                                  |     |
-| Five and ten speed bicycles are best suited to riding over long distances or hilly          |     |
-| terrain and to serious touring, so if it's serious touring you're interested in, get a five | Q16 |
-| or ten speed bike. However it's worth remembering that the difference in price              |     |
-| between a five and ten speed cycle is usually very little and so it's well worth            | Q17 |
-| paying that little bit extra to get the ten speed one. So I would tend to recommend         |     |
-| the ten speed bike as the price is similar — however you'll be getting better               |     |
-| quality components.                                                                         | Q18 |
-| Now the next thing we need to look at is size. Buying a cycle is like buying                |     |
-| clothes, first of all you find the right size and then you try it on to see if it fits.     | Q19 |
-| Contrary to what you might imagine, the size of the cycle is not determined by the          |     |
-| size of the wheels (except in children's cycles), but by the size of the frame. So          | Q20 |
-|                                                                                             |     |
+L: Good idea.
 
-you'll need to measure the length of your legs and arms to get a frame that is the right size for you.
+C: Now, Kate let’s start with you. OK, um ... this is your second semester isn’t It? Could you tell us something about your first impressions of the town when you arrived?
 
-Well, that's all from Helpful Hints for today …
+K: Yeah well first of all I was struck by how quiet it is here in the evening (Example)
 
-#### **SECTION 3**
+Repeat
+
+C: Yes, I suppose Cambridge is a quiet place. Where did you live when you first arrived?
+
+K: Well, I went straight into student accommodation; it was a kind of student hostel. (Q1)
+
+C: Ah right, so you didn’t have to worry about doing your own cooking or anything like that?
+
+K: No, but sometimes I wished I had! The food at the hostel was awful. (Q2)
+
+C: Oh dear. But how were the other students?
+
+K: To be honest I haven't managed to make many friends even though the place is full. People seem to keep to themselves; they're not really very friendly. (Q3)
+
+C: Oh I'm sorry to hear that. Well, what about the actual course? You're studying ... uh?
+
+K: I'm doing a Masters by coursework in Environmental Studies.
+
+C: Ah, right, and how are you finding that?
+
+K: Yeah, well, it's been pretty good really. I've enjoyed the course, but I feel there hasn't been enough contact with the lecturers. They all seem to be incredibly busy. The only chance I've really had to talk to them was on the field trip. (Q4)
+
+C: Well that's no good. Could anything be done to improve the course in your opinion?
+
+K: Well ... I think it would be helpful to have meetings with lecturers on the course. Say once a fortnight — something like that. (Q5)
+
+C: Regular meetings. Yes that could certainly help. Now Kate, we'll come back to you in a minute, but I'd just like to ask Luki some questions.
+
+C: Luki, Where are you from?
+
+L: I am from Indonesia.
+
+C: And how did you find Cambridge when you first arrived?
+
+L: Well, I like it here. I think the city is very beautiful.
+
+C: What about your accommodation? Was that OK?
+
+L: Yes, OK. At first I stayed with a family for three months. They were very kind to me but they had three young children and I found it difficult to study (Q6, Q7)
+
+C: Right, I see.
+
+L: So after three months I moved out and now I live with two other students in a student house. It's much cheaper and we like it there. (Q8)
+
+C: Good, and what about your studies? What are you studying?
+
+L: I'm doing a Bachelor of Computing. (Q9)
+
+C: Computing. I see. Um, apart from the language difficulties, if you can separate them, how have you found the course?
+
+L: OK, but ...
+
+C: Yes, go on.
+
+L: Well, the main difficulty for me is getting time on the computers in the computer room. It's always busy and this makes it very hard to do my practical work.
+
+C: Yes, I'm sure it would. Can you reserve time in the computer room?
+
+L: No, you can't ... but it would certainly help if we could reserve computer time. (Q10)
+
+C: Yes. I'll look into that and see if something can't be done to improve things over there. Now let's go back to Kate...
+
+
+#### SECTION 2
+
+Radio presenter:  
+
+Well, last week we talked about buying camping equipment and today I’d like to talk to you about buying a bicycle. A simple enough exercise, you might imagine, but there are lots of things to look out for to make sure you get the best deal for your money.  
+
+Well, the range of bicycles is enormous — there are racing bikes, touring bikes, mountain bikes or just plain ordinary bikes for riding round town. They vary (Q11) enormously in two basic ways: price and quality. This means that the choice you (Q12) make will probably be determined by the amount of money you want to pay, your own personal needs, what is actually available or a compromise of all three things. However, in broad terms you can spend anything from $50 to $2,000 on a bike so, (Q13) you’ll need to know what you are looking for.  
+
+Single speed cycles — that is bikes with no gears, are really only suited to short, casual rides. Their attraction is their simplicity and reliability. After years of (Q14) neglect they still manage to function, though not always too efficiently. If it’s basic transport you’re after then you can’t go wrong.  
+
+Three speed cycles on the other hand are all that is really necessary for most town riding, going to the shops and things like that. Like the single speed bike (Q15) they are simple and reliable. If you are going to be going up and down lots of hills, then you’ll probably want something more efficient.  
+
+Five and ten speed bicycles are best suited to riding over long distances or hilly terrain and to serious touring, so if it’s serious touring you’re interested in, get a five (Q16) or ten speed bike. However it’s worth remembering that the difference in price between a five and ten speed cycle is usually very little and so it’s well worth (Q17) paying that little bit extra to get the ten speed one. So I would tend to recommend the ten speed bike as the price is similar — however you’ll be getting better quality components. (Q18)  
+
+Now the next thing we need to look at is size. Buying a cycle is like buying clothes, first of all you find the right size and then you try it on to see if it fits. (Q19) Contrary to what you might imagine, the size of the cycle is not determined by the size of the wheels (except in children’s cycles), but by the size of the frame. So (Q20) you’ll need to measure the length of your legs and arms to get a frame that is the right size for you.
+
+Well, that’s all from Helpful Hints for today …
+
+#### SECTION 3
 
 F = Fiona
 
@@ -2776,119 +2971,111 @@ M = Martin
 - M: Oh good. I've finished it actually.
 - F: Lucky you. What did you do it on? I'm still trying to find an interesting topic.
 
-| M:       | Well … after some consideration I decided to look at the history of banana<br>growing in Australia.                  |     |  |  |
-|----------|----------------------------------------------------------------------------------------------------------------------|-----|--|--|
-| F:       | (surprised) Banana growing!                                                                                          |     |  |  |
-| M:       | Yes, banana growing.                                                                                                 |     |  |  |
-|          |                                                                                                                      |     |  |  |
-| F:<br>M: | (sarcastically) Fascinating, I'm sure!<br>Well … it's not as boring as you'd think. And I wanted to tie it in to the | Q21 |  |  |
-|          | work I've been doing on primary industries and the economy. Anyway I bet                                             |     |  |  |
-|          | there are a few things you didn't know about bananas!                                                                |     |  |  |
-| F:       | Such as?                                                                                                             |     |  |  |
-| M:       | Such as the fact that bananas were among the first plants ever to be                                                 |     |  |  |
-|          | domesticated.                                                                                                        |     |  |  |
-| F:       | Oh, really?                                                                                                          |     |  |  |
-| M:       | Yes, they're an extremely nourishing food.                                                                           | Q22 |  |  |
-| F:       | I suppose you're going to tell me the whole history of banana growing now                                            |     |  |  |
-|          | aren't you?                                                                                                          |     |  |  |
-| M:       | Well, it'd be a good practice run for my tutorial next week. I'll do the same                                        | Q23 |  |  |
-|          | for you some time.                                                                                                   |     |  |  |
-| F:       | OK. Fire away. So where were these bananas first domesticated?                                                       |     |  |  |
-| M:       | According to my research, the Cavendish banana, which is a type of banana                                            |     |  |  |
-|          | and the first type to be cultivated here, actually originated in China but they                                      |     |  |  |
-|          | had a fairly roundabout route before they got to Australia.                                                          |     |  |  |
-| F:       | You mean they didn't go straight from China to Australia?                                                            |     |  |  |
-| M:       | No, they didn't. It seems that in 1826, bananas were taken from South China                                          |     |  |  |
-|          | to England.                                                                                                          |     |  |  |
-| F:       | I suppose they would have made a welcome addition to the English diet.                                               |     |  |  |
-| M:       | Yes, I'm sure. Well apparently there was an English Duke who was                                                     |     |  |  |
-|          | particularly fond of bananas and he used to cultivate them in his hothouse,                                          |     |  |  |
-|          | which is where you have to grow them in England, of course, because of the                                           |     |  |  |
-|          | cool climate and they became quite popular in the UK. So he was the one                                              | Q24 |  |  |
-|          | responsible for cultivating the Cavendish banana which was then introduced                                           |     |  |  |
-|          | into Australia.                                                                                                      |     |  |  |
-| F:       | I see. And we've been growing them ever since?                                                                       |     |  |  |
-| M:       | Yes.                                                                                                                 |     |  |  |
-|          |                                                                                                                      |     |  |  |
-| F:       | Are they hard to grow?                                                                                               |     |  |  |
-| M:       | Well, yes and no. To grow them in your garden, no, not really. But to grow                                           |     |  |  |
-|          | them commercially you need to know what you're doing. You see you only                                               |     |  |  |
-|          | get one bunch of bananas per tree and it can take up to three years for a tree                                       | Q25 |  |  |
-|          | to bear fruit if you don't do anything special to it. But this period is greatly                                     |     |  |  |
-|          | reduced with modern growing methods, particularly in plantations where you                                           |     |  |  |
-|          | have perfect tropical conditions.                                                                                    |     |  |  |
-| F:       | Right! So what are you looking at? One year? Two years?                                                              |     |  |  |
-| M:       | No, no, around 15 months in good conditions for a tree to produce a bunch of                                         | Q26 |  |  |
-|          | bananas. And once you've got your bunch you cut the bunch and the plant down.                                        |     |  |  |
-| F:       | So how do the trees reproduce then?                                                                                  |     |  |  |
-| M:       | Well, bananas are normally grown from suckers which spring up around the                                             |     |  |  |
-|          | parent plant, usually just above the plant. They tend to like to grow uphill —                                       | Q27 |  |  |
-|          |                                                                                                                      |     |  |  |
-|          | or at least that's the common wisdom.                                                                                |     |  |  |
+M: Well ... after some consideration I decided to look at the history of banana growing in Australia.  
 
-#### *Practice Test 2*
+F: (surprised) Banana growing!  
 
-| F:<br>M:<br>F: | So that's why banana plantations are usually on hillsides, is it?<br>Yes. They grow best like that.<br>That's interesting!                                                                                                                                                                                              |                        |
-|----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
-| M:             | If you plant them in rich soil and give them plenty of water at the beginning<br>of summer, then they should be well advanced by the beginning of winter<br>when growth virtually stops. But in a country like England, they're hard to<br>grow, although you can grow them in a hothouse.                              | Q28                    |
-| F:             | But in Australia, it's not difficult?                                                                                                                                                                                                                                                                                   |                        |
-| M:             | No, though even here, the growers put plastic bags around the bunches to<br>protect them and keep them warm. If you go up to the banana growing<br>districts, you'll see all these banana trees with plastic bags on them.                                                                                              | Q29                    |
-| F:<br>M:       | But how do they stop the bananas going bad before they reach the shops?<br>Well, the banana bunches are picked well before the fruit is ripe. Once you<br>cut the bunch, the bananas stop growing but they do continue to ripen. The<br>interesting thing is that once one banana ripens, it gives off a gas which then |                        |
-|                | helps all the others to ripen so they pretty much all ripen within a few hours<br>of each other.                                                                                                                                                                                                                        | Q30                    |
-| F:             | Amazing! So do we export lots of bananas overseas, to Europe and Asia for<br>instance?                                                                                                                                                                                                                                  |                        |
-| M:             | Well, oddly enough, no. I believe New Zealand takes a small proportion of<br>the crop but otherwise they're mostly grown for the domestic market, which<br>is surprising when you think about it because we grow an enormous number<br>of bananas each year.                                                            | Q31 or 32<br>Q32 or 31 |
-| F:             | Yes, well thank you for all that information. I'm sure the tutorial paper will<br>go really well you certainly seem to have done your research on the subject.                                                                                                                                                          |                        |
-| M:             | Let's hope so.                                                                                                                                                                                                                                                                                                          |                        |
-|                | SECTION 4                                                                                                                                                                                                                                                                                                               |                        |
-| J = John       | D = Diane Greenbaum                                                                                                                                                                                                                                                                                                     |                        |
-| J:             | Good morning, good morning, everyone, and welcome to our regular lecture<br>on health issues. This series of lectures is organised by the Students' Union<br>and is part of the union's attempt to help you, the students of this university,                                                                           |                        |
-|                | to stay healthy while coping with study and social life at the same time. So<br>it's a great pleasure for me to welcome back Ms Diane Greenbaum who is a                                                                                                                                                                | Q33                    |
-|                | professional dietician and who has been kind enough to give up her time, in<br>what I know is a very hectic schedule, to come along and talk to us today.                                                                                                                                                               | Q34                    |
-| D:             | Thank you. Thank you very much, John. May I say it's a pleasure to be<br>back. Now, stresses at university, being away from home and having to look<br>after yourselves, learning your way around the campus all contribute to                                                                                          |                        |
-|                | making it quite hard sometimes to ensure that your diet is adequate. So<br>today I'm going to talk about ways of making sure that you eat well while at                                                                                                                                                                 |                        |
-|                | the same time staying within your budget.<br>                                                                                                                                                                                                                                                                           | Q35                    |
+M: Yes, banana growing.
+
+F: (sarcastically) Fascinating, I’m sure! (Q21)
+
+M: Well ... it’s not as boring as you’d think. And I wanted to tie it in to the work I’ve been doing on primary industries and the economy. Anyway I bet there are a few things you didn’t know about bananas!
+
+F: Such as?
+
+M: Such as the fact that bananas were among the first plants ever to be domesticated.
+
+F: Oh, really?
+
+M: Yes, they’re an extremely nourishing food. (Q22)
+
+F: I suppose you’re going to tell me the whole history of banana growing now aren’t you?
+
+M: Well, it’d be a good practice run for my tutorial next week. I’ll do the same for you some time. (Q23)
+
+F: OK. Fire away. So where were these bananas first domesticated?
+
+M: According to my research, the Cavendish banana, which is a type of banana and the first type to be cultivated here, actually originated in China but they had a fairly roundabout route before they got to Australia.
+
+F: You mean they didn’t go straight from China to Australia?
+
+M: No, they didn’t. It seems that in 1826, bananas were taken from South China to England.
+
+F: I suppose they would have made a welcome addition to the English diet.
+
+M: Yes, I’m sure. Well apparently there was an English Duke who was particularly fond of bananas and he used to cultivate them in his hothouse, which is where you have to grow them in England, of course, because of the cool climate and they became quite popular in the UK. So he was the one responsible for cultivating the Cavendish banana which was then introduced into Australia. (Q24)
+
+F: I see. And we’ve been growing them ever since?
+
+M: Yes.
+
+F: Are they hard to grow?
+
+M: Well, yes and no. To grow them in your garden, no, not really. But to grow them commercially you need to know what you’re doing. You see you only get one bunch of bananas per tree and it can take up to three years for a tree to bear fruit if you don’t do anything special to it. But this period is greatly reduced with modern growing methods, particularly in plantations where you have perfect tropical conditions. (Q25)
+
+F: Right! So what are you looking at? One year? Two years?
+
+M: No, no, around 15 months in good conditions for a tree to produce a bunch of bananas. And once you’ve got your bunch you cut the bunch and the plant down. (Q26)
+
+F: So how do the trees reproduce then?
+
+M: Well, bananas are normally grown from suckers which spring up around the parent plant, usually just above the plant. They tend to like to grow uphill — or at least that’s the common wisdom. (Q27)
+
+F: So that’s why banana plantations are usually on hillsides, is it?
+
+M: Yes. They grow best like that.
+
+F: That’s interesting!
+
+M: If you plant them in rich soil and give them plenty of water at the beginning of summer, then they should be well advanced by the beginning of winter when growth virtually stops. But in a country like England, they’re hard to grow, although you can grow them in a hothouse. (Q28)
+
+F: But in Australia, it’s not difficult?
+
+M: No, though even here, the growers put plastic bags around the bunches to protect them and keep them warm. If you go up to the banana growing districts, you’ll see all these banana trees with plastic bags on them. (Q29)
+
+F: But how do they stop the bananas going bad before they reach the shops?  
+
+M: Well, the banana bunches are picked well before the fruit is ripe. Once you cut the bunch, the bananas stop growing but they do continue to ripen. The interesting thing is that once one banana ripens, it gives off a gas which then helps all the others to ripen so they pretty much all ripen within a few hours of each other. (Q30)  
+
+F: Amazing! So do we export lots of bananas overseas, to Europe and Asia for instance?
+
+M: Well, oddly enough, no. I believe New Zealand takes a small proportion of the crop but otherwise they’re mostly grown for the domestic market, which is surprising when you think about it because we grow an enormous number of bananas each year. (Q31 or 32 / Q32 or 31)
+
+F: Yes, well thank you for all that information. I’m sure the tutorial paper will go really well you certainly seem to have done your research on the subject.
+
+M: Let’s hope so.
+
+#### SECTION 4
+
+J = John  
+
+D = Diane Greenbaum  
+
+J: Good morning, good morning, everyone, and welcome to our regular lecture on health issues. This series of lectures is organised by the Students’ Union and is part of the union’s attempt to help you, the students of this university, to stay healthy while coping with study and social life at the same time. So (Q33) it’s a great pleasure for me to welcome back Ms Diane Greenbaum who is a professional dietician and who has been kind enough to give up her time, in (Q34) what I know is a very hectic schedule, to come along and talk to us today.  
+
+D: Thank you. Thank you very much, John. May I say it’s a pleasure to be back. Now, stresses at university, being away from home and having to look after yourselves, learning your way around the campus all contribute to making it quite hard sometimes to ensure that your diet is adequate. So today I’m going to talk about ways of making sure that you eat well while at the same time staying within your budget. (Q35)
 
 If you have a well balanced diet, then you should be getting all the vitamins
 
-| that you need for normal daily living. However sometimes we think we're         |     |
-|---------------------------------------------------------------------------------|-----|
-| eating the right foods but the vitamins are escaping, perhaps as a result of    |     |
-| cooking and anyway we're not getting the full benefit of them. Now, if you      | Q36 |
-| lack vitamins in any way the solution isn't to rush off and take vitamin pills. |     |
-| though they can sometimes help. No it's far better to look at your diet and     |     |
-| how you prepare your food.                                                      |     |
-| So what are vitamins? Well, the dictionary tells us they are "food factors      |     |
-| essential in small quantities to maintain life". Now, there are fat soluble     |     |
-| vitamins which can be stored for quite some time by the body and there are      |     |
-| water soluble vitamins which are removed more rapidly from the body and         |     |
-| so a regular daily intake of these ones is needed.                              | Q37 |
-| OK, so how can you ensure that your diet contains enough of the vitamins        |     |
-| you need? Well, first of all, you may have to establish some new eating         |     |
-| habits! No more chips at the uni canteen, I'm afraid! Now firstly, you must     |     |
-| eat a variety of foods. Then you need to ensure that you eat at least four      | Q38 |
-| servings of fruit and vegetables daily. Now you'll need to shop two or three    |     |
-| times a week to make sure that they're fresh, and store your vegetables in the  |     |
-| fridge or in a cool dark place.                                                 | Q39 |
-| Now let s just refresh our memories by looking at the Healthy Diet              |     |
-| Pyramid. OK, can you all see that? Good. Well ,now, as you see we've got        |     |
-| three levels to our pyramid. At the top in the smallest area are the things     |     |
-| which we should really be trying to avoid as much as possible. Things like      |     |
-| Example yes, sugar, salt, butter … all that sort of thing.                      |     |
-| Next, on the middle of our pyramid we find the things that we can eat in        |     |
-| moderation. Not too much though! And that's where we find milk, lean meat,      | Q40 |
-| fish, nuts, eggs. And then at the bottom of the pyramid are the things that     |     |
-| you can eat lots of! Because they're the things that are really good for you    | Q41 |
-| And here we have bread, vegetables and fruit. So don't lose sight of your       |     |
+that you need for normal daily living. However sometimes we think we’re eating the right foods but the vitamins are escaping, perhaps as a result of cooking and anyway we’re not getting the full benefit of them. Now, if you (Q36) lack vitamins in any way the solution isn’t to rush off and take vitamin pills. though they can sometimes help. No it’s far better to look at your diet and how you prepare your food.  
 
-#### **PRACTICE TEST 3**
+So what are vitamins? Well, the dictionary tells us they are “food factors essential in small quantities to maintain life”. Now, there are fat soluble vitamins which can be stored for quite some time by the body and there are water soluble vitamins which are removed more rapidly from the body and so a regular daily intake of these ones is needed. (Q37)  
 
-#### **SECTION 1**
+OK, so how can you ensure that your diet contains enough of the vitamins you need? Well, first of all, you may have to establish some new eating habits! No more chips at the uni canteen, I’m afraid! Now firstly, you must eat a variety of foods. Then you need to ensure that you eat at least four (Q38) servings of fruit and vegetables daily. Now you’ll need to shop two or three times a week to make sure that they’re fresh, and store your vegetables in the fridge or in a cool dark place. (Q39)  
 
-healthy diet pyramid when you do your shopping.
+Now let s just refresh our memories by looking at the Healthy Diet Pyramid. OK, can you all see that? Good. Well ,now, as you see we’ve got three levels to our pyramid. At the top in the smallest area are the things which we should really be trying to avoid as much as possible. Things like ...  
 
-| M = Male student |  |
-|------------------|--|
-|------------------|--|
+Example yes, sugar, salt, butter ... all that sort of thing.
+
+Next, on the middle of our pyramid we find the things that we can eat in moderation. Not too much though! And that’s where we find milk, lean meat, (Q40) fish, nuts, eggs. And then at the bottom of the pyramid are the things that you can eat lots of! Because they’re the things that are really good for you (Q41) And here we have bread, vegetables and fruit. So don’t lose sight of your healthy diet pyramid when you do your shopping.
+
+
+
+### PRACTICE TEST 3
+
+#### SECTION 1
+
+M = Male student
 
 F = Female student
 
@@ -2898,155 +3085,200 @@ C = Clerk
 - F: Oh, I always walk I haven't got a car and anyway I live quite close. *Example Repeat*
 - M: Do you know anything about parking rights on the campus? I was wondering whether students are allowed to park their cars on the campus or not?
 
-*Tapescripts*
+F: Yes, I think it’s possible for post graduate students but not for undergraduate students. (Q1)
 
-#### *Practice Test 3*
+M: That doesn’t seem very fair.  
 
-| F:       | Yes, I think it's possible for post graduate students but not for             | Q1 |
-|----------|-------------------------------------------------------------------------------|----|
-|          | undergraduate students.                                                       |    |
-| M:       | That doesn't seem very fair.                                                  |    |
-| F:       | No, I suppose not, but there simply isn't enough room on the campus for       |    |
-|          | everyone to park.                                                             |    |
-| M:       | Do you need a parking permit?                                                 |    |
-| F:       | Yeah, I believe you do.                                                       |    |
-| M:       | Where do I get that from?                                                     |    |
-| F:       | I think you can get a parking sticker from the administration office.         |    |
-| M:<br>F: | Where's that?<br>It's in the building called Block G. Right next to Block E.  | Q2 |
-| M:       | Block G?                                                                      |    |
-| F:       | Yeah.                                                                         |    |
-| M:       | Oh right. And what happens to you if you don't buy a sticker? Do they         |    |
-|          | clamp your wheels or give you a fine?                                         |    |
-| F:       | No, I think they tow your car away.                                           | Q3 |
-| M:       | Oh really?                                                                    |    |
-| F:       | Yeah. And then they fine you as well because you have to pay to get the car   | Q3 |
-|          | back.                                                                         |    |
-| M:       | I'd better get the sticker then.                                              |    |
-| F:       | Yeah.                                                                         |    |
-| M:       | Where exactly is the administration office again? I'm new to this university  |    |
-|          | and I'm still trying to find my way around.                                   |    |
-| F:       | Right. You go along Library Road, past the tennis courts on your left and     |    |
-|          | the swimming pool on your right and the administration office is opposite     |    |
-|          | the car park on the left. You can't miss it.                                  |    |
-| M:       | So it's up Library Road, past the swimming pool, opposite the car park.       | Q4 |
-|          | Right, I'll go straight over there. Bye and thanks for the help.              |    |
-|          |                                                                               |    |
-| C:       | Good morning, can I help you?                                                 |    |
-| M:       | Yes, I was told to come over here to get a parking sticker. Is this the right |    |
-|          | place?                                                                        |    |
-| C:       | Yes, it is. Are you a post graduate student?                                  |    |
-| M:       | Yes, I am.                                                                    |    |
-| C:       | OK, well, I'll just need to take some details Your name?                      |    |
-| M:       | Richard Lee — that's spelt L double E.                                        | Q5 |
-| C:       | Richard Lee. And the address?                                                 |    |
-| M:       | Flat 13, 30 Enmore Road                                                       | Q6 |
-| C:       | How do you spell Enmore?                                                      |    |
-| M:       | E-N-M-0-R-E. And that's in the suburb of Newport: N-E-W-P-0-R-T.              | Q7 |
-| C:       | Faculty?                                                                      |    |
-| M:       | I beg your pardon?                                                            |    |
-| C:       | Which faculty are you in?                                                     |    |
-| M:       | Architecture, the Faculty of Architecture.                                    | Q8 |
-| C:       | Right and the registration number of your car?                                |    |
-| M:       | Let me see um L X J five oh No, sorry, I always get that wrong, it's          |    |
-|          | LJX 058K.                                                                     | Q9 |
-| C:       | LJX 508K.                                                                     |    |
+F: No, I suppose not, but there simply isn’t enough room on the campus for everyone to park.  
 
-| M: | No … 058K                                                                      |     |
-|----|--------------------------------------------------------------------------------|-----|
-| C: | Ah. And what make is the car?                                                  |     |
-| M: | It s a Ford                                                                    | Q10 |
-| C: | A Ford. Fine! Well, I'll just get you to sign here and when you've paid the    |     |
-|    | cashier I'll be able to issue you with the sticker.                            |     |
-| M: | Right. Where do I pay?                                                         |     |
-| C: | Just across the corridor in the cashier's office. Oh, but it's 12.30 now and   |     |
-|    | they close at 12.15 for lunch. But they open again at a quarter past two until | Q11 |
-|    | 4.30                                                                           |     |
-| M: | Oh they're not open till quarter past two?                                     |     |
-| C: | No. When you get your sticker, you must attach it to the front windscreen of   | Q12 |
-|    | your car. I m afraid it's not valid if you don't have it stuck on the window.  |     |
-| M: | Right, I see. Thanks very much I'll just wait here then.                       |     |
+M: Do you need a parking permit?  
 
-#### **SECTION 2**
+F: Yeah, I believe you do.  
 
-#### Guide:
+M: Where do I get that from?  
+
+F: I think you can get a parking sticker from the administration office.  
+
+M: Where’s that?  
+
+F: It’s in the building called Block G. Right next to Block E. (Q2)  
+
+M: Block G?
+
+F: Yeah.
+
+M: Oh right. And what happens to you if you don’t buy a sticker? Do they clamp your wheels or give you a fine?
+
+F: No, I think they tow your car away. (Q3)
+
+M: Oh really?
+
+F: Yeah. And then they fine you as well because you have to pay to get the car back. (Q3)
+
+M: I’d better get the sticker then.  
+
+F: Yeah.  
+
+M: Where exactly is the administration office again? I’m new to this university and I’m still trying to find my way around.  
+
+F: Right. You go along Library Road, past the tennis courts on your left and the swimming pool on your right and the administration office is opposite the car park on the left. You can’t miss it.
+
+M: So it’s up Library Road, past the swimming pool, opposite the car park. Right, I’ll go straight over there. Bye and thanks for the help. (Q4)
+
+C: Good morning, can I help you?
+
+M: Yes, I was told to come over here to get a parking sticker. Is this the right place?
+
+C: Yes, it is. Are you a post graduate student?
+
+M: Yes, I am.
+
+C: OK, well, I’ll just need to take some details … Your name?
+
+M: Richard Lee — that’s spelt L double E. (Q5)
+
+C: Richard … Lee. And the address?
+
+M: Flat 13, 30 Enmore Road (Q6)
+
+C: How do you spell Enmore?
+
+M: E-N-M-O-R-E. And that’s in the suburb of Newport: N-E-W-P-O-R-T. (Q7)
+
+C: Faculty?
+
+M: I beg your pardon?
+
+C: Which faculty are you in?
+
+M: Architecture, the Faculty of Architecture. (Q8)
+
+C: Right … and the registration number of your car?
+
+M: Let me see um L X J five oh … No, sorry, I always get that wrong, it’s LJX 058K. (Q9)
+
+C: LJX 508K.
+
+M: No ... 058K
+
+C: Ah. And what make is the car?
+
+M: It s a Ford (Q10)
+
+C: A Ford. Fine! Well, I’ll just get you to sign here and when you’ve paid the cashier I’ll be able to issue you with the sticker.
+
+M: Right. Where do I pay?
+
+C: Just across the corridor in the cashier’s office. Oh, but it’s 12.30 now and they close at 12.15 for lunch. But they open again at a quarter past two until 4.30 (Q11)
+
+M: Oh .. they’re not open till quarter past two?
+
+C: No. When you get your sticker, you must attach it to the front windscreen of your car. I m afraid it’s not valid if you don’t have it stuck on the window. (Q12)
+
+M: Right, I see. Thanks very much I’ll just wait here then.
+
+
+#### SECTION 2
+
+**Guide:**
 
 Good morning everyone, and welcome to the Maritime Museum. Now before we commence our tour I'd just like to tell you a little bit about the history of the museum As you can see, it's a very modern building built in the post modern style and it was in fact opened by the Prime Minister of Australia in November 1991. It's been designed with a nautical flavour in mind to remind us of *Q13* our links with the sea. But the museum isn't only housed in this building, there are a number of historic ships docked outside in the harbour which form part of the museum and which you are also free to visit, and we'll be coming to them shortly *Q14* I'd just like to point out one or two things of general interest while we're here. Handicapped toilets are located on this floor and the door shows a wheelchair. *Example* The cloakroom where you can hang your coat or leave your bags is just behind us here. The education centre is on the top floor and there's a good little library in there which you might like to use. Follow the signs to the Education Centre you'll see a lot of little green arrows on the wall. The green arrows will take you *Q15* there. The information desk, marked with the small letter **i** on your plan is located right here in the foyer, so if you get separated from your friends, I suggest you make your way back to the information desk because we'll be returning to this *Q16* spot at the end of the tour. All right? Now if you look out this window you should be able to see where the museums ships are docked. If you want to go on a tour of the old ship, the Vampire, shes docked over there and you should meet outside on the quay. However a word of warning! I dont recommend it for the grandmas and grandpas because there are lots of stairs to climb. Right, now, lets move on Q17 Oh, I almost forgot to give you the times for that tour. Now, tours of the Vampire run on the hour every hour. All right? Q18
 
---------------------------------------------------------------------------------------
-
 Let's take a walk round the museum now. The first room we're coming to is the theatre. This room is used to screen videos of special interest and we also use it for lectures. There's a continuous video showing today about the voyages of Captain
 
-#### *Practice Test 3*
+Cook, so come back here later on if you want to learn more about Captain Cook. Q19
+Now, we’re moving along the gallery known as the Leisure Gallery. This is one
+of our permanent exhibitions and here we try to give you an idea of the many
+different ways in which Australians have enjoyed their time by the sea: surfing,
+swimming, lifesavmg clubs, that’s all very much a part of Australian culture. At the Q20
+end of this section we’ll come to the Picture Gallery where we’ve got a marvellous
+collection of paintings all by Australian artists. I think you can buy reproductions Q21
+of some of these paintings in the museum shop. Well worth a good look.
+Now we’re coming to the Members’ Lounge. As a member of the museum you
+would be entitled to use the members’ lounge for refreshments. Membership costs
+$50 a year or $70 for all the family. So it’s quite good value because entry to the Q22
+museum is then free.
 
-|          | Cook, so come back here later on if you want to learn more about Captain Cook.<br>Now, we're moving along the gallery known as the Leisure Gallery. This is one<br>of our permanent exhibitions and here we try to give you an idea of the many<br>different ways in which Australians have enjoyed their time by the sea: surfing,                                                                                                                             | Q19 |
-|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|
-|          | swimming, lifesavmg clubs, that's all very much a part of Australian culture. At the<br>end of this section we'll come to the Picture Gallery where we've got a marvellous                                                                                                                                                                                                                                                                                      | Q20 |
-|          | collection of paintings all by Australian artists. I think you can buy reproductions<br>of some of these paintings in the museum shop. Well worth a good look.                                                                                                                                                                                                                                                                                                  | Q21 |
-|          | Now we're coming to the Members' Lounge. As a member of the museum you<br>would be entitled to use the members' lounge for refreshments. Membership costs<br>\$50 a year or \$70 for all the family. So it's quite good value because entry to the                                                                                                                                                                                                              | Q22 |
-|          | museum is then free.                                                                                                                                                                                                                                                                                                                                                                                                                                            |     |
-|          | And down at the far end of this floor, you'll find the section which we've called<br>Passengers and the Sea. In this part of the museum we've gathered together a<br>wonderful collection of souvenirs from the old days when people travelled by ship.<br>You'll find all sorts of things there: old suitcases, ships' crockery, first class cabins<br>decorated in the fashion of the day. Just imagine what it must have been like to<br>travel first class. | Q23 |
-|          | Now I'm going to leave you to walk round the museum on your own for a while<br>and we'll all meet back again at the information desk in three quarters of an<br>hour's time. I hope you enjoy your time with us at the museum today. Thank you.                                                                                                                                                                                                                 |     |
-|          | SECTION 3                                                                                                                                                                                                                                                                                                                                                                                                                                                       |     |
-|          | T = Tutor                                                                                                                                                                                                                                                                                                                                                                                                                                                       |     |
-|          | M = Mark<br>S = Susan                                                                                                                                                                                                                                                                                                                                                                                                                                           |     |
-| T:       | OK, everybody, good morning! It's Mark's turn to talk to us today so                                                                                                                                                                                                                                                                                                                                                                                            |     |
-| M:       | Mark, I'll ask you to get straight down to business.<br>Right!                                                                                                                                                                                                                                                                                                                                                                                                  |     |
-| T:       | Now following on from what we were discussing last week in Susan's tutorial<br>on approaches to marketing, you were going to give us a quick run down on<br>a new strategy for pricing which is now being used by many large companies<br>known as "revenue management" … before we go on to your actual tutorial<br>paper on Sales Targets. Is that correct?                                                                                                   | Q24 |
-| M:       | Yeah, OK, well …                                                                                                                                                                                                                                                                                                                                                                                                                                                |     |
-| T:<br>M: | So what exactly is revenue management?<br>Well, it's a way of managing your pricing by treating things like airline                                                                                                                                                                                                                                                                                                                                             |     |
-|          | tickets and hotel rooms rather more as if they were perishable goods.                                                                                                                                                                                                                                                                                                                                                                                           |     |
-| S:       | Yeah, I just tried to book a ticket yesterday for Perth and would you believe<br>there are three different prices for the flight?                                                                                                                                                                                                                                                                                                                               |     |
-| M:       | Right! And what was the rationale for that?                                                                                                                                                                                                                                                                                                                                                                                                                     |     |
-| S:       | Well … the travel agent said it depended on when you book and the length<br>of the stay, like it's cheap if you stay away for a Saturday night, presumably                                                                                                                                                                                                                                                                                                      |     |
-|          |                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |     |
+And down at the far end of this floor, you’ll find the section which we’ve called
+Passengers and the Sea. In this part of the museum we’ve gathered together a
+wonderful collection of souvenirs from the old days when people travelled by ship. Q23
+You’ll find all sorts of things there: old suitcases, ships’ crockery, first class cabins
+decorated in the fashion of the day. Just imagine what it must have been like to
+travel first class.
 
-because this isn't business travel and even cheaper if you buy a ticket where *Q25*
+Now I’m going to leave you to walk round the museum on your own for a while
+and we’ll all meet back again at the information desk in three quarters of an
+hour’s time. I hope you enjoy your time with us at the museum today. Thank you.
 
-|          | you can't get a refund if you have to cancel; in that case the ticket costs                                                                |     |
-|----------|--------------------------------------------------------------------------------------------------------------------------------------------|-----|
-|          | about half the price. You wouldn't think it would make that much                                                                           |     |
-|          | difference, would you?                                                                                                                     |     |
-| M:       | Well it does, and that's basically because the airlines are now treating their                                                             |     |
-|          | seats like a commodity. You see — if you want a seat today, then you pay far                                                               |     |
-|          | more for it than if you want it in three weeks' time.                                                                                      |     |
-| S:       | That seems rather unfair.                                                                                                                  |     |
-| M:       | Well … not really … when you think about it, that's just common sense isn t<br>if?                                                         | Q26 |
-| S:       | I suppose so.                                                                                                                              |     |
-| T:       | What this actually means is that in the same row of seats on the same flight                                                               |     |
-|          | you could have three people who have all paid a different price for their                                                                  |     |
-|          | tickets.                                                                                                                                   |     |
-| S:       | And is this just happening in Australia?                                                                                                   |     |
-| M:       | No, no it's the same all over the world. Airlines are able to "market" a seat as                                                           |     |
-|          | a perishable product, with different values at different stages of its life.                                                               |     |
-| S:       | Well like mangoes or apples at the market.                                                                                                 |     |
-| M:       | Yeah, it's exactly like that. The fact is that the companies are not actually                                                              |     |
-|          | interested in selling you a cheap flight! They're interested in selling the seats                                                          | Q27 |
-|          | and flying aeroplanes that are full.                                                                                                       |     |
-| T:<br>M: | Mark why do you think revenue management has come about?<br>Well, as far as I can see there are two basic reasons: firstly because the law |     |
-|          | has been changed to allow the companies to do this. You see in the past they                                                               | Q28 |
-|          | didn't have the right to keep changing the prices of the tickets, and secondly                                                             |     |
-|          | we now have very powerful computer programs to do the calculations and so                                                                  | Q29 |
-|          | the prices can be changed at a moment's notice.                                                                                            |     |
-| S:       | So you mean ten minutes could be critical when you're buying a plane ticket?                                                               |     |
-| M:       | Absolutely!                                                                                                                                |     |
-| T:       | That's right!                                                                                                                              |     |
-| M:       | And I understand we have almost reached the stage where these computer                                                                     |     |
-|          | programs that the airlines are using will eventually be available to consumers                                                             |     |
-|          | to find the best deals for their travel plans from their home computer                                                                     | Q30 |
-| S:       | Heavens! What a thought! So the travel agent could easily become a thing of                                                                |     |
-|          | the past if you could book your airline tickets from home. Are there any                                                                   |     |
-|          | other industries using this system, or is it restricted to the airline business?                                                           |     |
-| M:       | Many of the big hotel groups are doing it now. That's why the price of a bed                                                               | Q31 |
-|          | in a hotel can also vary so much … depending on when and where you book<br>it                                                              |     |
-| T:       | It's all a bit of a gamble really.                                                                                                         |     |
-| M:       | Yes, and hire car companies are also using revenue management to set their                                                                 | Q32 |
-|          | tariffs, because they are also dealing with a "commodity" if you like … so the                                                             |     |
-|          | cost of hiring a car will depend on demand.                                                                                                |     |
-| T:       | Well, thank you, Mark, for that overview … that was well researched. Now                                                                   |     |
+#### SECTION 3
 
-let's get on with your main topic for today…
+T = Tutor
 
-#### **SECTION 4**
+M = Mark
+
+S = Susan
+
+T: OK, everybody, good morning! It’s Mark’s turn to talk to us today so Mark, I’ll ask you to get straight down to business.  
+
+M: Right!  
+
+T: Now following on from what we were discussing last week in Susan’s tutorial on approaches to marketing, you were going to give us a quick run down on a new strategy for pricing which is now being used by many large companies known as “revenue management” … before we go on to your actual tutorial (Q24) paper on Sales Targets. Is that correct?  
+
+M: Yeah, OK, well …  
+
+T: So what exactly is revenue management?  
+
+M: Well, it’s a way of managing your pricing by treating things like airline tickets and hotel rooms rather more as if they were perishable goods.  
+
+S: Yeah, I just tried to book a ticket yesterday for Perth and would you believe there are three different prices for the flight?  
+
+M: Right! And what was the rationale for that?
+
+S: Well … the travel agent said it depended on when you book and the length of the stay, like it’s cheap if you stay away for a Saturday night, presumably because this isn’t business travel and even cheaper if you buy a ticket where (Q25)
+
+you can’t get a refund if you have to cancel; in that case the ticket costs about half the price. You wouldn’t think it would make that much difference, would you?  
+
+M: Well it does, and that’s basically because the airlines are now treating their seats like a commodity. You see — if you want a seat today, then you pay far more for it than if you want it in three weeks’ time.  
+
+S: That seems rather unfair.
+
+M: Well ... not really ... when you think about it, that’s just common sense isn t if? (Q26)
+
+S: I suppose so.
+
+T: What this actually means is that in the same row of seats on the same flight you could have three people who have all paid a different price for their tickets.  
+
+S: And is this just happening in Australia?  
+
+M: No, no it’s the same all over the world. Airlines are able to “market” a seat as a perishable product, with different values at different stages of its life.  
+
+S: Well like mangoes or apples at the market.  
+
+M: Yeah, it’s exactly like that. The fact is that the companies are not actually interested in selling you a cheap flight! They’re interested in selling the seats and flying aeroplanes that are full. (Q27)  
+
+T: Mark why do you think revenue management has come about?
+
+M: Well, as far as I can see there are two basic reasons: firstly because the law has been changed to allow the companies to do this. You see in the past they (Q28) didn’t have the right to keep changing the prices of the tickets, and secondly we now have very powerful computer programs to do the calculations and so (Q29) the prices can be changed at a moment’s notice.  
+
+S: So you mean ten minutes could be critical when you’re buying a plane ticket?  
+
+M: Absolutely!  
+
+T: That’s right!  
+
+M: And I understand we have almost reached the stage where these computer programs that the airlines are using will eventually be available to consumers to find the best deals for their travel plans from their home computer (Q30)  
+
+S: Heavens! What a thought! So the travel agent could easily become a thing of the past if you could book your airline tickets from home. Are there any other industries using this system, or is it restricted to the airline business?  
+
+M: Many of the big hotel groups are doing it now. That’s why the price of a bed in a hotel can also vary so much … depending on when and where you book (Q31) it
+
+T: It’s all a bit of a gamble really.
+
+M: Yes, and hire car companies are also using revenue management to set their (Q32) tariffs, because they are also dealing with a “commodity” if you like … so the cost of hiring a car will depend on demand.  
+
+T: Well, thank you, Mark, for that overview … that was well researched. Now let’s get on with your main topic for today…
+
+#### SECTION 4
 
 *Marketing Consultant:*
 
@@ -3062,8 +3294,6 @@ method of manipulating the way we shop to ensure maximum profit. Supermarkets ar
 
 Now, an example of this is *Spaceman* which is a computer program that helps *Q36* the retailer to decide which particular product sells best in which part of the store. Now Spaceman works by receiving information from the electronic checkouts (where customers pay) on how well a product is selling in a particular position. *Spaceman* then suggests the most profitable combination of an article and its *Q37* position in the store.
 
---------------------------------------------------------------------------------------
-
 So, let's have a look at what we know about supermarkets and the way people behave when they walk down the aisles and take the articles they *think* they need from the shelves.
 
 Now here's a diagram of one supermarket aisle and two rows of shelves. Here's the *entrance* at the top left-hand corner.
@@ -3076,85 +3306,120 @@ But the prime positions in the store are the ends of the aisles, otherwise known
 
 Well, now, eventually of course, we have to pay. Any spot where a supermarket can be sure we are going to stand still and concentrate for more than a few seconds is good for sales. That's why the shelves at the checkout have long been a favourite for manufacturers of chocolates — perhaps the most sure-fire "impulse" *Q42* food of all.
 
-#### **PRACTICE TEST 4**
+### PRACTICE TEST 4
 
-#### **SECTION 1**
+#### SECTION 1
 
-| C = Clerk | F = Female student<br>M = Male student                                         |         |
-|-----------|--------------------------------------------------------------------------------|---------|
-| F:        | Excuse me. Can you help me? I was looking for the Main Hall.                   |         |
-| M:        | Maybe I can, actually. I'm looking for the Main Hall, too. I think it's in the | Example |
-|           | Administration building. Are you a new student?                                |         |
-| F:        | Yes, I am.                                                                     |         |
-|           | Repeat                                                                         |         |
-| M:        | I thought you looked as lost as me. I'm trying to find the admin building,     |         |
-|           |                                                                                |         |
+F = Female student
 
-too, so that I can register for my course. But I don't seem to be having much luck.
+M = Male student
 
-F: Well, look, according to this map of the campus here, you go straight up the steps, turn left and the building is on the right. OK, let's see if we can find it. *Q1*
+C = Clerk
+
+F: Excuse me. Can you help me? I was looking for the Main Hall.
+
+M: Maybe I can, actually. I’m looking for the Main Hall, too. I think it’s in the Administration building. Are you a new student?
+
+Example
+
+F: Yes, I am.  
+
+Repeat  
+
+M: I thought you looked as lost as me. I’m trying to find the admin building, too, so that I can register for my course. But I don’t seem to be having much luck.  
+
+F: Well, look, according to this map of the campus here, you go straight up the steps, turn left and the building is on the right. OK, let’s see if we can find it. (Q1)  
 
 M: Oh, this looks right. Oh, yeah, it must be. Look, there are hundreds of other people here!
 
-F: There must be at least 50 people in the queue — we'll be here till gone 2 *Q2* o'clock at this rate.
+F: There must be at least 50 people in the queue — we’ll be here till gone 2 o’clock at this rate. (Q2)
 
-- M: And I'm starving!
-- F: So am I.
-- M: Actually, I was on my way to the canteen to get something for lunch. Why don't I go to the canteen and buy something and you stay here and wait?
-- F: Good idea.
-- M: What would you like? Pizza, sandwich, hot dog, fried rice. They do everything ...
-- F: Oh, something easy. Take away fried rice sounds good.
-- M: OK, fried ...
-- F: No, on second thoughts, I'll have a cheese and tomato sandwich. *Q3*
-- M: Right one cheese and tomato anything to drink?
-- F: Yeah, get me a coffee, would you?
-- M: Oh, hot coffee's a bit hard to carry. What about a coke or an orange juice?
+M: And I’m starving!  
 
-#### *Practice Test 4*
+F: So am I.  
 
-| F: | Oh, um get me an orange juice, then. Look, here's five dollars.                                | Q4        |
-|----|------------------------------------------------------------------------------------------------|-----------|
-| M: | Oh, take two dollars back, it shouldn't cost me more than three dollars.                       |           |
-| F: | Well, keep the five and we'll sort it out later. Oh, and could you get me an<br>apple as well? | Q5        |
-| M: | OK. Back in a minute.                                                                          |           |
-| F: | <br>Oh, hello. I'm here to register for the First Year Law course.                             |           |
-| C: | I'll just have to fill out this form for our records. What's your name?                        |           |
-| F: | Julia Perkins.                                                                                 |           |
-| C: | Can you spell that for me?                                                                     |           |
-| F: | Yeah, that's J-U-L-I-A P-E-R-K-I-N-S.                                                          | Q6        |
-| C: | Address?                                                                                       |           |
-| F: | Flat 5, 15 Waratah Road, that's<br>W-A-R-A-T-A-H, Brisbane.                                    | Q7 and Q8 |
-| C: | Brisbane And your telephone number?                                                            |           |
-| F: | We haven't got the phone on yet. We've only just moved in.                                     |           |
-| C: | OK, well can you let us have the number once the phone's connected and I'll                    |           |
-|    | make a note here to be advised. And the course?                                                | Q9        |
-| F: | I beg your pardon?                                                                             |           |
-| C: | What course are you doing?                                                                     |           |
-| F: | First Year Law.                                                                                | Q10       |
-| C: | Right. Well, you'll have to go across to the Law Faculty and get this card                     |           |
-|    | stamped and then you come back here with it and pay your union fee.                            |           |
-| F: | Thanks very much.<br>                                                                          |           |
-| M: | Oh, there you are.                                                                             |           |
-| F: | I thought you were never going to come back.                                                   |           |
-| M: | Sorry! The canteen was absolutely packed and I had to wait for ages. Then                      |           |
-|    | when I got to the front of the queue they had hardly any food left. So I had                   |           |
-|    | to get you a slice of pizza. I'm sorry.                                                        | Q11       |
-| F: | Oh, that's OK. I could eat anything, I'm so hungry.                                            |           |
-| M: | And there's your bottle of orange juice and your apple. At least I managed that.               |           |
-| F: | Great. Thanks a lot.                                                                           |           |
-| M: | Oh and here's your \$2 back.                                                                   |           |
-| F: | Don't worry about it. Buy me a cup of coffee later!                                            |           |
-| M: | Oh, alright then! So how'd you go?                                                             |           |
-| F: | Well in order to register we've got to go to the Law Faculty and get this card                 |           |
-|    | stamped and then go back to the Admin building and pay the union fees.                         | Q12       |
-|    | That means we're registered. After that we have to go to the notice board to                   |           |
-|    | find out about lectures and then we have to put our names down for tutorial                    |           |
-|    | groups and go to the library to                                                                |           |
-| M: | Great. Well first let's sit down and have our lunch.                                           |           |
+M: Actually, I was on my way to the canteen to get something for lunch. Why don’t I go to the canteen and buy something and you stay here and wait?  
 
-#### **SECTION 2**
+F: Good idea.  
 
-#### *Speaker:*
+M: What would you like? Pizza, sandwich, hot dog, fried rice. They do everything …  
+
+F: Oh, something easy. Take away fried rice sounds good.  
+
+M: OK, fried …  
+
+F: No, on second thoughts, I’ll have a cheese and tomato sandwich. (Q3)  
+
+M: Right one cheese and tomato — anything to drink?
+
+F: Yeah, get me a coffee, would you?
+
+M: Oh, hot coffee’s a bit hard to carry. What about a coke or an orange juice?
+
+F: Oh, um ... get me an orange juice, then. Look, here’s five dollars. (Q4)
+
+M: Oh, take two dollars back, it shouldn’t cost me more than three dollars.
+
+F: Well, keep the five and we’ll sort it out later. Oh, and could you get me an apple as well? (Q5)
+
+M: OK. Back in a minute.
+
+F: Oh, hello. I’m here to register for the First Year Law course.
+
+C: I’ll just have to fill out this form for our records. What’s your name?
+
+F: Julia Perkins.
+
+C: Can you spell that for me?
+
+F: Yeah, that’s J-U-L-I-A P-E-R-K-I-N-S. (Q6)
+
+C: Address?
+
+F: Flat 5, 15 Waratah Road, that’s W-A-R-A-T-A-H, Brisbane. (Q7 and Q8)
+
+C: Brisbane ... And your telephone number?
+
+F: We haven’t got the phone on yet. We’ve only just moved in.
+
+C: OK, well can you let us have the number once the phone’s connected and I’ll make a note here to be advised. And the course? (Q9)
+
+F: I beg your pardon?
+
+C: What course are you doing?
+
+F: First Year Law. (Q10)
+
+C: Right. Well, you’ll have to go across to the Law Faculty and get this card stamped and then you come back here with it and pay your union fee.  
+
+F: Thanks very much.  
+
+M: Oh, there you are.  
+
+F: I thought you were never going to come back.  
+
+M: Sorry! The canteen was absolutely packed and I had to wait for ages. Then when I got to the front of the queue they had hardly any food left. So I had to get you a slice of pizza. I’m sorry. (Q11)  
+
+F: Oh, that’s OK. I could eat anything, I’m so hungry.
+
+M: And there’s your bottle of orange juice and your apple. At least I managed that.
+
+F: Great. Thanks a lot.
+
+M: Oh and here’s your $2 back.
+
+F: Don’t worry about it. Buy me a cup of coffee later!
+
+M: Oh, alright then! So how’d you go?
+
+F: Well in order to register we’ve got to go to the Law Faculty and get this card stamped and then go back to the Admin building and pay the union fees. That means we’re registered. After that we have to go to the notice board to find out about lectures and then we have to put our names down for tutorial groups and go to the library to ... (Q12)
+
+M: Great. Well first let’s sit down and have our lunch.
+
+
+#### SECTION 2
+
+**Speaker:**
 
 Thanks for turning up today, thanks for turning up toddy to this short talk I'm going to give on student banking. Many of you are unfamiliar with the way banks work in this country and today's talk should just give you a few starting points. I will of course answer any questions at the end.
 
@@ -3166,7 +3431,6 @@ Right, erm, when you do go to open a bank account, you should take some document
 
 Now, by far the most useful type of account to open is a current account. When you do this, you will actually get what is called a "student account" which is a *Q16* current account with special concessions for students. When you open the account, the bank will give you a chequebook and you can use this to draw money out *Q17* as you need it. If you need to write cheques in shops, you'll also need a cheque card. This is really an identity card which guarantees that correctly written cheques up to the value stated on the card will be honoured by the bank. OK?
 
-------------------------------------------------------------------------------------------------
 
 Right, er, if you want to draw out cash for yourself you can make the cheque payable in your own name or "to cash". You can also withdraw cash from a cashpoint machine with a cashcard. These are extremely useful as they enable you to withdraw cash from your account during the day or at night. *Q18*
 
@@ -3178,349 +3442,448 @@ Well, that just leaves opening times — when can you go? Banks used to be open 
 
 London and other major cities are now open for a limited time on Saturdays. OK — any questions?
 
-#### **SECTION 3**
+#### SECTION 3
 
-| I = Ilmar | D = Dawn                                                                           |     |
-|-----------|------------------------------------------------------------------------------------|-----|
-| I:        | Hi, Dawn.                                                                          |     |
-| D:        | Oh hi, Ilmar.                                                                      |     |
-| I:        | I'm glad I've bumped into you. I've just found a great idea for the                |     |
-|           | presentation we've got to do for Dr Banks next month.                              |     |
-| D:        | What, the one on everyday objects?                                                 |     |
-| I:        | Yes look at this article it's really interesting.                                  |     |
-| D:        | The aluminium coke can?                                                            |     |
-| I:        | You know coca cola cans, soft drink cans. Look let's sit down here. Have           |     |
-|           | you got a minute?                                                                  |     |
-| D:        | Sure I'll just get my bag.                                                         |     |
-| D:        | OK, so you think we can get a presentation out of this article?                    |     |
-| I:        | I'm sure we can. First of all we can provide some interesting facts about the      |     |
-|           | aluminium cans that we drink out of every day.                                     |     |
-| D:        | Like ?                                                                             |     |
-| I:        | Well, here it says that in the US they produce 300 million aluminium               | Q22 |
-|           | drink cans each day.                                                               |     |
-| D:        | Wow! 300 million!                                                                  |     |
-| I:        | Exactly. That's an enormous number. It says here "outstrips the production         |     |
-|           | of nails or paper clips". And they say that the manufacturers of these cans        | Q23 |
-|           | exercise as much attention and precision in producing them as aircraft             |     |
-|           | manufacturers do when they make the wing of an aircraft!                           |     |
-| D:        | Really! Let's have a look.                                                         |     |
-| I:        | They're trying to produce the perfect can - as thin but as strong as possible.     |     |
-| D:        | Mmm this bit's interesting "today"s can weighs about 0.48 ounces:                  |     |
-|           | thinner than two pieces of paper from this magazine say.'                          | Q24 |
-| I:        | Yeah, and yet it can take a lot of weight.                                         |     |
-| D:        | More than 90 pounds of pressure per square inch — three times the pressure         |     |
-|           | of a car tyre. OK, I agree, it's a good topic.                                     | Q25 |
-| I:        | <br>What I thought was that we could do a large picture of a coke can and label    |     |
-|           | it and then talk about the different parts. Look, I've done a rough picture        |     |
-|           | here.                                                                              |     |
-| D:        | OK, so where shall we start?                                                       |     |
-| I:        | Well, the lid is complicated. Let's start with the body first. I'll do a line from |     |
-|           | the centre of the can like this and label it "body ". What does it say?            |     |
-| D:        | It"s made of aluminium, of course, and it's thicker at the bottom.                 | Q26 |
-| I:        | Right, so that it can take all that pressure.                                      |     |
-|           |                                                                                    |     |
+I = Ilmar
 
-| D: | And then I think you should draw another line from the body for the label.                                                                                      |     |
-|----|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|
-| I: | Right "label". The aluminium is ironed out until it's so thin that it produces<br>what does it say?                                                             | Q27 |
-| D: | "A reflective surface suitable for decoration."                                                                                                                 |     |
-| I: | That's right apparently it helps advertisers, too.                                                                                                              |     |
-| D: | Yes, because it's so attractively decorated.                                                                                                                    |     |
-| I: | Good … and then there's the base.                                                                                                                               |     |
-| D: | Yes, it says the bottom of the can is shaped like a dome so that it can resist                                                                                  | Q28 |
-|    | the internal pressure.                                                                                                                                          |     |
-| I: | That's interesting. I didn't know that.                                                                                                                         |     |
-| D: | Nor did I. OK, so going up to the lid … there are several things we can label                                                                                   |     |
-|    | here. There's the rim around the edge which seals the can.                                                                                                      |     |
-| I: | Got that. And there's a funny word for the seal isn't there?                                                                                                    |     |
-| D: | Yes, it's a flange                                                                                                                                              | Q29 |
-| I: | What does it say about it?                                                                                                                                      |     |
-| D: | Well, the can's filled with coke or whatever and after that the top of the can                                                                                  |     |
-|    | is trimmed and then bent over to secure the lid.                                                                                                                |     |
-| I: | That's right, it looks like a seam. We could even do a blow-up of it like this                                                                                  |     |
-|    | F-L-A-N-G-E                                                                                                                                                     |     |
-| D: | Yes, that would be clearer. I think we should label the lid itself and say that                                                                                 |     |
-|    | it constitutes twenty five percent of the total weight.                                                                                                         | Q30 |
-| I: | Twenty-five percent … so it's stronger than the body of the can.                                                                                                |     |
-| D: | So to save money, manufacturers make it smaller than the rest of the can!                                                                                       |     |
-| I: | Didn't know that either so how do we open a can of coke?                                                                                                        |     |
-| D: | Mmm … first of all there's the tab which we pull up to open the can and                                                                                         |     |
-|    | that's held in place by a rivet.                                                                                                                                |     |
-| I: | Mmm … I think that's too small for us to include.                                                                                                               |     |
-| D: | I agree, but we can talk about it in the presentation. We can show the<br>opening though                                                                        | Q31 |
-| I: | That's the bit of the can that drops down into the drink when we pull the                                                                                       |     |
-|    | tab.                                                                                                                                                            |     |
-| D: | Yeah, hopefully. Sometimes the tab just breaks off.                                                                                                             |     |
-| I: | I know.                                                                                                                                                         |     |
-| D: | Anyway the opening is scored so that it pushes in easily but doesn't detach<br>itself.                                                                          |     |
-| I: | OK, we can show that by drawing a shadow of it inside the can, like this I'll<br>label it scored opening. Great … well, I think we've got the basis of a really |     |
-| D: | interesting presentation. Let's go and photocopy the article.<br>Fine. I'll take it home and study it some more.                                                |     |
+D = Dawn
 
-#### **SECTION 4**
+I: Hi, Dawn.
 
-#### *Lecturer:*
+D: Oh hi, Ilmar.
 
-| Good morning and welcome to the University's Open Day and to our mini-lecture          |     |
-|----------------------------------------------------------------------------------------|-----|
-| from the Sports Studies department. Now the purpose of this lecture is twofold:        |     |
-| one — we want you to experience a university lecture, to give you a taste of what      | Q32 |
-| listening to a university lecture is like, and two — we want you to find out           |     |
-| something about the Sports Studies program at this university. So feel free to ask     | Q33 |
-| any questions during the talk and I'll do my best to answer them.                      |     |
-| Right — so what does a course in Sports Studies involve? Well, you wouldn't be         |     |
-| blamed for not knowing the answer to this question because Sports Studies as a         |     |
-| discipline is still comparatively new. But it's a growing area and one which is now    |     |
-| firmly established at our university.                                                  |     |
-| Now there are three distinct strands to Sports Studies and you would need to           |     |
-| choose fairly early on just which direction you wanted to follow. And I'll just run    |     |
-| over these now. Firstly, we've got the Sports Psychology strand, secondly, we've       |     |
-| got the Sports Management strand, and last, but not least, there's the Sports          | Q34 |
-| Physiology strand. So Just to recap there's Sports Psychology, Sports Management,      |     |
-| and Sports Physiology.                                                                 |     |
-| Let's look first at Psychology. Now the people who study Sports Psych want to          |     |
-| work with top athletes, and they're looking at what will take those athletes that      | Q35 |
-| one percent extra. What makes them win? When all other things are equal,               | Q36 |
-| physically all other things are equal, they want to know … what are the mental         |     |
-| factors involved? The Sports Psychologist works closely with the athlete through       |     |
-| his or her training program and becomes an integral part of the team. In fact you      |     |
-| could say that they play just as important a role as the coach. So if you're           |     |
-| interested in what makes people win this could be the area for you.                    |     |
-| Now secondly, we've got the strand which I referred to as Sports Management            |     |
-| and this goes hand in hand with the area of Sports Marketing. So you might like        |     |
-| to think of this area as having two branches: Management and Marketing. On the         |     |
-| Management side we look at issues relating to the running of sports clubs,             |     |
-| management of athletes that sort of thing. But then on the other side, we've got       |     |
-| Sports Marketing. And this is the side that interests me more because here we will     |     |
-| look at the market forces behind sport. Questions like: why do people spend their      | Q37 |
-| money on a football match, or a tennis game rather, than say on buying a CD or         |     |
-| going to the cinema? What are those market forces?                                     |     |
-| Sport used to just compete with sport. Nowadays it competes with other leisure         |     |
-| activities. The spectators go to sport to be entertained rather than out of loyalty to | Q38 |
-| a team. They want to have an evening out and they don't want the cheap seats any       |     |
-| more they want good seats they want entertainment. And the professional                | Q39 |
-| sportsmen and women respond to this without question. They're there to give a          |     |
-| performance. They provide the entertainment. So in the marketing course we             |     |
-| address all these commercial issues and we look at how this hooks back into the        |     |
-| Management of sport.                                                                   |     |
-| Now the third branch of Sports Studies sometimes comes under another name              |     |
-| and is also known as Exercise Science. And again here we find that there are two       | Q40 |
-| distinct types of exercise science. The first is working very much at the macro level. |     |
-| What I call the huffing and puffing people. So this looks at fitness testing, body     |     |
+I: I’m glad I’ve bumped into you. I’ve just found a great idea for the presentation we’ve got to do for Dr Banks next month.  
 
-measurements, all that sort of thing. But the more interesting side of sports *Q41* physiology, at least in my view, is the side that looks at the micro level, looking at cellular change. They're doing cellular research, looking at changes in body cells *Q42* when the body is under stress.
+D: What, the one on everyday objects?  
 
-So that just about brings us to the end of our mini-lecture for today. I hope you've found it interesting and I look forward to seeing you all on our course next year. Feel free to come and talk to me if you want any more information. I'll be over at that notice board near the main entrance.
+I: Yes … look at this article … it’s really interesting.  
 
-### **Answer keys**
+D: The aluminium coke can?  
 
-#### **PRACTICE TEST 1**
+I: You know … coca cola cans, soft drink cans. Look let’s sit down here. Have you got a minute?  
 
-#### **LISTENING**
+D: Sure … I’ll just get my bag.  
 
-#### *Section 1*
+D: OK, so you think we can get a presentation out of this article?  
 
-- A
-- C
-- D
-- D
-- C
-- Prescott (*must be correct spelling with capital "P"*)
-- 41
-- Fountain (must have capital "F")
-- 752239
-- £65
+I: I’m sure we can. First of all we can provide some interesting facts about the aluminium cans that we drink out of every day.  
 
-#### *Section 2*
+D: Like … ?
 
-- E F i*n any*
-- H *order*
-- \$250 million
-- roads//road system
-- too late
-- school children//boys
-- 3
-- boats//pleasure crafty/boats and pleasure craft
-- pilot
-- (musical) instruments
+I: Well, here … it says that in the US they produce 300 million aluminium drink cans each day. (Q22)
 
-#### *Section 3*
+D: Wow! 300 million!
 
-- A
-- B
-- C
-- A
-- talk//give a talk
-- write up work
-- can choose
-- open book
-- closed reserve
-- vocational (subjects)//(preparing for) work/employment
+I: Exactly. That’s an enormous number. It says here “outstrips the production of nails or paper clips”. And they say that the manufacturers of these cans exercise as much attention and precision in producing them as aircraft manufacturers do when they make the wing of an aircraft! (Q23)
 
-#### *Section 4*
+D: Really! Let’s have a look.
 
-- B
-- C
-- history and economics
-- (meeting) deadlines (for essays)
-- attendance
-- B
-- C
-- B
-- D
-- A
+I: They’re trying to produce the perfect can - as thin but as strong as possible.
 
-#### **PRACTICE TEST 1**
+D: Mmm … this bit’s interesting … “today”s can weighs about 0.48 ounces: thinner than two pieces of paper … from this magazine say.’ (Q24)
 
-#### **READING**
+I: Yeah, and yet it can take a lot of weight.
 
-READING PASSAGE 1 A spark, a flint: How fire leapt to life
+D: More than 90 pounds of pressure per square inch — three times the pressure of a car tyre. OK, I agree, it’s a good topic. (Q25)
 
-| Questions | Task                                | Skills tested                                                                                                                |
-|-----------|-------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
-| 1-8       | Gap fill summary                    | • skimming for information<br>• detailed understanding of a section of text<br>• ability to paraphrase/re-word original text |
-| 9-15      | Matching (items to<br>descriptions) | • skimming for specific information<br>• understanding description/characteristics<br>• understanding paraphrase             |
+I: What I thought was that we could do a large picture of a coke can and label it and then talk about the different parts. Look, I’ve done a rough picture here.  
 
-#### *Questions 1-8*
+D: OK, so where shall we start?  
 
-| Question | Answer     |
-|----------|------------|
-| 1        | preserve   |
-| 2        | unaware    |
-| 3        | chance     |
-| 4        | friction   |
-| 5        | rotating   |
-| 6        | percussion |
-| 7        | Eskimos    |
-| 8        | despite    |
+I: Well, the lid is complicated. Let’s start with the body first. I’ll do a line from the centre of the can … like this … and label it “body”. What does it say?  
 
-*Questions 9-15*
+D: It’s made of aluminium, of course, and it’s thicker at the bottom. (Q26)
 
-#### *Suggested approach*
+I: Right, so that it can take all that pressure.
 
-- Read the task rubric carefully. In this task you have to decide which match is being described in each question.
-- Decide what information is best to skim for in the passage: the *type of match* or the *description.* In this question it is best to skim for the types of match as these are names, some of which are in italics, they are easier for you to pick out.
-- Skim through the text until you find match A, the *Ethereal Match.*
-- Read that section of the text and underline any important features of this match.
-- Read through the descriptions and write A next to any that fit this type of match.
+D: And then I think you should draw another line from the body for the label.
 
-- If you think there is more than one possible description for the match, note A next to both. (The rubric states that you may use any match more than once. )
-- Towards the top of the second page of the text it states that the Ethereal Match consisted of a "sealed glass tube", so A is the answer to question 14. Note that the description is expressed differently from the text. Sometimes you have to match the meaning rather than the words.
-- If you think none of the descriptions fits this type of match, go on to the next the rubric also states that there are not enough descriptions to fit all the matches.
+I: Right “label”. The aluminium is ironed out until it’s so thin that it produces what does it say? (Q27)
 
-| Question | Answer | Location of answer in text                                    |
-|----------|--------|---------------------------------------------------------------|
-| 9        | F      | "… the red phosphorus was<br>non toxic"                       |
-| 10       | D      | "… three years later it was<br>copied …"                      |
-| 11       | E      | "… since white phosphorus is<br>a deadly poison …"            |
-| 12       | C      | "The first matches resembling<br>those used today …"          |
-| 13       | G      | "… a brewery had the novel<br>idea of advertising …"          |
-| 14       | A      | "… a sealed glass tube …"                                     |
-| 15       | C      | "… borrowed the formula<br>from a military rocket<br>maker …" |
+D: “A reflective surface suitable for decoration.”
 
-| READING PASSAGE 2 | Zoo conservation programmes |
-|-------------------|-----------------------------|
-|-------------------|-----------------------------|
+I: That’s right apparently it helps advertisers, too.
 
-| Questions | Task               | Skills tested                                                                                                                          |
-|-----------|--------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| 16-22     | Yes, No, Not Given | <ul><li>skimming for detailed information</li><li>identifying attitude and opinion</li><li>understanding gist and paraphrase</li></ul> |
-| 23-25     | Multiple choice    | skimming for factual information     identifying main and supporting points     understanding attitude                                 |
-| 26-28     | Selecting factors  | skimming/scanning for specific information     identifying main ideas     understanding paraphrase and inference                       |
+D: Yes, because it’s so attractively decorated.
 
-#### Questions 16-25
+I: Good … and then there’s the base.
 
-| Question | Answer    |
-|----------|-----------|
-| 16       | YES       |
-| 17       | YES       |
-| 18       | NOT GIVEN |
-| 19       | NO        |
-| 20       | NO        |
-| 21       | NOT GIVEN |
-| 22       | YES       |
-| 23       | В         |
-| 24       | С         |
-| 25       | A         |
+D: Yes, it says the bottom of the can is shaped like a dome so that it can resist the internal pressure. (Q28)
 
-Questions 26-28
+I: That’s interesting. I didn’t know that.
 
-#### Suggested approach
+D: Nor did I. OK, so going up to the lid … there are several things we can label here. There’s the rim around the edge which seals the can.
 
-- Read the task rubric carefully. Only *three* of the factors in the list are correct. The correct factors explain why the author *doubts the value* of the WZCS document.
-- Scan the text and mark the section that discusses the accuracy/value of theWZCS document. This is from the third paragraph onwards.
-- Read through the list of factors to familiarise yourself with it.
-- Begin reading the third paragraph more carefully, looking for phrases that signal that the writer is going to discuss something that is wrong with the document. The first signal is:
+I: Got that. And there’s a funny word for the seal isn’t there?
 
-'This is probably the document's *first failing* ...' You can infer from what the writer then states, that **A** is one of the correct factors.
+D: Yes, it’s a flange (Q29)
 
-- Re-read the list of factors from **B-F**.
-- Continue reading the text, looking for other signals.
-- Select the two other correct factors.
+I: What does it say about it?  
 
-  Remember that if you put more than one factor beside each question number on your answer sheet, you will not get any marks. However the three correct answers can be written down in any order.
+D: Well, the can’s filled with coke or whatever and after that the top of the can is trimmed and then bent over to secure the lid.  
 
-| Question | Answer |              | Location of answer in text                                                                                                                                                                                                               |
-|----------|--------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 26       | A      | in           | " 10,000 is a serious<br>underestimate of the total<br>number of places<br>masquerading as zoological<br>establishments."                                                                                                                |
-| 27       | D      | any<br>order | "One would assume that the calibre of these institutions would have been carefully examined but"                                                                                                                                         |
-| 28       | E -    |              | The last two paragraphs of the text but in particular: "Today approximately 16 species might be said to have been "saved" by captive breeding programmes, although a number of these can hardly be looked upon as resounding successes." |
+I: That’s right, it looks like a seam. We could even do a blow-up of it like this F-L-A-N-G-E …  
 
-#### READING PASSAGE 3 Architecture
+D: Yes, that would be clearer. I think we should label the lid itself and say that it constitutes twenty five percent of the total weight. (Q30)  
 
-| Questions | Task                            | Skills tested                                                                                                       |
-|-----------|---------------------------------|---------------------------------------------------------------------------------------------------------------------|
-| 29-35     | Completing a table              | • following a chronological account<br>• skimming for specific information<br>• noting main ideas                   |
-| 36-40     | Matching (causes to<br>effects) | • skimming/scanning for information<br>• understanding cause and effect relationships<br>• understanding paraphrase |
+I: Twenty-five percent … so it’s stronger than the body of the can.  
 
-#### Questions 29-35
+D: So to save money, manufacturers make it smaller than the rest of the can!  
 
-| Question | Answer                                                                                  |
-|----------|-----------------------------------------------------------------------------------------|
-| 29       | timber and stone                                                                        |
-| 30       | Modernism                                                                               |
-| 31       | International style                                                                     |
-| 32       | badly designed buildings//multi-storey<br>housmg//mass-produced, low-cost<br>high-rises |
-| 33       | preservation                                                                            |
-| 34       | High-Tech                                                                               |
-| 35       | co-existence of styles//different styles<br>together//styles mixed                      |
+I: Didn’t know that either … so how do we open a can of coke?  
 
-Questions 36-40
+D: Mmm … first of all there’s the tab which we pull up to open the can and that’s held in place by a rivet.  
 
-#### **Suggested approach**
+I: Mmm … I think that’s too small for us to include.  
 
-- Read the task rubric carefully. You have to decide which *effect* arose from each *cause.*
-- Decide which list you should work from. In this case it is better to work from List A as you must find an effect m List B for every question. The causes also come first chronologically in the cause/effect relationship: List B contains *results* of List A.
-- Read through List B to familiarise yourself with it.
-- Read item 36.
-- Skim through the passage until you locate the information in the text.
-- Read this section of the text in detail noting any *effects* of **36**.
-- Read through List B again.
-- Select the effect of question 36. If you think there is more than one effect, mark both and come back to this item later. But remember that
+D: I agree, but we can talk about it in the presentation. We can show the opening though (Q31)  
 
-only one answer is correct.
+I: That’s the bit of the can that drops down into the drink when we pull the tab.  
 
-- In the third paragraph it states that the increase in urban populations "helped to turn parts of cities into slums". So the answer to question 36 is G.
-- Repeat this procedure with items 37-40.
+D: Yeah, hopefully. Sometimes the tab just breaks off.
 
-| Question | Answer | Location of answer in text                                                                                                          |  |
-|----------|--------|-------------------------------------------------------------------------------------------------------------------------------------|--|
-| 36       | G      | "Such rapid and uncontrolled<br>growth helped to turn parts of<br>cities into slums."                                               |  |
-| 37       | F      | "These were stripped of<br>unnecessary decoration that<br>would detract from their<br>primary purpose — to be used<br>or lived in." |  |
-| 38       | H      | "But the economic depression<br>prevented their ideas from<br>being widely realised until the<br>economic conditions<br>improved …" |  |
-| 39       | C      | "Many of these buildings …<br>have since been demolished."                                                                          |  |
-| 40       | D      | "They originated in the US …<br>to help meet the demand for<br>more economical use of land."                                        |  |
+I: I know.
 
-#### **PRACTICE TEST 2**
+D: Anyway the opening is scored so that it pushes in easily but doesn’t detach itself.
 
-#### **LISTENING KEYS**
+I: OK, we can show that by drawing a shadow of it inside the can, like this I’ll label it scored opening. Great … well, I think we’ve got the basis of a really interesting presentation. Let’s go and photocopy the article.
 
-|                                                          | Section 1                                                                                                                                                                                                                                                                                                                                                     |                                                                      | Section 3                                                                                                                                                                                |  |
-|----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--|
-| 1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10          | student accommodation/hostel<br>awful food<br>not friendly//kept to themselves (do not<br>accept "lonely")<br>lecturers (too) busy<br>regular meetings//meetings with<br>lecturers//fortnightly meetings<br>family//homestay<br>lot of noise//children made noise//difficult<br>to study<br>student house<br>(Bachelor of) Computing<br>reserve computer time | 21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32 | B<br>C<br>D<br>B<br>one bunch<br>15 months<br>uphill//on hillsides<br>lots of/plenty of water<br>plastic bags<br>bananas/ones (to) ripen<br><br>C<br>either<br><br>D<br>way round<br> |  |
-|                                                          | Section 2                                                                                                                                                                                                                                                                                                                                                     |                                                                      | Section 4                                                                                                                                                                                |  |
-| 11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20 | mountain<br>quality<br>\$2,000<br>short/casual rides<br>town riding//shopping<br>serious touring<br>similar//almost the same<br>better quality (components)<br>buying clothes<br>frame                                                                                                                                                                        | 33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41                   | B<br>D<br>C<br>cooking<br>(regular) daily intake<br>(a) variety<br>the dark//the fridge//a cool place//a dark<br>place<br>eat in moderation//not too much<br>eat lots//eat most          |  |
+D: Fine. I’ll take it home and study it some more.
 
-#### **READING**
+#### SECTION 4
+
+Lecturer:
+Good morning and welcome to the University’s Open Day and to our mini-lecture
+from the Sports Studies department. Now the purpose of this lecture is twofold:
+one — we want you to experience a university lecture, to give you a taste of what Q32
+listening to a university lecture is like, and two — we want you to find out
+something about the Sports Studies program at this university. So feel free to ask Q33
+any questions during the talk and I’ll do my best to answer them.
+Right — so what does a course in Sports Studies involve? Well, you wouldn’t be
+blamed for not knowing the answer to this question because Sports Studies as a
+discipline is still comparatively new. But it’s a growing area and one which is now
+firmly established at our university.
+Now there are three distinct strands to Sports Studies and you would need to
+choose fairly early on just which direction you wanted to follow. And I’ll just run
+over these now. Firstly, we’ve got the Sports Psychology strand, secondly, we’ve
+got the Sports Management strand, and last, but not least, there’s the Sports Q34
+Physiology strand. So Just to recap there’s Sports Psychology, Sports Management,
+and Sports Physiology.
+
+Let’s look first at Psychology. Now the people who study Sports Psych want to
+work with top athletes, and they’re looking at what will take those athletes that Q35
+one percent extra. What makes them win? When all other things are equal, Q36
+physically all other things are equal, they want to know … what are the mental
+factors involved? The Sports Psychologist works closely with the athlete through
+his or her training program and becomes an integral part of the team. In fact you
+could say that they play just as important a role as the coach. So if you’re
+interested in what makes people win this could be the area for you.
+Now secondly, we’ve got the strand which I referred to as Sports Management
+and this goes hand in hand with the area of Sports Marketing. So you might like
+to think of this area as having two branches: Management and Marketing. On the
+Management side we look at issues relating to the running of sports clubs,
+management of athletes that sort of thing. But then on the other side, we’ve got
+Sports Marketing. And this is the side that interests me more because here we will
+look at the market forces behind sport. Questions like: why do people spend their Q37
+money on a football match, or a tennis game rather, than say on buying a CD or
+going to the cinema? What are those market forces?
+
+Sport used to just compete with sport. Nowadays it competes with other leisure
+activities. The spectators go to sport to be entertained rather than out of loyalty to Q38
+a team. They want to have an evening out and they don’t want the cheap seats any
+more they want good seats they want entertainment. And the professional Q39
+sportsmen and women respond to this without question. They’re there to give a
+performance. They provide the entertainment. So in the marketing course we
+address all these commercial issues and we look at how this hooks back into the
+Management of sport.
+
+Now the third branch of Sports Studies sometimes comes under another name
+and is also known as Exercise Science. And again here we find that there are two Q40
+distinct types of exercise science. The first is working very much at the macro level.
+What I call the huffing and puffing people. So this looks at fitness testing, body
+measurements, all that sort of thing. But the more interesting side of sports Q41
+physiology, at least in my view, is the side that looks at the micro level, looking at
+cellular change. They’re doing cellular research, looking at changes in body cells Q42
+when the body is under stress.
+
+So that just about brings us to the end of our mini-lecture for today. I hope
+you’ve found it interesting and I look forward to seeing you all on our course next
+year. Feel free to come and talk to me if you want any more information. I’ll be
+over at that notice board near the main entrance.
+
+
+## ANSWER KEY
+
+### PRACTICE TEST 1
+
+#### LISTENING
+
+
+##### Section 1
+
+* **1**: A
+* **2**: C
+* **3**: D
+* **4**: D
+* **5**: C
+* **6**: Prescott *(must be correct spelling with capital “P”)*
+* **7**: 41
+* **8**: Fountain *(must have capital “F”)*
+* **9**: 752239
+* **10**: £65
+
+
+##### Section 2
+
+* **11**: E `]` *in any order*
+* **12**: F `]` *in any order*
+* **13**: H `]` *in any order*
+* **14**: $250 million
+* **15**: roads // road system
+* **16**: too late
+* **17**: school children // boys
+* **18**: 3
+* **19**: boats // pleasure craft // boats and pleasure craft
+* **20**: pilot
+* **21**: (musical) instruments
+
+
+##### Section 3
+
+* **22**: A
+* **23**: B
+* **24**: C
+* **25**: A
+* **26**: talk // give a talk
+* **27**: write up work
+* **28**: can choose
+* **29**: open book
+* **30**: closed reserve
+* **31**: vocational (subjects) // (preparing for) work/employment
+
+
+##### Section 4
+
+* **32**: B
+* **33**: C
+* **34**: history and economics
+* **35**: (meeting) deadlines (for essays)
+* **36**: attendance
+* **37**: B
+* **38**: C
+* **39**: B
+* **40**: D
+* **41**: A
+
+#### READING
+
+##### READING PASSAGE 1
+
+*A spark, a flint: How fire leapt to life*
+
+| Questions | Task | Skills tested |
+| --- | --- | --- |
+| **1-8** | Gap fill summary | • skimming for information<br>• detailed understanding of a section of text<br>• ability to paraphrase/re-word original text |
+| **9-15** | Matching (items to descriptions) | • skimming for specific information<br>• understanding description/characteristics<br>• understanding paraphrase |
+
+| Questions | Task | Skills tested |
+| --- | --- | --- |
+| **16-22** | Yes, No, Not Given | • skimming for detailed information<br>• identifying attitude and opinion<br>• understanding gist and paraphrase |
+| **23-25** | Multiple choice | • skimming for factual information<br>• identifying main and supporting points<br>• understanding attitude |
+| **26-28** | Selecting factors | • skimming/scanning for specific information<br>• identifying main ideas<br>• understanding paraphrase and inference |
+
+| Questions | Task | Skills tested |
+| --- | --- | --- |
+| **29-35** | Completing a table | • following a chronological account<br>• skimming for specific information<br>• noting main ideas |
+| **36-40** | Matching (causes to effects) | • skimming/scanning for information<br>• understanding cause and effect relationships<br>• understanding paraphrase |
+
+
+
+**Suggested approach**
+
+* **Read the task rubric carefully.** In this task you have to decide which match is being described in each question.
+* **Decide what information is best to skim for in the passage:** the *type of match* or the *description*. In this question it is best to skim for the types of match as these are names, some of which are in italics, they are easier for you to pick out.
+* **Skim through the text until you find match A**, the *Ethereal Match*.
+* **Read that section of the text and underline** any important features of this match.
+* **Read through the descriptions and write A next to** any that fit this type of match. If you think there is more than one possible description for the match, note A next to both. (The rubric states that you may use any match more than once.)
+* Towards the top of the second page of the text it states that the Ethereal Match consisted of a “sealed glass tube”, so A is the answer to question 14. Note that the description is expressed differently from the text. Sometimes you have to match the meaning rather than the words.
+* **If you think none of the descriptions fits** this type of match, go on to the next the rubric also states that there are not enough descriptions to fit all the matches.
+
+
+
+###### Questions 1-8
+
+| Question | Answer |
+| --- | --- |
+| **1** | preserve |
+| **2** | unaware |
+| **3** | chance |
+| **4** | friction |
+| **5** | rotating |
+| **6** | percussion |
+| **7** | Eskimos |
+| **8** | despite |
+
+---
+
+###### Questions 9-15
+
+| Question | Answer | Location of answer in text |
+| --- | --- | --- |
+| **9** | F | “... the red phosphorus was non toxic” |
+| **10** | D | “... three years later it was copied ...” |
+| **11** | E | “... since white phosphorus is a deadly poison ...” |
+| **12** | C | “The first matches resembling those used today ...” |
+| **13** | G | “... a brewery had the novel idea of advertising ...” |
+| **14** | A | “... a sealed glass tube ...” |
+| **15** | C | “... borrowed the formula from a military rocket-maker ...” |
+
+
+###### Questions 16-25
+
+| Question | Answer |
+| --- | --- |
+| **16** | YES |
+| **17** | YES |
+| **18** | NOT GIVEN |
+| **19** | NO |
+| **20** | NO |
+| **21** | NOT GIVEN |
+| **22** | YES |
+| **23** | B |
+| **24** | C |
+| **25** | A |
+
+
+###### Questions 26-28
+
+
+| Question | Answer | Location of answer in text |
+| --- | --- | --- |
+| **26** | A [in any order] | “... 10,000 is a serious underestimate of the total number of places masquerading as zoological establishments.” |
+| **27** | D [in any order]| “One would assume that the calibre of these institutions would have been carefully examined but ...” |
+| **28** | E [in any order]| The last two paragraphs of the text but in particular: “Today approximately 16 species might be said to have been “saved” by captive breeding programmes, although a number of these can hardly be looked upon as resounding successes.” |
+
+
+
+###### Questions 29-35
+
+| Question | Answer |
+| --- | --- |
+| **29** | timber and stone |
+| **30** | Modernism |
+| **31** | International style |
+| **32** | badly designed buildings//multi-storey housmg//mass-produced, low-cost high-rises |
+| **33** | preservation |
+| **34** | High-Tech |
+| **35** | co-existence of styles//different styles together//styles mixed |
+
+
+###### Questions 36-40
+
+| Question | Answer | Location of answer in text |
+| --- | --- | --- |
+| **36** | G | “Such rapid and uncontrolled growth helped to turn parts of cities into slums.” |
+| **37** | F | “These were stripped of unnecessary decoration that would detract from their primary purpose — to be used or lived in.” |
+| **38** | H | “But the economic depression prevented their ideas from being widely realised until the economic conditions improved ...” |
+| **39** | C | “Many of these buildings ... have since been demolished.” |
+| **40** | D | “They originated in the US ... to help meet the demand for more economical use of land.” |
+
+
+### PRACTICE TEST 2
+
+#### LISTENING KEYS
+
+###### Section 1  
+1 student accommodation/hostel  
+
+2 awful food  
+
+3 not friendly//kept to themselves (do not accept “lonely”)  
+
+4 lecturers (too) busy  
+
+5 regular meetings//meetings with lecturers//fortnightly meetings  
+
+6 family//homestay  
+
+7 lot of noise//children made noise//difficult to study  
+
+8 student house  
+
+9 (Bachelor of) Computing  
+
+10 reserve computer time  
+
+###### Section 2  
+11 mountain  
+
+12 quality  
+
+13 $2,000  
+
+14 short/casual rides  
+
+15 town riding//shopping  
+
+16 serious touring
+
+17 similar//almost the same
+
+18 better quality (components)
+
+19 buying clothes
+
+20 frame
+
+###### Section 3
+21 B
+
+22 C
+
+23 D
+
+24 B
+
+25 one bunch
+
+26 15 months
+
+27 uphill//on hillsides
+
+28 lots of/plenty of water
+
+29 plastic bags
+
+30 bananas/ones (to) ripen
+
+31 C (either way round)
+
+32 D (either way round)
+
+###### Section 4
+33 B
+
+34 D
+
+35 C
+
+36 cooking
+
+37 (regular) daily intake
+
+38 (a) variety
+
+39 the dark//the fridge//a cool place//a dark place
+
+40 eat in moderation//not too much
+
+41 eat lots//eat most
+
+
+#### READING
+
+##### READING PASSAGE 1
 
 | Questions | Task                             | Skills tested                                                                                                                        |
 |-----------|----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
@@ -3528,9 +3891,10 @@ only one answer is correct.
 | 8-10      | Completing a table               | • skimming for factual information                                                                                                   |
 | 11-12     | Multiple choice                  | • skimming/scanning for information<br>• identifying main and supporting points<br>• understanding paraphrase<br>• making inferences |
 
-#### Questions 1-7
+###### Questions 1-7
 
-#### **Suggested approach**
+Suggested approach
+
 
 - Read the task rubric carefully. You have to match the *opinions* with the *people* who express them in the text.
 - Read through the list of opinions to familiarise yourself with it.
@@ -3549,7 +3913,8 @@ only one answer is correct.
 | 6        | C      | "… discovered that the left<br>right asymmetry exists before<br>birth."                                                     |
 | 7        | E      | "He noted that this distinctive<br>asymmetry in the human<br>population is itself systematic."                              |
 
-#### Questions 8-12
+###### Questions 8-12
+
 
 | Question | Answer |
 |----------|--------|
@@ -3565,9 +3930,13 @@ only one answer is correct.
 | 20-23     | Labelling a diagram        | • skimming for factual information<br>• understanding description and relationships                            |
 | 24-27     | Yes, No, Not Given         | • skimming for factual information<br>• understanding gist and paraphrase                                      |
 
-#### Questions 13-19
+##### READING PASSAGE 2
 
-#### **Suggested approach**
+###### Questions 13-19
+
+
+Suggested approach
+
 
 - Read the task rubric carefully. You have to complete the flow chart of the movements of a migratory beekeeper.
 - Read through the flow chart to familiarise yourself with it.
@@ -3587,7 +3956,8 @@ only one answer is correct.
 | 18       | combs    | "… centrifugal force throws<br>the honey out of the combs ."                                                |
 | 19       | split    | "… a healthy double hive can<br>be separated into two boxes."                                               |
 
-#### Questions 20-27
+###### Questions 20-27
+
 
 | Question | Answer                  |
 |----------|-------------------------|
@@ -3600,7 +3970,8 @@ only one answer is correct.
 | 26       | YES                     |
 | 27       | NO                      |
 
-#### READING PASSAGE 3 Tourism
+##### READING PASSAGE 3
+ Tourism
 
 | Questions | Task               | Skills tested                                                                                                    |
 |-----------|--------------------|------------------------------------------------------------------------------------------------------------------|
@@ -3608,7 +3979,8 @@ only one answer is correct.
 | 33-37     | Yes, No, Not Given | • skimming for detailed information<br>• understanding paraphrase and gist<br>• identifying attitude and opinion |
 | 38-41     | Matching phrases   | • skimming/scanning for detail<br>• understanding paraphrase and gist<br>• making inferences                     |
 
-#### Questions 28-37
+
+###### Questions 28-37
 
 | Question | Answer    |
 |----------|-----------|
@@ -3623,9 +3995,9 @@ only one answer is correct.
 | 36       | YES       |
 | 37       | NOT GIVEN |
 
-Questions 38-41
+###### Questions 38-41
 
-#### **Suggested approach**
+Suggested approach
 
 - Read the task rubric carefully. By choosing the correct phrase A-H, you will make summary points of the information given in the passage.
 - It is obviously best to work from the questions as these are the start of each sentence.
@@ -3644,67 +4016,103 @@ understand the entire point you will have to read the whole paragraph and take t
 | 40       | F      | "The viewing of these tourist<br>sites often involves … a much<br>greater sensitivity to visual<br>elements of landscape or<br>townscape than is normally<br>found in daily life ." |
 | 41       | H      | "… the mass tourist travels in<br>guided groups and finds<br>pleasure in inauthentic,<br>contrived attractions …"                                                                   |
 
-#### **PRACTICE TEST 3**
+### PRACTICE TEST 3
 
-#### **LISTENING**
+#### LISTENING
 
-#### *Section 1*
+##### Section 1  
+1 B  
 
-- B
-- D
-- C
-- A
-- Richard Lee *(must have correct spelling of "Lee " and capitals)*
-- 30 Enmore Road *(must have correct spelling and capitals)*
-- Newport *(must have correct spelling and capital "N")*
-- Architecture
-- LJX 058K
-- Ford
-- C
-- (on the) (front) window/windscreen
+2 D  
 
-#### *Section 2*
+3 C  
 
-- November 1991
-- (historic) ships
-- green arrows
-- information desk
-- stairs to climb//lots of stairs
-- every hour
-- Captain Cook
-- the sea
-- Australian artists/painters
-- \$70
-- souvenirs
+4 A  
 
-#### *Section 3*
+5 Richard Lee (must have correct spelling of “Lee “ and capitals)  
 
-- B
-- C
-- D
-- A
-- law has changed//law changes//changes in law
-- (powerful) computer programs
-- from home (computer)
-- hotels/hotel beds/rooms
-- hire cars
+6 30 Enmore Road (must have correct spelling and capitals)  
 
-#### *Section 4*
+7 Newport (must have correct spelling and capital “N”)  
 
-- displays//products//displays and products
-- (hidden) TV cameras
-- recorder//recording
-- "Spaceman"
-- position//shelf//spot//place
-- walk (straight/right) past // ignore//pass
-- at eye level//near customers' eyes
-- hotspots
-- special offers
-- chocolates
+8 Architecture  
 
-#### **READING**
+9 LJX 058K  
 
-READING PASSAGE 1 Spoken corpus comes to life
+10 Ford  
+
+11 C  
+
+12 (on the) (front) window/windscreen  
+
+##### Section 2  
+13 November 1991  
+
+14 (historic) ships  
+
+15 green arrows  
+
+16 information desk  
+
+17 stairs to climb//lots of stairs  
+
+18 every hour  
+
+19 Captain Cook  
+
+20 the sea  
+
+21 Australian artists/painters  
+
+22 $70
+
+23 souvenirs
+
+##### Section 3
+24 B
+
+25 C
+
+26 D
+
+27 A
+
+28 law has changed//law changes//changes in law
+
+29 (powerful) computer programs
+
+30 from home (computer)
+
+31 hotels/hotel beds/rooms
+
+32 hire cars
+
+##### Section 4
+33 displays//products//displays and products
+
+34 (hidden) TV cameras
+
+35 recorder//recording
+
+36 “Spaceman”
+
+37 position/shelf/spot/place
+
+38 walk (straight/right) past // ignore//pass
+
+39 at eye level//near customers’ eyes
+
+40 hotspots
+
+41 special offers
+
+42 chocolates
+
+#### READING
+
+##### READING PASSAGE 1 
+Spoken corpus comes to life
+
 
 | Questions | Task                   | Skills tested                                                                                                                           |
 |-----------|------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
@@ -3712,7 +4120,8 @@ READING PASSAGE 1 Spoken corpus comes to life
 | 7-11      | Labelling a diagram    | • locating specific information<br>• understanding a process<br>• understanding paraphrase<br>• distinguishing examples from main ideas |
 | 12        | Global multiple choice | • identifying the overall intention of the writer                                                                                       |
 
-#### Questions 1-6
+###### Questions 1-6
+
 
 | Question | Answer |
 |----------|--------|
@@ -3723,9 +4132,10 @@ READING PASSAGE 1 Spoken corpus comes to life
 | 5        | iv     |
 | 6        | ix     |
 
-Questions 7-11
+###### Questions 7-12
 
-#### *Suggested approach*
+Suggested approach
+
 
 - Read the task rubric carefully.
 - Note that you must use a maximum of three words but that these do not have to be taken from the passage. Note also that you need to focus on particular paragraphs.
@@ -3743,17 +4153,17 @@ Questions 7-11
 | 10       | spoken//<br>real//oral                      | "… written English works in a<br>very different way to spoken<br>English."                                             |
 | 11       | noise//<br>pauses//<br>noises and<br>pauses | "It also reveals the power of<br>the pauses and noises we use to<br>play for time, convey emotion<br>doubt and irony." |
 | 12       | B                                           |                                                                                                                        |
+##### READING PASSAGE 2
+Moles happy as homes go underground
 
-| READING PASSAGE 2 | Moles happy as homes go underground |
-|-------------------|-------------------------------------|
-|-------------------|-------------------------------------|
 
 | Questions | Task                | Skills tested                                                                                   |
 |-----------|---------------------|-------------------------------------------------------------------------------------------------|
 | 13-20     | Paragraph headings  | • detailed reading<br>• identifying main ideas/themes/topics<br>• understanding gist            |
 | 21-26     | Sentence completion | • skimming for factual information<br>• understanding description<br>• understanding paraphrase |
 
-#### Question 13-20
+###### Question 13-20
+
 
 | Question | Answer |
 |----------|--------|
@@ -3766,9 +4176,11 @@ Questions 7-11
 | 19       | iii    |
 | 20       | iv     |
 
-#### Questions 21-26
+###### Questions 21-26
 
-#### *Suggested approach*
+
+Suggested approach
+
 
 - Read the task rubric carefully. Note that you must use a maximum of three words for each answer, but that these do not have to be taken from the passage.
 - You can take a straightforward approach to this set of questions as the items are not dependent upon each other.
@@ -3789,9 +4201,8 @@ Questions 7-11
 | 25       | adapt to                              | gist of paragraph H cued by<br>"Not everyone adapts so well<br>…"                                                                    |
 | 26       | his bakery<br>busmess//a<br>cool room | "Their home evolved when<br>he dug a cool room for his<br>bakery business in a hill he<br>had created."                              |
 
-| READING PASSAGE 3 | A workaholic economy |
-|-------------------|----------------------|
-|-------------------|----------------------|
+##### READING PASSAGE 3
+A workaholic economy
 
 | Questions | Task               | Skills tested                                                                                                                            |
 |-----------|--------------------|------------------------------------------------------------------------------------------------------------------------------------------|
@@ -3799,9 +4210,11 @@ Questions 7-11
 | 33-34     | Multiple choice    | • skimming for information<br>• identifying opinion<br>• understanding paraphrase<br>• distinguishing between main and supporting points |
 | 35-38     | Selecting factors  | • skimming for specific information<br>• making inferences<br>• understanding paraphrase                                                 |
 
-#### Questions 27-32
+###### Questions 27-32
 
-#### *Suggested approach*
+
+Suggested approach
+
 
 - Read the task rubric carefully. Note that you have to make a judgement about the writer's views.
 - Note, also, the difference between NO (which *contradicts* the writer's views) and NOT GIVEN (which means that the writer doesn't mention this at all).
@@ -3819,78 +4232,120 @@ Questions 7-11
 | 31       | YES          | "She cites … studies that show<br>increased productivity for part<br>time workers …"                          |
 | 32       | NOT<br>GIVEN |                                                                                                               |
 
-#### Questions 33-38
+###### Questions 33-38
+
 
 | Question | Answer             |  |
 |----------|--------------------|--|
 | 33       | C                  |  |
 | 34       | A                  |  |
-| 35       | B<br>             |  |
-| 36       | <br>in<br>D       |  |
-| 37       | <br>any<br>F<br> |  |
-| 38       | order<br>G<br>    |  |
+| 35       | B  [in any order]             |  |
+| 36       | D  [in any order]       |  |
+| 37       | F  [in any order] |  |
+| 38       | G  [in any order]   |  |
 
-#### **PRACTICE TEST 4**
+### PRACTICE TEST 4
 
-#### **LISTENING**
+#### LISTENING
 
-#### *Section 1*
+##### Section 1
 
-- 1 C
-- A
-- B
-- D
-- D
-- Julia Perkins *(must be correct spelling with capital letters)*
-- 15 Waratah Road *(must be correct spelling of Waratah with capital letter)*
-- Brisbane *(must have capital letter)*
-- to be advised//not connected//no phone// none *(blank not acceptable)*
-- first year Law *(must have all three words)*
-- C
-- D
+1 C
 
-#### *Section 2*
+2 A
 
-- Hope Street *(must have capitals)*
-- evidence
-- passport
-- current/student (account)
-- chequebook
-- withdraw//draw (out)//take out
-- directly from//right out of
-- permission of/from bank
-- 4.30 pm or/to 5 pm
+3 B
 
-#### *Section 3*
+4 D
 
-- 300 million
-- paper clips
-- magazine pages//pieces of paper//pages
-- three times
-- thicker
-- label
-- (a) dome
-- flange *(correct spelling)*
-- 25%
-- scored opening
+5 D
 
-#### *Section 4*
+6 Julia Perkins (must be correct spelling with capital letters)
 
-- a university lecture
-- Sports Studies (programme)
-- management
-- top athletes
-- makes winners//makes them/people win
-- market forces
-- (other) leisure activities
-- entertainment//to be entertained
-- exercise science
-- fitness testing//body measurements
-- cellular research//cellular change//body cells
+7 15 Waratah Road (must be correct spelling of Waratah with capital letter)
 
-#### **READING**
+8 Brisbane (must have capital letter)
 
-#### READING PASSAGE 1 Glass
+9 to be advised//not connected//no phone//none (blank not acceptable)
+
+10 first year Law (must have all three words)
+
+11 C
+
+12 D
+
+##### Section 2
+
+13 Hope Street (must have capitals)
+
+14 evidence
+
+15 passport
+
+16 current/student (account)
+
+17 chequebook
+
+18 withdraw//draw (out)//take out
+
+19 directly from//right out of
+
+20 permission of/from bank
+
+21 4.30 pm or/to 5 pm
+
+##### Section 3
+
+22 300 million
+
+23 paper clips
+
+24 magazine pages//pieces of paper//pages
+
+25 three times
+
+26 thicker
+
+27 label
+
+28 (a) dome
+
+29 flange (correct spelling)
+
+30 25%
+
+31 scored opening
+
+##### Section 4
+
+32 a university lecture
+
+33 Sports Studies (programme)
+
+34 management
+
+35 top athletes
+
+36 makes winners//makes them/people win
+
+37 market forces
+
+38 (other) leisure activities
+
+39 entertainment//to be entertained
+
+40 exercise science
+
+41 fitness testing//body measurements
+
+42 cellular research//cellular change//body cells
+
+
+#### READING
+
+##### READING PASSAGE 1 
+Glass
+
 
 | Questions | Task                | Skills tested                                                                          |
 |-----------|---------------------|----------------------------------------------------------------------------------------|
@@ -3898,9 +4353,11 @@ Questions 7-11
 | 6-8       | Labelling a diagram | • following a description of a process                                                 |
 | 9-13      | Classification      | • skimming/scanning for specific information<br>• understanding gist and paraphrase    |
 
-#### Questions 1-5
+###### Questions 1-5
 
-#### *Suggested approach*
+
+Suggested approach
+
 
 - Read the task rubric carefully. You have to decide which heading best fits each paragraph in the passage.
 - Read paragraph A and look at the example.
@@ -3919,7 +4376,8 @@ Questions 7-11
 | 4        | iii    | Reasons why glass is so easy<br>to shape.                         |
 | 5        | vi     | The future with glass for<br>designers of buildings and<br>homes. |
 
-#### Questions 6-13
+###### Questions 6-13
+
 
 | Question                  | Answer                                                |
 |---------------------------|-------------------------------------------------------|
@@ -3928,7 +4386,8 @@ Questions 7-11
 | 8                         | (lightbulb) moulds                                    |
 | 9<br>10<br>11<br>12<br>13 | A<br>B<br>A<br>C<br>A                                 |
 
-READING PASSAGE 2 Why some women cross the finish line ahead of men
+##### READING PASSAGE 2 
+Why some women cross the finish line ahead of men
 
 | Questions | Task                   | Skills tested                                                                           |
 |-----------|------------------------|-----------------------------------------------------------------------------------------|
@@ -3936,7 +4395,7 @@ READING PASSAGE 2 Why some women cross the finish line ahead of men
 | 20-23     | Matching               | • skimming/scanning for speakers and information<br>• understanding gist and paraphrase |
 | 24-27     | Short-answer questions | • skimming for specific information<br>• identifying question focus                     |
 
-#### Questions 14-23
+###### Questions 14-23
 
 | Question | Answer |
 |----------|--------|
@@ -3951,9 +4410,10 @@ READING PASSAGE 2 Why some women cross the finish line ahead of men
 | 22       | M      |
 | 23       | S      |
 
-#### Questions 24-27
+###### Questions 24-27
 
-#### *Suggested approach*
+Suggested approach
+
 
 - Read the task rubric carefully. Note that you must use a maximum of three words for each answer.
 - You can take a straightforward approach to this set of questions.
@@ -3973,7 +4433,11 @@ case, the best answer would be "it has doubled' although "double" alone would be
 | 26       | demographic<br>trends               | "Demographic trends<br>suggest that the number of<br>women going into<br>employment is steadily<br>increasing." |
 | 27       | employers                           | "Until there is a belief<br>among employers until they<br>value the difference nothing<br>will change."         |
 
-#### READING PASSAGE 3 Population viability analysis
+
+##### READING PASSAGE 3 
+
+Population viability analysis
+
 
 | Questions | Task                                  | Skills tested                                                                                         |
 |-----------|---------------------------------------|-------------------------------------------------------------------------------------------------------|
@@ -3982,7 +4446,7 @@ case, the best answer would be "it has doubled' although "double" alone would be
 | 36-38     | Sentence completion                   | • skimming for information<br>• understanding paraphrase                                              |
 | 39        | Global multiple choice                | • understanding the overall theme of the passage                                                      |
 
-#### Questions 28-31
+###### Questions 28-31
 
 | Question | Answer    |
 |----------|-----------|
@@ -3991,9 +4455,11 @@ case, the best answer would be "it has doubled' although "double" alone would be
 | 30       | NO        |
 | 31       | NOT GIVEN |
 
-#### Questions 32-35
+###### Questions 32-35
 
-#### *Suggested approach*
+
+Suggested approach
+
 
 - Read the task rubric carefully. Note that these questions are based on Part B of the reading passage. You will have to decide which paragraphs in this part cover which processes.
 - Note that there are two extra processes which are not described. The extra processes will be close to the correct answers but not correct. Read the text carefully so that you do not fall into any traps.
@@ -4009,7 +4475,8 @@ case, the best answer would be "it has doubled' although "double" alone would be
 | 34       | i      | The effect on survival of an<br>animal's ability to adapt to<br>changes and therefore avoid<br>extinction. |
 | 35       | ii     | The fluctuating environment in<br>Australia, e.g. fire, flood and<br>drought.                              |
 
-#### Questions 36-39
+###### Questions 36-39
+
 
 | Question | Answer                                                 |
 |----------|--------------------------------------------------------|
@@ -4018,11 +4485,13 @@ case, the best answer would be "it has doubled' although "double" alone would be
 | 38       | logging takes place/occurs                             |
 | 39       | B                                                      |
 
-#### **GENERAL TRAINING**
 
-#### **READING MODULE**
+### GENERAL TRAINING
 
-#### PART 1
+#### READING MODULE
+
+##### PART 1
+
 
 | Questions | Task                           | Skills tested                                                                                                                                          |
 |-----------|--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -4030,7 +4499,8 @@ case, the best answer would be "it has doubled' although "double" alone would be
 | 5-8       | Short-answer questions         | • skimming for specific information<br>• understanding description/characteristics<br>• understanding paraphrase                                       |
 | 9-14      | Multiple choice                | • skimming/scanning for specific information<br>• understanding paraphrase<br>• distinguishing between main and supporting points                      |
 
-#### Questions 1-8
+###### Questions 1-8
+
 
 | Question | Answer                       |
 |----------|------------------------------|
@@ -4043,9 +4513,10 @@ case, the best answer would be "it has doubled' although "double" alone would be
 | 7        | turn up/increase temperature |
 | 8        | calcium deposits//furring up |
 
-Questions 9-14
+###### Questions 9-14
 
-#### *Suggested approach*
+Suggested approach
+
 
 - Read the task rubric carefully. Only one option (A-D) is correct in each case.
 - Read question 9 and the four options.
@@ -4066,14 +4537,16 @@ Although all the other options are possible, only C is stated in the text.
 | 13       | B      | "The … entertainment …<br>could be withdrawn if there is<br>a lack of demand …"                                                                                               |
 | 14       | B      | "… a small holdall can also be<br>taken on board the coach."                                                                                                                  |
 
-#### PART 2
+##### PART 2
+
 
 | Questions | Task                                | Skills tested                                                                                                                                                     |
 |-----------|-------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 15-21     | Matching (requirements<br>to clubs) | • skimming/scanning for specific information<br>• understanding paraphrase<br>• making inferences                                                                 |
 | 22-29     | True, False, Not Given              | • skimming/scanning for specific information<br>• distinguishing between what is clearly stated and what is<br>not stated.<br>• understanding paraphrase and gist |
 
-#### Question 15-21
+###### Question 15-21
+
 
 | Question | Answer |
 |----------|--------|
@@ -4085,9 +4558,10 @@ Although all the other options are possible, only C is stated in the text.
 | 20       | B      |
 | 21       | F      |
 
-Questions 22-29
+###### Questions 22-29
 
-#### *Suggested approach*
+Suggested approach
+
 
 - Read the task rubric carefully. Note that you have to make a judgement about the list of statements.
 - Note the difference between information that is false (i.e. the passage says the opposite) and information that is not given (i.e. not stated in the passage at all).
@@ -4107,16 +4581,18 @@ Questions 22-29
 | 28       | NG     |                                                                                                                                                  |
 | 29       | F      | "… the club will be offering<br>reduced accommodation rates<br>for students wishing to spend a<br>few days in London over<br>Christmas."         |
 
-PART 3
+##### PART 3
 
 | Questions | Task                  | Skills tested                                                                       |
 |-----------|-----------------------|-------------------------------------------------------------------------------------|
 | 30-36     | Summary completion    | • skimming for information<br>• understanding paraphrase<br>• rewording text        |
 | 37-41     | Flow chart completion | • skimming for specific information<br>• following a process<br>• summarising ideas |
 
-#### Questions 30-36
+###### Questions 30-36
 
-#### *Suggested approach*
+
+Suggested approach
+
 
 - Read the task rubric carefully.. You have to complete the summary by filling in the spaces with *words from the passage.* The words must fit in meaning and also be grammatically correct.
 - Read the summary to familiarise yourself with it. It may be possible to find words without reading the original text, but if you do this you may pick words which are not in the text, in which case your answer will be *incorrect.* So you must look for a word within the passage which has the right meaning and which is the correct part of speech for the space.
@@ -4135,7 +4611,8 @@ PART 3
 | 35       | quality                            | "We need to accept a<br>change in the quality of<br>paper products"                                                    |
 | 36       | contaminants                       | "… it also needs to be<br>sorted from contaminants                                                                     |
 
-#### Questions 37-41
+###### Questions 37-41
+
 
 | Question | Answer                        |
 |----------|-------------------------------|
@@ -4145,11 +4622,12 @@ PART 3
 | 40       | de-ink/remove ink//make white |
 | 41       | refined                       |
 
-#### **WRITING: MODEL ANSWERS**
 
-#### **ACADEMIC WRITING MODULE**
+## WRITING: MODEL ANSWERS
 
-Practice Test 3, Writing Task 1
+### ACADEMIC WRITING MODULE
+
+#### PRACTICE TEST 3, Writing Task 1
 
 You should spend about 20 minutes on this task.
 
@@ -4165,7 +4643,7 @@ The chart shows that high income earners consumed considerably more fast foods t
 
 From the graph we can see that in 1970, fish and chips were twice as popular as burgers, pizza being at that time the least popular fast food. The consumption of hamburgers and pizza has risen steadily over the 20 year period to 1990 while the consumption of fish and chips has been in decline over that same period with a slight increase in popularity since 1985.
 
-#### Practice Test 3, Writing Task 2
+#### PRACTICE TEST 3, Writing Task 2
 
 You should spend about 40 minutes on this task.
 
@@ -4185,9 +4663,11 @@ While newspapers and TV stations may aim to report world events accurately, be t
 
 If it is true, then, that newspapers and TV stations are tailoring their news to their readers' and viewers' requirements, how can they possibly be reporting real world events in an honest and objective light? Many radio and TV stations do, in fact, report items of good news but they no longer call this news. They refer to these as human interest stories and package them in programmes specialising, for instance, in consumer affairs or local issues. Good news now comes to us in the form of documentaries the fight against children's cancer or AIDS, or the latest developments in the fight to save the planet from environmental pollution.
 
-#### **GENERAL TRAINING WRITING MODULE**
 
-Writing Task 1
+### GENERAL TRAINING WRITING MODULE
+
+
+#### Writing Task 1
 
 You should spend about 20 minutes on this task.
 
@@ -4203,7 +4683,8 @@ Begin your letter as follows:
 
 *Model answer 186 words*
 
-#### Dear Sir,
+Dear Sir,
+
 
 I am writing in reply to a letter I received from you a few days ago. In your letter you state that I am \$240 overdrawn and that you will be charging me \$70.
 
@@ -4216,6 +4697,7 @@ Yours faithfully,
 P Stoft
 
 #### Writing Task 2
+
 
 You should spend about 40 minutes on this task.
 
@@ -4232,25 +4714,3 @@ Computers are a relatively new invention. The first computers were built fifty y
 In the future computers will be used to create bigger and even more sophisticated computers. The prospects for this are quite alarming. They will be so complex that no individual could hope to understand how they work. They will bring a lot of benefits but they will also increase the potential for unimaginable chaos. They will, for example, be able to fly planes and they will be able to co ordinate the movements of several planes in the vicinity of an airport. Providing all the computers are working correctly nothing can go wrong. If one small program fails — disaster.
 
 There is a certain inevitability that technology will progress and become increasingly complex. We should, however, ensure that we are still in a position where we are able to control technology. It will be all too easy to suddenly discover that technology is controlling us. By then it might be too late I believe that it is very important to be suspicious of the benefits that computers will bring and to make sure that we never become totally dependent on a completely technological world.
-
-![](_page_158_Figure_0.jpeg)
-
-Третья страница обложки
-
-NEW ABUS
-
-# CAMBRIDGE
-
-PRACTICE TESTS FOR
-
-![](_page_161_Picture_3.jpeg)
-
-This book contains practice material for the International English Language Testing System: four complete practice tests for Academic candidates, plus extra Reading and Writing modules for General Training candidates. Written by experienced IELTS examiners, the tests conform precisely to the revised format of the exam, introduced in 1995.
-
-This self-study book contains an introduction to the different modules of the exam together with an explanation of the different IELTS question types and suggestions on how to approach them. The inclusion of annotated keys and tapescripts for each test makes the book ideal for the purposes of students using the material partly or entirely on their own.
-
-The cassettes contain listening material carefully chosen to reflect the reality of the exam in terms of timing, format and the types of speaker and accent used.
-
-The practice material consists of: Self-study Student's Book Set of 2 cassettes
-
-CAMBRIDGE UNIVERSITY PRESS
