@@ -1235,6 +1235,28 @@ body {
     var ua = String(userAnswer || '').toLowerCase().trim();
     var ca = String(correctAnswer || '').toLowerCase().trim();
     if (ua === ca) return true;
+    // Bracket normalization: () means optional content (e.g., "(the) wealthy")
+    if (ca.indexOf('(') !== -1) {
+      var uaNorm = ua.replace(/\s+/g, ' ').trim();
+      var caNorm = ca.replace(/\s+/g, ' ').trim();
+      // Replace (word) → word
+      var caUnbracketed = caNorm.replace(/\(([^)]*)\)/g, '$1').replace(/\s+/g, ' ').trim();
+      if (uaNorm === caUnbracketed) return true;
+      // Remove (word) entirely
+      var caStripped = caNorm.replace(/\([^)]*\)/g, '').replace(/\s+/g, ' ').trim();
+      if (uaNorm === caStripped) return true;
+      // Word-set comparison
+      var uaWords = {}; uaNorm.split(' ').forEach(function(w) { uaWords[w] = true; });
+      var caStrippedOk = true;
+      caStripped.split(' ').forEach(function(w) { if (w && !uaWords[w]) caStrippedOk = false; });
+      if (caStrippedOk) {
+        var caUnbracketedOk = true;
+        uaNorm.split(' ').forEach(function(w) {
+          if (w && caUnbracketed.indexOf(w) === -1) caUnbracketedOk = false;
+        });
+        if (caUnbracketedOk) return true;
+      }
+    }
     return acceptable.some(function(a) {
       return String(a).toLowerCase().trim() === ua;
     });

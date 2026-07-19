@@ -185,6 +185,7 @@ body {
   color: var(--color-text-secondary);
   margin-bottom: 12px;
   line-height: 1.5;
+  white-space: pre-line;
 }
 
 /* Individual question */
@@ -473,6 +474,20 @@ body {
 .btn-primary:hover:not(:disabled) { background: var(--color-accent-hover); }
 .btn-secondary { background: var(--color-surface); color: var(--color-text-primary); border: 1px solid var(--color-border); }
 .btn-secondary:hover:not(:disabled) { border-color: var(--color-accent); color: var(--color-accent); }
+.btn-submit {
+  background: var(--color-success);
+  color: white;
+  border: none;
+}
+.btn-submit:hover:not(:disabled) { background: #047857; }
+.save-status {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+}
+.save-status.saved { color: var(--color-success-text); background: var(--color-success-bg); }
+.save-status.failed { color: var(--color-warning-text); background: var(--color-warning-bg); }
 .score-badge {
   font-size: 16px;
   font-weight: 700;
@@ -652,8 +667,10 @@ body {
       <!-- SUBMIT BAR -->
       <div class="submit-bar">
         <button class="btn btn-primary" id="btn-check">Check Answers</button>
+        <button class="btn btn-submit" id="btn-submit" disabled>&#128640; Submit &amp; Get Claude Evaluation</button>
         <button class="btn btn-secondary" id="btn-toggle-answers" disabled>&#128274; Show Answers</button>
         <span class="score-badge hidden" id="score-badge"></span>
+        <span class="save-status hidden" id="save-status"></span>
         <div class="teacher-hint">Teacher: Cmd+Shift+U (Mac) / Ctrl+Shift+U (Win) to verify answers directly</div>
       </div>
 
@@ -721,8 +738,10 @@ body {
   var questionsContainer = $('questions-container');
   var passageImages = $('passage-images');
   var btnCheck = $('btn-check');
+  var btnSubmit = $('btn-submit');
   var btnToggleAnswers = $('btn-toggle-answers');
   var scoreBadge = $('score-badge');
+  var saveStatus = $('save-status');
   var resultsPanel = $('results-panel');
   var resultsList = $('results-list');
   var resultsHeading = $('results-heading');
@@ -801,9 +820,16 @@ body {
         renderGapText(groupDiv, group.gapText, group.questions || []);
       }
 
-      // Render diagram image for diagram-labeling
-      if (group.questionType === 'diagram-labeling' && group.image) {
-        renderDiagramImage(groupDiv, group.image, group);
+      // Render word list for diagram-labeling groups
+      if (group.questionType === 'diagram-labeling' && group.wordList) {
+        renderWordList(groupDiv, group.wordList);
+      }
+
+      // Render diagram images for diagram-labeling
+      if (group.questionType === 'diagram-labeling' && group.images) {
+        (group.images || []).forEach(function(img) {
+          renderDiagramImage(groupDiv, img.src, img.alt, group);
+        });
       }
 
       // Render questions
@@ -882,11 +908,11 @@ body {
   }
 
   // ── Diagram image ──
-  function renderDiagramImage(container, imageSrc, group) {
+  function renderDiagramImage(container, imageSrc, altText, group) {
     var img = document.createElement('img');
     img.className = 'diagram-image';
     img.src = '/textbook/' + SOURCE + '/textbook/' + imageSrc;
-    img.alt = 'Diagram for ' + (group.heading || 'questions');
+    img.alt = altText || 'Diagram for ' + (group.heading || 'questions');
     img.setAttribute('loading', 'lazy');
     img.onerror = function() {
       this.style.display = 'none';
@@ -934,6 +960,7 @@ body {
         }
         break;
       case 'matching':
+      case 'matching-headings':
         if (groupType === 'matching-headings') {
           renderMatchingHeadings(div, q);
         } else {
@@ -947,9 +974,7 @@ body {
         renderTextInput(div, q);
         break;
       case 'diagram-labeling':
-        if (groupType !== 'diagram-labeling') {
-          renderTextInput(div, q);
-        }
+        renderTextInput(div, q);
         break;
       case 'summary-completion':
         // Already rendered in gap text — skip
@@ -1085,9 +1110,12 @@ body {
   }
 
   function getUserAnswer(qNumber, qType) {
+    // Matching/matching-headings: prefer <select>, fallback to text input
+    // (when group-level options exist, questions render as dropdowns;
+    //  when no options, they render as text inputs — both are valid)
     if (qType === 'matching' || qType === 'matching-headings') {
       var sel = document.getElementById('q' + qNumber + '-select');
-      return sel ? sel.value : null;
+      if (sel) return sel.value;
     }
     var radio = document.querySelector('input[type="radio"][data-question="' + qNumber + '"]:checked');
     if (radio) return radio.value;
@@ -1096,26 +1124,105 @@ body {
     return null;
   }
 
-  function isCorrect(userAnswer, key) {
+  function isCorrect(userAnswer, key, qType) {
     if (!key) return false;
     var ua = String(userAnswer || '').toLowerCase().trim();
     var ca = String(key.answer || '').toLowerCase().trim();
+    // Exact match
     if (ua === ca) return true;
+    // Acceptable alternatives (array)
     if (key.acceptable) {
       return key.acceptable.some(function(a) { return String(a).toLowerCase().trim() === ua; });
     }
+    // Bracket normalization: () means optional content
+    // e.g., "(the) wealthy (members) (of) (society)" should match:
+    //   a) "the wealthy members of society" (brackets removed, content kept)
+    //   b) "wealthy members of society"     (bracketed words removed)
+    if (ca.indexOf('(') !== -1) {
+      var uaNorm = ua.replace(/\s+/g, ' ').trim();
+      var caNorm = ca.replace(/\s+/g, ' ').trim();
+      // Variant A: replace (word) → word (remove brackets, keep content)
+      var caUnbracketed = caNorm.replace(/\(([^)]*)\)/g, '$1').replace(/\s+/g, ' ').trim();
+      if (uaNorm === caUnbracketed) return true;
+      // Variant B: remove (word) entirely
+      var caStripped = caNorm.replace(/\([^)]*\)/g, '').replace(/\s+/g, ' ').trim();
+      if (uaNorm === caStripped) return true;
+      // Variant C: word-set comparison — ua_words is superset of stripped_words
+      // and subset of unbracketed_words (may miss optional words)
+      var uaWords = {}; uaNorm.split(' ').forEach(function(w) { uaWords[w] = true; });
+      var caStrippedOk = true;
+      caStripped.split(' ').forEach(function(w) { if (w && !uaWords[w]) caStrippedOk = false; });
+      if (caStrippedOk) {
+        var caUnbracketedOk = true;
+        uaNorm.split(' ').forEach(function(w) {
+          if (w && caUnbracketed.indexOf(w) === -1) caUnbracketedOk = false;
+        });
+        if (caUnbracketedOk) return true;
+      }
+    }
     return false;
+  }
+
+  function isTextInputType(qType) {
+    return qType === 'short-answer' || qType === 'gap-fill' ||
+           qType === 'form-completion' || qType === 'table-completion' ||
+           qType === 'note-completion' || qType === 'sentence-completion' ||
+           qType === 'diagram-labeling' || qType === 'summary-completion';
+  }
+
+  function getQuestionText(q) {
+    return q && q.text ? q.text : '';
+  }
+
+  function checkTextAnswersWithLLM(textResults) {
+    if (!textResults.length) return Promise.resolve([]);
+    var payload = {
+      answers: textResults.map(function(r) {
+        return {
+          questionNumber: r.number,
+          userAnswer: r.userAnswer,
+          correctAnswer: r.correctAnswer,
+          questionText: r.questionText || ''
+        };
+      })
+    };
+    return fetch(BRIDGE_URL + '/check-text-answers', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(payload)
+    }).then(function(resp) {
+      if (!resp.ok) throw new Error('Server returned ' + resp.status);
+      return resp.json();
+    }).then(function(data) {
+      if (data && data.results) return data.results;
+      return [];
+    }).catch(function(err) {
+      console.warn('LLM check failed:', err);
+      return [];  // fallback: keep original results
+    });
   }
 
   function checkAnswers() {
     var results = [];
     var correctCount = 0;
+    var textMismatches = [];  // text answers that failed local check → send to LLM
 
     allQuestions.forEach(function(item) {
       var q = item.question;
+      var groupType = item.groupType;
       var key = getAnswerKey(q.number);
       var userAnswer = getUserAnswer(q.number, q.type);
-      var correct = isCorrect(userAnswer, key);
+      var correct = isCorrect(userAnswer, key, q.type);
+
+      // For text inputs that failed local check, remember for LLM check
+      if (!correct && isTextInputType(q.type) && key && userAnswer) {
+        textMismatches.push({
+          number: q.number,
+          userAnswer: userAnswer,
+          correctAnswer: key.answer,
+          questionText: getQuestionText(q)
+        });
+      }
 
       if (correct) correctCount++;
       results.push({
@@ -1125,7 +1232,25 @@ body {
       });
     });
 
-    return { total: allQuestions.length, correct: correctCount, results: results };
+    var scoring = { total: allQuestions.length, correct: correctCount, results: results };
+
+    // If there are text mismatches, check them with LLM
+    if (textMismatches.length > 0) {
+      return checkTextAnswersWithLLM(textMismatches).then(function(llmResults) {
+        // Update scoring based on LLM results
+        var llmMap = {};
+        llmResults.forEach(function(r) { llmMap[r.questionNumber] = r.correct; });
+        scoring.results.forEach(function(r) {
+          if (llmMap[r.number] === true) {
+            r.correct = true;
+            scoring.correct++;
+          }
+        });
+        return scoring;
+      });
+    }
+
+    return Promise.resolve(scoring);
   }
 
   // ============================================================
@@ -1244,6 +1369,7 @@ body {
   // SAVE LOGIC
   // ============================================================
   function saveResults() {
+    if (!scoring) return;
     var payload = {
       skill: SKILL,
       testTitle: document.title,
@@ -1266,11 +1392,29 @@ body {
     }).then(function() {
       localStorage.removeItem('pendingResults_reading_section');
       if (warningBanner) warningBanner.classList.add('hidden');
+      showSaveStatus(true);
     }).catch(function(err) {
       console.warn('Save failed:', err.message);
       localStorage.setItem('pendingResults_reading_section', JSON.stringify(payload));
       if (warningBanner) warningBanner.classList.remove('hidden');
+      showSaveStatus(false);
     });
+  }
+
+  function showSaveStatus(success) {
+    if (!saveStatus) return;
+    saveStatus.classList.remove('hidden');
+    if (success) {
+      saveStatus.textContent = '✅ Saved! Go to Claude and say "chấm bài reading"';
+      saveStatus.className = 'save-status saved';
+    } else {
+      saveStatus.textContent = '⚠️ Server offline. Start server.py then click Retry.';
+      saveStatus.className = 'save-status failed';
+    }
+    // Auto-hide success after 8 seconds
+    if (success) {
+      setTimeout(function() { if (saveStatus) saveStatus.classList.add('hidden'); }, 8000);
+    }
   }
 
   function retrySave() {
@@ -1310,16 +1454,34 @@ body {
   // ============================================================
   if (btnCheck) {
     btnCheck.addEventListener('click', function() {
-      scoring = checkAnswers();
-      displayResults(scoring);
+      btnCheck.disabled = true;
+      btnCheck.textContent = 'Checking...';
+      checkAnswers().then(function(s) {
+        scoring = s;
+        displayResults(scoring);
+        if (scoreBadge) {
+          scoreBadge.classList.remove('hidden');
+          var pct = Math.round((scoring.correct / scoring.total) * 100);
+          scoreBadge.textContent = scoring.correct + ' / ' + scoring.total + ' (' + pct + '%)';
+          scoreBadge.className = 'score-badge ' + (pct >= 70 ? 'good' : pct >= 40 ? 'ok' : 'weak');
+        }
+        hasChecked = true;
+        if (btnSubmit) btnSubmit.disabled = false;
+        if (saveStatus) saveStatus.classList.add('hidden');
+        btnCheck.disabled = false;
+        btnCheck.textContent = 'Check Answers';
+      }).catch(function(err) {
+        console.warn('Check failed:', err);
+        btnCheck.disabled = false;
+        btnCheck.textContent = 'Check Answers';
+      });
+    });
+  }
+
+  if (btnSubmit) {
+    btnSubmit.addEventListener('click', function() {
+      if (!scoring) return;
       saveResults();
-      if (scoreBadge) {
-        scoreBadge.classList.remove('hidden');
-        var pct = Math.round((scoring.correct / scoring.total) * 100);
-        scoreBadge.textContent = scoring.correct + ' / ' + scoring.total + ' (' + pct + '%)';
-        scoreBadge.className = 'score-badge ' + (pct >= 70 ? 'good' : pct >= 40 ? 'ok' : 'weak');
-      }
-      hasChecked = true;
     });
   }
 

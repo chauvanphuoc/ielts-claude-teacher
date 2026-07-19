@@ -148,7 +148,8 @@ Use the Markdown Parsing Guidelines table below to identify structure:
 | Marker Pattern | Meaning | Action |
 |---|---|---|
 | `### Practice Test N` | Test boundary | Start new test |
-| `#### READING PASSAGE N` | Reading passage start | Extract passage text until next marker |
+| `#### READING PASSAGE N` | Reading passage start | Extract passage text until next marker. **CRITICAL: preserve all bold lettered section markers below** — do NOT strip them. |
+| `**A**` / `A` / `**B**` / `B` (single capital letter on its own line) | Reading passage section labels | **Include as-is in passage text** — these are part of the test. The format may vary: some textbooks use bold `**A**`, others use plain `A`. In either case, preserve the letter exactly as written. Do NOT mistake them for multiple-choice options (those appear in `- **A**` list format). |
 | `#### **LISTENING**` | Listening section start | Switch to listening context |
 | `#### SECTION X Questions Y-Z` | Question group for Listening | Create new questionGroup |
 | `#### Questions X-Y` | Question group | Create new questionGroup |
@@ -160,6 +161,55 @@ Use the Markdown Parsing Guidelines table below to identify structure:
 | `*text in italics*` | Instructions | Set as questionGroup.instructions |
 | `#### *Example*` | Example question | **Skip entirely** — do not include in JSON |
 | `- **A** the Ethereal Match` etc. | Match type list (matching questions) | Store as options on matching questions |
+
+**CRITICAL: matching-headings (List of Headings)** — A common IELTS Reading question type. The markdown follows a specific structure:
+
+```
+Reading passage 2 has six paragraphs B-F from the list of headings below.
+Choose the most suitable headings for paragraphs B-F from the list of headings below.
+Write the appropriate numbers (i-ix) in boxes 14-18 on your answer sheet.
+
+**List of Headings**
+
+- **i** Ottawa International Conference on Health Promotion
+- **ii** Holistic approach to health
+- **iii** ...
+...
+- **ix** Socio-ecological view of health
+
+ **14** Paragraph B : ____________________
+ **15** Paragraph C : ____________________
+ ...
+ **18** Paragraph F : ____________________
+```
+
+**Parsing rules:**
+
+1. **Read the instruction carefully.** The text between the question header (e.g., `##### Questions 14-18`) and the `**List of Headings**` marker IS the instruction — extract it as `instructions` on the questionGroup.
+2. **Identify the headings list:** Look for `**List of Headings**` or `**List of Headings**`. The bullet points below it (format `- **i**`, `- **ii**`, `- **iii**`... or `- **A**`, `- **B**`... etc.) are the heading options. Store them as an `options` array on the questionGroup — each item with `label` (the Roman numeral or letter) and `text` (the heading text).
+3. **Identify the questions:** After the headings list, find the numbered items like `**14** Paragraph B : ____________________`. Each question's `text` is the paragraph reference (e.g., "Paragraph B"), NOT the heading text.
+4. **JSON structure:**
+   ```json
+   {
+     "id": "qg-p2-1",
+     "heading": "Questions 14-18",
+     "instructions": "Reading passage 2 has six paragraphs B-F...",
+     "questionType": "matching-headings",
+     "options": [
+       { "label": "i", "text": "Ottawa International Conference on Health Promotion" },
+       { "label": "ii", "text": "Holistic approach to health" },
+       ...
+     ],
+     "questions": [
+       { "number": 14, "text": "Paragraph B", "type": "matching", "options": <same array> },
+       { "number": 15, "text": "Paragraph C", "type": "matching", "options": <same array> },
+       ...
+     ]
+   }
+   ```
+   - Each question's `type` must be `"matching"` (the template uses this to render a dropdown; `"matching-headings"` is the `questionType` on the group, not on individual questions).
+   - Each question must have the same `options` array as the group (used for the dropdown selector).
+   - The answer keys are Roman numerals (e.g., `"viii"`, `"ii"`) stored in the answer keys section at the end of the textbook.
 
 ### Step 5: Extract answer keys
 
