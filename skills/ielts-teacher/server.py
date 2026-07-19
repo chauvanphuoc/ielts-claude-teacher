@@ -338,7 +338,7 @@ def _call_llm(prompt, system_prompt=None):
     body = json.dumps({
         "model": model,
         "messages": messages,
-        "max_tokens": 1024,
+        "max_tokens": 8192,
         "temperature": 0.0,
     }).encode()
 
@@ -439,18 +439,31 @@ def _check_text_answers_llm(answers):
     if llm_batch:
         prompt_lines = []
         for a in llm_batch:
-            prompt_lines.append(
-                f"Q{a['questionNumber']}: "
-                f"Student answer: \"{a.get('userAnswer', '')}\" | "
-                f"Correct answer: \"{a.get('correctAnswer', '')}\""
-            )
+            instr = a.get('instructions', '').strip()
+            qtext = a.get('questionText', '').strip()
+            line = f"Q{a['questionNumber']}: "
+            if instr:
+                line += f"[Instruction: {instr}] "
+            if qtext:
+                line += f"Question: \"{qtext}\" | "
+            line += f"Student: \"{a.get('userAnswer', '')}\" | Key: \"{a.get('correctAnswer', '')}\""
+            prompt_lines.append(line)
 
         system_prompt = (
-            "You are an IELTS answer checker. For each question, determine if the student's answer "
-            "is semantically equivalent to the correct answer. IELTS answers often accept synonyms, "
-            "minor wording differences, and optional articles (e.g., 'the', 'a/an'). "
-            "Respond with ONLY a JSON array: [{\"q\": N, \"correct\": true/false}]. "
-            "Mark as correct if the student's answer captures the same essential information."
+            "You are an IELTS answer checker. For each question, consider:"
+            "\n- The QUESTION INSTRUCTION (the task rubric) — it tells what form answers should take"
+            " (e.g., letters CH/HTK/MC/SH, words from passage, numbers, YES/NO/NOT GIVEN)."
+            "\n- The CORRECT ANSWER (the key)."
+            "\n- The STUDENT'S ANSWER."
+            "\n\nRules:"
+            "\n1. If the instruction says to use specific codes/letters (e.g., 'Write the appropriate"
+            " letters CH, HTK, MC, SH'), and the student wrote the FULL NAME instead of the code"
+            " (e.g., 'Clark Hull' instead of 'CH'), still mark CORRECT — they identified the right"
+            " option, just used the long form."
+            "\n2. Accept synonyms, minor wording differences, optional articles, spelling variations."
+            "\n3. Only mark WRONG if the student's answer is genuinely incorrect or refers to something"
+            " different from the correct answer."
+            "\n\nRespond with ONLY a JSON array: [{\"q\": N, \"correct\": true/false}]."
         )
         user_prompt = "Check these IELTS answers (text input only):\n" + "\n".join(prompt_lines)
 

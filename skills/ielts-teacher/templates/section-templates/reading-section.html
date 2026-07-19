@@ -834,7 +834,7 @@ body {
 
       // Render questions
       (group.questions || []).forEach(function(q) {
-        allQuestions.push({ question: q, groupType: group.questionType });
+        allQuestions.push({ question: q, groupType: group.questionType, instructions: group.instructions || '' });
         var qDiv = renderQuestion(q, group.questionType);
         groupDiv.appendChild(qDiv);
       });
@@ -1167,7 +1167,8 @@ body {
     return qType === 'short-answer' || qType === 'gap-fill' ||
            qType === 'form-completion' || qType === 'table-completion' ||
            qType === 'note-completion' || qType === 'sentence-completion' ||
-           qType === 'diagram-labeling' || qType === 'summary-completion';
+           qType === 'diagram-labeling' || qType === 'summary-completion' ||
+           qType === 'matching' || qType === 'matching-headings';
   }
 
   function getQuestionText(q) {
@@ -1182,7 +1183,8 @@ body {
           questionNumber: r.number,
           userAnswer: r.userAnswer,
           correctAnswer: r.correctAnswer,
-          questionText: r.questionText || ''
+          questionText: r.questionText || '',
+          instructions: r.instructions || ''
         };
       })
     };
@@ -1220,7 +1222,8 @@ body {
           number: q.number,
           userAnswer: userAnswer,
           correctAnswer: key.answer,
-          questionText: getQuestionText(q)
+          questionText: getQuestionText(q),
+          instructions: item.instructions || ''
         });
       }
 

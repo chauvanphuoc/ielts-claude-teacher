@@ -30,27 +30,111 @@
                 {
                   "number": 1,
                   "text": "having an area of over 1000 hectares",
-                  "type": "matching"
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Chek Lap Kok airport only"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Kansai airport only"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Both airports"
+                    }
+                  ]
                 },
                 {
                   "number": 2,
                   "text": "built in a river delta",
-                  "type": "matching"
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Chek Lap Kok airport only"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Kansai airport only"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Both airports"
+                    }
+                  ]
                 },
                 {
                   "number": 3,
                   "text": "built in the open sea",
-                  "type": "matching"
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Chek Lap Kok airport only"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Kansai airport only"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Both airports"
+                    }
+                  ]
                 },
                 {
                   "number": 4,
                   "text": "built by reclaiming land",
-                  "type": "matching"
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Chek Lap Kok airport only"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Kansai airport only"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Both airports"
+                    }
+                  ]
                 },
                 {
                   "number": 5,
                   "text": "built using conventional methods of reclamation",
-                  "type": "matching"
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Chek Lap Kok airport only"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Kansai airport only"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Both airports"
+                    }
+                  ]
+                }
+              ],
+              "options": [
+                {
+                  "label": "A",
+                  "text": "Chek Lap Kok airport only"
+                },
+                {
+                  "label": "B",
+                  "text": "Kansai airport only"
+                },
+                {
+                  "label": "C",
+                  "text": "Both airports"
                 }
               ]
             },
@@ -499,42 +583,204 @@
                 {
                   "number": 28,
                   "text": "is cited as famous in the field of psychology.",
-                  "type": "matching"
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "CH",
+                      "text": "Clark Hull"
+                    },
+                    {
+                      "label": "HTK",
+                      "text": "Howard and Tracey Kendler"
+                    },
+                    {
+                      "label": "MC",
+                      "text": "Michael Cole and colleagues"
+                    },
+                    {
+                      "label": "SH",
+                      "text": "Simon Hewson"
+                    }
+                  ]
                 },
                 {
                   "number": 29,
                   "text": "demonstrated that the two-stage experiment involving button-pressing and inserting a marble into a hole poses problems for certain adults as well as children.",
-                  "type": "matching"
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "CH",
+                      "text": "Clark Hull"
+                    },
+                    {
+                      "label": "HTK",
+                      "text": "Howard and Tracey Kendler"
+                    },
+                    {
+                      "label": "MC",
+                      "text": "Michael Cole and colleagues"
+                    },
+                    {
+                      "label": "SH",
+                      "text": "Simon Hewson"
+                    }
+                  ]
                 },
                 {
                   "number": 30,
                   "text": "devised an experiment that investigated deductive reasoning without the use of any marbles.",
-                  "type": "matching"
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "CH",
+                      "text": "Clark Hull"
+                    },
+                    {
+                      "label": "HTK",
+                      "text": "Howard and Tracey Kendler"
+                    },
+                    {
+                      "label": "MC",
+                      "text": "Michael Cole and colleagues"
+                    },
+                    {
+                      "label": "SH",
+                      "text": "Simon Hewson"
+                    }
+                  ]
                 },
                 {
                   "number": 31,
                   "text": "appears to have proved that a change in the apparatus dramatically improves the performance of children of certain ages.",
-                  "type": "matching"
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "CH",
+                      "text": "Clark Hull"
+                    },
+                    {
+                      "label": "HTK",
+                      "text": "Howard and Tracey Kendler"
+                    },
+                    {
+                      "label": "MC",
+                      "text": "Michael Cole and colleagues"
+                    },
+                    {
+                      "label": "SH",
+                      "text": "Simon Hewson"
+                    }
+                  ]
                 },
                 {
                   "number": 32,
                   "text": "used a machine to measure inductive reasoning that replaced button-pressing with drawer-opening.",
-                  "type": "matching"
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "CH",
+                      "text": "Clark Hull"
+                    },
+                    {
+                      "label": "HTK",
+                      "text": "Howard and Tracey Kendler"
+                    },
+                    {
+                      "label": "MC",
+                      "text": "Michael Cole and colleagues"
+                    },
+                    {
+                      "label": "SH",
+                      "text": "Simon Hewson"
+                    }
+                  ]
                 },
                 {
                   "number": 33,
                   "text": "experimented with things that the subjects might have been expected to encounter in everyday life, rather than with a machine.",
-                  "type": "matching"
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "CH",
+                      "text": "Clark Hull"
+                    },
+                    {
+                      "label": "HTK",
+                      "text": "Howard and Tracey Kendler"
+                    },
+                    {
+                      "label": "MC",
+                      "text": "Michael Cole and colleagues"
+                    },
+                    {
+                      "label": "SH",
+                      "text": "Simon Hewson"
+                    }
+                  ]
                 },
                 {
                   "number": 34,
                   "text": "compared the performance of five-year-olds with college students, using the same apparatus with both sets of subjects.",
-                  "type": "matching"
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "CH",
+                      "text": "Clark Hull"
+                    },
+                    {
+                      "label": "HTK",
+                      "text": "Howard and Tracey Kendler"
+                    },
+                    {
+                      "label": "MC",
+                      "text": "Michael Cole and colleagues"
+                    },
+                    {
+                      "label": "SH",
+                      "text": "Simon Hewson"
+                    }
+                  ]
                 },
                 {
                   "number": 35,
                   "text": "is cited as having demonstrated that earlier experiments into children's ability to reason deductively may have led to the wrong conclusions.",
-                  "type": "matching"
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "CH",
+                      "text": "Clark Hull"
+                    },
+                    {
+                      "label": "HTK",
+                      "text": "Howard and Tracey Kendler"
+                    },
+                    {
+                      "label": "MC",
+                      "text": "Michael Cole and colleagues"
+                    },
+                    {
+                      "label": "SH",
+                      "text": "Simon Hewson"
+                    }
+                  ]
+                }
+              ],
+              "options": [
+                {
+                  "label": "CH",
+                  "text": "Clark Hull"
+                },
+                {
+                  "label": "HTK",
+                  "text": "Howard and Tracey Kendler"
+                },
+                {
+                  "label": "MC",
+                  "text": "Michael Cole and colleagues"
+                },
+                {
+                  "label": "SH",
+                  "text": "Simon Hewson"
                 }
               ]
             },
