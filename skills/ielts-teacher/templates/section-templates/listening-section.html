@@ -16,7 +16,7 @@
   Placeholders filled by Python generate_test_html.py:
     {{TITLE}} {{SKILL}} {{SKILL_BADGE}} {{SECTION_BADGE}}
     {{AUDIO_SRC}} {{INSTRUCTIONS}} {{SECTION_DATA}} {{ANSWER_KEYS}}
-    {{PIN_HASH}} {{TRANSCRIPT}} {{SOURCE}} {{TEST_NUMBER}} {{SECTION_NUMBER}}
+    {{PIN_HASH}} {{TRANSCRIPT}} {{IMAGES}} {{SOURCE}} {{TEST_NUMBER}} {{SECTION_NUMBER}}
     {{QUESTION_COUNT}}
 
   <!-- ANSWERS EMBEDDED — use PIN to view in UI. View Source also reveals answers. -->
@@ -235,6 +235,26 @@ body {
   color: var(--color-text-tertiary);
   border: 1px dashed var(--color-border);
   border-radius: var(--radius-sm);
+}
+
+/* Section-level images */
+.section-images {
+  margin-bottom: 24px;
+}
+.section-images img {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+.section-images img.missing {
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-text-tertiary);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-sm);
+  display: block;
 }
 
 /* Options: radio buttons */
@@ -676,6 +696,118 @@ body {
   .warning-banner { display: none; }
   .pin-overlay { display: none; }
 }
+
+/* ============================================================
+   PICK-FROM-LIST (group multiple choice)
+   ============================================================ */
+
+/* Screen-reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Pick count badge (B5-fix) */
+.pick-count-badge {
+  display: inline-block;
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  background: var(--color-accent-bg);
+  color: var(--color-accent);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* Question instruction row */
+.question-instruction-row {
+  display: flex; align-items: center;
+  margin-bottom: 8px;
+}
+
+/* Checkbox-style option items */
+.option-mc.option-checkbox { }
+.option-mc.option-checkbox input[type="checkbox"] {
+  margin-top: 3px; accent-color: var(--color-accent);
+}
+.option-mc.option-checkbox label { cursor: pointer; }
+
+.option-mc.option-disabled {
+  opacity: 0.4; cursor: not-allowed;
+}
+.option-mc.option-disabled label { cursor: not-allowed; }
+
+/* Pick-from-list reveal states (B6-fix) */
+.option-correct {
+  background: var(--color-success-bg);
+  border-color: var(--color-success);
+  border-radius: var(--radius-sm);
+}
+.option-correct .option-label-marker {
+  background: var(--color-success); color: white;
+}
+.option-missed {
+  background: var(--color-warning-bg);
+  border-color: var(--color-warning);
+  border-style: dashed;
+  border-radius: var(--radius-sm);
+}
+.option-missed .option-label-marker {
+  background: var(--color-warning); color: white;
+}
+.option-wrong {
+  background: var(--color-error-bg);
+  border-color: var(--color-error);
+  border-radius: var(--radius-sm);
+}
+.option-wrong label { text-decoration: line-through; }
+.option-wrong .option-label-marker {
+  background: var(--color-error); color: white;
+}
+
+/* Pick-from-list focus visible (B7-fix) */
+.pick-list-options input[type="checkbox"]:focus-visible + label {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Pick-from-list summary (B6-fix) */
+.pick-list-summary {
+  margin-top: 12px; padding: 10px 14px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 13px; line-height: 1.8;
+}
+.summary-score { font-weight: 700; }
+.summary-matched { color: var(--color-success-text); }
+.summary-missed { color: var(--color-warning-text); }
+.summary-extra { color: var(--color-error-text); }
+.summary-over-selected { color: var(--color-error); font-weight: 600; }
+
+/* Result group header */
+.result-group-header { font-weight: 600; margin-bottom: 4px; }
+.result-line { font-size: 13px; padding: 2px 0; }
+.result-line.matched { color: var(--color-success-text); }
+.result-line.missed { color: var(--color-warning-text); }
+.result-line.extra { color: var(--color-error-text); }
+
+/* Over-selection warning (F3-fix) */
+.over-selection-warning {
+  margin-top: 6px; padding: 6px 10px;
+  background: var(--color-error-bg);
+  color: var(--color-error-text);
+  border: 1px solid var(--color-error);
+  border-radius: var(--radius-sm);
+  font-size: 12px; font-weight: 600;
+}
 </style>
 </head>
 <body>
@@ -725,6 +857,9 @@ body {
       <button class="audio-volume" id="audio-volume-btn" aria-label="Mute audio" title="Mute/Unmute (M)">&#128264;</button>
       <div class="audio-error-msg" id="audio-error-msg" role="alert">&#9888;&#65039; Audio file not found. Check that the MP3 exists.</div>
     </div>
+
+    <!-- SECTION IMAGES -->
+    <div class="section-images" id="section-images"></div>
 
     <!-- QUESTIONS -->
     <div class="question-group" id="questions-container" role="form" aria-label="Test questions">
@@ -790,6 +925,7 @@ body {
   var ANSWER_KEYS = {{ANSWER_KEYS}};
   var PIN_HASH = "{{PIN_HASH}}";
   window.__TRANSCRIPT__ = {{TRANSCRIPT}};
+  var IMAGES = {{IMAGES}};
   var SKILL = "{{SKILL}}";
   var SOURCE = "{{SOURCE}}";
   var TEST_NUMBER = {{TEST_NUMBER}};
@@ -828,6 +964,7 @@ body {
   var pinOverlay = $('pin-overlay');
   var pinInput = $('pin-input');
   var pinError = $('pin-error');
+  var sectionImages = $('section-images');
   var audioPlayer = $('audio-player');
   var audioBtn = $('audio-btn');
   var audioBtnIcon = $('audio-btn-icon');
@@ -864,17 +1001,30 @@ body {
     questions.forEach(function(q) {
       var div = document.createElement('div');
       div.className = 'question';
-      div.id = 'question-' + q.number;
 
-      var num = document.createElement('div');
-      num.className = 'question-number';
-      num.textContent = 'Question ' + q.number;
-      div.appendChild(num);
+      // Pick-from-list: use group key as ID, different label format
+      if (q.type === 'pick-from-list') {
+        var groupKey = q.questionNumbers.slice().sort(function(a, b) { return a - b; }).join('-');
+        div.id = 'question-group-' + groupKey;
+        // Number label handled inside renderPickFromList
+      } else {
+        div.id = 'question-' + q.number;
+        var num = document.createElement('div');
+        num.className = 'question-number';
+        num.textContent = 'Question ' + q.number;
+        div.appendChild(num);
 
-      var text = document.createElement('div');
-      text.className = 'question-text';
-      text.textContent = q.text || '';
-      div.appendChild(text);
+        var text = document.createElement('div');
+        text.className = 'question-text';
+        text.textContent = q.text || '';
+        div.appendChild(text);
+      }
+
+      // Universal question image: render if the question has images.
+      // M5-fix: skip for pick-from-list — renderPickFromList handles its own images
+      if (q.type !== 'pick-from-list') {
+        renderQuestionImages(div, q);
+      }
 
       switch (q.type) {
         case 'multiple-choice':
@@ -882,6 +1032,9 @@ body {
           break;
         case 'multiple-choice-image':
           renderMCImage(div, q);
+          break;
+        case 'pick-from-list':
+          renderPickFromList(div, q);
           break;
         case 'gap-fill':
         case 'short-answer':
@@ -906,6 +1059,39 @@ body {
 
     // Enable check button now that questions are rendered
     if (btnCheck) btnCheck.disabled = false;
+  }
+
+  // ── Universal question images (any type) ──
+  function renderQuestionImages(container, q) {
+    // Handle both formats:
+    //   q.images = [{src: "...", alt: "..."}]  (plural array, new format)
+    //   q.image  = "path/to/image.jpg"          (singular string, legacy format)
+    var images = q.images;
+    if (!images || !Array.isArray(images)) {
+      // Fallback: singular q.image string
+      if (q.image) {
+        images = [{ src: q.image, alt: '' }];
+      } else {
+        return;
+      }
+    }
+    images.forEach(function(img) {
+      var imgDiv = document.createElement('div');
+      imgDiv.className = 'question-image';
+      var el = document.createElement('img');
+      el.src = '/textbook/' + SOURCE + '/textbook/' + (img.src || img);
+      el.alt = img.alt || 'Question image';
+      el.setAttribute('loading', 'lazy');
+      el.onerror = function() {
+        this.style.display = 'none';
+        var fb = document.createElement('div');
+        fb.className = 'question-image-fallback';
+        fb.textContent = 'Image not available';
+        this.parentNode.insertBefore(fb, this.nextSibling);
+      };
+      imgDiv.appendChild(el);
+      container.appendChild(imgDiv);
+    });
   }
 
   // ── Multiple Choice (text options) ──
@@ -1008,6 +1194,115 @@ body {
 
       // Text radio buttons
       renderMC(container, q);
+    }
+  }
+
+  // ── Pick from List (group multiple choice with checkboxes) ──
+  function renderPickFromList(container, q) {
+    // q = {type: "pick-from-list", questionNumbers: [6,7,8], pickCount: 3,
+    //      text: "...", instructions: "...", options: [...], answers: [...], anyOrder: true}
+    var range = q.questionNumbers[0] + '-' + q.questionNumbers[q.questionNumbers.length - 1];
+
+    // Label: "Questions 6-8"
+    var label = document.createElement('div');
+    label.className = 'question-label';
+    label.textContent = 'Questions ' + range;
+    container.appendChild(label);
+
+    // Instruction row with pick badge (B5-fix)
+    var instrRow = document.createElement('div');
+    instrRow.className = 'question-instruction-row';
+
+    var instr = document.createElement('span');
+    instr.className = 'question-instruction';
+    instr.textContent = q.instructions || ('Choose ' + q.pickCount + ' letters.');
+    instrRow.appendChild(instr);
+
+    var badge = document.createElement('span');
+    badge.className = 'pick-count-badge';
+    badge.textContent = 'Pick ' + q.pickCount;
+    badge.setAttribute('aria-hidden', 'true');
+    instrRow.appendChild(badge);
+
+    container.appendChild(instrRow);
+
+    // Question text (if separate from instructions)
+    if (q.text && q.text !== q.instructions) {
+      var textEl = document.createElement('div');
+      textEl.className = 'question-text';
+      textEl.textContent = q.text;
+      container.appendChild(textEl);
+    }
+
+    // Question images
+    renderQuestionImages(container, q);
+
+    // F5-fix: canonical group key for name attribute
+    var groupKey = q.questionNumbers.slice().sort(function(a, b) { return a - b; }).join('-');
+    var groupName = 'pick-group-' + groupKey;
+
+    // Checkbox list (B7-fix: accessibility)
+    var optionList = document.createElement('div');
+    optionList.className = 'options-vertical pick-list-options';
+    optionList.setAttribute('role', 'group');
+    optionList.setAttribute('aria-label', 'Questions ' + range + ': select ' + q.pickCount + ' options');
+    optionList.setAttribute('aria-describedby', 'pick-instruction-' + groupKey);
+    optionList.setAttribute('data-pick-count', q.pickCount);
+    optionList.setAttribute('data-question-numbers', q.questionNumbers.join(','));
+
+    (q.options || []).forEach(function(opt, idx) {
+      var item = document.createElement('div');
+      item.className = 'option-mc option-checkbox';
+
+      var input = document.createElement('input');
+      input.type = 'checkbox';
+      input.name = groupName;
+      input.id = groupName + '-' + idx;
+      input.value = opt.label;
+      input.setAttribute('data-question-numbers', q.questionNumbers.join(','));
+      input.setAttribute('data-pick-count', q.pickCount);
+      input.setAttribute('aria-label', opt.label + ': ' + opt.text);
+
+      input.addEventListener('change', function() {
+        enforcePickLimit(optionList, q.pickCount);
+      });
+
+      var labelEl = document.createElement('label');
+      labelEl.setAttribute('for', groupName + '-' + idx);
+      labelEl.innerHTML = '<span class="option-label-marker">' + escHtml(opt.label) + '</span> ' + escHtml(opt.text);
+
+      item.appendChild(input);
+      item.appendChild(labelEl);
+      optionList.appendChild(item);
+    });
+
+    // Hidden instruction for aria-describedby (B7-fix)
+    var hiddenInstr = document.createElement('span');
+    hiddenInstr.id = 'pick-instruction-' + groupKey;
+    hiddenInstr.className = 'sr-only';
+    hiddenInstr.textContent = 'Select exactly ' + q.pickCount + ' options.';
+    optionList.appendChild(hiddenInstr);
+
+    container.appendChild(optionList);
+  }
+
+  // ── Enforce pick limit for pick-from-list checkboxes ──
+  function enforcePickLimit(optionList, maxCount) {
+    var allCB = optionList.querySelectorAll('input[type="checkbox"]');
+    var checked = optionList.querySelectorAll('input[type="checkbox"]:checked');
+
+    if (checked.length >= maxCount) {
+      allCB.forEach(function(cb) {
+        if (!cb.checked) {
+          cb.disabled = true;
+          cb.parentElement.classList.add('option-disabled');
+        }
+      });
+    } else {
+      allCB.forEach(function(cb) {
+        cb.disabled = false;
+        cb.parentElement.classList.remove('option-disabled');
+      });
     }
   }
 
@@ -1156,12 +1451,51 @@ body {
   // ============================================================
   // SCORING
   // ============================================================
+
+  // F1-fix: Find pick-from-list group by exact question number membership.
+  function findGroupByQuestionNumber(qNumber) {
+    for (var i = 0; i < questions.length; i++) {
+      var q = questions[i];
+      if (q.type === 'pick-from-list') {
+        if (q.questionNumbers.indexOf(qNumber) !== -1) {
+          return q;
+        }
+      }
+    }
+    return null;
+  }
+
+  // F5-fix: Return canonical group key (sorted questionNumbers joined).
+  function getGroupKey(questionNumbers) {
+    return questionNumbers.slice().sort(function(a, b) { return a - b; }).join('-');
+  }
+
+  // Compute total marks (pick-from-list groups count as N marks).
+  function computeTotalMarks() {
+    var total = 0;
+    questions.forEach(function(q) {
+      if (q.type === 'pick-from-list') {
+        total += q.pickCount || q.questionNumbers.length;
+      } else {
+        total += 1;
+      }
+    });
+    return total;
+  }
+  var totalMarks = computeTotalMarks();
+
   function getAnswerKey(qNumber) {
     if (!ANSWER_KEYS || ANSWER_KEYS === null) return null;
     // Flat array format: [{questionNumber: 1, answer: "A"}, ...]
     if (Array.isArray(ANSWER_KEYS)) {
       for (var i = 0; i < ANSWER_KEYS.length; i++) {
-        if (ANSWER_KEYS[i].questionNumber === qNumber) {
+        // Group entry (F1-fix: exact membership check)
+        if (ANSWER_KEYS[i].groupType === 'pick-from-list' &&
+            ANSWER_KEYS[i].questionNumbers.indexOf(qNumber) !== -1) {
+          return ANSWER_KEYS[i];
+        }
+        // Individual entry
+        if (ANSWER_KEYS[i].questionNumber === qNumber || ANSWER_KEYS[i].number === qNumber) {
           return ANSWER_KEYS[i];
         }
       }
@@ -1174,6 +1508,20 @@ body {
   }
 
   function getUserAnswer(qNumber, qType) {
+    // F1-fix: pick-from-list — find group by exact membership, use name attribute
+    if (qType === 'pick-from-list') {
+      var group = findGroupByQuestionNumber(qNumber);
+      if (!group) return [];
+      var groupKey = getGroupKey(group.questionNumbers);
+      var groupName = 'pick-group-' + groupKey;
+      var allCB = document.querySelectorAll('input[type="checkbox"][name="' + groupName + '"]');
+      var checked = [];
+      allCB.forEach(function(cb) {
+        if (cb.checked) checked.push(cb.value);
+      });
+      // Return ALL checked (even if > pickCount — over-selection handled in checkAnswers, F3-fix)
+      return checked.sort();
+    }
     if (qType === 'matching') {
       // Collect dropdown selections by item label
       var selects = document.querySelectorAll('select[data-question="' + qNumber + '"]');
@@ -1261,14 +1609,123 @@ body {
     });
   }
 
+  function isTextInputType(qType) {
+    return qType === 'short-answer' || qType === 'gap-fill' || qType === 'gapfill' ||
+           qType === 'form-completion' || qType === 'table-completion' ||
+           qType === 'note-completion' || qType === 'sentence-completion' ||
+           qType === 'diagram-labeling' || qType === 'summary-completion' ||
+           qType === 'matching';
+  }
+
+  function getQuestionText(q) {
+    return q && q.text ? q.text : '';
+  }
+
+  function checkTextAnswersWithLLM(textResults) {
+    if (!textResults.length) return Promise.resolve([]);
+    var payload = {
+      answers: textResults.map(function(r) {
+        return {
+          questionNumber: r.number,
+          userAnswer: r.userAnswer,
+          correctAnswer: r.correctAnswer,
+          questionText: r.questionText || '',
+          instructions: r.instructions || ''
+        };
+      })
+    };
+    return fetch(BRIDGE_URL + '/check-text-answers', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(payload)
+    }).then(function(resp) {
+      if (!resp.ok) throw new Error('Server returned ' + resp.status);
+      return resp.json();
+    }).then(function(data) {
+      if (data && data.results) return data.results;
+      return [];
+    }).catch(function(err) {
+      console.warn('LLM check failed:', err);
+      return [];  // fallback: keep original results
+    });
+  }
+
   function checkAnswers() {
     var results = [];
+    var processedGroups = {};  // F5-fix: canonical group key → true
     var correctCount = 0;
+    var textMismatches = [];  // text answers that failed local check → send to LLM
 
     questions.forEach(function(q) {
+      // ── Pick-from-list group grading (F3-fix) ──
+      if (q.type === 'pick-from-list') {
+        var groupKey = getGroupKey(q.questionNumbers);
+        if (processedGroups[groupKey]) return;
+        processedGroups[groupKey] = true;
+
+        var userPicks = getUserAnswer(q.questionNumbers[0], 'pick-from-list');
+        var correctSet = q.answer || q.answers || [];
+        var pickCount = q.pickCount;
+
+        // F3-fix: Over-selection → fail cứng, score = 0
+        if (userPicks.length > pickCount) {
+          results.push({
+            type: 'pick-from-list',
+            questionNumbers: q.questionNumbers,
+            pickCount: pickCount,
+            score: 0,
+            maxScore: pickCount,
+            matched: [],
+            missed: correctSet,
+            extra: userPicks,
+            userAnswer: userPicks,
+            correctAnswer: correctSet,
+            anyOrder: q.anyOrder,
+            overSelected: true
+          });
+          return;  // 0 marks
+        }
+
+        // Set comparison (unordered)
+        var matched = userPicks.filter(function(p) { return correctSet.indexOf(p) !== -1; });
+        var missed  = correctSet.filter(function(a) { return userPicks.indexOf(a) === -1; });
+        var extra   = userPicks.filter(function(p) { return correctSet.indexOf(p) === -1; });
+
+        var score = matched.length;
+        correctCount += score;
+
+        results.push({
+          type: 'pick-from-list',
+          questionNumbers: q.questionNumbers,
+          pickCount: pickCount,
+          score: score,
+          maxScore: pickCount,
+          matched: matched,
+          missed: missed,
+          extra: extra,
+          userAnswer: userPicks,
+          correctAnswer: correctSet,
+          anyOrder: q.anyOrder,
+          overSelected: false
+        });
+        return;
+      }
+
+      // ── Individual question grading ──
       var key = getAnswerKey(q.number);
       var userAnswer = getUserAnswer(q.number, q.type);
       var correct = isCorrect(userAnswer, key);
+
+      // For text inputs that failed local check, remember for LLM check
+      if (!correct && isTextInputType(q.type) && key && userAnswer) {
+        textMismatches.push({
+          number: q.number,
+          userAnswer: userAnswer,
+          correctAnswer: key.answer,
+          questionText: getQuestionText(q),
+          instructions: q.instructions || ''
+        });
+      }
 
       if (correct) correctCount++;
 
@@ -1281,11 +1738,29 @@ body {
       });
     });
 
-    return {
-      total: questions.length,
+    var scoring = {
+      total: totalMarks,
       correct: correctCount,
       results: results
     };
+
+    // If there are text mismatches, check them with LLM
+    if (textMismatches.length > 0) {
+      return checkTextAnswersWithLLM(textMismatches).then(function(llmResults) {
+        // Update scoring based on LLM results
+        var llmMap = {};
+        llmResults.forEach(function(r) { llmMap[r.questionNumber] = r.correct; });
+        scoring.results.forEach(function(r) {
+          if (llmMap[r.number] === true) {
+            r.correct = true;
+            scoring.correct++;
+          }
+        });
+        return scoring;
+      });
+    }
+
+    return Promise.resolve(scoring);
   }
 
   // ============================================================
@@ -1299,14 +1774,61 @@ body {
     resultsList.innerHTML = '';
     scoring.results.forEach(function(r) {
       var item = document.createElement('div');
-      item.className = 'result-item ' + (r.correct ? 'correct' : 'wrong');
-      item.innerHTML =
-        '<span>Q' + r.number + ': ' + (r.correct ? '&#10004;' : '&#10008;') + '</span>' +
-        '<span class="result-answer">' +
-        'Your answer: <span class="' + (r.correct ? 'correct-answer' : 'wrong-answer') + '">' +
-        escHtml(formatAnswer(r.userAnswer)) + '</span>' +
-        (r.correct ? '' : ' &rarr; Correct: <span class="correct-answer">' + escHtml(formatAnswer(r.correctAnswer)) + '</span>') +
-        '</span>';
+
+      // ── Pick-from-list group result ──
+      if (r.type === 'pick-from-list') {
+        var isFullCorrect = r.score === r.maxScore && !r.overSelected;
+        item.className = 'result-item ' + (isFullCorrect ? 'correct' : 'wrong');
+
+        var range = r.questionNumbers[0] + '-' + r.questionNumbers[r.questionNumbers.length - 1];
+        var header = document.createElement('div');
+        header.className = 'result-group-header';
+        header.innerHTML = '<strong>Questions ' + range + '</strong>: ' + r.score + '/' + r.maxScore + ' correct';
+        item.appendChild(header);
+
+        // F3-fix: Over-selection warning
+        if (r.overSelected) {
+          var warn = document.createElement('div');
+          warn.className = 'over-selection-warning';
+          warn.textContent = '⚠️ You selected ' + r.userAnswer.length + ' options (limit: ' + r.pickCount + '). This group scores 0.';
+          item.appendChild(warn);
+        }
+
+        // Matched
+        r.matched.forEach(function(label) {
+          var line = document.createElement('div');
+          line.className = 'result-line matched';
+          line.innerHTML = '✓ <span class="option-label-marker">' + escHtml(label) + '</span>';
+          item.appendChild(line);
+        });
+
+        // Missed
+        r.missed.forEach(function(label) {
+          var line = document.createElement('div');
+          line.className = 'result-line missed';
+          line.innerHTML = '✗ <span class="option-label-marker">' + escHtml(label) + '</span> (missed)';
+          item.appendChild(line);
+        });
+
+        // Extra
+        r.extra.forEach(function(label) {
+          var line = document.createElement('div');
+          line.className = 'result-line extra';
+          line.innerHTML = '✗ <span class="option-label-marker">' + escHtml(label) + '</span> (incorrect)';
+          item.appendChild(line);
+        });
+      } else {
+        // ── Individual result ──
+        item.className = 'result-item ' + (r.correct ? 'correct' : 'wrong');
+        item.innerHTML =
+          '<span>Q' + r.number + ': ' + (r.correct ? '&#10004;' : '&#10008;') + '</span>' +
+          '<span class="result-answer">' +
+          'Your answer: <span class="' + (r.correct ? 'correct-answer' : 'wrong-answer') + '">' +
+          escHtml(formatAnswer(r.userAnswer)) + '</span>' +
+          (r.correct ? '' : ' &rarr; Correct: <span class="correct-answer">' + escHtml(formatAnswer(r.correctAnswer)) + '</span>') +
+          '</span>';
+      }
+
       resultsList.appendChild(item);
     });
 
@@ -1346,6 +1868,47 @@ body {
 
     // Highlight each question
     scoring.results.forEach(function(r) {
+      // ── Pick-from-list group reveal (B6-fix) ──
+      if (r.type === 'pick-from-list') {
+        var groupKey = getGroupKey(r.questionNumbers);
+        var groupName = 'pick-group-' + groupKey;
+        var allCB = document.querySelectorAll('input[name="' + groupName + '"]');
+
+        allCB.forEach(function(cb) {
+          var label = cb.value;
+          var item = cb.closest('.option-mc');
+          cb.disabled = true;  // lock after reveal
+
+          if (r.matched.indexOf(label) !== -1) {
+            item.classList.add('option-correct');
+            cb.checked = true;
+          } else if (r.missed.indexOf(label) !== -1) {
+            item.classList.add('option-missed');
+            cb.checked = true;
+          } else if (r.extra.indexOf(label) !== -1) {
+            item.classList.add('option-wrong');
+            cb.checked = true;
+          }
+        });
+
+        // Summary text
+        var groupEl = document.getElementById('question-group-' + groupKey);
+        if (groupEl) {
+          var summary = document.createElement('div');
+          summary.className = 'pick-list-summary';
+          var parts = [];
+          parts.push('<span class="summary-score">' + r.score + '/' + r.maxScore + ' correct</span>');
+          if (r.matched.length > 0) parts.push('<span class="summary-matched">✓ ' + r.matched.join(', ') + '</span>');
+          if (r.missed.length > 0) parts.push('<span class="summary-missed">✗ Missed: ' + r.missed.join(', ') + '</span>');
+          if (r.extra.length > 0) parts.push('<span class="summary-extra">✗ Extra: ' + r.extra.join(', ') + '</span>');
+          if (r.overSelected) parts.push('<span class="summary-over-selected">⚠️ Over-selected (' + r.userAnswer.length + '/' + r.pickCount + ')</span>');
+          summary.innerHTML = parts.join(' ');
+          groupEl.appendChild(summary);
+        }
+        return;
+      }
+
+      // ── Individual reveal ──
       var qEl = document.getElementById('question-' + r.number);
       if (!qEl) return;
       qEl.classList.add(r.correct ? 'correct-answer' : 'wrong-answer');
@@ -1371,6 +1934,23 @@ body {
     document.body.classList.remove('answer-revealed');
 
     questions.forEach(function(q) {
+      if (q.type === 'pick-from-list') {
+        var groupKey = getGroupKey(q.questionNumbers);
+        var groupEl = document.getElementById('question-group-' + groupKey);
+        if (groupEl) {
+          // Remove summary
+          var summaries = groupEl.querySelectorAll('.pick-list-summary');
+          summaries.forEach(function(s) { s.remove(); });
+          // Reset checkbox styles
+          var items = groupEl.querySelectorAll('.option-mc');
+          items.forEach(function(item) {
+            item.classList.remove('option-correct', 'option-missed', 'option-wrong');
+            var cb = item.querySelector('input[type="checkbox"]');
+            if (cb) cb.disabled = false;
+          });
+        }
+        return;
+      }
       var qEl = document.getElementById('question-' + q.number);
       if (!qEl) return;
       qEl.classList.remove('correct-answer', 'wrong-answer');
@@ -1705,22 +2285,33 @@ body {
   // ── Check Answers ──
   if (btnCheck) {
     btnCheck.addEventListener('click', function() {
-      scoring = checkAnswers();
-      displayResults(scoring);
-      saveResults();
+      btnCheck.disabled = true;
+      btnCheck.textContent = 'Checking...';
+      checkAnswers().then(function(s) {
+        scoring = s;
+        displayResults(scoring);
+        saveResults();
 
-      // Show score badge
-      if (scoreBadge) {
-        scoreBadge.classList.remove('hidden');
-        var pct = Math.round((scoring.correct / scoring.total) * 100);
-        scoreBadge.textContent = scoring.correct + ' / ' + scoring.total + ' (' + pct + '%)';
-        scoreBadge.className = 'score-badge ' + (pct >= 70 ? 'good' : pct >= 40 ? 'ok' : 'weak');
-      }
+        // Show score badge
+        if (scoreBadge) {
+          scoreBadge.classList.remove('hidden');
+          var pct = Math.round((scoring.correct / scoring.total) * 100);
+          scoreBadge.textContent = scoring.correct + ' / ' + scoring.total + ' (' + pct + '%)';
+          scoreBadge.className = 'score-badge ' + (pct >= 70 ? 'good' : pct >= 40 ? 'ok' : 'weak');
+        }
 
-      // Show transcript toggle after checking
-      if (transcriptPanel) transcriptPanel.classList.remove('hidden');
+        // Show transcript toggle after checking
+        if (transcriptPanel) transcriptPanel.classList.remove('hidden');
 
-      hasChecked = true;
+        hasChecked = true;
+        if (btnToggleAnswers) btnToggleAnswers.disabled = false;
+        btnCheck.disabled = false;
+        btnCheck.textContent = 'Check Answers';
+      }).catch(function(err) {
+        console.warn('Check failed:', err);
+        btnCheck.disabled = false;
+        btnCheck.textContent = 'Check Answers';
+      });
     });
   }
 
@@ -1842,11 +2433,30 @@ body {
   }
 
   // ============================================================
+  // RENDER SECTION IMAGES
+  // ============================================================
+  function renderSectionImages() {
+    if (!sectionImages || !IMAGES || !Array.isArray(IMAGES) || IMAGES.length === 0) return;
+    IMAGES.forEach(function(img) {
+      var el = document.createElement('img');
+      el.src = '/textbook/' + SOURCE + '/textbook/' + img.src;
+      el.alt = img.alt || 'Section image';
+      el.setAttribute('loading', 'lazy');
+      el.onerror = function() {
+        this.className = 'missing';
+        this.alt = 'Image not available: ' + (img.src || 'unknown');
+      };
+      sectionImages.appendChild(el);
+    });
+  }
+
+  // ============================================================
   // INIT — wait for DOM readiness (handles headless browsers)
   // ============================================================
   function init() {
     try {
       renderAllQuestions();
+      renderSectionImages();
       initAudio();
     } catch(e) {
       var c = document.getElementById('questions-container');

@@ -118,11 +118,13 @@ def escape_template_content(text: str) -> str:
 
 
 def count_questions_in_list(questions: list) -> int:
-    """Count questions including sub-questions in form-completion rows."""
+    """Count questions including sub-questions in form-completion rows and pick-from-list groups."""
     count = 0
     for q in questions:
         if isinstance(q, dict):
-            if q.get("type") == "form-completion" and "rows" in q:
+            if q.get("type") == "pick-from-list":
+                count += len(q.get("questionNumbers", []))
+            elif q.get("type") == "form-completion" and "rows" in q:
                 # Each input row = one question
                 rows = q.get("rows", [])
                 for row in rows:
@@ -156,6 +158,83 @@ def count_questions(section_data) -> int:
     return 0
 
 
+# ---- Question type alias normalization --------------------------------
+# Canonical names = what the JS template switch/case expects.
+# Add new aliases here as needed — no need to modify JSON or JS.
+
+QUESTION_TYPE_CANONICAL = {
+    # True/False/Not Given
+    "tfng": "true-false-not-given",
+    "t-f-ng": "true-false-not-given",
+    "true-false-not-given": "true-false-not-given",
+    # Yes/No/Not Given
+    "ynng": "yes-no-not-given",
+    "y-n-ng": "yes-no-not-given",
+    "yes-no-not-given": "yes-no-not-given",
+    # Gap fill
+    "gapfill": "gap-fill",
+    "gap-fill": "gap-fill",
+    # Summary completion
+    "summary": "summary-completion",
+    "summary-completion": "summary-completion",
+    # Matching
+    "matching": "matching",
+    "matching-headings": "matching-headings",
+    # Table / form / note / sentence / diagram
+    "table-completion": "table-completion",
+    "form-completion": "form-completion",
+    "note-completion": "note-completion",
+    "sentence-completion": "sentence-completion",
+    "diagram-labeling": "diagram-labeling",
+    # Multiple choice
+    "multiple-choice": "multiple-choice",
+    # Pick from list (group multiple choice)
+    "pick-from-list": "pick-from-list",
+    # Short answer
+    "short-answer": "short-answer",
+}
+
+
+def normalize_type(raw_type: str) -> str:
+    """Map any type alias to its canonical JS template name.
+    If unrecognized, return as-is (the JS switch default renders a text input).
+    """
+    if not raw_type:
+        return raw_type
+    key = raw_type.strip().lower().replace("_", "-")
+    return QUESTION_TYPE_CANONICAL.get(key, raw_type)
+
+
+def normalize_question_types_in_passages(passages: list) -> list:
+    """Normalize questionType and type fields in all question groups/questions."""
+    for passage in passages:
+        for group in passage.get("questionGroups", []):
+            if group.get("questionType"):
+                group["questionType"] = normalize_type(group["questionType"])
+            for q in group.get("questions", []):
+                if q.get("type"):
+                    q["type"] = normalize_type(q["type"])
+    return passages
+
+
+def normalize_question_types_in_list(questions: list) -> list:
+    """Normalize type fields in a flat list of questions (listening, speaking)."""
+    for q in questions:
+        if isinstance(q, dict):
+            if q.get("type"):
+                q["type"] = normalize_type(q["type"])
+    return questions
+
+
+def normalize_question_images_in_list(questions: list) -> list:
+    """Convert singular 'image' (string) to 'images' (array) for consistency with reading."""
+    for q in questions:
+        if isinstance(q, dict):
+            if "image" in q and "images" not in q:
+                q["images"] = [{"src": q.pop("image"), "alt": ""}]
+    return questions
+
+
 # ---- Data loaders (one per skill) -----------------------------------
 
 def load_listening_section(source: str, test_num: int, section_num: int) -> NormalizedSection:
@@ -170,7 +249,7 @@ def load_listening_section(source: str, test_num: int, section_num: int) -> Norm
     # Find test by testNumber
     test = None
     for t in tests:
-        if t.get("testNumber") == test_num:
+        if str(t.get("testNumber")) == str(test_num):
             test = t
             break
     if not test:
@@ -183,6 +262,8 @@ def load_listening_section(source: str, test_num: int, section_num: int) -> Norm
 
     sec = sections[section_num - 1]
     questions = sec.get("questions", [])
+    questions = normalize_question_types_in_list(questions)
+    questions = normalize_question_images_in_list(questions)
     answer_key = sec.get("answerKey", [])
 
     title = f"Cambridge IELTS {source.replace('cambridge-', '')} — Listening Test {test_num}, Section {section_num}"
@@ -204,6 +285,7 @@ def load_listening_section(source: str, test_num: int, section_num: int) -> Norm
             "AUDIO_SRC": audio_src,
             "INSTRUCTIONS": sec.get("instructions", ""),
             "TRANSCRIPT": sec.get("transcript", ""),
+            "IMAGES": sec.get("images", []),
         }
     )
 
@@ -216,6 +298,7 @@ def load_reading_section(source: str, test_id: str, section_num: int) -> Normali
 
     data = json.loads(json_path.read_text())
     passages = data.get("skills", {}).get("reading", {}).get("passages", [])
+    passages = normalize_question_types_in_passages(passages)
     if section_num < 1 or section_num > len(passages):
         raise ValueError(f"Passage {section_num} out of range. Valid: 1-{len(passages)}")
 
@@ -224,7 +307,9 @@ def load_reading_section(source: str, test_id: str, section_num: int) -> Normali
     total_questions = sum(len(g.get("questions", [])) for g in question_groups)
 
     title = f"Cambridge IELTS {source.replace('cambridge-', '')} — Reading Test {test_id}, Passage {section_num}"
-    answer_keys = data.get("answerKeys", {}).get("reading", {})
+    # Support both root-level (Academic) and nested-under-skills (GT) answerKeys
+    ak = data.get("answerKeys") or data.get("skills", {}).get("reading", {}).get("answerKeys", {})
+    answer_keys = ak.get("reading", {})
 
     return NormalizedSection(
         title=title,
@@ -401,8 +486,9 @@ def render_html(section: NormalizedSection) -> str:
         "ANSWER_KEYS": json.dumps(section.answer_keys, ensure_ascii=False) if section.answer_keys is not None else "null",
         "PIN_HASH": ph,
         "SOURCE": section.source,
-        "TEST_NUMBER": str(section.test_number),
-        "SECTION_NUMBER": str(section.section_number),
+        "TEST_NUMBER": json.dumps(section.test_number, ensure_ascii=False),
+        "SECTION_NUMBER": json.dumps(section.section_number, ensure_ascii=False),
+
         "QUESTION_COUNT": str(section.question_count),
     }
 
@@ -580,6 +666,12 @@ def main():
     # ---- Batch mode: all sections per skill ----
     if args.all:
         sections = discover_sections(args.skill, args.source, args.module)
+        # Khi --test được truyền cùng --all, chỉ generate test đó, không quét toàn bộ
+        if args.test is not None:
+            sections = [(tid, sn) for tid, sn in sections if tid == args.test]
+            if not sections:
+                print(f"No sections found for test '{args.test}' in {args.skill}/{args.source}")
+                sys.exit(1)
         if not sections:
             print(f"No sections found for {args.skill}/{args.source}")
             sys.exit(1)

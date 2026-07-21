@@ -141,6 +141,20 @@ body {
   white-space: pre-wrap;
   color: var(--color-text-primary);
 }
+.passage-text .passage-box {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  margin: 1.5rem 0;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+}
+.passage-text .passage-box p {
+  margin: 0 0 1rem;
+}
+.passage-text .passage-box p:last-child {
+  margin-bottom: 0;
+}
 .passage-image {
   max-width: 100%;
   margin: 16px 0;
@@ -155,6 +169,14 @@ body {
   font-style: italic;
   display: block;
 }
+.passage-note {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-top: 1.5rem;
+  font-style: italic;
+  line-height: 1.6;
+}
+
 
 /* ============================================================
    QUESTIONS PANEL (right)
@@ -617,6 +639,109 @@ body {
   .warning-banner { display: none; }
   .pin-overlay { display: none; }
 }
+
+/* ============================================================
+   PICK-FROM-LIST (group multiple choice)
+   ============================================================ */
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.pick-count-badge {
+  display: inline-block;
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  background: var(--color-accent-bg);
+  color: var(--color-accent);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.question-instruction-row {
+  display: flex; align-items: center;
+  margin-bottom: 8px;
+}
+
+.option-mc.option-checkbox { }
+.option-mc.option-checkbox input[type="checkbox"] {
+  margin-top: 3px; accent-color: var(--color-accent);
+}
+.option-mc.option-checkbox label { cursor: pointer; }
+
+.option-mc.option-disabled {
+  opacity: 0.4; cursor: not-allowed;
+}
+.option-mc.option-disabled label { cursor: not-allowed; }
+
+.option-correct {
+  background: var(--color-success-bg);
+  border-color: var(--color-success);
+  border-radius: var(--radius-sm);
+}
+.option-correct .option-label-marker {
+  background: var(--color-success); color: white;
+}
+.option-missed {
+  background: var(--color-warning-bg);
+  border-color: var(--color-warning);
+  border-style: dashed;
+  border-radius: var(--radius-sm);
+}
+.option-missed .option-label-marker {
+  background: var(--color-warning); color: white;
+}
+.option-wrong {
+  background: var(--color-error-bg);
+  border-color: var(--color-error);
+  border-radius: var(--radius-sm);
+}
+.option-wrong label { text-decoration: line-through; }
+.option-wrong .option-label-marker {
+  background: var(--color-error); color: white;
+}
+
+.pick-list-options input[type="checkbox"]:focus-visible + label {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.pick-list-summary {
+  margin-top: 12px; padding: 10px 14px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 13px; line-height: 1.8;
+}
+.summary-score { font-weight: 700; }
+.summary-matched { color: var(--color-success-text); }
+.summary-missed { color: var(--color-warning-text); }
+.summary-extra { color: var(--color-error-text); }
+.summary-over-selected { color: var(--color-error); font-weight: 600; }
+
+.result-group-header { font-weight: 600; margin-bottom: 4px; }
+.result-line { font-size: 13px; padding: 2px 0; }
+.result-line.matched { color: var(--color-success-text); }
+.result-line.missed { color: var(--color-warning-text); }
+.result-line.extra { color: var(--color-error-text); }
+
+.over-selection-warning {
+  margin-top: 6px; padding: 6px 10px;
+  background: var(--color-error-bg);
+  color: var(--color-error-text);
+  border: 1px solid var(--color-error);
+  border-radius: var(--radius-sm);
+  font-size: 12px; font-weight: 600;
+}
 </style>
 </head>
 <body>
@@ -654,7 +779,9 @@ body {
     <div class="passage-panel" id="passage-panel">
       <h2 id="passage-title">{{PASSAGE_TITLE}}</h2>
       <div id="passage-images"></div>
-      <div class="passage-text" id="passage-text">{{PASSAGE_TEXT}}</div>
+      <div class="passage-text" id="passage-text">
+        {{PASSAGE_TEXT}}
+      </div>
     </div>
 
     <!-- QUESTIONS PANEL (right) -->
@@ -927,15 +1054,21 @@ body {
   function renderQuestion(q, groupType) {
     var div = document.createElement('div');
     div.className = 'question';
-    div.id = 'question-' + q.number;
 
-    var num = document.createElement('div');
-    num.className = 'question-number';
-    num.textContent = 'Question ' + q.number;
-    div.appendChild(num);
+    // Pick-from-list: use group key as ID
+    if (q.type === 'pick-from-list') {
+      var groupKey = q.questionNumbers.slice().sort(function(a, b) { return a - b; }).join('-');
+      div.id = 'question-group-' + groupKey;
+    } else {
+      div.id = 'question-' + q.number;
+      var num = document.createElement('div');
+      num.className = 'question-number';
+      num.textContent = 'Question ' + q.number;
+      div.appendChild(num);
+    }
 
     // Only show question text if not already in gap text
-    if (groupType !== 'summary-completion' && q.text) {
+    if (groupType !== 'summary-completion' && q.text && q.type !== 'pick-from-list') {
       var text = document.createElement('div');
       text.className = 'question-text';
       text.textContent = q.text;
@@ -945,6 +1078,9 @@ body {
     switch (q.type) {
       case 'multiple-choice':
         renderMC(div, q);
+        break;
+      case 'pick-from-list':
+        renderPickFromList(div, q);
         break;
       case 'true-false-not-given':
         renderTFNG(div, q, ['TRUE', 'FALSE', 'NOT GIVEN']);
@@ -1007,6 +1143,104 @@ body {
       row.appendChild(item);
     });
     container.appendChild(row);
+  }
+
+  // ── Pick from List (group multiple choice with checkboxes) ──
+  function renderPickFromList(container, q) {
+    var range = q.questionNumbers[0] + '-' + q.questionNumbers[q.questionNumbers.length - 1];
+
+    var label = document.createElement('div');
+    label.className = 'question-label';
+    label.textContent = 'Questions ' + range;
+    container.appendChild(label);
+
+    var instrRow = document.createElement('div');
+    instrRow.className = 'question-instruction-row';
+
+    var instr = document.createElement('span');
+    instr.className = 'question-instruction';
+    instr.textContent = q.instructions || ('Choose ' + q.pickCount + ' letters.');
+    instrRow.appendChild(instr);
+
+    var badge = document.createElement('span');
+    badge.className = 'pick-count-badge';
+    badge.textContent = 'Pick ' + q.pickCount;
+    badge.setAttribute('aria-hidden', 'true');
+    instrRow.appendChild(badge);
+
+    container.appendChild(instrRow);
+
+    if (q.text && q.text !== q.instructions) {
+      var textEl = document.createElement('div');
+      textEl.className = 'question-text';
+      textEl.textContent = q.text;
+      container.appendChild(textEl);
+    }
+
+    // F5-fix: canonical group key
+    var groupKey = q.questionNumbers.slice().sort(function(a, b) { return a - b; }).join('-');
+    var groupName = 'pick-group-' + groupKey;
+
+    var optionList = document.createElement('div');
+    optionList.className = 'options-vertical pick-list-options';
+    optionList.setAttribute('role', 'group');
+    optionList.setAttribute('aria-label', 'Questions ' + range + ': select ' + q.pickCount + ' options');
+    optionList.setAttribute('aria-describedby', 'pick-instruction-' + groupKey);
+    optionList.setAttribute('data-pick-count', q.pickCount);
+    optionList.setAttribute('data-question-numbers', q.questionNumbers.join(','));
+
+    (q.options || []).forEach(function(opt, idx) {
+      var item = document.createElement('div');
+      item.className = 'option-mc option-checkbox';
+
+      var input = document.createElement('input');
+      input.type = 'checkbox';
+      input.name = groupName;
+      input.id = groupName + '-' + idx;
+      input.value = opt.label;
+      input.setAttribute('data-question-numbers', q.questionNumbers.join(','));
+      input.setAttribute('data-pick-count', q.pickCount);
+      input.setAttribute('aria-label', opt.label + ': ' + opt.text);
+
+      input.addEventListener('change', function() {
+        enforcePickLimit(optionList, q.pickCount);
+      });
+
+      var labelEl = document.createElement('label');
+      labelEl.setAttribute('for', groupName + '-' + idx);
+      labelEl.innerHTML = '<span class="option-label-marker">' + escHtml(opt.label) + '</span> ' + escHtml(opt.text);
+
+      item.appendChild(input);
+      item.appendChild(labelEl);
+      optionList.appendChild(item);
+    });
+
+    var hiddenInstr = document.createElement('span');
+    hiddenInstr.id = 'pick-instruction-' + groupKey;
+    hiddenInstr.className = 'sr-only';
+    hiddenInstr.textContent = 'Select exactly ' + q.pickCount + ' options.';
+    optionList.appendChild(hiddenInstr);
+
+    container.appendChild(optionList);
+  }
+
+  function enforcePickLimit(optionList, maxCount) {
+    var allCB = optionList.querySelectorAll('input[type="checkbox"]');
+    var checked = optionList.querySelectorAll('input[type="checkbox"]:checked');
+
+    if (checked.length >= maxCount) {
+      allCB.forEach(function(cb) {
+        if (!cb.checked) {
+          cb.disabled = true;
+          cb.parentElement.classList.add('option-disabled');
+        }
+      });
+    } else {
+      allCB.forEach(function(cb) {
+        cb.disabled = false;
+        cb.parentElement.classList.remove('option-disabled');
+      });
+    }
   }
 
   // ── T/F/NG or Y/N/NG (radio buttons horizontal) ──
@@ -1085,6 +1319,38 @@ body {
   // ============================================================
   // SCORING
   // ============================================================
+  // F1-fix: Find pick-from-list group by exact question number membership.
+  function findGroupByQuestionNumber(qNumber) {
+    for (var i = 0; i < allQuestions.length; i++) {
+      var q = allQuestions[i].question;
+      if (q.type === 'pick-from-list') {
+        if (q.questionNumbers.indexOf(qNumber) !== -1) {
+          return q;
+        }
+      }
+    }
+    return null;
+  }
+
+  // F5-fix: Return canonical group key.
+  function getGroupKey(questionNumbers) {
+    return questionNumbers.slice().sort(function(a, b) { return a - b; }).join('-');
+  }
+
+  function computeTotalMarks() {
+    var total = 0;
+    allQuestions.forEach(function(item) {
+      var q = item.question;
+      if (q.type === 'pick-from-list') {
+        total += q.pickCount || q.questionNumbers.length;
+      } else {
+        total += 1;
+      }
+    });
+    return total;
+  }
+  // totalMarks computed on-demand in checkAnswers() — allQuestions not populated yet at load time
+
   function getAnswerKey(qNumber) {
     if (!ANSWER_KEYS || ANSWER_KEYS === null) return null;
     // Format from reading JSON: { "passage-1": { "1": "preserve", "2": "unaware", ... } }
@@ -1099,19 +1365,38 @@ body {
         }
       }
     }
-    // Flat format
+    // Flat format (also handles group entries)
     if (Array.isArray(ANSWER_KEYS)) {
       for (var j = 0; j < ANSWER_KEYS.length; j++) {
-        if (ANSWER_KEYS[j].questionNumber === qNumber) return ANSWER_KEYS[j];
+        // Group entry
+        if (ANSWER_KEYS[j].groupType === 'pick-from-list' &&
+            ANSWER_KEYS[j].questionNumbers.indexOf(qNumber) !== -1) {
+          return ANSWER_KEYS[j];
+        }
+        // Individual entry
+        if (ANSWER_KEYS[j].questionNumber === qNumber || ANSWER_KEYS[j].number === qNumber) {
+          return ANSWER_KEYS[j];
+        }
       }
     }
     return null;
   }
 
   function getUserAnswer(qNumber, qType) {
+    // F1-fix: pick-from-list — find group by exact membership
+    if (qType === 'pick-from-list') {
+      var group = findGroupByQuestionNumber(qNumber);
+      if (!group) return [];
+      var groupKey = getGroupKey(group.questionNumbers);
+      var groupName = 'pick-group-' + groupKey;
+      var allCB = document.querySelectorAll('input[type="checkbox"][name="' + groupName + '"]');
+      var checked = [];
+      allCB.forEach(function(cb) {
+        if (cb.checked) checked.push(cb.value);
+      });
+      return checked.sort();
+    }
     // Matching/matching-headings: prefer <select>, fallback to text input
-    // (when group-level options exist, questions render as dropdowns;
-    //  when no options, they render as text inputs — both are valid)
     if (qType === 'matching' || qType === 'matching-headings') {
       var sel = document.getElementById('q' + qNumber + '-select');
       if (sel) return sel.value;
@@ -1205,12 +1490,67 @@ body {
 
   function checkAnswers() {
     var results = [];
+    var processedGroups = {};  // F5-fix
     var correctCount = 0;
     var textMismatches = [];  // text answers that failed local check → send to LLM
 
     allQuestions.forEach(function(item) {
       var q = item.question;
       var groupType = item.groupType;
+
+      // ── Pick-from-list group grading (F3-fix) ──
+      if (q.type === 'pick-from-list') {
+        var groupKey = getGroupKey(q.questionNumbers);
+        if (processedGroups[groupKey]) return;
+        processedGroups[groupKey] = true;
+
+        var userPicks = getUserAnswer(q.questionNumbers[0], 'pick-from-list');
+        var correctSet = q.answers || q.answer || [];
+        var pickCount = q.pickCount;
+
+        if (userPicks.length > pickCount) {
+          results.push({
+            type: 'pick-from-list',
+            questionNumbers: q.questionNumbers,
+            pickCount: pickCount,
+            score: 0,
+            maxScore: pickCount,
+            matched: [],
+            missed: correctSet,
+            extra: userPicks,
+            userAnswer: userPicks,
+            correctAnswer: correctSet,
+            anyOrder: q.anyOrder,
+            overSelected: true
+          });
+          return;
+        }
+
+        var matched = userPicks.filter(function(p) { return correctSet.indexOf(p) !== -1; });
+        var missed  = correctSet.filter(function(a) { return userPicks.indexOf(a) === -1; });
+        var extra   = userPicks.filter(function(p) { return correctSet.indexOf(p) === -1; });
+
+        var score = matched.length;
+        correctCount += score;
+
+        results.push({
+          type: 'pick-from-list',
+          questionNumbers: q.questionNumbers,
+          pickCount: pickCount,
+          score: score,
+          maxScore: pickCount,
+          matched: matched,
+          missed: missed,
+          extra: extra,
+          userAnswer: userPicks,
+          correctAnswer: correctSet,
+          anyOrder: q.anyOrder,
+          overSelected: false
+        });
+        return;
+      }
+
+      // ── Individual grading ──
       var key = getAnswerKey(q.number);
       var userAnswer = getUserAnswer(q.number, q.type);
       var correct = isCorrect(userAnswer, key, q.type);
@@ -1234,7 +1574,8 @@ body {
       });
     });
 
-    var scoring = { total: allQuestions.length, correct: correctCount, results: results };
+    var totalMarks = computeTotalMarks();  // C1-fix: compute on-demand (allQuestions populated by now)
+    var scoring = { total: totalMarks, correct: correctCount, results: results };
 
     // If there are text mismatches, check them with LLM
     if (textMismatches.length > 0) {
@@ -1266,14 +1607,54 @@ body {
     resultsList.innerHTML = '';
     s.results.forEach(function(r) {
       var item = document.createElement('div');
-      item.className = 'result-item ' + (r.correct ? 'correct' : 'wrong');
-      item.innerHTML =
-        '<span>Q' + r.number + ': ' + (r.correct ? '&#10004;' : '&#10008;') + '</span>' +
-        '<span class="result-answer">' +
-        'Your answer: <span class="' + (r.correct ? 'correct-answer' : 'wrong-answer') + '">' +
-        escHtml(formatAnswer(r.userAnswer)) + '</span>' +
-        (r.correct ? '' : ' &rarr; <span class="correct-answer">' + escHtml(formatAnswer(r.correctAnswer)) + '</span>') +
-        '</span>';
+
+      // ── Pick-from-list group result ──
+      if (r.type === 'pick-from-list') {
+        var isFullCorrect = r.score === r.maxScore && !r.overSelected;
+        item.className = 'result-item ' + (isFullCorrect ? 'correct' : 'wrong');
+
+        var range = r.questionNumbers[0] + '-' + r.questionNumbers[r.questionNumbers.length - 1];
+        var header = document.createElement('div');
+        header.className = 'result-group-header';
+        header.innerHTML = '<strong>Questions ' + range + '</strong>: ' + r.score + '/' + r.maxScore + ' correct';
+        item.appendChild(header);
+
+        if (r.overSelected) {
+          var warn = document.createElement('div');
+          warn.className = 'over-selection-warning';
+          warn.textContent = '⚠️ You selected ' + r.userAnswer.length + ' options (limit: ' + r.pickCount + '). This group scores 0.';
+          item.appendChild(warn);
+        }
+
+        r.matched.forEach(function(label) {
+          var line = document.createElement('div');
+          line.className = 'result-line matched';
+          line.innerHTML = '✓ <span class="option-label-marker">' + escHtml(label) + '</span>';
+          item.appendChild(line);
+        });
+        r.missed.forEach(function(label) {
+          var line = document.createElement('div');
+          line.className = 'result-line missed';
+          line.innerHTML = '✗ <span class="option-label-marker">' + escHtml(label) + '</span> (missed)';
+          item.appendChild(line);
+        });
+        r.extra.forEach(function(label) {
+          var line = document.createElement('div');
+          line.className = 'result-line extra';
+          line.innerHTML = '✗ <span class="option-label-marker">' + escHtml(label) + '</span> (incorrect)';
+          item.appendChild(line);
+        });
+      } else {
+        item.className = 'result-item ' + (r.correct ? 'correct' : 'wrong');
+        item.innerHTML =
+          '<span>Q' + r.number + ': ' + (r.correct ? '&#10004;' : '&#10008;') + '</span>' +
+          '<span class="result-answer">' +
+          'Your answer: <span class="' + (r.correct ? 'correct-answer' : 'wrong-answer') + '">' +
+          escHtml(formatAnswer(r.userAnswer)) + '</span>' +
+          (r.correct ? '' : ' &rarr; <span class="correct-answer">' + escHtml(formatAnswer(r.correctAnswer)) + '</span>') +
+          '</span>';
+      }
+
       resultsList.appendChild(item);
     });
 
@@ -1303,6 +1684,46 @@ body {
     document.getElementById('questions-panel').classList.add('answer-revealed');
 
     scoring.results.forEach(function(r) {
+      // ── Pick-from-list group reveal (B6-fix) ──
+      if (r.type === 'pick-from-list') {
+        var groupKey = getGroupKey(r.questionNumbers);
+        var groupName = 'pick-group-' + groupKey;
+        var allCB = document.querySelectorAll('input[name="' + groupName + '"]');
+
+        allCB.forEach(function(cb) {
+          var label = cb.value;
+          var item = cb.closest('.option-mc');
+          cb.disabled = true;
+
+          if (r.matched.indexOf(label) !== -1) {
+            item.classList.add('option-correct');
+            cb.checked = true;
+          } else if (r.missed.indexOf(label) !== -1) {
+            item.classList.add('option-missed');
+            cb.checked = true;
+          } else if (r.extra.indexOf(label) !== -1) {
+            item.classList.add('option-wrong');
+            cb.checked = true;
+          }
+        });
+
+        var groupEl = document.getElementById('question-group-' + groupKey);
+        if (groupEl) {
+          var summary = document.createElement('div');
+          summary.className = 'pick-list-summary';
+          var parts = [];
+          parts.push('<span class="summary-score">' + r.score + '/' + r.maxScore + ' correct</span>');
+          if (r.matched.length > 0) parts.push('<span class="summary-matched">✓ ' + r.matched.join(', ') + '</span>');
+          if (r.missed.length > 0) parts.push('<span class="summary-missed">✗ Missed: ' + r.missed.join(', ') + '</span>');
+          if (r.extra.length > 0) parts.push('<span class="summary-extra">✗ Extra: ' + r.extra.join(', ') + '</span>');
+          if (r.overSelected) parts.push('<span class="summary-over-selected">⚠️ Over-selected (' + r.userAnswer.length + '/' + r.pickCount + ')</span>');
+          summary.innerHTML = parts.join(' ');
+          groupEl.appendChild(summary);
+        }
+        return;
+      }
+
+      // ── Individual reveal ──
       var qEl = document.getElementById('question-' + r.number);
       if (!qEl) return;
       qEl.classList.add(r.correct ? 'correct-answer' : 'wrong-answer');
@@ -1324,7 +1745,23 @@ body {
     isAnswersRevealed = false;
     document.getElementById('questions-panel').classList.remove('answer-revealed');
     allQuestions.forEach(function(item) {
-      var qEl = document.getElementById('question-' + item.question.number);
+      var q = item.question;
+      if (q.type === 'pick-from-list') {
+        var groupKey = getGroupKey(q.questionNumbers);
+        var groupEl = document.getElementById('question-group-' + groupKey);
+        if (groupEl) {
+          var summaries = groupEl.querySelectorAll('.pick-list-summary');
+          summaries.forEach(function(s) { s.remove(); });
+          var items = groupEl.querySelectorAll('.option-mc');
+          items.forEach(function(i) {
+            i.classList.remove('option-correct', 'option-missed', 'option-wrong');
+            var cb = i.querySelector('input[type="checkbox"]');
+            if (cb) cb.disabled = false;
+          });
+        }
+        return;
+      }
+      var qEl = document.getElementById('question-' + q.number);
       if (!qEl) return;
       qEl.classList.remove('correct-answer', 'wrong-answer');
       var hints = qEl.querySelectorAll('.result-answer');

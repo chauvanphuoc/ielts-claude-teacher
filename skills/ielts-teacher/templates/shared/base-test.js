@@ -504,11 +504,49 @@
   // SCORE + SHOW RESULTS
   // ============================================================
 
+  function isTextInputType(qType) {
+    return qType === 'gap-fill' || qType === 'gapfill' || qType === 'short-answer' ||
+           qType === 'form-completion' || qType === 'table-completion' ||
+           qType === 'note-completion' || qType === 'sentence-completion' ||
+           qType === 'diagram-labeling' || qType === 'summary-completion' ||
+           qType === 'matching';
+  }
+
+  function checkTextAnswersWithLLM(textResults) {
+    if (!textResults.length) return Promise.resolve([]);
+    var payload = {
+      answers: textResults.map(function(r) {
+        return {
+          questionNumber: r.number,
+          userAnswer: r.userAnswer,
+          correctAnswer: r.correctAnswer,
+          questionText: r.questionText || '',
+          instructions: r.instructions || ''
+        };
+      })
+    };
+    return fetch(getBridgeUrl() + '/check-text-answers', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(payload)
+    }).then(function(resp) {
+      if (!resp.ok) throw new Error('Server returned ' + resp.status);
+      return resp.json();
+    }).then(function(data) {
+      if (data && data.results) return data.results;
+      return [];
+    }).catch(function(err) {
+      console.warn('LLM check failed:', err);
+      return [];  // fallback: keep original results
+    });
+  }
+
   function scoreAnswers(userAnswers) {
     var qs = getQuestionsForSection();
     var total = qs.length;
     var correct = 0;
     var results = [];
+    var textMismatches = [];  // text answers that failed local check → send to LLM
 
     qs.forEach(function(q) {
       var userAnswer, isCorrect;
@@ -529,6 +567,16 @@
           isCorrect = acceptable.some(function(a) {
             return a.toLowerCase().trim() === userAnswer.toLowerCase().trim();
           });
+          // Collect for LLM check if local check failed
+          if (!isCorrect && userAnswer !== '(no answer)' && q.correctAnswer) {
+            textMismatches.push({
+              number: q.number,
+              userAnswer: userAnswer,
+              correctAnswer: q.correctAnswer,
+              questionText: q.text || '',
+              instructions: q.instructions || ''
+            });
+          }
           break;
 
         case 'matching':
@@ -567,6 +615,16 @@
           });
           userAnswer = JSON.stringify(userAnswers);
           isCorrect = formCorrect;
+          // Collect for LLM check if local check failed
+          if (!isCorrect && q.correctAnswer) {
+            textMismatches.push({
+              number: q.number,
+              userAnswer: JSON.stringify(userAnswers),
+              correctAnswer: typeof q.correctAnswer === 'string' ? q.correctAnswer : JSON.stringify(q.correctAnswer),
+              questionText: q.text || '',
+              instructions: q.instructions || ''
+            });
+          }
           break;
 
         default:
@@ -584,7 +642,24 @@
       });
     });
 
-    return { total: total, correct: correct, results: results };
+    var scoring = { total: total, correct: correct, results: results };
+
+    // If there are text mismatches, check them with LLM
+    if (textMismatches.length > 0) {
+      return checkTextAnswersWithLLM(textMismatches).then(function(llmResults) {
+        var llmMap = {};
+        llmResults.forEach(function(r) { llmMap[r.questionNumber] = r.correct; });
+        scoring.results.forEach(function(r) {
+          if (llmMap[r.number] === true) {
+            r.correct = true;
+            scoring.correct++;
+          }
+        });
+        return scoring;
+      });
+    }
+
+    return Promise.resolve(scoring);
   }
 
   function showResults(scoring) {
@@ -835,14 +910,19 @@
       var inputs = form.querySelectorAll('input, select, button');
       inputs.forEach(function(el) { el.disabled = true; });
 
-      var scoring = scoreAnswers(collected.answers);
-      showResults(scoring);
-      saveResults(scoring);
+      scoreAnswers(collected.answers).then(function(scoring) {
+        showResults(scoring);
+        saveResults(scoring);
 
-      // Show transcript if multi-section
-      if (getSections() && typeof window.showTranscript === 'function') {
-        window.showTranscript();
-      }
+        // Show transcript if multi-section
+        if (getSections() && typeof window.showTranscript === 'function') {
+          window.showTranscript();
+        }
+      }).catch(function(err) {
+        console.warn('Scoring failed:', err);
+        // Re-enable form on error
+        inputs.forEach(function(el) { el.disabled = false; });
+      });
     });
   }
 
