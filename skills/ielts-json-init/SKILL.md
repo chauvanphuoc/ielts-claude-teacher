@@ -6,7 +6,7 @@ description: |
   JSON files that the HTML studio and Claude conversation mode can consume.
   Unified commands: /init-textbook-{reading|listening|speaking|writing} --source {dir}
 metadata:
-  version: 2.0.0
+  version: 2.1.0
 ---
 
 # Initialize JSON Textbook
@@ -136,7 +136,6 @@ For each heading at `TEST_LEVEL`:
 
 **Command usage:**
 ```
-/init-textbook-reading --source cambridge-1 --test gt-1
 /init-textbook-reading --source cambridge-2 --test gt-a
 /init-textbook-reading --source cambridge-2 --test gt-b
 ```
@@ -157,10 +156,52 @@ Use the Markdown Parsing Guidelines table below to identify structure:
 | `- **N** question text` | Numbered question (list format) | Create new question |
 | `![] (filename.jpeg)` | Image attachment | Add to nearest question's images array |
 | `- **A** / - **B** text` | Multiple choice option | Add to current question's options |
-| `| cell | cell |` (2+ lines) | Table | Extract as table object |
+| `| cell | cell |` (2+ lines) | Form-completion table (listening) | Extract each blank `(N)` as a `gapfill` question. Use the row label + column header as `text`. **CRITICAL: never include the answer value in `text`** — the question text should describe the blank's context, not reveal the answer. See Step 2a in the Listening section below for detailed rules. |
 | `*text in italics*` | Instructions | Set as questionGroup.instructions |
 | `#### *Example*` | Example question | **Skip entirely** — do not include in JSON |
 | `- **A** the Ethereal Match` etc. | Match type list (matching questions) | Store as options on matching questions |
+| `Choose {N} letters {A}-{Z}` | Pick-from-list group question | Tạo 1 entry `pick-from-list` thay vì N câu riêng lẻ |
+
+**CRITICAL: pick-from-list detection — 2 mandatory + 1 optional constraint (F2-fix).** 
+
+Một dạng câu hỏi phổ biến trong Listening: "Choose THREE letters A-F" — học sinh chọn N đáp án từ 1 danh sách, không phân biệt thứ tự.
+
+**Detection constraints:**
+
+1. **[MANDATORY] Phrase match:** Question text chứa "Choose {TWO/THREE/FOUR/FIVE} letters {X}-{Y}"
+2. **[MANDATORY] Same stem:** Tất cả các câu trong range (N, N+1, N+2) có CÙNG MỘT question stem — hoặc không có stem riêng (toàn bộ text nằm trước option list). Nếu mỗi câu có stem riêng → individual `multiple-choice`, KHÔNG phải pick-from-list.
+3. **[OPTIONAL] Answer key confirms:** Answer key row có ghi "in any order" hoặc "in either order". Nếu thiếu → VẪN tạo pick-from-list (constraints 1+2 pass), flag `_missingAnyOrderNote: true`.
+
+**Parsing steps:**
+1. Khi gặp "Choose {N} letters" → kiểm tra constraint 2 (cùng stem)
+2. Nếu pass → đọc options từ bullet list `- **A** text`
+3. `questionNumbers` luôn lấy từ parsed question numbers thực tế (các số câu trong markdown), KHÔNG suy từ `pickCount`. Nếu markdown ghi `**16**`, `**17**`, `**18**` → `questionNumbers: [16, 17, 18]`.
+4. Đọc answer key, validate: `len(answers) == len(questionNumbers)`. Nếu không → ERROR.
+5. So sánh pickCount từ question text với len(answers). Nếu mismatch → WARNING, dùng len(answers), flag `_pickCountMismatch: true`.
+6. Nếu answer key KHÔNG có "in any order" → VẪN tạo pick-from-list, flag `_missingAnyOrderNote: true`.
+
+**JSON format:**
+```json
+{
+  "type": "pick-from-list",
+  "questionNumbers": [6, 7, 8],
+  "pickCount": 3,
+  "text": "What types of films does Louise like?",
+  "instructions": "Choose THREE letters A-F.",
+  "options": [
+    {"label": "A", "text": "Action"},
+    {"label": "B", "text": "Comedies"},
+    ...
+  ],
+  "answers": ["B", "D", "F"],
+  "anyOrder": true
+}
+```
+
+**Answer key format:**
+```json
+{"groupType": "pick-from-list", "questionNumbers": [6,7,8], "answers": ["B","D","F"], "pickCount": 3, "anyOrder": true, "maxMarks": 3}
+```
 
 **CRITICAL: matching-headings (List of Headings)** — A common IELTS Reading question type. The markdown follows a specific structure:
 
@@ -226,7 +267,12 @@ Answer keys are in a separate section at the end of the textbook, under `### Ans
 
 1. **Simple 2-column table:** `| Question | Answer |` — extract each row
 2. **3-column table:** `| Question | Answer | Location |` — extract only question and answer columns
-3. **Multi-answer row:** `| 11-13 | E F H (in any order) |` — split range into individual question numbers
+3. **Multi-answer row with group context:** `| 11-13 | E F H (in any order) |`
+   - Parse answers: `"E F H"` → `["E", "F", "H"]`
+   - Validate: `len(answers)` phải = range size (13-11+1 = 3). Nếu không → **ERROR**.
+   - Tạo group answer entry: `{"groupType": "pick-from-list", "questionNumbers": [11,12,13], "answers": ["E","F","H"], "pickCount": 3, "anyOrder": true, "maxMarks": 3}`
+   - Nếu "in either order" → chuẩn hóa về `anyOrder: true`.
+   - Nếu KHÔNG có "in any order" → VẪN tạo group entry, flag `_missingAnyOrderNote: true`.
 4. **Inline annotations:** `roads//road system`, `Prescott (*must be correct spelling*)` — strip annotations, keep only answers
 
 **Multi-answer handling with `//`:**
@@ -334,6 +380,16 @@ If any count mismatches or spot-check fails: report the specific error and regen
 
 7. Report: "Generated [N] questions across [P] passages, [M] images, [K] answer key entries, [_P] pedagogy entries. Spot-checks: 3/3 passed."
 
+8. **pick-from-list validation:**
+   - Every `pick-from-list` entry has `len(answers) == len(questionNumbers)`. Report mismatch as ERROR.
+   - Every `pick-from-list` entry has `pickCount == len(answers)`. Report mismatch as WARNING with `_pickCountMismatch: true` flag.
+   - Every `pick-from-list` entry has all 3 questions in `questionNumbers` with same stem in original markdown. Spot-check 2 groups.
+   - Answer key: every `groupType: "pick-from-list"` entry has matching `maxMarks == pickCount`.
+
+9. **Form-completion table validation (Listening only):**
+   - Every `gapfill` question derived from a table cell MUST NOT have the answer value embedded in `text`. Run a spot check: for 3 random gapfill questions, verify the answer does NOT appear as a substring of the text.
+   - If any gapfill question's `text` contains the `answer` value, report as ERROR and regenerate.
+
 ### Step 7: Write JSON
 
 Write to `shared/reading/{source}/test-{n}.json` following the schema at `shared/reading/schema.json`. Use 2-space indentation. Create the `shared/reading/{source}/` directory if it doesn't exist.
@@ -370,7 +426,7 @@ This is per-source consolidated (all 4 tests in one file) — unlike Reading whi
 
 ### Step 1: Read textbook markdown
 
-Read `textbook/{source}/textbook/Cambridge_IELTS_*.md`. Find all `#### **LISTENING**` sections.
+Read `textbook/{source}/textbook/Cambridge_IELTS_*.md`. Find all listening sections (headings at level 2-4 matching `### LISTENING` or `#### **LISTENING**` or similar).
 
 ### Step 2: For each test, extract 4 sections
 
@@ -379,6 +435,36 @@ Each section contains:
 - Instructions: `*Complete the form...*` (italicized text)
 - Questions with types: multiple-choice, multiple-choice-image (picture options), gap-fill, form-completion, matching-checkboxes (select N of M)
 - Image references: `![](_page_XX_Picture_YY.jpeg)`
+
+### Step 2a: Parse form-completion tables (CRITICAL — do NOT embed answers in question text)
+
+Many listening sections present information in tables where each row is a form field, and some cells contain blanks marked with `(N)`. Each `(N)` represents one question with number N.
+
+**Parsing rules for table blanks:**
+
+1. **Reading the table:** Each row has a label (leftmost column) and values in other columns. Cells with `(N)` are blanks for question N. Cells without `(N)` contain pre-filled information — these are NOT questions (skip them).
+
+2. **Question `text`:** Must describe the blank's context using the table structure, but must NOT contain the answer value:
+   - **Row label only:** If the blank cell contains just `(N)`, use the row's label column as `text`. E.g., `| Post code: | (2) |` → `text: "Post code:"`.
+   - **Context after blank:** If the blank is embedded in surrounding text, show what comes after the blank. E.g., cell `Apartment 1,72 (1)<br>Street` → `text: "Street"`.
+   - **Table with column headers:** Combine row label + column header. E.g., row "Subject", column "Jane" → `text: "Subject (Jane)"`.
+
+3. **⚠️ CRITICAL — NEVER embed the answer in `text`:** The answer value goes in the separate `answer` field. If the answer appears in the question text, the student can see it, which defeats the exercise.
+   - ✅ **CORRECT:** `{"text": "Post code:", "answer": "2085"}`
+   - ❌ **WRONG:** `{"text": "Post code: 2085", "answer": "2085"}` (answer visible to student)
+   - ✅ **CORRECT:** `{"text": "Street", "answer": "Black"}`
+   - ❌ **WRONG:** `{"text": "Black Street", "answer": "Black"}` (answer visible)
+   - ✅ **CORRECT:** `{"text": "Day of arrival — Jane", "answer": "Friday"}`
+   - ❌ **WRONG:** `{"text": "Day of arrival — Jane: Friday", "answer": "Friday"}` (answer visible)
+
+4. **Examples from Cambridge 2 Test 1 Section 1:**
+
+```
+| Driver's licence number: | (4)       | → {"number": 4, "text": "Driver's licence number:", "answer": "2020BD"}
+| Date of birth: | Day: 25th Month: (5) | → {"number": 5, "text": "Month:", "answer": "July"}
+```
+
+5. **Several blank markers in one cell:** If a cell has multiple `(N)` markers, each is a separate question. Extract them in order, using surrounding context for each.
 
 ### Step 3: Extract answer keys
 
@@ -416,9 +502,10 @@ The validation checks:
 5. **Cyrillic characters:** detect Cyrillic look-alikes (В, С, А, Е, М) in answer keys. Report as warning — normalize to Latin.
 6. **Spot-check:** re-read 3 random answers from original markdown, compare with extracted JSON. Any mismatch = **ERROR**.
 7. **JSON schema integrity:** validate top-level fields, section fields, question required fields.
+8. **Answer-in-text check (NEW):** for gapfill questions from form-completion tables, verify the answer value does NOT appear in the question `text`. If any gapfill has the answer embedded → **ERROR**, fix by removing the answer from `text`.
 
 **Error severity:**
-- **ERROR:** blocks JSON generation. Examples: audio file missing, JSON parse failure, spot-check mismatch.
+- **ERROR:** blocks JSON generation. Examples: audio file missing, JSON parse failure, spot-check mismatch, answer embedded in gapfill text.
 - **WARNING:** does not block. Examples: image not found, ambiguous answer format, answer key count mismatch.
 
 **Validation output format:**

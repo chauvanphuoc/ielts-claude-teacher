@@ -27,10 +27,11 @@ Dual purpose: (1) student takes the test, (2) user cross-checks JSON accuracy ag
 |------|----------|-------------|
 | `--skill` | Yes | `listening`, `reading`, `speaking`, or `writing` |
 | `--section-key` | Yes (or `--all`) | Composite key: `{textbook}_test-{N}_section-{S}` |
-| `--all` | Alternative to `--section-key` | Generate all sections for the given skill + source |
+| `--all` | Alternative to `--section-key` | Generate all sections. Nếu có `--test`, **chỉ generate test đó** |
 | `--source` | With `--all` | Textbook name only (e.g., `cambridge-1`) |
+| `--test` | Với `--all` bản scope | Chỉ generate các section thuộc test này (có thể kết hợp với `--all`) |
 | `--module` | Writing only | `academic` (default) or `generalTraining` |
-| `--force` | No | Overwrite existing files |
+| `--force` | No | Overwrite existing files. **⚠️ Thận trọng: sẽ ghi đè mọi manual edit!** |
 
 **--section-key format:** `{textbook-name}_test-{N}_section-{S}`
 - Example: `cambridge-1_test-1_section-1` → Listening Section 1, Test 1
@@ -72,24 +73,40 @@ If any check fails, report the specific error and suggest the fix. Do NOT procee
 
 ### Step 3: Execute Python Generator
 
-Call the Python script with decomposed arguments:
+**⚠️ CRITICAL — Read this before running any command**
+
+- **Không dùng `--all` khi chỉ cần generate một test cụ thể.** `--all` sẽ scan tất cả JSON trong thư mục source.
+- **Không dùng `--force` trừ khi bạn muốn ghi đè file đã tồn tại.** File đã có manual edit sẽ bị mất hết!
+- **Khi yêu cầu là "tạo HTML từ file X" → chỉ generate sections từ file X, không đụng file khác.**
+
+Call the Python script with decomposed arguments. Chọn câu lệnh phù hợp:
 
 ```bash
-# Single section
+# [A] Chính xác: một section từ một file JSON cụ thể (ưu tiên dùng)
 .venv/bin/python3 shared/generate_test_html.py \
   --skill {skill} \
   --source {textbook_name} \
   --test {test_num} \
-  --section {section_num} \
-  [--module {module}] \
-  [--force]
+  --section {section_num}
 
-# Batch: all sections for a skill
+# [B] Tất cả sections của một test cụ thể (--all + --test = scope)
 .venv/bin/python3 shared/generate_test_html.py \
   --skill {skill} \
   --source {textbook_name} \
-  --all \
-  [--force]
+  --test {test_num} \
+  --all
+
+# [C] Tất cả sections của tất cả tests (dùng --force cẩn thận!)
+.venv/bin/python3 shared/generate_test_html.py \
+  --skill {skill} \
+  --source {textbook_name} \
+  --all
+
+# Nguyên tắc:
+# - Dùng [A] khi yêu cầu cụ thể "section X test Y"
+# - Dùng [B] khi yêu cầu "tạo tất cả HTML cho test Y" — không đụng test khác
+# - Dùng [C] CHỈ khi yêu cầu rõ ràng "tạo lại tất cả" hoặc lần đầu init
+# - KHÔNG dùng --force trừ khi được yêu cầu hoặc file chưa tồn tại
 ```
 
 ### Step 4: Validate Output
@@ -100,6 +117,8 @@ After Python completes:
 3. **File has content** — file size > 0
 4. **Question count matches** — grep the generated HTML for `class="question"` and compare with expected count from JSON
 5. **No leftover template markers** — grep for `{{` in the output (should find none)
+
+> **Type alias normalization:** The generator automatically maps type aliases (e.g., `tfng` → `true-false-not-given`, `ynng` → `yes-no-not-given`, `gapfill` → `gap-fill`) to canonical JS template names. JSON files can use any alias — the canonical map in `generate_test_html.py` (`QUESTION_TYPE_CANONICAL`) is the registry. Add new aliases there as needed.
 
 If Python exits non-zero:
 - Read the full error message from stderr

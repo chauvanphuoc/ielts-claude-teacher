@@ -633,9 +633,30 @@ The JSON contains per-section answer keys with `acceptable` alternatives (e.g., 
 | Wrong number/date/price (e.g., 15 vs 50, missing £) | `kc-listen-numbers` |
 | Chose first answer before speaker corrected (distractor) | `kc-listen-distractor` |
 | Wrong MC option (paraphrase mismatch) | `kc-listen-mc` |
+| Pick-from-list: missed correct option(s) — bỏ sót đáp án đúng | `kc-listen-mc` |
+| Pick-from-list: selected wrong option(s) — chọn đáp án sai | `kc-listen-mc` |
+| Pick-from-list: over-selected (>N options) — chọn quá số lượng | `kc-listen-mc` |
 | Exceeded word limit or wrong form field | `kc-listen-gapfill` |
 | Wrong location on map/diagram | `kc-listen-map` |
 | Misunderstood speaker's opinion/attitude | `kc-listen-inference` |
+
+**pick-from-list scoring rules (Listening + Reading):**
+
+Khi gặp câu hỏi `type: "pick-from-list"` trong JSON:
+
+1. Đây là câu hỏi chọn NHIỀU đáp án từ 1 danh sách chung
+2. Mỗi group có `pickCount` marks (vd: Q6-8 = 3 marks)
+3. **Set comparison:** `score = len(userPicks ∩ correctAnswers)` — KHÔNG quan tâm thứ tự
+4. `{B, D, F}` = `{F, B, D}` = `{D, F, B}` → đều là 3/3
+5. `errors = pickCount - score`
+6. Over-selection (`userPicks.length > pickCount`) → score = 0, flag `overSelected: true`
+7. Với answer key cũ có `"note": "in any order with Qx, Qy"` → grade cả cụm như 1 unordered set
+
+**Qualitative feedback cho pick-from-list:**
+- missed only: "bỏ sót — không nhận ra paraphrase hoặc chưa nghe được thông tin"
+- extra only: "chọn sai — bị distractor đánh lừa bởi từ khóa tương tự"
+- cả missed và extra: "cần luyện thêm paraphrase + distractor"
+- over-selected: "chọn quá số lượng cho phép — nhóm này bị tính 0 điểm"
 
 **Step 5 — Section-by-section breakdown:**
 Present per-section scores with error categorization:
