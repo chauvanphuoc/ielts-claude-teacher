@@ -1,0 +1,1005 @@
+{
+  "meta": {
+    "source": "cambridge-2",
+    "testNumber": "gt-b",
+    "testLabel": "General Training: Reading and Writing Test B",
+    "version": "1.0",
+    "generatedBy": "/init-textbook-reading",
+    "generatedAt": "2026-07-20T00:00:00.000Z"
+  },
+  "skills": {
+    "reading": {
+      "passages": [
+        {
+          "id": "passage-1",
+          "title": "Restaurant Advertisements & New Electricity Account Payment Facilities",
+          "text": "NEW ELECTRICITY ACCOUNT PAYMENT FACILITIES\n\nAVAILABLE FROM JULY 1998\n\nAfter 1 July 1998, you may pay your electricity account in any of the following ways:\n\n- 1. Payments via mail:\n  - (A) No receipt required: Mail payments to: Coastside Power Locked Bag 2760 Southport NSW 3479\n  - (B) Receipt required: Mail payments to: Coastside Power PO Box 560 Northbridge NSW 3472\n\n- 2. Agency payments (payments directly to the bank): Payments can be made at any branch of the Federal Bank by completing the deposit slip attached to your account notice. NB: This facility is no longer available at South Pacific Bank branches.\n- 3. Payments directly to Coastside Power Office: Payments can be made directly to Coastside Power Office at 78-80 Third Avenue, Northbridge. Office hours are Monday to Friday, 8.30 am to 4.30 pm.\n\nPayment may be by personal cheque, bank cheque or cash.\n\nNote: Payments cannot be made by phone.",
+          "images": [
+            {
+              "id": "img-p1-1",
+              "src": "_page_52_Picture_29.jpeg",
+              "alt": "Three restaurant advertisements"
+            },
+            {
+              "id": "img-p1-2",
+              "src": "_page_52_Picture_30a.jpeg",
+              "alt": "New Electricity Account Payment Facilities"
+            }
+          ],
+          "questionGroups": [
+            {
+              "id": "qg-r1-1",
+              "heading": "Questions 1-7",
+              "instructions": "Look at the three restaurant advertisements on the following page. Answer the questions below by writing the letters of the appropriate restaurants (A-C) in boxes 1-7 on your answer sheet.",
+              "questionType": "matching",
+              "options": [
+                {
+                  "label": "A",
+                  "text": "Restaurant A"
+                },
+                {
+                  "label": "B",
+                  "text": "Restaurant B"
+                },
+                {
+                  "label": "C",
+                  "text": "Restaurant C"
+                }
+              ],
+              "questions": [
+                {
+                  "number": 1,
+                  "text": "It is open for breakfast.",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Restaurant A"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Restaurant B"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Restaurant C"
+                    }
+                  ]
+                },
+                {
+                  "number": 2,
+                  "text": "It is open every night for dinner.",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Restaurant A"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Restaurant B"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Restaurant C"
+                    }
+                  ]
+                },
+                {
+                  "number": 3,
+                  "text": "It is only open for lunch on weekdays.",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Restaurant A"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Restaurant B"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Restaurant C"
+                    }
+                  ]
+                },
+                {
+                  "number": 4,
+                  "text": "It has recently returned to its previous location.",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Restaurant A"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Restaurant B"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Restaurant C"
+                    }
+                  ]
+                },
+                {
+                  "number": 5,
+                  "text": "It welcomes families.",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Restaurant A"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Restaurant B"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Restaurant C"
+                    }
+                  ]
+                },
+                {
+                  "number": 6,
+                  "text": "It caters for large groups.",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Restaurant A"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Restaurant B"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Restaurant C"
+                    }
+                  ]
+                },
+                {
+                  "number": 7,
+                  "text": "It only opens at weekends.",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Restaurant A"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Restaurant B"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Restaurant C"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "qg-r1-2",
+              "heading": "Questions 8-13",
+              "instructions": "Read the information given in 'New Electricity Account Payment Facilities' on the following page and look at the statements below (Questions 8-13). In boxes 8-13 on your answer sheet write\nTRUE if the statement is true\nFALSE if the statement is false\nNOT GIVEN if the information is not given in the passage",
+              "questionType": "tfng",
+              "questions": [
+                {
+                  "number": 8,
+                  "text": "If you want a receipt, you should send your payment to the Southport address.",
+                  "type": "tfng"
+                },
+                {
+                  "number": 9,
+                  "text": "You may pay your account at branches of the Federal Bank.",
+                  "type": "tfng"
+                },
+                {
+                  "number": 10,
+                  "text": "You must pay the full amount, instalments are not permitted.",
+                  "type": "tfng"
+                },
+                {
+                  "number": 11,
+                  "text": "The Coastside Power Office is open on Saturday mornings.",
+                  "type": "tfng"
+                },
+                {
+                  "number": 12,
+                  "text": "You may pay your account by phone using your credit card.",
+                  "type": "tfng"
+                },
+                {
+                  "number": 13,
+                  "text": "There is a reduction for prompt payment.",
+                  "type": "tfng"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "passage-2",
+          "title": "Personal Computers & Atlas English Language College",
+          "text": "PERSONAL COMPUTERS AVAILABLE FOR PUBLIC TO USE\n\n- 2 personal computers are available, for a fee of $5.00. There is also an ink jet printer attached to each terminal. The library has a number of commercially available programs for word processing and spreadsheets.\n- A4 paper can be bought from the desk if you wish to print your work. Alternatively you can bring your own paper. If you wish to store information however, you will need to bring your own floppy disk.\n\nBookings\n\nBecause of high demand, a maximum of one hour's use per person per day is permitted. Bookings may be made up to three days in advance. Bookings may be made in person at the information desk or by phoning 8673 8901 during normal office hours. If for some reason you cannot keep your appointment, please telephone. If the library is not notified and you are 15 minutes late, your time can be given to someone else. Please sign in the visitors' book at the information desk when you first arrive to use the computer.\n\nPlease note that staff are not available to train people or give a lot of detailed instruction on how to use the programs. Prior knowledge is, therefore, necessary. However, tutorial groups are available for some of the programs and classes are offered on a regular basis. Please see the loans desk for more information about our computer courses.\n\nGOOD REASONS FOR CHOOSING ATLAS ENGLISH LANGUAGE COLLEGE\n\nOn an English course with Atlas English Language College, you improve your language skills and make friends from all over the world!\n\nA. Because Atlas courses start every Monday of the year, there's bound to be one that fits in with your academic, personal or professional commitments. Whatever your level of language ability, from beginner to advanced, you can choose to study for any length of time, from two weeks to a full year. Courses match a range of individual requirements, from intensive examination preparation to short summer programmes. Most courses commence at 9 am and run till 3 pm.\n\nB. If you take an intensive full-time course, we will help you to select the Special Interest Options which best suit your goals. From then on, our teacher will discuss your work with you on a weekly basis. This means that you should develop the language skills you need - and that you are helped to study at your own pace.\n\nC. The popularity and success of any language school depend greatly on the quality of the teachers and the methods they employ. All Atlas teachers have specialist qualifications in the teaching of English to foreign students and are all native speakers. We employ only experienced professionals with a proven record of success in the classroom.\n\nD. Atlas's teaching methodology is constantly revised as more is discovered about the process of learning a new language. Our teachers have access to an extensive range of materials, including the very latest in language teaching technology.\n\nE. On your first day at school, you will take a test which enables our Director of Studies to place you at the appropriate study level. Your progress will be continuously assessed and, once you have achieved specific linguistic goals, you will move up to a higher level of study.\n\nF. Every Atlas course fee includes accommodation in carefully selected homestay families. Breakfast and dinner each day are also included, so you need have no concerns about having to look for somewhere to live once you get to the school.\n\nG. On completion of any Intensive, Examination or Summer course, you will receive the Atlas Course Certificate of Attendance. On completion of a four-week course or longer you will also receive the Atlas Academic Record that reflects your ability in every aspect of the language from conversation to writing. Such a record will allow you to present your linguistic credentials to academic institutions or potential employers around the world.",
+          "images": [
+            {
+              "id": "img-p2-1",
+              "src": "_page_55_Picture_22.jpeg",
+              "alt": "Atlas English Language College"
+            }
+          ],
+          "questionGroups": [
+            {
+              "id": "qg-r2-1",
+              "heading": "Questions 14-20",
+              "instructions": "Read the passage about personal computers on the following page and look at the statements below (Questions 14-20). In boxes 14-20 on your answer sheet write\nTRUE if the statement is true\nFALSE if the statement is false\nNOT GIVEN if the information is not given in the passage",
+              "questionType": "tfng",
+              "questions": [
+                {
+                  "number": 14,
+                  "text": "There are two computers and two printers available for public use at the library.",
+                  "type": "tfng"
+                },
+                {
+                  "number": 15,
+                  "text": "You can buy floppy disks at the information desk.",
+                  "type": "tfng"
+                },
+                {
+                  "number": 16,
+                  "text": "The information desk is closed at weekends.",
+                  "type": "tfng"
+                },
+                {
+                  "number": 17,
+                  "text": "It is essential to reserve a computer three days in advance if you want to use one.",
+                  "type": "tfng"
+                },
+                {
+                  "number": 18,
+                  "text": "If you are more than a quarter of an hour late, you could lose your reservation for the computer.",
+                  "type": "tfng"
+                },
+                {
+                  "number": 19,
+                  "text": "Library employees do not have detailed knowledge of computers.",
+                  "type": "tfng"
+                },
+                {
+                  "number": 20,
+                  "text": "The library runs courses for people who want to learn about computers.",
+                  "type": "tfng"
+                }
+              ]
+            },
+            {
+              "id": "qg-r2-2",
+              "heading": "Questions 21-26",
+              "instructions": "The text on Atlas English Language College on the following page has seven paragraphs (A-G). Choose the most suitable headings for paragraphs B-G from the list of headings below. Write the appropriate numbers (i-ix) in boxes 21-26 on your answer sheet. NB There are more headings than paragraphs, so you will not use all of them.",
+              "questionType": "matching-headings",
+              "options": [
+                {
+                  "label": "i",
+                  "text": "Recognition of your achievements"
+                },
+                {
+                  "label": "ii",
+                  "text": "Courses start every week"
+                },
+                {
+                  "label": "iii",
+                  "text": "Other services/Pastoral care/Personal arrangements"
+                },
+                {
+                  "label": "iv",
+                  "text": "A personal approach"
+                },
+                {
+                  "label": "v",
+                  "text": "Two meals every day"
+                },
+                {
+                  "label": "vi",
+                  "text": "First-class staff"
+                },
+                {
+                  "label": "vii",
+                  "text": "Up-to-date classroom practice"
+                },
+                {
+                  "label": "viii",
+                  "text": "Discovering a new language"
+                },
+                {
+                  "label": "ix",
+                  "text": "Monitored achievement"
+                }
+              ],
+              "questions": [
+                {
+                  "number": 21,
+                  "text": "Paragraph B",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "i",
+                      "text": "Recognition of your achievements"
+                    },
+                    {
+                      "label": "ii",
+                      "text": "Courses start every week"
+                    },
+                    {
+                      "label": "iii",
+                      "text": "Other services/Pastoral care/Personal arrangements"
+                    },
+                    {
+                      "label": "iv",
+                      "text": "A personal approach"
+                    },
+                    {
+                      "label": "v",
+                      "text": "Two meals every day"
+                    },
+                    {
+                      "label": "vi",
+                      "text": "First-class staff"
+                    },
+                    {
+                      "label": "vii",
+                      "text": "Up-to-date classroom practice"
+                    },
+                    {
+                      "label": "viii",
+                      "text": "Discovering a new language"
+                    },
+                    {
+                      "label": "ix",
+                      "text": "Monitored achievement"
+                    }
+                  ]
+                },
+                {
+                  "number": 22,
+                  "text": "Paragraph C",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "i",
+                      "text": "Recognition of your achievements"
+                    },
+                    {
+                      "label": "ii",
+                      "text": "Courses start every week"
+                    },
+                    {
+                      "label": "iii",
+                      "text": "Other services/Pastoral care/Personal arrangements"
+                    },
+                    {
+                      "label": "iv",
+                      "text": "A personal approach"
+                    },
+                    {
+                      "label": "v",
+                      "text": "Two meals every day"
+                    },
+                    {
+                      "label": "vi",
+                      "text": "First-class staff"
+                    },
+                    {
+                      "label": "vii",
+                      "text": "Up-to-date classroom practice"
+                    },
+                    {
+                      "label": "viii",
+                      "text": "Discovering a new language"
+                    },
+                    {
+                      "label": "ix",
+                      "text": "Monitored achievement"
+                    }
+                  ]
+                },
+                {
+                  "number": 23,
+                  "text": "Paragraph D",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "i",
+                      "text": "Recognition of your achievements"
+                    },
+                    {
+                      "label": "ii",
+                      "text": "Courses start every week"
+                    },
+                    {
+                      "label": "iii",
+                      "text": "Other services/Pastoral care/Personal arrangements"
+                    },
+                    {
+                      "label": "iv",
+                      "text": "A personal approach"
+                    },
+                    {
+                      "label": "v",
+                      "text": "Two meals every day"
+                    },
+                    {
+                      "label": "vi",
+                      "text": "First-class staff"
+                    },
+                    {
+                      "label": "vii",
+                      "text": "Up-to-date classroom practice"
+                    },
+                    {
+                      "label": "viii",
+                      "text": "Discovering a new language"
+                    },
+                    {
+                      "label": "ix",
+                      "text": "Monitored achievement"
+                    }
+                  ]
+                },
+                {
+                  "number": 24,
+                  "text": "Paragraph E",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "i",
+                      "text": "Recognition of your achievements"
+                    },
+                    {
+                      "label": "ii",
+                      "text": "Courses start every week"
+                    },
+                    {
+                      "label": "iii",
+                      "text": "Other services/Pastoral care/Personal arrangements"
+                    },
+                    {
+                      "label": "iv",
+                      "text": "A personal approach"
+                    },
+                    {
+                      "label": "v",
+                      "text": "Two meals every day"
+                    },
+                    {
+                      "label": "vi",
+                      "text": "First-class staff"
+                    },
+                    {
+                      "label": "vii",
+                      "text": "Up-to-date classroom practice"
+                    },
+                    {
+                      "label": "viii",
+                      "text": "Discovering a new language"
+                    },
+                    {
+                      "label": "ix",
+                      "text": "Monitored achievement"
+                    }
+                  ]
+                },
+                {
+                  "number": 25,
+                  "text": "Paragraph F",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "i",
+                      "text": "Recognition of your achievements"
+                    },
+                    {
+                      "label": "ii",
+                      "text": "Courses start every week"
+                    },
+                    {
+                      "label": "iii",
+                      "text": "Other services/Pastoral care/Personal arrangements"
+                    },
+                    {
+                      "label": "iv",
+                      "text": "A personal approach"
+                    },
+                    {
+                      "label": "v",
+                      "text": "Two meals every day"
+                    },
+                    {
+                      "label": "vi",
+                      "text": "First-class staff"
+                    },
+                    {
+                      "label": "vii",
+                      "text": "Up-to-date classroom practice"
+                    },
+                    {
+                      "label": "viii",
+                      "text": "Discovering a new language"
+                    },
+                    {
+                      "label": "ix",
+                      "text": "Monitored achievement"
+                    }
+                  ]
+                },
+                {
+                  "number": 26,
+                  "text": "Paragraph G",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "i",
+                      "text": "Recognition of your achievements"
+                    },
+                    {
+                      "label": "ii",
+                      "text": "Courses start every week"
+                    },
+                    {
+                      "label": "iii",
+                      "text": "Other services/Pastoral care/Personal arrangements"
+                    },
+                    {
+                      "label": "iv",
+                      "text": "A personal approach"
+                    },
+                    {
+                      "label": "v",
+                      "text": "Two meals every day"
+                    },
+                    {
+                      "label": "vi",
+                      "text": "First-class staff"
+                    },
+                    {
+                      "label": "vii",
+                      "text": "Up-to-date classroom practice"
+                    },
+                    {
+                      "label": "viii",
+                      "text": "Discovering a new language"
+                    },
+                    {
+                      "label": "ix",
+                      "text": "Monitored achievement"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "passage-3",
+          "title": "Robots at Work",
+          "text": "ROBOTS AT WORK\n\nA.\n\nThe newspaper production process has come a long way from the old days when the paper was written, edited, typeset and ultimately printed in one building with the journalists working on the upper floors and the printing presses going on the ground floor. These days the editor, subeditors and journalists who put the paper together are likely to find themselves in a totally different building or maybe even in a different city. This is the situation which now prevails in Sydney. The daily paper is compiled at the editorial headquarters, known as the pre-press centre, in the heart of the city but printed far away in the suburbs at the printing centre. Here human beings are in the minority as much of the work is done by automated machines controlled by computers.\n\nB.\n\nOnce the finished newspaper has been created for the next morning's edition, all the pages are transmitted electronically from the pre-press centre to the printing centre. The system of transmission is an update on the sophisticated page facsimile system already in use on many other newspapers. An image-setter at the printing centre delivers the pages as film. Each page takes less than a minute to produce, although for colour pages four versions are used, one each for black, cyan, magenta and yellow. The pages are then processed into photographic negatives and the film is used to produce aluminium printing plates ready for the presses.\n\nC.\n\nA procession of automated vehicles is busy at the new printing centre where the Sydney Morning Herald is printed each day. With lights flashing and warning horns honking, the robots (to give them their correct name, the LGVs or laser-guided vehicles) look for all the world like enthusiastic machines from a science-fiction movie, as they follow their own random paths around the plant busily getting on with their jobs. Automation of this kind is now standard in all modern newspaper plants. The robots can detect unauthorised personnel and alert security staff immediately if they find an 'intruder' and not surprisingly, tall tales are already being told about the machines starting to take on personalities of their own.\n\nD.\n\nThe robots' principal job, however, is to shift the newsprint (the printing paper) that arrives at the plant in huge reels and emerges at the other end some time later as newspapers. Once the size of the day's paper and the publishing order are determined at head office, the information is punched into the computer and the LGVs are programmed to go about their work. The LGVs collect the appropriate size paper reels and take them where they have to go. When the press needs another reel its computer alerts the LGV system. The Sydney LGVs move busily around the press room fulfilling their two key functions - to collect reels of newsprint either from the reel stripping stations or from the racked supplies in the newsprint storage area. At the stripping station the tough wrapping that helps to protect a reel of paper from rough handling is removed. Any damaged paper is peeled off and the reel is then weighed.\n\nE.\n\nThe question newspaper paper neatly and prepares the reel for the press. If required, the reel can be loaded directly onto the press. If not needed immediately, an LGV takes it to the storage area. When the press computer calls for a reel, an LGV takes it to the reel-loading area of the presses. It lifts the reel onto the loading position and places it in the correct spot with complete accuracy. As each reel is used up, the press drops the heavy waste bin, and when the bin is full, another LGV collects it and deposits the cores into a shredder for recycling.\n\nF.\n\nThe LGVs move at walking speed. Should anyone step in front of one or get too close, sensors stop the vehicle until the path is clear. The company has chosen a laser-guide function system for the vehicles because, as the project development manager says, 'The beauty of it is that if you want to change the routes, you can work out a new route on your computer and lay it down for them to follow.' When an LGVs batteries run low, it will take itself off line and go to the nearest battery maintenance point for replacement batteries. And all this is achieved with absolute minimum human input and a much reduced risk of injury to people working in the printing centres.\n\nG.\n\nworkers must Then one of the four paster robots moves in. however is, how long will it be before the robots Specifically designed for the job, it trims the are writing the newspapers as well as running the printing centre, churning out the latest edition every morning?",
+          "images": [
+            {
+              "id": "img-p3-1",
+              "src": "_page_57_Figure_10.jpeg",
+              "alt": "The Production Process flow chart"
+            }
+          ],
+          "questionGroups": [
+            {
+              "id": "qg-r3-1",
+              "heading": "Questions 27-32",
+              "instructions": "The Reading Passage on the following pages has seven paragraphs (A-G). Choose the most suitable headings for paragraphs A-B and D-G from the list of headings below. Write the appropriate numbers (i-ix) in boxes 27-32 on your answer sheet. NB There are more headings than paragraphs, so you will not use all of them.",
+              "questionType": "matching-headings",
+              "options": [
+                {
+                  "label": "i",
+                  "text": "Robots working together"
+                },
+                {
+                  "label": "ii",
+                  "text": "Preparing LGVs for take-over"
+                },
+                {
+                  "label": "iii",
+                  "text": "Looking ahead"
+                },
+                {
+                  "label": "iv",
+                  "text": "The LGVs' main functions"
+                },
+                {
+                  "label": "v",
+                  "text": "Split location for newspaper production"
+                },
+                {
+                  "label": "vi",
+                  "text": "Newspapers superseded by technology"
+                },
+                {
+                  "label": "vii",
+                  "text": "Getting the newspaper to the printing centre"
+                },
+                {
+                  "label": "viii",
+                  "text": "Controlling the robots"
+                },
+                {
+                  "label": "ix",
+                  "text": "Beware of robots!"
+                }
+              ],
+              "questions": [
+                {
+                  "number": 27,
+                  "text": "Paragraph A",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "i",
+                      "text": "Robots working together"
+                    },
+                    {
+                      "label": "ii",
+                      "text": "Preparing LGVs for take-over"
+                    },
+                    {
+                      "label": "iii",
+                      "text": "Looking ahead"
+                    },
+                    {
+                      "label": "iv",
+                      "text": "The LGVs' main functions"
+                    },
+                    {
+                      "label": "v",
+                      "text": "Split location for newspaper production"
+                    },
+                    {
+                      "label": "vi",
+                      "text": "Newspapers superseded by technology"
+                    },
+                    {
+                      "label": "vii",
+                      "text": "Getting the newspaper to the printing centre"
+                    },
+                    {
+                      "label": "viii",
+                      "text": "Controlling the robots"
+                    },
+                    {
+                      "label": "ix",
+                      "text": "Beware of robots!"
+                    }
+                  ]
+                },
+                {
+                  "number": 28,
+                  "text": "Paragraph B",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "i",
+                      "text": "Robots working together"
+                    },
+                    {
+                      "label": "ii",
+                      "text": "Preparing LGVs for take-over"
+                    },
+                    {
+                      "label": "iii",
+                      "text": "Looking ahead"
+                    },
+                    {
+                      "label": "iv",
+                      "text": "The LGVs' main functions"
+                    },
+                    {
+                      "label": "v",
+                      "text": "Split location for newspaper production"
+                    },
+                    {
+                      "label": "vi",
+                      "text": "Newspapers superseded by technology"
+                    },
+                    {
+                      "label": "vii",
+                      "text": "Getting the newspaper to the printing centre"
+                    },
+                    {
+                      "label": "viii",
+                      "text": "Controlling the robots"
+                    },
+                    {
+                      "label": "ix",
+                      "text": "Beware of robots!"
+                    }
+                  ]
+                },
+                {
+                  "number": 29,
+                  "text": "Paragraph D",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "i",
+                      "text": "Robots working together"
+                    },
+                    {
+                      "label": "ii",
+                      "text": "Preparing LGVs for take-over"
+                    },
+                    {
+                      "label": "iii",
+                      "text": "Looking ahead"
+                    },
+                    {
+                      "label": "iv",
+                      "text": "The LGVs' main functions"
+                    },
+                    {
+                      "label": "v",
+                      "text": "Split location for newspaper production"
+                    },
+                    {
+                      "label": "vi",
+                      "text": "Newspapers superseded by technology"
+                    },
+                    {
+                      "label": "vii",
+                      "text": "Getting the newspaper to the printing centre"
+                    },
+                    {
+                      "label": "viii",
+                      "text": "Controlling the robots"
+                    },
+                    {
+                      "label": "ix",
+                      "text": "Beware of robots!"
+                    }
+                  ]
+                },
+                {
+                  "number": 30,
+                  "text": "Paragraph E",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "i",
+                      "text": "Robots working together"
+                    },
+                    {
+                      "label": "ii",
+                      "text": "Preparing LGVs for take-over"
+                    },
+                    {
+                      "label": "iii",
+                      "text": "Looking ahead"
+                    },
+                    {
+                      "label": "iv",
+                      "text": "The LGVs' main functions"
+                    },
+                    {
+                      "label": "v",
+                      "text": "Split location for newspaper production"
+                    },
+                    {
+                      "label": "vi",
+                      "text": "Newspapers superseded by technology"
+                    },
+                    {
+                      "label": "vii",
+                      "text": "Getting the newspaper to the printing centre"
+                    },
+                    {
+                      "label": "viii",
+                      "text": "Controlling the robots"
+                    },
+                    {
+                      "label": "ix",
+                      "text": "Beware of robots!"
+                    }
+                  ]
+                },
+                {
+                  "number": 31,
+                  "text": "Paragraph F",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "i",
+                      "text": "Robots working together"
+                    },
+                    {
+                      "label": "ii",
+                      "text": "Preparing LGVs for take-over"
+                    },
+                    {
+                      "label": "iii",
+                      "text": "Looking ahead"
+                    },
+                    {
+                      "label": "iv",
+                      "text": "The LGVs' main functions"
+                    },
+                    {
+                      "label": "v",
+                      "text": "Split location for newspaper production"
+                    },
+                    {
+                      "label": "vi",
+                      "text": "Newspapers superseded by technology"
+                    },
+                    {
+                      "label": "vii",
+                      "text": "Getting the newspaper to the printing centre"
+                    },
+                    {
+                      "label": "viii",
+                      "text": "Controlling the robots"
+                    },
+                    {
+                      "label": "ix",
+                      "text": "Beware of robots!"
+                    }
+                  ]
+                },
+                {
+                  "number": 32,
+                  "text": "Paragraph G",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "i",
+                      "text": "Robots working together"
+                    },
+                    {
+                      "label": "ii",
+                      "text": "Preparing LGVs for take-over"
+                    },
+                    {
+                      "label": "iii",
+                      "text": "Looking ahead"
+                    },
+                    {
+                      "label": "iv",
+                      "text": "The LGVs' main functions"
+                    },
+                    {
+                      "label": "v",
+                      "text": "Split location for newspaper production"
+                    },
+                    {
+                      "label": "vi",
+                      "text": "Newspapers superseded by technology"
+                    },
+                    {
+                      "label": "vii",
+                      "text": "Getting the newspaper to the printing centre"
+                    },
+                    {
+                      "label": "viii",
+                      "text": "Controlling the robots"
+                    },
+                    {
+                      "label": "ix",
+                      "text": "Beware of robots!"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "qg-r3-2",
+              "heading": "Questions 33-40",
+              "instructions": "Using the information in the passage, complete the flow chart below. Write your answers in boxes 33-40 on your answer sheet. Use NO MORE THAN THREE WORDS from the passage for each answer.",
+              "questionType": "gapfill",
+              "questions": [
+                {
+                  "number": 33,
+                  "text": "Pages transmitted electronically from pre-press centre to printing centre",
+                  "type": "gapfill"
+                },
+                {
+                  "number": 34,
+                  "text": "An image-setter delivers pages as film / negatives",
+                  "type": "gapfill"
+                },
+                {
+                  "number": 35,
+                  "text": "Produce aluminium printing plates",
+                  "type": "gapfill"
+                },
+                {
+                  "number": 36,
+                  "text": "LGVs programmed to collect paper reels",
+                  "type": "gapfill"
+                },
+                {
+                  "number": 37,
+                  "text": "At stripping station: remove wrapping / damaged paper",
+                  "type": "gapfill"
+                },
+                {
+                  "number": 38,
+                  "text": "Reel is then weighed",
+                  "type": "gapfill"
+                },
+                {
+                  "number": 39,
+                  "text": "Paster robot trims paper and prepares reel for press",
+                  "type": "gapfill"
+                },
+                {
+                  "number": 40,
+                  "text": "LGV takes reel to storage area",
+                  "type": "gapfill"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "answerKeys": {
+        "reading": {
+          "passage-1": {
+            "1": "C",
+            "2": "B",
+            "3": "B",
+            "4": "A",
+            "5": "A",
+            "6": "A",
+            "7": "C",
+            "8": "FALSE",
+            "9": "TRUE",
+            "10": "NOT GIVEN",
+            "11": "FALSE",
+            "12": "FALSE",
+            "13": "NOT GIVEN"
+          },
+          "passage-2": {
+            "14": "TRUE",
+            "15": "FALSE",
+            "16": "NOT GIVEN",
+            "17": "FALSE",
+            "18": "TRUE",
+            "19": "NOT GIVEN",
+            "20": "TRUE",
+            "21": "iv",
+            "22": "vi",
+            "23": "vii",
+            "24": "ix",
+            "25": "iii",
+            "26": "i"
+          },
+          "passage-3": {
+            "27": "v",
+            "28": "vii",
+            "29": "iv",
+            "30": "i",
+            "31": "viii",
+            "32": "iii",
+            "33": "transmitted (electronically)",
+            "34": "image-setter / film",
+            "35": "(aluminium) printing plates",
+            "36": "programmed",
+            "37": "(tough) wrapping // damaged paper",
+            "38": "weighed",
+            "39": "paster robot(s)",
+            "40": "storage area"
+          }
+        }
+      }
+    }
+  }
+}

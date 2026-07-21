@@ -1,0 +1,1166 @@
+{
+  "meta": {
+    "source": "cambridge-2",
+    "testNumber": "gt-a",
+    "testLabel": "General Training: Reading and Writing Test A",
+    "version": "1.0",
+    "generatedBy": "/init-textbook-reading",
+    "generatedAt": "2026-07-20T00:00:00.000Z"
+  },
+  "skills": {
+    "reading": {
+      "passages": [
+        {
+          "id": "passage-1",
+          "title": "Use of University Grounds by Vehicular Traffic & Borodine Tablets",
+          "text": "USE OF UNIVERSITY GROUNDS BY VEHICULAR TRAFFIC\n\nThe University grounds are private.\n\nThe University authorities only allow authorised members of the University, visitors and drivers of vehicles servicing the University to enter the grounds.\n\nMembers of staff who have paid the requisite fee and display the appropriate permit may bring a vehicle into the grounds. A University permit does not entitle them to park in Hall car parks however, unless authorised by the Warden of the Hall concerned.\n\nStudents may not bring vehicles into the grounds during the working day unless they have been given special permission by the Security Officer and have paid for and are displaying an appropriate entry permit. Students living in Halls of Residence must obtain permission from the Warden to keep a motor vehicle at their residence.\n\nStudents are reminded that if they park a motor vehicle on University premises without a valid permit, they will be fined £20.\n\nThe name of your medicine is Borodine tablets.\n\nWHAT ARE Borodine TABLETS USED FOR?\n\nBorodine tablets are used to help relieve hay fever and conditions due to allergies, in particular skin reactions and a runny nose.\n\nIt is not recommended that Borodine tablets are given to children under 12 years of age or pregnant or breastfeeding women.\n\nBEFORE YOU TAKE Borodine TABLETS\n\nIn some circumstances it is very important not to take Borodine tablets. If you ignore these instructions, this medicine could affect your heart rhythm.\n\nAre you taking oral medicines for fungal infections?\n\nHave you suffered a reaction to medicines containing Borodine before?\n\nDo you suffer from any liver, kidney or heart disease?\n\nIf the answer to any of these questions is YES, do not take Borodine tablets before consulting your doctor.\n\nAFTER TAKING Borodine TABLETS\n\nBorodine tablets, like many other medicines, may cause side-effects in some people.\n\nIf you faint, stop taking Borodine tablets and tell your doctor immediately.\n\nIn addition Borodine tablets may cause problems with your vision, hair loss, depression or confusion, yellowing of your skin or your eyes.\n\nIf you have these effects whilst taking Borodine tablets tell your doctor immediately.\n\nOther side-effects are dizziness or headaches, and indigestion or stomach ache. However, these effects are often mild and usually wear off after a few days' treatment. If they last for more than a few days, tell your doctor.",
+          "images": [],
+          "questionGroups": [
+            {
+              "id": "qg-r1-1",
+              "heading": "Questions 1-5",
+              "instructions": "Look at the information on the following page about the use of vehicles in the University grounds. In boxes 1-5 on your answer sheet write\nTRUE if the statement is true\nFALSE if the statement is false\nNOT GIVEN if the information is not given in the passage",
+              "questionType": "tfng",
+              "questions": [
+                {
+                  "number": 1,
+                  "text": "University employees do not need to pay for their parking permits.",
+                  "type": "tfng"
+                },
+                {
+                  "number": 2,
+                  "text": "Parking in Halls of Residence is handled by the Wardens of the Halls.",
+                  "type": "tfng"
+                },
+                {
+                  "number": 3,
+                  "text": "Having a University permit does not allow staff to park at Halls.",
+                  "type": "tfng"
+                },
+                {
+                  "number": 4,
+                  "text": "Parking permits cost £20 a year.",
+                  "type": "tfng"
+                },
+                {
+                  "number": 5,
+                  "text": "Students living in Hall do not need permission to park in Hall car parks.",
+                  "type": "tfng"
+                }
+              ]
+            },
+            {
+              "id": "qg-r1-2",
+              "heading": "Questions 6-13",
+              "instructions": "Look at the patient information leaflet on the following page. Match each of the following sentences with TWO possible endings A-M from the box below. Write the appropriate letters A-M in boxes 6-13 on your answer sheet.",
+              "questionType": "matching",
+              "options": [
+                {
+                  "label": "A",
+                  "text": "children under 12 years of age."
+                },
+                {
+                  "label": "B",
+                  "text": "a headache."
+                },
+                {
+                  "label": "C",
+                  "text": "an uncomfortable feeling in your stomach."
+                },
+                {
+                  "label": "D",
+                  "text": "symptoms similar to a cold."
+                },
+                {
+                  "label": "E",
+                  "text": "a change in your skin colour."
+                },
+                {
+                  "label": "F",
+                  "text": "anything treated by a prescription medicine."
+                },
+                {
+                  "label": "G",
+                  "text": "a kidney complaint."
+                },
+                {
+                  "label": "H",
+                  "text": "a whitening of the eyes."
+                },
+                {
+                  "label": "I",
+                  "text": "sore or broken skin."
+                },
+                {
+                  "label": "J",
+                  "text": "a fungal infection."
+                },
+                {
+                  "label": "K",
+                  "text": "a feeling of sadness."
+                },
+                {
+                  "label": "L",
+                  "text": "shortness of breath."
+                },
+                {
+                  "label": "M",
+                  "text": "a woman expecting a child."
+                }
+              ],
+              "questions": [
+                {
+                  "number": 6,
+                  "text": "Borodine tablets might be used to treat...",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "children under 12 years of age."
+                    },
+                    {
+                      "label": "B",
+                      "text": "a headache."
+                    },
+                    {
+                      "label": "C",
+                      "text": "an uncomfortable feeling in your stomach."
+                    },
+                    {
+                      "label": "D",
+                      "text": "symptoms similar to a cold."
+                    },
+                    {
+                      "label": "E",
+                      "text": "a change in your skin colour."
+                    },
+                    {
+                      "label": "F",
+                      "text": "anything treated by a prescription medicine."
+                    },
+                    {
+                      "label": "G",
+                      "text": "a kidney complaint."
+                    },
+                    {
+                      "label": "H",
+                      "text": "a whitening of the eyes."
+                    },
+                    {
+                      "label": "I",
+                      "text": "sore or broken skin."
+                    },
+                    {
+                      "label": "J",
+                      "text": "a fungal infection."
+                    },
+                    {
+                      "label": "K",
+                      "text": "a feeling of sadness."
+                    },
+                    {
+                      "label": "L",
+                      "text": "shortness of breath."
+                    },
+                    {
+                      "label": "M",
+                      "text": "a woman expecting a child."
+                    }
+                  ]
+                },
+                {
+                  "number": 7,
+                  "text": "Borodine tablets might be used to treat...",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "children under 12 years of age."
+                    },
+                    {
+                      "label": "B",
+                      "text": "a headache."
+                    },
+                    {
+                      "label": "C",
+                      "text": "an uncomfortable feeling in your stomach."
+                    },
+                    {
+                      "label": "D",
+                      "text": "symptoms similar to a cold."
+                    },
+                    {
+                      "label": "E",
+                      "text": "a change in your skin colour."
+                    },
+                    {
+                      "label": "F",
+                      "text": "anything treated by a prescription medicine."
+                    },
+                    {
+                      "label": "G",
+                      "text": "a kidney complaint."
+                    },
+                    {
+                      "label": "H",
+                      "text": "a whitening of the eyes."
+                    },
+                    {
+                      "label": "I",
+                      "text": "sore or broken skin."
+                    },
+                    {
+                      "label": "J",
+                      "text": "a fungal infection."
+                    },
+                    {
+                      "label": "K",
+                      "text": "a feeling of sadness."
+                    },
+                    {
+                      "label": "L",
+                      "text": "shortness of breath."
+                    },
+                    {
+                      "label": "M",
+                      "text": "a woman expecting a child."
+                    }
+                  ]
+                },
+                {
+                  "number": 8,
+                  "text": "You must ask your doctor before taking Borodine tablets if you are already being treated for...",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "children under 12 years of age."
+                    },
+                    {
+                      "label": "B",
+                      "text": "a headache."
+                    },
+                    {
+                      "label": "C",
+                      "text": "an uncomfortable feeling in your stomach."
+                    },
+                    {
+                      "label": "D",
+                      "text": "symptoms similar to a cold."
+                    },
+                    {
+                      "label": "E",
+                      "text": "a change in your skin colour."
+                    },
+                    {
+                      "label": "F",
+                      "text": "anything treated by a prescription medicine."
+                    },
+                    {
+                      "label": "G",
+                      "text": "a kidney complaint."
+                    },
+                    {
+                      "label": "H",
+                      "text": "a whitening of the eyes."
+                    },
+                    {
+                      "label": "I",
+                      "text": "sore or broken skin."
+                    },
+                    {
+                      "label": "J",
+                      "text": "a fungal infection."
+                    },
+                    {
+                      "label": "K",
+                      "text": "a feeling of sadness."
+                    },
+                    {
+                      "label": "L",
+                      "text": "shortness of breath."
+                    },
+                    {
+                      "label": "M",
+                      "text": "a woman expecting a child."
+                    }
+                  ]
+                },
+                {
+                  "number": 9,
+                  "text": "You must ask your doctor before taking Borodine tablets if you are already being treated for...",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "children under 12 years of age."
+                    },
+                    {
+                      "label": "B",
+                      "text": "a headache."
+                    },
+                    {
+                      "label": "C",
+                      "text": "an uncomfortable feeling in your stomach."
+                    },
+                    {
+                      "label": "D",
+                      "text": "symptoms similar to a cold."
+                    },
+                    {
+                      "label": "E",
+                      "text": "a change in your skin colour."
+                    },
+                    {
+                      "label": "F",
+                      "text": "anything treated by a prescription medicine."
+                    },
+                    {
+                      "label": "G",
+                      "text": "a kidney complaint."
+                    },
+                    {
+                      "label": "H",
+                      "text": "a whitening of the eyes."
+                    },
+                    {
+                      "label": "I",
+                      "text": "sore or broken skin."
+                    },
+                    {
+                      "label": "J",
+                      "text": "a fungal infection."
+                    },
+                    {
+                      "label": "K",
+                      "text": "a feeling of sadness."
+                    },
+                    {
+                      "label": "L",
+                      "text": "shortness of breath."
+                    },
+                    {
+                      "label": "M",
+                      "text": "a woman expecting a child."
+                    }
+                  ]
+                },
+                {
+                  "number": 10,
+                  "text": "You do not need to consult your doctor immediately if Borodine tablets give you...",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "children under 12 years of age."
+                    },
+                    {
+                      "label": "B",
+                      "text": "a headache."
+                    },
+                    {
+                      "label": "C",
+                      "text": "an uncomfortable feeling in your stomach."
+                    },
+                    {
+                      "label": "D",
+                      "text": "symptoms similar to a cold."
+                    },
+                    {
+                      "label": "E",
+                      "text": "a change in your skin colour."
+                    },
+                    {
+                      "label": "F",
+                      "text": "anything treated by a prescription medicine."
+                    },
+                    {
+                      "label": "G",
+                      "text": "a kidney complaint."
+                    },
+                    {
+                      "label": "H",
+                      "text": "a whitening of the eyes."
+                    },
+                    {
+                      "label": "I",
+                      "text": "sore or broken skin."
+                    },
+                    {
+                      "label": "J",
+                      "text": "a fungal infection."
+                    },
+                    {
+                      "label": "K",
+                      "text": "a feeling of sadness."
+                    },
+                    {
+                      "label": "L",
+                      "text": "shortness of breath."
+                    },
+                    {
+                      "label": "M",
+                      "text": "a woman expecting a child."
+                    }
+                  ]
+                },
+                {
+                  "number": 11,
+                  "text": "You do not need to consult your doctor immediately if Borodine tablets give you...",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "children under 12 years of age."
+                    },
+                    {
+                      "label": "B",
+                      "text": "a headache."
+                    },
+                    {
+                      "label": "C",
+                      "text": "an uncomfortable feeling in your stomach."
+                    },
+                    {
+                      "label": "D",
+                      "text": "symptoms similar to a cold."
+                    },
+                    {
+                      "label": "E",
+                      "text": "a change in your skin colour."
+                    },
+                    {
+                      "label": "F",
+                      "text": "anything treated by a prescription medicine."
+                    },
+                    {
+                      "label": "G",
+                      "text": "a kidney complaint."
+                    },
+                    {
+                      "label": "H",
+                      "text": "a whitening of the eyes."
+                    },
+                    {
+                      "label": "I",
+                      "text": "sore or broken skin."
+                    },
+                    {
+                      "label": "J",
+                      "text": "a fungal infection."
+                    },
+                    {
+                      "label": "K",
+                      "text": "a feeling of sadness."
+                    },
+                    {
+                      "label": "L",
+                      "text": "shortness of breath."
+                    },
+                    {
+                      "label": "M",
+                      "text": "a woman expecting a child."
+                    }
+                  ]
+                },
+                {
+                  "number": 12,
+                  "text": "You must consult your doctor at once if you find Borodine tablets cause...",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "children under 12 years of age."
+                    },
+                    {
+                      "label": "B",
+                      "text": "a headache."
+                    },
+                    {
+                      "label": "C",
+                      "text": "an uncomfortable feeling in your stomach."
+                    },
+                    {
+                      "label": "D",
+                      "text": "symptoms similar to a cold."
+                    },
+                    {
+                      "label": "E",
+                      "text": "a change in your skin colour."
+                    },
+                    {
+                      "label": "F",
+                      "text": "anything treated by a prescription medicine."
+                    },
+                    {
+                      "label": "G",
+                      "text": "a kidney complaint."
+                    },
+                    {
+                      "label": "H",
+                      "text": "a whitening of the eyes."
+                    },
+                    {
+                      "label": "I",
+                      "text": "sore or broken skin."
+                    },
+                    {
+                      "label": "J",
+                      "text": "a fungal infection."
+                    },
+                    {
+                      "label": "K",
+                      "text": "a feeling of sadness."
+                    },
+                    {
+                      "label": "L",
+                      "text": "shortness of breath."
+                    },
+                    {
+                      "label": "M",
+                      "text": "a woman expecting a child."
+                    }
+                  ]
+                },
+                {
+                  "number": 13,
+                  "text": "You must consult your doctor at once if you find Borodine tablets cause...",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "children under 12 years of age."
+                    },
+                    {
+                      "label": "B",
+                      "text": "a headache."
+                    },
+                    {
+                      "label": "C",
+                      "text": "an uncomfortable feeling in your stomach."
+                    },
+                    {
+                      "label": "D",
+                      "text": "symptoms similar to a cold."
+                    },
+                    {
+                      "label": "E",
+                      "text": "a change in your skin colour."
+                    },
+                    {
+                      "label": "F",
+                      "text": "anything treated by a prescription medicine."
+                    },
+                    {
+                      "label": "G",
+                      "text": "a kidney complaint."
+                    },
+                    {
+                      "label": "H",
+                      "text": "a whitening of the eyes."
+                    },
+                    {
+                      "label": "I",
+                      "text": "sore or broken skin."
+                    },
+                    {
+                      "label": "J",
+                      "text": "a fungal infection."
+                    },
+                    {
+                      "label": "K",
+                      "text": "a feeling of sadness."
+                    },
+                    {
+                      "label": "L",
+                      "text": "shortness of breath."
+                    },
+                    {
+                      "label": "M",
+                      "text": "a woman expecting a child."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "passage-2",
+          "title": "West Thames College",
+          "text": "WEST THAMES COLLEGE BACKGROUND INFORMATION FOR CANDIDATES\n\nWest Thames College (initially known as Hounslow Borough College) came into existence in 1976 following the merger of Isleworth Polytechnic with part of Chiswick Polytechnic. Both parent colleges, in various guises, enjoyed a long tradition of service to the community dating back to the 1890s.\n\nThe college is located at London Road, Isleworth, on a site occupied by the Victorian house of the Pears family. Spring Grove House. An earlier house of the same name on this site had been the home of Sir Joseph Banks, the botanist who named Botany Bay with Captain Cook in 1770. Later he founded Kew Gardens.\n\nSituated at the heart of West London, West Thames College is ideally placed to serve the training and education needs of local industry and local people. But its influence reaches much further than the immediate locality.\n\nUnder its former name, Hounslow Borough College, it had already established a regional, national and international reputation for excellence. In fact, about eight per cent of its students come from continental Europe and further afield, whilst a further 52 per cent are from outside the immediate area. Since 1 April 1993, when it became independent of the local authority and adopted its new title, West Thames College has continued to build on that first class reputation.\n\nThese days there is no such thing as a typical student. More than half of West Thames College's 6000 students are over 19 years old. Some of these will be attending college part-time under their employers' training schemes. Others will want to learn new skills purely out of interest, or out of a desire to improve their promotion chances, or they may want a change in career.\n\nThe college is also very popular with 16-18 year olds, who see it as a practical alternative to a further two years at school. They want to study in the more adult atmosphere the college provides. They can choose from a far wider range of subjects than it would be practical for a sixth form to offer. If they want to go straight into employment they can still study at college to gain qualifications relevant to the job, either on a day-release basis or through Network or the Modern Apprenticeship Scheme.",
+          "images": [
+            {
+              "id": "img-p2-1",
+              "src": "_page_47_Picture_21.jpeg",
+              "alt": "West Thames College building"
+            }
+          ],
+          "questionGroups": [
+            {
+              "id": "qg-r2-1",
+              "heading": "Questions 14-20",
+              "instructions": "Look at the introduction to West Thames College on the following page and at the statements (Questions 14-20) below. In boxes 14-20 on your answer sheet write\nTRUE if the statement is true\nFALSE if the statement is false\nNOT GIVEN if the information is not given in the passage",
+              "questionType": "tfng",
+              "questions": [
+                {
+                  "number": 14,
+                  "text": "Chiswick Polytechnic was closed at the same time West Thames College was opened.",
+                  "type": "tfng"
+                },
+                {
+                  "number": 15,
+                  "text": "Most of the students at the college come from outside the local area.",
+                  "type": "tfng"
+                },
+                {
+                  "number": 16,
+                  "text": "The college changed its name to West Thames College in 1993.",
+                  "type": "tfng"
+                },
+                {
+                  "number": 17,
+                  "text": "There are currently 6000 students over the age of 19 attending the college.",
+                  "type": "tfng"
+                },
+                {
+                  "number": 18,
+                  "text": "Students under the age of 16 cannot attend any of the courses offered by the college.",
+                  "type": "tfng"
+                },
+                {
+                  "number": 19,
+                  "text": "The college offers a more mature environment in which to learn than a school.",
+                  "type": "tfng"
+                },
+                {
+                  "number": 20,
+                  "text": "There are fewer subjects to study in the sixth form of a school than at the college.",
+                  "type": "tfng"
+                }
+              ]
+            },
+            {
+              "id": "qg-r2-2",
+              "heading": "Questions 21-26",
+              "instructions": "Look at the West Thames College's Services for Students on the following page. Each paragraph A-H describes a different service provided by the college. From the list below (i-xi) choose the most suitable summaries for paragraphs A, C and E-H. Write the appropriate numbers (i-xi) in boxes 21-26 on your answer sheet. NB There are more summaries than paragraphs, so you will not use them all.",
+              "questionType": "matching-headings",
+              "options": [
+                {
+                  "label": "i",
+                  "text": "A shop for the books and stationery needed to study"
+                },
+                {
+                  "label": "ii",
+                  "text": "Counselling and welfare willing to listen, offer advice or arrange a referral"
+                },
+                {
+                  "label": "iii",
+                  "text": "An Examinations Office arranging exams and issuing certificates"
+                },
+                {
+                  "label": "iv",
+                  "text": "A Registrar's Office handling all fee payments and related enquiries"
+                },
+                {
+                  "label": "v",
+                  "text": "A Medical Service offering on-site assistance with health-related problems"
+                },
+                {
+                  "label": "vi",
+                  "text": "A tutorial system for regular one-to-one guidance, support and feedback"
+                },
+                {
+                  "label": "vii",
+                  "text": "Careers Advice helping students into employment"
+                },
+                {
+                  "label": "viii",
+                  "text": "An Admissions Service providing assistance in choosing and applying for higher education courses"
+                },
+                {
+                  "label": "ix",
+                  "text": "A Student Union representing students on college committees"
+                },
+                {
+                  "label": "x",
+                  "text": "Clubs and societies for students' free-time"
+                },
+                {
+                  "label": "xi",
+                  "text": "A Learning Support Service supporting students in studying, presenting information and handling numbers"
+                }
+              ],
+              "questions": [
+                {
+                  "number": 21,
+                  "text": "Paragraph A",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "i",
+                      "text": "A shop for the books and stationery needed to study"
+                    },
+                    {
+                      "label": "ii",
+                      "text": "Counselling and welfare willing to listen, offer advice or arrange a referral"
+                    },
+                    {
+                      "label": "iii",
+                      "text": "An Examinations Office arranging exams and issuing certificates"
+                    },
+                    {
+                      "label": "iv",
+                      "text": "A Registrar's Office handling all fee payments and related enquiries"
+                    },
+                    {
+                      "label": "v",
+                      "text": "A Medical Service offering on-site assistance with health-related problems"
+                    },
+                    {
+                      "label": "vi",
+                      "text": "A tutorial system for regular one-to-one guidance, support and feedback"
+                    },
+                    {
+                      "label": "vii",
+                      "text": "Careers Advice helping students into employment"
+                    },
+                    {
+                      "label": "viii",
+                      "text": "An Admissions Service providing assistance in choosing and applying for higher education courses"
+                    },
+                    {
+                      "label": "ix",
+                      "text": "A Student Union representing students on college committees"
+                    },
+                    {
+                      "label": "x",
+                      "text": "Clubs and societies for students' free-time"
+                    },
+                    {
+                      "label": "xi",
+                      "text": "A Learning Support Service supporting students in studying, presenting information and handling numbers"
+                    }
+                  ]
+                },
+                {
+                  "number": 22,
+                  "text": "Paragraph C",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "i",
+                      "text": "A shop for the books and stationery needed to study"
+                    },
+                    {
+                      "label": "ii",
+                      "text": "Counselling and welfare willing to listen, offer advice or arrange a referral"
+                    },
+                    {
+                      "label": "iii",
+                      "text": "An Examinations Office arranging exams and issuing certificates"
+                    },
+                    {
+                      "label": "iv",
+                      "text": "A Registrar's Office handling all fee payments and related enquiries"
+                    },
+                    {
+                      "label": "v",
+                      "text": "A Medical Service offering on-site assistance with health-related problems"
+                    },
+                    {
+                      "label": "vi",
+                      "text": "A tutorial system for regular one-to-one guidance, support and feedback"
+                    },
+                    {
+                      "label": "vii",
+                      "text": "Careers Advice helping students into employment"
+                    },
+                    {
+                      "label": "viii",
+                      "text": "An Admissions Service providing assistance in choosing and applying for higher education courses"
+                    },
+                    {
+                      "label": "ix",
+                      "text": "A Student Union representing students on college committees"
+                    },
+                    {
+                      "label": "x",
+                      "text": "Clubs and societies for students' free-time"
+                    },
+                    {
+                      "label": "xi",
+                      "text": "A Learning Support Service supporting students in studying, presenting information and handling numbers"
+                    }
+                  ]
+                },
+                {
+                  "number": 23,
+                  "text": "Paragraph E",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "i",
+                      "text": "A shop for the books and stationery needed to study"
+                    },
+                    {
+                      "label": "ii",
+                      "text": "Counselling and welfare willing to listen, offer advice or arrange a referral"
+                    },
+                    {
+                      "label": "iii",
+                      "text": "An Examinations Office arranging exams and issuing certificates"
+                    },
+                    {
+                      "label": "iv",
+                      "text": "A Registrar's Office handling all fee payments and related enquiries"
+                    },
+                    {
+                      "label": "v",
+                      "text": "A Medical Service offering on-site assistance with health-related problems"
+                    },
+                    {
+                      "label": "vi",
+                      "text": "A tutorial system for regular one-to-one guidance, support and feedback"
+                    },
+                    {
+                      "label": "vii",
+                      "text": "Careers Advice helping students into employment"
+                    },
+                    {
+                      "label": "viii",
+                      "text": "An Admissions Service providing assistance in choosing and applying for higher education courses"
+                    },
+                    {
+                      "label": "ix",
+                      "text": "A Student Union representing students on college committees"
+                    },
+                    {
+                      "label": "x",
+                      "text": "Clubs and societies for students' free-time"
+                    },
+                    {
+                      "label": "xi",
+                      "text": "A Learning Support Service supporting students in studying, presenting information and handling numbers"
+                    }
+                  ]
+                },
+                {
+                  "number": 24,
+                  "text": "Paragraph F",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "i",
+                      "text": "A shop for the books and stationery needed to study"
+                    },
+                    {
+                      "label": "ii",
+                      "text": "Counselling and welfare willing to listen, offer advice or arrange a referral"
+                    },
+                    {
+                      "label": "iii",
+                      "text": "An Examinations Office arranging exams and issuing certificates"
+                    },
+                    {
+                      "label": "iv",
+                      "text": "A Registrar's Office handling all fee payments and related enquiries"
+                    },
+                    {
+                      "label": "v",
+                      "text": "A Medical Service offering on-site assistance with health-related problems"
+                    },
+                    {
+                      "label": "vi",
+                      "text": "A tutorial system for regular one-to-one guidance, support and feedback"
+                    },
+                    {
+                      "label": "vii",
+                      "text": "Careers Advice helping students into employment"
+                    },
+                    {
+                      "label": "viii",
+                      "text": "An Admissions Service providing assistance in choosing and applying for higher education courses"
+                    },
+                    {
+                      "label": "ix",
+                      "text": "A Student Union representing students on college committees"
+                    },
+                    {
+                      "label": "x",
+                      "text": "Clubs and societies for students' free-time"
+                    },
+                    {
+                      "label": "xi",
+                      "text": "A Learning Support Service supporting students in studying, presenting information and handling numbers"
+                    }
+                  ]
+                },
+                {
+                  "number": 25,
+                  "text": "Paragraph G",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "i",
+                      "text": "A shop for the books and stationery needed to study"
+                    },
+                    {
+                      "label": "ii",
+                      "text": "Counselling and welfare willing to listen, offer advice or arrange a referral"
+                    },
+                    {
+                      "label": "iii",
+                      "text": "An Examinations Office arranging exams and issuing certificates"
+                    },
+                    {
+                      "label": "iv",
+                      "text": "A Registrar's Office handling all fee payments and related enquiries"
+                    },
+                    {
+                      "label": "v",
+                      "text": "A Medical Service offering on-site assistance with health-related problems"
+                    },
+                    {
+                      "label": "vi",
+                      "text": "A tutorial system for regular one-to-one guidance, support and feedback"
+                    },
+                    {
+                      "label": "vii",
+                      "text": "Careers Advice helping students into employment"
+                    },
+                    {
+                      "label": "viii",
+                      "text": "An Admissions Service providing assistance in choosing and applying for higher education courses"
+                    },
+                    {
+                      "label": "ix",
+                      "text": "A Student Union representing students on college committees"
+                    },
+                    {
+                      "label": "x",
+                      "text": "Clubs and societies for students' free-time"
+                    },
+                    {
+                      "label": "xi",
+                      "text": "A Learning Support Service supporting students in studying, presenting information and handling numbers"
+                    }
+                  ]
+                },
+                {
+                  "number": 26,
+                  "text": "Paragraph H",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "i",
+                      "text": "A shop for the books and stationery needed to study"
+                    },
+                    {
+                      "label": "ii",
+                      "text": "Counselling and welfare willing to listen, offer advice or arrange a referral"
+                    },
+                    {
+                      "label": "iii",
+                      "text": "An Examinations Office arranging exams and issuing certificates"
+                    },
+                    {
+                      "label": "iv",
+                      "text": "A Registrar's Office handling all fee payments and related enquiries"
+                    },
+                    {
+                      "label": "v",
+                      "text": "A Medical Service offering on-site assistance with health-related problems"
+                    },
+                    {
+                      "label": "vi",
+                      "text": "A tutorial system for regular one-to-one guidance, support and feedback"
+                    },
+                    {
+                      "label": "vii",
+                      "text": "Careers Advice helping students into employment"
+                    },
+                    {
+                      "label": "viii",
+                      "text": "An Admissions Service providing assistance in choosing and applying for higher education courses"
+                    },
+                    {
+                      "label": "ix",
+                      "text": "A Student Union representing students on college committees"
+                    },
+                    {
+                      "label": "x",
+                      "text": "Clubs and societies for students' free-time"
+                    },
+                    {
+                      "label": "xi",
+                      "text": "A Learning Support Service supporting students in studying, presenting information and handling numbers"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "passage-3",
+          "title": "The Discovery of Uranus",
+          "text": "The Discovery of Uranus\n\nSomeone once put forward an attractive though unlikely theory. Throughout the Earth's annual revolution around the sun there is one point of space always hidden from our eyes. This point is the opposite part of the Earth's orbit, which is always hidden by the sun. Could there be another planet there, essentially similar to our own, but always invisible?\n\nIf a space probe today sent back evidence that such a world existed it would cause not much more sensation than Sir William Herschel's discovery of a new planet, Uranus, in 1781.\n\nHerschel was an extraordinary man — no other astronomer has ever covered so vast a field of work — and his career deserves study. He was born in Hanover in Germany in 1738, left the German army in 1757, and arrived in England the same year with no money but quite exceptional music ability. He played the violin and oboe and at one time was organist in the Octagon Chapel in the city of Bath. Herschel's was an active mind, and deep inside he was conscious that music was not his destiny; he therefore read widely in science and the arts, but not until 1772 did he come across a book on astronomy. He was then 34, middle-aged by the standards of the time, but without hesitation he embarked on his new career, financing it by his professional work as a musician. He spent years mastering the art of telescope construction, and even by present-day standards his instruments are comparable with the best.\n\nSerious observation began in 1774. He set himself the astonishing task of 'reviewing the heavens', in other words, pointing his telescope to every accessible part of the sky and recording what he saw. The first review was made in 1775; the second, and most momentous, in 1780-81. It was during the latter part of this that he discovered Uranus. Afterwards, supported by the royal grant in recognition of his work, he was able to devote himself entirely to astronomy. His final achievements spread from the sun and moon to remote galaxies (of which he discovered hundreds), and papers flooded from his pen until his death in 1822.\n\nAmong these there was one sent to the Royal Society in 1781, entitled An Account of a Comet. In his own words:\n\n    On Tuesday the 13th of March, between ten and eleven in the evening, while I was examining the small stars in the neighbourhood of H Geminorum, I perceived one that appeared visibly larger than the rest; being struck with its uncommon magnitude, I compared it to H Geminorum and the small star in the quartile between Auriga and Gemini, and finding it to be much larger than either of them, suspected it to be a comet.\n\nHerschel's care was the hallmark of a great observer: he was not prepared to jump to any conclusions. Also, to be fair, the discovery of a new planet was the last thought in anybody's mind. But further observation by other astronomers besides Herschel revealed two curious facts. For a comet, it showed a remarkably sharp disc; furthermore, it was moving so slowly that it was thought to be a great distance from the sun, and comets are only normally visible in the immediate vicinity of the sun. As its orbit came to be worked out the truth dawned that it was a new planet far beyond Saturn's realm, and that the 'reviewer of the heavens' had stumbled across an unprecedented prize. Herschel wanted to call it georgium sidus (Star of George) in honour of his royal patron King George III of Great Britain. The planet was later for a time called Herschel in honour of its discoverer. The name Uranus, which was first proposed by the German astronomer Johann Elert Bode, was in use by the late 19th century.\n\nUranus is a giant in construction, but not so much in size; its diameter compares unfavourably with that of Jupiter and Saturn, though on the terrestrial scale it is still colossal. Uranus' atmosphere consists largely of hydrogen and helium, with a trace of methane. Through a telescope the planet appears as a small bluish-green disc with a faint green periphery. In 1977, while recording the occultation of a star behind the planet, the American astronomer James L. Elliot discovered the presence of five rings encircling the equator of Uranus. Four more rings were discovered in January 1986 during the exploratory flight of Voyager 2. In addition to its rings, Uranus has 15 satellites ('moons'), the last 10 discovered by Voyager 2 on the same flight; all revolve about its equator and move with the planet in an east-west direction. The two largest moons, Titania and Oberon, were discovered by Herschel in 1787. The next two, Umbriel and Ariel, were found in 1851 by the British astronomer William Lassell. Miranda, thought before 1986 to be the innermost moon, was discovered in 1948 by the American astronomer Gerard Peter Kuiper.\n\nGlossary:\n\nioccultation — in astronomy, when one object passes in front of another and hides the second from view, especially, for example, when the moon comes between an observer and a star or planet\n\niiVoyager 2 — an unmanned spacecraft sent on a voyage past Saturn, Uranus and Jupiter in 1986; during which it sent back information about these planets to scientists on earth",
+          "images": [
+            {
+              "id": "img-p3-1",
+              "src": "_page_49_Picture_3.jpeg",
+              "alt": "Sir William Herschel portrait"
+            }
+          ],
+          "questionGroups": [
+            {
+              "id": "qg-r3-1",
+              "heading": "Questions 27-31",
+              "instructions": "Complete the table below. Write a date for each answer. Write your answers in boxes 27-31 on your answer sheet.",
+              "questionType": "gapfill",
+              "questions": [
+                {
+                  "number": 27,
+                  "text": "Herschel began investigating astronomy",
+                  "type": "gapfill"
+                },
+                {
+                  "number": 28,
+                  "text": "Discovery of the planet Uranus",
+                  "type": "gapfill"
+                },
+                {
+                  "number": 29,
+                  "text": "Discovery of the moons Titania and Oberon",
+                  "type": "gapfill"
+                },
+                {
+                  "number": 30,
+                  "text": "First discovery of Uranus' rings",
+                  "type": "gapfill"
+                },
+                {
+                  "number": 31,
+                  "text": "Discovery of the last 10 moons of Uranus",
+                  "type": "gapfill"
+                }
+              ]
+            },
+            {
+              "id": "qg-r3-2",
+              "heading": "Questions 32-36",
+              "instructions": "Do the following statements reflect the claims of the writer of the Reading Passage? In boxes 32-36 on your answer sheet write\nYES if the statement reflects the claims of the writer\nNO if the statement contradicts the writer\nNOT GIVEN if it is impossible to say what the writer thinks about this",
+              "questionType": "ynng",
+              "questions": [
+                {
+                  "number": 32,
+                  "text": "It is improbable that there is a planet hidden behind the sun.",
+                  "type": "ynng"
+                },
+                {
+                  "number": 33,
+                  "text": "Herschel knew immediately that he had found a new planet.",
+                  "type": "ynng"
+                },
+                {
+                  "number": 34,
+                  "text": "Herschel collaborated with other astronomers of his time.",
+                  "type": "ynng"
+                },
+                {
+                  "number": 35,
+                  "text": "Herschel's newly-discovered object was considered to be too far from the sun to be a comet.",
+                  "type": "ynng"
+                },
+                {
+                  "number": 36,
+                  "text": "Herschel's discovery was the most important find of the last three hundred years.",
+                  "type": "ynng"
+                }
+              ]
+            },
+            {
+              "id": "qg-r3-3",
+              "heading": "Questions 37-40",
+              "instructions": "Complete each of the following statements (Questions 37-40) with a name from the Reading Passage. Write your answers in boxes 37-40 on your answer sheet.",
+              "questionType": "gapfill",
+              "questions": [
+                {
+                  "number": 37,
+                  "text": "The suggested names of the new planet started with ...",
+                  "type": "gapfill"
+                },
+                {
+                  "number": 38,
+                  "text": "... then ...",
+                  "type": "gapfill"
+                },
+                {
+                  "number": 39,
+                  "text": "... before finally settling on Uranus. The first five rings around Uranus were discovered by ...",
+                  "type": "gapfill"
+                },
+                {
+                  "number": 40,
+                  "text": "From 1948 until 1986, the moon ... was believed to be the moon closest to the surface of Uranus.",
+                  "type": "gapfill"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "answerKeys": {
+        "reading": {
+          "passage-1": {
+            "1": "FALSE",
+            "2": "TRUE",
+            "3": "TRUE",
+            "4": "NOT GIVEN",
+            "5": "FALSE",
+            "6": "D",
+            "7": "I",
+            "8": "G",
+            "9": "J",
+            "10": "B",
+            "11": "C",
+            "12": "E",
+            "13": "K"
+          },
+          "passage-2": {
+            "14": "NOT GIVEN",
+            "15": "TRUE",
+            "16": "TRUE",
+            "17": "FALSE",
+            "18": "NOT GIVEN",
+            "19": "TRUE",
+            "20": "TRUE",
+            "21": "vi",
+            "22": "viii",
+            "23": "x",
+            "24": "ii",
+            "25": "v",
+            "26": "vii"
+          },
+          "passage-3": {
+            "27": "1772",
+            "28": "1781",
+            "29": "1787",
+            "30": "1977",
+            "31": "1986",
+            "32": "YES",
+            "33": "NO",
+            "34": "NOT GIVEN",
+            "35": "YES",
+            "36": "NOT GIVEN",
+            "37": "georgium sidus",
+            "38": "Herschel",
+            "39": "James L. Elliot",
+            "40": "Miranda"
+          }
+        }
+      }
+    }
+  }
+}
