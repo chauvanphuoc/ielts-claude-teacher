@@ -238,7 +238,9 @@ def normalize_question_images_in_list(questions: list) -> list:
 # ---- Data loaders (one per skill) -----------------------------------
 
 def load_listening_section(source: str, test_num: int, section_num: int) -> NormalizedSection:
-    """Extract one listening section from per-source JSON."""
+    """Extract one listening section from per-source JSON.
+    Supports both questionGroups (preferred) and flat questions (legacy fallback).
+    """
     json_path = PROJECT_ROOT / SKILL_JSON_PATHS["listening"].format(source=source)
     if not json_path.exists():
         raise FileNotFoundError(f"Listening JSON not found: {json_path}")
@@ -261,10 +263,40 @@ def load_listening_section(source: str, test_num: int, section_num: int) -> Norm
         raise ValueError(f"Section {section_num} out of range. Valid: 1-{len(sections)}")
 
     sec = sections[section_num - 1]
-    questions = sec.get("questions", [])
-    questions = normalize_question_types_in_list(questions)
-    questions = normalize_question_images_in_list(questions)
     answer_key = sec.get("answerKey", [])
+
+    # --- questionGroups (preferred) vs flat questions (legacy fallback) ---
+    question_groups = sec.get("questionGroups", [])
+    if question_groups:
+        # Normalize types and images inside groups (wrap in passage-like object)
+        wrapped = normalize_question_types_in_passages([{"questionGroups": question_groups}])
+        question_groups = wrapped[0]["questionGroups"]
+        # Also normalize question images inside each group
+        for g in question_groups:
+            g["questions"] = normalize_question_images_in_list(g.get("questions", []))
+            # Enrich pick-from-list questions with questionNumbers for count_questions_in_list
+            if g.get("questionType") == "pick-from-list":
+                qnums = [q["number"] for q in g.get("questions", []) if "number" in q]
+                for q in g.get("questions", []):
+                    if q.get("type") == "pick-from-list":
+                        q["questionNumbers"] = qnums
+        section_data = question_groups
+        total_questions = 0
+        for g in question_groups:
+            qs = g.get("questions", [])
+            if g.get("questionType") == "pick-from-list":
+                # pick-from-list: count the group's pickCount (e.g., "choose 3" → 3 marks)
+                total_questions += g.get("pickCount", len(qs))
+            else:
+                # Regular group: count each question individually
+                total_questions += len(qs)
+    else:
+        # Legacy fallback: flat questions array
+        questions = sec.get("questions", [])
+        questions = normalize_question_types_in_list(questions)
+        questions = normalize_question_images_in_list(questions)
+        section_data = questions
+        total_questions = count_questions_in_list(questions)
 
     title = f"Cambridge IELTS {source.replace('cambridge-', '')} — Listening Test {test_num}, Section {section_num}"
     audio_file = sec.get("audioFile", "")
@@ -275,12 +307,12 @@ def load_listening_section(source: str, test_num: int, section_num: int) -> Norm
         skill="listening",
         skill_badge="Listening",
         section_badge=f"Section {section_num}",
-        section_data=questions,
+        section_data=section_data,
         answer_keys=answer_key,
         source=source,
         test_number=test_num,
         section_number=section_num,
-        question_count=count_questions_in_list(questions),
+        question_count=total_questions,
         extra_placeholders={
             "AUDIO_SRC": audio_src,
             "INSTRUCTIONS": sec.get("instructions", ""),
@@ -341,7 +373,7 @@ def load_speaking_section(source: str, test_num: int, section_num: int) -> Norma
 
     test = None
     for t in tests:
-        if t.get("testNumber") == test_num:
+        if str(t.get("testNumber")) == str(test_num):
             test = t
             break
     if not test:
@@ -391,11 +423,19 @@ def load_writing_section(source: str, test_num: int, section_num: int, module: s
 
     test = None
     for t in tests:
-        if t.get("testNumber") == test_num:
-            test = t
-            break
+        label = t.get("testLabel")
+        if label is not None:
+            # General Training format: match by label (A, B, ...)
+            if str(label) == str(test_num):
+                test = t
+                break
+        else:
+            # Academic format: match by number (1, 2, 3, 4)
+            if str(t.get("testNumber")) == str(test_num):
+                test = t
+                break
     if not test:
-        available = [t.get("testNumber") for t in tests]
+        available = [t.get("testLabel") or t.get("testNumber") for t in tests]
         raise ValueError(f"Test {test_num} not found in {source} ({module}). Available: {available}")
 
     tasks = test.get("tasks", [])
@@ -546,11 +586,20 @@ def update_index(section: NormalizedSection, filepath: Path):
     # Question types from section data
     question_types = []
     if isinstance(section.section_data, list):
-        for q in section.section_data:
-            if isinstance(q, dict) and "type" in q:
-                qt = q["type"]
-                if qt not in question_types:
+        # Check if this is a list of questionGroups (have "questions" key) or flat questions (have "type" key)
+        if section.section_data and isinstance(section.section_data[0], dict) and "questions" in section.section_data[0]:
+            # questionGroups array (listening new format, reading array format)
+            for group in section.section_data:
+                qt = group.get("questionType", "")
+                if qt and qt not in question_types:
                     question_types.append(qt)
+        else:
+            # Flat questions array
+            for q in section.section_data:
+                if isinstance(q, dict) and "type" in q:
+                    qt = q["type"]
+                    if qt not in question_types:
+                        question_types.append(qt)
     elif isinstance(section.section_data, dict):
         for group in section.section_data.get("questionGroups", []):
             qt = group.get("questionType", "")
@@ -612,7 +661,7 @@ def discover_sections(skill: str, source: str, module: str = "academic") -> list
                 module_data = data.get(module, data.get("academic", {}))
                 tests = module_data.get("tests", [])
                 for t in tests:
-                    tn = t.get("testNumber")
+                    tn = t.get("testLabel") or t.get("testNumber")
                     tasks = t.get("tasks", [])
                     for i in range(len(tasks)):
                         sections.append((tn, i + 1))
