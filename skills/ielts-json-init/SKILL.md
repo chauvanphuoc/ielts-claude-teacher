@@ -160,11 +160,11 @@ Use the Markdown Parsing Guidelines table below to identify structure:
 | `*text in italics*` | Instructions | Set as questionGroup.instructions |
 | `#### *Example*` | Example question | **Skip entirely** — do not include in JSON |
 | `- **A** the Ethereal Match` etc. | Match type list (matching questions) | Store as options on matching questions |
-| `Choose {N} letters {A}-{Z}` | Pick-from-list group question | Tạo 1 entry `pick-from-list` thay vì N câu riêng lẻ |
+| `Choose {N} letters {A}-{Z}` | Pick-from-list (both listening & reading) | Tạo 1 entry `pick-from-list` thay vì N câu riêng lẻ |
 
 **CRITICAL: pick-from-list detection — 2 mandatory + 1 optional constraint (F2-fix).** 
 
-Một dạng câu hỏi phổ biến trong Listening: "Choose THREE letters A-F" — học sinh chọn N đáp án từ 1 danh sách, không phân biệt thứ tự.
+Dạng câu hỏi "Choose THREE letters A-F" — học sinh chọn N đáp án từ 1 danh sách, không phân biệt thứ tự. Áp dụng cho cả **Listening** và **Reading**.
 
 **Detection constraints:**
 
@@ -526,6 +526,8 @@ The validation checks:
 
 Write to `shared/listening/listening_{source}.json`. Structure:
 
+**IMPORTANT: use `questionGroups` instead of flat `questions`.** Each `##### Questions X-Y` sub-heading becomes a `questionGroup` — matching the JSON structure used by Reading. This gives each group its own `heading`, `instructions`, and `questionType` for better UI rendering and metadata.
+
 ```json
 {
   "source": "cambridge-1",
@@ -543,7 +545,48 @@ Write to `shared/listening/listening_{source}.json`. Structure:
           "audioFile": "Test 1 - Section 1.mp3",
           "speakerInfo": "...",
           "instructions": "...",
-          "questions": [...],
+          "images": [...],
+          "questionGroups": [
+            {
+              "id": "qg-s1-1",
+              "heading": "Questions 1-5",
+              "instructions": "Complete the form below. Write NO MORE THAN ONE WORD OR A NUMBER for each answer.",
+              "questions": [
+                {"number": 1, "type": "gapfill", "text": "Street", "answer": "Black"},
+                {"number": 2, "type": "gapfill", "text": "Post code:", "answer": "2085"}
+              ]
+            },
+            {
+              "id": "qg-s1-2",
+              "heading": "Questions 6-8",
+              "questionType": "pick-from-list",
+              "instructions": "Circle THREE letters A-F.",
+              "text": "What types of films does Louise like?",
+              "pickCount": 3,
+              "options": [
+                {"label": "A", "text": "Action"},
+                {"label": "B", "text": "Comedies"},
+                {"label": "C", "text": "Musicals"},
+                {"label": "D", "text": "Romance"},
+                {"label": "E", "text": "Westerns"},
+                {"label": "F", "text": "Wildlife"}
+              ],
+              "questions": [
+                {"number": 6, "type": "pick-from-list", "answer": ["B", "D", "F"], "anyOrder": true},
+                {"number": 7, "type": "pick-from-list", "answer": ["B", "D", "F"], "anyOrder": true},
+                {"number": 8, "type": "pick-from-list", "answer": ["B", "D", "F"], "anyOrder": true}
+              ]
+            },
+            {
+              "id": "qg-s1-3",
+              "heading": "Questions 9 and 10",
+              "instructions": "Write NO MORE THAN THREE WORDS for each answer.",
+              "questions": [
+                {"number": 9, "type": "short-answer", "text": "How much does it cost to join the library?", "answer": "$25"},
+                {"number": 10, "type": "short-answer", "text": "When will Louise's card be ready?", "answer": "next week"}
+              ]
+            }
+          ],
           "transcript": "...",
           "answerKey": [...]
         }
@@ -552,6 +595,8 @@ Write to `shared/listening/listening_{source}.json`. Structure:
   ]
 }
 ```
+
+**Backward compatibility:** The HTML renderer and Python bridge also accept the legacy flat `"questions": [...]` format. When generating new data, always use `questionGroups` for better structure and UI rendering. When the data has both `questions` and `questionGroups`, `questionGroups` takes precedence.
 
 ### Reference
 
