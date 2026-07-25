@@ -1,0 +1,318 @@
+{
+  "source": "cambridge-2",
+  "generatedAt": "2026-07-25T00:00:00Z",
+  "generatedBy": "/init-textbook-speaking",
+  "tests": [
+    {
+      "testNumber": 1,
+      "parts": [
+        {
+          "partNumber": 1,
+          "partType": "interview",
+          "duration": "4-5 minutes",
+          "topic": "Communication and Technology",
+          "instructions": "Answer these questions about communication and technology.",
+          "questions": [
+            "How do you usually keep in touch with your friends and family?",
+            "How much time do you spend using a computer or smartphone every day?",
+            "What do you think is the most useful form of technology in your daily life?",
+            "Do you prefer communicating by phone or by text message? Why?",
+            "Have you ever used email to communicate in English? How was that experience?"
+          ]
+        },
+        {
+          "partNumber": 2,
+          "partType": "long-turn",
+          "duration": "3-4 minutes",
+          "topic": "Learning to use new technology",
+          "cueCard": {
+            "topic": "Describe a time when you learned to use a new piece of technology.",
+            "bullets": [
+              "what the technology was",
+              "why you needed to learn it",
+              "how you learned to use it",
+              "and explain how you felt about learning this new technology"
+            ]
+          },
+          "preparationTime": 60,
+          "speakingTime": 120
+        },
+        {
+          "partNumber": 3,
+          "partType": "discussion",
+          "duration": "4-5 minutes",
+          "topic": "Technology and Education",
+          "questions": [
+            "How has technology changed the way people learn languages compared to the past?",
+            "Do you think schools should provide students with computers or tablets? Why or why not?",
+            "What are the disadvantages of relying too much on technology for communication?",
+            "How do you think communication technology will develop in the next 20 years?",
+            "Is it true that older generations find it harder to adapt to new technology? Why do you think that is?",
+            "Do you believe that technology can ever fully replace face-to-face communication?"
+          ]
+        }
+      ],
+      "_legacyTask": {
+        "partType": "elicitation",
+        "title": "Electronic Mail",
+        "format": "Cambridge IELTS 2 (2000) — Part 3 Elicitation",
+        "scenario": "You are studying at a language school and have heard that students may obtain an electronic mail (e-mail) address so that they can send and receive messages by computer.",
+        "role": "The Examiner is the Student Services advisor.",
+        "topicsToAsk": [
+          "what e-mail is",
+          "cost",
+          "how to obtain an e-mail address",
+          "location of e-mail at school",
+          "equipment needed at home",
+          "courses on e-mail"
+        ],
+        "interviewerNotes": {
+          "description": "Information for the Examiner: responses to the candidate's questions",
+          "prompts": [
+            "what e-mail is: means by which to send messages from one computer to another over the telephone lines",
+            "cost: free for students at this language school",
+            "how to obtain an e-mail address: complete an application form and return to Student Services",
+            "location of e-mail at school: in the independent learning centre or computer laboratory",
+            "equipment needed at home: a modem and a telephone line",
+            "courses on e-mail: Friday afternoon classes throughout the year"
+          ]
+        }
+      }
+    },
+    {
+      "testNumber": 2,
+      "parts": [
+        {
+          "partNumber": 1,
+          "partType": "interview",
+          "duration": "4-5 minutes",
+          "topic": "Music and Entertainment",
+          "instructions": "Answer these questions about music and entertainment.",
+          "questions": [
+            "What kind of music do you like to listen to? Why?",
+            "How often do you go to concerts or live music events?",
+            "Do you prefer listening to music alone or with other people?",
+            "Have you ever played a musical instrument? Which one?",
+            "What role does music play in your daily life?"
+          ]
+        },
+        {
+          "partNumber": 2,
+          "partType": "long-turn",
+          "duration": "3-4 minutes",
+          "topic": "A memorable entertainment event",
+          "cueCard": {
+            "topic": "Describe a concert or live performance you have attended or would like to attend.",
+            "bullets": [
+              "what kind of event it was or would be",
+              "where it took or would take place",
+              "who you went or would go with",
+              "and explain why it was or would be memorable"
+            ]
+          },
+          "preparationTime": 60,
+          "speakingTime": 120
+        },
+        {
+          "partNumber": 3,
+          "partType": "discussion",
+          "duration": "4-5 minutes",
+          "topic": "The Music Industry and Live Events",
+          "questions": [
+            "Do you think live concerts are still popular in the age of streaming music? Why?",
+            "How has the music industry changed in the last few decades?",
+            "Should the government provide more funding for the arts and live performances?",
+            "Why do some people prefer recorded music over live performances?",
+            "How important are music festivals for a country's culture and tourism?",
+            "Do you think musical taste changes as people get older? Why?"
+          ]
+        }
+      ],
+      "_legacyTask": {
+        "partType": "elicitation",
+        "title": "Concert",
+        "format": "Cambridge IELTS 2 (2000) — Part 3 Elicitation",
+        "scenario": "Find out as much as possible about a concert your examiner has been to recently.",
+        "role": "The candidate asks the examiner about a concert they attended.",
+        "topicsToAsk": [
+          "the type of concert",
+          "the location",
+          "the cost",
+          "transport to and from the concert",
+          "the audience",
+          "the length of the concert",
+          "his/her opinion of the concert"
+        ],
+        "interviewerNotes": {
+          "description": "Information for the Examiner: responses to the candidate's questions about the concert",
+          "prompts": [
+            "the type of concert / the location: rock/folk/jazz/classical, city stadium",
+            "the cost: $55/£25",
+            "transport to and from the concert: bus (hard to park car)",
+            "the audience: 500-1,000 people, lots of audience participation",
+            "the length of the concert: 3 hours",
+            "his/her opinion of the concert: really enjoyed it"
+          ]
+        }
+      }
+    },
+    {
+      "testNumber": 3,
+      "parts": [
+        {
+          "partNumber": 1,
+          "partType": "interview",
+          "duration": "4-5 minutes",
+          "topic": "Nature and the Environment",
+          "instructions": "Answer these questions about nature and the environment.",
+          "questions": [
+            "Do you enjoy spending time outdoors in nature? Why or why not?",
+            "What do you personally do to help protect the environment?",
+            "Have you ever participated in any environmental activities or events?",
+            "Is the natural environment where you live well protected?",
+            "What is the most serious environmental problem in your country?"
+          ]
+        },
+        {
+          "partNumber": 2,
+          "partType": "long-turn",
+          "duration": "3-4 minutes",
+          "topic": "An environmental group or initiative",
+          "cueCard": {
+            "topic": "Describe an environmental group, club, or initiative you know about.",
+            "bullets": [
+              "what the group or initiative is called",
+              "what activities they do",
+              "how you know about them",
+              "and explain why you think their work is important"
+            ]
+          },
+          "preparationTime": 60,
+          "speakingTime": 120
+        },
+        {
+          "partNumber": 3,
+          "partType": "discussion",
+          "duration": "4-5 minutes",
+          "topic": "Environmental Protection and Society",
+          "questions": [
+            "Do you think individuals or governments have a greater responsibility to protect the environment?",
+            "How effective are environmental groups in influencing government policy?",
+            "What more could schools do to educate young people about environmental issues?",
+            "Do you think the environment is better or worse than it was 50 years ago?",
+            "Should companies be forced to pay for the pollution they create?",
+            "What can ordinary people do in their daily lives to reduce their environmental impact?"
+          ]
+        }
+      ],
+      "_legacyTask": {
+        "partType": "elicitation",
+        "title": "An Environmental Group",
+        "format": "Cambridge IELTS 2 (2000) — Part 3 Elicitation",
+        "scenario": "You are interested in joining a group of students at the university who work to protect the environment.",
+        "role": "The examiner provides information about the environmental group.",
+        "topicsToAsk": [
+          "the name of the group",
+          "action that they take",
+          "the cost of membership",
+          "what members have to do",
+          "number of members",
+          "when the group was founded"
+        ],
+        "interviewerNotes": {
+          "description": "Information for the Examiner: responses to the candidate's questions",
+          "prompts": [
+            "the name of the group: Green Action",
+            "action that they take: planting trees, clearing up rubbish",
+            "the cost of membership: $10/£5 a year",
+            "what members have to do: participate in two events (organised by the group) a year",
+            "number of members: 4,500",
+            "when the group was founded: 1996"
+          ]
+        }
+      }
+    },
+    {
+      "testNumber": 4,
+      "parts": [
+        {
+          "partNumber": 1,
+          "partType": "interview",
+          "duration": "4-5 minutes",
+          "topic": "Books and Reading",
+          "instructions": "Answer these questions about books and reading.",
+          "questions": [
+            "Do you enjoy reading books? What kind of books do you read?",
+            "How often do you buy books? Where do you usually buy them?",
+            "Do you prefer reading books in your own language or in English? Why?",
+            "What was the last book you read? Did you enjoy it?",
+            "Do you think reading books is more beneficial than watching videos for learning? Why or why not?"
+          ]
+        },
+        {
+          "partNumber": 2,
+          "partType": "long-turn",
+          "duration": "3-4 minutes",
+          "topic": "A useful book",
+          "cueCard": {
+            "topic": "Describe a book that you found very useful.",
+            "bullets": [
+              "what the book was",
+              "what it was about",
+              "how you found out about this book",
+              "and explain why you found it so useful"
+            ]
+          },
+          "preparationTime": 60,
+          "speakingTime": 120
+        },
+        {
+          "partNumber": 3,
+          "partType": "discussion",
+          "duration": "4-5 minutes",
+          "topic": "Education and Self-Study",
+          "questions": [
+            "Do you think self-study is as effective as studying in a classroom?",
+            "How important are textbooks in the modern classroom?",
+            "What qualities make a good educational book?",
+            "How has technology changed the way people learn languages?",
+            "Is it better to study alone or with a teacher? Why?",
+            "Will digital books completely replace printed textbooks in the future?"
+          ]
+        }
+      ],
+      "_legacyTask": {
+        "partType": "elicitation",
+        "title": "Buying a Book",
+        "format": "Cambridge IELTS 2 (2000) — Part 3 Elicitation",
+        "scenario": "Your teacher recommended a good English language writing book to assist students with their written work.",
+        "role": "The examiner provides information about the recommended book.",
+        "topicsToAsk": [
+          "the level of the book",
+          "the title",
+          "the authors",
+          "the cost",
+          "place of purchase",
+          "extras — cassettes, answers"
+        ],
+        "interviewerNotes": {
+          "description": "Information for the Examiner: responses to the candidate's questions about the book",
+          "prompts": [
+            "the level of the book: It is valuable for students preparing for university entrance and for advanced learners of English.",
+            "the title: \"Writing Academic English\" or another text you know of",
+            "the authors: by Walton and Hague",
+            "the cost: around $40/£20",
+            "place of purchase: Name a suitable bookshop in the town.",
+            "extras — cassettes, answers: There is no cassette as it is only a writing book. It does not provide answers, but the teacher could help with corrections."
+          ]
+        }
+      }
+    }
+  ],
+  "_validation": {
+    "testsPopulated": [1, 2, 3, 4],
+    "testsPending": [],
+    "modernPartsPerTest": 3,
+    "legacyTasksExtracted": 4
+  }
+}
