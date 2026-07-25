@@ -110,6 +110,29 @@ body {
   margin-top: 12px;
   font-style: italic;
 }
+.question-instruction {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin-bottom: 10px;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* Question group heading & instructions (for questionGroups format) */
+.question-group-heading {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+.question-group-instructions {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  margin-bottom: 12px;
+  line-height: 1.5;
+  white-space: pre-line;
+}
 
 /* ============================================================
    AUDIO PLAYER
@@ -211,6 +234,14 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 4px;
+}
+.question-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
 }
 .question-text {
   font-size: 15px;
@@ -480,63 +511,6 @@ body {
 }
 
 /* ============================================================
-   PIN MODAL
-   ============================================================ */
-.pin-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-.pin-dialog {
-  background: var(--color-surface);
-  border-radius: var(--radius-lg);
-  padding: 32px;
-  max-width: 360px;
-  width: 90%;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-  text-align: center;
-}
-.pin-dialog h2 {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.pin-dialog p {
-  font-size: 14px;
-  color: var(--color-text-secondary);
-  margin-bottom: 20px;
-}
-.pin-dialog input[type="password"] {
-  width: 100%;
-  padding: 10px 14px;
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-md);
-  font-size: 20px;
-  font-family: var(--font-stack);
-  text-align: center;
-  letter-spacing: 4px;
-  margin-bottom: 16px;
-}
-.pin-dialog input[type="password"]:focus {
-  outline: none;
-  border-color: var(--color-accent);
-}
-.pin-actions {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-}
-.pin-error {
-  font-size: 13px;
-  color: var(--color-error);
-  margin-top: 12px;
-}
-
-/* ============================================================
    RESULTS PANEL
    ============================================================ */
 .results-panel {
@@ -577,15 +551,6 @@ body {
   text-decoration: line-through;
 }
 
-/* Answer-reveal highlights (PIN unlocked) */
-.answer-revealed .question.correct-answer {
-  border-color: var(--color-success);
-  background: var(--color-success-bg);
-}
-.answer-revealed .question.wrong-answer {
-  border-color: var(--color-error);
-  background: var(--color-error-bg);
-}
 
 /* ============================================================
    TRANSCRIPT PANEL
@@ -694,7 +659,6 @@ body {
   }
   .section-container { display: none; }
   .warning-banner { display: none; }
-  .pin-overlay { display: none; }
 }
 
 /* ============================================================
@@ -868,10 +832,10 @@ body {
 
     <!-- SUBMIT BAR -->
     <div class="submit-bar">
-      <button class="btn btn-primary" id="btn-check" disabled>Check Answers</button>
-      <button class="btn btn-secondary" id="btn-toggle-answers" disabled>&#128274; Show Answers</button>
+      <button class="btn btn-primary" id="btn-submit">Submit &amp; Get Claude Evaluation</button>
+      <button class="btn btn-secondary hidden" id="btn-check">Check Answers</button>
       <span class="score-badge hidden" id="score-badge"></span>
-      <div class="teacher-hint">Teacher: Cmd+Shift+U (Mac) / Ctrl+Shift+U (Win) to verify answers directly</div>
+      <div class="teacher-hint">Submit to check your answers and save results.</div>
     </div>
 
     <!-- RESULTS PANEL -->
@@ -895,20 +859,6 @@ body {
   <div class="warning-banner hidden" id="warning-banner" role="alert">
     <span>&#9888; Server not running. Results saved locally.</span>
     <button class="btn-retry" id="btn-retry">Start server.py and click Retry</button>
-  </div>
-
-  <!-- ═══════════════ PIN MODAL ═══════════════ -->
-  <div class="pin-overlay hidden" id="pin-overlay">
-    <div class="pin-dialog" role="dialog" aria-label="Enter PIN to view answers">
-      <h2>&#128274; View Answers</h2>
-      <p>Enter the PIN code to reveal correct answers.</p>
-      <input type="password" id="pin-input" placeholder="Enter PIN" autocomplete="off" maxlength="64">
-      <div class="pin-actions">
-        <button class="btn btn-primary" id="pin-submit">Unlock</button>
-        <button class="btn btn-secondary" id="pin-cancel">Cancel</button>
-      </div>
-      <p class="pin-error hidden" id="pin-error">Incorrect PIN. Try again.</p>
-    </div>
   </div>
 
 </div>
@@ -939,8 +889,50 @@ body {
     showError('error-empty-questions');
     throw new Error('No section data');
   }
-  var questions = Array.isArray(SECTION_DATA) ? SECTION_DATA : (SECTION_DATA.questions || []);
-  if (!Array.isArray(questions)) questions = [];
+
+  // Detect format: questionGroups (array of objects with "questions" key) vs flat questions
+  var isQuestionGroups = Array.isArray(SECTION_DATA)
+    && SECTION_DATA.length > 0
+    && typeof SECTION_DATA[0] === 'object'
+    && SECTION_DATA[0] !== null
+    && Array.isArray(SECTION_DATA[0].questions);
+
+  var questions = [];       // flattened array for scoring
+  var renderGroups = null;  // non-null if questionGroups format
+
+  if (isQuestionGroups) {
+    renderGroups = SECTION_DATA;
+    // Flatten questionGroups into a single questions array for scoring
+    SECTION_DATA.forEach(function(group) {
+      // pick-from-list groups: merge group-level fields into one scoring entry
+      if (group.questionType === 'pick-from-list') {
+        var groupQuestions = group.questions || [];
+        var qNums = groupQuestions.map(function(q) { return q.number; });
+        // Single scoring entry for the whole pick-from-list group
+        questions.push({
+          type: 'pick-from-list',
+          questionNumbers: qNums,
+          pickCount: group.pickCount,
+          answer: group.questions[0] ? (group.questions[0].answer || group.questions[0].answers || []) : [],
+          anyOrder: group.questions[0] ? group.questions[0].anyOrder : false,
+          instructions: group.instructions || '',
+          text: group.text || '',
+          options: group.options || [],
+          // Include per-question answers for grading
+          _groupAnswers: group.questions.map(function(q) { return q.answer || q.answers || []; })
+        });
+      } else {
+        // Regular groups: push each question individually
+        (group.questions || []).forEach(function(q) {
+          questions.push(q);
+        });
+      }
+    });
+  } else {
+    // Legacy flat format
+    questions = Array.isArray(SECTION_DATA) ? SECTION_DATA : (SECTION_DATA.questions || []);
+    if (!Array.isArray(questions)) questions = [];
+  }
 
   // ============================================================
   // DOM REFS
@@ -949,9 +941,9 @@ body {
   var mainContent = $('main-content');
   var questionsContainer = $('questions-container');
   // Debug: expose state for QA diagnostics
-  window.__DBG__ = { qLen: questions.length, hasContainer: !!questionsContainer, readyState: document.readyState };
+  window.__DBG__ = { qLen: questions.length, isQuestionGroups: isQuestionGroups, hasContainer: !!questionsContainer, readyState: document.readyState };
+  var btnSubmit = $('btn-submit');
   var btnCheck = $('btn-check');
-  var btnToggleAnswers = $('btn-toggle-answers');
   var scoreBadge = $('score-badge');
   var resultsPanel = $('results-panel');
   var resultsList = $('results-list');
@@ -961,9 +953,6 @@ body {
   var transcriptToggleBtn = $('transcript-toggle-btn');
   var warningBanner = $('warning-banner');
   var btnRetry = $('btn-retry');
-  var pinOverlay = $('pin-overlay');
-  var pinInput = $('pin-input');
-  var pinError = $('pin-error');
   var sectionImages = $('section-images');
   var audioPlayer = $('audio-player');
   var audioBtn = $('audio-btn');
@@ -978,8 +967,6 @@ body {
   // ============================================================
   // STATE
   // ============================================================
-  var hasChecked = false;
-  var isAnswersRevealed = false;
   var scoring = null;
 
   // ============================================================
@@ -992,70 +979,201 @@ body {
   }
 
   // ============================================================
-  // RENDER QUESTIONS
+  // RENDER QUESTIONS — supports both questionGroups and flat formats
   // ============================================================
   function renderAllQuestions() {
     if (!questionsContainer) return;
     questionsContainer.innerHTML = '';
 
-    questions.forEach(function(q) {
-      var div = document.createElement('div');
-      div.className = 'question';
+    if (renderGroups) {
+      // ── questionGroups format: render group headings + group instructions ──
+      renderGroups.forEach(function(group, gIdx) {
+        var groupDiv = document.createElement('div');
+        groupDiv.className = 'question-group';
+        groupDiv.id = 'question-group-' + gIdx;
 
-      // Pick-from-list: use group key as ID, different label format
-      if (q.type === 'pick-from-list') {
-        var groupKey = q.questionNumbers.slice().sort(function(a, b) { return a - b; }).join('-');
-        div.id = 'question-group-' + groupKey;
-        // Number label handled inside renderPickFromList
-      } else {
-        div.id = 'question-' + q.number;
-        var num = document.createElement('div');
-        num.className = 'question-number';
-        num.textContent = 'Question ' + q.number;
-        div.appendChild(num);
+        // Group heading (e.g., "Questions 1-5")
+        if (group.heading) {
+          var heading = document.createElement('div');
+          heading.className = 'question-group-heading';
+          heading.textContent = group.heading;
+          groupDiv.appendChild(heading);
+        }
 
-        var text = document.createElement('div');
-        text.className = 'question-text';
-        text.textContent = q.text || '';
-        div.appendChild(text);
-      }
+        // Group instructions
+        if (group.instructions) {
+          var instr = document.createElement('div');
+          instr.className = 'question-group-instructions';
+          instr.textContent = group.instructions;
+          groupDiv.appendChild(instr);
+        }
 
-      // Universal question image: render if the question has images.
-      // M5-fix: skip for pick-from-list — renderPickFromList handles its own images
-      if (q.type !== 'pick-from-list') {
-        renderQuestionImages(div, q);
-      }
+        // Group images (shown above the questions for this group)
+        if (group.images && Array.isArray(group.images) && group.images.length > 0) {
+          renderQuestionImages(groupDiv, group);
+        }
 
-      switch (q.type) {
-        case 'multiple-choice':
-          renderMC(div, q);
-          break;
-        case 'multiple-choice-image':
-          renderMCImage(div, q);
-          break;
-        case 'pick-from-list':
-          renderPickFromList(div, q);
-          break;
-        case 'gap-fill':
-        case 'short-answer':
-          renderTextInput(div, q);
-          break;
-        case 'form-completion':
-          renderFormCompletion(div, q);
-          break;
-        case 'matching':
-          renderMatchingDropdown(div, q);
-          break;
-        case 'matching-checkboxes':
-          renderMatchingCheckboxes(div, q);
-          break;
-        default:
-          console.warn('Unknown question type:', q.type);
-          renderTextInput(div, q);
-      }
+        // Render questions inside the group
+        // Pick-from-list groups: render ONE widget for the entire group
+        if (group.questionType === 'pick-from-list') {
+          var firstQ = (group.questions || [])[0];
+          if (firstQ) {
+            var qDiv = document.createElement('div');
+            qDiv.className = 'question';
 
-      questionsContainer.appendChild(div);
-    });
+            // Merge group-level fields into first question for rendering
+            firstQ.questionNumbers = (group.questions || []).map(function(x) { return x.number; });
+            firstQ.pickCount = group.pickCount;
+            firstQ.options = group.options || [];
+            firstQ.instructions = group.instructions || '';
+            firstQ.text = group.text || '';
+            firstQ.answer = firstQ.answer || firstQ.answers || [];
+
+            var groupKey = firstQ.questionNumbers.slice().sort(function(a, b) { return a - b; }).join('-');
+            qDiv.id = 'question-group-' + groupKey;
+
+            renderPickFromList(qDiv, firstQ);
+            groupDiv.appendChild(qDiv);
+          }
+        } else {
+          // Regular groups: render each question individually
+          (group.questions || []).forEach(function(q) {
+            var qDiv = document.createElement('div');
+            qDiv.className = 'question';
+
+            // Pick-from-list: render individually (like flat format), skip standard header/text/images
+            if (q.type === 'pick-from-list') {
+              var groupKey = q.questionNumbers.slice().sort(function(a, b) { return a - b; }).join('-');
+              qDiv.id = 'question-group-' + groupKey;
+              renderPickFromList(qDiv, q);
+              groupDiv.appendChild(qDiv);
+              return;
+            }
+
+            qDiv.id = 'question-' + q.number;
+
+            var num = document.createElement('div');
+            num.className = 'question-number';
+            num.textContent = 'Question ' + q.number;
+            qDiv.appendChild(num);
+
+            // Per-question instructions
+            if (q.instructions) {
+              var qInstr = document.createElement('div');
+              qInstr.className = 'question-instruction';
+              qInstr.textContent = q.instructions;
+              qDiv.appendChild(qInstr);
+            }
+
+            if (q.text) {
+              var text = document.createElement('div');
+              text.className = 'question-text';
+              text.textContent = q.text;
+              qDiv.appendChild(text);
+            }
+
+            // Question images
+            renderQuestionImages(qDiv, q);
+
+            // Render input widget by type
+            var qType = q.type || '';
+            switch (qType) {
+              case 'multiple-choice':
+                renderMC(qDiv, q);
+                break;
+              case 'multiple-choice-image':
+                renderMCImage(qDiv, q);
+                break;
+              case 'gap-fill':
+              case 'short-answer':
+                renderTextInput(qDiv, q);
+                break;
+              case 'form-completion':
+                renderFormCompletion(qDiv, q);
+                break;
+              case 'matching':
+                renderMatchingDropdown(qDiv, q);
+                break;
+              case 'matching-checkboxes':
+                renderMatchingCheckboxes(qDiv, q);
+                break;
+              default:
+                console.warn('Unknown question type:', qType);
+                renderTextInput(qDiv, q);
+            }
+
+            groupDiv.appendChild(qDiv);
+          });
+        }
+
+        questionsContainer.appendChild(groupDiv);
+      });
+    } else {
+      // ── Legacy flat format: render questions directly ──
+      questions.forEach(function(q) {
+        var div = document.createElement('div');
+        div.className = 'question';
+
+        // Pick-from-list: use group key as ID
+        if (q.type === 'pick-from-list') {
+          var groupKey = q.questionNumbers.slice().sort(function(a, b) { return a - b; }).join('-');
+          div.id = 'question-group-' + groupKey;
+        } else {
+          div.id = 'question-' + q.number;
+          var num = document.createElement('div');
+          num.className = 'question-number';
+          num.textContent = 'Question ' + q.number;
+          div.appendChild(num);
+
+          if (q.instructions) {
+            var instr = document.createElement('div');
+            instr.className = 'question-instruction';
+            instr.textContent = q.instructions;
+            div.appendChild(instr);
+          }
+
+          var text = document.createElement('div');
+          text.className = 'question-text';
+          text.textContent = q.text || '';
+          div.appendChild(text);
+        }
+
+        // Question images
+        if (q.type !== 'pick-from-list') {
+          renderQuestionImages(div, q);
+        }
+
+        switch (q.type) {
+          case 'multiple-choice':
+            renderMC(div, q);
+            break;
+          case 'multiple-choice-image':
+            renderMCImage(div, q);
+            break;
+          case 'pick-from-list':
+            renderPickFromList(div, q);
+            break;
+          case 'gap-fill':
+          case 'short-answer':
+            renderTextInput(div, q);
+            break;
+          case 'form-completion':
+            renderFormCompletion(div, q);
+            break;
+          case 'matching':
+            renderMatchingDropdown(div, q);
+            break;
+          case 'matching-checkboxes':
+            renderMatchingCheckboxes(div, q);
+            break;
+          default:
+            console.warn('Unknown question type:', q.type);
+            renderTextInput(div, q);
+        }
+
+        questionsContainer.appendChild(div);
+      });
+    }
 
     // Enable check button now that questions are rendered
     if (btnCheck) btnCheck.disabled = false;
@@ -1357,51 +1475,85 @@ body {
     container.appendChild(table);
   }
 
-  // ── Matching (dropdown per item) ──
+  // ── Matching (dropdown per question) ──
+  // Handles individual matching questions (one <select> per question).
+  // JSON format: {number, type: "matching", text, options: [{label, text}], answer}
+  // Also supports grouped matching via q.items (for future use).
   function renderMatchingDropdown(container, q) {
-    var group = document.createElement('div');
-    group.className = 'matching-group';
+    // Grouped matching: multiple items sharing one option set
+    if (q.items && q.items.length > 0) {
+      var group = document.createElement('div');
+      group.className = 'matching-group';
 
-    var optionLabels = (q.options || []).map(function(o) { return o.label; });
+      var optionLabels = (q.options || []).map(function(o) { return o.label; });
 
-    (q.items || []).forEach(function(item, idx) {
-      var row = document.createElement('div');
-      row.className = 'matching-item';
+      q.items.forEach(function(item, idx) {
+        var row = document.createElement('div');
+        row.className = 'matching-item';
 
-      var labelEl = document.createElement('span');
-      labelEl.className = 'matching-label';
-      labelEl.textContent = item.label;
-      row.appendChild(labelEl);
+        var labelEl = document.createElement('span');
+        labelEl.className = 'matching-label';
+        labelEl.textContent = item.label;
+        row.appendChild(labelEl);
 
-      var textEl = document.createElement('span');
-      textEl.className = 'matching-text';
-      textEl.textContent = item.text;
-      row.appendChild(textEl);
+        var textEl = document.createElement('span');
+        textEl.className = 'matching-text';
+        textEl.textContent = item.text;
+        row.appendChild(textEl);
 
-      var select = document.createElement('select');
-      select.id = 'q' + q.number + '-match-' + idx;
-      select.name = 'q' + q.number;
-      select.setAttribute('data-question', q.number);
-      select.setAttribute('data-item', item.label);
-      select.setAttribute('aria-label', 'Match for ' + item.label);
+        var select = document.createElement('select');
+        select.id = 'q' + q.number + '-match-' + idx;
+        select.name = 'q' + q.number;
+        select.setAttribute('data-question', q.number);
+        select.setAttribute('data-item', item.label);
+        select.setAttribute('aria-label', 'Match for ' + item.label);
 
-      var blank = document.createElement('option');
-      blank.value = '';
-      blank.textContent = '--';
-      select.appendChild(blank);
+        var blank = document.createElement('option');
+        blank.value = '';
+        blank.textContent = '--';
+        select.appendChild(blank);
 
-      optionLabels.forEach(function(lbl) {
-        var opt = document.createElement('option');
-        opt.value = lbl;
-        opt.textContent = lbl;
-        select.appendChild(opt);
+        optionLabels.forEach(function(lbl) {
+          var opt = document.createElement('option');
+          opt.value = lbl;
+          opt.textContent = lbl;
+          select.appendChild(opt);
+        });
+
+        row.appendChild(select);
+        group.appendChild(row);
       });
 
-      row.appendChild(select);
-      group.appendChild(row);
+      container.appendChild(group);
+      return;
+    }
+
+    // Individual matching: one <select> per question (like reading template)
+    if (!q.options || q.options.length === 0) {
+      renderTextInput(container, q);
+      return;
+    }
+
+    var select = document.createElement('select');
+    select.id = 'q' + q.number + '-select';
+    select.name = 'q' + q.number;
+    select.setAttribute('data-question', q.number);
+    select.setAttribute('aria-label', 'Answer for question ' + q.number);
+    select.className = '';
+
+    var blank = document.createElement('option');
+    blank.value = '';
+    blank.textContent = '--';
+    select.appendChild(blank);
+
+    q.options.forEach(function(opt) {
+      var o = document.createElement('option');
+      o.value = opt.label;
+      o.textContent = opt.label + (opt.text ? '. ' + opt.text : '');
+      select.appendChild(o);
     });
 
-    container.appendChild(group);
+    container.appendChild(select);
   }
 
   // ── Matching checkboxes (select N from M) ──
@@ -1523,13 +1675,16 @@ body {
       return checked.sort();
     }
     if (qType === 'matching') {
-      // Collect dropdown selections by item label
+      // Try individual select first (each question has own <select> with id q{N}-select)
+      var sel = document.getElementById('q' + qNumber + '-select');
+      if (sel) return sel.value;
+      // Fallback: grouped matching — collect by data-item
       var selects = document.querySelectorAll('select[data-question="' + qNumber + '"]');
       var matches = {};
-      selects.forEach(function(sel) {
-        if (sel.value) matches[sel.getAttribute('data-item')] = sel.value;
+      selects.forEach(function(s) {
+        if (s.value) matches[s.getAttribute('data-item')] = s.value;
       });
-      return matches;
+      return Object.keys(matches).length > 0 ? matches : '';
     }
     if (qType === 'matching-checkboxes') {
       var checkboxes = document.querySelectorAll('input[type="checkbox"][data-question="' + qNumber + '"]:checked');
@@ -1560,7 +1715,7 @@ body {
   function isCorrect(userAnswer, key) {
     if (!key) return false;
     var correctAnswer = key.answer;
-    var acceptable = key.acceptable || [];
+    var acceptable = key.acceptableAnswers || key.acceptable || [];
 
     // Array comparison (matching checkboxes)
     if (Array.isArray(correctAnswer) && Array.isArray(userAnswer)) {
@@ -1832,8 +1987,8 @@ body {
       resultsList.appendChild(item);
     });
 
-    // Enable toggle answers button
-    if (btnToggleAnswers) btnToggleAnswers.disabled = false;
+    // Check Answers button now available (toggle inline answer highlighting)
+    if (btnCheck) btnCheck.disabled = false;
   }
 
   function formatAnswer(ans) {
@@ -1844,31 +1999,23 @@ body {
   }
 
   // ============================================================
-  // PIN LOGIC
+  // INLINE ANSWER TOGGLE (no PIN — shown after submit)
   // ============================================================
-  function showPinModal() {
-    if (!pinOverlay) return;
-    pinOverlay.classList.remove('hidden');
-    if (pinInput) { pinInput.value = ''; pinInput.focus(); }
-    if (pinError) pinError.classList.add('hidden');
+  var answersRevealed = false;
+
+  function toggleInlineAnswers() {
+    if (!scoring) return;
+    if (answersRevealed) {
+      hideInlineAnswers();
+    } else {
+      showInlineAnswers();
+    }
   }
 
-  function hidePinModal() {
-    if (!pinOverlay) return;
-    pinOverlay.classList.add('hidden');
-  }
-
-  function verifyPin(pin) {
-    return sha256(pin) === PIN_HASH;
-  }
-
-  function revealAnswers() {
-    isAnswersRevealed = true;
-    document.body.classList.add('answer-revealed');
-
-    // Highlight each question
+  function showInlineAnswers() {
+    answersRevealed = true;
     scoring.results.forEach(function(r) {
-      // ── Pick-from-list group reveal (B6-fix) ──
+      // ── Pick-from-list group reveal ──
       if (r.type === 'pick-from-list') {
         var groupKey = getGroupKey(r.questionNumbers);
         var groupName = 'pick-group-' + groupKey;
@@ -1877,194 +2024,52 @@ body {
         allCB.forEach(function(cb) {
           var label = cb.value;
           var item = cb.closest('.option-mc');
-          cb.disabled = true;  // lock after reveal
-
           if (r.matched.indexOf(label) !== -1) {
             item.classList.add('option-correct');
-            cb.checked = true;
           } else if (r.missed.indexOf(label) !== -1) {
             item.classList.add('option-missed');
-            cb.checked = true;
           } else if (r.extra.indexOf(label) !== -1) {
             item.classList.add('option-wrong');
-            cb.checked = true;
           }
         });
-
-        // Summary text
-        var groupEl = document.getElementById('question-group-' + groupKey);
-        if (groupEl) {
-          var summary = document.createElement('div');
-          summary.className = 'pick-list-summary';
-          var parts = [];
-          parts.push('<span class="summary-score">' + r.score + '/' + r.maxScore + ' correct</span>');
-          if (r.matched.length > 0) parts.push('<span class="summary-matched">✓ ' + r.matched.join(', ') + '</span>');
-          if (r.missed.length > 0) parts.push('<span class="summary-missed">✗ Missed: ' + r.missed.join(', ') + '</span>');
-          if (r.extra.length > 0) parts.push('<span class="summary-extra">✗ Extra: ' + r.extra.join(', ') + '</span>');
-          if (r.overSelected) parts.push('<span class="summary-over-selected">⚠️ Over-selected (' + r.userAnswer.length + '/' + r.pickCount + ')</span>');
-          summary.innerHTML = parts.join(' ');
-          groupEl.appendChild(summary);
-        }
         return;
       }
 
       // ── Individual reveal ──
       var qEl = document.getElementById('question-' + r.number);
       if (!qEl) return;
-      qEl.classList.add(r.correct ? 'correct-answer' : 'wrong-answer');
-
-      // Show correct answer inline for wrong answers
+      qEl.style.borderLeft = '4px solid ' + (r.correct ? 'var(--color-success)' : 'var(--color-error)');
       if (!r.correct) {
         var hint = document.createElement('div');
         hint.className = 'result-answer';
-        hint.style.marginTop = '8px';
-        hint.innerHTML = '&#128274; Correct: <span class="correct-answer">' + escHtml(formatAnswer(r.correctAnswer)) + '</span>';
+        hint.style.marginTop = '6px';
+        hint.innerHTML = 'Correct: <span class="correct-answer">' + escHtml(formatAnswer(r.correctAnswer)) + '</span>';
         qEl.appendChild(hint);
       }
     });
-
-    if (btnToggleAnswers) {
-      btnToggleAnswers.innerHTML = '&#128275; Hide Answers';
-      btnToggleAnswers.disabled = false;
-    }
+    if (btnCheck) btnCheck.textContent = 'Hide Answers';
   }
 
-  function hideAnswers() {
-    isAnswersRevealed = false;
-    document.body.classList.remove('answer-revealed');
-
+  function hideInlineAnswers() {
+    answersRevealed = false;
     questions.forEach(function(q) {
       if (q.type === 'pick-from-list') {
         var groupKey = getGroupKey(q.questionNumbers);
         var groupEl = document.getElementById('question-group-' + groupKey);
         if (groupEl) {
-          // Remove summary
-          var summaries = groupEl.querySelectorAll('.pick-list-summary');
-          summaries.forEach(function(s) { s.remove(); });
-          // Reset checkbox styles
-          var items = groupEl.querySelectorAll('.option-mc');
-          items.forEach(function(item) {
+          groupEl.querySelectorAll('.option-mc').forEach(function(item) {
             item.classList.remove('option-correct', 'option-missed', 'option-wrong');
-            var cb = item.querySelector('input[type="checkbox"]');
-            if (cb) cb.disabled = false;
           });
         }
         return;
       }
       var qEl = document.getElementById('question-' + q.number);
       if (!qEl) return;
-      qEl.classList.remove('correct-answer', 'wrong-answer');
-      // Remove inline correct answer hints
+      qEl.style.borderLeft = '';
       var hints = qEl.querySelectorAll('.result-answer');
       hints.forEach(function(h) { h.remove(); });
     });
-
-    if (btnToggleAnswers) {
-      btnToggleAnswers.innerHTML = '&#128274; Show Answers';
-    }
-  }
-
-  // ============================================================
-  // SHA-256 (Web Crypto API with pure-JS fallback for file://)
-  // ============================================================
-  function sha256(message) {
-    // Try Web Crypto API first
-    if (window.crypto && window.crypto.subtle && window.crypto.subtle.digest) {
-      // Synchronous wrapper not possible — use a pre-computed path
-      // For the PIN modal, we use async verification
-      return null; // Signal to use async path
-    }
-    // Pure-JS fallback for file:// where crypto.subtle may be blocked
-    return sha256Pure(message);
-  }
-
-  function sha256Async(message) {
-    return window.crypto.subtle.digest('SHA-256', new TextEncoder().encode(message))
-      .then(function(hash) {
-        return Array.from(new Uint8Array(hash))
-          .map(function(b) { return b.toString(16).padStart(2, '0'); })
-          .join('');
-      });
-  }
-
-  function sha256Pure(message) {
-    // Minimal SHA-256 implementation for file:// fallback
-    // (full implementation would be ~2KB; using simplified version)
-    function rotr(x, n) { return (x >>> n) | (x << (32 - n)); }
-    function ch(x, y, z) { return (x & y) ^ (~x & z); }
-    function maj(x, y, z) { return (x & y) ^ (x & z) ^ (y & z); }
-    function bsig0(x) { return rotr(x, 2) ^ rotr(x, 13) ^ rotr(x, 22); }
-    function bsig1(x) { return rotr(x, 6) ^ rotr(x, 11) ^ rotr(x, 25); }
-    function ssig0(x) { return rotr(x, 7) ^ rotr(x, 18) ^ (x >>> 3); }
-    function ssig1(x) { return rotr(x, 17) ^ rotr(x, 19) ^ (x >>> 10); }
-
-    var K = [
-      0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
-      0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
-      0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
-      0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
-      0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
-      0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
-      0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
-      0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
-    ];
-
-    var msg = unescape(encodeURIComponent(message));
-    var msgBytes = [];
-    for (var i = 0; i < msg.length; i++) msgBytes.push(msg.charCodeAt(i));
-
-    // Padding
-    var ml = msgBytes.length * 8;
-    msgBytes.push(0x80);
-    while ((msgBytes.length * 8) % 512 !== 448) msgBytes.push(0x00);
-    for (var j = 7; j >= 0; j--) msgBytes.push((ml >>> (j * 8)) & 0xff);
-
-    // Initial hash values
-    var H = [0x6a09e667, 0xbb67ae85, 0x3c6f3726, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19];
-
-    // Process blocks
-    for (var bi = 0; bi < msgBytes.length; bi += 64) {
-      var W = new Array(64);
-      for (var t = 0; t < 16; t++) {
-        W[t] = (msgBytes[bi + t * 4] << 24) | (msgBytes[bi + t * 4 + 1] << 16) |
-               (msgBytes[bi + t * 4 + 2] << 8) | msgBytes[bi + t * 4 + 3];
-      }
-      for (t = 16; t < 64; t++) {
-        W[t] = (ssig1(W[t - 2]) + W[t - 7] + ssig0(W[t - 15]) + W[t - 16]) >>> 0;
-      }
-
-      var a = H[0], b = H[1], c = H[2], d = H[3], e = H[4], f = H[5], g = H[6], h = H[7];
-      for (t = 0; t < 64; t++) {
-        var T1 = (h + bsig1(e) + ch(e, f, g) + K[t] + W[t]) >>> 0;
-        var T2 = (bsig0(a) + maj(a, b, c)) >>> 0;
-        h = g; g = f; f = e; e = (d + T1) >>> 0; d = c; c = b; b = a; a = (T1 + T2) >>> 0;
-      }
-      H[0] = (H[0] + a) >>> 0; H[1] = (H[1] + b) >>> 0; H[2] = (H[2] + c) >>> 0; H[3] = (H[3] + d) >>> 0;
-      H[4] = (H[4] + e) >>> 0; H[5] = (H[5] + f) >>> 0; H[6] = (H[6] + g) >>> 0; H[7] = (H[7] + h) >>> 0;
-    }
-
-    return H.map(function(v) { return (v >>> 0).toString(16).padStart(8, '0'); }).join('');
-  }
-
-  // ============================================================
-  // PIN VERIFICATION (handles async Web Crypto + sync fallback)
-  // ============================================================
-  function tryVerifyPin(pin, callback) {
-    // Try sync pure-JS path first (always works, including file://)
-    if (sha256Pure(pin) === PIN_HASH) {
-      callback(true);
-      return;
-    }
-    // If pure-JS didn't match, try Web Crypto (hash might have been generated differently)
-    if (window.crypto && window.crypto.subtle && window.crypto.subtle.digest) {
-      sha256Async(pin).then(function(h) {
-        callback(h === PIN_HASH);
-      }).catch(function() {
-        callback(false);
-      });
-    } else {
-      callback(false);
-    }
+    if (btnCheck) btnCheck.textContent = 'Check Answers';
   }
 
   // ============================================================
@@ -2082,7 +2087,9 @@ body {
       totalQuestions: scoring.total,
       correctCount: scoring.correct,
       score: scoring.total > 0 ? Math.round((scoring.correct / scoring.total) * 100) : 0,
-      results: scoring.results
+      results: scoring.results,
+      // The exact page URL — Claude fetches this to get full context (transcript, questions, answer keys)
+      testHtmlUrl: window.location.href
     };
 
     fetch(BRIDGE_URL + '/save', {
@@ -2282,17 +2289,16 @@ body {
   // EVENT HANDLERS
   // ============================================================
 
-  // ── Check Answers ──
-  if (btnCheck) {
-    btnCheck.addEventListener('click', function() {
-      btnCheck.disabled = true;
-      btnCheck.textContent = 'Checking...';
+  // ── Submit & Get Claude Evaluation (grade + save) ──
+  if (btnSubmit) {
+    btnSubmit.addEventListener('click', function() {
+      btnSubmit.disabled = true;
+      btnSubmit.textContent = 'Checking & Saving...';
       checkAnswers().then(function(s) {
         scoring = s;
-        displayResults(scoring);
-        saveResults();
 
-        // Show score badge
+        // Display results
+        displayResults(scoring);
         if (scoreBadge) {
           scoreBadge.classList.remove('hidden');
           var pct = Math.round((scoring.correct / scoring.total) * 100);
@@ -2300,75 +2306,32 @@ body {
           scoreBadge.className = 'score-badge ' + (pct >= 70 ? 'good' : pct >= 40 ? 'ok' : 'weak');
         }
 
-        // Show transcript toggle after checking
+        // Show transcript toggle after submit
         if (transcriptPanel) transcriptPanel.classList.remove('hidden');
 
-        hasChecked = true;
-        if (btnToggleAnswers) btnToggleAnswers.disabled = false;
-        btnCheck.disabled = false;
-        btnCheck.textContent = 'Check Answers';
-      }).catch(function(err) {
-        console.warn('Check failed:', err);
-        btnCheck.disabled = false;
-        btnCheck.textContent = 'Check Answers';
-      });
-    });
-  }
+        // Save results to server
+        saveResults();
 
-  // ── Toggle Answers (PIN-gated) ──
-  if (btnToggleAnswers) {
-    btnToggleAnswers.addEventListener('click', function() {
-      if (isAnswersRevealed) {
-        hideAnswers();
-        return;
-      }
-      if (!hasChecked) return;
-      showPinModal();
-    });
-  }
-
-  // ── PIN modal ──
-  if ($('pin-submit')) {
-    $('pin-submit').addEventListener('click', function() {
-      var pin = pinInput ? pinInput.value : '';
-      if (!pin) return;
-
-      tryVerifyPin(pin, function(ok) {
-        if (ok) {
-          hidePinModal();
-          revealAnswers();
-          // Store in session so user doesn't need to re-enter during this session
-          sessionStorage.setItem('pin_verified_' + SOURCE + '_' + TEST_NUMBER + '_' + SECTION_NUMBER, 'true');
-        } else {
-          if (pinError) pinError.classList.remove('hidden');
-          if (pinInput) { pinInput.value = ''; pinInput.focus(); }
+        // Show Check Answers button
+        if (btnCheck) {
+          btnCheck.classList.remove('hidden');
+          btnCheck.disabled = false;
         }
+
+        // Disable submit permanently — no re-submission
+        btnSubmit.textContent = 'Submitted ✓';
+      }).catch(function(err) {
+        console.warn('Submit failed:', err);
+        btnSubmit.disabled = false;
+        btnSubmit.textContent = 'Submit & Get Claude Evaluation';
       });
     });
   }
 
-  if ($('pin-cancel')) {
-    $('pin-cancel').addEventListener('click', hidePinModal);
+  // ── Check Answers (toggle inline answer highlighting — after submit) ──
+  if (btnCheck) {
+    btnCheck.addEventListener('click', toggleInlineAnswers);
   }
-
-  // PIN input: Enter key submits
-  if (pinInput) {
-    pinInput.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') {
-        var submitBtn = $('pin-submit');
-        if (submitBtn) submitBtn.click();
-      }
-      if (e.key === 'Escape') hidePinModal();
-    });
-  }
-
-  // Teacher bypass: Ctrl+Shift+U (Win/Linux) or Cmd+Shift+U (Mac)
-  document.addEventListener('keydown', function(e) {
-    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'U') {
-      e.preventDefault();
-      showPinModal();
-    }
-  });
 
   // ── Transcript toggle ──
   if (transcriptToggleBtn) {
@@ -2419,12 +2382,6 @@ body {
         break;
     }
   });
-
-  // ── Check for previously verified PIN ──
-  var prevPin = sessionStorage.getItem('pin_verified_' + SOURCE + '_' + TEST_NUMBER + '_' + SECTION_NUMBER);
-  if (prevPin === 'true' && ANSWER_KEYS && ANSWER_KEYS !== null) {
-    // Don't auto-reveal — just skip the PIN gate when toggling (handled in toggle handler)
-  }
 
   // ── Check for pending save results ──
   var pending = localStorage.getItem('pendingResults_listening_section');

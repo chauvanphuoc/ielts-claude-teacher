@@ -82,7 +82,8 @@
 
       <!-- Submit (shown on last section) -->
       <div class="submit-area">
-        <button type="submit" class="btn-submit" id="btn-submit" style="display:none">Submit Answers</button>
+        <button type="button" class="btn-submit btn-check" id="btn-check" style="display:none">Check Answers</button>
+        <button type="button" class="btn-submit btn-save" id="btn-save" style="display:none">Submit &amp; Get Claude Evaluation</button>
         <span class="submit-hint" id="submit-hint"></span>
       </div>
 
@@ -160,6 +161,63 @@
   var headerSectionInfo = $('header-section-info');
   var transcriptPanel = $('transcript-panel');
   var transcriptContent = $('transcript-content');
+
+  // ── SessionStorage persistence — save/restore answers across sections ──
+  function getStorageKey() {
+    return 'listening-test-' + sourceId + '-test-' + testNumber;
+  }
+
+  function saveAnswersToStorage() {
+    var collected = window.IELTS.collectAnswers();
+    var storageKey = getStorageKey();
+    var allAnswers = {};
+    try {
+      var existing = sessionStorage.getItem(storageKey);
+      if (existing) allAnswers = JSON.parse(existing);
+    } catch(e) { allAnswers = {}; }
+    // Merge current section answers (keyed by question number)
+    Object.keys(collected.answers).forEach(function(k) {
+      allAnswers[k] = collected.answers[k];
+    });
+    sessionStorage.setItem(storageKey, JSON.stringify(allAnswers));
+  }
+
+  function loadAnswersFromStorage() {
+    var storageKey = getStorageKey();
+    try {
+      var stored = sessionStorage.getItem(storageKey);
+      return stored ? JSON.parse(stored) : {};
+    } catch(e) { return {}; }
+  }
+
+  function clearAnswersFromStorage() {
+    sessionStorage.removeItem(getStorageKey());
+  }
+
+  function restoreAnswersFromStorage() {
+    var saved = loadAnswersFromStorage();
+    if (Object.keys(saved).length === 0) return;
+    // Restore radio/checkbox inputs
+    Object.keys(saved).forEach(function(key) {
+      var val = saved[key];
+      if (Array.isArray(val)) {
+        // Checkboxes
+        val.forEach(function(v) {
+          var el = document.querySelector('input[data-question="' + key + '"][value="' + v + '"]');
+          if (el) el.checked = true;
+        });
+      } else {
+        // Radio
+        var radio = document.querySelector('input[name="q' + key + '"][value="' + val + '"]');
+        if (radio) { radio.checked = true; return; }
+        // Text/select
+        var input = document.querySelector('input[data-question="' + key + '"]');
+        if (input) { input.value = val; return; }
+        var select = document.querySelector('select[data-question="' + key + '"]');
+        if (select) { select.value = val; }
+      }
+    });
+  }
 
   // ── Load test data ──
   function loadTestData() {
@@ -250,6 +308,8 @@
     // Render first section directly (don't use showSection — it has early-return guard)
     currentSection = 0;
     window.IELTS.renderQuestions();
+    // Restore any saved answers from previous session
+    restoreAnswersFromStorage();
     updateHeaderForSection(0);
 
     // Show transcript after submit
@@ -345,11 +405,13 @@
     // Update section buttons and submit
     var btnPrev = $('btn-prev-section');
     var btnNext = $('btn-next-section');
-    var btnSubmit = $('btn-submit');
+    var btnCheck = $('btn-check');
+    var btnSave = $('btn-save');
 
     if (btnPrev) btnPrev.style.display = n > 0 ? 'inline-block' : 'none';
     if (btnNext) btnNext.style.display = n < totalSections - 1 ? 'inline-block' : 'none';
-    if (btnSubmit) btnSubmit.style.display = n === totalSections - 1 ? 'inline-block' : 'none';
+    if (btnCheck) btnCheck.style.display = n === totalSections - 1 ? 'inline-block' : 'none';
+    if (btnSave) btnSave.style.display = n === totalSections - 1 ? 'inline-block' : 'none';
   }
 
   // ═══════════════ AUDIO PLAYER ═══════════════
@@ -564,9 +626,230 @@
     }
   };
 
+  // ── Check Answers (local-only, no save to server) ──
+  function checkAnswers() {
+    // Save current section answers first
+    saveAnswersToStorage();
+
+    // Collect answers from ALL sections via sessionStorage
+    var allStored = loadAnswersFromStorage();
+    if (Object.keys(allStored).length === 0) {
+      alert('Please answer at least one question before checking.');
+      return;
+    }
+
+    // Grade all sections
+    var allResults = [];
+    var totalQuestions = 0;
+    var totalCorrect = 0;
+
+    allSections.forEach(function(sec, idx) {
+      var secQuestions = sec.questions || [];
+      var secNums = secQuestions.map(function(q) { return q.number; });
+      var sectionTotal = secQuestions.length;
+      var sectionCorrect = 0;
+      var sectionResults = [];
+
+      secQuestions.forEach(function(q) {
+        var key = String(q.number);
+        var userAns = allStored[key] || '';
+        var isCorrect = false;
+        var correctAns = q.answer || (q.correctAnswers || []).join(', ');
+
+        if (!userAns) {
+          // unanswered
+        } else if (q.type === 'pick-from-list') {
+          // pick-from-list: compare sets
+          var userPicks = Array.isArray(userAns) ? userAns : [userAns];
+          var correctPicks = q.answer || [];
+          if (Array.isArray(userPicks) && Array.isArray(correctPicks)) {
+            var sortedUser = userPicks.slice().sort();
+            var sortedCorrect = correctPicks.slice().sort();
+            isCorrect = sortedUser.length === sortedCorrect.length &&
+              sortedUser.every(function(v, i) { return v === sortedCorrect[i]; });
+          }
+        } else if (q.type === 'matching') {
+          var allMatch = true;
+          (q.items || []).forEach(function(item) {
+            var matchKey = q.number + '-' + item.label;
+            var matchAns = allStored[matchKey] || '';
+            if (matchAns !== (q.correctMatches || {})[item.label]) allMatch = false;
+          });
+          isCorrect = allMatch;
+        } else if (q.type === 'matching-checkboxes') {
+          var userVals = Array.isArray(userAns) ? userAns : [userAns];
+          var correctVals = q.correctAnswers || q.answer || [];
+          var sortedU = userVals.slice().sort();
+          var sortedC = correctVals.slice().sort();
+          isCorrect = sortedU.length === sortedC.length &&
+            sortedU.every(function(v, i) { return v === sortedC[i]; });
+        } else {
+          // gap-fill, short-answer, multiple-choice, TFNG, etc.
+          var acceptable = q.acceptableAnswers || (Array.isArray(q.answer) ? q.answer : [q.answer]);
+          isCorrect = acceptable.some(function(a) {
+            return String(a).toLowerCase().trim() === String(userAns).toLowerCase().trim();
+          });
+        }
+
+        if (isCorrect) { sectionCorrect++; totalCorrect++; }
+        totalQuestions++;
+        sectionResults.push({
+          number: q.number,
+          correct: isCorrect,
+          userAnswer: Array.isArray(userAns) ? userAns.join(', ') : String(userAns),
+          correctAnswer: Array.isArray(correctAns) ? correctAns.join(', ') : String(correctAns)
+        });
+      });
+
+      allResults.push({
+        sectionIndex: idx,
+        sectionTitle: sec.title || ('Section ' + (idx + 1)),
+        total: sectionTotal,
+        correct: sectionCorrect,
+        results: sectionResults
+      });
+    });
+
+    var scoring = {
+      total: totalQuestions,
+      correct: totalCorrect,
+      results: allResults.reduce(function(acc, s) { return acc.concat(s.results); }, []),
+      sectionScores: allResults
+    };
+
+    // Show results without saving
+    showResultsLocal(scoring);
+  }
+
+  function showResultsLocal(scoring) {
+    var resultsDiv = document.getElementById('results');
+    if (!resultsDiv) return;
+
+    var pct = scoring.total > 0 ? Math.round((scoring.correct / scoring.total) * 100) : 0;
+    var emoji = pct >= 60 ? '&#127775;' : '&#128170;';
+    var title = pct >= 60 ? 'Great work!' : 'Keep going!';
+
+    var html = '<div class="results-header ' + (pct >= 60 ? 'great-job' : 'needs-work') + '">';
+    html += '<div class="results-score">' + emoji + ' ' + scoring.correct + '/' + scoring.total + ' (' + pct + '%)</div>';
+    html += '<div class="results-label">' + title + '</div>';
+    html += '</div>';
+
+    // Per-section breakdown
+    if (scoring.sectionScores) {
+      scoring.sectionScores.forEach(function(s) {
+        var spct = s.total > 0 ? Math.round((s.correct / s.total) * 100) : 0;
+        html += '<div class="result-item" style="font-weight:600;margin-top:8px">' +
+          s.sectionTitle + ': ' + s.correct + '/' + s.total + ' (' + spct + '%)</div>';
+        s.results.forEach(function(r) {
+          var cls = r.correct ? 'correct' : 'incorrect';
+          var icon = r.correct ? '&#10003;' : '&#10007;';
+          html += '<div class="result-item ' + cls + '">';
+          html += '<span class="result-icon">' + icon + '</span>';
+          html += '<span><strong>Q' + r.number + '</strong>';
+          if (!r.correct) {
+            html += ' — Your: <em>' + escapeHtml(String(r.userAnswer)) + '</em>';
+            html += ' &rarr; Correct: <em>' + escapeHtml(String(r.correctAnswer)) + '</em>';
+          }
+          html += '</span></div>';
+        });
+      });
+    }
+
+    resultsDiv.innerHTML = html;
+    resultsDiv.classList.add('visible');
+    resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
   // ── Override save results to include source/test metadata ──
   var originalSaveResults = window.IELTS.saveResults;
   window.IELTS.saveResults = function(scoring) {
+    // Save current section answers to storage first
+    saveAnswersToStorage();
+
+    // Load ALL accumulated answers from sessionStorage
+    var allStored = loadAnswersFromStorage();
+
+    // Re-grade all sections using accumulated answers
+    var allResults = [];
+    var totalQuestions = 0;
+    var totalCorrect = 0;
+
+    allSections.forEach(function(sec, idx) {
+      var secQuestions = sec.questions || [];
+      var sectionTotal = secQuestions.length;
+      var sectionCorrect = 0;
+      var sectionResults = [];
+
+      secQuestions.forEach(function(q) {
+        var key = String(q.number);
+        var userAns = allStored[key] || '';
+        var isCorrect = false;
+        var correctAns = q.answer || (q.correctAnswers || []).join(', ');
+
+        if (!userAns) {
+          // unanswered — skip or mark wrong
+        } else if (q.type === 'pick-from-list') {
+          var userPicks = Array.isArray(userAns) ? userAns : [userAns];
+          var correctPicks = q.answer || [];
+          if (Array.isArray(userPicks) && Array.isArray(correctPicks)) {
+            var sortedUser = userPicks.slice().sort();
+            var sortedCorrect = correctPicks.slice().sort();
+            isCorrect = sortedUser.length === sortedCorrect.length &&
+              sortedUser.every(function(v, i) { return v === sortedCorrect[i]; });
+          }
+        } else if (q.type === 'matching') {
+          var allMatch = true;
+          (q.items || []).forEach(function(item) {
+            var matchKey = q.number + '-' + item.label;
+            var matchAns = allStored[matchKey] || '';
+            if (matchAns !== (q.correctMatches || {})[item.label]) allMatch = false;
+          });
+          isCorrect = allMatch;
+        } else if (q.type === 'matching-checkboxes') {
+          var userVals = Array.isArray(userAns) ? userAns : [userAns];
+          var correctVals = q.correctAnswers || q.answer || [];
+          var sortedU = userVals.slice().sort();
+          var sortedC = correctVals.slice().sort();
+          isCorrect = sortedU.length === sortedC.length &&
+            sortedU.every(function(v, i) { return v === sortedC[i]; });
+        } else {
+          var acceptable = q.acceptableAnswers || (Array.isArray(q.answer) ? q.answer : [q.answer]);
+          isCorrect = acceptable.some(function(a) {
+            return String(a).toLowerCase().trim() === String(userAns).toLowerCase().trim();
+          });
+        }
+
+        if (isCorrect) { sectionCorrect++; totalCorrect++; }
+        totalQuestions++;
+        sectionResults.push({
+          number: q.number,
+          correct: isCorrect,
+          userAnswer: Array.isArray(userAns) ? userAns.join(', ') : String(userAns),
+          correctAnswer: Array.isArray(correctAns) ? correctAns.join(', ') : String(correctAns)
+        });
+      });
+
+      allResults.push({
+        sectionIndex: idx,
+        sectionTitle: sec.title || ('Section ' + (idx + 1)),
+        total: sectionTotal,
+        correct: sectionCorrect,
+        results: sectionResults
+      });
+    });
+
+    // Build complete scoring
+    var fullScoring = {
+      total: totalQuestions,
+      correct: totalCorrect,
+      results: allResults.reduce(function(acc, s) { return acc.concat(s.results); }, [])
+    };
+
     // Extend payload with listening-specific metadata
     var payload = {
       skill: 'listening',
@@ -575,25 +858,38 @@
       source: sourceId,
       testNumber: testNumber,
       date: new Date().toISOString(),
-      totalQuestions: scoring.total,
-      correctCount: scoring.correct,
-      score: scoring.total > 0 ? Math.round((scoring.correct / scoring.total) * 100) : 0,
+      totalQuestions: totalQuestions,
+      correctCount: totalCorrect,
+      score: totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0,
       sectionScores: {},
-      results: scoring.results
+      results: fullScoring.results
     };
 
-    // Per-section scores
-    if (allSections) {
-      allSections.forEach(function(sec, idx) {
-        var secQuestions = sec.questions || [];
-        var secNums = secQuestions.map(function(q) { return q.number; });
-        var secResults = scoring.results.filter(function(r) {
-          return secNums.indexOf(r.number) !== -1;
-        });
-        var secCorrect = secResults.filter(function(r) { return r.correct; }).length;
-        payload.sectionScores['section' + (idx + 1)] = { correct: secCorrect, total: secResults.length };
-      });
+    // testHtmlUrl = the exact page URL where the student took the test.
+    // Claude uses this + metadata (source, testNumber) to find full context.
+    payload.testHtmlUrl = window.location.href;
+
+    // Also include direct links to individual section HTMLs (contain embedded transcripts)
+    var htmlUrls = allSections.map(function(sec, idx) {
+      var sectionNum = sec.sectionNumber || (idx + 1);
+      var filename = sourceId + '_listening_test-' + testNumber + '_section-' + sectionNum + '.html';
+      return window.location.origin + '/test-html/' + filename;
+    });
+    if (htmlUrls.length > 0) {
+      payload.testHtmlUrls = htmlUrls;
     }
+
+    // Per-section scores
+    allResults.forEach(function(secResult) {
+      payload.sectionScores['section' + (secResult.sectionIndex + 1)] = {
+        correct: secResult.correct,
+        total: secResult.total,
+        title: secResult.sectionTitle
+      };
+    });
+
+    // Show results and save
+    showResultsLocal(fullScoring);
 
     fetch(bridgeUrl + '/save', {
       method: 'POST',
@@ -607,8 +903,21 @@
     .then(function() {
       console.log('Listening results saved');
       localStorage.removeItem('pendingResults_listening');
+      clearAnswersFromStorage();
       var wb = $('warning-banner');
       if (wb) wb.classList.remove('visible');
+      // Update status
+      var statusBadge = document.getElementById('status-badge');
+      if (!statusBadge) {
+        // add a simple notification
+        var resultsDiv = document.getElementById('results');
+        if (resultsDiv) {
+          var note = document.createElement('div');
+          note.style.cssText = 'text-align:center;padding:12px;color:#059669;font-weight:600;';
+          note.textContent = '✅ Results saved! Switch to Claude and say "chấm bài listening".';
+          resultsDiv.insertBefore(note, resultsDiv.firstChild);
+        }
+      }
     })
     .catch(function(err) {
       console.warn('Save failed, storing in localStorage:', err.message);
@@ -622,11 +931,14 @@
   var originalShowSection = window.IELTS.showSection;
   window.IELTS.showSection = function(n) {
     if (n === currentSection) return;
-    // Save current section answers?
+    // Save current section answers before navigating away
+    saveAnswersToStorage();
     if (n < 0 || n >= totalSections) return;
     currentSection = n;
     if (typeof window.__TEST_CONFIG__ !== 'undefined') {
       window.IELTS.renderQuestions();
+      // Restore saved answers for this section
+      restoreAnswersFromStorage();
     }
     updateHeaderForSection(n);
     switchAudio(n);
@@ -638,6 +950,51 @@
   if (pending) {
     var wb = $('warning-banner');
     if (wb) wb.classList.add('visible');
+  }
+
+  // ── Button click handlers ──
+  var btnCheck = $('btn-check');
+  var btnSave = $('btn-save');
+  if (btnCheck) {
+    btnCheck.addEventListener('click', function() {
+      checkAnswers();
+    });
+  }
+  if (btnSave) {
+    btnSave.addEventListener('click', function() {
+      // Validate last section before saving
+      var collected = window.IELTS.collectAnswers();
+      if (collected.unanswered.length > 0) {
+        var vw = $('validation-warning');
+        var uc = document.getElementById('unanswered-count');
+        if (uc) uc.textContent = collected.unanswered.length;
+        if (vw) {
+          vw.classList.add('visible');
+          setTimeout(function() { vw.classList.remove('visible'); }, 3000);
+        }
+        // Highlight unanswered
+        collected.unanswered.forEach(function(num) {
+          var el = document.getElementById('question-' + num);
+          if (el) el.classList.add('unanswered');
+        });
+        return;
+      }
+      var vw2 = $('validation-warning');
+      if (vw2) vw2.classList.remove('visible');
+
+      // Trigger save (via overridden saveResults)
+      window.IELTS.saveResults({ total: 0, correct: 0, results: [] });
+    });
+  }
+
+  // Prevent form submit from base-test.js (buttons are now type=button)
+  var form = document.getElementById('test-form');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Delegate to save button handler
+      if (btnSave) btnSave.click();
+    });
   }
 
   // ── Start ──
