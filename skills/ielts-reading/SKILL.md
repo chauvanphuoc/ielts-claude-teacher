@@ -172,3 +172,22 @@ After analysis, persist via CLI:
 ```
 
 Tell student: "Analysis saved. Say 'update my roadmap' to sync with your teacher."
+
+---
+
+## Trace Emission
+
+After evaluation is complete, emit an evaluate trace so the quality control plane records this teaching decision:
+
+```bash
+.venv/bin/python3 shared/ielts_cli.py quality trace-emit \
+  --skill reading --decision-type evaluate \
+  --evidence-refs ".ielts/reading/latest.json" \
+  --rubric-refs "rubric://reading/v1" \
+  --kc-targets "<comma-separated KC IDs from kcResults>" \
+  --action "graded ${testTitle}: ${correct}/40, Band ${band}. Errors: ${topErrorTypes}" \
+  --expected-outcome "student improves on <weakest KCs> in next practice" \
+  --confidence 0.9
+```
+
+Populate `--kc-targets` from the `kcResults` object — use KC IDs with error count > 0. Populate `--action` with actual test title, score, band, and top error types from the grading output.

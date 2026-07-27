@@ -179,4 +179,24 @@ After scoring, persist via CLI:
   --priority high
 ```
 
+---
+
+## Trace Emission
+
+After scoring is complete, emit an evaluate trace so the quality control plane records this teaching decision:
+
+```bash
+.venv/bin/python3 shared/ielts_cli.py quality trace-emit \
+  --skill writing --decision-type evaluate \
+  --evidence-refs ".ielts/writing/latest.json" \
+  --rubric-refs "rubric://writing/v1" \
+  --kc-targets "<comma-separated KC IDs from kcMapping>" \
+  --action "scored ${taskType}: ${topic}. Band ${overallBand} (TR=${tr}, CC=${cc}, LR=${lr}, GRA=${gra})" \
+  --expected-outcome "student improves on <weakest KC> in next practice" \
+  --confidence 0.9
+```
+
+Populate `--kc-targets` from the `kcMapping` object — use KC IDs with bandGap > 0.5. Populate `--action` with actual task type, topic, band, and criterion scores from the scoring output.
+```
+
 Tell student: "Scores saved. Say 'update my roadmap' to sync with your teacher."

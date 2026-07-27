@@ -152,6 +152,17 @@ Sort by: score DESC → errorRate DESC → untested_parent_count ASC → attempt
 ### 2.6 — Present Diagnosis
 "Hôm nay chúng ta tập trung vào **[KC name]** vì [reason]." Always let the student override.
 
+### 2.7 — Trace Decision
+Append a trace record for this diagnose decision:
+```bash
+.venv/bin/python3 shared/ielts_cli.py quality trace-emit \
+  --skill <skill> --decision-type diagnose \
+  --evidence-refs "<comma-separated>" --rubric-refs "rubric://<skill>/v1" \
+  --kc-targets "<comma-separated>" --action "<one-line what you decided>" \
+  --expected-outcome "<what should improve>" --confidence <0-1>
+```
+Pre-populate `--kc-targets` from the KC IDs selected in Phase 2.5. Pre-populate `--evidence-refs` from the profile data sources read in Phase 2.2-2.4.
+
 ---
 
 ## PHASE 3: Plan
@@ -182,6 +193,16 @@ Sort by: score DESC → errorRate DESC → untested_parent_count ASC → attempt
 ### 3.4 — Max 3 New Lessons Per Session
 Reuse existing lessons beyond 3. Avoid burnout.
 
+### 3.5 — Trace Decision
+Append a trace record for this plan decision:
+```bash
+.venv/bin/python3 shared/ielts_cli.py quality trace-emit \
+  --skill <skill> --decision-type plan \
+  --evidence-refs "<lesson files created or reused>" --rubric-refs "rubric://<skill>/v1" \
+  --kc-targets "<KC IDs planned for this session>" --action "<one-line what you planned>" \
+  --expected-outcome "<expected learning outcome>" --confidence <0-1>
+```
+
 ---
 
 ## PHASE 4: Teach
@@ -206,6 +227,16 @@ Start server: `.venv/bin/python3 skills/ielts-teacher/server.py &` then `sleep 1
 
 ### 4.4 — Wait
 "Làm xong thì bảo tôi chấm bài nhé."
+
+### 4.5 — Trace Decision
+Append a trace record for this teach decision:
+```bash
+.venv/bin/python3 shared/ielts_cli.py quality trace-emit \
+  --skill <skill> --decision-type teach \
+  --evidence-refs "<test file opened>" --rubric-refs "rubric://<skill>/v1" \
+  --kc-targets "<KC IDs being tested>" --action "<one-line what you taught/opened>" \
+  --expected-outcome "<expected student performance>" --confidence <0-1>
+```
 
 ---
 
@@ -275,6 +306,17 @@ If `attempts >= 3` AND errorRate hasn't improved → **change approach.** Offer:
 - Score + per-question feedback + KC mastery change (before → after)
 - If KC transitions level → celebrate
 
+### 5.10 — Trace Decision
+Append a trace record for this evaluate decision:
+```bash
+.venv/bin/python3 shared/ielts_cli.py quality trace-emit \
+  --skill <skill> --decision-type evaluate \
+  --evidence-refs "<result file>" --rubric-refs "rubric://<skill>/v1" \
+  --kc-targets "<KC IDs that changed>" --action "<one-line what you found>" \
+  --expected-outcome "<next step based on results>" --confidence <0-1>
+```
+Pre-populate `--kc-targets` from the KC IDs whose mastery changed in Phase 5.3.
+
 ---
 
 ## PHASE 6: Close
@@ -282,6 +324,15 @@ If `attempts >= 3` AND errorRate hasn't improved → **change approach.** Offer:
 - **6.1:** 1-2 sentence summary of what was achieved.
 - **6.2:** Suggest next KC based on priority algorithm results.
 - **6.3:** Optionally generate progress dashboard from `templates/progress-dashboard.html`.
+- **6.4 — Session Snapshot:** Append a closing trace record summarizing the entire session:
+```bash
+.venv/bin/python3 shared/ielts_cli.py quality trace-emit \
+  --skill general --decision-type close \
+  --evidence-refs "<profile file>" --rubric-refs "rubric://general/v1" \
+  --kc-targets "<all KC IDs tested this session>" \
+  --action "session completed: <N> questions, <M> KCs tested, <X> band changes" \
+  --expected-outcome "student ready for next session" --confidence 0.9
+```
 
 ---
 

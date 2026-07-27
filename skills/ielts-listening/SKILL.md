@@ -187,4 +187,23 @@ After grading, persist via CLI:
   --priority high
 ```
 
+---
+
+## Trace Emission
+
+After grading is complete, emit an evaluate trace so the quality control plane records this teaching decision:
+
+```bash
+.venv/bin/python3 shared/ielts_cli.py quality trace-emit \
+  --skill listening --decision-type evaluate \
+  --evidence-refs ".ielts/listening/latest.json" \
+  --rubric-refs "rubric://listening/v1" \
+  --kc-targets "<comma-separated KC IDs from kcResults>" \
+  --action "graded ${testName}: ${correct}/40, Band ${band}. Weakest section: ${weakestSection}" \
+  --expected-outcome "student improves on <weakest KCs> in next practice" \
+  --confidence 0.9
+```
+
+Populate `--kc-targets` from the `kcResults` object — use KC IDs with error count > 0. Populate `--action` with actual test name, score, band, and weakest section from the grading output.
+
 Tell student: "Grades saved. Say 'update my roadmap' to sync with your teacher."

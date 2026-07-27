@@ -218,4 +218,23 @@ After evaluation, persist via CLI:
   --priority high
 ```
 
+---
+
+## Trace Emission
+
+After evaluation is complete, emit an evaluate trace so the quality control plane records this teaching decision:
+
+```bash
+.venv/bin/python3 shared/ielts_cli.py quality trace-emit \
+  --skill speaking --decision-type evaluate \
+  --evidence-refs ".ielts/speaking/latest.json" \
+  --rubric-refs "rubric://speaking/v1" \
+  --kc-targets "<comma-separated KC IDs from kcMapping>" \
+  --action "evaluated Part ${part}: ${topic}. Band ${overallBand} (FC=${fc}, LR=${lr}, GR=${gra}, P=${pron})" \
+  --expected-outcome "student improves on <weakest KC> in next practice" \
+  --confidence 0.85
+```
+
+Populate `--kc-targets` from the `kcMapping` object — use KC IDs with bandGap > 0.5. Populate `--action` with actual part, topic, band, and criterion scores from the evaluation output.
+
 Tell student: "Evaluation saved. Say 'update my roadmap' to sync with your teacher."
