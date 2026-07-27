@@ -44,12 +44,22 @@ KC_GRAPH_FILE = IELTS_DIR / "kc-graph-ielts.json"
 SETTINGS_FILE = IELTS_DIR / "settings.json"
 LESSON_LIBRARY_FILE = IELTS_DIR / "lesson-library.json"
 LESSON_PLANS_DIR = IELTS_DIR / "lesson-plans"
+VOCAB_DIR = IELTS_DIR / "vocabulary"
+SYNONYMS_FILE = IELTS_DIR / "vocabulary" / "synonyms.json"
 
 
 # ── Utilities ──────────────────────────────────────────────────────
 
 def _today() -> str:
     return date.today().isoformat()
+
+
+def _tomorrow() -> str:
+    return (date.today() + __import__('datetime').timedelta(days=1)).isoformat()
+
+
+def _days_from_now(n: int) -> str:
+    return (date.today() + __import__('datetime').timedelta(days=n)).isoformat()
 
 
 def _now() -> str:
@@ -951,6 +961,210 @@ def cmd_migrate_lesson_library():
     return 0
 
 
+def cmd_memory_add(args):
+    """Append a coach note to student-profile.json.
+
+    Referenced by all SKILL.md files and evaluation phase docs as:
+      .venv/bin/python3 shared/ielts_cli.py memory add \\
+        --content "..." --category observation --skill writing --priority high
+    """
+    profile = _load_json(PROFILE_FILE)
+    if not profile:
+        print(json.dumps({"status": "error", "message": "student-profile.json not found. Run migrate-profile first."}))
+        return 1
+
+    valid_categories = ["system", "observation", "weakness", "strength", "strategy"]
+    valid_skills = ["general", "listening", "reading", "writing", "speaking"]
+    valid_priorities = ["high", "medium", "low"]
+
+    category = args.category if args.category in valid_categories else "observation"
+    skill = args.skill if args.skill in valid_skills else "general"
+    priority = args.priority if args.priority in valid_priorities else "medium"
+
+    note = {
+        "date": _now(),
+        "category": category,
+        "skill": skill,
+        "content": args.content,
+        "priority": priority
+    }
+
+    if "coachNotes" not in profile:
+        profile["coachNotes"] = []
+
+    profile["coachNotes"].append(note)
+    _save_json(PROFILE_FILE, profile)
+
+    print(json.dumps({
+        "status": "ok",
+        "action": "added",
+        "category": category,
+        "skill": skill,
+        "priority": priority,
+        "totalNotes": len(profile["coachNotes"])
+    }, ensure_ascii=False))
+    return 0
+
+
+# ── Vocabulary Commands ────────────────────────────────────────────
+
+def cmd_vocab_add(args):
+    """Add or update a word in vocabulary.words with SRS tracking.
+
+    Usage:
+      .venv/bin/python3 shared/ielts_cli.py vocab add \\
+        --word "accomodation" --correct "accommodation" \\
+        --source listening --context "Q1 — booking form"
+    """
+    profile = _load_json(PROFILE_FILE)
+    if not profile:
+        print(json.dumps({"status": "error", "message": "student-profile.json not found."}))
+        return 1
+
+    vocab = profile.setdefault("vocabulary", {})
+    words = vocab.setdefault("words", {})
+
+    word_key = args.word.lower().strip()
+
+    if word_key in words:
+        entry = words[word_key]
+        entry["errorCount"] = entry.get("errorCount", 0) + 1
+        entry["lastSeen"] = _now()
+        entry["attempts"] = 1
+        entry["nextReviewDate"] = _tomorrow()
+        entry["level"] = "new"
+        if args.correct:
+            entry["correct"] = args.correct
+        if args.source:
+            entry["source"] = args.source
+        if args.context:
+            entry["context"] = args.context
+        action = "updated"
+    else:
+        words[word_key] = {
+            "correct": args.correct or word_key,
+            "attempts": 0,
+            "errorCount": 1,
+            "lastSeen": _now(),
+            "nextReviewDate": _tomorrow(),
+            "source": args.source or "unknown",
+            "context": args.context or "",
+            "level": "new"
+        }
+        action = "added"
+
+    _save_json(PROFILE_FILE, profile)
+
+    print(json.dumps({
+        "status": "ok",
+        "action": action,
+        "word": word_key,
+        "correct": words[word_key]["correct"],
+        "totalWords": len(words)
+    }, ensure_ascii=False))
+    return 0
+
+
+def cmd_vocab_review(args):
+    """Update SRS data for a reviewed word.
+
+    Usage:
+      .venv/bin/python3 shared/ielts_cli.py vocab review \\
+        --word "accomodation" --passed true
+    """
+    profile = _load_json(PROFILE_FILE)
+    if not profile:
+        print(json.dumps({"status": "error", "message": "student-profile.json not found."}))
+        return 1
+
+    words = profile.get("vocabulary", {}).get("words", {})
+    word_key = args.word.lower().strip()
+
+    if word_key not in words:
+        print(json.dumps({"status": "error", "message": f"Word '{word_key}' not found in vocabulary."}))
+        return 1
+
+    entry = words[word_key]
+    passed = getattr(args, 'passed', True)
+
+    if passed:
+        entry["attempts"] = entry.get("attempts", 0) + 1
+        attempts = entry["attempts"]
+        if attempts >= 4:
+            entry["nextReviewDate"] = _days_from_now(30)
+            entry["level"] = "mastered"
+        elif attempts == 3:
+            entry["nextReviewDate"] = _days_from_now(7)
+            entry["level"] = "learning"
+        elif attempts == 2:
+            entry["nextReviewDate"] = _days_from_now(3)
+            entry["level"] = "learning"
+        else:
+            entry["nextReviewDate"] = _days_from_now(1)
+            entry["level"] = "new"
+    else:
+        entry["attempts"] = 1
+        entry["errorCount"] = entry.get("errorCount", 0) + 1
+        entry["nextReviewDate"] = _tomorrow()
+        entry["level"] = "new"
+
+    entry["lastSeen"] = _now()
+    _save_json(PROFILE_FILE, profile)
+
+    # Update lastVocabReview
+    vocab = profile.setdefault("vocabulary", {})
+    vocab["lastVocabReview"] = _now()
+    _save_json(PROFILE_FILE, profile)
+
+    print(json.dumps({
+        "status": "ok",
+        "word": word_key,
+        "attempts": entry["attempts"],
+        "level": entry["level"],
+        "nextReviewDate": entry["nextReviewDate"],
+        "passed": passed
+    }, ensure_ascii=False))
+    return 0
+
+
+def cmd_synonym_add(args):
+    """Add a synonym pair to the synonym library.
+
+    Usage:
+      .venv/bin/python3 shared/ielts_cli.py synonym add \\
+        --word "important" --synonym "crucial" --context "Reading Passage 1"
+    """
+    _ensure_dir(VOCAB_DIR)
+    data = _load_json(SYNONYMS_FILE, {"version": "1.0.0", "synonyms": []})
+
+    pair = {
+        "word": args.word.strip().lower(),
+        "synonym": args.synonym.strip().lower(),
+        "context": args.context or "",
+        "addedAt": _now()
+    }
+
+    # Avoid exact duplicates
+    existing = [s for s in data["synonyms"]
+                if s["word"] == pair["word"] and s["synonym"] == pair["synonym"]]
+    if existing:
+        print(json.dumps({"status": "ok", "action": "skipped", "reason": "duplicate",
+                          "word": pair["word"], "synonym": pair["synonym"]}, ensure_ascii=False))
+        return 0
+
+    data["synonyms"].append(pair)
+    _save_json(SYNONYMS_FILE, data)
+
+    print(json.dumps({
+        "status": "ok",
+        "action": "added",
+        "word": pair["word"],
+        "synonym": pair["synonym"],
+        "totalSynonyms": len(data["synonyms"])
+    }, ensure_ascii=False))
+    return 0
+
+
 def cmd_status():
     """Output a brief status summary."""
     profile = _load_json(PROFILE_FILE)
@@ -1040,8 +1254,37 @@ def main():
     p_reset.add_argument("--target-band", type=float, help="Target band for new profile (default: preserve from old)")
     p_reset.add_argument("--exam-date", help="Exam date for new profile (default: preserve from old)")
 
+    # memory
+    p_mem = sub.add_parser("memory", help="Coach memory management")
+    p_mem_sub = p_mem.add_subparsers(dest="memory_action")
+    p_mem_add = p_mem_sub.add_parser("add", help="Append a coach note to student-profile.json")
+    p_mem_add.add_argument("--content", required=True, help="Note content")
+    p_mem_add.add_argument("--category", default="observation", choices=["system", "observation", "weakness", "strength", "strategy"])
+    p_mem_add.add_argument("--skill", default="general", choices=["general", "listening", "reading", "writing", "speaking"])
+    p_mem_add.add_argument("--priority", default="medium", choices=["high", "medium", "low"])
+
     # migrate-lesson-library (one-time)
     sub.add_parser("migrate-lesson-library", help="Migrate lessonLibrary from student-profile.json to standalone file")
+
+    # vocab
+    p_vocab = sub.add_parser("vocab", help="Vocabulary management with SRS")
+    p_vocab_sub = p_vocab.add_subparsers(dest="vocab_action")
+    p_vocab_add = p_vocab_sub.add_parser("add", help="Add or update a word with SRS tracking")
+    p_vocab_add.add_argument("--word", required=True, help="The misspelled word")
+    p_vocab_add.add_argument("--correct", help="Correct spelling")
+    p_vocab_add.add_argument("--source", choices=["listening", "reading", "writing", "speaking", "unknown"])
+    p_vocab_add.add_argument("--context", help="Where the error occurred")
+    p_vocab_review = p_vocab_sub.add_parser("review", help="Update SRS after reviewing a word")
+    p_vocab_review.add_argument("--word", required=True)
+    p_vocab_review.add_argument("--passed", type=lambda x: x.lower() == 'true', default=True)
+
+    # synonym
+    p_synonym = sub.add_parser("synonym", help="Synonym pair management")
+    p_synonym_sub = p_synonym.add_subparsers(dest="synonym_action")
+    p_syn_add = p_synonym_sub.add_parser("add", help="Add a synonym pair")
+    p_syn_add.add_argument("--word", required=True, help="Original word")
+    p_syn_add.add_argument("--synonym", required=True, help="Synonym/paraphrase")
+    p_syn_add.add_argument("--context", help="Where the synonym was found")
 
     args = parser.parse_args()
 
@@ -1079,8 +1322,28 @@ def main():
         else:
             print("Usage: ielts_cli.py lesson-library [list|sync|add|mark-used]")
             return 1
+    elif args.command == "memory":
+        if args.memory_action == "add":
+            return cmd_memory_add(args)
+        else:
+            print("Usage: ielts_cli.py memory add --content \"...\" --category ... --skill ... --priority ...")
+            return 1
     elif args.command == "reset-profile":
         return cmd_reset_profile(args)
+    elif args.command == "vocab":
+        if args.vocab_action == "add":
+            return cmd_vocab_add(args)
+        elif args.vocab_action == "review":
+            return cmd_vocab_review(args)
+        else:
+            print("Usage: ielts_cli.py vocab [add|review]")
+            return 1
+    elif args.command == "synonym":
+        if args.synonym_action == "add":
+            return cmd_synonym_add(args)
+        else:
+            print("Usage: ielts_cli.py synonym add --word ... --synonym ... --context ...")
+            return 1
     elif args.command == "migrate-lesson-library":
         return cmd_migrate_lesson_library()
     else:
