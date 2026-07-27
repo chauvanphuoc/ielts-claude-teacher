@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "source": "cambridge-1",
+    "testId": 1
+  },
+  "skills": {
+    "reading": {
+      "passages": [
+        {
+          "title": "P1",
+          "questionGroups": [
+            {
+              "id": "qg-1",
+              "questions": [
+                {
+                  "number": 1,
+                  "text": "Q1",
+                  "type": "short-answer"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "P2",
+          "questionGroups": []
+        },
+        {
+          "title": "P3",
+          "questionGroups": []
+        }
+      ]
+    }
+  },
+  "answerKeys": {
+    "reading": {
+      "passage-1": {
+        "1": "answer"
+      }
+    }
+  }
+}
