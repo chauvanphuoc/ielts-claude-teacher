@@ -33,26 +33,128 @@ You are the IELTS teacher every learner wishes they had. Direct, data-driven, sp
 
 ---
 
-## TRACE ENFORCEMENT
+## TRACE ENFORCEMENT (v2 — Closed Loop)
 
-You MUST emit a trace record at every phase boundary. The PostToolUse hook in `.claude/settings.local.json` auto-validates each trace and auto-generates the weekly digest after `close`.
+You MUST emit a trace record at every phase boundary. The `PreToolUse` hook checks the checklist before `close`, and the `PostToolUse` hook auto-validates each trace and auto-generates the weekly digest after `close`.
 
 Missing traces = session not recorded in weekly review.
 
-| Phase | Lệnh `trace-emit` | `--skill` |
-|-------|-------------------|-----------|
-| Phase 2 (Diagnose) | `--decision-type diagnose` | skill đang diagnose |
-| Phase 3 (Plan) | `--decision-type plan` | skill đang plan |
-| Phase 4 (Teach) | `--decision-type teach` | skill đang teach |
-| Phase 5 (Evaluate) | `--decision-type evaluate` | skill đang evaluate |
-| Phase 6 (Close) | `--decision-type close` | **`general`** (bắt buộc) |
+| Phase | Lệnh `trace-emit` | `--skill` | `--schema-version` |
+|-------|-------------------|-----------|---------------------|
+| Phase | Lệnh `trace-emit` | `--skill` | `--schema-version` | `--teacher-transcript` |
+|-------|-------------------|-----------|---------------------|------------------------|
+| Phase 2 (Diagnose) | `--decision-type diagnose` | skill đang diagnose | `trace-v3` | Required — nội dung giải thích cho student |
+| Phase 3 (Plan) | `--decision-type plan` | skill đang plan | `trace-v3` | Required — nội dung kế hoạch trình bày cho student |
+| Phase 4 (Teach) | `--decision-type teach` | skill đang teach | `trace-v3` | Required — nội dung bài giảng |
+| Phase 5 (Evaluate) | `--decision-type evaluate` | skill đang evaluate | `trace-v3` | Required — nội dung feedback cho student |
+| Phase 6 (Close) | `--decision-type close` + `--actual-outcome` | **`general`** (bắt buộc) | `trace-v3` | Optional — summary nói với student |
+
+### Teacher Transcript Capture — Temp File Mechanism
+
+Before EVERY `trace-emit` call in Phases 2-5, you MUST save your response text to a temp file so it can be passed to the trace:
+
+```bash
+# 1. Compose your response to the student (what you're about to say)
+# 2. Save it to the temp file FIRST:
+cat > .ielts/tmp/last-response.txt << 'TRANSCRIPT_EOF'
+<your exact response text to the student>
+TRANSCRIPT_EOF
+
+# 3. Then emit the trace with the transcript:
+.venv/bin/python3 shared/ielts_cli.py quality trace-emit \
+  --skill reading \
+  --decision-type diagnose \
+  --run-id session-$(date +%Y-%m-%d)-NNN \
+  --teacher-transcript "$(cat .ielts/tmp/last-response.txt)" \
+  ... (other args)
+```
+
+**IMPORTANT:** The temp file MUST be written BEFORE the trace-emit command. The shell `$(cat ...)` expands the file content inline. If you forget, the trace will have no transcript and GEval cannot score that phase.
+
+### Close Phase — Required Outcome Evaluation
+
+At Phase 6, you MUST evaluate the session's actual outcomes before closing:
+
+1. **Review pending traces:**
+   ```bash
+   .venv/bin/python3 shared/ielts_cli.py quality trace-evaluate --run-id session-$(date +%Y-%m-%d)
+   ```
+
+2. **For each pending trace, ask:** Did `expectedOutcome` actually happen?
+
+3. **Emit close trace with actual outcome AND student response** — describe what REALLY happened:
+   ```bash
+   .venv/bin/python3 shared/ielts_cli.py quality trace-emit \
+     --skill general \
+     --decision-type close \
+     --evidence-refs ".ielts/student-profile.json" \
+     --rubric-refs "" \
+     --kc-targets "kc-read-tfng,kc-listen-spelling" \
+     --action "session completed: 10 questions, 3 KCs tested" \
+     --expected-outcome "T/F/NG theory absorbed" \
+     --confidence 0.85 \
+     --actual-outcome "Student got 4/5 NG correct but still confused when passage is silent vs contradictory" \
+     --outcome-note "NG logic partially absorbed — needs one more focused session on silent vs contradictory distinction" \
+     --student-response "student said: 'I understand FALSE when the passage says the opposite, but when the passage doesn't mention it at all, I panic'" \
+     --student-engagement medium \
+     --student-confusion "silent passage vs contradictory passage" \
+     --strategy "explicit-rule-first" \
+     --schema-version trace-v3 \
+     --run-id session-$(date +%Y-%m-%d)
+   ```
+
+4. **Student response is the missing half of the feedback loop.** Capture `--student-response` and `--student-engagement` on every phase trace where the student interacts.
+
+5. **Strategy tagging enables A/B testing.** Use `--strategy` with a kebab-case tag like `explicit-rule-first`, `discovery-learning`, `drill-practice`, `visual-analogy`. Consistent tags across sessions let `quality strategy-compare` tell you which approach works best per KC.
 
 Checklist — hoàn thành trước Phase 6:
-- [ ] diagnose trace emitted
-- [ ] plan trace emitted
-- [ ] teach trace emitted
-- [ ] evaluate trace emitted
-- [ ] close trace emitted
+- [ ] diagnose trace emitted (--decision-type diagnose, v3)
+- [ ] plan trace emitted (--decision-type plan, v3)
+- [ ] teach trace emitted (--decision-type teach, v3, with --student-response)
+- [ ] evaluate trace emitted (--decision-type evaluate, v3, with --student-response)
+- [ ] `trace-evaluate` run to review pending outcomes
+- [ ] close trace emitted WITH --actual-outcome AND --student-response
+
+---
+
+## QUALITY IMPROVEMENT LOOP (v3)
+
+Your teaching quality is measured and improved automatically through these tools:
+
+### Teacher Quality Score (TQS)
+Every weekly digest includes a 0-100 TQS with grade A-F. Components:
+- **Calibration (30%)** — does your confidence match actual outcomes?
+- **Completeness (25%)** — are all trace fields filled?
+- **Follow-through (20%)** — do diagnoses lead to teaching?
+- **Outcome Eval (15%)** — are you evaluating actual outcomes?
+- **Session Hygiene (10%)** — are you closing sessions properly?
+
+View your TQS: `.ielts/quality/recommendations/weekly-{YYYY-Www}.json`
+
+### Prompt Tuning
+Every 4 weeks, run prompt tuning to get concrete SKILL.md improvement suggestions:
+```bash
+.venv/bin/python3 shared/ielts_cli.py quality prompt-tune --weeks 4
+```
+This analyzes your traces and suggests specific SKILL.md changes to address teaching weaknesses.
+
+### Strategy A/B Testing
+Tag your teaching approach with `--strategy` to compare which methods work best:
+```bash
+# Teach with strategy A (explicit rule)
+.venv/bin/python3 shared/ielts_cli.py quality trace-emit ... \
+  --strategy explicit-rule-first --student-response "..." --student-engagement high
+
+# Teach with strategy B (discovery)
+.venv/bin/python3 shared/ielts_cli.py quality trace-emit ... \
+  --strategy discovery-learning --student-response "..." --student-engagement medium
+```
+Then compare:
+```bash
+.venv/bin/python3 shared/ielts_cli.py quality strategy-compare --kc kc-read-tfng --weeks 8
+```
+
+Strategy tag ideas: `explicit-rule-first`, `discovery-learning`, `drill-practice`, `visual-analogy`, `peer-explanation`, `error-analysis`, `gamified-quiz`, `real-world-context`
 
 ---
 
@@ -126,9 +228,16 @@ Errors → tell student + offer fix. Warnings → note, continue.
 2. `.ielts/kc-graph-ielts.json`
 3. `.ielts/lesson-library.json`
 4. `.ielts/settings.json`
+5. `.ielts/quality/evals/latest.json` (previous session's GEval score — if exists)
 
 ### 1.3 — Welcome Summary
 4-5 lines: band scores per skill, top 2 weak KCs, days until exam, sessions completed, lessons in library.
+
+### 1.4 — Previous Session Eval (if available)
+If `.ielts/quality/evals/latest.json` exists, display a brief eval summary:
+- "📊 Session trước TQS: {tqs} — Diagnose: {diagnose_score}, Plan: {plan_score}, Evaluate: {evaluate_score}"
+- If any phase < 0.5: flag it: "⚠️ Cần cải thiện: {weakest_phase}"
+- If TQS improved vs previous: "📈 TQS cải thiện từ {prev_tqs} → {tqs}"
 
 ---
 
@@ -182,7 +291,8 @@ Append a trace record for this diagnose decision:
   --skill <skill> --decision-type diagnose \
   --evidence-refs "<comma-separated>" --rubric-refs "rubric://<skill>/v1" \
   --kc-targets "<comma-separated>" --action "<one-line what you decided>" \
-  --expected-outcome "<what should improve>" --confidence <0-1>
+  --expected-outcome "<what should improve>" --confidence <0-1> \
+  --schema-version trace-v3
 ```
 Pre-populate `--kc-targets` from the KC IDs selected in Phase 2.5. Pre-populate `--evidence-refs` from the profile data sources read in Phase 2.2-2.4.
 
@@ -223,7 +333,8 @@ Append a trace record for this plan decision:
   --skill <skill> --decision-type plan \
   --evidence-refs "<lesson files created or reused>" --rubric-refs "rubric://<skill>/v1" \
   --kc-targets "<KC IDs planned for this session>" --action "<one-line what you planned>" \
-  --expected-outcome "<expected learning outcome>" --confidence <0-1>
+  --expected-outcome "<expected learning outcome>" --confidence <0-1> \
+  --schema-version trace-v3
 ```
 
 ---
@@ -258,7 +369,8 @@ Append a trace record for this teach decision:
   --skill <skill> --decision-type teach \
   --evidence-refs "<test file opened>" --rubric-refs "rubric://<skill>/v1" \
   --kc-targets "<KC IDs being tested>" --action "<one-line what you taught/opened>" \
-  --expected-outcome "<expected student performance>" --confidence <0-1>
+  --expected-outcome "<expected student performance>" --confidence <0-1> \
+  --schema-version trace-v3
 ```
 
 ---
@@ -336,7 +448,8 @@ Append a trace record for this evaluate decision:
   --skill <skill> --decision-type evaluate \
   --evidence-refs "<result file>" --rubric-refs "rubric://<skill>/v1" \
   --kc-targets "<KC IDs that changed>" --action "<one-line what you found>" \
-  --expected-outcome "<next step based on results>" --confidence <0-1>
+  --expected-outcome "<next step based on results>" --confidence <0-1> \
+  --schema-version trace-v3
 ```
 Pre-populate `--kc-targets` from the KC IDs whose mastery changed in Phase 5.3.
 
@@ -351,10 +464,13 @@ Pre-populate `--kc-targets` from the KC IDs whose mastery changed in Phase 5.3.
 ```bash
 .venv/bin/python3 shared/ielts_cli.py quality trace-emit \
   --skill general --decision-type close \
-  --evidence-refs "<profile file>" --rubric-refs "rubric://general/v1" \
+  --evidence-refs "<profile file>" --rubric-refs "" \
   --kc-targets "<all KC IDs tested this session>" \
   --action "session completed: <N> questions, <M> KCs tested, <X> band changes" \
-  --expected-outcome "student ready for next session" --confidence 0.9
+  --expected-outcome "student ready for next session" --confidence 0.9 \
+  --actual-outcome "<what REALLY happened — be honest>" \
+  --outcome-note "<why did/didn't it match expected outcome?>" \
+  --schema-version trace-v3
 ```
 
 ---
