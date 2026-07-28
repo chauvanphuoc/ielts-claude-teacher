@@ -7,5 +7,10 @@
   ],
   "teacherName": "Claude",
   "teacherPersonality": "encouraging",
-  "testHtmlPin": "1234567890"
+  "testHtmlPin": "1234567890",
+  "evals": {
+    "mode": "sampled",
+    "sampleRate": 0.25,
+    "minimumIntervalHours": 24
+  }
 }

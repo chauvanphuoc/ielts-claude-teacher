@@ -109,6 +109,8 @@ REQUIRED_TRACE_FIELDS = {
 
 ALLOWED_SKILLS = {"general", "reading", "listening", "writing", "speaking"}
 ALLOWED_DECISION_TYPES = {"diagnose", "plan", "teach", "evaluate", "close"}
+ALLOWED_SCHEMA_VERSIONS = {"trace-v1", "trace-v2", "trace-v3"}
+ALLOWED_ENGAGEMENT_LEVELS = {"high", "medium", "low"}
 ALLOWED_LANES = {"reading", "listening", "writing", "speaking"}
 
 
@@ -260,6 +262,42 @@ def _validate_trace_record(record: dict) -> list[str]:
     if isinstance(ts, str) and not re.fullmatch(r"\d{4}-\d{2}-\d{2}T.*Z", ts):
         errors.append("timestamp should be ISO UTC format, e.g. 2026-07-27T10:00:00Z")
 
+    # ── v2: schema version + optional outcome fields ──
+    sv = record.get("schemaVersion")
+    if isinstance(sv, str) and sv not in ALLOWED_SCHEMA_VERSIONS:
+        errors.append(f"schemaVersion must be one of {sorted(ALLOWED_SCHEMA_VERSIONS)}, got '{sv}'")
+
+    # Validate optional v2 outcome fields (type-check only when present).
+    actual = record.get("actualOutcome")
+    if actual is not None and not isinstance(actual, str):
+        errors.append(f"actualOutcome must be a string, got {type(actual).__name__}")
+
+    matched = record.get("outcomeMatched")
+    if matched is not None and not isinstance(matched, bool):
+        errors.append(f"outcomeMatched must be a boolean, got {type(matched).__name__}")
+
+    note = record.get("outcomeNote")
+    if note is not None and not isinstance(note, str):
+        errors.append(f"outcomeNote must be a string, got {type(note).__name__}")
+
+    # ── v3: student response + strategy fields ──
+    sresp = record.get("studentResponse")
+    if sresp is not None and not isinstance(sresp, str):
+        errors.append(f"studentResponse must be a string, got {type(sresp).__name__}")
+
+    eng = record.get("studentEngagement")
+    if eng is not None:
+        if not isinstance(eng, str) or eng not in ALLOWED_ENGAGEMENT_LEVELS:
+            errors.append(f"studentEngagement must be one of {sorted(ALLOWED_ENGAGEMENT_LEVELS)}, got '{eng}'")
+
+    conf = record.get("studentConfusion")
+    if conf is not None and not isinstance(conf, str):
+        errors.append(f"studentConfusion must be a string, got {type(conf).__name__}")
+
+    strat = record.get("strategy")
+    if strat is not None and not isinstance(strat, str):
+        errors.append(f"strategy must be a string, got {type(strat).__name__}")
+
     return errors
 
 
@@ -310,6 +348,50 @@ def _validate_run_metadata(run_id: str, correlation_id: str, source_version: str
     return errors
 
 
+# ── Trace Dedup Helpers ────────────────────────────────────────────
+
+def _trace_idempotency_key(record: dict) -> str:
+    """Generate an idempotency key from the trace's core decision fields.
+
+    Two traces sharing the same (runId, skill, decisionType, action,
+    expectedOutcome) are considered duplicates.  The 16-char hex digest
+    is small enough to compare cheaply, large enough to avoid collisions.
+    """
+    key_fields = (
+        record.get("runId", ""),
+        record.get("skill", ""),
+        record.get("decisionType", ""),
+        record.get("action", ""),
+        record.get("expectedOutcome", ""),
+    )
+    key_str = "|".join(key_fields)
+    return hashlib.sha256(key_str.encode()).hexdigest()[:16]
+
+
+def _trace_exists(trace_path: Path, idempotency_key: str) -> bool:
+    """Check whether a trace with `idempotency_key` already exists in *trace_path*.
+
+    Scans the JSONL file line-by-line and short-circuits on first match.
+    """
+    if not trace_path.exists():
+        return False
+    try:
+        with open(trace_path, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    existing = json.loads(line)
+                    if _trace_idempotency_key(existing) == idempotency_key:
+                        return True
+                except json.JSONDecodeError:
+                    continue
+    except (OSError, IOError):
+        pass
+    return False
+
+
 # ── Trace Emission ─────────────────────────────────────────────────
 
 def emit_trace(
@@ -323,6 +405,15 @@ def emit_trace(
     confidence: float,
     source_version: str = "prompt-v1",
     run_id: str | None = None,
+    actual_outcome: str | None = None,
+    outcome_matched: bool | None = None,
+    outcome_note: str | None = None,
+    student_response: str | None = None,
+    student_engagement: str | None = None,
+    student_confusion: str | None = None,
+    strategy: str | None = None,
+    teacher_transcript: str | None = None,
+    schema_version: str = "trace-v3",
 ) -> dict:
     """Emit one decision trace record to the quality control plane.
 
@@ -334,12 +425,15 @@ def emit_trace(
 
     This function is called by the IELTS teacher at each phase boundary
     (diagnose, plan, teach, evaluate, close) in the 6-phase teaching loop.
+
+    v3 (default): adds student response capture + strategy tagging for
+    A/B testing and closed-loop teaching quality improvement.
     """
     _ensure_dir(QUALITY_TRACES_DIR)
 
     # Build trace record
     record = {
-        "schemaVersion": "trace-v1",
+        "schemaVersion": schema_version,
         "runId": run_id or f"session-{_today()}",
         "timestamp": _now(),
         "skill": skill,
@@ -353,6 +447,29 @@ def emit_trace(
         "sourceVersion": source_version,
     }
 
+    # ── v2 outcome fields (optional, only written when provided) ──
+    if actual_outcome is not None:
+        record["actualOutcome"] = actual_outcome
+    if outcome_matched is not None:
+        record["outcomeMatched"] = outcome_matched
+    if outcome_note is not None:
+        record["outcomeNote"] = outcome_note
+
+    # ── v3 student response + strategy fields ──
+    if student_response is not None:
+        record["studentResponse"] = student_response
+    if student_engagement is not None:
+        record["studentEngagement"] = student_engagement
+    if student_confusion is not None:
+        record["studentConfusion"] = student_confusion
+    if strategy is not None:
+        record["strategy"] = strategy
+
+    # ── v4 teacher transcript (for GEval pedagogical scoring) ──
+    if teacher_transcript is not None:
+        # Truncate to max length for storage efficiency
+        record["teacherTranscript"] = teacher_transcript[:8000]
+
     # Validate
     errors = _validate_trace_record(record)
     if errors:
@@ -362,9 +479,15 @@ def emit_trace(
             f.write(json.dumps({**record, "errors": errors}, ensure_ascii=False, default=str) + "\n")
         return {"status": "error", "errors": errors, "record": record}
 
-    # Write valid trace
+    # Dedup: skip if an identical decision was already emitted today.
+    # Idempotency key covers (runId, skill, decisionType, action, expectedOutcome).
     date_key = _iso_date_from_ts(record["timestamp"])
     trace_path = QUALITY_TRACES_DIR / f"{date_key}.jsonl"
+    dedup_key = _trace_idempotency_key(record)
+    if _trace_exists(trace_path, dedup_key):
+        return {"status": "ok", "path": str(trace_path), "dedup": True, "record": record}
+
+    # Write valid trace
     try:
         with open(trace_path, "a", encoding="utf-8") as f:
             f.write(json.dumps(record, ensure_ascii=False, default=str) + "\n")
@@ -4100,6 +4223,12 @@ def cmd_quality_override_validate(args):
 
 def cmd_quality_trace_emit(args):
     """CLI wrapper for emit_trace() — called by the teacher from SKILL.md."""
+    # Convert --outcome-matched "true"/"false" to bool
+    raw_matched = getattr(args, "outcome_matched", None)
+    outcome_matched_bool = None
+    if raw_matched is not None:
+        outcome_matched_bool = raw_matched == "true"
+
     result = emit_trace(
         skill=args.skill,
         decision_type=args.decision_type,
@@ -4111,9 +4240,340 @@ def cmd_quality_trace_emit(args):
         confidence=args.confidence,
         source_version=args.source_version or "prompt-v1",
         run_id=args.run_id if args.run_id else None,
+        actual_outcome=getattr(args, "actual_outcome", None) or None,
+        outcome_matched=outcome_matched_bool,
+        outcome_note=getattr(args, "outcome_note", None) or None,
+        student_response=getattr(args, "student_response", None) or None,
+        student_engagement=getattr(args, "student_engagement", None) or None,
+        student_confusion=getattr(args, "student_confusion", None) or None,
+        strategy=getattr(args, "strategy", None) or None,
+        teacher_transcript=getattr(args, "teacher_transcript", None) or None,
+        schema_version=getattr(args, "schema_version", "trace-v3") or "trace-v3",
     )
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 0 if result["status"] == "ok" else 1
+
+
+def cmd_quality_trace_evaluate(args):
+    """Summarize expected outcomes for a session run to guide close evaluation.
+
+    Reads today's trace file (or the date specified), finds all traces for
+    the given runId, and prints a summary the teacher can use to evaluate
+    actual outcomes at session close.
+    """
+    run_id = args.run_id
+    date_key = args.date if args.date else _today()
+    trace_file = QUALITY_TRACES_DIR / f"{date_key}.jsonl"
+
+    if not trace_file.exists():
+        print(json.dumps({
+            "status": "ok",
+            "runId": run_id,
+            "message": "No traces found for this date. Nothing to evaluate.",
+            "traces": [],
+        }, ensure_ascii=False, indent=2))
+        return 0
+
+    records = _parse_json_or_jsonl(trace_file)
+    session_traces = [r for r in records if isinstance(r, dict) and r.get("runId") == run_id]
+
+    if not session_traces:
+        print(json.dumps({
+            "status": "ok",
+            "runId": run_id,
+            "message": f"No traces found for runId '{run_id}' on {date_key}.",
+            "traces": [],
+        }, ensure_ascii=False, indent=2))
+        return 0
+
+    # Summarize expected outcomes by decision type
+    from collections import Counter
+    decision_counts = Counter(r.get("decisionType") for r in session_traces)
+    already_evaluated = [r for r in session_traces if r.get("actualOutcome")]
+    pending = [r for r in session_traces if not r.get("actualOutcome")]
+
+    summary = []
+    for r in pending:
+        summary.append({
+            "decisionType": r.get("decisionType"),
+            "skill": r.get("skill"),
+            "action": r.get("action"),
+            "expectedOutcome": r.get("expectedOutcome"),
+            "confidence": r.get("confidence"),
+            "kcTargets": r.get("kcTargets", []),
+            "idempotencyKey": _trace_idempotency_key(r),
+        })
+
+    print(json.dumps({
+        "status": "ok",
+        "runId": run_id,
+        "date": date_key,
+        "totalTraces": len(session_traces),
+        "alreadyEvaluated": len(already_evaluated),
+        "pendingEvaluation": len(pending),
+        "decisionBreakdown": dict(decision_counts.most_common()),
+        "expectedOutcomesToEvaluate": summary,
+        "hint": "For each pending trace, determine if expectedOutcome was achieved. Then emit a close trace with --actual-outcome summarizing the session's actual results.",
+    }, ensure_ascii=False, indent=2))
+    return 0
+
+
+def cmd_quality_prompt_tune(args):
+    """Analyze trace patterns and suggest SKILL.md teaching improvements.
+
+    Reads the last N weeks of traces, identifies teaching weaknesses,
+    and outputs concrete, actionable prompt-tuning suggestions.
+    """
+    from collections import Counter
+
+    weeks = args.weeks
+    today = date.today()
+    from datetime import timedelta
+
+    # Collect traces
+    all_records = []
+    for i in range(weeks * 7):
+        d = today - timedelta(days=i)
+        trace_file = QUALITY_TRACES_DIR / f"{d.isoformat()}.jsonl"
+        if trace_file.exists():
+            records = _parse_json_or_jsonl(trace_file)
+            all_records.extend([r for r in records if isinstance(r, dict) and "_parseError" not in r])
+
+    if not all_records:
+        result = {"status": "ok", "message": "No trace data to analyze. Start teaching sessions to generate tuning suggestions."}
+        if args.output:
+            Path(args.output).write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
+        else:
+            print(json.dumps(result, ensure_ascii=False, indent=2))
+        return 0
+
+    # ── Pattern detection ──
+    suggestions = []
+
+    # 1. Confidence calibration pattern
+    evaluated = [r for r in all_records if r.get("actualOutcome")]
+    if evaluated:
+        confidences = [r["confidence"] for r in evaluated if "confidence" in r]
+        overconf = [r for r in evaluated if r.get("confidence", 0) >= 0.7 and r.get("outcomeMatched") is False]
+        if confidences:
+            avg_conf = sum(confidences) / len(confidences)
+            if avg_conf > 0.8 and len(overconf) > 0:
+                suggestions.append({
+                    "priority": "high",
+                    "section": "TRACE ENFORCEMENT / Close Phase",
+                    "finding": f"Average confidence is {avg_conf:.2f} but {len(overconf)} decisions were overconfident (≥0.7 confidence, outcome failed).",
+                    "suggestion": "Add to SKILL.md: 'When confidence ≥ 0.8, ask yourself: what evidence contradicts my assessment? Lower confidence to 0.6-0.7 unless you have 3+ confirming data points.'",
+                })
+
+    # 2. Phase balance pattern
+    decision_counts = Counter(r.get("decisionType") for r in all_records)
+    diagnose_n = decision_counts.get("diagnose", 0)
+    teach_n = decision_counts.get("teach", 0)
+    evaluate_n = decision_counts.get("evaluate", 0)
+    if diagnose_n > 0 and teach_n == 0:
+        suggestions.append({
+            "priority": "high",
+            "section": "PHASE 4 (Teach)",
+            "finding": f"{diagnose_n} diagnoses but 0 teachings — pure analysis without action.",
+            "suggestion": "Add to SKILL.md Phase 4: 'CRITICAL: If you diagnosed in Phase 2 and planned in Phase 3, you MUST execute Phase 4 (Teach). A diagnosis without a lesson is a broken teaching loop.'",
+        })
+    if teach_n > 0 and evaluate_n == 0:
+        suggestions.append({
+            "priority": "high",
+            "section": "PHASE 5 (Evaluate)",
+            "finding": f"{teach_n} teachings but 0 evaluations — no outcome measurement.",
+            "suggestion": "Add to SKILL.md Phase 5: 'MANDATORY after teaching: ask student for results, score answers, update KC mastery. Skipping evaluation = blind teaching.'",
+        })
+
+    # 3. Student response gap
+    with_student_response = [r for r in all_records if r.get("studentResponse")]
+    if len(with_student_response) == 0:
+        suggestions.append({
+            "priority": "medium",
+            "section": "All Phases",
+            "finding": "No traces include studentResponse — we see the teacher's view but not the student's.",
+            "suggestion": "Add to trace-emit calls: '--student-response \"student said: ...\" --student-engagement high|medium|low'. Capture what the student actually said or did after each teaching action.'",
+        })
+
+    # 4. KC stagnation pattern
+    kc_by_week = {}
+    for r in all_records:
+        week = r.get("timestamp", "")[:10]
+        week_key_str = _iso_week_from_date(week) if week else None
+        if week_key_str:
+            if week_key_str not in kc_by_week:
+                kc_by_week[week_key_str] = set()
+            for kc in r.get("kcTargets", []):
+                kc_by_week[week_key_str].add(kc)
+    # Detect if same KCs repeat every week without cycling
+    all_weeks = sorted(kc_by_week.keys())
+    if len(all_weeks) >= 3:
+        intersection = kc_by_week[all_weeks[0]]
+        for w in all_weeks[1:]:
+            intersection = intersection & kc_by_week[w]
+        if len(intersection) >= 3:
+            suggestions.append({
+                "priority": "medium",
+                "section": "PHASE 2 (Diagnose) / Phase 3 (Plan)",
+                "finding": f"KCs {', '.join(sorted(intersection)[:3])} appear every week — possible stagnation.",
+                "suggestion": "Add to SKILL.md Phase 2: 'If the same KC has been targeted for 3+ consecutive sessions without mastery improvement, flag it as a plateau KC and switch teaching strategy.'",
+            })
+
+    # 5. Schema version migration
+    v1_count = sum(1 for r in all_records if r.get("schemaVersion") == "trace-v1")
+    v2_count = sum(1 for r in all_records if r.get("schemaVersion") == "trace-v2")
+    if v1_count > 0:
+        suggestions.append({
+            "priority": "low",
+            "section": "TRACE ENFORCEMENT",
+            "finding": f"{v1_count} traces still use schema v1 (no outcome evaluation).",
+            "suggestion": "Update all trace-emit calls to use --schema-version trace-v3. Outcome evaluation is required for teaching quality improvement.",
+        })
+
+    result = {
+        "status": "ok",
+        "tracesAnalyzed": len(all_records),
+        "weeksAnalyzed": weeks,
+        "dateRange": f"{(today - timedelta(days=weeks*7-1)).isoformat()} to {today.isoformat()}",
+        "suggestions": suggestions,
+        "nextStep": "Review suggestions above. Apply the high-priority ones to SKILL.md first. Re-run prompt-tune next week to measure improvement.",
+    }
+
+    if args.output:
+        Path(args.output).write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
+    else:
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+    return 0
+
+
+def _iso_week_from_date(date_str: str) -> str | None:
+    """Convert 'YYYY-MM-DD' to 'YYYY-Www'."""
+    try:
+        parts = date_str.split("-")
+        d = date(int(parts[0]), int(parts[1]), int(parts[2]))
+        iso = d.isocalendar()
+        return f"{iso.year}-W{iso.week:02d}"
+    except (ValueError, IndexError):
+        return None
+
+
+def cmd_quality_strategy_compare(args):
+    """Compare teaching strategies by actual outcome rates.
+
+    Groups traces tagged with --strategy, compares outcomeMatched rates,
+    and identifies which strategies work best per KC.
+    """
+    from collections import defaultdict
+    from datetime import timedelta
+
+    weeks = args.weeks
+    today = date.today()
+    filter_kc = args.kc
+
+    # Collect traces
+    all_records = []
+    for i in range(weeks * 7):
+        d = today - timedelta(days=i)
+        trace_file = QUALITY_TRACES_DIR / f"{d.isoformat()}.jsonl"
+        if trace_file.exists():
+            records = _parse_json_or_jsonl(trace_file)
+            all_records.extend([r for r in records if isinstance(r, dict) and "_parseError" not in r])
+
+    # Filter to traces with strategy tag and actualOutcome
+    tagged = [r for r in all_records if r.get("strategy") and r.get("actualOutcome")]
+    if filter_kc:
+        tagged = [r for r in tagged if filter_kc in r.get("kcTargets", [])]
+
+    if len(tagged) < 2:
+        result = {
+            "status": "ok",
+            "message": "Not enough strategy-tagged traces with actualOutcome for comparison. Tag traces with --strategy and include --actual-outcome at close.",
+            "tracesFound": len(tagged),
+        }
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return 0
+
+    # Group by strategy
+    by_strategy = defaultdict(list)
+    for r in tagged:
+        by_strategy[r["strategy"]].append(r)
+
+    strategies = []
+    for strat_name, traces in sorted(by_strategy.items()):
+        total = len(traces)
+        matched = sum(1 for t in traces if t.get("outcomeMatched") is True)
+        failed = sum(1 for t in traces if t.get("outcomeMatched") is False)
+        unknown = total - matched - failed
+        success_rate = matched / max(total - unknown, 1) if (total - unknown) > 0 else None
+        avg_confidence = sum(t.get("confidence", 0) for t in traces) / total if total > 0 else 0
+
+        # Per-KC breakdown
+        kc_results = defaultdict(lambda: {"total": 0, "matched": 0, "failed": 0})
+        for t in traces:
+            for kc in t.get("kcTargets", []):
+                kc_results[kc]["total"] += 1
+                if t.get("outcomeMatched") is True:
+                    kc_results[kc]["matched"] += 1
+                elif t.get("outcomeMatched") is False:
+                    kc_results[kc]["failed"] += 1
+
+        kc_breakdown = {}
+        for kc, counts in sorted(kc_results.items()):
+            kc_evaluated = counts["matched"] + counts["failed"]
+            kc_rate = counts["matched"] / kc_evaluated if kc_evaluated > 0 else None
+            kc_breakdown[kc] = {
+                "total": counts["total"],
+                "successRate": round(kc_rate, 3) if kc_rate is not None else None,
+                "matched": counts["matched"],
+                "failed": counts["failed"],
+            }
+
+        # Student engagement by strategy
+        eng_counts = Counter(t.get("studentEngagement") for t in traces if t.get("studentEngagement"))
+
+        strategies.append({
+            "strategy": strat_name,
+            "totalTraces": total,
+            "successRate": round(success_rate, 3) if success_rate is not None else None,
+            "matched": matched,
+            "failed": failed,
+            "unknown": unknown,
+            "avgConfidence": round(avg_confidence, 3),
+            "perKC": kc_breakdown,
+            "engagement": dict(eng_counts.most_common()),
+        })
+
+    # Determine winner per KC
+    kc_winners = {}
+    all_kcs = set()
+    for s in strategies:
+        all_kcs.update(s["perKC"].keys())
+    for kc in all_kcs:
+        best_strat = None
+        best_rate = -1
+        for s in strategies:
+            kc_data = s["perKC"].get(kc)
+            if kc_data and kc_data["successRate"] is not None and kc_data["successRate"] > best_rate:
+                best_rate = kc_data["successRate"]
+                best_strat = s["strategy"]
+        if best_strat:
+            kc_winners[kc] = {"bestStrategy": best_strat, "successRate": best_rate}
+
+    # Overall winner
+    overall_winner = max(strategies, key=lambda s: s["successRate"] or -1) if strategies else None
+
+    result = {
+        "status": "ok",
+        "strategies": strategies,
+        "kcWinners": kc_winners,
+        "overallBest": {
+            "strategy": overall_winner["strategy"],
+            "successRate": overall_winner["successRate"],
+        } if overall_winner else None,
+        "recommendation": f"Use strategy '{overall_winner['strategy']}' for best outcomes." if overall_winner else "Tag more traces with --strategy to enable comparison.",
+    }
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    return 0
 
 
 def cmd_quality_weekly_digest(args):
@@ -4184,7 +4644,148 @@ def cmd_quality_weekly_digest(args):
     )
     completeness = complete_count / len(all_records) if all_records else 0
 
-    # Write JSON summary
+    # ── v2: calibration analysis ──
+    evaluated = [r for r in all_records if r.get("actualOutcome")]
+    calibrated = 0
+    overconfident = 0
+    underconfident = 0
+    calibration_score_total = 0.0
+    for r in evaluated:
+        conf = r.get("confidence", 0.5)
+        matched = r.get("outcomeMatched")
+        if matched is True:
+            calibration_score_total += conf  # right to be confident
+            calibrated += 1
+        elif matched is False:
+            calibration_score_total += (1 - conf)  # should have been less confident
+            if conf >= 0.7:
+                overconfident += 1
+            else:
+                underconfident += 1
+    cal_score = calibration_score_total / len(evaluated) if evaluated else None
+
+    # ── Trend: compare with previous week ──
+    prev_week_num = week_num - 1
+    prev_year = year
+    if prev_week_num < 1:
+        prev_year -= 1
+        prev_week_num = 52  # approximate — ISO weeks are 52 or 53
+    prev_week_key = f"{prev_year}-W{prev_week_num:02d}"
+    prev_json = QUALITY_RECOMMENDATIONS_DIR / f"weekly-{prev_week_key}.json"
+    trend = None
+    if prev_json.exists():
+        prev = _load_json(prev_json)
+        if prev and prev.get("totalTraces", 0) > 0:
+            delta = len(all_records) - prev["totalTraces"]
+            pct = (delta / prev["totalTraces"]) * 100 if prev["totalTraces"] else 0
+            trend = {
+                "previousWeek": prev_week_key,
+                "previousTotal": prev["totalTraces"],
+                "delta": delta,
+                "deltaPct": round(pct, 1),
+                "direction": "up" if delta > 0 else ("down" if delta < 0 else "flat"),
+            }
+
+    # ── KC heatmap: attention vs gaps ──
+    # Load KC taxonomy to detect neglected KCs
+    kc_taxonomy = _load_json(KC_GRAPH_FILE, {})
+    all_kc_ids = set()
+    if isinstance(kc_taxonomy, dict) and "kcs" in kc_taxonomy:
+        all_kc_ids = {kc.get("id", "") for kc in kc_taxonomy["kcs"] if kc.get("id")}
+    tested_kc_ids = set(kc_counts.keys())
+    neglected_kcs = sorted(all_kc_ids - tested_kc_ids)
+    top_kcs = [{"kc": kc, "count": c} for kc, c in kc_counts.most_common(10)]
+
+    # ── Actionable recommendations ──
+    recommendations = []
+    # Completeness
+    if completeness < 0.8:
+        recommendations.append({
+            "priority": "high",
+            "area": "traceCompleteness",
+            "message": f"Trace completeness is {completeness:.0%} — below 80% threshold. Ensure every phase emits a trace record.",
+        })
+    # Decision balance: diagnose without plan/teach/evaluate is reactive
+    diagnose_n = decision_counts.get("diagnose", 0)
+    plan_n = decision_counts.get("plan", 0)
+    teach_n = decision_counts.get("teach", 0)
+    evaluate_n = decision_counts.get("evaluate", 0)
+    close_n = decision_counts.get("close", 0)
+    if diagnose_n > 0 and (plan_n == 0 or teach_n == 0):
+        recommendations.append({
+            "priority": "high",
+            "area": "decisionBalance",
+            "message": f"{diagnose_n} diagnoses but {plan_n} plans, {teach_n} teachings. Diagnoses without follow-through don't improve student outcomes.",
+        })
+    # Calibration
+    if evaluated and cal_score is not None:
+        if cal_score < 0.6:
+            recommendations.append({
+                "priority": "high",
+                "area": "calibration",
+                "message": f"Calibration score {cal_score:.2f} — teacher confidence is poorly aligned with actual outcomes. Consider lowering confidence or improving diagnosis accuracy.",
+            })
+        if overconfident > 0:
+            recommendations.append({
+                "priority": "medium",
+                "area": "calibration",
+                "message": f"{overconfident} overconfident decisions (confidence ≥ 0.7 but outcome didn't match). Review these traces in the JSON summary.",
+            })
+    # Neglected KCs
+    if neglected_kcs:
+        sample = neglected_kcs[:5]
+        recommendations.append({
+            "priority": "medium",
+            "area": "kcCoverage",
+            "message": f"{len(neglected_kcs)} KCs have never been tested. Examples: {', '.join(sample)}. Consider broadening coverage.",
+        })
+    # Outcome evaluation gaps
+    unevaluated = len(all_records) - len(evaluated)
+    if unevaluated > 0:
+        recommendations.append({
+            "priority": "low",
+            "area": "outcomeEvaluation",
+            "message": f"{unevaluated} traces have no actualOutcome. Use trace-evaluate at session close to close the feedback loop.",
+        })
+
+    # ── TQS: Teacher Quality Score (0-100 composite) ──
+    # Components: calibration(30) + completeness(25) + follow-through(20)
+    #             + outcome-eval(15) + session-hygiene(10)
+    tqs_cal = (cal_score or 0.5) * 30  # 0-30
+    tqs_comp = completeness * 25  # 0-25
+    tqs_follow = (min(teach_n / max(diagnose_n, 1), 1.0)) * 20  # 0-20
+    tqs_outcome = (len(evaluated) / max(len(all_records), 1)) * 15  # 0-15
+    tqs_hygiene = (min(close_n / max(max(diagnose_n, plan_n, teach_n, evaluate_n) / 4, 1), 1.0)) * 10  # 0-10
+    tqs = round(tqs_cal + tqs_comp + tqs_follow + tqs_outcome + tqs_hygiene, 1)
+
+    tqs_breakdown = {
+        "total": tqs,
+        "components": {
+            "calibration": {"score": round(tqs_cal, 1), "weight": 30, "details": f"cal_score={cal_score}" if cal_score else "no evaluated traces"},
+            "completeness": {"score": round(tqs_comp, 1), "weight": 25, "details": f"{completeness:.0%} field coverage"},
+            "followThrough": {"score": round(tqs_follow, 1), "weight": 20, "details": f"teach/diagnose = {teach_n}/{diagnose_n}"},
+            "outcomeEvaluation": {"score": round(tqs_outcome, 1), "weight": 15, "details": f"{len(evaluated)}/{len(all_records)} evaluated"},
+            "sessionHygiene": {"score": round(tqs_hygiene, 1), "weight": 10, "details": f"{close_n} close traces"},
+        },
+    }
+
+    tqs_grade = "A" if tqs >= 80 else ("B" if tqs >= 65 else ("C" if tqs >= 50 else ("D" if tqs >= 35 else "F")))
+    tqs_grade_label = {
+        "A": "Excellent — well-calibrated, complete, high follow-through",
+        "B": "Good — solid teaching with some gaps",
+        "C": "Fair — needs improvement in 2+ areas",
+        "D": "Weak — significant gaps in teaching quality",
+        "F": "Critical — teaching loop is broken, fix fundamentals first",
+    }[tqs_grade]
+
+    if tqs < 50:
+        recommendations.append({
+            "priority": "high",
+            "area": "teacherQuality",
+            "message": f"TQS is {tqs} (Grade {tqs_grade}). Focus on the lowest component scores to improve teaching quality.",
+        })
+
+    # ── Write JSON summary ──
     _ensure_dir(QUALITY_RECOMMENDATIONS_DIR)
     json_path = QUALITY_RECOMMENDATIONS_DIR / f"weekly-{week_key}.json"
     summary = {
@@ -4194,13 +4795,29 @@ def cmd_quality_weekly_digest(args):
         "traceCompleteness": round(completeness, 3),
         "decisionDistribution": dict(decision_counts.most_common()),
         "skillDistribution": dict(skill_counts.most_common()),
-        "topKCs": [{"kc": kc, "count": c} for kc, c in kc_counts.most_common(10)],
+        "topKCs": top_kcs,
+        "neglectedKCs": neglected_kcs[:20],
         "malformedRecords": {k: v for k, v in errors_by_day.items()},
+        "calibration": {
+            "evaluatedTraces": len(evaluated),
+            "calibrationScore": round(cal_score, 3) if cal_score is not None else None,
+            "calibratedCount": calibrated,
+            "overconfidentCount": overconfident,
+            "underconfidentCount": underconfident,
+        },
+        "teacherQualityScore": {
+            "score": tqs,
+            "grade": tqs_grade,
+            "gradeLabel": tqs_grade_label,
+            "breakdown": tqs_breakdown["components"],
+        },
+        "trend": trend,
+        "recommendations": recommendations,
         "generatedAt": _now(),
     }
     _save_json(json_path, summary)
 
-    # Write Markdown report
+    # ── Write Markdown report ──
     md_path = QUALITY_RECOMMENDATIONS_DIR / f"weekly-{week_key}.md"
     lines = [
         f"# Weekly Digest — {week_key}",
@@ -4209,18 +4826,74 @@ def cmd_quality_weekly_digest(args):
         f"## Overview",
         f"- **Total teaching decisions:** {len(all_records)}",
         f"- **Trace completeness:** {completeness:.1%}",
-        f"- **Skills:** {', '.join(f'{k} ({v})' for k, v in skill_counts.most_common())}",
+    ]
+    if trend:
+        dir_icon = "📈" if trend["direction"] == "up" else ("📉" if trend["direction"] == "down" else "➡️")
+        lines.append(f"- **vs last week:** {dir_icon} {trend['deltaPct']:+.1f}% ({trend['delta']:+d} traces)")
+    lines.append(f"- **Skills:** {', '.join(f'{k} ({v})' for k, v in skill_counts.most_common())}")
+    lines.extend([
         "",
         f"## Decision Distribution",
-    ]
+    ])
     for dt, count in decision_counts.most_common():
         lines.append(f"- **{dt}:** {count}")
+    if evaluate_n == 0 and close_n > 0:
+        lines.append("")
+        lines.append("⚠️ **Missing evaluate phase** — sessions close without evaluating outcomes. This breaks the feedback loop.")
+
     lines.extend([
         "",
         f"## Top KCs Tested",
     ])
     for kc, count in kc_counts.most_common(10):
         lines.append(f"- `{kc}`: {count}")
+    if neglected_kcs:
+        lines.extend([
+            "",
+            f"## ⚠️ Neglected KCs ({len(neglected_kcs)} never tested)",
+        ])
+        for kc in neglected_kcs[:10]:
+            lines.append(f"- `{kc}`")
+
+    # Calibration section
+    if evaluated:
+        lines.extend([
+            "",
+            f"## 🎯 Calibration",
+            f"- **Evaluated traces:** {len(evaluated)}/{len(all_records)}",
+            f"- **Calibration score:** {cal_score:.2f}" if cal_score is not None else "- **Calibration score:** N/A",
+        ])
+        if overconfident:
+            lines.append(f"- **Overconfident decisions:** {overconfident} (confidence ≥ 0.7, outcome failed)")
+        if calibrated:
+            lines.append(f"- **Well-calibrated decisions:** {calibrated}")
+
+    # ── TQS section ──
+    tqs_icon = {"A": "🟢", "B": "🔵", "C": "🟡", "D": "🟠", "F": "🔴"}[tqs_grade]
+    lines.extend([
+        "",
+        f"## {tqs_icon} Teacher Quality Score: {tqs}/100 (Grade {tqs_grade})",
+        f"*{tqs_grade_label}*",
+        "",
+        f"| Component | Score | Weight |",
+        f"|-----------|-------|--------|",
+        f"| Calibration | {tqs_breakdown['components']['calibration']['score']}/30 | 30% |",
+        f"| Completeness | {tqs_breakdown['components']['completeness']['score']}/25 | 25% |",
+        f"| Follow-through | {tqs_breakdown['components']['followThrough']['score']}/20 | 20% |",
+        f"| Outcome Eval | {tqs_breakdown['components']['outcomeEvaluation']['score']}/15 | 15% |",
+        f"| Session Hygiene | {tqs_breakdown['components']['sessionHygiene']['score']}/10 | 10% |",
+    ])
+
+    # Recommendations
+    if recommendations:
+        lines.extend([
+            "",
+            f"## 💡 Recommendations",
+        ])
+        for rec in recommendations:
+            prio = {"high": "🔴", "medium": "🟡", "low": "🟢"}.get(rec["priority"], "⚪")
+            lines.append(f"- {prio} **[{rec['area']}]** {rec['message']}")
+
     if errors_by_day:
         lines.extend([
             "",
@@ -4240,6 +4913,7 @@ def cmd_quality_weekly_digest(args):
         "week": week_key,
         "totalTraces": len(all_records),
         "traceCompleteness": round(completeness, 3),
+        "teacherQualityScore": {"score": tqs, "grade": tqs_grade},
         "report": str(md_path),
         "jsonSummary": str(json_path),
     }, ensure_ascii=False, indent=2))
@@ -4392,6 +5066,32 @@ def main():
     p_trace_emit.add_argument("--confidence", type=float, required=True, help="Confidence in [0,1]")
     p_trace_emit.add_argument("--source-version", help="Prompt/policy snapshot version")
     p_trace_emit.add_argument("--run-id", help="Session run ID (auto-generated if omitted)")
+    # v2: closed-loop outcome evaluation
+    p_trace_emit.add_argument("--actual-outcome", help="What actually happened (v2+)")
+    p_trace_emit.add_argument("--outcome-matched", choices=["true", "false"], help="Did outcome match expected? true/false (v2+)")
+    p_trace_emit.add_argument("--outcome-note", help="Why did/didn't the outcome match? (v2+)")
+    p_trace_emit.add_argument("--schema-version", default="trace-v3", choices=["trace-v1", "trace-v2", "trace-v3"], help="Trace schema version")
+    # v3: student response + strategy
+    p_trace_emit.add_argument("--student-response", help="What did the student say or do? (v3)")
+    p_trace_emit.add_argument("--student-engagement", choices=["high", "medium", "low"], help="Student engagement level (v3)")
+    p_trace_emit.add_argument("--student-confusion", help="What specifically confused the student? (v3)")
+    p_trace_emit.add_argument("--strategy", help="Teaching strategy tag for A/B comparison (v3)")
+    p_trace_emit.add_argument("--teacher-transcript", help="Verbatim teacher response text for GEval scoring (v4)")
+
+    # -- trace-evaluate: summarize expected outcomes for a session to guide close evaluation
+    p_trace_eval = p_quality_sub.add_parser("trace-evaluate", help="Summarize expected outcomes for a run to guide close evaluation")
+    p_trace_eval.add_argument("--run-id", required=True, help="Session run ID to evaluate")
+    p_trace_eval.add_argument("--date", help="Date override (default: today)")
+
+    # -- prompt-tune: analyze traces and suggest SKILL.md improvements
+    p_prompt_tune = p_quality_sub.add_parser("prompt-tune", help="Analyze traces and suggest SKILL.md teaching improvements")
+    p_prompt_tune.add_argument("--weeks", type=int, default=4, help="Number of weeks of trace data to analyze (default: 4)")
+    p_prompt_tune.add_argument("--output", help="Write suggestions to file instead of stdout")
+
+    # -- strategy-compare: A/B compare teaching strategies
+    p_strategy = p_quality_sub.add_parser("strategy-compare", help="Compare teaching strategies by outcome")
+    p_strategy.add_argument("--kc", help="Filter to a specific KC ID")
+    p_strategy.add_argument("--weeks", type=int, default=8, help="Number of weeks to analyze (default: 8)")
 
     # -- weekly-digest: aggregate weekly traces into human-readable report
     p_digest = p_quality_sub.add_parser("weekly-digest", help="Generate weekly teaching quality digest from traces")
@@ -4549,6 +5249,12 @@ def main():
             return cmd_quality_gate_acknowledge(args)
         elif args.quality_action == "trace-emit":
             return cmd_quality_trace_emit(args)
+        elif args.quality_action == "trace-evaluate":
+            return cmd_quality_trace_evaluate(args)
+        elif args.quality_action == "prompt-tune":
+            return cmd_quality_prompt_tune(args)
+        elif args.quality_action == "strategy-compare":
+            return cmd_quality_strategy_compare(args)
         elif args.quality_action == "weekly-digest":
             return cmd_quality_weekly_digest(args)
         elif args.quality_action == "budget-validate":
