@@ -264,7 +264,7 @@
     var text = q.text || '';
     var inputHtml = '<input type="text" class="gap-input" name="q' + q.number +
       '" data-question="' + q.number + '" aria-label="Answer for question ' + q.number + '" autocomplete="off" spellcheck="false">';
-    var displayText = text.replace(/___/g, inputHtml);
+    var displayText = text.replace(/_{3,}/g, inputHtml);
 
     var div = document.createElement('div');
     div.className = 'gap-fill-text';
@@ -567,16 +567,8 @@
           isCorrect = acceptable.some(function(a) {
             return a.toLowerCase().trim() === userAnswer.toLowerCase().trim();
           });
-          // Collect for LLM check if local check failed
-          if (!isCorrect && userAnswer !== '(no answer)' && q.correctAnswer) {
-            textMismatches.push({
-              number: q.number,
-              userAnswer: userAnswer,
-              correctAnswer: q.correctAnswer,
-              questionText: q.text || '',
-              instructions: q.instructions || ''
-            });
-          }
+          // NOTE: gap-fill/short-answer = exact match only (IELTS spelling).
+          // No LLM semantic check — synonyms are NOT acceptable.
           break;
 
         case 'matching':

@@ -634,6 +634,7 @@ window.__KC_TAGS__ = {{KC_TAGS}};
     if (ta) writingText = ta.value;
 
     var payload = {
+      skill: 'diagnostic',
       testType: 'diagnostic',
       kcTags: kcTags,
       date: new Date().toISOString(),
@@ -658,7 +659,16 @@ window.__KC_TAGS__ = {{KC_TAGS}};
       body: JSON.stringify(payload)
     })
     .then(function(resp) { if (!resp.ok) throw new Error('Server returned ' + resp.status); return resp.json(); })
-    .then(function() { localStorage.removeItem('pendingDiagnostic'); })
+    .then(function() {
+      localStorage.removeItem('pendingDiagnostic');
+      // Show success banner
+      var banner = document.getElementById('warning-banner');
+      banner.className = 'warning-banner visible';
+      banner.style.background = 'var(--color-success-bg)';
+      banner.style.border = '1px solid var(--color-success)';
+      banner.style.color = 'var(--color-success-text)';
+      banner.innerHTML = '<span>&#10004; Kết quả đã được gửi! Quay lại Claude và nói "chấm bài diagnostic".</span>';
+    })
     .catch(function(err) {
       console.warn('Save failed:', err.message);
       localStorage.setItem('pendingDiagnostic', JSON.stringify(payload));
@@ -692,6 +702,9 @@ window.__KC_TAGS__ = {{KC_TAGS}};
   if (localStorage.getItem('pendingDiagnostic')) {
     document.getElementById('warning-banner').classList.add('visible');
   }
+
+  window.nextSection = nextSection;
+  window.prevSection = prevSection;
 
   renderAll();
   updateNav();

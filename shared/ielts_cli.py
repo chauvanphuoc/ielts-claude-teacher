@@ -107,7 +107,7 @@ REQUIRED_TRACE_FIELDS = {
     "sourceVersion": str,
 }
 
-ALLOWED_SKILLS = {"reading", "listening", "writing", "speaking"}
+ALLOWED_SKILLS = {"general", "reading", "listening", "writing", "speaking"}
 ALLOWED_DECISION_TYPES = {"diagnose", "plan", "teach", "evaluate", "close"}
 ALLOWED_LANES = {"reading", "listening", "writing", "speaking"}
 
