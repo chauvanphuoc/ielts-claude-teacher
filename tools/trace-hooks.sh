@@ -1,5 +1,5 @@
 #!/bin/bash
-# tools/trace-hooks.sh — PostToolUse hook for auto-trace.
+# tools/trace-hooks.sh — PostToolUse hook for auto-trace + GEval.
 #
 # Installed as a PostToolUse hook in .claude/settings.local.json.
 # Reads stdin JSON from Claude Code's hook protocol:
@@ -7,7 +7,9 @@
 #
 # On Bash commands containing "quality trace-emit":
 #   1. Auto-validate the daily trace file
-#   2. If --decision-type close, auto-generate weekly digest
+#   2. If --decision-type close:
+#      a. Auto-generate weekly digest (TQS completeness/calibration)
+#      b. Run GEval pedagogical quality scoring (async, best-effort)
 #
 # Silent exit = no effect on main conversation.
 set -euo pipefail
@@ -38,10 +40,20 @@ if [ -f "$TRACE_FILE" ]; then
     quality trace-validate --file "$TRACE_FILE" >/dev/null 2>/dev/null || true
 fi
 
-# ── If close → auto-generate weekly digest ──
+# ── If close → weekly digest + GEval scoring ──
 if echo "$CMD" | grep -q "close"; then
+  # Weekly digest (completeness/calibration TQS)
   "$PROJECT_DIR/.venv/bin/python3" "$PROJECT_DIR/shared/ielts_cli.py" \
     quality weekly-digest >/dev/null 2>/dev/null || true
+
+  # Extract runId from the command
+  RUN_ID=$(echo "$CMD" | grep -oP '(?<=--run-id )[^ ]+' || echo "")
+
+  # GEval pedagogical scoring (best-effort, sync — ~20s for 3 phases)
+  if [ -n "$RUN_ID" ]; then
+    "$PROJECT_DIR/.venv/bin/python3" "$PROJECT_DIR/evals/eval_teacher.py" \
+      --run-id "$RUN_ID" >/dev/null 2>/dev/null || true
+  fi
 fi
 
 exit 0
