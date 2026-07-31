@@ -23,9 +23,12 @@
 .venv/bin/python3 shared/ielts_cli.py reset-profile --yes
 .venv/bin/python3 shared/ielts_cli.py reset-profile --yes --target-band 6.5  # preserve target band
 
-# HTML Studio (full Cambridge tests)
+# Full Mock Test (4 skills in tabs)
+.venv/bin/python3 shared/ielts_cli.py create-full-test --random
+open http://localhost:8765/test-html/$(ls -t .ielts/test-html/full-test_*.html | head -1 | xargs basename)
+
+# Server (required for all HTML tests)
 .venv/bin/python3 skills/ielts-teacher/server.py &
-open http://localhost:8765/ielts-studio.html
 
 # Speaking evaluation
 .venv/bin/python3 skills/ielts-teacher/pronounce_cli.py --audio .ielts/speaking/latest.webm --json

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{TITLE}}</title>
+<meta name="kc-tags" content="full-mock-test">
+<!--
+  full-test.html — Full Mock Test with 4 skills in iframe tabs.
+  Architecture: parent has tab nav + iframes. Each iframe loads a real
+  test-html section file that handles its own rendering, scoring, LLM
+  fallback, and save-to-server. The parent only manages tab switching
+  and the final "Nộp Bài Thi" signal.
+
+  Placeholders: {{TITLE}} {{SOURCE}}
+    {{READING_URL}} {{LISTENING_URL}} {{SPEAKING_URL}} {{WRITING_URL}}
+-->
+<style>
+:root {
+  --color-bg: #fafaf9;
+  --color-surface: #ffffff;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #6b7280;
+  --color-text-tertiary: #9ca3af;
+  --color-border: #e5e7eb;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-success: #059669;
+  --color-warning: #d97706;
+  --color-error: #dc2626;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --transition: 0.15s ease;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--font-stack);
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* ── Tab Navigation ── */
+.tab-nav {
+  display: flex;
+  background: var(--color-surface);
+  border-bottom: 2px solid var(--color-border);
+  height: 52px;
+  flex-shrink: 0;
+}
+.tab-btn {
+  flex: 1;
+  min-width: 80px;
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--color-text-secondary);
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.tab-btn:hover { color: var(--color-text-primary); background: var(--color-bg); }
+.tab-btn.active { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+.tab-btn .tab-icon { font-size: 15px; }
+
+/* ── Tab Status Bar ── */
+.tab-status-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 16px;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+  height: 28px;
+  flex-shrink: 0;
+}
+.tab-status-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.tab-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-border);
+  transition: background var(--transition);
+}
+.tab-status-dot.done { background: var(--color-success); }
+
+/* ── Iframe Container ── */
+.iframe-container {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+.iframe-panel {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: none;
+}
+.iframe-panel.active { display: block; }
+.iframe-panel iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ── Final Submit ── */
+.final-submit-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 10px 16px;
+  background: var(--color-surface);
+  border-top: 2px solid var(--color-accent);
+  height: 52px;
+  flex-shrink: 0;
+}
+.final-submit-bar .btn-final {
+  padding: 8px 28px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  color: #fff;
+  background: var(--color-accent);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--transition);
+}
+.final-submit-bar .btn-final:hover { background: var(--color-accent-hover); }
+.final-submit-bar .hint {
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+}
+
+/* ── Layout ── */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+</style>
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- Tab Navigation -->
+  <nav class="tab-nav" role="tablist">
+    <button class="tab-btn active" data-tab="reading" role="tab" aria-selected="true">
+      <span class="tab-icon">&#128214;</span> Reading
+    </button>
+    <button class="tab-btn" data-tab="listening" role="tab" aria-selected="false">
+      <span class="tab-icon">&#127911;</span> Listening
+    </button>
+    <button class="tab-btn" data-tab="speaking" role="tab" aria-selected="false">
+      <span class="tab-icon">&#127897;</span> Speaking
+    </button>
+    <button class="tab-btn" data-tab="writing" role="tab" aria-selected="false">
+      <span class="tab-icon">&#9997;</span> Writing
+    </button>
+  </nav>
+
+  <!-- Status Bar -->
+  <div class="tab-status-bar">
+    <span class="tab-status-item"><span class="tab-status-dot" id="dot-reading"></span> Reading</span>
+    <span class="tab-status-item"><span class="tab-status-dot" id="dot-listening"></span> Listening</span>
+    <span class="tab-status-item"><span class="tab-status-dot" id="dot-speaking"></span> Speaking</span>
+    <span class="tab-status-item"><span class="tab-status-dot" id="dot-writing"></span> Writing</span>
+  </div>
+
+  <!-- Iframe Panels -->
+  <div class="iframe-container">
+    <div class="iframe-panel active" id="panel-reading">
+      <iframe src="{{READING_URL}}" id="iframe-reading" title="Reading test"></iframe>
+    </div>
+    <div class="iframe-panel" id="panel-listening">
+      <iframe src="{{LISTENING_URL}}" id="iframe-listening" title="Listening test"></iframe>
+    </div>
+    <div class="iframe-panel" id="panel-speaking">
+      <iframe src="{{SPEAKING_URL}}" id="iframe-speaking" title="Speaking test"></iframe>
+    </div>
+    <div class="iframe-panel" id="panel-writing">
+      <iframe src="{{WRITING_URL}}" id="iframe-writing" title="Writing test"></iframe>
+    </div>
+  </div>
+
+  <!-- Final Submit -->
+  <div class="final-submit-bar">
+    <span style="font-size:12px;color:var(--color-text-secondary);">
+      Complete each tab (submit within each section), then click:
+    </span>
+    <button class="btn-final" id="btn-final">&#127942; Nộp Bài Thi</button>
+    <span class="hint">After submitting, tell Claude: <em>"chấm bài full test"</em></span>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  var currentTab = 'reading';
+
+  // ── Tab Switching ──
+  document.querySelectorAll('.tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var tab = this.getAttribute('data-tab');
+      switchTab(tab);
+    });
+  });
+
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach(function(b) {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
+    var btn = document.querySelector('[data-tab="' + tab + '"]');
+    if (btn) { btn.classList.add('active'); btn.setAttribute('aria-selected', 'true'); }
+
+    document.querySelectorAll('.iframe-panel').forEach(function(p) { p.classList.remove('active'); });
+    var panel = document.getElementById('panel-' + tab);
+    if (panel) panel.classList.add('active');
+
+    currentTab = tab;
+  }
+
+  // ── Listen for save messages from iframes ──
+  // When a test-html file saves successfully, it clears localStorage pending key.
+  // We poll localStorage to detect submitted tabs.
+  function checkSubmittedTabs() {
+    var skills = ['reading', 'listening', 'speaking', 'writing'];
+    skills.forEach(function(skill) {
+      var pending = localStorage.getItem('pendingResults_' + skill + '_section');
+      // If no pending results, the tab was submitted successfully
+      if (!pending) {
+        var dot = document.getElementById('dot-' + skill);
+        if (dot) dot.classList.add('done');
+      }
+    });
+  }
+
+  // Poll every 2 seconds for tab submission status
+  setInterval(checkSubmittedTabs, 2000);
+
+  // ── Final Submit ──
+  var btnFinal = document.getElementById('btn-final');
+  if (btnFinal) {
+    btnFinal.addEventListener('click', function() {
+      var allDone = ['reading','listening','speaking','writing'].every(function(s) {
+        return !localStorage.getItem('pendingResults_' + s + '_section');
+      });
+      if (!allDone) {
+        var notDone = ['reading','listening','speaking','writing'].filter(function(s) {
+          return !!localStorage.getItem('pendingResults_' + s + '_section');
+        });
+        alert('Please submit all sections first.\n\nNot yet submitted: ' + notDone.join(', ') + '\n\nEach tab has its own Submit button — complete each one before clicking Nộp Bài Thi.');
+        return;
+      }
+      btnFinal.disabled = true;
+      btnFinal.textContent = '✓ Submitted!';
+      alert('All 4 sections submitted! ✅\n\nReturn to Claude and say: "chấm bài full test"\n\nYour teacher will read all 4 results and give a comprehensive evaluation.');
+    });
+  }
+
+  // ── Listen for postMessage from iframes (future enhancement) ──
+  window.addEventListener('message', function(event) {
+    if (event.origin !== window.location.origin) return;
+    if (event.data && event.data.type === 'ielts-save' && event.data.skill) {
+      var dot = document.getElementById('dot-' + event.data.skill);
+      if (dot) dot.classList.add('done');
+    }
+  });
+
+})();
+</script>
+
+</body>
+</html>

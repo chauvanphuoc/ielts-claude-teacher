@@ -3,7 +3,7 @@ name: ielts-json-init
 description: |
   Initialize JSON test files from textbook Markdown. Claude reads Cambridge IELTS
   textbook Markdown, parses questions/answers/images/tables, and generates structured
-  JSON files that the HTML studio and Claude conversation mode can consume.
+  JSON files that test-html generation and Claude conversation mode can consume.
   Unified commands: /init-textbook-{reading|listening|speaking|writing} --source {dir}
 metadata:
   version: 2.1.0

@@ -55,7 +55,7 @@
 
       var text = document.createElement('div');
       text.className = 'question-text';
-      text.textContent = q.text;
+      text.innerHTML = q.text;
       div.appendChild(text);
 
       switch (q.type) {

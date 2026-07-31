@@ -49,6 +49,9 @@ SKILL_TEMPLATES = {
     "writing": "writing-section.html",
 }
 
+# ---- Full-test template (outside section-templates dir) --------------
+FULL_TEST_TEMPLATE = PROJECT_ROOT / "skills" / "ielts-teacher" / "templates" / "full-test.html"
+
 # ---- Section key mappings per skill ---------------------------------
 SECTION_KEYS = {
     "listening": {"key": "sections", "num_field": "sectionNumber"},
@@ -504,10 +507,123 @@ def load_section(skill: str, source: str, test_id: str, section_num: int, module
 # ---- Template rendering ---------------------------------------------
 
 def load_template(skill: str) -> str:
+    if skill == "full-test":
+        if not FULL_TEST_TEMPLATE.exists():
+            raise FileNotFoundError(f"Full-test template not found: {FULL_TEST_TEMPLATE}")
+        return FULL_TEST_TEMPLATE.read_text()
     tmpl_path = TEMPLATE_DIR / SKILL_TEMPLATES[skill]
     if not tmpl_path.exists():
         raise FileNotFoundError(f"Template not found: {tmpl_path}")
     return tmpl_path.read_text()
+
+
+# ---- Full Test Generation -------------------------------------------
+
+def select_random_sections(seed: int | None = None) -> dict:
+    """Select 1 random section per skill from the _generated.json index.
+
+    Returns:
+        {"reading": {path, textbook, testNumber, sectionNumber, ...},
+         "listening": {...}, "speaking": {...}, "writing": {...}}
+    """
+    import random as _random
+    rng = _random.Random(seed)
+
+    if not INDEX_FILE.exists():
+        raise FileNotFoundError(
+            f"No _generated.json found at {INDEX_FILE}. "
+            "Generate test-html files first with --all-skills."
+        )
+
+    index = json.loads(INDEX_FILE.read_text())
+    sections = index.get("sections", [])
+    if not sections:
+        raise ValueError("No sections found in _generated.json. Generate test-html files first.")
+
+    # Group by skill
+    by_skill: dict[str, list] = {
+        "reading": [], "listening": [], "speaking": [], "writing": []
+    }
+    for sec in sections:
+        skill = sec.get("skill", "")
+        if skill in by_skill:
+            by_skill[skill].append(sec)
+
+    # Check all skills have at least 1 section
+    missing = [s for s, pool in by_skill.items() if not pool]
+    if missing:
+        raise ValueError(
+            f"No sections found for skills: {', '.join(missing)}. "
+            "Generate test-html files for these skills first."
+        )
+
+    # Random select 1 per skill
+    selected = {}
+    for skill, pool in by_skill.items():
+        selected[skill] = rng.choice(pool)
+
+    return selected
+
+
+def _build_full_test_urls(selected: dict) -> dict:
+    """Build placeholder map for full-test.html iframe template.
+
+    Each value is a URL path like /test-html/cambridge-2_reading_test-1_section-1.html
+    that the server serves from .ielts/test-html/.
+    """
+    placeholders = {}
+
+    sources = set()
+    for sec in selected.values():
+        sources.add(sec.get("textbook", "unknown"))
+    source_str = ", ".join(sorted(sources))
+    placeholders["TITLE"] = f"IELTS Full Mock Test — {source_str}"
+    placeholders["SOURCE"] = source_str
+
+    for skill in ["reading", "listening", "speaking", "writing"]:
+        sec = selected.get(skill)
+        if not sec:
+            placeholders[f"{skill.upper()}_URL"] = ""
+            continue
+        # Build URL from path: .ielts/test-html/filename → /test-html/filename
+        path = sec.get("path", "")
+        if path.startswith(".ielts/"):
+            path = path[len(".ielts/"):]  # → test-html/cambridge-2_reading_test-1_section-1.html
+        url = "/" + path
+        placeholders[f"{skill.upper()}_URL"] = url
+
+    return placeholders
+
+
+def render_full_test(selected: dict) -> str:
+    """Generate a full-test HTML with 4 skills in iframe tabs.
+
+    Args:
+        selected: dict from select_random_sections() with 'path' key per skill.
+
+    Returns:
+        Complete HTML string for the full mock test.
+    """
+    template = load_template("full-test")
+    placeholders = _build_full_test_urls(selected)
+
+    html = template
+    for key, value in placeholders.items():
+        html = html.replace("{{" + key + "}}", value)
+
+    return html
+
+
+def full_test_output_path(selected: dict) -> Path:
+    """Generate output path for a full test file."""
+    textbooks = set()
+    for sec in selected.values():
+        textbooks.add(sec.get("textbook", "unknown"))
+    source_tag = "-".join(sorted(textbooks))
+    ts = _now().replace(":", "").replace("T", "-")[:15]
+    filename = f"full-test_{source_tag}_{ts}.html"
+    _ensure_dir(TEST_HTML_DIR)
+    return TEST_HTML_DIR / filename
 
 
 def render_html(section: NormalizedSection) -> str:
@@ -689,10 +805,10 @@ def main():
     parser.add_argument("--skill",
                         choices=["listening", "reading", "speaking", "writing"],
                         help="Skill to generate test for (required unless --all-skills)")
-    parser.add_argument("--source", required=True,
+    parser.add_argument("--source", default=None,
                         help="Textbook source (e.g., cambridge-1)")
-    parser.add_argument("--test", type=str, help="Test number or ID (required unless --all)")
-    parser.add_argument("--section", type=int, help="Section/Passage/Part/Task number (required unless --all)")
+    parser.add_argument("--test", type=str, default=None, help="Test number or ID (required unless --all or --full-test --random)")
+    parser.add_argument("--section", type=int, default=None, help="Section/Passage/Part/Task number (required unless --all or --full-test --random)")
     parser.add_argument("--module", choices=["academic", "generalTraining"], default="academic",
                         help="Writing module (writing skill only, default: academic)")
     parser.add_argument("--all", action="store_true",
@@ -701,16 +817,31 @@ def main():
                         help="Generate all sections for all skills for the given source")
     parser.add_argument("--force", action="store_true",
                         help="Overwrite existing output files")
+    parser.add_argument("--full-test", action="store_true",
+                        help="Generate a full mock test with 4 skills in tabs (use with --random or specify sections)")
+    parser.add_argument("--random", action="store_true",
+                        help="Randomly select sections for full test (use with --full-test)")
+    parser.add_argument("--seed", type=int, default=None,
+                        help="Random seed for reproducible selection (use with --random)")
     args = parser.parse_args()
 
     # Validate
-    if not args.all_skills and not args.skill:
-        parser.error("--skill is required (or use --all-skills)")
-    if not args.all and not args.all_skills:
+    if args.full_test:
+        # Full-test mode: --random needs no other args; manual needs --source
+        if not args.random and not args.source:
+            parser.error("--source is required for --full-test (or use --random)")
+        if args.random and args.source:
+            print("Note: --source is ignored when using --random (selects from all available textbooks)")
+    else:
+        if not args.source:
+            parser.error("--source is required")
+        if not args.all_skills and not args.skill:
+            parser.error("--skill is required (or use --all-skills, or --full-test --random)")
+    if not args.full_test and not args.all and not args.all_skills:
         if args.test is None:
-            parser.error("--test is required (or use --all)")
+            parser.error("--test is required (or use --all, --full-test --random)")
         if args.section is None:
-            parser.error("--section is required (or use --all)")
+            parser.error("--section is required (or use --all, --full-test --random)")
 
     # ---- Batch mode: all sections per skill ----
     if args.all:
@@ -768,6 +899,46 @@ def main():
         print(f"\nDone: {total} files generated across all skills.")
         print(f"Output: {TEST_HTML_DIR}/")
         print(f"Index:  {INDEX_FILE}")
+        sys.exit(0)
+
+    # ---- Full-test generation mode ----
+    if args.full_test:
+        if args.random:
+            # Random selection from available sections
+            print("Selecting random sections for full mock test...")
+            selected = select_random_sections(seed=args.seed)
+        else:
+            # Manual selection via --source + --test + --section per skill
+            # Default: use the same source for all skills, pick test/section from --test/--section
+            if not args.source:
+                parser.error("--source is required for --full-test (or use --random)")
+            selected = {}
+            for skill in ["reading", "listening", "speaking", "writing"]:
+                selected[skill] = {
+                    "textbook": args.source,
+                    "skill": skill,
+                    "testNumber": args.test if args.test else "1",
+                    "sectionNumber": args.section if args.section else 1,
+                }
+
+        # Show what was selected
+        print("Selected sections:")
+        for skill, sec in selected.items():
+            print(f"  {skill}: {sec.get('textbook','?')} test-{sec.get('testNumber','?')} "
+                  f"section-{sec.get('sectionNumber','?')} — {sec.get('title', sec.get('path', '?'))}")
+
+        try:
+            html = render_full_test(selected)
+            out = full_test_output_path(selected)
+            write_html(out, html, force=args.force)
+            print(f"\nOK  {out}")
+            print(f"    Skills: reading + listening + speaking + writing")
+            print(f"    Open:  open http://localhost:8765/test-html/{out.name}")
+            print(f"    (Ensure server is running: lsof -i :8765 | grep LISTEN || .venv/bin/python3 skills/ielts-teacher/server.py &)")
+            print(f"    After completing all 4 sections, return to Claude and say: chấm bài full test")
+        except Exception as e:
+            print(f"ERROR: {e}", file=sys.stderr)
+            sys.exit(1)
         sys.exit(0)
 
     # ---- Single section mode ----

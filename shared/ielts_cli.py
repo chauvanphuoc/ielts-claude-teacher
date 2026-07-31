@@ -1104,6 +1104,34 @@ def _scan_lesson_html(filepath: Path) -> dict | None:
     if kc_match:
         kc_tags = [t.strip() for t in kc_match.group(1).split(",") if t.strip()]
 
+    # Fallback 1: extract kcTags from window.__TEST_CONFIG__ JavaScript block
+    if not kc_tags:
+        js_kc_match = re.search(
+            r'window\.__TEST_CONFIG__\s*=\s*\{[^}]*?kcTags\s*:\s*\[([^\]]*)\]',
+            content, re.DOTALL
+        )
+        if js_kc_match:
+            raw_tags = js_kc_match.group(1)
+            kc_tags = [
+                t.strip().strip('"').strip("'")
+                for t in raw_tags.split(",")
+                if t.strip().strip('"').strip("'")
+            ]
+
+    # Fallback 2: extract kcTags from window.__KC_TAGS__ = [...] (diagnostic template)
+    if not kc_tags:
+        js_kc_match2 = re.search(
+            r'window\.__KC_TAGS__\s*=\s*\[([^\]]*)\]',
+            content
+        )
+        if js_kc_match2:
+            raw_tags = js_kc_match2.group(1)
+            kc_tags = [
+                t.strip().strip('"').strip("'")
+                for t in raw_tags.split(",")
+                if t.strip().strip('"').strip("'")
+            ]
+
     # Infer skill from KC tags or filename
     skill = "general"
     if kc_tags:
@@ -1935,6 +1963,44 @@ def cmd_migrate_lesson_library():
         "note": "Run 'lesson-library sync' to scan disk for orphaned lessons"
     }, ensure_ascii=False, indent=2))
     return 0
+
+
+def cmd_create_full_test(args):
+    """Generate a full mock test HTML with 4 skills in tabs.
+
+    Usage:
+      .venv/bin/python3 shared/ielts_cli.py create-full-test --random
+      .venv/bin/python3 shared/ielts_cli.py create-full-test --random --seed 42
+    """
+    import sys as _sys
+    _sys.path.insert(0, str(PROJECT_ROOT))
+    from shared.generate_test_html import (
+        select_random_sections, render_full_test, full_test_output_path, write_html
+    )
+
+    try:
+        print("Selecting random sections for full mock test...")
+        selected = select_random_sections(seed=args.seed)
+
+        print("Selected sections:")
+        for skill, sec in selected.items():
+            print(f"  {skill}: {sec.get('textbook', '?')} test-{sec.get('testNumber', '?')} "
+                  f"section-{sec.get('sectionNumber', '?')} — {sec.get('title', sec.get('path', '?'))}")
+
+        html = render_full_test(selected)
+        out = full_test_output_path(selected)
+        write_html(out, html, force=args.force)
+
+        print(f"\nOK  {out}")
+        print(f"    Skills: reading + listening + speaking + writing")
+        print(f"    Open:  open http://localhost:8765/test-html/{out.name}")
+        print(f"    (Ensure server is running: lsof -i :8765 | grep LISTEN || .venv/bin/python3 skills/ielts-teacher/server.py &)")
+        print()
+        print("After completing all 4 sections, return to Claude and say: chấm bài full test")
+        return 0
+    except Exception as e:
+        print(f"ERROR: {e}", file=sys.stderr)
+        return 1
 
 
 def cmd_memory_add(args):
@@ -5170,6 +5236,15 @@ def main():
     p_promote.add_argument("--approved-by", help="Founder approver ID")
     p_promote.add_argument("--promote", action="store_true", help="Activate hard-gate when promotable")
 
+    # create-full-test
+    p_full_test = sub.add_parser("create-full-test", help="Generate a full mock test with 4 skills in tabs")
+    p_full_test.add_argument("--random", action="store_true", default=True,
+                             help="Randomly select sections (default: True)")
+    p_full_test.add_argument("--seed", type=int, default=None,
+                             help="Random seed for reproducible selection")
+    p_full_test.add_argument("--force", action="store_true",
+                             help="Overwrite existing output file")
+
     args = parser.parse_args()
 
     if args.command is None:
@@ -5286,6 +5361,8 @@ def main():
         else:
             print("Usage: ielts_cli.py quality [init|run-manifest|baseline-record|trace-validate|report-only|gateset-register|override-validate|gate-approval-mode|gate-acknowledge|budget-validate|week3-checkpoint|incident-dry-run|artifact-publish|phase-gate|kt-pack-update|weekly-review-log|shadow-dry-run|shadow-weekly-report|schema-compat-check|gate-mode-switch|hard-gate-rehearsal|hard-gate-promotion-check]")
             return 1
+    elif args.command == "create-full-test":
+        return cmd_create_full_test(args)
     elif args.command == "migrate-lesson-library":
         return cmd_migrate_lesson_library()
     else:
