@@ -1,0 +1,19 @@
+/docs/*
+.env
+.DS_Store
+.gitignore
+.claude
+.gstack/
+__pycache__/
+# textbook
+# .ielts/*
+bak/*
+.deepeval/
+docs/*
+
+.ielts/student-profile.json
+.ielts/backup/
+.ielts/speaking/*.webm
+continuous-learning-framework-guide.md
+harness-loop-graph-of-ielts-system.md
+readme-ielts-system.md

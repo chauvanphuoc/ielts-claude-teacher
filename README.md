@@ -85,7 +85,17 @@ python3 -m venv .venv
 .venv/bin/python3 shared/ielts_cli.py init
 .venv/bin/python3 shared/ielts_cli.py validate
 
-# 4. Reply to the user: "✅ IELTS Claude Teacher is installed!
+# 4. Set up environment variables: copy the .env template, then fill in your keys.
+#    The repo ships a template at .env.example — copy it so you don't lose the field names.
+cp .env.example .env
+#    Optional keys, edited in .env:
+#      • Azure Speech (pronunciation assessment for Speaking) — free key at
+#        https://speech.microsoft.com, then set AZURE_SPEECH_KEY and AZURE_SPEECH_REGION.
+#      • LLM API (semantic checking of typed-answer questions) — any OpenAI-compatible
+#        endpoint (OpenAI, DeepSeek…). Set LLM_API_URL, LLM_API_KEY, LLM_MODEL.
+#    Everything is optional — the teacher runs fine with an empty .env.
+
+# 5. Reply to the user: "✅ IELTS Claude Teacher is installed!
 #    Start with /ielts-teacher — your first session runs a 20-question diagnostic."
 ```
 
@@ -157,11 +167,15 @@ python3 -m venv .venv
 # 4. Initialize local data (.ielts/)
 .venv/bin/python3 shared/ielts_cli.py init
 
-# 5. (Optional) Configure Azure Speech for pronunciation assessment
-cat > .env << 'EOF'
-AZURE_SPEECH_KEY=your-key
-AZURE_SPEECH_REGION=your-region
-EOF
+# 5. Set up environment variables: copy the template, then fill in your keys.
+#    The repo ships a template at .env.example — copy it so you don't lose the field names.
+cp .env.example .env
+#    Optional keys, edited in .env:
+#      • Azure Speech (pronunciation assessment for Speaking) — free key at
+#        https://speech.microsoft.com, then set AZURE_SPEECH_KEY and AZURE_SPEECH_REGION.
+#      • LLM API (semantic checking of typed-answer questions) — any OpenAI-compatible
+#        endpoint (OpenAI, DeepSeek…). Set LLM_API_URL, LLM_API_KEY, LLM_MODEL.
+#    Everything is optional — the teacher runs fine with an empty .env. .env is gitignored.
 
 # 6. Verify
 .venv/bin/python3 shared/ielts_cli.py validate
@@ -737,6 +751,7 @@ ielts-claude-teacher/
 |---------|-------|-------------|
 | Teacher language | `.ielts/settings.json` → `language` | `vi` (default), `en`, `zh` |
 | Azure Speech | `.env` → `AZURE_SPEECH_KEY`, `AZURE_SPEECH_REGION` | Enables pronunciation assessment for Speaking |
+| LLM API | `.env` → `LLM_API_URL`, `LLM_API_KEY`, `LLM_MODEL` | Semantic checking for typed-answer questions (OpenAI, DeepSeek…) |
 | Permissions / hooks | `.claude/settings.local.json` | Claude Code allow-lists (e.g. `.venv/bin/python3 *`, `open http://localhost:8765/*`) |
 
 ---
