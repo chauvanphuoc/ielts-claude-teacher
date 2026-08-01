@@ -1,0 +1,9 @@
+{
+  "version": "hard-gate-promotion-v1",
+  "stableCyclesRequired": 3,
+  "traceCompletenessMin": 0.92,
+  "replayPassRateMin": 0.88,
+  "contentFidelityErrorRateMax": 0.03,
+  "minSampleSize": 40,
+  "founderApprovalRequired": true
+}

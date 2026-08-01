@@ -1,0 +1,49 @@
+{
+  "skill": "reading",
+  "kcTags": [
+    "kc-read-detail"
+  ],
+  "testTitle": "Locating Specific Details — Reading Practice",
+  "date": "2026-07-28T10:44:03.953Z",
+  "totalQuestions": 5,
+  "correctCount": 2,
+  "score": 40,
+  "results": [
+    {
+      "number": 1,
+      "correct": true,
+      "userAnswer": "344,400",
+      "correctAnswer": "344,400",
+      "explanation": "Câu đầu tiên của đoạn 1: 'covers an area of approximately 344,400 square kilometers'. Bạn cần tìm đúng con số từ bài đọc."
+    },
+    {
+      "number": 2,
+      "correct": true,
+      "userAnswer": "HMS Endeavour",
+      "correctAnswer": "HMS Endeavour",
+      "explanation": "Đoạn 1: 'when his ship, the HMS Endeavour, ran aground on the reef'. Tên tàu được nêu rõ trong bài."
+    },
+    {
+      "number": 3,
+      "correct": false,
+      "userAnswer": "a",
+      "correctAnswer": "1,500",
+      "explanation": "Đoạn 2: 'more than 1,500 species of fish'. Đây là chi tiết cụ thể bạn cần tìm."
+    },
+    {
+      "number": 4,
+      "correct": false,
+      "userAnswer": "the",
+      "correctAnswer": "1981",
+      "explanation": "Đoạn 2: 'In 1981, UNESCO designated the Great Barrier Reef as a World Heritage Site'. Mốc thời gian được nêu trực tiếp."
+    },
+    {
+      "number": 5,
+      "correct": false,
+      "userAnswer": "the",
+      "correctAnswer": "30%",
+      "explanation": "Đoạn 2: 'A report by the Australian Institute of Marine Science in 2020 found that approximately 30% of the reef's coral had died due to bleaching'. Đây là chi tiết cụ thể cuối bài."
+    }
+  ],
+  "_savedAt": "2026-07-28T10:44:03.958234Z"
+}

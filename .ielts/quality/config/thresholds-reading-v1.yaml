@@ -1,0 +1,12 @@
+version: v1
+lane: reading
+owner: founder
+metrics:
+  replay_pass_rate:
+    min: 0.75
+  trace_completeness:
+    min: 0.80
+  content_fidelity_error_rate:
+    max: 0.05
+  min_sample_size:
+    value: 40

@@ -1,0 +1,86 @@
+{
+  "skill": "listening",
+  "kcTags": [],
+  "testTitle": "Cambridge IELTS 1 — Listening Test 1, Section 1",
+  "source": "cambridge-1",
+  "testNumber": "1",
+  "sectionNumber": 1,
+  "date": "2026-07-31T08:59:14.359Z",
+  "totalQuestions": 10,
+  "correctCount": 0,
+  "score": 0,
+  "results": [
+    {
+      "number": 1,
+      "correct": false,
+      "userAnswer": null,
+      "correctAnswer": "A",
+      "acceptable": []
+    },
+    {
+      "number": 2,
+      "correct": false,
+      "userAnswer": null,
+      "correctAnswer": "C",
+      "acceptable": []
+    },
+    {
+      "number": 3,
+      "correct": false,
+      "userAnswer": null,
+      "correctAnswer": "D",
+      "acceptable": []
+    },
+    {
+      "number": 4,
+      "correct": false,
+      "userAnswer": "B",
+      "correctAnswer": "D",
+      "acceptable": []
+    },
+    {
+      "number": 5,
+      "correct": false,
+      "userAnswer": "B",
+      "correctAnswer": "C",
+      "acceptable": []
+    },
+    {
+      "number": 6,
+      "correct": false,
+      "userAnswer": "",
+      "correctAnswer": "Prescott",
+      "acceptable": []
+    },
+    {
+      "number": 7,
+      "correct": false,
+      "userAnswer": "",
+      "correctAnswer": "41",
+      "acceptable": []
+    },
+    {
+      "number": 8,
+      "correct": false,
+      "userAnswer": "",
+      "correctAnswer": "Fountain",
+      "acceptable": []
+    },
+    {
+      "number": 9,
+      "correct": false,
+      "userAnswer": "",
+      "correctAnswer": "752239",
+      "acceptable": []
+    },
+    {
+      "number": 10,
+      "correct": false,
+      "userAnswer": "",
+      "correctAnswer": "£65",
+      "acceptable": []
+    }
+  ],
+  "testHtmlUrl": "http://localhost:8765/test-html/cambridge-1_listening_test-1_section-1.html",
+  "_savedAt": "2026-07-31T08:59:14.364927Z"
+}

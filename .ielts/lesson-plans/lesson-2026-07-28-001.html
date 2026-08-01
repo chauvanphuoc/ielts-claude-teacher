@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verb Tense Consistency — IELTS Claude Teacher</title>
+<link rel="stylesheet" href="/lessons/shared/base-test.css">
+</head>
+<body>
+
+<div class="container" role="main" aria-label="Verb Tense Consistency">
+
+  <header class="test-header">
+    <div class="test-badge" aria-label="Skill and question type">Writing · Grammar</div>
+    <h1 class="test-title">Verb Tense Consistency</h1>
+    <p class="test-instructions">Chọn đáp án đúng cho mỗi câu. Chú ý đến thì của động từ — câu có thể thuộc Task 1 (biểu đồ) hoặc Task 2 (bài luận).</p>
+  </header>
+
+  <form id="test-form" novalidate aria-label="Practice test questions">
+    <div class="question-group" id="questions-container"></div>
+
+    <div class="submit-area">
+      <button type="submit" class="btn-submit" id="btn-submit">Submit Answers</button>
+      <span class="submit-hint" id="submit-hint">5 questions</span>
+    </div>
+
+    <div class="validation-warning" id="validation-warning" role="alert">
+      Please answer all questions before submitting. <span id="unanswered-count"></span> question(s) remaining.
+    </div>
+  </form>
+
+  <section class="results" id="results" aria-live="polite" aria-label="Test results"></section>
+
+  <div class="warning-banner" id="warning-banner" role="alert">
+    <span>&#9888; Server not running. Results saved locally.</span>
+    <button class="btn-retry" onclick="retrySave()">Start server.py and click Retry</button>
+  </div>
+
+</div>
+
+<script>
+window.__TEST_CONFIG__ = {
+  questions: [
+    {
+      "number": 1,
+      "type": "multiple-choice",
+      "text": "The graph below ___ the number of tourists visiting Vietnam between 2010 and 2020.",
+      "options": [
+        { "label": "A", "text": "is showing" },
+        { "label": "B", "text": "shows" },
+        { "label": "C", "text": "showed" },
+        { "label": "D", "text": "has shown" }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Task 1 mô tả dữ liệu trong quá khứ (2010-2020) → dùng thì quá khứ đơn. 'showed' là đúng. 'shows' là thì hiện tại — không phù hợp với mốc thời gian quá khứ."
+    },
+    {
+      "number": 2,
+      "type": "multiple-choice",
+      "text": "If the government ___ more on education, literacy rates would improve significantly.",
+      "options": [
+        { "label": "A", "text": "will spend" },
+        { "label": "B", "text": "spends" },
+        { "label": "C", "text": "spent" },
+        { "label": "D", "text": "would spend" }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Câu điều kiện loại 2 (unreal present): If + S + V2/ed, S + would + V. 'spent' là đúng. 'will spend' và 'spends' thuộc câu điều kiện loại 1 (real)."
+    },
+    {
+      "number": 3,
+      "type": "multiple-choice",
+      "text": "In 2015, the company ___ a new headquarters in Ho Chi Minh City. Since then, it ___ rapidly.",
+      "options": [
+        { "label": "A", "text": "opened / expanded" },
+        { "label": "B", "text": "has opened / expanded" },
+        { "label": "C", "text": "opened / has expanded" },
+        { "label": "D", "text": "has opened / has expanded" }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Mốc thời gian 'in 2015' (quá khứ cụ thể) → quá khứ đơn 'opened'. 'Since then' (từ đó đến nay) → hiện tại hoàn thành 'has expanded'. Đây là lỗi phổ biến: chuyển đổi thì không nhất quán."
+    },
+    {
+      "number": 4,
+      "type": "multiple-choice",
+      "text": "Some people believe that technology ___ the gap between rich and poor in recent years.",
+      "options": [
+        { "label": "A", "text": "widens" },
+        { "label": "B", "text": "widened" },
+        { "label": "C", "text": "has widened" },
+        { "label": "D", "text": "is widening" }
+      ],
+      "correctAnswer": "C",
+      "explanation": "'In recent years' = từ những năm gần đây đến hiện tại → hiện tại hoàn thành 'has widened'. Đây là collocation điển hình trong Writing Task 2."
+    },
+    {
+      "number": 5,
+      "type": "multiple-choice",
+      "text": "The chart illustrates how much coffee the average American ___ per week. It is projected that this figure ___ to 5 cups by 2030.",
+      "options": [
+        { "label": "A", "text": "drinks / will rise" },
+        { "label": "B", "text": "drank / will rise" },
+        { "label": "C", "text": "drinks / rose" },
+        { "label": "D", "text": "is drinking / rises" }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Phần đầu: sự thật hiện tại → hiện tại đơn 'drinks'. Phần cuối: dự báo tương lai (by 2030) → tương lai đơn 'will rise'. Đây là cấu trúc phổ biến trong Task 1 có projection."
+    }
+  ],
+  kcTags: ["kc-write-gra", "kc-write-gra-tenses"],
+  skill: 'writing',
+  testTitle: 'Verb Tense Consistency',
+  bridgeUrl: 'http://localhost:8765'
+};
+</script>
+
+<script src="/lessons/shared/base-test.js"></script>
+
+</body>
+</html>

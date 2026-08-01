@@ -1,0 +1,160 @@
+{
+  "version": "1.0.0",
+  "totalLessons": 12,
+  "lessons": [
+    {
+      "id": "dashboard-test",
+      "title": "Progress Dashboard",
+      "kcTags": [],
+      "skill": "general",
+      "file": ".ielts/lesson-plans/dashboard-test.html",
+      "createdAt": "2026-07-13T15:18:53Z",
+      "source": "generated",
+      "timesUsed": 0,
+      "lastUsed": null
+    },
+    {
+      "id": "diagnostic-2026-07-27",
+      "title": "Diagnostic Test",
+      "kcTags": [],
+      "skill": "general",
+      "file": ".ielts/lesson-plans/diagnostic-2026-07-27.html",
+      "createdAt": "2026-07-27T09:21:43Z",
+      "source": "generated",
+      "timesUsed": 0,
+      "lastUsed": null
+    },
+    {
+      "id": "diagnostic-20260713",
+      "title": "Diagnostic Test",
+      "kcTags": [],
+      "skill": "general",
+      "file": ".ielts/lesson-plans/diagnostic-20260713.html",
+      "createdAt": "2026-07-13T12:00:00Z",
+      "source": "generated",
+      "timesUsed": 0,
+      "lastUsed": null
+    },
+    {
+      "id": "lesson-2026-07-27-001",
+      "title": "Spelling & Vocabulary — Mini Test",
+      "kcTags": [
+        "kc-listen-spelling",
+        "kc-read-vocab-context"
+      ],
+      "skill": "listening",
+      "file": ".ielts/lesson-plans/lesson-2026-07-27-001.html",
+      "createdAt": "2026-07-27T09:40:03Z",
+      "source": "generated",
+      "timesUsed": 0,
+      "lastUsed": null
+    },
+    {
+      "id": "lesson-2026-07-28-001",
+      "title": "Verb Tense Consistency",
+      "kcTags": [
+        "kc-write-gra",
+        "kc-write-gra-tenses"
+      ],
+      "skill": "writing",
+      "file": ".ielts/lesson-plans/lesson-2026-07-28-001.html",
+      "createdAt": "2026-07-28T09:51:50Z",
+      "source": "generated",
+      "timesUsed": 1,
+      "lastUsed": "2026-07-28"
+    },
+    {
+      "id": "lesson-20260713-001",
+      "title": "T/F/NG Practice — The History of Tea",
+      "kcTags": [],
+      "skill": "general",
+      "file": ".ielts/lesson-plans/lesson-20260713-001.html",
+      "createdAt": "2026-07-13T12:00:00Z",
+      "source": "generated",
+      "timesUsed": 1,
+      "lastUsed": "2026-07-27T09:52:57.875850Z"
+    },
+    {
+      "id": "lesson-writing-001",
+      "title": "Writing Task 2 — Government Spending",
+      "kcTags": [],
+      "skill": "writing",
+      "file": ".ielts/lesson-plans/lesson-writing-001.html",
+      "createdAt": "2026-07-13T16:13:26Z",
+      "source": "generated",
+      "timesUsed": 0,
+      "lastUsed": null
+    },
+    {
+      "id": "lesson-2026-07-28-002",
+      "title": "Complex Sentence Structures",
+      "kcTags": [
+        "kc-write-gra-complex",
+        "kc-write-gra"
+      ],
+      "skill": "writing",
+      "file": ".ielts/lesson-plans/lesson-2026-07-28-002.html",
+      "createdAt": "2026-07-28T10:19:44Z",
+      "source": "generated",
+      "timesUsed": 1,
+      "lastUsed": "2026-07-28",
+      "triggerError": "Complex sentence structures: fragments, wrong relative pronouns, avoiding passive voice"
+    },
+    {
+      "id": "lesson-2026-07-28-003",
+      "title": "Locating Specific Details — Reading Practice",
+      "kcTags": [
+        "kc-read-detail"
+      ],
+      "skill": "reading",
+      "file": ".ielts/lesson-plans/lesson-2026-07-28-003.html",
+      "createdAt": "2026-07-28T10:36:13Z",
+      "source": "generated",
+      "timesUsed": 1,
+      "lastUsed": "2026-07-28",
+      "triggerError": "Locating specific details: scanning for exact keywords instead of paraphrases, missing details in complex sentences"
+    },
+    {
+      "id": "lesson-2026-07-29-001",
+      "title": "Locating Specific Details — Mars Exploration",
+      "kcTags": [
+        "kc-read-detail"
+      ],
+      "skill": "reading",
+      "file": ".ielts/lesson-plans/lesson-2026-07-29-001.html",
+      "createdAt": "2026-07-29T01:15:40Z",
+      "source": "generated",
+      "timesUsed": 1,
+      "lastUsed": "2026-07-29",
+      "triggerError": "Scanning for details: last session student typed filler words instead of finding specific data points"
+    },
+    {
+      "id": "lesson-2026-07-29-002",
+      "title": "Vocabulary in Context — Reading Practice",
+      "kcTags": [
+        "kc-read-vocab-context"
+      ],
+      "skill": "reading",
+      "file": ".ielts/lesson-plans/lesson-2026-07-29-002.html",
+      "createdAt": "2026-07-29T01:22:39Z",
+      "source": "generated",
+      "timesUsed": 1,
+      "lastUsed": "2026-07-29",
+      "triggerError": "Reading vocabulary in context: 75% error rate after 4 attempts, depends on inference (untested)"
+    },
+    {
+      "id": "lesson-2026-07-29-003",
+      "title": "Listening Spelling Practice",
+      "kcTags": [
+        "kc-listen-spelling"
+      ],
+      "skill": "listening",
+      "file": ".ielts/lesson-plans/lesson-2026-07-29-003.html",
+      "createdAt": "2026-07-29T01:51:44Z",
+      "source": "generated",
+      "timesUsed": 0,
+      "lastUsed": null,
+      "triggerError": "Listening spelling: 100% error rate after 3 attempts — common IELTS form-filling vocabulary"
+    }
+  ]
+}

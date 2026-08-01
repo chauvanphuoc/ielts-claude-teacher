@@ -1,0 +1,50 @@
+{
+  "skill": "writing",
+  "kcTags": [
+    "kc-write-gra",
+    "kc-write-gra-tenses"
+  ],
+  "testTitle": "Verb Tense Consistency",
+  "date": "2026-07-28T10:09:40.563Z",
+  "totalQuestions": 5,
+  "correctCount": 3,
+  "score": 60,
+  "results": [
+    {
+      "number": 1,
+      "correct": true,
+      "userAnswer": "C",
+      "correctAnswer": "C",
+      "explanation": "Task 1 mô tả dữ liệu trong quá khứ (2010-2020) → dùng thì quá khứ đơn. 'showed' là đúng. 'shows' là thì hiện tại — không phù hợp với mốc thời gian quá khứ."
+    },
+    {
+      "number": 2,
+      "correct": true,
+      "userAnswer": "C",
+      "correctAnswer": "C",
+      "explanation": "Câu điều kiện loại 2 (unreal present): If + S + V2/ed, S + would + V. 'spent' là đúng. 'will spend' và 'spends' thuộc câu điều kiện loại 1 (real)."
+    },
+    {
+      "number": 3,
+      "correct": true,
+      "userAnswer": "C",
+      "correctAnswer": "C",
+      "explanation": "Mốc thời gian 'in 2015' (quá khứ cụ thể) → quá khứ đơn 'opened'. 'Since then' (từ đó đến nay) → hiện tại hoàn thành 'has expanded'. Đây là lỗi phổ biến: chuyển đổi thì không nhất quán."
+    },
+    {
+      "number": 4,
+      "correct": false,
+      "userAnswer": "D",
+      "correctAnswer": "C",
+      "explanation": "'In recent years' = từ những năm gần đây đến hiện tại → hiện tại hoàn thành 'has widened'. Đây là collocation điển hình trong Writing Task 2."
+    },
+    {
+      "number": 5,
+      "correct": false,
+      "userAnswer": "B",
+      "correctAnswer": "A",
+      "explanation": "Phần đầu: sự thật hiện tại → hiện tại đơn 'drinks'. Phần cuối: dự báo tương lai (by 2030) → tương lai đơn 'will rise'. Đây là cấu trúc phổ biến trong Task 1 có projection."
+    }
+  ],
+  "_savedAt": "2026-07-28T10:09:40.572909Z"
+}

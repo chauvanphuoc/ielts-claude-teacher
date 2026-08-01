@@ -1,0 +1,13 @@
+{
+  "version": "baseline-v1",
+  "createdAt": "2026-07-28T04:57:22Z",
+  "lane": "reading",
+  "metrics": {
+    "traceCompleteness": null,
+    "replayPassRate": null,
+    "contentFidelityErrorRate": null,
+    "mttdHours": null,
+    "mttpHours": null
+  },
+  "notes": "Fill values via quality baseline-record command."
+}

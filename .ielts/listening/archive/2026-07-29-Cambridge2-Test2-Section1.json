@@ -1,0 +1,86 @@
+{
+  "skill": "listening",
+  "kcTags": [],
+  "testTitle": "Cambridge IELTS 2 — Listening Test 2, Section 1",
+  "source": "cambridge-2",
+  "testNumber": 2,
+  "sectionNumber": 1,
+  "date": "2026-07-29T02:21:48.058Z",
+  "totalQuestions": 10,
+  "correctCount": 2,
+  "score": 20,
+  "results": [
+    {
+      "number": 1,
+      "correct": true,
+      "userAnswer": "B",
+      "correctAnswer": "B",
+      "acceptable": []
+    },
+    {
+      "number": 2,
+      "correct": false,
+      "userAnswer": "B",
+      "correctAnswer": "A",
+      "acceptable": []
+    },
+    {
+      "number": 3,
+      "correct": true,
+      "userAnswer": "fridge",
+      "correctAnswer": "fridge/refrigerator",
+      "acceptable": []
+    },
+    {
+      "number": 4,
+      "correct": false,
+      "userAnswer": "",
+      "correctAnswer": "stereo (system)",
+      "acceptable": []
+    },
+    {
+      "number": 5,
+      "correct": false,
+      "userAnswer": "",
+      "correctAnswer": "books",
+      "acceptable": []
+    },
+    {
+      "number": 6,
+      "correct": false,
+      "userAnswer": "",
+      "correctAnswer": "($/dollars) 184",
+      "acceptable": []
+    },
+    {
+      "number": 7,
+      "correct": false,
+      "userAnswer": "Murry",
+      "correctAnswer": "Murray",
+      "acceptable": []
+    },
+    {
+      "number": 8,
+      "correct": false,
+      "userAnswer": "16B",
+      "correctAnswer": "16C",
+      "acceptable": []
+    },
+    {
+      "number": 9,
+      "correct": false,
+      "userAnswer": "",
+      "correctAnswer": "South Hills",
+      "acceptable": []
+    },
+    {
+      "number": 10,
+      "correct": false,
+      "userAnswer": "",
+      "correctAnswer": "English // British",
+      "acceptable": []
+    }
+  ],
+  "testHtmlUrl": "http://localhost:8765/test-html/cambridge-2_listening_test-2_section-1.html",
+  "_savedAt": "2026-07-29T02:21:48.064347Z"
+}

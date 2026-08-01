@@ -1,0 +1,17 @@
+version: v1
+required_fields:
+- overrideId
+- runId
+- requestedBy
+- approver
+- severity
+- justification
+- ticketRef
+- requestedAt
+- expiresAt
+- rollbackPlan
+- postmortemDueAt
+severity_allowed:
+- yellow
+- red
+- emergency

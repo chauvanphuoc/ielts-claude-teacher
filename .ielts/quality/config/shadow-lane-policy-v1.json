@@ -1,0 +1,7 @@
+{
+  "version": "shadow-lane-policy-v1",
+  "lane": "writing",
+  "sampleSliceRatio": 0.3,
+  "minCases": 12,
+  "notes": "Read-only shadow lane sampling policy."
+}

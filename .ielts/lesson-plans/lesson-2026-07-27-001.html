@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spelling & Vocabulary — Mini Test — IELTS Claude Teacher</title>
+<!--
+  mini-test.html — Self-contained template for Claude-generated practice tests.
+  Claude replaces {{PLACEHOLDERS}} with test content, saves to .ielts/lesson-plans/.
+
+  Uses shared base-test.css + base-test.js for design system and app logic.
+
+  Supported question types: true-false-not-given, yes-no-not-given,
+    multiple-choice, gap-fill, matching
+  Posts results to File Bridge POST /save. Falls back to localStorage.
+
+  Design: typography-driven, desktop-first, semantic colors, keyboard accessible.
+-->
+<link rel="stylesheet" href="/lessons/shared/base-test.css">
+</head>
+<body>
+
+<div class="container" role="main" aria-label="Spelling & Vocabulary — Mini Test">
+
+  <!-- ═══════════════ HEADER ═══════════════ -->
+  <header class="test-header">
+    <div class="test-badge" aria-label="Skill and question type">Listening · Spelling · Gap Fill & Multiple Choice</div>
+    <h1 class="test-title">Spelling & Vocabulary — Mini Test</h1>
+    <p class="test-instructions">Câu 1, 2, 5: Điền từ đúng vào chỗ trống (từ field duy nhất). Câu 3, 4: Chọn A, B, C, D.</p>
+  </header>
+
+  <!-- ═══════════════ QUESTIONS ═══════════════ -->
+  <form id="test-form" novalidate aria-label="Practice test questions">
+    <div class="question-group" id="questions-container">
+      <!-- Questions rendered by JS from __TEST_CONFIG__ -->
+    </div>
+
+    <!-- Submit -->
+    <div class="submit-area">
+      <button type="submit" class="btn-submit" id="btn-submit">Submit Answers</button>
+      <span class="submit-hint" id="submit-hint">5 questions questions</span>
+    </div>
+
+    <!-- Validation warning -->
+    <div class="validation-warning" id="validation-warning" role="alert">
+      Please answer all questions before submitting. <span id="unanswered-count"></span> question(s) remaining.
+    </div>
+  </form>
+
+  <!-- Results -->
+  <section class="results" id="results" aria-live="polite" aria-label="Test results"></section>
+
+  <!-- Server warning -->
+  <div class="warning-banner" id="warning-banner" role="alert">
+    <span>&#9888; Server not running. Results saved locally.</span>
+    <button class="btn-retry" onclick="retrySave()">Start server.py and click Retry</button>
+  </div>
+
+</div>
+
+<!-- ═══════════════ TEST DATA ═══════════════ -->
+<script>
+window.__TEST_CONFIG__ = {
+  questions: [{"number": 1, "type": "gap-fill", "text": "The committee reached a final ___ after hours of discussion.", "correctAnswer": "decision", "acceptableAnswers": ["decision"], "kcTag": "kc-listen-spelling", "explanation": "de-ci-sion — 'sion' không phải 'tion' sau nguyên âm."}, {"number": 2, "type": "gap-fill", "text": "The new ___ regulations will take effect next month.", "correctAnswer": "environmental", "acceptableAnswers": ["environmental"], "kcTag": "kc-listen-spelling", "explanation": "en-vi-ron-men-tal — lỗi thường gặp: 'enviornmental' (thiếu chữ 'n')."}, {"number": 3, "type": "multiple-choice", "text": "The research team ___ significant resources to this project over three years.", "options": [{"label": "A", "text": "allocated"}, {"label": "B", "text": "reduced"}, {"label": "C", "text": "removed"}, {"label": "D", "text": "estimated"}], "correctAnswer": "A", "kcTag": "kc-read-vocab-context", "explanation": "'Allocated' = phân bổ. Resources được 'allocated to a project' là collocation chuẩn."}, {"number": 4, "type": "multiple-choice", "text": "Environmental groups urge the government to take ___ action to protect forests.", "options": [{"label": "A", "text": "immediate"}, {"label": "B", "text": "imaginative"}, {"label": "C", "text": "inclusive"}, {"label": "D", "text": "industrial"}], "correctAnswer": "A", "kcTag": "kc-read-vocab-context", "explanation": "'Immediate action' = hành động ngay lập tức. Collocation phổ biến trong văn bản môi trường."}, {"number": 5, "type": "gap-fill", "text": "Over a thousand ___ from 30 countries attended the international conference.", "correctAnswer": "participants", "acceptableAnswers": ["participants"], "kcTag": "kc-listen-spelling", "explanation": "par-ti-ci-pants — không phải 'particpants' (thiếu 'i') hay 'partisipants' (sai 'c' thành 's')."}],
+  kcTags: ["kc-listen-spelling", "kc-read-vocab-context"],
+  skill: 'listening',
+  testTitle: 'Spelling & Vocabulary — Mini Test',
+  bridgeUrl: 'http://localhost:8765'
+};
+</script>
+
+<!-- ═══════════════ SHARED APP LOGIC ═══════════════ -->
+<script src="/lessons/shared/base-test.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Locating Specific Details — Mars Exploration</title>
+<meta name="kc-tags" content='["kc-read-detail"]'>
+<link rel="stylesheet" href="/lessons/shared/base-test.css">
+</head>
+<body>
+
+<div class="container" role="main" aria-label="Locating Specific Details — Mars Exploration">
+
+  <header class="test-header">
+    <div class="test-badge" aria-label="Skill and question type">Reading · Short Answer</div>
+    <h1 class="test-title">Locating Specific Details — Mars Exploration</h1>
+    <p class="test-instructions">Đọc đoạn văn bên dưới và trả lời 5 câu hỏi. Mỗi câu hỏi yêu cầu bạn tìm một thông tin cụ thể được đề cập TRỰC TIẾP trong bài — không cần suy luận. Trả lời KHÔNG QUÁ HAI TỪ VÀ/HOẶC MỘT SỐ.</p>
+  </header>
+
+  <!-- Passage -->
+  <section class="reading-passage" style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:20px;margin-bottom:24px;font-size:15px;line-height:1.7;">
+    <h2 style="font-size:16px;font-weight:600;color:#1e293b;margin:0 0 12px 0;">Mars Exploration Milestones</h2>
+    <p>The exploration of Mars has been a significant focus of space agencies worldwide. NASA's Perseverance rover successfully landed on Mars in February 2021, carrying with it the Ingenuity helicopter, which made history as the first powered aircraft to fly on another planet. The journey from Earth to Mars took approximately seven months, covering a distance of about 480 million kilometers. Perseverance's primary mission is to search for signs of ancient microbial life, focusing its efforts on the Jezero Crater, a site believed to have been a lake billions of years ago.</p>
+    <p>As of 2024, Perseverance had collected 23 rock core samples from the Martian surface, each carefully sealed in titanium tubes for potential future return to Earth. The total cost of the Perseverance mission was approximately $2.7 billion. Meanwhile, China's Tianwen-1 mission, which arrived at Mars in the same month as Perseverance, successfully deployed the Zhurong rover, making China the third nation to land on Mars after the United States and the Soviet Union. India's Mars Orbiter Mission, also known as Mangalyaan, was notable for its remarkably low budget of approximately $74 million, making it one of the most cost-effective interplanetary missions ever attempted.</p>
+  </section>
+
+  <form id="test-form" novalidate aria-label="Practice test questions">
+    <div class="question-group" id="questions-container">
+      <!-- Questions rendered by JS from __TEST_CONFIG__ -->
+    </div>
+
+    <div class="submit-area">
+      <button type="submit" class="btn-submit" id="btn-submit">Submit Answers</button>
+      <span class="submit-hint" id="submit-hint">5 questions</span>
+    </div>
+
+    <div class="validation-warning" id="validation-warning" role="alert">
+      Please answer all questions before submitting. <span id="unanswered-count"></span> question(s) remaining.
+    </div>
+  </form>
+
+  <section class="results" id="results" aria-live="polite" aria-label="Test results"></section>
+
+  <div class="warning-banner" id="warning-banner" role="alert">
+    <span>⚠️ Server not running. Results saved locally.</span>
+    <button class="btn-retry" onclick="retrySave()">Start server.py and click Retry</button>
+  </div>
+
+</div>
+
+<script>
+window.__TEST_CONFIG__ = {
+  questions: [
+    {
+      "number": 1,
+      "type": "short-answer",
+      "text": "NASA's Perseverance rover landed on Mars in ___.",
+      "correctAnswer": "February 2021",
+      "acceptableAnswers": ["February 2021", "Feb 2021", "Februar 2021"],
+      "explanation": "Đoạn 1: 'NASA's Perseverance rover successfully landed on Mars in February 2021'. Thời gian được nêu trực tiếp."
+    },
+    {
+      "number": 2,
+      "type": "short-answer",
+      "text": "The journey from Earth to Mars took approximately ___ months.",
+      "correctAnswer": "seven",
+      "acceptableAnswers": ["seven", "7", "seven months"],
+      "explanation": "Đoạn 1: 'The journey from Earth to Mars took approximately seven months'. Số tháng được nêu rõ."
+    },
+    {
+      "number": 3,
+      "type": "short-answer",
+      "text": "The distance between Earth and Mars is about ___ million kilometers.",
+      "correctAnswer": "480",
+      "acceptableAnswers": ["480", "480 million"],
+      "explanation": "Đoạn 1: 'covering a distance of about 480 million kilometers'. Chi tiết về khoảng cách được nêu trực tiếp."
+    },
+    {
+      "number": 4,
+      "type": "short-answer",
+      "text": "Perseverance had collected ___ rock core samples as of 2024.",
+      "correctAnswer": "23",
+      "acceptableAnswers": ["23", "twenty-three", "twenty three"],
+      "explanation": "Đoạn 2: 'As of 2024, Perseverance had collected 23 rock core samples'. Số lượng mẫu đá được nêu rõ."
+    },
+    {
+      "number": 5,
+      "type": "short-answer",
+      "text": "India's Mars Orbiter Mission had a budget of approximately $___ million.",
+      "correctAnswer": "74",
+      "acceptableAnswers": ["74", "74 million", "74 million dollars"],
+      "explanation": "Đoạn 2: 'India's Mars Orbiter Mission... remarkably low budget of approximately $74 million'. Số liệu chi phí được nêu trực tiếp."
+    }
+  ],
+  kcTags: ["kc-read-detail"],
+  skill: "reading",
+  testTitle: "Locating Specific Details — Mars Exploration",
+  bridgeUrl: "http://localhost:8765"
+};
+</script>
+
+<script src="/lessons/shared/base-test.js"></script>
+
+</body>
+</html>

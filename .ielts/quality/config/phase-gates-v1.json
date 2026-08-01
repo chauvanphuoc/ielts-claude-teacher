@@ -1,0 +1,10 @@
+{
+  "version": "phase-gates-v1",
+  "phases": [
+    "w1",
+    "w2",
+    "w3",
+    "w4"
+  ],
+  "notes": "Complete phases sequentially."
+}

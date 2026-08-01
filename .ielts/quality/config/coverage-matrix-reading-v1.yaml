@@ -1,0 +1,16 @@
+version: v1
+lane: reading
+kc_buckets:
+    inference:
+        min_pass_rate: 0.70
+        min_cases: 5
+    detail:
+        min_pass_rate: 0.72
+        min_cases: 5
+question_types:
+    tfng:
+        min_pass_rate: 0.70
+        min_cases: 5
+    matching:
+        min_pass_rate: 0.70
+        min_cases: 5

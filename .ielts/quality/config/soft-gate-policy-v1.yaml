@@ -1,0 +1,4 @@
+version: v1
+lane: reading
+approval_mode: founder_approval
+notes: yellow/red soft-gate handling mode

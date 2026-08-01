@@ -1,0 +1,12 @@
+version: v1
+            lane: reading
+            max_cases_per_run: 60
+            memory_ceiling_mb: 1024
+            concurrency_limit: 4
+            stage_timeouts_sec:
+            setup: 60
+            replay: 900
+            evaluate: 300
+            gate: 60
+            recommendation: 60
+            

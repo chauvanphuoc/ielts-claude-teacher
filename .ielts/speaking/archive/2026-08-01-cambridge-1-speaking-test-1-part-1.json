@@ -1,0 +1,95 @@
+{
+  "skill": "speaking",
+  "source": "cambridge-1",
+  "testNumber": 1,
+  "sectionNumber": 1,
+  "partType": "interview",
+  "topic": "Hobbies and Free Time",
+  "instructions": "Answer these questions about your hobbies and how you spend your free time.",
+  "date": "2026-08-01T01:59:32.688Z",
+  "status": "completed",
+  "testTitle": "Cambridge IELTS 1 — Speaking Test 1, Part 1",
+  "testHtmlUrl": "http://localhost:8765/test-html/cambridge-1_speaking_test-1_section-1.html",
+  "notes": "In my free time, I usually listen to V-pop music, scroll through TikTok, or play badminton with my neighbors to unwind after stressful classes. Honestly, high school students in Vietnam are quite overwhelmed with school schedules and extra classes, so my spare time is pretty limited. When I do have a moment to breathe, I prefer doing light activities that help me recharge my energy.\n\nCurrently, I am not a member of any official clubs or societies because my top priority is preparing for the grueling National High School Graduation Exam. My school does have English and sports clubs, but joining them requires a fixed time commitment that I cannot afford right now. Instead, I choose to participate in short-term volunteer activities organized by the Ho Chi Minh Communist Youth Union at my school when my timetable allows.\n\nIt really depends on my mood, but most of the time, I prefer spending my free time with other people. Going to a local coffee shop to study and chat with my close friends, or playing sports with my peers, makes me feel connected and less stressed. However, after a long, exhausting day of exam preparation, I also cherish a few quiet hours alone in my room just to read a comic book or listen to my favorite songs.",
+  "questionResults": [
+    {
+      "questionIndex": 0,
+      "questionText": "What do you like to do in your free time?",
+      "transcript": "In my free time I usually listen to bebop music grossing through TikTok or play badminton with my neighbor who and why after stressful class honestly High school student in Vietnam are quite of school schedule at church class so my bedtime Bradley Limited when I do have a moment to pray I prefer doing live activity that help me recharge my",
+      "duration": 37,
+      "azureScores": {
+        "pronScore": 0.72,
+        "accuracy": 0.78,
+        "fluency": 0.86,
+        "completeness": 1,
+        "transcript": "In my free time I usually listen to bebop music crossing through that hard or blade pigment and with my neighbor who and why after stressful glass daily high school student in Vietnam acquired over grand with school schedule and it charged glass so much better. He pretty limited when I do have a moment to breath."
+      },
+      "azureError": null
+    },
+    {
+      "questionIndex": 1,
+      "questionText": "Are you a member of any clubs or societies? Why or why not?",
+      "transcript": "Currently I'm not a member Of any official club society because my top priority is preparing for the grueling national high school graduation same My school they have English as boss club joining them require a fixed commitment that I cannot afford right now instead I due to participate in Stoughton warranty activity organized by the Homan city community union at my school when my time I will allow",
+      "duration": 45,
+      "azureScores": {
+        "pronScore": 0.761,
+        "accuracy": 0.82,
+        "fluency": 0.85,
+        "completeness": 1,
+        "transcript": "Currently, I'm not a member of any officer, club or society be 'cause my top priority is preparing for the grueling national high school graduates in the same school that have English as BASF loved. But joining them require a fixed time commitment that I cannot afford right now. Instead, I tool too."
+      },
+      "azureError": null
+    },
+    {
+      "questionIndex": 2,
+      "questionText": "Do you prefer spending your free time alone or with other people?",
+      "transcript": "Do you prefer spend your free time allow always other people no",
+      "duration": 8,
+      "azureScores": {
+        "pronScore": 0.803,
+        "accuracy": 0.87,
+        "fluency": 0.95,
+        "completeness": 1,
+        "transcript": "Do you prefer spend your free time alone or with other people? No."
+      },
+      "azureError": null
+    },
+    {
+      "questionIndex": 3,
+      "questionText": "What hobbies are popular among young people in your country?",
+      "transcript": "The hip-hop the popular heart among young people in my country badminton are Speaking English club",
+      "duration": 19,
+      "azureScores": {
+        "pronScore": 0.726,
+        "accuracy": 0.8,
+        "fluency": 0.79,
+        "completeness": 1,
+        "transcript": "The hop people, the hop in the popular heart, he among young people in my country is a badminton are speaking English club."
+      },
+      "azureError": null
+    },
+    {
+      "questionIndex": 4,
+      "questionText": "Have you ever organised a social event or activity with a group of people?",
+      "transcript": "Have you ever organized a social event or activity with a group of people now",
+      "duration": 9,
+      "azureScores": {
+        "pronScore": 0.775,
+        "accuracy": 0.85,
+        "fluency": 0.9,
+        "completeness": 1,
+        "transcript": "Have you ever organize a social event or activity with a group of people? No."
+      },
+      "azureError": null
+    }
+  ],
+  "_llmGuidance": "The student completed 5 speaking questions for Part 1 — Interview on \"Hobbies and Free Time\". Evaluate overall: fluency (grammar range, coherence), lexical resource (vocabulary variety), pronunciation (clarity, stress, intonation), and discourse management (relevance, development). Each question has individual Azure pronunciation scores for reference. Provide a band score estimate (0-9) and specific, actionable improvement suggestions.",
+  "_overallAzureScores": {
+    "pronScore": 1,
+    "accuracy": 1,
+    "fluency": 1,
+    "completeness": 1,
+    "count": 5
+  },
+  "_savedAt": "2026-08-01T01:59:32.695204Z"
+}

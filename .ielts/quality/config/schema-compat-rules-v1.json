@@ -1,0 +1,41 @@
+{
+  "version": "schema-compat-rules-v1",
+  "artifacts": {
+    "trace": {
+      "versionField": "schemaVersion",
+      "currentVersion": "trace-v1",
+      "allowedVersions": [
+        "trace-v1"
+      ],
+      "requiredFields": [
+        "action",
+        "confidence",
+        "decisionType",
+        "evidenceRefs",
+        "expectedOutcome",
+        "kcTargets",
+        "rubricRefs",
+        "runId",
+        "schemaVersion",
+        "skill",
+        "sourceVersion",
+        "timestamp"
+      ]
+    },
+    "eval": {
+      "versionField": "version",
+      "currentVersion": "eval-summary-v1",
+      "allowedVersions": [
+        "eval-summary-v1"
+      ],
+      "requiredFields": [
+        "version",
+        "runId",
+        "lane",
+        "recordedAt",
+        "metrics",
+        "checks"
+      ]
+    }
+  }
+}

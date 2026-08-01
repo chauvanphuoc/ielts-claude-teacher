@@ -1,0 +1,185 @@
+{
+  "testType": "diagnostic",
+  "kcTags": [
+    "kc-read-tfng",
+    "kc-listen-spelling",
+    "kc-read-vocab-context",
+    "kc-write-gra",
+    "kc-write-gra-tenses",
+    "kc-write-gra-complex",
+    "kc-write-tr",
+    "kc-write-cc"
+  ],
+  "date": "2026-07-27T09:12:14.039Z",
+  "totalQuestions": 15,
+  "correctCount": 6,
+  "score": 40,
+  "sectionScores": {
+    "section1": {
+      "correct": 2,
+      "total": 5
+    },
+    "section2": {
+      "correct": 0,
+      "total": 5
+    },
+    "section3": {
+      "correct": 4,
+      "total": 5
+    }
+  },
+  "results": [
+    {
+      "number": 1,
+      "section": 1,
+      "type": "tfng",
+      "correct": false,
+      "userAnswer": "TRUE",
+      "correctAnswer": "FALSE",
+      "kcTag": "kc-read-tfng",
+      "explanation": "The passage says 'up to 2°C' — this indicates a maximum, not an exact figure."
+    },
+    {
+      "number": 2,
+      "section": 1,
+      "type": "tfng",
+      "correct": false,
+      "userAnswer": "FALSE",
+      "correctAnswer": "NOT GIVEN",
+      "kcTag": "kc-read-tfng",
+      "explanation": "The passage mentions only one study from 2020. We do not know what all studies have found."
+    },
+    {
+      "number": 3,
+      "section": 1,
+      "type": "tfng",
+      "correct": true,
+      "userAnswer": "TRUE",
+      "correctAnswer": "TRUE",
+      "kcTag": "kc-read-tfng",
+      "explanation": "The passage says 'people living within 300 metres of a park reported significantly lower levels of anxiety'."
+    },
+    {
+      "number": 4,
+      "section": 1,
+      "type": "tfng",
+      "correct": true,
+      "userAnswer": "TRUE",
+      "correctAnswer": "TRUE",
+      "kcTag": "kc-read-tfng",
+      "explanation": "'Wealthier neighbourhoods typically have more and better-maintained parks than lower-income areas' confirms this."
+    },
+    {
+      "number": 5,
+      "section": 1,
+      "type": "tfng",
+      "correct": false,
+      "userAnswer": "TRUE",
+      "correctAnswer": "NOT GIVEN",
+      "kcTag": "kc-read-tfng",
+      "explanation": "The passage mentions 'green equity' but does not state the author's personal opinion on housing developments."
+    },
+    {
+      "number": 6,
+      "section": 2,
+      "type": "gap-fill",
+      "correct": false,
+      "userAnswer": "residents",
+      "correctAnswer": "population",
+      "kcTag": "kc-listen-spelling",
+      "explanation": "'Population' refers to the number of people living in a city."
+    },
+    {
+      "number": 7,
+      "section": 2,
+      "type": "gap-fill",
+      "correct": false,
+      "userAnswer": "environment",
+      "correctAnswer": "concerns",
+      "kcTag": "kc-listen-spelling",
+      "explanation": "'Concerns' (plural) is the common collocation with 'expressed serious'."
+    },
+    {
+      "number": 8,
+      "section": 2,
+      "type": "gap-fill",
+      "correct": false,
+      "userAnswer": "science",
+      "correctAnswer": "development",
+      "kcTag": "kc-read-vocab-context",
+      "explanation": "'Development', 'advancement', or 'evolution' all fit here."
+    },
+    {
+      "number": 9,
+      "section": 2,
+      "type": "gap-fill",
+      "correct": false,
+      "userAnswer": "daily",
+      "correctAnswer": "regularly",
+      "kcTag": "kc-read-vocab-context",
+      "explanation": "Adverbs like 'regularly', 'consistently', or 'frequently' describe repeated attendance."
+    },
+    {
+      "number": 10,
+      "section": 2,
+      "type": "gap-fill",
+      "correct": false,
+      "userAnswer": "supports",
+      "correctAnswer": "measures",
+      "kcTag": "kc-read-vocab-context",
+      "explanation": "'Measures', 'solutions', 'policies' or 'initiatives' all work in this context."
+    },
+    {
+      "number": 11,
+      "section": 3,
+      "type": "mcq",
+      "correct": true,
+      "userAnswer": "B",
+      "correctAnswer": "B",
+      "kcTag": "kc-write-gra-tenses",
+      "explanation": "Third conditional: 'If + had + past participle, would have + past participle'."
+    },
+    {
+      "number": 12,
+      "section": 3,
+      "type": "mcq",
+      "correct": true,
+      "userAnswer": "C",
+      "correctAnswer": "C",
+      "kcTag": "kc-write-gra",
+      "explanation": "'The number of' takes a singular verb ('has'), while 'a number of' takes plural ('have')."
+    },
+    {
+      "number": 13,
+      "section": 3,
+      "type": "mcq",
+      "correct": true,
+      "userAnswer": "C",
+      "correctAnswer": "C",
+      "kcTag": "kc-write-gra",
+      "explanation": "'Who' is the subject relative pronoun for people. 'Whom' is for objects."
+    },
+    {
+      "number": 14,
+      "section": 3,
+      "type": "mcq",
+      "correct": false,
+      "userAnswer": "A",
+      "correctAnswer": "B",
+      "kcTag": "kc-write-gra-complex",
+      "explanation": "'Not only' at the start of a clause triggers inversion: auxiliary verb + subject + main verb."
+    },
+    {
+      "number": 15,
+      "section": 3,
+      "type": "mcq",
+      "correct": true,
+      "userAnswer": "B",
+      "correctAnswer": "B",
+      "kcTag": "kc-write-gra",
+      "explanation": "In non-defining relative clauses (with commas), use 'which', not 'that'."
+    }
+  ],
+  "writingSample": "Balancing national budgets between essential public services and the arts is a critical decision for any government. I strongly agree that state funding must prioritize education and healthcare over cultural projects, as they form the bedrock of society.First, health and education directly determine a nation's economic productivity. A healthy, well-educated workforce drives innovation, reduces poverty, and ensures long-term economic growth. Without stable schools and hospitals, a society cannot thrive.Second, prioritizing these public services promotes social equality. While arts programs like museums and theaters often benefit a smaller, privileged urban demographic, quality schooling and medical care support everyone, especially vulnerable low-income families.However, arts should not be entirely abandoned. Cultural projects can rely more on private sponsorships and corporate funding. Ultimately, since government resources are limited, life-saving healthcare and foundational education must always come first.\n",
+  "_savedAt": "2026-07-27T09:15:50.944379Z"
+}

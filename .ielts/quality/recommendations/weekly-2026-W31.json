@@ -1,0 +1,80 @@
+{
+  "week": "2026-W31",
+  "range": "2026-07-27 to 2026-08-02",
+  "totalTraces": 3,
+  "traceCompleteness": 1.0,
+  "decisionDistribution": {
+    "diagnose": 3
+  },
+  "skillDistribution": {
+    "reading": 1,
+    "writing": 1,
+    "listening": 1
+  },
+  "topKCs": [
+    {
+      "kc": "kc-read-tfng",
+      "count": 3
+    }
+  ],
+  "neglectedKCs": [],
+  "malformedRecords": {},
+  "calibration": {
+    "evaluatedTraces": 0,
+    "calibrationScore": null,
+    "calibratedCount": 0,
+    "overconfidentCount": 0,
+    "underconfidentCount": 0
+  },
+  "teacherQualityScore": {
+    "score": 40.0,
+    "grade": "D",
+    "gradeLabel": "Weak — significant gaps in teaching quality",
+    "breakdown": {
+      "calibration": {
+        "score": 15.0,
+        "weight": 30,
+        "details": "no evaluated traces"
+      },
+      "completeness": {
+        "score": 25.0,
+        "weight": 25,
+        "details": "100% field coverage"
+      },
+      "followThrough": {
+        "score": 0.0,
+        "weight": 20,
+        "details": "teach/diagnose = 0/3"
+      },
+      "outcomeEvaluation": {
+        "score": 0.0,
+        "weight": 15,
+        "details": "0/3 evaluated"
+      },
+      "sessionHygiene": {
+        "score": 0.0,
+        "weight": 10,
+        "details": "0 close traces"
+      }
+    }
+  },
+  "trend": null,
+  "recommendations": [
+    {
+      "priority": "high",
+      "area": "decisionBalance",
+      "message": "3 diagnoses but 0 plans, 0 teachings. Diagnoses without follow-through don't improve student outcomes."
+    },
+    {
+      "priority": "low",
+      "area": "outcomeEvaluation",
+      "message": "3 traces have no actualOutcome. Use trace-evaluate at session close to close the feedback loop."
+    },
+    {
+      "priority": "high",
+      "area": "teacherQuality",
+      "message": "TQS is 40.0 (Grade D). Focus on the lowest component scores to improve teaching quality."
+    }
+  ],
+  "generatedAt": "2026-07-28T04:57:22Z"
+}

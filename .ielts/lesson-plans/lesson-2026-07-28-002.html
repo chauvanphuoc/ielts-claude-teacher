@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complex Sentence Structures — IELTS Claude Teacher</title>
+<meta name="kc-tags" content='["kc-write-gra-complex", "kc-write-gra"]'>
+<link rel="stylesheet" href="/lessons/shared/base-test.css">
+</head>
+<body>
+
+<div class="container" role="main" aria-label="Complex Sentence Structures">
+
+  <header class="test-header">
+    <div class="test-badge" aria-label="Skill and question type">Writing · Grammar · Complex Sentences</div>
+    <h1 class="test-title">Complex Sentence Structures</h1>
+    <p class="test-instructions">Chọn đáp án đúng nhất cho mỗi câu hỏi. Các câu hỏi kiểm tra khả năng sử dụng câu phức trong IELTS Writing.</p>
+  </header>
+
+  <form id="test-form" novalidate aria-label="Practice test questions">
+    <div class="question-group" id="questions-container">
+    </div>
+
+    <div class="submit-area">
+      <button type="submit" class="btn-submit" id="btn-submit">Submit Answers</button>
+      <span class="submit-hint" id="submit-hint">5 questions</span>
+    </div>
+
+    <div class="validation-warning" id="validation-warning" role="alert">
+      Please answer all questions before submitting. <span id="unanswered-count"></span> question(s) remaining.
+    </div>
+  </form>
+
+  <section class="results" id="results" aria-live="polite" aria-label="Test results"></section>
+
+  <div class="warning-banner" id="warning-banner" role="alert">
+    <span>&#9888; Server not running. Results saved locally.</span>
+    <button class="btn-retry" onclick="retrySave()">Start server.py and click Retry</button>
+  </div>
+
+</div>
+
+<script>
+window.__TEST_CONFIG__ = {
+  questions: [
+    {
+      "number": 1,
+      "type": "multiple-choice",
+      "text": "The government introduced new environmental regulations, ___ designed to reduce carbon emissions by 2030.",
+      "options": [
+        { "label": "A", "text": "which they were" },
+        { "label": "B", "text": ", which were" },
+        { "label": "C", "text": "that was" },
+        { "label": "D", "text": "which it was" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Đây là mệnh đề quan hệ không xác định (non-defining relative clause). Cần dấu phẩy trước 'which' + động từ số nhiều 'were' vì 'regulations' là danh từ số nhiều. 'They' và 'it' là thừa — chủ ngữ đã là 'which' thay thế cho 'regulations'."
+    },
+    {
+      "number": 2,
+      "type": "multiple-choice",
+      "text": "___ the cost of living has risen significantly, many young people are choosing to rent rather than buy a home.",
+      "options": [
+        { "label": "A", "text": "Despite" },
+        { "label": "B", "text": "Because" },
+        { "label": "C", "text": "Although" },
+        { "label": "D", "text": "However" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "'Despite' + N (không phải clause). 'However' đứng đầu câu mới, cần dấu phẩy sau. 'Although' mang nghĩa tương phản (mặc dù). 'Because' mang nghĩa nguyên nhân: giá cả tăng → người trẻ chọn thuê nhà. Đây là mệnh đề trạng ngữ chỉ nguyên nhân."
+    },
+    {
+      "number": 3,
+      "type": "multiple-choice",
+      "text": "Choose the correctly formed complex sentence:",
+      "options": [
+        { "label": "A", "text": "The experiment was conducted by researchers at Oxford University, which published their findings in a leading journal." },
+        { "label": "B", "text": "The experiment was conducted by researchers at Oxford University, who published their findings in a leading journal." },
+        { "label": "C", "text": "The experiment was conducted by researchers at Oxford University, which they published their findings in a leading journal." },
+        { "label": "D", "text": "The experiment was conducted by researchers at Oxford University. Who published their findings in a leading journal." }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Câu B đúng: 'who' thay thế cho 'researchers' (người) — đại từ quan hệ chỉ người. Câu A sai vì 'which' chỉ vật, không thể thay cho 'researchers'. Câu C sai vì vừa dùng 'which' vừa có 'they' — thừa chủ ngữ. Câu D sai vì 'Who' đứng đầu tạo câu không hoàn chỉnh (sentence fragment)."
+    },
+    {
+      "number": 4,
+      "type": "multiple-choice",
+      "text": "If governments ___ more stringent regulations on plastic waste, the level of ocean pollution would decrease considerably.",
+      "options": [
+        { "label": "A", "text": "will impose" },
+        { "label": "B", "text": "imposed" },
+        { "label": "C", "text": "would impose" },
+        { "label": "D", "text": "impose" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Đây là câu điều kiện loại 2 (Second Conditional) — diễn tả điều không có thật ở hiện tại hoặc khó xảy ra. Cấu trúc: If + S + V2/ed, S + would + V. 'Imposed' là quá khứ đơn. 'Will impose' (loại 1 — có thật) không phù hợp vì mệnh đề chính dùng 'would decrease'."
+    },
+    {
+      "number": 5,
+      "type": "multiple-choice",
+      "text": "Choose the sentence that contains a grammatical ERROR:",
+      "options": [
+        { "label": "A", "text": "The study, which was conducted over five years, revealed a clear correlation between diet and life expectancy." },
+        { "label": "B", "text": "Although the initial results were promising, the researchers recommended further investigation before drawing conclusions." },
+        { "label": "C", "text": "Many people believe that technology has improved our lives, while others argues that it has created new problems." },
+        { "label": "D", "text": "Having analyzed the data thoroughly, the team presented their findings at the international conference." }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Câu C sai vì 'others argues' — chủ ngữ 'others' (số nhiều) phải đi với 'argue' (không có 's'). Câu A dùng mệnh đề quan hệ (relative clause) đúng. Câu B dùng 'Although' + mệnh đề trạng ngữ chỉ nhượng bộ đúng. Câu D dùng mệnh đề phân từ (participial phrase) đúng."
+    }
+  ],
+  kcTags: ["kc-write-gra-complex", "kc-write-gra"],
+  skill: 'writing',
+  testTitle: 'Complex Sentence Structures',
+  bridgeUrl: 'http://localhost:8765'
+};
+</script>
+
+<script src="/lessons/shared/base-test.js"></script>
+
+</body>
+</html>

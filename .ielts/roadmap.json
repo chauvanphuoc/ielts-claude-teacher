@@ -1,0 +1,48 @@
+{
+  "version": "1.0.0",
+  "learner": {
+    "targetBand": 0,
+    "examDate": null,
+    "activeSkills": [
+      "listening",
+      "reading",
+      "writing",
+      "speaking"
+    ],
+    "startedAt": "2026-07-28T09:41:58Z",
+    "lastSessionAt": "2026-07-28T09:41:58Z"
+  },
+  "skills": {
+    "listening": {
+      "currentBand": 0,
+      "bandHistory": [],
+      "weakAreas": [],
+      "practiceCount": 0,
+      "lastPracticeDate": null
+    },
+    "reading": {
+      "currentBand": 0,
+      "bandHistory": [],
+      "weakAreas": [],
+      "practiceCount": 0,
+      "lastPracticeDate": null
+    },
+    "writing": {
+      "currentBand": 0,
+      "bandHistory": [],
+      "weakAreas": [],
+      "practiceCount": 0,
+      "lastPracticeDate": null
+    },
+    "speaking": {
+      "currentBand": 0,
+      "bandHistory": [],
+      "weakAreas": [],
+      "practiceCount": 0,
+      "lastPracticeDate": null
+    }
+  },
+  "history": [],
+  "crossSkillPatterns": [],
+  "coachNotes": []
+}

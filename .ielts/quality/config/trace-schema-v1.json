@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "trace-v1",
+  "requiredFields": [
+    "action",
+    "confidence",
+    "decisionType",
+    "evidenceRefs",
+    "expectedOutcome",
+    "kcTargets",
+    "rubricRefs",
+    "runId",
+    "schemaVersion",
+    "skill",
+    "sourceVersion",
+    "timestamp"
+  ],
+  "allowedSkills": [
+    "general",
+    "listening",
+    "reading",
+    "speaking",
+    "writing"
+  ],
+  "allowedDecisionTypes": [
+    "close",
+    "diagnose",
+    "evaluate",
+    "plan",
+    "teach"
+  ],
+  "confidenceRange": [
+    0,
+    1
+  ],
+  "notes": "Append-only field evolution. Breaking changes require schemaVersion bump."
+}

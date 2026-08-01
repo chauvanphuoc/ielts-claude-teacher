@@ -1,0 +1,49 @@
+{
+  "skill": "reading",
+  "kcTags": [
+    "kc-read-vocab-context"
+  ],
+  "testTitle": "Vocabulary in Context — Reading Practice",
+  "date": "2026-07-29T01:31:29.017Z",
+  "totalQuestions": 5,
+  "correctCount": 3,
+  "score": 60,
+  "results": [
+    {
+      "number": 1,
+      "correct": true,
+      "userAnswer": "B",
+      "correctAnswer": "B",
+      "explanation": "Context clues: 'rapid urbanisation' + 'increase in demand for housing' → dân số tăng ở thành phố. Câu nói về nhu cầu nhà ở và cơ sở hạ tầng tăng — đây là hậu quả của đô thị hóa (di dân từ nông thôn ra thành phố)."
+    },
+    {
+      "number": 2,
+      "correct": true,
+      "userAnswer": "B",
+      "correctAnswer": "B",
+      "explanation": "Context clue: 'While many people assume X... the researchers themselves acknowledged limitations' — từ 'While' (trái ngược) cho thấy 'many people assume the findings are unequivocal' và thực tế researchers nói có limitations. Unequivocal = rõ ràng, không nghi ngờ."
+    },
+    {
+      "number": 3,
+      "correct": false,
+      "userAnswer": "B",
+      "correctAnswer": "C",
+      "explanation": "Context clue: 'tax relief for small businesses' là biện pháp để giảm tác động của suy thoái kinh tế. Mitigate = làm nhẹ bớt, giảm thiểu. 'Completely eliminate' quá mạnh — câu không nói xóa bỏ hoàn toàn."
+    },
+    {
+      "number": 4,
+      "correct": false,
+      "userAnswer": "A",
+      "correctAnswer": "C",
+      "explanation": "Context clue: 'most students left feeling more confused' → argument khó hiểu. Convoluted = phức tạp, rối rắm. Từ 'so...that' + kết quả 'confused' cho thấy mức độ khó hiểu."
+    },
+    {
+      "number": 5,
+      "correct": true,
+      "userAnswer": "B",
+      "correctAnswer": "B",
+      "explanation": "Context clue: 'Although A appears X... further analysis reveals a common underlying principle' — 'Although' (trái ngược) + 'common underlying principle' (nguyên lý chung) cho thấy hai lý thuyết nhìn thì KHÁC NHAU nhưng thực ra có điểm chung. Disparate = khác biệt, không liên quan."
+    }
+  ],
+  "_savedAt": "2026-07-29T01:31:29.021854Z"
+}

@@ -1,0 +1,49 @@
+{
+  "skill": "reading",
+  "kcTags": [
+    "kc-read-tfng"
+  ],
+  "testTitle": "T/F/NG Practice — The History of Tea — IELTS Claude Teacher",
+  "date": "2026-07-27T09:51:34.891Z",
+  "totalQuestions": 5,
+  "correctCount": 3,
+  "score": 60,
+  "results": [
+    {
+      "number": 1,
+      "correct": true,
+      "userAnswer": "TRUE",
+      "correctAnswer": "TRUE",
+      "explanation": "Passage states: 'the earliest reliable historical records of tea consumption date from the Tang Dynasty (618-907 CE).' This is directly confirmed."
+    },
+    {
+      "number": 2,
+      "correct": true,
+      "userAnswer": "FALSE",
+      "correctAnswer": "FALSE",
+      "explanation": "Passage says tea was discovered 'accidentally' when leaves fell into boiling water. 'Intentionally' contradicts 'accidentally' — so this is FALSE, not NOT GIVEN."
+    },
+    {
+      "number": 3,
+      "correct": false,
+      "userAnswer": "TRUE",
+      "correctAnswer": "NOT GIVEN",
+      "explanation": "The passage mentions Lu Yu wrote the book and 'spent years studying tea' but doesn't specify how long the book took to write. No information = NOT GIVEN."
+    },
+    {
+      "number": 4,
+      "correct": false,
+      "userAnswer": "TRUE",
+      "correctAnswer": "FALSE",
+      "explanation": "Tricky! The passage says the OPPOSITE: 'Unlike the Chinese, who preferred loose-leaf tea, the Japanese developed a powdered form called matcha.' The statement swaps China and Japan. Since the passage directly contradicts this — it's FALSE."
+    },
+    {
+      "number": 5,
+      "correct": true,
+      "userAnswer": "TRUE",
+      "correctAnswer": "TRUE",
+      "explanation": "Passage states she 'made tea-drinking fashionable at court.' 'British high society' paraphrases 'at court' — the meaning matches. TRUE."
+    }
+  ],
+  "_savedAt": "2026-07-27T09:51:34.895592Z"
+}

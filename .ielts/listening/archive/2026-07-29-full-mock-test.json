@@ -1,0 +1,149 @@
+{
+  "skill": "listening",
+  "kcTags": [],
+  "testTitle": "Cambridge IELTS 2 — Listening Test 3, Section 1",
+  "source": "cambridge-2",
+  "testNumber": "3",
+  "sectionNumber": 1,
+  "date": "2026-07-29T06:23:59.174Z",
+  "totalQuestions": 13,
+  "correctCount": 6,
+  "score": 46,
+  "results": [
+    {
+      "number": 1,
+      "correct": true,
+      "userAnswer": "B",
+      "correctAnswer": "B",
+      "acceptable": []
+    },
+    {
+      "number": 2,
+      "correct": false,
+      "userAnswer": "A",
+      "correctAnswer": "C",
+      "acceptable": []
+    },
+    {
+      "number": 3,
+      "correct": false,
+      "userAnswer": "B",
+      "correctAnswer": "A",
+      "acceptable": []
+    },
+    {
+      "number": 4,
+      "correct": true,
+      "userAnswer": "B",
+      "correctAnswer": "B",
+      "acceptable": []
+    },
+    {
+      "type": "pick-from-list",
+      "questionNumbers": [
+        5
+      ],
+      "pickCount": 2,
+      "score": 0,
+      "maxScore": 2,
+      "matched": [],
+      "missed": [
+        "A",
+        "E"
+      ],
+      "extra": [
+        "B",
+        "C"
+      ],
+      "userAnswer": [
+        "B",
+        "C"
+      ],
+      "correctAnswer": [
+        "A",
+        "E"
+      ],
+      "anyOrder": true,
+      "overSelected": false
+    },
+    {
+      "type": "pick-from-list",
+      "questionNumbers": [
+        6
+      ],
+      "pickCount": 2,
+      "score": 1,
+      "maxScore": 2,
+      "matched": [
+        "C"
+      ],
+      "missed": [
+        "A"
+      ],
+      "extra": [
+        "D"
+      ],
+      "userAnswer": [
+        "C",
+        "D"
+      ],
+      "correctAnswer": [
+        "A",
+        "C"
+      ],
+      "anyOrder": true,
+      "overSelected": false
+    },
+    {
+      "type": "pick-from-list",
+      "questionNumbers": [
+        7
+      ],
+      "pickCount": 2,
+      "score": 1,
+      "maxScore": 2,
+      "matched": [
+        "C"
+      ],
+      "missed": [
+        "E"
+      ],
+      "extra": [
+        "D"
+      ],
+      "userAnswer": [
+        "C",
+        "D"
+      ],
+      "correctAnswer": [
+        "C",
+        "E"
+      ],
+      "anyOrder": true,
+      "overSelected": false
+    },
+    {
+      "number": 8,
+      "correct": true,
+      "userAnswer": "B",
+      "correctAnswer": "B",
+      "acceptable": []
+    },
+    {
+      "number": 9,
+      "correct": false,
+      "userAnswer": "B",
+      "correctAnswer": "C",
+      "acceptable": []
+    },
+    {
+      "number": 10,
+      "correct": true,
+      "userAnswer": "B",
+      "correctAnswer": "B",
+      "acceptable": []
+    }
+  ],
+  "testHtmlUrl": "http://localhost:8765/test-html/cambridge-2_listening_test-3_section-1.html",
+  "_savedAt": "2026-07-29T06:23:59.180462Z"
+}

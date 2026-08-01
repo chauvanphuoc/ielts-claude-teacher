@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Locating Specific Details — Reading Practice</title>
+<meta name="kc-tags" content='["kc-read-detail"]'>
+<link rel="stylesheet" href="/lessons/shared/base-test.css">
+</head>
+<body>
+
+<div class="container" role="main" aria-label="Locating Specific Details — Reading Practice">
+
+  <header class="test-header">
+    <div class="test-badge" aria-label="Skill and question type">Reading · Short Answer</div>
+    <h1 class="test-title">Locating Specific Details — Reading Practice</h1>
+    <p class="test-instructions">Đọc đoạn văn bên dưới và trả lời 5 câu hỏi. Mỗi câu hỏi yêu cầu bạn tìm một thông tin cụ thể được đề cập TRỰC TIẾP trong bài — không cần suy luận. Trả lời KHÔNG QUÁ HAI TỪ VÀ/HOẶC MỘT SỐ.</p>
+  </header>
+
+  <!-- Passage -->
+  <section class="reading-passage" style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:20px;margin-bottom:24px;font-size:15px;line-height:1.7;">
+    <h2 style="font-size:16px;font-weight:600;color:#1e293b;margin:0 0 12px 0;">The Great Barrier Reef</h2>
+    <p>The Great Barrier Reef, located off the coast of Queensland, Australia, is the world's largest coral reef system. It stretches over 2,300 kilometers and covers an area of approximately 344,400 square kilometers. The reef was first explored by European navigator Captain James Cook in 1770 when his ship, the HMS Endeavour, ran aground on the reef. However, indigenous Australian peoples had been living along the coast and using the reef's resources for at least 40,000 years before European arrival.</p>
+    <p>The reef is home to an extraordinary diversity of marine life, including more than 1,500 species of fish, 400 types of coral, and 30 species of whales and dolphins. In 1981, UNESCO designated the Great Barrier Reef as a World Heritage Site. Despite this protection, the reef faces serious threats. Between 2016 and 2020, the reef experienced three major bleaching events caused by rising ocean temperatures. A report by the Australian Institute of Marine Science in 2020 found that approximately 30% of the reef's coral had died due to bleaching. In 2019, the Australian government allocated approximately 2 billion Australian dollars for reef conservation and research.</p>
+  </section>
+
+  <form id="test-form" novalidate aria-label="Practice test questions">
+    <div class="question-group" id="questions-container">
+      <!-- Questions rendered by JS from __TEST_CONFIG__ -->
+    </div>
+
+    <div class="submit-area">
+      <button type="submit" class="btn-submit" id="btn-submit">Submit Answers</button>
+      <span class="submit-hint" id="submit-hint">5 questions</span>
+    </div>
+
+    <div class="validation-warning" id="validation-warning" role="alert">
+      Please answer all questions before submitting. <span id="unanswered-count"></span> question(s) remaining.
+    </div>
+  </form>
+
+  <section class="results" id="results" aria-live="polite" aria-label="Test results"></section>
+
+  <div class="warning-banner" id="warning-banner" role="alert">
+    <span>&#9888; Server not running. Results saved locally.</span>
+    <button class="btn-retry" onclick="retrySave()">Start server.py and click Retry</button>
+  </div>
+
+</div>
+
+<script>
+window.__TEST_CONFIG__ = {
+  questions: [
+    {
+      "number": 1,
+      "type": "short-answer",
+      "text": "The Great Barrier Reef covers an area of ___ square kilometers.",
+      "correctAnswer": "344,400",
+      "acceptableAnswers": ["344,400", "344400", "344,400 km²", "approximately 344,400"],
+      "explanation": "Câu đầu tiên của đoạn 1: 'covers an area of approximately 344,400 square kilometers'. Bạn cần tìm đúng con số từ bài đọc."
+    },
+    {
+      "number": 2,
+      "type": "short-answer",
+      "text": "Captain Cook's ship that ran aground on the reef was called ___.",
+      "correctAnswer": "HMS Endeavour",
+      "acceptableAnswers": ["HMS Endeavour", "Endeavour", "HMS Endeavor", "Endeavor"],
+      "explanation": "Đoạn 1: 'when his ship, the HMS Endeavour, ran aground on the reef'. Tên tàu được nêu rõ trong bài."
+    },
+    {
+      "number": 3,
+      "type": "short-answer",
+      "text": "The reef is home to more than ___ species of fish.",
+      "correctAnswer": "1,500",
+      "acceptableAnswers": ["1,500", "1500", "more than 1,500", "over 1,500", "more than 1500"],
+      "explanation": "Đoạn 2: 'more than 1,500 species of fish'. Đây là chi tiết cụ thể bạn cần tìm."
+    },
+    {
+      "number": 4,
+      "type": "short-answer",
+      "text": "The reef was designated as a UNESCO World Heritage Site in ___.",
+      "correctAnswer": "1981",
+      "acceptableAnswers": ["1981"],
+      "explanation": "Đoạn 2: 'In 1981, UNESCO designated the Great Barrier Reef as a World Heritage Site'. Mốc thời gian được nêu trực tiếp."
+    },
+    {
+      "number": 5,
+      "type": "short-answer",
+      "text": "According to a 2020 report, approximately ___ of the reef's coral had died due to bleaching.",
+      "correctAnswer": "30%",
+      "acceptableAnswers": ["30%", "30", "approximately 30%", "about 30%"],
+      "explanation": "Đoạn 2: 'A report by the Australian Institute of Marine Science in 2020 found that approximately 30% of the reef's coral had died due to bleaching'. Đây là chi tiết cụ thể cuối bài."
+    }
+  ],
+  kcTags: ["kc-read-detail"],
+  skill: "reading",
+  testTitle: "Locating Specific Details — Reading Practice",
+  bridgeUrl: "http://localhost:8765"
+};
+</script>
+
+<script src="/lessons/shared/base-test.js"></script>
+
+</body>
+</html>

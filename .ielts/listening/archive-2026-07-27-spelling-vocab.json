@@ -1,0 +1,50 @@
+{
+  "skill": "listening",
+  "kcTags": [
+    "kc-listen-spelling",
+    "kc-read-vocab-context"
+  ],
+  "testTitle": "Spelling & Vocabulary — Mini Test",
+  "date": "2026-07-27T09:41:31.564Z",
+  "totalQuestions": 5,
+  "correctCount": 3,
+  "score": 60,
+  "results": [
+    {
+      "number": 1,
+      "correct": false,
+      "userAnswer": "decisions",
+      "correctAnswer": "decision",
+      "explanation": "de-ci-sion — 'sion' không phải 'tion' sau nguyên âm."
+    },
+    {
+      "number": 2,
+      "correct": false,
+      "userAnswer": "policy",
+      "correctAnswer": "environmental",
+      "explanation": "en-vi-ron-men-tal — lỗi thường gặp: 'enviornmental' (thiếu chữ 'n')."
+    },
+    {
+      "number": 3,
+      "correct": true,
+      "userAnswer": "A",
+      "correctAnswer": "A",
+      "explanation": "'Allocated' = phân bổ. Resources được 'allocated to a project' là collocation chuẩn trong tiếng Anh học thuật."
+    },
+    {
+      "number": 4,
+      "correct": true,
+      "userAnswer": "A",
+      "correctAnswer": "A",
+      "explanation": "'Immediate action' = hành động ngay lập tức. Collocation phổ biến trong văn bản về môi trường."
+    },
+    {
+      "number": 5,
+      "correct": true,
+      "userAnswer": "people",
+      "correctAnswer": "participants",
+      "explanation": "par-ti-ci-pants — không phải 'particpants' (thiếu 'i') hay 'partisipants' (sai 'c' thành 's')."
+    }
+  ],
+  "_savedAt": "2026-07-27T09:41:31.567606Z"
+}

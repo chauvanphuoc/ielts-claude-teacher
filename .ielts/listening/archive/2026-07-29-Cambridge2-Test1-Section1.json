@@ -1,0 +1,98 @@
+{
+  "skill": "listening",
+  "kcTags": [],
+  "testTitle": "Cambridge IELTS 2 — Listening Test 1, Section 1",
+  "source": "cambridge-2",
+  "testNumber": 1,
+  "sectionNumber": 1,
+  "date": "2026-07-29T02:12:11.428Z",
+  "totalQuestions": 10,
+  "correctCount": 4,
+  "score": 40,
+  "results": [
+    {
+      "number": 1,
+      "correct": true,
+      "userAnswer": "Black",
+      "correctAnswer": "Black",
+      "acceptable": []
+    },
+    {
+      "number": 2,
+      "correct": false,
+      "userAnswer": "22002",
+      "correctAnswer": "2085",
+      "acceptable": []
+    },
+    {
+      "number": 3,
+      "correct": false,
+      "userAnswer": "4569300",
+      "correctAnswer": "9456 1309",
+      "acceptable": []
+    },
+    {
+      "number": 4,
+      "correct": false,
+      "userAnswer": "28028BD",
+      "correctAnswer": "2020BD",
+      "acceptable": []
+    },
+    {
+      "number": 5,
+      "correct": true,
+      "userAnswer": "July",
+      "correctAnswer": "July",
+      "acceptable": []
+    },
+    {
+      "type": "pick-from-list",
+      "questionNumbers": [
+        6,
+        7,
+        8
+      ],
+      "pickCount": 3,
+      "score": 2,
+      "maxScore": 3,
+      "matched": [
+        "B",
+        "D"
+      ],
+      "missed": [
+        "F"
+      ],
+      "extra": [
+        "C"
+      ],
+      "userAnswer": [
+        "B",
+        "C",
+        "D"
+      ],
+      "correctAnswer": [
+        "B",
+        "D",
+        "F"
+      ],
+      "anyOrder": true,
+      "overSelected": false
+    },
+    {
+      "number": 9,
+      "correct": false,
+      "userAnswer": "free",
+      "correctAnswer": "$25/twenty-five dollars (refundable)",
+      "acceptable": []
+    },
+    {
+      "number": 10,
+      "correct": false,
+      "userAnswer": "in current",
+      "correctAnswer": "next week // in a week // in one week // the following week",
+      "acceptable": []
+    }
+  ],
+  "testHtmlUrl": "http://localhost:8765/test-html/cambridge-2_listening_test-1_section-1.html",
+  "_savedAt": "2026-07-29T02:12:11.433371Z"
+}

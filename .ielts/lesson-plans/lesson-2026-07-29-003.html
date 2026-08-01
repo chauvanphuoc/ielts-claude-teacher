@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listening Spelling Practice</title>
+<meta name="kc-tags" content='["kc-listen-spelling"]'>
+<link rel="stylesheet" href="/lessons/shared/base-test.css">
+</head>
+<body>
+
+<div class="container" role="main" aria-label="Listening Spelling Practice">
+
+  <header class="test-header">
+    <div class="test-badge" aria-label="Skill and question type">Listening · Short Answer</div>
+    <h1 class="test-title">Listening Spelling Practice</h1>
+    <p class="test-instructions">Trong IELTS Listening Part 1, bạn thường phải điền thông tin cá nhân vào form. Mỗi câu dưới đây mô tả một tình huống listening — hãy điền từ/cụm từ còn thiếu với <strong>chính tả CHÍNH XÁC</strong>. Những từ này rất dễ sai spelling trong IELTS!</p>
+  </header>
+
+  <form id="test-form" novalidate aria-label="Practice test questions">
+    <div class="question-group" id="questions-container">
+    </div>
+
+    <div class="submit-area">
+      <button type="submit" class="btn-submit" id="btn-submit">Submit Answers</button>
+      <span class="submit-hint" id="submit-hint">5 questions</span>
+    </div>
+
+    <div class="validation-warning" id="validation-warning" role="alert">
+      Please answer all questions before submitting. <span id="unanswered-count"></span> question(s) remaining.
+    </div>
+  </form>
+
+  <section class="results" id="results" aria-live="polite" aria-label="Test results"></section>
+
+  <div class="warning-banner" id="warning-banner" role="alert">
+    <span>⚠️ Server not running. Results saved locally.</span>
+    <button class="btn-retry" onclick="retrySave()">Start server.py and click Retry</button>
+  </div>
+
+</div>
+
+<script>
+window.__TEST_CONFIG__ = {
+  questions: [
+    {
+      "number": 1,
+      "type": "short-answer",
+      "text": "Trong Part 1, receptionist hỏi tên khách hàng để đặt phòng. Khách nói: \"My surname is Thompson — that's T-H-O-M-P-S-O-N.\"<br><br>Surname: ___",
+      "correctAnswer": "Thompson",
+      "acceptableAnswers": ["Thompson", "thompson", "THOMPSON"],
+      "explanation": "Đánh vần rõ ràng T-H-O-M-P-S-O-N. Lỗi thường gặp: 'Thomson' (thiếu p) hoặc 'Thompsoon' (thừa o)."
+    },
+    {
+      "number": 2,
+      "type": "short-answer",
+      "text": "Receptionist hỏi địa chỉ gửi thư xác nhận. Khách nói: \"Please send it to 42 Queen's Road, and make sure you get the apostrophe right — Q-U-E-E-N apostrophe S.\"<br><br>Address: 42 ___ Road",
+      "correctAnswer": "Queen's",
+      "acceptableAnswers": ["Queen's", "queen's", "QUEEN'S"],
+      "explanation": "Có apostrophe! 'Queen's Road' — con đường mang tên Nữ hoàng. Lỗi thường gặp: 'Queens' (quên apostrophe) hoặc 'Queens'' (sai vị trí)."
+    },
+    {
+      "number": 3,
+      "type": "short-answer",
+      "text": "Khách muốn đặt phòng đôi. Receptionist hỏi: \"Would you like a room with a garden view?\" Khách trả lời: \"Yes please, and I also need wheelchair ___ .\"<br><br>Facility needed: wheelchair ___",
+      "correctAnswer": "access",
+      "acceptableAnswers": ["access", "ACCESS", "Access"],
+      "explanation": "Wheelchair access = lối đi cho xe lăn. Lỗi thường gặp: 'acces' (thiếu 1 s) hoặc 'accesses' (thừa)."
+    },
+    {
+      "number": 4,
+      "type": "short-answer",
+      "text": "Khách hỏi về thủ tục nhận phòng. Receptionist trả lời: \"Check-in is from 2pm, but you can leave your luggage at the ___ desk.\"<br><br>Leave luggage at: ___ desk",
+      "correctAnswer": "reception",
+      "acceptableAnswers": ["reception", "Reception", "RECEPTION"],
+      "explanation": "'Reception desk' = quầy lễ tân. Lỗi thường gặp: 'recepsion' (nhầm p/shun), 'recepton' (thiếu i), 'receiption' (sai ie/ei)."
+    },
+    {
+      "number": 5,
+      "type": "short-answer",
+      "text": "Receptionist hỏi số điện thoại liên lạc. Khách nói: \"My mobile is 0-7-9-8-2, double 4, 3-1-9. That's 07982 ___ 319.\"<br><br>Mobile: 07982 ___ 319",
+      "correctAnswer": "44",
+      "acceptableAnswers": ["44", "double 4", "double four"],
+      "explanation": "Double 4 = 44. Lỗi thường gặp: viết 'double' thay vì số 44, hoặc '444' (nghe nhầm triple 4)."
+    }
+  ],
+  kcTags: ["kc-listen-spelling"],
+  skill: "listening",
+  testTitle: "Listening Spelling Practice",
+  bridgeUrl: "http://localhost:8765"
+};
+</script>
+
+<script src="/lessons/shared/base-test.js"></script>
+
+</body>
+</html>

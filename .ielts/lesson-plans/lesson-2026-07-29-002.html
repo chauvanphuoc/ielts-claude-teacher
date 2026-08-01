@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vocabulary in Context — Reading Practice</title>
+<meta name="kc-tags" content='["kc-read-vocab-context"]'>
+<link rel="stylesheet" href="/lessons/shared/base-test.css">
+</head>
+<body>
+
+<div class="container" role="main" aria-label="Vocabulary in Context — Reading Practice">
+
+  <header class="test-header">
+    <div class="test-badge" aria-label="Skill and question type">Reading · Multiple Choice</div>
+    <h1 class="test-title">Vocabulary in Context — Reading Practice</h1>
+    <p class="test-instructions">Đọc mỗi câu bên dưới và chọn nghĩa ĐÚNG NHẤT của từ/cụm từ được <strong>in đậm</strong> DỰA VÀO NGỮ CẢNH xung quanh. Đừng chọn nghĩa thông dụng nhất — hãy chọn nghĩa phù hợp với câu đang đọc.</p>
+  </header>
+
+  <form id="test-form" novalidate aria-label="Practice test questions">
+    <div class="question-group" id="questions-container">
+    </div>
+
+    <div class="submit-area">
+      <button type="submit" class="btn-submit" id="btn-submit">Submit Answers</button>
+      <span class="submit-hint" id="submit-hint">5 questions</span>
+    </div>
+
+    <div class="validation-warning" id="validation-warning" role="alert">
+      Please answer all questions before submitting. <span id="unanswered-count"></span> question(s) remaining.
+    </div>
+  </form>
+
+  <section class="results" id="results" aria-live="polite" aria-label="Test results"></section>
+
+  <div class="warning-banner" id="warning-banner" role="alert">
+    <span>⚠️ Server not running. Results saved locally.</span>
+    <button class="btn-retry" onclick="retrySave()">Start server.py and click Retry</button>
+  </div>
+
+</div>
+
+<script>
+window.__TEST_CONFIG__ = {
+  questions: [
+    {
+      "number": 1,
+      "type": "multiple-choice",
+      "text": '"The rapid <strong>urbanisation</strong> of the region has led to a significant increase in demand for housing and infrastructure."<br><br>What does <strong>urbanisation</strong> mean in this context?',
+      "options": [
+        { "label": "A", "text": "The process of modernising transportation systems" },
+        { "label": "B", "text": "The movement of people from rural areas to cities" },
+        { "label": "C", "text": "The improvement of agricultural farming techniques" },
+        { "label": "D", "text": "The expansion of international trade networks" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Context clues: 'rapid urbanisation' + 'increase in demand for housing' → dân số tăng ở thành phố. Câu nói về nhu cầu nhà ở và cơ sở hạ tầng tăng — đây là hậu quả của đô thị hóa (di dân từ nông thôn ra thành phố)."
+    },
+    {
+      "number": 2,
+      "type": "multiple-choice",
+      "text": '"While many people assume the findings are <strong>unequivocal</strong>, the researchers themselves acknowledged significant limitations in their methodology."<br><br>What does <strong>unequivocal</strong> mean in this context?',
+      "options": [
+        { "label": "A", "text": "Unclear or ambiguous" },
+        { "label": "B", "text": "Completely obvious with no doubt" },
+        { "label": "C", "text": "Controversial and widely debated" },
+        { "label": "D", "text": "Based on limited evidence" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Context clue: 'While many people assume X... the researchers themselves acknowledged limitations' — từ 'While' (trái ngược) cho thấy 'many people assume the findings are unequivocal' và thực tế researchers nói có limitations. Unequivocal = rõ ràng, không nghi ngờ."
+    },
+    {
+      "number": 3,
+      "type": "multiple-choice",
+      "text": '"The government implemented new policies to <strong>mitigate</strong> the economic impact of the recession, including tax relief for small businesses."<br><br>What does <strong>mitigate</strong> mean in this context?',
+      "options": [
+        { "label": "A", "text": "To completely eliminate or remove" },
+        { "label": "B", "text": "To study or analyse in detail" },
+        { "label": "C", "text": "To make less severe or reduce" },
+        { "label": "D", "text": "To accelerate or speed up" }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Context clue: 'tax relief for small businesses' là biện pháp để giảm tác động của suy thoái kinh tế. Mitigate = làm nhẹ bớt, giảm thiểu. 'Completely eliminate' quá mạnh — câu không nói xóa bỏ hoàn toàn."
+    },
+    {
+      "number": 4,
+      "type": "multiple-choice",
+      "text": '"The professor\'s argument was so <strong>convoluted</strong> that most students left the lecture feeling more confused than when they arrived."<br><br>What does <strong>convoluted</strong> mean in this context?',
+      "options": [
+        { "label": "A", "text": "Well-structured and easy to follow" },
+        { "label": "B", "text": "Extremely interesting and engaging" },
+        { "label": "C", "text": "Extremely complex and difficult to understand" },
+        { "label": "D", "text": "Short and concise" }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Context clue: 'most students left feeling more confused' → argument khó hiểu. Convoluted = phức tạp, rối rắm. Từ 'so...that' + kết quả 'confused' cho thấy mức độ khó hiểu."
+    },
+    {
+      "number": 5,
+      "type": "multiple-choice",
+      "text": '"Although the two theories appear <strong>disparate</strong>, further analysis reveals a common underlying principle that connects them."<br><br>What does <strong>disparate</strong> mean in this context?',
+      "options": [
+        { "label": "A", "text": "Very similar or identical" },
+        { "label": "B", "text": "Completely different or unrelated" },
+        { "label": "C", "text": "Outdated or no longer relevant" },
+        { "label": "D", "text": "Well-established and widely accepted" }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Context clue: 'Although A appears X... further analysis reveals a common underlying principle' — 'Although' (trái ngược) + 'common underlying principle' (nguyên lý chung) cho thấy hai lý thuyết nhìn thì KHÁC NHAU nhưng thực ra có điểm chung. Disparate = khác biệt, không liên quan."
+    }
+  ],
+  kcTags: ["kc-read-vocab-context"],
+  skill: "reading",
+  testTitle: "Vocabulary in Context — Reading Practice",
+  bridgeUrl: "http://localhost:8765"
+};
+</script>
+
+<script src="/lessons/shared/base-test.js"></script>
+
+</body>
+</html>

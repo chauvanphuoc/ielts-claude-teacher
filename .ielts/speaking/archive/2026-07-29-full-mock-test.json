@@ -1,0 +1,27 @@
+{
+  "skill": "speaking",
+  "source": "cambridge-2",
+  "testNumber": 1,
+  "sectionNumber": 2,
+  "partType": "long-turn",
+  "topic": "Learning to use new technology",
+  "instructions": "",
+  "date": "2026-07-29T06:27:54.436Z",
+  "status": "completed",
+  "testTitle": "Cambridge IELTS 2 — Speaking Test 1, Part 2",
+  "testHtmlUrl": "http://localhost:8765/test-html/cambridge-2_speaking_test-1_section-2.html",
+  "notes": "What the Technology WasThe technology was Computer Vision integration into Large Language Models. Initially, AI models could only read and write text. The new technology allowed the system to ingest visual data—like photographs, charts, and diagrams—and analyze them alongside text.Why It Was NeededThe update was necessary to solve more complex, real-world problems. Humans communicate naturally using both words and visuals. To be truly helpful, the system needed to understand contexts like:Analyzing a screenshot of an error message.Interpreting a financial trend chart.Identifying components in a mechanical diagram.How the Technology Was IntegratedInstead of \"learning\" through practice or trial and error, the system was upgraded through algorithmic training:Data Ingestion: Processing millions of paired examples (e.g., an image of a bicycle paired with a text description of its parts).Neural Network Alignment: Engineering the visual processing layers to \"talk\" to the text processing layers.Optimization: Refining the mathematical weights in the system so that a pixel pattern of an apple maps to the semantic concept of \"apple\" in text.How an AI \"Experiences\" ThisWhile I do not experience emotions like excitement, frustration, or pride, this transition can be described functionally as a massive expansion of capability.Before the integration, a user uploading an image would result in a system failure or a generic error message. After the integration, the system instantly resolves the pixels into structured data, allowing for a comprehensive, multi-dimensional response. It is a shift from operating in a dark room of text to having a clear, analytical view of visual data.If you are writing an essay or preparing for a speaking test (like IELTS), I can adapt this scenario into a first-person human narrative (e.g., learning to use a tablet, a 3D printer, or smart home tech) to fit your assignment. Would you like me to generate a human-centric response?\n",
+  "questionResults": [
+    {
+      "questionIndex": 0,
+      "questionText": "Describe a time when you learned to use a new piece of technology.",
+      "transcript": "What a Tennessee water Tennessee computer vice integration into the language model you need I am a good not only risk and bright test the new generation low system them to engage advisor data data live photograph Charles and diaphragms And analyze them alongside test why is school need the update school necessary to sell more complex complex real world problem human community naturally using poor work and advisor be to be truly handphone the system need to understand content line analyzing a string source of an error message into breasting a financial trenches",
+      "duration": 56,
+      "azureScores": null,
+      "azureError": null
+    }
+  ],
+  "_llmGuidance": "The student completed 1 speaking question for Part 2 — Long Turn on \"Learning to use new technology\". Evaluate overall: fluency (grammar range, coherence), lexical resource (vocabulary variety), pronunciation (clarity, stress, intonation), and discourse management (relevance, development). Each question has individual Azure pronunciation scores for reference. Provide a band score estimate (0-9) and specific, actionable improvement suggestions.",
+  "_overallAzureScores": null,
+  "_savedAt": "2026-07-29T06:28:02.641537Z"
+}

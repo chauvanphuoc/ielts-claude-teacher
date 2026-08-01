@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "synonyms": [
+    {
+      "word": "important",
+      "synonym": "crucial",
+      "context": "Reading Passage 1",
+      "addedAt": "2026-07-26T05:28:25Z"
+    },
+    {
+      "word": "bad",
+      "synonym": "detrimental",
+      "context": "Writing Task 2",
+      "addedAt": "2026-07-27T01:14:01Z"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "skill": "reading",
+  "testTitle": "Cambridge IELTS 1 — Reading Test gt-1, Passage 1",
+  "source": "cambridge-1",
+  "testNumber": "gt-1",
+  "sectionNumber": 1,
+  "date": "2026-07-31T08:25:57.640Z",
+  "totalQuestions": 8,
+  "correctCount": 0,
+  "score": 0,
+  "results": [
+    {
+      "number": 1,
+      "correct": false,
+      "userAnswer": "",
+      "correctAnswer": "D"
+    },
+    {
+      "number": 2,
+      "correct": false,
+      "userAnswer": "",
+      "correctAnswer": "A"
+    },
+    {
+      "number": 3,
+      "correct": false,
+      "userAnswer": "A",
+      "correctAnswer": "C"
+    },
+    {
+      "number": 4,
+      "correct": false,
+      "userAnswer": "",
+      "correctAnswer": "E"
+    },
+    {
+      "number": 5,
+      "correct": false,
+      "userAnswer": "",
+      "correctAnswer": "distilled (water)"
+    },
+    {
+      "number": 6,
+      "correct": false,
+      "userAnswer": "",
+      "correctAnswer": "the (type of) fabric"
+    },
+    {
+      "number": 7,
+      "correct": false,
+      "userAnswer": "",
+      "correctAnswer": "turn up temperature//increase temperature"
+    },
+    {
+      "number": 8,
+      "correct": false,
+      "userAnswer": "",
+      "correctAnswer": "calcium deposits//furring up"
+    }
+  ],
+  "testHtmlUrl": "http://localhost:8765/test-html/cambridge-1_reading_test-gt-1_section-1.html",
+  "_savedAt": "2026-07-31T08:25:57.645874Z"
+}

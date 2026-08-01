@@ -1,0 +1,98 @@
+{
+  "skill": "reading",
+  "testTitle": "Cambridge IELTS 2 — Reading Test 1, Passage 2",
+  "source": "cambridge-2",
+  "testNumber": 1,
+  "sectionNumber": 2,
+  "date": "2026-07-29T06:23:17.093Z",
+  "totalQuestions": 14,
+  "correctCount": 2,
+  "score": 14,
+  "results": [
+    {
+      "number": 14,
+      "correct": false,
+      "userAnswer": "ii",
+      "correctAnswer": "viii"
+    },
+    {
+      "number": 15,
+      "correct": true,
+      "userAnswer": "ii",
+      "correctAnswer": "ii"
+    },
+    {
+      "number": 16,
+      "correct": false,
+      "userAnswer": "",
+      "correctAnswer": "iv"
+    },
+    {
+      "number": 17,
+      "correct": false,
+      "userAnswer": "ii",
+      "correctAnswer": "ix"
+    },
+    {
+      "number": 18,
+      "correct": false,
+      "userAnswer": "",
+      "correctAnswer": "vii"
+    },
+    {
+      "number": 19,
+      "correct": false,
+      "userAnswer": "",
+      "correctAnswer": "1946"
+    },
+    {
+      "number": 20,
+      "correct": false,
+      "userAnswer": "",
+      "correctAnswer": "(the) wealthy (members) (of) (society)"
+    },
+    {
+      "number": 21,
+      "correct": false,
+      "userAnswer": "",
+      "correctAnswer": "social, economic, environmental"
+    },
+    {
+      "number": 22,
+      "correct": false,
+      "userAnswer": "",
+      "correctAnswer": "(the) 1970s"
+    },
+    {
+      "number": 23,
+      "correct": false,
+      "userAnswer": "YES",
+      "correctAnswer": "NOT GIVEN"
+    },
+    {
+      "number": 24,
+      "correct": true,
+      "userAnswer": "YES",
+      "correctAnswer": "YES"
+    },
+    {
+      "number": 25,
+      "correct": false,
+      "userAnswer": "YES",
+      "correctAnswer": "NO"
+    },
+    {
+      "number": 26,
+      "correct": false,
+      "userAnswer": "YES",
+      "correctAnswer": "NO"
+    },
+    {
+      "number": 27,
+      "correct": false,
+      "userAnswer": "YES",
+      "correctAnswer": "NOT GIVEN"
+    }
+  ],
+  "_savedAt": "2026-07-29T06:23:17.099542Z"
+}

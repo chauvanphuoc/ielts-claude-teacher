@@ -1,0 +1,50 @@
+{
+  "skill": "writing",
+  "kcTags": [
+    "kc-write-gra-complex",
+    "kc-write-gra"
+  ],
+  "testTitle": "Complex Sentence Structures",
+  "date": "2026-07-28T10:29:20.783Z",
+  "totalQuestions": 5,
+  "correctCount": 4,
+  "score": 80,
+  "results": [
+    {
+      "number": 1,
+      "correct": true,
+      "userAnswer": "B",
+      "correctAnswer": "B",
+      "explanation": "Đây là mệnh đề quan hệ không xác định (non-defining relative clause). Cần dấu phẩy trước 'which' + động từ số nhiều 'were' vì 'regulations' là danh từ số nhiều. 'They' và 'it' là thừa — chủ ngữ đã là 'which' thay thế cho 'regulations'."
+    },
+    {
+      "number": 2,
+      "correct": true,
+      "userAnswer": "B",
+      "correctAnswer": "B",
+      "explanation": "'Despite' + N (không phải clause). 'However' đứng đầu câu mới, cần dấu phẩy sau. 'Although' mang nghĩa tương phản (mặc dù). 'Because' mang nghĩa nguyên nhân: giá cả tăng → người trẻ chọn thuê nhà. Đây là mệnh đề trạng ngữ chỉ nguyên nhân."
+    },
+    {
+      "number": 3,
+      "correct": true,
+      "userAnswer": "B",
+      "correctAnswer": "B",
+      "explanation": "Câu B đúng: 'who' thay thế cho 'researchers' (người) — đại từ quan hệ chỉ người. Câu A sai vì 'which' chỉ vật, không thể thay cho 'researchers'. Câu C sai vì vừa dùng 'which' vừa có 'they' — thừa chủ ngữ. Câu D sai vì 'Who' đứng đầu tạo câu không hoàn chỉnh (sentence fragment)."
+    },
+    {
+      "number": 4,
+      "correct": true,
+      "userAnswer": "B",
+      "correctAnswer": "B",
+      "explanation": "Đây là câu điều kiện loại 2 (Second Conditional) — diễn tả điều không có thật ở hiện tại hoặc khó xảy ra. Cấu trúc: If + S + V2/ed, S + would + V. 'Imposed' là quá khứ đơn. 'Will impose' (loại 1 — có thật) không phù hợp vì mệnh đề chính dùng 'would decrease'."
+    },
+    {
+      "number": 5,
+      "correct": false,
+      "userAnswer": "A",
+      "correctAnswer": "C",
+      "explanation": "Câu C sai vì 'others argues' — chủ ngữ 'others' (số nhiều) phải đi với 'argue' (không có 's'). Câu A dùng mệnh đề quan hệ (relative clause) đúng. Câu B dùng 'Although' + mệnh đề trạng ngữ chỉ nhượng bộ đúng. Câu D dùng mệnh đề phân từ (participial phrase) đúng."
+    }
+  ],
+  "_savedAt": "2026-07-28T10:29:20.787550Z"
+}
