@@ -1,0 +1,313 @@
+{
+  "source": "cambridge-1",
+  "generatedAt": "2026-07-31T09:53:47Z",
+  "generatedBy": "/init-textbook-speaking",
+  "tests": [
+    {
+      "testNumber": 1,
+      "parts": [
+        {
+          "partNumber": 1,
+          "partType": "interview",
+          "duration": "4-5 minutes",
+          "topic": "Hobbies and Free Time",
+          "instructions": "Answer these questions about your hobbies and how you spend your free time.",
+          "questions": [
+            "What do you like to do in your free time?",
+            "Are you a member of any clubs or societies? Why or why not?",
+            "Do you prefer spending your free time alone or with other people?",
+            "What hobbies are popular among young people in your country?",
+            "Have you ever organised a social event or activity with a group of people?"
+          ]
+        },
+        {
+          "partNumber": 2,
+          "partType": "long-turn",
+          "duration": "3-4 minutes",
+          "topic": "A club or group",
+          "cueCard": {
+            "topic": "Describe a club, society or group that you belong to or would like to join.",
+            "bullets": [
+              "what the club or group is",
+              "why you joined (or want to join) it",
+              "what you do at its meetings or activities",
+              "and explain how it helps you (or would help you) make friends or develop skills"
+            ]
+          },
+          "preparationTime": 60,
+          "speakingTime": 120
+        },
+        {
+          "partNumber": 3,
+          "partType": "discussion",
+          "duration": "4-5 minutes",
+          "topic": "Clubs, Community and Social Life",
+          "questions": [
+            "Why do you think people join clubs and societies?",
+            "How have clubs and social groups changed compared with the past?",
+            "Do you think universities should encourage students to join clubs? Why or why not?",
+            "What are the benefits of belonging to a community group for older people?",
+            "Some people say online communities are replacing face-to-face clubs. Do you agree?",
+            "How important is it for people to share interests and hobbies in a friendship?"
+          ]
+        }
+      ],
+      "_legacyTask": {
+        "partType": "elicitation",
+        "title": "University Clubs and Associations",
+        "format": "Cambridge IELTS 1 (1996) — Part 3 Elicitation",
+        "scenario": "You have just arrived at a new university. It is orientation week and you want to know about the different clubs and associations you can join. Your examiner is a Student Union representative.",
+        "role": "Your examiner is a Student Union representative.",
+        "topicsToAsk": [
+          "types of clubs",
+          "meeting times",
+          "benefits",
+          "costs"
+        ],
+        "interviewerNotes": {
+          "description": "Prompts for the interviewer: information about the clubs for the candidate to find out.",
+          "prompts": [
+            "Overseas Students Club: meets once a week in Student Centre, near Library — all welcome",
+            "Overseas Students Club: helps you to meet other students — financial contributions welcome",
+            "Chess Club: meets once a week in Library — not suitable for beginners, serious players only, no subscription",
+            "Table Tennis Club: meets every day at lunch-time in student area near canteen — all welcome",
+            "Table Tennis Club: arranges tournaments — $5.00 subscription"
+          ]
+        }
+      }
+    },
+    {
+      "testNumber": 2,
+      "parts": [
+        {
+          "partNumber": 1,
+          "partType": "interview",
+          "duration": "4-5 minutes",
+          "topic": "Study and Time Management",
+          "instructions": "Answer these questions about your studies and how you manage your time.",
+          "questions": [
+            "Do you prefer to study in the morning or in the evening? Why?",
+            "How do you usually plan your study time?",
+            "Do you find it easy or difficult to meet deadlines? Why?",
+            "What subjects do you find the most challenging to study?",
+            "Do you like studying alone or with other people?"
+          ]
+        },
+        {
+          "partNumber": 2,
+          "partType": "long-turn",
+          "duration": "3-4 minutes",
+          "topic": "Asking for more time",
+          "cueCard": {
+            "topic": "Describe a time when you had to ask for more time to finish a piece of work.",
+            "bullets": [
+              "what the work was",
+              "why you needed more time",
+              "who you asked and what they said",
+              "and explain how you felt about the situation"
+            ]
+          },
+          "preparationTime": 60,
+          "speakingTime": 120
+        },
+        {
+          "partNumber": 3,
+          "partType": "discussion",
+          "duration": "4-5 minutes",
+          "topic": "Deadlines and Pressure",
+          "questions": [
+            "Why do you think people often leave work until the last minute?",
+            "Is it acceptable to ask for an extension at work or in education? Why or why not?",
+            "How does pressure affect the quality of people's work?",
+            "Do you think deadlines are necessary, or could people work better without them?",
+            "How has technology changed the way people manage their time?",
+            "What can teachers or employers do to help people manage deadlines better?"
+          ]
+        }
+      ],
+      "_legacyTask": {
+        "partType": "elicitation",
+        "title": "Asking for an Extension",
+        "format": "Cambridge IELTS 1 (1996) — Part 3 Elicitation",
+        "scenario": "You have to give in a piece of work to your lecturer next Wednesday. You need two more weeks to prepare the assignment because you have had difficulty obtaining the reference books. Your examiner is your lecturer. Find out if you can have an extension.",
+        "role": "Your examiner is your lecturer.",
+        "topicsToAsk": [
+          "regulations regarding late work",
+          "possibility of having more time",
+          "different sources for books/information",
+          "assistance with writing for overseas students"
+        ],
+        "interviewerNotes": {
+          "description": "Information for the interviewer: the student is seeking extra time for an assignment.",
+          "prompts": [
+            "The student may need to write a letter.",
+            "The student has had plenty of time to prepare the work and should not really need two more weeks.",
+            "Provide some idea about where he/she may get hold of the books.",
+            "Offer advice about the 'Learning Assistance Centre' on the campus which helps students with essay writing.",
+            "After some resistance, agree to an extension of one week."
+          ]
+        }
+      }
+    },
+    {
+      "testNumber": 3,
+      "parts": [
+        {
+          "partNumber": 1,
+          "partType": "interview",
+          "duration": "4-5 minutes",
+          "topic": "Holidays and Celebrations",
+          "instructions": "Answer these questions about public holidays and how you celebrate them.",
+          "questions": [
+            "What is your favourite public holiday in your country?",
+            "How do you usually spend public holidays with your family?",
+            "Do you prefer holidays with many people or a quiet day at home?",
+            "What traditional foods are eaten on special occasions in your country?",
+            "Have you ever celebrated a holiday from another country?"
+          ]
+        },
+        {
+          "partNumber": 2,
+          "partType": "long-turn",
+          "duration": "3-4 minutes",
+          "topic": "A public holiday",
+          "cueCard": {
+            "topic": "Describe a public holiday that you enjoy celebrating.",
+            "bullets": [
+              "when the holiday takes place",
+              "what people usually do on this day",
+              "what you do to celebrate it",
+              "and explain why this holiday is important to you"
+            ]
+          },
+          "preparationTime": 60,
+          "speakingTime": 120
+        },
+        {
+          "partNumber": 3,
+          "partType": "discussion",
+          "duration": "4-5 minutes",
+          "topic": "Holidays, Culture and Society",
+          "questions": [
+            "Why are public holidays important for a country's culture?",
+            "Do you think people value public holidays more for rest or for tradition?",
+            "How have the ways people celebrate holidays changed over the years?",
+            "Should people always have a day off work or school on public holidays?",
+            "Some countries have many public holidays, while others have very few. What is your view?",
+            "How might the celebration of public holidays change in the future?"
+          ]
+        }
+      ],
+      "_legacyTask": {
+        "partType": "elicitation",
+        "title": "The Public Holiday",
+        "format": "Cambridge IELTS 1 (1996) — Part 3 Elicitation",
+        "scenario": "There will soon be a public holiday in the country your examiner comes from. You want to find out about the holiday.",
+        "role": "Your examiner is a visitor from another country.",
+        "topicsToAsk": [
+          "the name of the public holiday",
+          "the significance of the holiday",
+          "availability of services on the day (banks/shops/cinemas)",
+          "things for visitors to do",
+          "how she/he plans to spend the day"
+        ],
+        "interviewerNotes": {
+          "description": "Information for the interviewer: choose a lesser known public holiday from your country.",
+          "prompts": [
+            "Be prepared to provide accurate information on the history and significance of the day.",
+            "If in-country, tell the candidate how you will spend the day.",
+            "If you are in a non-English speaking country, tell the candidate how people normally spend this day back home.",
+            "Provide information about the availability of shops, services and banks on the day."
+          ]
+        }
+      }
+    },
+    {
+      "testNumber": 4,
+      "parts": [
+        {
+          "partNumber": 1,
+          "partType": "interview",
+          "duration": "4-5 minutes",
+          "topic": "Travel and Day Trips",
+          "instructions": "Answer these questions about travelling and going on day trips.",
+          "questions": [
+            "Do you enjoy travelling to new places? Why or why not?",
+            "What kind of places do you like to visit on a day trip?",
+            "Do you prefer travelling alone or with a group of friends?",
+            "How do you usually decide where to go for a day out?",
+            "Have you ever been on an organised tour or excursion?"
+          ]
+        },
+        {
+          "partNumber": 2,
+          "partType": "long-turn",
+          "duration": "3-4 minutes",
+          "topic": "A day trip",
+          "cueCard": {
+            "topic": "Describe a day trip or excursion that you have been on.",
+            "bullets": [
+              "where you went",
+              "who you went with",
+              "what you did and saw",
+              "and explain why you enjoyed (or did not enjoy) the trip"
+            ]
+          },
+          "preparationTime": 60,
+          "speakingTime": 120
+        },
+        {
+          "partNumber": 3,
+          "partType": "discussion",
+          "duration": "4-5 minutes",
+          "topic": "Travel, Tourism and Leisure",
+          "questions": [
+            "Why do people enjoy going on excursions and day trips?",
+            "How does tourism affect local communities?",
+            "Do you think travel is an important part of education? Why or why not?",
+            "What are the advantages and disadvantages of organised group tours?",
+            "How has travel changed since you were a child?",
+            "Is travelling more about relaxation or about learning new things?"
+          ]
+        }
+      ],
+      "_legacyTask": {
+        "partType": "elicitation",
+        "title": "The Excursion",
+        "format": "Cambridge IELTS 1 (1996) — Part 3 Elicitation",
+        "scenario": "The Overseas Students' Club is organising an excursion to a local tourist spot. You are thinking of joining the excursion. Your examiner is one of the organisers.",
+        "role": "Your examiner is one of the organisers of the excursion.",
+        "topicsToAsk": [
+          "destination",
+          "means of transport",
+          "length of excursion",
+          "cost",
+          "meals",
+          "clothing/equipment"
+        ],
+        "interviewerNotes": {
+          "description": "Information for the interviewer: select an authentic tourist destination about two hours' drive from your city. Provide the following information according to local facts.",
+          "prompts": [
+            "Details about what can be seen/done there",
+            "Special bus provided",
+            "Departure and arrival times",
+            "Suggest appropriate local cost",
+            "Meals not provided — students can buy or bring food",
+            "Walking shoes recommended"
+          ]
+        }
+      }
+    }
+  ],
+  "_validation": {
+    "testsPopulated": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "testsPending": [],
+    "modernPartsPerTest": 3,
+    "legacyTasksExtracted": 4
+  }
+}

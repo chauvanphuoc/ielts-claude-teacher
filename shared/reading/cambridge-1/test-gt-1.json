@@ -1,0 +1,923 @@
+{
+  "meta": {
+    "source": "cambridge-1",
+    "testNumber": "gt-1",
+    "version": "1.0",
+    "generatedBy": "/init-textbook-reading",
+    "generatedAt": "2026-07-31T08:17:27.000Z"
+  },
+  "skills": {
+    "reading": {
+      "passages": [
+        {
+          "id": "passage-1",
+          "title": "Moulex Iron — Instructions",
+          "text": "Read the Moulex iron instruction manual below (sections A-F) and answer Questions 1-8. The iron's controls and parts are shown in the picture for Questions 1-4.",
+          "images": [
+            {
+              "id": "img-gt1-manual",
+              "src": "_page_100_Picture_1a.jpeg",
+              "alt": "Moulex iron instruction manual"
+            }
+          ],
+          "questionGroups": [
+            {
+              "id": "qg-gt1-1",
+              "heading": "Questions 1-4",
+              "instructions": "Match the pictures below to the appropriate section in the instructions. Write the correct letter A-F in boxes 1-4 on your answer sheet.",
+              "questionType": "matching",
+              "images": [
+                {
+                  "id": "img-gt1-pictures",
+                  "src": "_page_100_Picture_3.jpeg",
+                  "alt": "Pictures to match to sections of the iron instructions"
+                }
+              ],
+              "options": [
+                {
+                  "label": "A",
+                  "text": "Section A"
+                },
+                {
+                  "label": "B",
+                  "text": "Section B"
+                },
+                {
+                  "label": "C",
+                  "text": "Section C"
+                },
+                {
+                  "label": "D",
+                  "text": "Section D"
+                },
+                {
+                  "label": "E",
+                  "text": "Section E"
+                },
+                {
+                  "label": "F",
+                  "text": "Section F"
+                }
+              ],
+              "questions": [
+                {
+                  "number": 1,
+                  "text": "Picture 1",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Section A"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Section B"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Section C"
+                    },
+                    {
+                      "label": "D",
+                      "text": "Section D"
+                    },
+                    {
+                      "label": "E",
+                      "text": "Section E"
+                    },
+                    {
+                      "label": "F",
+                      "text": "Section F"
+                    }
+                  ]
+                },
+                {
+                  "number": 2,
+                  "text": "Picture 2",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Section A"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Section B"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Section C"
+                    },
+                    {
+                      "label": "D",
+                      "text": "Section D"
+                    },
+                    {
+                      "label": "E",
+                      "text": "Section E"
+                    },
+                    {
+                      "label": "F",
+                      "text": "Section F"
+                    }
+                  ]
+                },
+                {
+                  "number": 3,
+                  "text": "Picture 3",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Section A"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Section B"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Section C"
+                    },
+                    {
+                      "label": "D",
+                      "text": "Section D"
+                    },
+                    {
+                      "label": "E",
+                      "text": "Section E"
+                    },
+                    {
+                      "label": "F",
+                      "text": "Section F"
+                    }
+                  ]
+                },
+                {
+                  "number": 4,
+                  "text": "Picture 4",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Section A"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Section B"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Section C"
+                    },
+                    {
+                      "label": "D",
+                      "text": "Section D"
+                    },
+                    {
+                      "label": "E",
+                      "text": "Section E"
+                    },
+                    {
+                      "label": "F",
+                      "text": "Section F"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "qg-gt1-2",
+              "heading": "Questions 5-8",
+              "instructions": "Answer the following questions on the Moulex iron using NO MORE THAN THREE WORDS. Write your answers in boxes 5-8 on your answer sheet.",
+              "questionType": "short-answer",
+              "questions": [
+                {
+                  "number": 5,
+                  "text": "What sort of water are you advised to use?",
+                  "type": "gap-fill"
+                },
+                {
+                  "number": 6,
+                  "text": "What factor makes you decide on the quantity of steam to use?",
+                  "type": "gap-fill"
+                },
+                {
+                  "number": 7,
+                  "text": "What should you do if your iron starts to drip water?",
+                  "type": "gap-fill"
+                },
+                {
+                  "number": 8,
+                  "text": "What could damage your iron if you do not clean it?",
+                  "type": "gap-fill"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "passage-2",
+          "title": "Classic Tours — Coach Break Information",
+          "text": "CLASSIC TOURS - COACH BREAK INFORMATION\n\nLuggage\n\nWe ask you to keep luggage down to one medium-sized suitcase per person, but a small holdall can also be taken on board the coach.\n\nSeat Allocation\n\nRequests for particular seats can be made on most coach breaks when booking, but since allocations are made on a first come first served basis, early booking is advisable. When bookings are made with us you will be offered the best seats that are available on the coach at that time.\n\nTravel Documents\n\nWhen you have paid your deposit we will send to you all the necessary documents and labels, so that you receive them in good time before the coach break departure date. Certain documents, for example air or boat tickets, may have to be retained and your driver or courier will then issue them to you at the relevant point.\n\nSpecial Diets\n\nIf you require a special diet you must inform us at the time of booking with a copy of the diet. This will be notified to the hotel or hotels on your coach break, but on certain coach breaks the hotels used are tourist class and whilst offering value for money within the price range, they may not have the full facilities to cope with special diets. Any extra costs incurred must be paid to the hotel by yourself before departure from the hotel.\n\nAccommodation\n\nMany of our coach breaks now include, within the price, accommodation with private facilities, and this will be indicated on the coach break page. Other coach breaks have a limited number of rooms with private facilities which, subject to availability, can be reserved and guaranteed at the time of booking - the supplementary charge shown in the price panel will be added to your account.\n\nOn any coach break there are only a limited number of single rooms. When a single room is available it may be subject to a supplementary charge and this will be shown on the brochure page.\n\nEntertainment\n\nSome of our hotels arrange additional entertainment which could include music, dancing, film shows, etc. The nature and frequency of the entertainment presented is at the discretion of the hotel and therefore not guaranteed and could be withdrawn if there is a lack of demand or insufficient numbers in the hotel.",
+          "images": [],
+          "questionGroups": [
+            {
+              "id": "qg-gt2-1",
+              "heading": "Questions 9-14",
+              "instructions": "Choose the appropriate letters A-D and write them in boxes 9-14 on your answer sheet.",
+              "questionType": "multiple-choice",
+              "questions": [
+                {
+                  "number": 9,
+                  "text": "If you want to sit at the front of the coach",
+                  "type": "multiple-choice",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "ask when you get on the coach."
+                    },
+                    {
+                      "label": "B",
+                      "text": "arrive early on the departure date."
+                    },
+                    {
+                      "label": "C",
+                      "text": "book your seat well in advance."
+                    },
+                    {
+                      "label": "D",
+                      "text": "avoid travelling at peak times."
+                    }
+                  ]
+                },
+                {
+                  "number": 10,
+                  "text": "Your air tickets",
+                  "type": "multiple-choice",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "will be sent to your departure point."
+                    },
+                    {
+                      "label": "B",
+                      "text": "must be collected before leaving."
+                    },
+                    {
+                      "label": "C",
+                      "text": "will be enclosed with other documents."
+                    },
+                    {
+                      "label": "D",
+                      "text": "may be held by your coach driver."
+                    }
+                  ]
+                },
+                {
+                  "number": 11,
+                  "text": "If you need a special diet you should",
+                  "type": "multiple-choice",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "inform the hotel when you arrive."
+                    },
+                    {
+                      "label": "B",
+                      "text": "pay extra with the booking."
+                    },
+                    {
+                      "label": "C",
+                      "text": "tell the coach company."
+                    },
+                    {
+                      "label": "D",
+                      "text": "book tourist class."
+                    }
+                  ]
+                },
+                {
+                  "number": 12,
+                  "text": "It may be necessary to pay extra for",
+                  "type": "multiple-choice",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "a bathroom."
+                    },
+                    {
+                      "label": "B",
+                      "text": "boat tickets."
+                    },
+                    {
+                      "label": "C",
+                      "text": "additional luggage."
+                    },
+                    {
+                      "label": "D",
+                      "text": "entertainment."
+                    }
+                  ]
+                },
+                {
+                  "number": 13,
+                  "text": "Entertainment is available",
+                  "type": "multiple-choice",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "at all hotels."
+                    },
+                    {
+                      "label": "B",
+                      "text": "if there is the demand."
+                    },
+                    {
+                      "label": "C",
+                      "text": "upon request."
+                    },
+                    {
+                      "label": "D",
+                      "text": "for an additional cost."
+                    }
+                  ]
+                },
+                {
+                  "number": 14,
+                  "text": "With every booking Classic Tours guarantee you will be able to",
+                  "type": "multiple-choice",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "request high quality meals."
+                    },
+                    {
+                      "label": "B",
+                      "text": "take hand luggage on the coach."
+                    },
+                    {
+                      "label": "C",
+                      "text": "use your own personal bathroom."
+                    },
+                    {
+                      "label": "D",
+                      "text": "see a film if you want to."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "passage-3",
+          "title": "Clubs for Students",
+          "text": "There are a variety of Clubs which provide social and cultural activities for those wishing to meet others with similar interests from the same or from different national backgrounds.\n\nA Commonwealth Trust\n\nOrganised discussion meetings, learned talks, cultural events excursions to places of interest and invitations to major British diary events Open to overseas visitors and students.\n\nB Charles Peguy Centre\n\nFrench youth centre providing advice, support and information to young Europeans aged between 18-30. Facilities include an information and advice service regarding education, work placement and general welfare rights. Moreover the centre holds a database of jobs, accommodation and au pair placements specifically in London. Members may use a fax machine a copier and computers for CVs.\n\nHours Monday: 14.00-17.00 Tuesday-Friday: 10.00-17.00\n\nMembership: £35 per year, plus £5 per month.\n\nC Kensington Committee of Friendship for Overseas Students\n\nKCOF is the society for young people from all countries. Each month there are some 40 parties, discos, visits to theatres, concerts, walks and other gatherings where you will be able to meet lots of people. A new programme is sent each month directly to members (£5 to join in October, less later in the year). Events are free or at low often reduced prices. Office open 10.30-17.30 weekdays only\n\nD Royal Overseas League\n\nOpen 365 days per year, this is a club with facilities in London and Edinburgh with restaurants, bars and accommodation.\n\nThere are branches around the world and 57 reciprocal clubs world-wide. Quarterly magazine, literary lectures, annual music and art competitions, and summer and winter programme of events for members. Membership fees overseas students aged 17-24 £47 per year + initial joining fee £23.50; others £70 per year + initial joining fee £35 (half price after July). Further information from the Membership Secretary.\n\nE YMCA London Central\n\nFacilities include photography art drama, pottery, language courses, badminton, squash, exercise to music, circuit training, sports clinic, fitness testing and other activities.\n\nHours weekdays 07.00-22.30, weekends 10.00-21.00. Membership fees: aged 16-17 £25 per year plus attendance charge of £1 30 per visit; aged 18-19 £213 per year; aged 20-25 £366 per year\n\nF London Inter-Varsity Club (IVC)\n\nIVC is an activities and social club with a varied range of events, from cycling and drama to windsurfing and yoga. Most members are young English professionals, but overseas visitors are welcome. The club arranges restaurant meals, dancing and parties, weekends away around Britain, plus a weekly club night in a Covent Garden bar. There are usually over 25 different events every week run by IVG members for IVC members. To find out more, telephone the club or write (Freepost) to the office.\n\nG Central Club\n\nProvides accommodation and club facilities. No membership fee. Coffee shop open for all meals swimming pool (open 06.00), multigym, hairdressing salon.",
+          "images": [],
+          "questionGroups": [
+            {
+              "id": "qg-gt3-1",
+              "heading": "Questions 15-21",
+              "instructions": "Look at the article Clubs for Students. Which club would you contact for each of the requirements below? Write the appropriate letter A-G in boxes 15-21 on your answer sheet. You may use each letter more than once. The first one has been done for you as an example.",
+              "questionType": "matching",
+              "options": [
+                {
+                  "label": "A",
+                  "text": "Commonwealth Trust"
+                },
+                {
+                  "label": "B",
+                  "text": "Charles Peguy Centre"
+                },
+                {
+                  "label": "C",
+                  "text": "Kensington Committee of Friendship for Overseas Students"
+                },
+                {
+                  "label": "D",
+                  "text": "Royal Overseas League"
+                },
+                {
+                  "label": "E",
+                  "text": "YMCA London Central"
+                },
+                {
+                  "label": "F",
+                  "text": "London Inter-Varsity Club (IVC)"
+                },
+                {
+                  "label": "G",
+                  "text": "Central Club"
+                }
+              ],
+              "questions": [
+                {
+                  "number": 15,
+                  "text": "You would like to take Spanish classes.",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Commonwealth Trust"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Charles Peguy Centre"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Kensington Committee of Friendship for Overseas Students"
+                    },
+                    {
+                      "label": "D",
+                      "text": "Royal Overseas League"
+                    },
+                    {
+                      "label": "E",
+                      "text": "YMCA London Central"
+                    },
+                    {
+                      "label": "F",
+                      "text": "London Inter-Varsity Club (IVC)"
+                    },
+                    {
+                      "label": "G",
+                      "text": "Central Club"
+                    }
+                  ]
+                },
+                {
+                  "number": 16,
+                  "text": "You want to join a club that has international branches.",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Commonwealth Trust"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Charles Peguy Centre"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Kensington Committee of Friendship for Overseas Students"
+                    },
+                    {
+                      "label": "D",
+                      "text": "Royal Overseas League"
+                    },
+                    {
+                      "label": "E",
+                      "text": "YMCA London Central"
+                    },
+                    {
+                      "label": "F",
+                      "text": "London Inter-Varsity Club (IVC)"
+                    },
+                    {
+                      "label": "G",
+                      "text": "Central Club"
+                    }
+                  ]
+                },
+                {
+                  "number": 17,
+                  "text": "You would like an opportunity to speak in public.",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Commonwealth Trust"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Charles Peguy Centre"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Kensington Committee of Friendship for Overseas Students"
+                    },
+                    {
+                      "label": "D",
+                      "text": "Royal Overseas League"
+                    },
+                    {
+                      "label": "E",
+                      "text": "YMCA London Central"
+                    },
+                    {
+                      "label": "F",
+                      "text": "London Inter-Varsity Club (IVC)"
+                    },
+                    {
+                      "label": "G",
+                      "text": "Central Club"
+                    }
+                  ]
+                },
+                {
+                  "number": 18,
+                  "text": "You would like to take part in amateur theatrical productions.",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Commonwealth Trust"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Charles Peguy Centre"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Kensington Committee of Friendship for Overseas Students"
+                    },
+                    {
+                      "label": "D",
+                      "text": "Royal Overseas League"
+                    },
+                    {
+                      "label": "E",
+                      "text": "YMCA London Central"
+                    },
+                    {
+                      "label": "F",
+                      "text": "London Inter-Varsity Club (IVC)"
+                    },
+                    {
+                      "label": "G",
+                      "text": "Central Club"
+                    }
+                  ]
+                },
+                {
+                  "number": 19,
+                  "text": "You want to visit some famous sites with a group of other students.",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Commonwealth Trust"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Charles Peguy Centre"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Kensington Committee of Friendship for Overseas Students"
+                    },
+                    {
+                      "label": "D",
+                      "text": "Royal Overseas League"
+                    },
+                    {
+                      "label": "E",
+                      "text": "YMCA London Central"
+                    },
+                    {
+                      "label": "F",
+                      "text": "London Inter-Varsity Club (IVC)"
+                    },
+                    {
+                      "label": "G",
+                      "text": "Central Club"
+                    }
+                  ]
+                },
+                {
+                  "number": 20,
+                  "text": "You are interested in finding out about part-time work.",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Commonwealth Trust"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Charles Peguy Centre"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Kensington Committee of Friendship for Overseas Students"
+                    },
+                    {
+                      "label": "D",
+                      "text": "Royal Overseas League"
+                    },
+                    {
+                      "label": "E",
+                      "text": "YMCA London Central"
+                    },
+                    {
+                      "label": "F",
+                      "text": "London Inter-Varsity Club (IVC)"
+                    },
+                    {
+                      "label": "G",
+                      "text": "Central Club"
+                    }
+                  ]
+                },
+                {
+                  "number": 21,
+                  "text": "You want to meet some English people who have started their careers.",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Commonwealth Trust"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Charles Peguy Centre"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Kensington Committee of Friendship for Overseas Students"
+                    },
+                    {
+                      "label": "D",
+                      "text": "Royal Overseas League"
+                    },
+                    {
+                      "label": "E",
+                      "text": "YMCA London Central"
+                    },
+                    {
+                      "label": "F",
+                      "text": "London Inter-Varsity Club (IVC)"
+                    },
+                    {
+                      "label": "G",
+                      "text": "Central Club"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "passage-4",
+          "title": "International Students House",
+          "text": "International Students House is a unique club and accommodation centre for British and overseas students in London. It is located in the heart of London's West End and is close to all public transport facilities.\n\nACCOMMODATION\n\n- comfortable accommodation for up to 450 people in single, twin, 3/4 bedded and multi-bedded rooms\n- 44 self-contained flats for married students and families\n- long and short stays welcomed\n\nMEMBERSHIP\n\nClub membership is open to all fulltime students, professional trainees, student nurses and au pairs. Membership costs are kept to an absolute minimum to enable the widest possible access. You can join for as little as one month and for up to one year at a time. Membership entitles you to use the various facilities of the House. It has:\n\n- restaurants\n- student bars and coffee shop\n- study rooms\n- clubs and societies\n- aerobics and fitness training\n- discos, dance, jazz and cinema\n- travel and excursions and much more! The best way to check out all we have on offer is to drop in any Tuesday evening between 7.15 pm and 8.30 pm for Open House in the Club Room. This is an opportunity for you to meet the staff and other club members, enjoy a free cup of coffee and find out all about what's going on. You can take advantage of special membership offers. (Useful tip: bring along 3 passport size photographs if you wish to take out membership.)\n\nADVICE SERVICE\n\nThanks to the support of STA Travel and in association with LCOS (the London Conference on Overseas Students) International Students House now provides the service of an International Students Adviser. This new welfare service is open to all students at London's bona-fide academic institutions. It aims to provide welfare support to help students overcome any personal or practical difficulties they may be experiencing whilst studying in Britain. One of the key features of the Advice Service is that the Adviser can be seen during the evenings until about 8 pm, Monday to Thursday.\n\nCHRISTMAS & NEW YEAR\n\nUnable to get home for Christmas? How about joining in the fun at International Students House! Check out our special programme of activity taking place over the Christmas period. Even come and stay - the House will be offering reduced accommodation rates for students wishing to spend a few days in London over Christmas. We'll also have an exciting New Year's Eve party so come and join us and ring in the new year in the spirit of internationalism.",
+          "images": [],
+          "questionGroups": [
+            {
+              "id": "qg-gt4-1",
+              "heading": "Questions 22-29",
+              "instructions": "Read the article on International Students House and look at the statements below. In boxes 22-29 on your answer sheet write\nTRUE if the statement is true\nFALSE if the statement is false\nNOT GIVEN if the information is not given in the passage",
+              "questionType": "true-false-not-given",
+              "questions": [
+                {
+                  "number": 22,
+                  "text": "The club has long-term dormitory accommodation.",
+                  "type": "true-false-not-given"
+                },
+                {
+                  "number": 23,
+                  "text": "Membership must be renewed monthly.",
+                  "type": "true-false-not-given"
+                },
+                {
+                  "number": 24,
+                  "text": "The club provides subsidised restaurant meals.",
+                  "type": "true-false-not-given"
+                },
+                {
+                  "number": 25,
+                  "text": "The club is open to non-members on Tuesday evenings.",
+                  "type": "true-false-not-given"
+                },
+                {
+                  "number": 26,
+                  "text": "STA Travel help finance the Students Adviser.",
+                  "type": "true-false-not-given"
+                },
+                {
+                  "number": 27,
+                  "text": "The services of the Students Adviser are free to all club members.",
+                  "type": "true-false-not-given"
+                },
+                {
+                  "number": 28,
+                  "text": "You must make an appointment to see the Students Adviser.",
+                  "type": "true-false-not-given"
+                },
+                {
+                  "number": 29,
+                  "text": "There will be a surcharge for accommodation over the Christmas period.",
+                  "type": "true-false-not-given"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "passage-5",
+          "title": "PAPER RECYCLING",
+          "text": "A\n\nPaper is different from other waste produce because it comes from a sustainable resource: trees. Unlike the minerals and oil used to make plastics and metals, trees are replaceable. Paper is also biodegradable, so it does not pose as much threat to the environment when it is discarded. While 45 out of every 100 tonnes of wood fibre used to make paper in Australia comes from waste paper, the rest comes directly from virgin fibre from forests and plantations. By world standards this is a good performance since the world-wide average is 33 per cent waste paper. Governments have encouraged waste paper collection and sorting schemes and at the same time, the paper industry has responded by developing new recycling technologies that have paved the way for even greater utilisation of used fibre. As a result, industry's use of recycled fibres is expected to increase at twice the rate of virgin fibre over the coming years.\n\nB\n\nAlready, waste paper constitutes 70% of paper used for packaging and advances in the technology required to remove ink from the paper have allowed a higher recycled content in newsprint and writing paper. To achieve the benefits of recycling, the community must also contribute. We need to accept a change in the quality of paper products; for example stationery may be less white and of a rougher texture. There also needs to be support from the community for waste paper collection programs. Not only do we need to make the paper available to collectors but it also needs to be separated into different types and sorted from contaminants such as staples, paperclips, string and other miscellaneous items.\n\nC\n\nThere are technical limitations to the amount of paper which can be recycled and some paper products cannot be collected for re-use. These include paper in the form of books and permanent records, photographic paper and paper which is badly contaminated. The four most common sources of paper for recycling are factories and retail stores which gather large amounts of packaging material in which goods are delivered, also offices which have unwanted business documents and computer output, paper converters and printers and lastly households which discard newspapers and packaging material. The paper manufacturer pays a price for the paper and may also incur the collection cost.\n\nD\n\nOnce collected, the paper has to be sorted by hand by people trained to recognise various types of paper. This is necessary because some types of paper can only be made from particular kinds of recycled fibre. The sorted paper then has to be repulped or mixed with water and broken down into its individual fibres. This mixture is called stock and may contain a wide variety of contaminating materials, particularly if it is made from mixed waste paper which has had little sorting. Various machinery is used to remove other materials from the stock. After passing through the repulping process, the fibres from printed waste paper are grey in colour because the printing ink has soaked into the individual fibres. This recycled material can only be used in products where the grey colour does not matter, such as cardboard boxes but if the grey colour is not acceptable, the fibres must be de-inked. This involves adding chemicals such as caustic soda or other alkalis, soaps and detergents, water-hardening agents such as calcium chloride, frothing agents and bleaching agents. Before the recycled fibres can be made into paper they must be refined or treated in such a way that they bond together.\n\nE\n\nMost paper products must contain some virgin fibre as well as recycled fibres and unlike glass, paper cannot be recycled indefinitely. Most paper is down-cycled which means that a product made from recycled paper is of an inferior quality to the original paper. Recycling paper is beneficial in that it saves some of the energy, labour and capital that goes into producing virgin pulp. However, recycling requires the use of fossil fuel, a non-renewable energy source, to collect the waste paper from the community and to process it to produce new paper. And the recycling process still creates emissions which require treatment before they can be disposed of safely. Nevertheless, paper recycling is an important economical and environmental practice but one which must be carried out in a rational and viable manner for it to be useful to both industry and the community.",
+          "images": [],
+          "questionGroups": [
+            {
+              "id": "qg-gt5-1",
+              "heading": "Questions 30-36",
+              "instructions": "Complete the summary below of the first two paragraphs of the Reading Passage. Choose ONE OR TWO WORDS from the Reading Passage for each answer. Write your answers in boxes 30-36 on your answer sheet.",
+              "questionType": "summary-completion",
+              "questions": [
+                {
+                  "number": 30,
+                  "text": "in that firstly it comes from a resource which is ___ (30) ___",
+                  "type": "summary-completion"
+                },
+                {
+                  "number": 31,
+                  "text": "and secondly it is less threatening to our environment when we throw it away because it is ___ (31) ___",
+                  "type": "summary-completion"
+                },
+                {
+                  "number": 32,
+                  "text": "Although Australia's record in the re-use of waste paper is good, it is still necessary to use a combination of recycled fibre and ___ (32) ___ to make new paper.",
+                  "type": "summary-completion"
+                },
+                {
+                  "number": 33,
+                  "text": "The paper industry has contributed positively and people have also been encouraged by ___ (33) ___ to collect their waste on a regular basis.",
+                  "type": "summary-completion"
+                },
+                {
+                  "number": 34,
+                  "text": "One major difficulty is the removal of ink from used paper but ___ (34) ___ are being made in this area.",
+                  "type": "summary-completion"
+                },
+                {
+                  "number": 35,
+                  "text": "However, we need to learn to accept paper which is generally of a lower ___ (35) ___ than before",
+                  "type": "summary-completion"
+                },
+                {
+                  "number": 36,
+                  "text": "and to sort our waste paper by removing ___ (36) ___ before discarding it for collection.",
+                  "type": "summary-completion"
+                }
+              ],
+              "gapText": "Paper is different from other waste produce in that firstly it comes from a resource which is ___ (30) ___ and secondly it is less threatening to our environment when we throw it away because it is ___ (31) ___. Although Australia's record in the re-use of waste paper is good, it is still necessary to use a combination of recycled fibre and ___ (32) ___ to make new paper. The paper industry has contributed positively and people have also been encouraged by ___ (33) ___ to collect their waste on a regular basis. One major difficulty is the removal of ink from used paper but ___ (34) ___ are being made in this area. However, we need to learn to accept paper which is generally of a lower ___ (35) ___ than before and to sort our waste paper by removing ___ (36) ___ before discarding it for collection."
+            },
+            {
+              "id": "qg-gt5-2",
+              "heading": "Questions 37-41",
+              "instructions": "Look at paragraphs C, D, and E and, using the information in the passage, complete the flow chart below. Write your answers in boxes 37-41 on your answer sheet. Use ONE OR TWO WORDS for each answer.",
+              "questionType": "flow-chart-completion",
+              "images": [
+                {
+                  "id": "img-gt5-flowchart",
+                  "src": "_page_104_Picture_1a.jpeg",
+                  "alt": "Flow chart of the paper recycling process"
+                }
+              ],
+              "questions": [
+                {
+                  "number": 37,
+                  "text": "Flow chart step 37",
+                  "type": "gap-fill"
+                },
+                {
+                  "number": 38,
+                  "text": "Flow chart step 38",
+                  "type": "gap-fill"
+                },
+                {
+                  "number": 39,
+                  "text": "Flow chart step 39",
+                  "type": "gap-fill"
+                },
+                {
+                  "number": 40,
+                  "text": "Flow chart step 40",
+                  "type": "gap-fill"
+                },
+                {
+                  "number": 41,
+                  "text": "Flow chart step 41",
+                  "type": "gap-fill"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "answerKeys": {
+    "reading": {
+      "passage-1": {
+        "1": "D",
+        "2": "A",
+        "3": "C",
+        "4": "E",
+        "5": "distilled (water)",
+        "6": "the (type of) fabric",
+        "7": "turn up temperature//increase temperature",
+        "8": "calcium deposits//furring up"
+      },
+      "passage-2": {
+        "9": "C",
+        "10": "D",
+        "11": "C",
+        "12": "A",
+        "13": "B",
+        "14": "B"
+      },
+      "passage-3": {
+        "15": "E",
+        "16": "D",
+        "17": "A",
+        "18": "E",
+        "19": "A",
+        "20": "B",
+        "21": "F"
+      },
+      "passage-4": {
+        "22": "TRUE",
+        "23": "FALSE",
+        "24": "NOT GIVEN",
+        "25": "TRUE",
+        "26": "TRUE",
+        "27": "NOT GIVEN",
+        "28": "NOT GIVEN",
+        "29": "FALSE"
+      },
+      "passage-5": {
+        "30": "sustainable//replaceable",
+        "31": "biodegradable",
+        "32": "virgin fibre//pulp",
+        "33": "governments//the government",
+        "34": "advances",
+        "35": "quality",
+        "36": "contaminants",
+        "37": "offices",
+        "38": "sorted",
+        "39": "(re)pulped",
+        "40": "de-ink//remove ink//make white",
+        "41": "refined"
+      },
+      "_pedagogy": {
+        "qg-gt1-1": {
+          "kcsTested": [
+            "kc-read-matching",
+            "kc-read-detail"
+          ],
+          "strategySummary": "Read each section's description and match the picture that shows that part — link words in the text to the diagram."
+        },
+        "qg-gt1-2": {
+          "kcsTested": [
+            "kc-read-detail",
+            "kc-read-vocab-context"
+          ],
+          "strategySummary": "Skim the manual for the key word in each question and answer in up to three words — the questions paraphrase."
+        },
+        "qg-gt2-1": {
+          "kcsTested": [
+            "kc-read-mc",
+            "kc-read-detail"
+          ],
+          "strategySummary": "Scan the section headings (e.g. 'Seat Allocation') to locate the answer; other options may be possible but unstated."
+        },
+        "qg-gt3-1": {
+          "kcsTested": [
+            "kc-read-matching",
+            "kc-read-detail",
+            "kc-read-inference"
+          ],
+          "strategySummary": "Skim each club's description and match the requirement by meaning; a club can match more than one requirement."
+        },
+        "qg-gt4-1": {
+          "kcsTested": [
+            "kc-read-tfng",
+            "kc-read-detail"
+          ],
+          "strategySummary": "Scan the section headings for the topic; FALSE means the passage says the opposite, NOT GIVEN means never stated."
+        },
+        "qg-gt5-1": {
+          "kcsTested": [
+            "kc-read-gapfill",
+            "kc-read-detail",
+            "kc-read-vocab-context"
+          ],
+          "strategySummary": "Use only words from the passage — the word must fit the meaning and grammar; synonyms not in the text are wrong."
+        },
+        "qg-gt5-2": {
+          "kcsTested": [
+            "kc-read-gapfill",
+            "kc-read-detail"
+          ],
+          "strategySummary": "Follow the recycling process step by step in paragraphs C-E and copy the one/two-word answers."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,3302 @@
+{
+  "source": "cambridge-1",
+  "generatedAt": "2026-07-31T08:42:10Z",
+  "generatedBy": "/init-textbook-listening",
+  "audioBasePath": "textbook/cambridge-1",
+  "tests": [
+    {
+      "testNumber": 1,
+      "sections": [
+        {
+          "sectionNumber": 1,
+          "title": "Section 1 — Stolen Briefcase",
+          "questionRange": "Questions 1-10",
+          "audioFile": "Test 1 - Section 1.mp3",
+          "speakerInfo": "Receptionist, woman and police officer",
+          "instructions": "Circle the appropriate letter. Complete the form. Write NO MORE THAN THREE WORDS for each answer.",
+          
+          "answerKey": [
+            {
+              "questionNumber": 1,
+              "answer": "A"
+            },
+            {
+              "questionNumber": 2,
+              "answer": "C"
+            },
+            {
+              "questionNumber": 3,
+              "answer": "D"
+            },
+            {
+              "questionNumber": 4,
+              "answer": "D"
+            },
+            {
+              "questionNumber": 5,
+              "answer": "C"
+            },
+            {
+              "questionNumber": 6,
+              "answer": "Prescott"
+            },
+            {
+              "questionNumber": 7,
+              "answer": "41"
+            },
+            {
+              "questionNumber": 8,
+              "answer": "Fountain"
+            },
+            {
+              "questionNumber": 9,
+              "answer": "752239"
+            },
+            {
+              "questionNumber": 10,
+              "answer": "£65"
+            }
+          ],
+          "transcript": "R = Receptionist\nW = Woman\nP = Police Officer\nR: Good evening, City Police Station. Can I help you?\nW: Oh hello, I'd like to report a stolen briefcase, please. (Example)\nR: Just a minute and I'll put you through.\nRepeat\nP: Lost property. Can I help you?\nW: Oh, yes. I've had my briefcase stolen.\nP: OK ... I'll take some details ... Tell me what it looks like, first of all.\nW: Well ... it's a soft leather one, you know, not a heavy box-type like a man's.\nP: Mmm ... and how does it close?\nW: It's got buckles at the front ... two of them. They're gold-plated ones. (Q1)\nP: Fine ... Was it locked?\nW: No, I'm afraid not.\nP: Never mind. Any distinguishing features?\nW: Pardon?\nP: Any marks or badges on it that make it stand out?\nW: Only the brand name.\nP: And where's that?\nW: It's on the back ... at the bottom in the left-hand corner. It's Sagi. Oh and there's a scratch ... it's quite bad but small ... directly above the brand name. I did it recently putting it on my bike. (Q2)\nP: Right, got that. So, what did you have inside the briefcase?\nW: Well all my papers from college. It's so frustrating but, thank goodness for computers, I haven't lost them completely!\nP: Yes, you're lucky.\nW: I had my wallet in my pocket so I didn't lose that but there were also my pens which I got for my birthday and a novel I was planning to read on the train. (Q3)\nP: Right. Where exactly did you lose the briefcase?\nW: Well ... I couldn't believe it. I was standing on the platform ... it was right next to me.\nP: You were holding it?\nW: I'd just put it down on the floor but I could almost feel it beside me. I was watching for my tram because sometimes it comes early and then next time I looked, my briefcase wasn't there. (Q4)\nP: And what time was this?\nW: Ah ... it was ... it must have been about 5.20 ... no a bit later. I'd say 5.30 (Q5) because it was just getting crowded and the train normally comes at about twenty-five to six.\nP: Right, if you'll just give me some personal details ...\nW: Yes.\nP: What name is it?\nW: I'm Mary Prescott.\nP: Can you spell that?\nW: Yes, it's P-R-E-S-C-O-T-T. (Q6)\nP: And your address?\nW: Flat 2, 41, Fountain Road, Canterbury. (Qs 7 and 8)\nP: Fountain Road.\nW: Yes, number 41.\nP: And have you got a contact telephone number?\nW: Yes, it's 7-5 double 2-3-9.\nP: 7-5-double 239. Fine. One last question — what would you say the value of your briefcase is? (Q9)\nW: Including the contents?\nP: Yes. Just a rough estimate is fine.\nW: I'm not sure. Well, the briefcase itself is quite new; I bought it last month for £40. I suppose about £65. The contents are worth about 20 or 25 pounds at least. (Q10)\nP: That's fine. Well, if you could come down to the station tomorrow, you can sign this form and have a look at what we've got here.\nW: OK, thanks. 'Bye.\nP: Goodbye.",
+          "questionGroups": [
+            {
+              "id": "qg-s1-1",
+              "heading": "Questions 1-5",
+              "instructions": "Circle the appropriate letter.",
+              "questions": [
+                {
+                  "number": 1,
+                  "type": "multiple-choice-image",
+                  "text": "What does her briefcase look like?",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": ""
+                    },
+                    {
+                      "label": "B",
+                      "text": ""
+                    },
+                    {
+                      "label": "C",
+                      "text": ""
+                    },
+                    {
+                      "label": "D",
+                      "text": ""
+                    }
+                  ],
+                  "image": "_page_17_Picture_12.jpeg",
+                  "answer": "A"
+                },
+                {
+                  "number": 2,
+                  "type": "multiple-choice-image",
+                  "text": "Which picture shows the distinguishing features?",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": ""
+                    },
+                    {
+                      "label": "B",
+                      "text": ""
+                    },
+                    {
+                      "label": "C",
+                      "text": ""
+                    },
+                    {
+                      "label": "D",
+                      "text": ""
+                    }
+                  ],
+                  "image": "_page_17_Picture_14.jpeg",
+                  "answer": "C"
+                },
+                {
+                  "number": 3,
+                  "type": "multiple-choice",
+                  "text": "What did she have inside her briefcase?",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "wallet, pens and novel"
+                    },
+                    {
+                      "label": "B",
+                      "text": "papers and wallet"
+                    },
+                    {
+                      "label": "C",
+                      "text": "pens and novel"
+                    },
+                    {
+                      "label": "D",
+                      "text": "papers, pens and novel"
+                    }
+                  ],
+                  "answer": "D"
+                },
+                {
+                  "number": 4,
+                  "type": "multiple-choice-image",
+                  "text": "Where was she standing when she lost her briefcase?",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": ""
+                    },
+                    {
+                      "label": "B",
+                      "text": ""
+                    },
+                    {
+                      "label": "C",
+                      "text": ""
+                    },
+                    {
+                      "label": "D",
+                      "text": ""
+                    }
+                  ],
+                  "image": "_page_18_Picture_2.jpeg",
+                  "answer": "D"
+                },
+                {
+                  "number": 5,
+                  "type": "multiple-choice-image",
+                  "text": "What time was it when she lost her briefcase?",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": ""
+                    },
+                    {
+                      "label": "B",
+                      "text": ""
+                    },
+                    {
+                      "label": "C",
+                      "text": ""
+                    },
+                    {
+                      "label": "D",
+                      "text": ""
+                    }
+                  ],
+                  "image": "_page_18_Picture_4.jpeg",
+                  "answer": "C"
+                }
+              ]
+            },
+            {
+              "id": "qg-s1-2",
+              "heading": "Questions 6-10",
+              "instructions": "Complete the form. Write NO MORE THAN THREE WORDS for each answer.",
+              "images": [
+                {
+                  "src": "_page_18_Picture_5a.jpeg",
+                  "alt": ""
+                }
+              ],
+              "questions": [
+                {
+                  "number": 6,
+                  "type": "gapfill",
+                  "text": "Name (Mary):",
+                  "answer": "Prescott"
+                },
+                {
+                  "number": 7,
+                  "type": "gapfill",
+                  "text": "Address — road number:",
+                  "answer": "41"
+                },
+                {
+                  "number": 8,
+                  "type": "gapfill",
+                  "text": "Address — road name:",
+                  "answer": "Fountain"
+                },
+                {
+                  "number": 9,
+                  "type": "gapfill",
+                  "text": "Telephone:",
+                  "answer": "752239"
+                },
+                {
+                  "number": 10,
+                  "type": "gapfill",
+                  "text": "Estimated value of lost item (£):",
+                  "answer": "65",
+                  "acceptableAnswers": [
+                    "65",
+                    "£65"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionNumber": 2,
+          "title": "Section 2 — News Headlines",
+          "questionRange": "Questions 11-21",
+          "audioFile": "Test 1 - Section 2.mp3",
+          "speakerInfo": "Newsreader",
+          "instructions": "Tick the THREE other items which are mentioned in the news headlines. Complete the notes below by writing NO MORE THAN THREE WORDS in the spaces provided.",
+          "images": [],
+          "answerKey": [
+            {
+              "questionNumber": 11,
+              "answer": "E (in any order)"
+            },
+            {
+              "questionNumber": 12,
+              "answer": "F (in any order)"
+            },
+            {
+              "questionNumber": 13,
+              "answer": "H (in any order)"
+            },
+            {
+              "questionNumber": 14,
+              "answer": "$250 million"
+            },
+            {
+              "questionNumber": 15,
+              "answer": "roads // road system"
+            },
+            {
+              "questionNumber": 16,
+              "answer": "too late"
+            },
+            {
+              "questionNumber": 17,
+              "answer": "school children // boys"
+            },
+            {
+              "questionNumber": 18,
+              "answer": "3"
+            },
+            {
+              "questionNumber": 19,
+              "answer": "boats // pleasure craft // boats and pleasure craft"
+            },
+            {
+              "questionNumber": 20,
+              "answer": "pilot"
+            },
+            {
+              "questionNumber": 21,
+              "answer": "(musical) instruments"
+            }
+          ],
+          "transcript": "Newsreader: This is the 6 o'clock news for Tuesday 25 November. And first the headlines:\nThe Prime Minister has promised to help the drought stricken farmers in the northern part of the country who haven't seen rain for nearly two years. (Example)\nAnd in Sydney a group of school children are successfully rescued from a plane which landed in the sea shortly after take-off. (Q11)\nTransport workers are on strike in Melbourne over a pay claim and the strike looks set to spread to other states. (Q12)\nAnd on a fashionable note, there's to be a new look for the staff of QANTAS, Australia's national airline. (Q13)\nThe Prime Minister has pledged today that he will make two hundred and fifty million dollars available to help the drought stricken farmers who have not seen rain for years, get through the next five years. (Q14)\nMoney that was to have been spent on the re-structuring of Sydney's road system has been re-allocated to what the Prime Minister described as 'a more worthy cause'. (Q15)\nFarmers are to receive financial assistance to help see them through the worst drought in over 50 years. Many farmers feel that while the money is welcome it has come too late to save them and their farms from financial ruin and are angry that the government did not act sooner. (Q16)\nA group of school children who were travelling in a privately chartered aeroplane from Sydney to Queensland to take part in a musical concert found themselves swimming for the shore when their aeroplane had to land in the sea just three minutes after taking off from Sydney airport. (Q17, Q18) The pilot managed to bring the aircraft and its 50 passengers down safely in the calm waters of Botany Bay where boats and pleasurecraft were able to come to the rescue of the boys. (Q19, Q20) The fact that it was a weekend meant that there were hundreds of boats in the bay enjoying the good weather and this undoubtedly helped the rescue operation. 'We owe our lives to the skill of the pilot,' said one of the boys, but the pilot replied modestly that it was 'all part of a day's work'. However, all their musical instruments were lost and they never got to play at their concert. (Q21)",
+          "questionGroups": [
+            {
+              "id": "qg-s2-1",
+              "heading": "Questions 11-13",
+              "instructions": "Tick the THREE other items which are mentioned in the news headlines.",
+              "questionType": "pick-from-list",
+              "text": "Which THREE other news headlines are mentioned?",
+              "pickCount": 3,
+              "options": [
+                {
+                  "label": "A",
+                  "text": "Rivers flood in the north"
+                },
+                {
+                  "label": "B",
+                  "text": "Money promised for drought victims (example)"
+                },
+                {
+                  "label": "C",
+                  "text": "Nurses on strike in Melbourne"
+                },
+                {
+                  "label": "D",
+                  "text": "Passengers rescued from ship"
+                },
+                {
+                  "label": "E",
+                  "text": "Passengers rescued from plane"
+                },
+                {
+                  "label": "F",
+                  "text": "Bus and train drivers national strike threat"
+                },
+                {
+                  "label": "G",
+                  "text": "Teachers demand more pay"
+                },
+                {
+                  "label": "H",
+                  "text": "New uniform for QANTAS staff"
+                },
+                {
+                  "label": "I",
+                  "text": "National airports under new management"
+                }
+              ],
+              "anyOrder": true,
+              "questions": [
+                {
+                  "number": 11,
+                  "type": "pick-from-list",
+                  "answer": [
+                    "E",
+                    "F",
+                    "H"
+                  ],
+                  "anyOrder": true
+                },
+                {
+                  "number": 12,
+                  "type": "pick-from-list",
+                  "answer": [
+                    "E",
+                    "F",
+                    "H"
+                  ],
+                  "anyOrder": true
+                },
+                {
+                  "number": 13,
+                  "type": "pick-from-list",
+                  "answer": [
+                    "E",
+                    "F",
+                    "H"
+                  ],
+                  "anyOrder": true
+                }
+              ]
+            },
+            {
+              "id": "qg-s2-2",
+              "heading": "Questions 14-21",
+              "instructions": "Complete the notes below by writing NO MORE THAN THREE WORDS in the spaces provided.",
+              "images": [
+                {
+                  "src": "_page_21_Figure_1a.jpeg",
+                  "alt": ""
+                }
+              ],
+              "questions": [
+                {
+                  "number": 14,
+                  "type": "gapfill",
+                  "text": "The Government plans to give ______ to assist the farmers.",
+                  "answer": "$250 million",
+                  "acceptableAnswers": [
+                    "250 million dollars",
+                    "$250m"
+                  ]
+                },
+                {
+                  "number": 15,
+                  "type": "gapfill",
+                  "text": "This money was to be spent on improving Sydney's ______ but has now been re-allocated.",
+                  "answer": "roads",
+                  "acceptableAnswers": [
+                    "road system"
+                  ]
+                },
+                {
+                  "number": 16,
+                  "type": "gapfill",
+                  "text": "Farmers say that the money will not help them because it is ______",
+                  "answer": "too late"
+                },
+                {
+                  "number": 17,
+                  "type": "gapfill",
+                  "text": "An aeroplane which was carrying a group of ______ was forced to land",
+                  "answer": "school children",
+                  "acceptableAnswers": [
+                    "boys"
+                  ]
+                },
+                {
+                  "number": 18,
+                  "type": "gapfill",
+                  "text": "... was forced to land just ______ minutes after take-off.",
+                  "answer": "3"
+                },
+                {
+                  "number": 19,
+                  "type": "gapfill",
+                  "text": "The passengers were rescued by ______.",
+                  "answer": "boats",
+                  "acceptableAnswers": [
+                    "pleasure craft",
+                    "boats and pleasure craft"
+                  ]
+                },
+                {
+                  "number": 20,
+                  "type": "gapfill",
+                  "text": "The passengers thanked the ______ for saving their lives",
+                  "answer": "pilot"
+                },
+                {
+                  "number": 21,
+                  "type": "gapfill",
+                  "text": "but unfortunately they lost their ______.",
+                  "answer": "musical instruments",
+                  "acceptableAnswers": [
+                    "instruments"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionNumber": 3,
+          "title": "Section 3 — Economics Course Information",
+          "questionRange": "Questions 22-31",
+          "audioFile": "Test 1 - Section 3.mp3",
+          "speakerInfo": "Male student and female lecturer",
+          "instructions": "Circle the appropriate letter. Complete the notes below using NO MORE THAN THREE WORDS.",
+          
+          "answerKey": [
+            {
+              "questionNumber": 22,
+              "answer": "A"
+            },
+            {
+              "questionNumber": 23,
+              "answer": "B"
+            },
+            {
+              "questionNumber": 24,
+              "answer": "C"
+            },
+            {
+              "questionNumber": 25,
+              "answer": "A"
+            },
+            {
+              "questionNumber": 26,
+              "answer": "talk // give a talk"
+            },
+            {
+              "questionNumber": 27,
+              "answer": "write up work"
+            },
+            {
+              "questionNumber": 28,
+              "answer": "can choose"
+            },
+            {
+              "questionNumber": 29,
+              "answer": "open book"
+            },
+            {
+              "questionNumber": 30,
+              "answer": "closed reserve"
+            },
+            {
+              "questionNumber": 31,
+              "answer": "vocational (subjects) // (preparing for) work/employment"
+            }
+          ],
+          "transcript": "M = male student\nF = female lecturer\nM: Hello can I come in?\nF: Oh yes, come in. How can I help you?\nM: I was looking for the Economics office. I've been all over the Arts Faculty building looking for it but I could only find the School of Accounting and Economic History. Is this the right place? (Example)\nF: Yes this is the School of Economics.\nM: Oh good. Um, I'm a new student and I was wondering if someone could give me some information.\nF: Well I might be able to help. I lecture on that program. What do you need to know?\nM: Quite a few things, actually. Firstly, how many lectures a week do I have to attend?\nF: Ah, well, the Economics 1 course is a double unit so there are two lectures a week and one tutorial. The lectures are scheduled for Tuesday and Thursday.\nM: What time?\nF: Let me see ... You know this information is all in the handout which you should have received yesterday at the orientation meeting. (Q22)\nM: Oh, was there a meeting yesterday? I didn't know about that ... no one mentioned ...\nF: Yes, there was, but never mind. Now lectures are at four in the afternoon.\nM: Four's a bit late. I've got a part time job that starts at four thirty.\nF: Well, you can't be in two places at once, can you, and attendance at lectures is necessary. We expect at least 90% attendance at this university you know. (Q23)\nM: 90%! That's high. Do they enforce that rule?\nF: Yes, we do. We're pretty strict about it actually.\nM: And what times have been set down for the tutorials — do you have that information?\nF: That's a very well attended course so there's a number of tutorial times. Monday, Wednesday and Friday, all at 9 o'clock. Yours will be allocated at the first lecture. (Q24)\nM: Can't I choose the time?\nF: Maybe, maybe not... You'll have to talk to the lecturer on the course. Dr. Roberts is his name. (Q25)\nM: Oh, OK.\nF: Anything else I can help you with while you're here?\nM: Well, yes, actually. Do you know what the course requirements are? I mean, how much work is expected for this course?\nF: Well, you have to complete a tutorial paper.\nM: What does that involve?\nF: Well, it's a piece of work on a given topic based on some set reading texts. You'll have to give a small talk to your tutorial group ... (Q26)\nM: How long does that have to be?\nF: Oh, about 25 minutes usually.\nM: I have to talk for 25 minutes?\nF: Yes, that's right. And then you have to write up your piece of work and give it to the lecturer to be marked. (Q27)\nM: Right. And is that all?\nF: No. You also have to complete a 3,000 word essay on a topic.\nM: Can I choose the topic?\nF: Yes, usually you can. (Q28)\nM: Right. That shouldn't be too bad.\nF: And in addition to that there is an exam.\nM: An exam! What sort of exam?\nF: Well, it's an open book exam. (Q29)\nM: Does that mean I can have the text book with me during the exam?\nF: Yes, that's right.\nM: And can you give me any idea about the content of the first year of Economics so that I can get into some reading?\nF: Well, you'll be getting the reading list next week when lectures start. All the books are in the library.\nM: Yes, but won't everyone else take them out as soon as they get the reading list too?\nF: Well, yes, they might. But most of the important ones are held in Closed Reserve ... that's a part of the library where you can go to read books but you can't take them out of the building. (Q30)\nM: What did you call that section of the library?\nF: Closed Reserve. However, we do recommend that you buy the core books. You'll find them useful and you'll need them for the exam.\nM: Yes, I suppose I will. But what is the focus of the course?\nF: Well, the course at this university has a vocational focus, that is a focus on preparing its graduates for work, so we're orientated very much towards employment. (Q31)\nM: So my chances of getting a job are good?\nF: Well, provided you get good results.\nM: Well look thanks for your time. You've been really helpful.",
+          "questionGroups": [
+            {
+              "id": "qg-s3-1",
+              "heading": "Questions 22-25",
+              "instructions": "Circle the appropriate letter.",
+              "questions": [
+                {
+                  "number": 22,
+                  "type": "multiple-choice",
+                  "text": "The orientation meeting",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "took place recently."
+                    },
+                    {
+                      "label": "B",
+                      "text": "took place last term."
+                    },
+                    {
+                      "label": "C",
+                      "text": "will take place tomorrow."
+                    },
+                    {
+                      "label": "D",
+                      "text": "will take place next week."
+                    }
+                  ],
+                  "answer": "A"
+                },
+                {
+                  "number": 23,
+                  "type": "multiple-choice",
+                  "text": "Attendance at lectures is",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "optional after 4 pm."
+                    },
+                    {
+                      "label": "B",
+                      "text": "closely monitored."
+                    },
+                    {
+                      "label": "C",
+                      "text": "difficult to enforce."
+                    },
+                    {
+                      "label": "D",
+                      "text": "sometimes unnecessary."
+                    }
+                  ],
+                  "answer": "B"
+                },
+                {
+                  "number": 24,
+                  "type": "multiple-choice",
+                  "text": "Tutorials take place",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "every morning."
+                    },
+                    {
+                      "label": "B",
+                      "text": "twice a week."
+                    },
+                    {
+                      "label": "C",
+                      "text": "three mornings a week."
+                    },
+                    {
+                      "label": "D",
+                      "text": "three afternoons a week."
+                    }
+                  ],
+                  "answer": "C"
+                },
+                {
+                  "number": 25,
+                  "type": "multiple-choice",
+                  "text": "The lecturer's name is",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Roberts."
+                    },
+                    {
+                      "label": "B",
+                      "text": "Rawson."
+                    },
+                    {
+                      "label": "C",
+                      "text": "Rogers."
+                    },
+                    {
+                      "label": "D",
+                      "text": "Robertson."
+                    }
+                  ],
+                  "answer": "A"
+                }
+              ]
+            },
+            {
+              "id": "qg-s3-2",
+              "heading": "Questions 26-31",
+              "instructions": "Complete the notes below using NO MORE THAN THREE WORDS.",
+              "images": [
+                {
+                  "src": "_page_23_Figure_26-31.jpeg",
+                  "alt": ""
+                }
+              ],
+              "questions": [
+                {
+                  "number": 26,
+                  "type": "gapfill",
+                  "text": "Tutorial paper — you must give a small ______ to your tutorial group",
+                  "answer": "talk",
+                  "acceptableAnswers": [
+                    "give a talk"
+                  ]
+                },
+                {
+                  "number": 27,
+                  "type": "gapfill",
+                  "text": "After the talk you must ______ and give it to the lecturer",
+                  "answer": "write up work"
+                },
+                {
+                  "number": 28,
+                  "type": "gapfill",
+                  "text": "3,000 word essay — you ______ the topic",
+                  "answer": "can choose"
+                },
+                {
+                  "number": 29,
+                  "type": "gapfill",
+                  "text": "Exam type",
+                  "answer": "open book"
+                },
+                {
+                  "number": 30,
+                  "type": "gapfill",
+                  "text": "Where the most important books are held",
+                  "answer": "closed reserve"
+                },
+                {
+                  "number": 31,
+                  "type": "gapfill",
+                  "text": "Course focus",
+                  "answer": "vocational subjects",
+                  "acceptableAnswers": [
+                    "vocational",
+                    "preparing for work",
+                    "work/employment",
+                    "employment"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionNumber": 4,
+          "title": "Section 4 — University Structure and Degree Requirements",
+          "questionRange": "Questions 32-41",
+          "audioFile": "Test 1 - Section 4.mp3",
+          "speakerInfo": "Lecturer (Marcia Mayhew, Coordinator of Bachelor of Social Science)",
+          "instructions": "Circle the appropriate letter. Complete the notes. NO MORE THAN THREE WORDS.",
+          
+          "answerKey": [
+            {
+              "questionNumber": 32,
+              "answer": "B"
+            },
+            {
+              "questionNumber": 33,
+              "answer": "C"
+            },
+            {
+              "questionNumber": 34,
+              "answer": "history and economics"
+            },
+            {
+              "questionNumber": 35,
+              "answer": "(meeting) deadlines (for essays)"
+            },
+            {
+              "questionNumber": 36,
+              "answer": "attendance"
+            },
+            {
+              "questionNumber": 37,
+              "answer": "B"
+            },
+            {
+              "questionNumber": 38,
+              "answer": "C"
+            },
+            {
+              "questionNumber": 39,
+              "answer": "B"
+            },
+            {
+              "questionNumber": 40,
+              "answer": "D"
+            },
+            {
+              "questionNumber": 41,
+              "answer": "A"
+            }
+          ],
+          "transcript": "Lecturer:\nGood morning and welcome to the University of Westlands. My name is Marcia Mayhew and I'm the coordinator of the Bachelor of Social Science degree. This morning I'd like to tell you about the structure of the university and about some of the requirements of the degree that you're about to enter. The Bachelor of Social Science is in one faculty within the university, that is the faculty where I work, known as Arts and Social Sciences. (Q32) Here on this campus we also have the faculties of Architecture, Law and Science and Technology among others. It's important to know something about the structure of the faculty because, as you go through your course, you may need to call on members of the staff to help you. At the top of the faculty we have a dean and below the dean we have three divisions; (Q33) each division has a divisional head and your degree is located in the Division of Social Sciences. Within each of the divisions, there are the departments and each of these offers the different degrees. For instance two of the departments which offer the major subjects for your award are Sociology and Psychology. Each has a departmental head but for practical purposes the people you are going to see the most of are myself as coordinator of the social sciences degree and the actual lecturers who are teaching the subjects that you are taking. For instance in the first semester you'll be doing four subjects: psychology, sociology, history and economics. (Q34) If you have any problems or difficulties, not that I'm anticipating you will, but you never know, then you should go and see your lecturers. For instance, you may find that you can't meet a deadline for an essay (Q35) or perhaps you're having problems with attendance. (Q36) These seem to be the two most common problems that students face.\nIf your lecturers are unavailable, you can always come and see me in my office. I'm available on Wednesday and Thursday mornings and on Friday afternoons. (Q37) Outside these hours, perhaps you could ring the secretary and make an appointment. Now you'll note that all of the subjects which you undertake in the first year are composed of lectures and tutorials. A lecture is about an hour long and a tutorial usually runs for about two hours. A lecture is rather like what I am doing now where one person will talk to all of you together on a subject. We do ask you to try to attend the lectures.\nA tutorial is perhaps where most of the learning occurs at a university. You will be divided into groups of between 12 and 15 students and each week one of you will have to present a piece of work to the group as a whole and then the group will discuss what you've said. It's this discussion, this exchange of ideas, which really constitutes the basis of university learning, in my view. (Q38) Listening to lectures in many ways is just giving you information that you could access for yourself in the library but the discussion at the tutorial is very important. This doesn't mean that you shouldn't go to the lectures though!\nOther factors to be particularly concerned about are the structure of essays and delivery of written material and in particular I would like to mention the question of plagiarism. Plagiarism is taking other people's work without acknowledging it, that is, without saying where it comes from. Of course all essays are based on research done by other people but you must remember to attribute the work to the original writer. (Q39) And while it's a good idea to work with other people don't hand in work which is exactly the same as your friend's work because we will notice! If you don't acknowledge the source of your information then you run the risk of failing the subject or in very serious cases you might be denied entry to the university. (Q40)\nLast but not least, stay in touch with us. If things are getting you down, don't go and hide. Come and talk to us about it. That's what we are here for. (Q41) Right, thank you very much for coming along today.",
+          "questionGroups": [
+            {
+              "id": "qg-s4-1",
+              "heading": "Questions 32-33",
+              "instructions": "Circle the appropriate letter.",
+              "questions": [
+                {
+                  "number": 32,
+                  "type": "multiple-choice",
+                  "text": "The speaker works within the Faculty of",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Science and Technology."
+                    },
+                    {
+                      "label": "B",
+                      "text": "Arts and Social Sciences."
+                    },
+                    {
+                      "label": "C",
+                      "text": "Architecture."
+                    },
+                    {
+                      "label": "D",
+                      "text": "Law."
+                    }
+                  ],
+                  "answer": "B"
+                },
+                {
+                  "number": 33,
+                  "type": "multiple-choice",
+                  "text": "The Faculty consists firstly of",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "subjects."
+                    },
+                    {
+                      "label": "B",
+                      "text": "degrees."
+                    },
+                    {
+                      "label": "C",
+                      "text": "divisions."
+                    },
+                    {
+                      "label": "D",
+                      "text": "departments."
+                    }
+                  ],
+                  "answer": "C"
+                }
+              ]
+            },
+            {
+              "id": "qg-s4-2",
+              "heading": "Questions 34-36",
+              "instructions": "Complete the notes. NO MORE THAN THREE WORDS.",
+              "images": [
+                {
+                  "src": "_page_24_Picture_2a.jpeg",
+                  "alt": ""
+                }
+              ],
+              "questions": [
+                {
+                  "number": 34,
+                  "type": "gapfill",
+                  "text": "First semester subjects — psychology, sociology, ______",
+                  "answer": "history and economics"
+                },
+                {
+                  "number": 35,
+                  "type": "gapfill",
+                  "text": "Common problem — meeting ______ for essays",
+                  "answer": "deadlines",
+                  "acceptableAnswers": [
+                    "meeting deadlines",
+                    "deadlines for essays",
+                    "meeting deadlines for essays"
+                  ]
+                },
+                {
+                  "number": 36,
+                  "type": "gapfill",
+                  "text": "Common problem — ______",
+                  "answer": "attendance"
+                }
+              ]
+            },
+            {
+              "id": "qg-s4-3",
+              "heading": "Questions 37-41",
+              "instructions": "Circle the appropriate letter.",
+              "questions": [
+                {
+                  "number": 37,
+                  "type": "multiple-choice",
+                  "text": "The speaker says students can visit her",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "every morning."
+                    },
+                    {
+                      "label": "B",
+                      "text": "some mornings."
+                    },
+                    {
+                      "label": "C",
+                      "text": "mornings only."
+                    },
+                    {
+                      "label": "D",
+                      "text": "Friday morning."
+                    }
+                  ],
+                  "answer": "B"
+                },
+                {
+                  "number": 38,
+                  "type": "multiple-choice",
+                  "text": "According to the speaker, a tutorial",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "is a type of lecture."
+                    },
+                    {
+                      "label": "B",
+                      "text": "is less important than a lecture."
+                    },
+                    {
+                      "label": "C",
+                      "text": "provides a chance to share views."
+                    },
+                    {
+                      "label": "D",
+                      "text": "provides an alternative to groupwork."
+                    }
+                  ],
+                  "answer": "C"
+                },
+                {
+                  "number": 39,
+                  "type": "multiple-choice",
+                  "text": "When writing essays, the speaker advises the students to",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "research their work well."
+                    },
+                    {
+                      "label": "B",
+                      "text": "name the books they have read."
+                    },
+                    {
+                      "label": "C",
+                      "text": "share work with their friends."
+                    },
+                    {
+                      "label": "D",
+                      "text": "avoid using other writers' ideas."
+                    }
+                  ],
+                  "answer": "B"
+                },
+                {
+                  "number": 40,
+                  "type": "multiple-choice",
+                  "text": "The speaker thinks that plagiarism is",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "a common problem."
+                    },
+                    {
+                      "label": "B",
+                      "text": "an acceptable risk."
+                    },
+                    {
+                      "label": "C",
+                      "text": "a minor concern."
+                    },
+                    {
+                      "label": "D",
+                      "text": "a serious offence."
+                    }
+                  ],
+                  "answer": "D"
+                },
+                {
+                  "number": 41,
+                  "type": "multiple-choice",
+                  "text": "The speaker's aims are to",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "introduce students to university expectations."
+                    },
+                    {
+                      "label": "B",
+                      "text": "introduce students to the members of staff."
+                    },
+                    {
+                      "label": "C",
+                      "text": "warn students about the difficulties of studying."
+                    },
+                    {
+                      "label": "D",
+                      "text": "guide students round the university."
+                    }
+                  ],
+                  "answer": "A"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "testNumber": 2,
+      "sections": [
+        {
+          "sectionNumber": 1,
+          "title": "Section 1 — Overseas Student Interviews",
+          "questionRange": "Questions 1-10",
+          "audioFile": "Test 2 - Section 1.mp3",
+          "speakerInfo": "Counsellor, Kate and Luki (overseas students)",
+          "instructions": "Complete the notes. Use NO MORE THAN THREE WORDS for each answer.",
+          "images": [],
+          "answerKey": [
+            {
+              "questionNumber": 1,
+              "answer": "student accommodation/hostel"
+            },
+            {
+              "questionNumber": 2,
+              "answer": "awful food"
+            },
+            {
+              "questionNumber": 3,
+              "answer": "not friendly//kept to themselves"
+            },
+            {
+              "questionNumber": 4,
+              "answer": "lecturers (too) busy"
+            },
+            {
+              "questionNumber": 5,
+              "answer": "regular meetings//meetings with lecturers//fortnightly meetings"
+            },
+            {
+              "questionNumber": 6,
+              "answer": "family//homestay"
+            },
+            {
+              "questionNumber": 7,
+              "answer": "lot of noise//children made noise//difficult to study"
+            },
+            {
+              "questionNumber": 8,
+              "answer": "student house"
+            },
+            {
+              "questionNumber": 9,
+              "answer": "(Bachelor of) Computing"
+            },
+            {
+              "questionNumber": 10,
+              "answer": "reserve computer time"
+            }
+          ],
+          "transcript": "C = Counsellor\nK = Kate\nL = Luki\nC: Hi there, Kate. Come on in. How are you today?\nK: Fine thanks.\nC: Hi, Luki. How's things?\nL: OK.\nC: Well, as I explained on the phone, I'm a Counsellor here at the Student Services section of the university and I'm interviewing overseas students to help me draw up a guide for new students so I'd be grateful if you could tell me a little about your time since you've been here in Cambridge.\nK: Right.\nL: Good idea.\nC: Now, Kate let's start with you. OK, um ... this is your second semester isn't it? Could you tell us something about your first impressions of the town when you arrived?\nK: Yeah well first of all I was struck by how quiet it is here in the evening (Example)\nRepeat\nC: Yes, I suppose Cambridge is a quiet place. Where did you live when you first arrived?\nK: Well, I went straight into student accommodation; it was a kind of student hostel. (Q1)\nC: Ah right, so you didn't have to worry about doing your own cooking or anything like that?\nK: No, but sometimes I wished I had! The food at the hostel was awful. (Q2)\nC: Oh dear. But how were the other students?\nK: To be honest I haven't managed to make many friends even though the place is full. People seem to keep to themselves; they're not really very friendly. (Q3)\nC: Oh I'm sorry to hear that. Well, what about the actual course? You're studying ... uh?\nK: I'm doing a Masters by coursework in Environmental Studies.\nC: Ah, right, and how are you finding that?\nK: Yeah, well, it's been pretty good really. I've enjoyed the course, but I feel there hasn't been enough contact with the lecturers. They all seem to be incredibly busy. The only chance I've really had to talk to them was on the field trip. (Q4)\nC: Well that's no good. Could anything be done to improve the course in your opinion?\nK: Well ... I think it would be helpful to have meetings with lecturers on the course. Say once a fortnight — something like that. (Q5)\nC: Regular meetings. Yes that could certainly help. Now Kate, we'll come back to you in a minute, but I'd just like to ask Luki some questions.\nC: Luki, where are you from?\nL: I am from Indonesia.\nC: And how did you find Cambridge when you first arrived?\nL: Well, I like it here. I think the city is very beautiful.\nC: What about your accommodation? Was that OK?\nL: Yes, OK. At first I stayed with a family for three months. They were very kind to me but they had three young children and I found it difficult to study (Q6, Q7)\nC: Right, I see.\nL: So after three months I moved out and now I live with two other students in a student house. It's much cheaper and we like it there. (Q8)\nC: Good, and what about your studies? What are you studying?\nL: I'm doing a Bachelor of Computing. (Q9)\nC: Computing. I see. Um, apart from the language difficulties, if you can separate them, how have you found the course?\nL: OK, but ...\nC: Yes, go on.\nL: Well, the main difficulty for me is getting time on the computers in the computer room. It's always busy and this makes it very hard to do my practical work.\nC: Yes, I'm sure it would. Can you reserve time in the computer room?\nL: No, you can't ... but it would certainly help if we could reserve computer time. (Q10)\nC: Yes. I'll look into that and see if something can't be done to improve things over there. Now let's go back to Kate...",
+          "questionGroups": [
+            {
+              "id": "qg-s1-1",
+              "heading": "Questions 1-5",
+              "instructions": "Complete the notes. Use NO MORE THAN THREE WORDS for each answer.",
+              "images":[{
+                "src": "_page_40_Figure_1a.jpeg",
+                "alt": ""
+              }],
+              "questions": [
+                {
+                  "number": 1,
+                  "type": "gapfill",
+                  "text": "Kate — type of accommodation",
+                  "answer": "student accommodation",
+                  "acceptableAnswers": [
+                    "hostel",
+                    "student hostel"
+                  ]
+                },
+                {
+                  "number": 2,
+                  "type": "gapfill",
+                  "text": "Kate — her feelings about the accommodation",
+                  "answer": "awful food"
+                },
+                {
+                  "number": 3,
+                  "type": "gapfill",
+                  "text": "Kate — her feelings about the other students",
+                  "answer": "not friendly",
+                  "acceptableAnswers": [
+                    "kept to themselves"
+                  ]
+                },
+                {
+                  "number": 4,
+                  "type": "gapfill",
+                  "text": "Kate — difficulties experienced on the course",
+                  "answer": "lecturers busy",
+                  "acceptableAnswers": [
+                    "lecturers too busy",
+                    "busy lecturers"
+                  ]
+                },
+                {
+                  "number": 5,
+                  "type": "gapfill",
+                  "text": "Kate — suggestions for improving the course",
+                  "answer": "regular meetings",
+                  "acceptableAnswers": [
+                    "meetings with lecturers",
+                    "fortnightly meetings"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "qg-s1-2",
+              "heading": "Questions 6-10",
+              "instructions": "Complete the notes. Use NO MORE THAN THREE WORDS for each answer.",
+              "images":[{
+                "src": "_page_40_Figure_1b.jpeg",
+                "alt": ""
+              }],
+              "questions": [
+                {
+                  "number": 6,
+                  "type": "gapfill",
+                  "text": "Luki — first type of accommodation",
+                  "answer": "family",
+                  "acceptableAnswers": [
+                    "homestay"
+                  ]
+                },
+                {
+                  "number": 7,
+                  "type": "gapfill",
+                  "text": "Luki — problem with the first accommodation",
+                  "answer": "lot of noise",
+                  "acceptableAnswers": [
+                    "children made noise",
+                    "difficult to study",
+                    "noise"
+                  ]
+                },
+                {
+                  "number": 8,
+                  "type": "gapfill",
+                  "text": "Luki — second type of accommodation",
+                  "answer": "student house"
+                },
+                {
+                  "number": 9,
+                  "type": "gapfill",
+                  "text": "Luki — name of course",
+                  "answer": "Bachelor of Computing",
+                  "acceptableAnswers": [
+                    "Computing",
+                    "Bachelor Computing"
+                  ]
+                },
+                {
+                  "number": 10,
+                  "type": "gapfill",
+                  "text": "Luki — suggestions for improving the course",
+                  "answer": "reserve computer time"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionNumber": 2,
+          "title": "Section 2 — Buying a Bicycle",
+          "questionRange": "Questions 11-20",
+          "audioFile": "Test 2 - Section 2.mp3",
+          "speakerInfo": "Radio presenter",
+          "instructions": "Complete the notes below. Use NO MORE THAN THREE WORDS for each answer.",
+          "images": [
+            {
+              "src": "_page_41_Picture_1a.jpeg",
+              "alt": ""
+            }
+          ],
+          "answerKey": [
+            {
+              "questionNumber": 11,
+              "answer": "mountain"
+            },
+            {
+              "questionNumber": 12,
+              "answer": "quality"
+            },
+            {
+              "questionNumber": 13,
+              "answer": "$2,000"
+            },
+            {
+              "questionNumber": 14,
+              "answer": "short/casual rides"
+            },
+            {
+              "questionNumber": 15,
+              "answer": "town riding//shopping"
+            },
+            {
+              "questionNumber": 16,
+              "answer": "serious touring"
+            },
+            {
+              "questionNumber": 17,
+              "answer": "similar//almost the same"
+            },
+            {
+              "questionNumber": 18,
+              "answer": "better quality (components)"
+            },
+            {
+              "questionNumber": 19,
+              "answer": "buying clothes"
+            },
+            {
+              "questionNumber": 20,
+              "answer": "frame"
+            }
+          ],
+          "transcript": "Radio presenter:\nWell, last week we talked about buying camping equipment and today I'd like to talk to you about buying a bicycle. A simple enough exercise, you might imagine, but there are lots of things to look out for to make sure you get the best deal for your money.\nWell, the range of bicycles is enormous — there are racing bikes, touring bikes, mountain bikes or just plain ordinary bikes for riding round town. (Q11) They vary enormously in two basic ways: price and quality. (Q12) This means that the choice you make will probably be determined by the amount of money you want to pay, your own personal needs, what is actually available or a compromise of all three things. However, in broad terms you can spend anything from $50 to $2,000 on a bike (Q13) so, you'll need to know what you are looking for.\nSingle speed cycles — that is bikes with no gears, are really only suited to short, casual rides. (Q14) Their attraction is their simplicity and reliability. After years of neglect they still manage to function, though not always too efficiently. If it's basic transport you're after then you can't go wrong.\nThree speed cycles on the other hand are all that is really necessary for most town riding, going to the shops and things like that. (Q15) Like the single speed bike they are simple and reliable. If you are going to be going up and down lots of hills, then you'll probably want something more efficient.\nFive and ten speed bicycles are best suited to riding over long distances or hilly terrain and to serious touring, so if it's serious touring you're interested in, get a five or ten speed bike. (Q16) However it's worth remembering that the difference in price between a five and ten speed cycle is usually very little and so it's well worth paying that little bit extra to get the ten speed one. (Q17) So I would tend to recommend the ten speed bike as the price is similar — however you'll be getting better quality components. (Q18)\nNow the next thing we need to look at is size. Buying a cycle is like buying clothes, first of all you find the right size and then you try it on to see if it fits. (Q19) Contrary to what you might imagine, the size of the cycle is not determined by the size of the wheels (except in children's cycles), but by the size of the frame. (Q20) So you'll need to measure the length of your legs and arms to get a frame that is the right size for you.\nWell, that's all from Helpful Hints for today ...",
+          "questionGroups": [
+            {
+              "id": "qg-s2-1",
+              "heading": "Questions 11-20",
+              "instructions": "Complete the notes below. Use NO MORE THAN THREE WORDS for each answer.",
+              "questions": [
+                {
+                  "number": 11,
+                  "type": "gapfill",
+                  "text": "Types of bicycle — one type is a ______ bike",
+                  "answer": "mountain"
+                },
+                {
+                  "number": 12,
+                  "type": "gapfill",
+                  "text": "Bicycles vary in two basic ways: price and ______",
+                  "answer": "quality"
+                },
+                {
+                  "number": 13,
+                  "type": "gapfill",
+                  "text": "You can spend anything from $50 to ______ on a bike",
+                  "answer": "$2,000",
+                  "acceptableAnswers": [
+                    "2000",
+                    "two thousand dollars",
+                    "2000 dollars"
+                  ]
+                },
+                {
+                  "number": 14,
+                  "type": "gapfill",
+                  "text": "Single speed cycles are really only suited to ______",
+                  "answer": "short/casual rides",
+                  "acceptableAnswers": [
+                    "short rides",
+                    "casual rides",
+                    "short casual rides"
+                  ]
+                },
+                {
+                  "number": 15,
+                  "type": "gapfill",
+                  "text": "Three speed cycles are all that is necessary for most ______",
+                  "answer": "town riding",
+                  "acceptableAnswers": [
+                    "shopping",
+                    "town riding and shopping"
+                  ]
+                },
+                {
+                  "number": 16,
+                  "type": "gapfill",
+                  "text": "Five and ten speed bicycles are best suited to ______",
+                  "answer": "serious touring"
+                },
+                {
+                  "number": 17,
+                  "type": "gapfill",
+                  "text": "The difference in price between a five and ten speed cycle is usually ______",
+                  "answer": "similar",
+                  "acceptableAnswers": [
+                    "almost the same"
+                  ]
+                },
+                {
+                  "number": 18,
+                  "type": "gapfill",
+                  "text": "With a ten speed bike you'll be getting ______",
+                  "answer": "better quality",
+                  "acceptableAnswers": [
+                    "better quality components",
+                    "quality components"
+                  ]
+                },
+                {
+                  "number": 19,
+                  "type": "gapfill",
+                  "text": "Buying a cycle is like ______",
+                  "answer": "buying clothes"
+                },
+                {
+                  "number": 20,
+                  "type": "gapfill",
+                  "text": "The size of the cycle is determined by the size of the ______",
+                  "answer": "frame"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionNumber": 3,
+          "title": "Section 3 — Banana Growing in Australia",
+          "questionRange": "Questions 21-32",
+          "audioFile": "Test 2 - Section 3.mp3",
+          "speakerInfo": "Fiona and Martin (students)",
+          "instructions": "Circle the correct answer. Complete Martin's notes. Use NO MORE THAN THREE WORDS for each answer.",
+          
+          "answerKey": [
+            {
+              "questionNumber": 21,
+              "answer": "B"
+            },
+            {
+              "questionNumber": 22,
+              "answer": "C"
+            },
+            {
+              "questionNumber": 23,
+              "answer": "D"
+            },
+            {
+              "questionNumber": 24,
+              "answer": "B"
+            },
+            {
+              "questionNumber": 25,
+              "answer": "one bunch"
+            },
+            {
+              "questionNumber": 26,
+              "answer": "15 months"
+            },
+            {
+              "questionNumber": 27,
+              "answer": "uphill//on hillsides"
+            },
+            {
+              "questionNumber": 28,
+              "answer": "lots of/plenty of water"
+            },
+            {
+              "questionNumber": 29,
+              "answer": "plastic bags"
+            },
+            {
+              "questionNumber": 30,
+              "answer": "bananas/ones (to) ripen"
+            },
+            {
+              "questionNumber": 31,
+              "answer": "C (either way round)"
+            },
+            {
+              "questionNumber": 32,
+              "answer": "D (either way round)"
+            }
+          ],
+          "transcript": "F = Fiona\nM = Martin\nF: Hi there, Martin. How are you going with your Australian studies tutorial paper?\nM: Oh good. I've finished it actually.\nF: Lucky you. What did you do it on? I'm still trying to find an interesting topic.\nM: Well ... after some consideration I decided to look at the history of banana growing in Australia.\nF: (surprised) Banana growing!\nM: Yes, banana growing.\nF: (sarcastically) Fascinating, I'm sure! (Q21)\nM: Well ... it's not as boring as you'd think. And I wanted to tie it in to the work I've been doing on primary industries and the economy. Anyway I bet there are a few things you didn't know about bananas!\nF: Such as?\nM: Such as the fact that bananas were among the first plants ever to be domesticated.\nF: Oh, really?\nM: Yes, they're an extremely nourishing food. (Q22)\nF: I suppose you're going to tell me the whole history of banana growing now aren't you?\nM: Well, it'd be a good practice run for my tutorial next week. I'll do the same for you some time. (Q23)\nF: OK. Fire away. So where were these bananas first domesticated?\nM: According to my research, the Cavendish banana, which is a type of banana and the first type to be cultivated here, actually originated in China but they had a fairly roundabout route before they got to Australia.\nF: You mean they didn't go straight from China to Australia?\nM: No, they didn't. It seems that in 1826, bananas were taken from South China to England.\nF: I suppose they would have made a welcome addition to the English diet.\nM: Yes, I'm sure. Well apparently there was an English Duke who was particularly fond of bananas and he used to cultivate them in his hothouse, which is where you have to grow them in England, of course, because of the cool climate and they became quite popular in the UK. So he was the one responsible for cultivating the Cavendish banana which was then introduced into Australia. (Q24)\nF: I see. And we've been growing them ever since?\nM: Yes.\nF: Are they hard to grow?\nM: Well, yes and no. To grow them in your garden, no, not really. But to grow them commercially you need to know what you're doing. You see you only get one bunch of bananas per tree (Q25) and it can take up to three years for a tree to bear fruit if you don't do anything special to it. But this period is greatly reduced with modern growing methods, particularly in plantations where you have perfect tropical conditions.\nF: Right! So what are you looking at? One year? Two years?\nM: No, no, around 15 months in good conditions for a tree to produce a bunch of bananas. (Q26) And once you've got your bunch you cut the bunch and the plant down.\nF: So how do the trees reproduce then?\nM: Well, bananas are normally grown from suckers which spring up around the parent plant, usually just above the plant. They tend to like to grow uphill — or at least that's the common wisdom. (Q27)\nF: So that's why banana plantations are usually on hillsides, is it?\nM: Yes. They grow best like that.\nF: That's interesting!\nM: If you plant them in rich soil and give them plenty of water at the beginning of summer, then they should be well advanced by the beginning of winter when growth virtually stops. (Q28) But in a country like England, they're hard to grow, although you can grow them in a hothouse.\nF: But in Australia, it's not difficult?\nM: No, though even here, the growers put plastic bags around the bunches to protect them and keep them warm. (Q29) If you go up to the banana growing districts, you'll see all these banana trees with plastic bags on them.\nF: But how do they stop the bananas going bad before they reach the shops?\nM: Well, the banana bunches are picked well before the fruit is ripe. Once you cut the bunch, the bananas stop growing but they do continue to ripen. The interesting thing is that once one banana ripens, it gives off a gas which then helps all the others to ripen so they pretty much all ripen within a few hours of each other. (Q30)\nF: Amazing! So do we export lots of bananas overseas, to Europe and Asia for instance?\nM: Well, oddly enough, no. I believe New Zealand takes a small proportion of the crop but otherwise they're mostly grown for the domestic market, which is surprising when you think about it because we grow an enormous number of bananas each year. (Q31 or 32 / Q32 or 31)\nF: Yes, well thank you for all that information. I'm sure the tutorial paper will go really well you certainly seem to have done your research on the subject.\nM: Let's hope so.",
+          "questionGroups": [
+            {
+              "id": "qg-s3-1",
+              "heading": "Questions 21-24",
+              "instructions": "Circle the correct answer.",
+              "questions": [
+                {
+                  "number": 21,
+                  "type": "multiple-choice",
+                  "text": "At first Fiona thinks that Martin's tutorial topic is",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "inappropriate."
+                    },
+                    {
+                      "label": "B",
+                      "text": "dull."
+                    },
+                    {
+                      "label": "C",
+                      "text": "interesting."
+                    },
+                    {
+                      "label": "D",
+                      "text": "fascinating."
+                    }
+                  ],
+                  "answer": "B"
+                },
+                {
+                  "number": 22,
+                  "type": "multiple-choice",
+                  "text": "According to Martin, the banana",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "has only recently been cultivated."
+                    },
+                    {
+                      "label": "B",
+                      "text": "is economical to grow."
+                    },
+                    {
+                      "label": "C",
+                      "text": "is good for your health."
+                    },
+                    {
+                      "label": "D",
+                      "text": "is his favourite food."
+                    }
+                  ],
+                  "answer": "C"
+                },
+                {
+                  "number": 23,
+                  "type": "multiple-choice",
+                  "text": "Fiona listens to Martin because she",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "wants to know more about bananas."
+                    },
+                    {
+                      "label": "B",
+                      "text": "has nothing else to do today."
+                    },
+                    {
+                      "label": "C",
+                      "text": "is interested in the economy of Australia."
+                    },
+                    {
+                      "label": "D",
+                      "text": "wants to help Martin."
+                    }
+                  ],
+                  "answer": "D"
+                },
+                {
+                  "number": 24,
+                  "type": "multiple-choice",
+                  "text": "According to Martin, bananas were introduced into Australia from",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "India."
+                    },
+                    {
+                      "label": "B",
+                      "text": "England."
+                    },
+                    {
+                      "label": "C",
+                      "text": "China."
+                    },
+                    {
+                      "label": "D",
+                      "text": "Africa."
+                    }
+                  ],
+                  "answer": "B"
+                }
+              ]
+            },
+            {
+              "id": "qg-s3-2",
+              "heading": "Questions 25-30",
+              "instructions": "Complete Martin's notes. Use NO MORE THAN THREE WORDS for each answer.",
+              "images": [
+                {
+                  "src": "_page_43_Picture_1a.jpeg",
+                  "alt": ""
+                }
+              ],
+              "questions": [
+                {
+                  "number": 25,
+                  "type": "gapfill",
+                  "text": "Number of bunches of bananas per tree",
+                  "answer": "one bunch"
+                },
+                {
+                  "number": 26,
+                  "type": "gapfill",
+                  "text": "Time for a tree to produce a bunch in good conditions",
+                  "answer": "15 months"
+                },
+                {
+                  "number": 27,
+                  "type": "gapfill",
+                  "text": "Where bananas tend to like to grow",
+                  "answer": "uphill",
+                  "acceptableAnswers": [
+                    "on hillsides",
+                    "hillsides"
+                  ]
+                },
+                {
+                  "number": 28,
+                  "type": "gapfill",
+                  "text": "What they need at the beginning of summer",
+                  "answer": "lots of water",
+                  "acceptableAnswers": [
+                    "plenty of water",
+                    "water"
+                  ]
+                },
+                {
+                  "number": 29,
+                  "type": "gapfill",
+                  "text": "What growers put around the bunches",
+                  "answer": "plastic bags"
+                },
+                {
+                  "number": 30,
+                  "type": "gapfill",
+                  "text": "Once one banana ripens, it helps the others ______",
+                  "answer": "to ripen",
+                  "acceptableAnswers": [
+                    "ripen",
+                    "bananas ripen",
+                    "ones ripen"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "qg-s3-3",
+              "heading": "Questions 31 and 32",
+              "instructions": "Circle the TWO correct boxes.",
+              "questionType": "pick-from-list",
+              "text": "Which TWO places receive Australian bananas?",
+              "pickCount": 2,
+              "images": [
+                {
+                  "src": "_page_42_Figure_6.jpeg",
+                  "alt": ""
+                }
+              ],
+              "options": [
+                {
+                  "label": "A",
+                  "text": "Europe"
+                },
+                {
+                  "label": "B",
+                  "text": "Asia"
+                },
+                {
+                  "label": "C",
+                  "text": "New Zealand"
+                },
+                {
+                  "label": "D",
+                  "text": "Australia"
+                },
+                {
+                  "label": "E",
+                  "text": "Other"
+                }
+              ],
+              "anyOrder": true,
+              "questions": [
+                {
+                  "number": 31,
+                  "type": "pick-from-list",
+                  "answer": [
+                    "C",
+                    "D"
+                  ],
+                  "anyOrder": true
+                },
+                {
+                  "number": 32,
+                  "type": "pick-from-list",
+                  "answer": [
+                    "C",
+                    "D"
+                  ],
+                  "anyOrder": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionNumber": 4,
+          "title": "Section 4 — Healthy Eating and Vitamins",
+          "questionRange": "Questions 33-41",
+          "audioFile": "Test 2 - Section 4.mp3",
+          "speakerInfo": "John (presenter) and Diane Greenbaum (dietician)",
+          "instructions": "Circle the correct answer. Complete the notes. Write NO MORE THAN THREE WORDS for each answer.",
+          
+          "answerKey": [
+            {
+              "questionNumber": 33,
+              "answer": "B"
+            },
+            {
+              "questionNumber": 34,
+              "answer": "D"
+            },
+            {
+              "questionNumber": 35,
+              "answer": "C"
+            },
+            {
+              "questionNumber": 36,
+              "answer": "cooking"
+            },
+            {
+              "questionNumber": 37,
+              "answer": "(regular) daily intake"
+            },
+            {
+              "questionNumber": 38,
+              "answer": "(a) variety"
+            },
+            {
+              "questionNumber": 39,
+              "answer": "the dark//the fridge//a cool place//a dark place"
+            },
+            {
+              "questionNumber": 40,
+              "answer": "eat in moderation//not too much"
+            },
+            {
+              "questionNumber": 41,
+              "answer": "eat lots//eat most"
+            }
+          ],
+          "transcript": "J = John\nD = Diane Greenbaum\nJ: Good morning, good morning, everyone, and welcome to our regular lecture on health issues. This series of lectures is organised by the Students' Union and is part of the union's attempt to help you, the students of this university, to stay healthy while coping with study and social life at the same time. (Q33) So it's a great pleasure for me to welcome back Ms Diane Greenbaum who is a professional dietician and who has been kind enough to give up her time, in what I know is a very hectic schedule, to come along and talk to us today. (Q34)\nD: Thank you. Thank you very much, John. May I say it's a pleasure to be back. Now, stresses at university, being away from home and having to look after yourselves, learning your way around the campus all contribute to making it quite hard sometimes to ensure that your diet is adequate. So today I'm going to talk about ways of making sure that you eat well while at the same time staying within your budget. (Q35)\nIf you have a well balanced diet, then you should be getting all the vitamins that you need for normal daily living. However sometimes we think we're eating the right foods but the vitamins are escaping, perhaps as a result of cooking (Q36) and anyway we're not getting the full benefit of them. Now, if you lack vitamins in any way the solution isn't to rush off and take vitamin pills, though they can sometimes help. No it's far better to look at your diet and how you prepare your food.\nSo what are vitamins? Well, the dictionary tells us they are \"food factors essential in small quantities to maintain life\". Now, there are fat soluble vitamins which can be stored for quite some time by the body and there are water soluble vitamins which are removed more rapidly from the body and so a regular daily intake of these ones is needed. (Q37)\nOK, so how can you ensure that your diet contains enough of the vitamins you need? Well, first of all, you may have to establish some new eating habits! No more chips at the uni canteen, I'm afraid! Now firstly, you must eat a variety of foods. (Q38) Then you need to ensure that you eat at least four servings of fruit and vegetables daily. Now you'll need to shop two or three times a week to make sure that they're fresh, and store your vegetables in the fridge or in a cool dark place. (Q39)\nNow let's just refresh our memories by looking at the Healthy Diet Pyramid. OK, can you all see that? Good. Well, now, as you see we've got three levels to our pyramid. At the top in the smallest area are the things which we should really be trying to avoid as much as possible. Things like ... Example yes, sugar, salt, butter ... all that sort of thing.\nNext, on the middle of our pyramid we find the things that we can eat in moderation. Not too much though! (Q40) And that's where we find milk, lean meat, fish, nuts, eggs. And then at the bottom of the pyramid are the things that you can eat lots of! Because they're the things that are really good for you. (Q41) And here we have bread, vegetables and fruit. So don't lose sight of your healthy diet pyramid when you do your shopping.",
+          "questionGroups": [
+            {
+              "id": "qg-s4-1",
+              "heading": "Questions 33-35",
+              "instructions": "Circle the correct answer.",
+              "questions": [
+                {
+                  "number": 33,
+                  "type": "multiple-choice",
+                  "text": "According to the first speaker, the focus of the lecture series is on",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "organising work and study."
+                    },
+                    {
+                      "label": "B",
+                      "text": "maintaining a healthy lifestyle."
+                    },
+                    {
+                      "label": "C",
+                      "text": "coping with homesickness."
+                    },
+                    {
+                      "label": "D",
+                      "text": "settling in at university."
+                    }
+                  ],
+                  "answer": "B"
+                },
+                {
+                  "number": 34,
+                  "type": "multiple-choice",
+                  "text": "The lecture will be given by",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "the president of the Union."
+                    },
+                    {
+                      "label": "B",
+                      "text": "the campus doctor."
+                    },
+                    {
+                      "label": "C",
+                      "text": "a sports celebrity."
+                    },
+                    {
+                      "label": "D",
+                      "text": "a health expert."
+                    }
+                  ],
+                  "answer": "D"
+                },
+                {
+                  "number": 35,
+                  "type": "multiple-choice",
+                  "text": "According to the second speaker, this week's lecture is on",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "campus food."
+                    },
+                    {
+                      "label": "B",
+                      "text": "dieting."
+                    },
+                    {
+                      "label": "C",
+                      "text": "sensible eating."
+                    },
+                    {
+                      "label": "D",
+                      "text": "saving money."
+                    }
+                  ],
+                  "answer": "C"
+                }
+              ]
+            },
+            {
+              "id": "qg-s4-2",
+              "heading": "Questions 36-39",
+              "instructions": "Complete the notes. Write NO MORE THAN THREE WORDS for each answer.",
+              "questions": [
+                {
+                  "number": 36,
+                  "type": "gapfill",
+                  "text": "Vitamins in food can be lost through ______",
+                  "answer": "cooking"
+                },
+                {
+                  "number": 37,
+                  "type": "gapfill",
+                  "text": "Water soluble vitamins are not stored, so you need a ______",
+                  "answer": "regular daily intake",
+                  "acceptableAnswers": [
+                    "daily intake",
+                    "regular intake"
+                  ]
+                },
+                {
+                  "number": 38,
+                  "type": "gapfill",
+                  "text": "Eat ______ of foods.",
+                  "answer": "a variety",
+                  "acceptableAnswers": [
+                    "variety"
+                  ]
+                },
+                {
+                  "number": 39,
+                  "type": "gapfill",
+                  "text": "Buy plenty of vegetables and store them in ______",
+                  "answer": "the dark",
+                  "acceptableAnswers": [
+                    "the fridge",
+                    "a cool place",
+                    "a dark place",
+                    "a cool dark place",
+                    "the fridge or a cool dark place"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "qg-s4-3",
+              "heading": "Questions 40-41",
+              "instructions": "Complete the diagram by writing NO MORE THAN THREE WORDS in the boxes provided.",
+              "images": [
+                {
+                  "src": "_page_44_Picture_3.jpeg",
+                  "alt": ""
+                }
+              ],
+              "questions": [
+                {
+                  "number": 40,
+                  "type": "gapfill",
+                  "text": "Middle of the pyramid — things you can eat ______",
+                  "answer": "in moderation",
+                  "acceptableAnswers": [
+                    "not too much",
+                    "eat in moderation"
+                  ]
+                },
+                {
+                  "number": 41,
+                  "type": "gapfill",
+                  "text": "Bottom of the pyramid — things you can ______",
+                  "answer": "eat lots",
+                  "acceptableAnswers": [
+                    "eat most",
+                    "eat lots of"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "testNumber": 3,
+      "sections": [
+        {
+          "sectionNumber": 1,
+          "title": "Section 1 — Campus Parking",
+          "questionRange": "Questions 1-12",
+          "audioFile": "Test 3 - Section 1.mp3",
+          "speakerInfo": "Male student, female student and clerk",
+          "instructions": "Circle the appropriate letter. Complete the application form using NO MORE THAN THREE WORDS.",
+          
+          "answerKey": [
+            {
+              "questionNumber": 1,
+              "answer": "B"
+            },
+            {
+              "questionNumber": 2,
+              "answer": "D"
+            },
+            {
+              "questionNumber": 3,
+              "answer": "C"
+            },
+            {
+              "questionNumber": 4,
+              "answer": "A"
+            },
+            {
+              "questionNumber": 5,
+              "answer": "Richard Lee"
+            },
+            {
+              "questionNumber": 6,
+              "answer": "30 Enmore Road"
+            },
+            {
+              "questionNumber": 7,
+              "answer": "Newport"
+            },
+            {
+              "questionNumber": 8,
+              "answer": "Architecture"
+            },
+            {
+              "questionNumber": 9,
+              "answer": "LJX 058K"
+            },
+            {
+              "questionNumber": 10,
+              "answer": "Ford"
+            },
+            {
+              "questionNumber": 11,
+              "answer": "C"
+            },
+            {
+              "questionNumber": 12,
+              "answer": "(on the) (front) window/windscreen"
+            }
+          ],
+          "transcript": "M = Male student\nF = Female student\nC = Clerk\nM: How do you come to the university each day? Train or bus or do you have a car?\nF: Oh, I always walk. I haven't got a car and anyway I live quite close. (Example)\nRepeat\nM: Do you know anything about parking rights on the campus? I was wondering whether students are allowed to park their cars on the campus or not?\nF: Yes, I think it's possible for post graduate students but not for undergraduate students. (Q1)\nM: That doesn't seem very fair.\nF: No, I suppose not, but there simply isn't enough room on the campus for everyone to park.\nM: Do you need a parking permit?\nF: Yeah, I believe you do.\nM: Where do I get that from?\nF: I think you can get a parking sticker from the administration office.\nM: Where's that?\nF: It's in the building called Block G. Right next to Block E. (Q2)\nM: Block G?\nF: Yeah.\nM: Oh right. And what happens to you if you don't buy a sticker? Do they clamp your wheels or give you a fine?\nF: No, I think they tow your car away. (Q3)\nM: Oh really?\nF: Yeah. And then they fine you as well because you have to pay to get the car back. (Q3)\nM: I'd better get the sticker then.\nF: Yeah.\nM: Where exactly is the administration office again? I'm new to this university and I'm still trying to find my way around.\nF: Right. You go along Library Road, past the tennis courts on your left and the swimming pool on your right and the administration office is opposite the car park on the left. You can't miss it.\nM: So it's up Library Road, past the swimming pool, opposite the car park. Right, I'll go straight over there. Bye and thanks for the help. (Q4)\nC: Good morning, can I help you?\nM: Yes, I was told to come over here to get a parking sticker. Is this the right place?\nC: Yes, it is. Are you a post graduate student?\nM: Yes, I am.\nC: OK, well, I'll just need to take some details ... Your name?\nM: Richard Lee — that's spelt L double E. (Q5)\nC: Richard ... Lee. And the address?\nM: Flat 13, 30 Enmore Road (Q6)\nC: How do you spell Enmore?\nM: E-N-M-O-R-E. And that's in the suburb of Newport: N-E-W-P-O-R-T. (Q7)\nC: Faculty?\nM: I beg your pardon?\nC: Which faculty are you in?\nM: Architecture, the Faculty of Architecture. (Q8)\nC: Right ... and the registration number of your car?\nM: Let me see um L X J five oh ... No, sorry, I always get that wrong, it's LJX 058K. (Q9)\nC: LJX 508K.\nM: No ... 058K\nC: Ah. And what make is the car?\nM: It's a Ford. (Q10)\nC: A Ford. Fine! Well, I'll just get you to sign here and when you've paid the cashier I'll be able to issue you with the sticker.\nM: Right. Where do I pay?\nC: Just across the corridor in the cashier's office. Oh, but it's 12.30 now and they close at 12.15 for lunch. But they open again at a quarter past two until 4.30. (Q11)\nM: Oh ... they're not open till quarter past two?\nC: No. When you get your sticker, you must attach it to the front windscreen of your car. I'm afraid it's not valid if you don't have it stuck on the window. (Q12)\nM: Right, I see. Thanks very much I'll just wait here then.",
+          "questionGroups": [
+            {
+              "id": "qg-s1-1",
+              "heading": "Questions 1-4",
+              "instructions": "Circle the appropriate letter.",
+              "questions": [
+                {
+                  "number": 1,
+                  "type": "multiple-choice",
+                  "text": "What are the parking regulations on campus?",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "undergraduate parking allowed"
+                    },
+                    {
+                      "label": "B",
+                      "text": "postgraduate parking allowed"
+                    },
+                    {
+                      "label": "C",
+                      "text": "staff parking only allowed"
+                    },
+                    {
+                      "label": "D",
+                      "text": "no student parking allowed"
+                    }
+                  ],
+                  "answer": "B"
+                },
+                {
+                  "number": 2,
+                  "type": "multiple-choice",
+                  "text": "The administration office is in",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Block B."
+                    },
+                    {
+                      "label": "B",
+                      "text": "Block D."
+                    },
+                    {
+                      "label": "C",
+                      "text": "Block E."
+                    },
+                    {
+                      "label": "D",
+                      "text": "Block G."
+                    }
+                  ],
+                  "answer": "D"
+                },
+                {
+                  "number": 3,
+                  "type": "multiple-choice",
+                  "text": "If you do not have a parking sticker, the following action will be taken:",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "wheel clamp your car."
+                    },
+                    {
+                      "label": "B",
+                      "text": "fine only."
+                    },
+                    {
+                      "label": "C",
+                      "text": "tow away your car and fine."
+                    },
+                    {
+                      "label": "D",
+                      "text": "tow away your car only."
+                    }
+                  ],
+                  "answer": "C"
+                },
+                {
+                  "number": 4,
+                  "type": "multiple-choice-image",
+                  "text": "Which picture shows the correct location of the Administration office?",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": ""
+                    },
+                    {
+                      "label": "B",
+                      "text": ""
+                    },
+                    {
+                      "label": "C",
+                      "text": ""
+                    },
+                    {
+                      "label": "D",
+                      "text": ""
+                    }
+                  ],
+                  "image": "_page_60_Picture_2.jpeg",
+                  "answer": "A"
+                }
+              ]
+            },
+            {
+              "id": "qg-s1-2",
+              "heading": "Questions 5-10",
+              "instructions": "Complete the application form using NO MORE THAN THREE WORDS.",
+              "images": [
+                {
+                  "src": "_page_61_Figure_1a.jpeg",
+                  "alt": ""
+                }
+              ],
+              "questions": [
+                {
+                  "number": 5,
+                  "type": "gapfill",
+                  "text": "Application for parking sticker — name",
+                  "answer": "Richard Lee"
+                },
+                {
+                  "number": 6,
+                  "type": "gapfill",
+                  "text": "Address (Flat 13)",
+                  "answer": "30 Enmore Road"
+                },
+                {
+                  "number": 7,
+                  "type": "gapfill",
+                  "text": "Suburb",
+                  "answer": "Newport"
+                },
+                {
+                  "number": 8,
+                  "type": "gapfill",
+                  "text": "Faculty",
+                  "answer": "Architecture"
+                },
+                {
+                  "number": 9,
+                  "type": "gapfill",
+                  "text": "Registration number",
+                  "answer": "LJX 058K"
+                },
+                {
+                  "number": 10,
+                  "type": "gapfill",
+                  "text": "Make of car",
+                  "answer": "Ford"
+                }
+              ]
+            },
+            {
+              "id": "qg-s1-3",
+              "heading": "Questions 11-12",
+              "instructions": "Circle the appropriate letter. Complete the sentence.",
+              "questions": [
+                {
+                  "number": 11,
+                  "type": "multiple-choice",
+                  "text": "Cashier's office opens at",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "12:15"
+                    },
+                    {
+                      "label": "B",
+                      "text": "2:00"
+                    },
+                    {
+                      "label": "C",
+                      "text": "2:15"
+                    },
+                    {
+                      "label": "D",
+                      "text": "4:30"
+                    }
+                  ],
+                  "answer": "C"
+                },
+                {
+                  "number": 12,
+                  "type": "gapfill",
+                  "text": "Where must the sticker be displayed?",
+                  "answer": "front windscreen",
+                  "acceptableAnswers": [
+                    "windscreen",
+                    "front window",
+                    "on the front window",
+                    "on the windscreen",
+                    "on the front windscreen"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionNumber": 2,
+          "title": "Section 2 — Maritime Museum",
+          "questionRange": "Questions 13-23",
+          "audioFile": "Test 3 - Section 2.mp3",
+          "speakerInfo": "Guide (Maritime Museum)",
+          "instructions": "Complete the notes below using NO MORE THAN THREE WORDS for each answer.",
+          "images": [
+            {
+              "src": "_page_62_Figure_1a.jpeg",
+              "alt": ""
+            }
+          ],
+          "answerKey": [
+            {
+              "questionNumber": 13,
+              "answer": "November 1991"
+            },
+            {
+              "questionNumber": 14,
+              "answer": "(historic) ships"
+            },
+            {
+              "questionNumber": 15,
+              "answer": "green arrows"
+            },
+            {
+              "questionNumber": 16,
+              "answer": "information desk"
+            },
+            {
+              "questionNumber": 17,
+              "answer": "stairs to climb//lots of stairs"
+            },
+            {
+              "questionNumber": 18,
+              "answer": "every hour"
+            },
+            {
+              "questionNumber": 19,
+              "answer": "Captain Cook"
+            },
+            {
+              "questionNumber": 20,
+              "answer": "the sea"
+            },
+            {
+              "questionNumber": 21,
+              "answer": "Australian artists/painters"
+            },
+            {
+              "questionNumber": 22,
+              "answer": "$70"
+            },
+            {
+              "questionNumber": 23,
+              "answer": "souvenirs"
+            }
+          ],
+          "transcript": "Guide:\nGood morning everyone, and welcome to the Maritime Museum. Now before we commence our tour I'd just like to tell you a little bit about the history of the museum. As you can see, it's a very modern building built in the post modern style and it was in fact opened by the Prime Minister of Australia in November 1991. (Q13) It's been designed with a nautical flavour in mind to remind us of our links with the sea. But the museum isn't only housed in this building, there are a number of historic ships docked outside in the harbour which form part of the museum and which you are also free to visit, and we'll be coming to them shortly. (Q14) I'd just like to point out one or two things of general interest while we're here. Handicapped toilets are located on this floor and the door shows a wheelchair. (Example) The cloakroom where you can hang your coat or leave your bags is just behind us here. The education centre is on the top floor and there's a good little library in there which you might like to use. Follow the signs to the Education Centre — you'll see a lot of little green arrows on the wall. The green arrows will take you there. (Q15) The information desk, marked with the small letter i on your plan is located right here in the foyer, so if you get separated from your friends, I suggest you make your way back to the information desk because we'll be returning to this spot at the end of the tour. (Q16) All right? Now if you look out this window you should be able to see where the museum's ships are docked. If you want to go on a tour of the old ship, the Vampire, she's docked over there and you should meet outside on the quay. However a word of warning! I don't recommend it for the grandmas and grandpas because there are lots of stairs to climb. (Q17) Right, now, let's move on. Oh, I almost forgot to give you the times for that tour. Now, tours of the Vampire run on the hour every hour. All right? (Q18)\nLet's take a walk round the museum now. The first room we're coming to is the theatre. This room is used to screen videos of special interest and we also use it for lectures. There's a continuous video showing today about the voyages of Captain Cook, so come back here later on if you want to learn more about Captain Cook. (Q19)\nNow, we're moving along the gallery known as the Leisure Gallery. This is one of our permanent exhibitions and here we try to give you an idea of the many different ways in which Australians have enjoyed their time by the sea: surfing, swimming, lifesaving clubs, that's all very much a part of Australian culture. (Q20) At the end of this section we'll come to the Picture Gallery where we've got a marvellous collection of paintings all by Australian artists. (Q21) I think you can buy reproductions of some of these paintings in the museum shop. Well worth a good look.\nNow we're coming to the Members' Lounge. As a member of the museum you would be entitled to use the members' lounge for refreshments. Membership costs $50 a year or $70 for all the family. (Q22) So it's quite good value because entry to the museum is then free.\nAnd down at the far end of this floor, you'll find the section which we've called Passengers and the Sea. In this part of the museum we've gathered together a wonderful collection of souvenirs from the old days when people travelled by ship. (Q23) You'll find all sorts of things there: old suitcases, ships' crockery, first class cabins decorated in the fashion of the day. Just imagine what it must have been like to travel first class.\nNow I'm going to leave you to walk round the museum on your own for a while and we'll all meet back again at the information desk in three quarters of an hour's time. I hope you enjoy your time with us at the museum today. Thank you.",
+          "questionGroups": [
+            {
+              "id": "qg-s2-1",
+              "heading": "Questions 13-23",
+              "instructions": "Complete the notes below using NO MORE THAN THREE WORDS for each answer.",
+              "questions": [
+                {
+                  "number": 13,
+                  "type": "gapfill",
+                  "text": "Date the museum was opened",
+                  "answer": "November 1991"
+                },
+                {
+                  "number": 14,
+                  "type": "gapfill",
+                  "text": "The museum consists of a building and ______",
+                  "answer": "historic ships",
+                  "acceptableAnswers": [
+                    "ships"
+                  ]
+                },
+                {
+                  "number": 15,
+                  "type": "gapfill",
+                  "text": "The Education Centre is signposted by ______",
+                  "answer": "green arrows"
+                },
+                {
+                  "number": 16,
+                  "type": "gapfill",
+                  "text": "If you lose your friends, meet at the ______",
+                  "answer": "information desk"
+                },
+                {
+                  "number": 17,
+                  "type": "gapfill",
+                  "text": "Warning about The Vampire",
+                  "answer": "stairs to climb",
+                  "acceptableAnswers": [
+                    "lots of stairs"
+                  ]
+                },
+                {
+                  "number": 18,
+                  "type": "gapfill",
+                  "text": "How often are the tours of The Vampire?",
+                  "answer": "every hour"
+                },
+                {
+                  "number": 19,
+                  "type": "gapfill",
+                  "text": "Person featured in today's video",
+                  "answer": "Captain Cook"
+                },
+                {
+                  "number": 20,
+                  "type": "gapfill",
+                  "text": "The Leisure Gallery shows how Australian culture is influenced by ______",
+                  "answer": "the sea"
+                },
+                {
+                  "number": 21,
+                  "type": "gapfill",
+                  "text": "The Picture Gallery contains pictures by ______",
+                  "answer": "Australian artists",
+                  "acceptableAnswers": [
+                    "Australian painters",
+                    "painters",
+                    "artists"
+                  ]
+                },
+                {
+                  "number": 22,
+                  "type": "gapfill",
+                  "text": "Cost of family membership of the museum",
+                  "answer": "$70",
+                  "acceptableAnswers": [
+                    "70 dollars",
+                    "seventy dollars"
+                  ]
+                },
+                {
+                  "number": 23,
+                  "type": "gapfill",
+                  "text": "'Passengers and the Sea' includes a collection of ______",
+                  "answer": "souvenirs"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionNumber": 3,
+          "title": "Section 3 — Revenue Management",
+          "questionRange": "Questions 24-32",
+          "audioFile": "Test 3 - Section 3.mp3",
+          "speakerInfo": "Tutor, Mark and Susan (students)",
+          "instructions": "Circle the correct answer. Complete the notes using NO MORE THAN THREE WORDS for each answer.",
+          "images": [],
+          "answerKey": [
+            {
+              "questionNumber": 24,
+              "answer": "B"
+            },
+            {
+              "questionNumber": 25,
+              "answer": "C"
+            },
+            {
+              "questionNumber": 26,
+              "answer": "D"
+            },
+            {
+              "questionNumber": 27,
+              "answer": "A"
+            },
+            {
+              "questionNumber": 28,
+              "answer": "law has changed//law changes//changes in law"
+            },
+            {
+              "questionNumber": 29,
+              "answer": "(powerful) computer programs"
+            },
+            {
+              "questionNumber": 30,
+              "answer": "from home (computer)"
+            },
+            {
+              "questionNumber": 31,
+              "answer": "hotels/hotel beds/rooms"
+            },
+            {
+              "questionNumber": 32,
+              "answer": "hire cars"
+            }
+          ],
+          "transcript": "T = Tutor\nM = Mark\nS = Susan\nT: OK, everybody, good morning! It's Mark's turn to talk to us today so Mark, I'll ask you to get straight down to business.\nM: Right!\nT: Now following on from what we were discussing last week in Susan's tutorial on approaches to marketing, you were going to give us a quick run down on a new strategy for pricing which is now being used by many large companies known as \"revenue management\" ... before we go on to your actual tutorial paper on Sales Targets. (Q24) Is that correct?\nM: Yeah, OK, well ...\nT: So what exactly is revenue management?\nM: Well, it's a way of managing your pricing by treating things like airline tickets and hotel rooms rather more as if they were perishable goods.\nS: Yeah, I just tried to book a ticket yesterday for Perth and would you believe there are three different prices for the flight?\nM: Right! And what was the rationale for that?\nS: Well ... the travel agent said it depended on when you book and the length of the stay, like it's cheap if you stay away for a Saturday night, presumably because this isn't business travel and even cheaper if you buy a ticket where you can't get a refund if you have to cancel; (Q25) in that case the ticket costs about half the price. You wouldn't think it would make that much difference, would you?\nM: Well it does, and that's basically because the airlines are now treating their seats like a commodity. You see — if you want a seat today, then you pay far more for it than if you want it in three weeks' time.\nS: That seems rather unfair.\nM: Well ... not really ... when you think about it, that's just common sense isn't it? (Q26)\nS: I suppose so.\nT: What this actually means is that in the same row of seats on the same flight you could have three people who have all paid a different price for their tickets.\nS: And is this just happening in Australia?\nM: No, no it's the same all over the world. Airlines are able to \"market\" a seat as a perishable product, with different values at different stages of its life.\nS: Well like mangoes or apples at the market.\nM: Yeah, it's exactly like that. The fact is that the companies are not actually interested in selling you a cheap flight! They're interested in selling the seats and flying aeroplanes that are full. (Q27)\nT: Mark, why do you think revenue management has come about?\nM: Well, as far as I can see there are two basic reasons: firstly because the law has been changed to allow the companies to do this. (Q28) You see in the past they didn't have the right to keep changing the prices of the tickets, and secondly we now have very powerful computer programs to do the calculations (Q29) and so the prices can be changed at a moment's notice.\nS: So you mean ten minutes could be critical when you're buying a plane ticket?\nM: Absolutely!\nT: That's right!\nM: And I understand we have almost reached the stage where these computer programs that the airlines are using will eventually be available to consumers to find the best deals for their travel plans from their home computer. (Q30)\nS: Heavens! What a thought! So the travel agent could easily become a thing of the past if you could book your airline tickets from home. Are there any other industries using this system, or is it restricted to the airline business?\nM: Many of the big hotel groups are doing it now. That's why the price of a bed in a hotel can also vary so much ... depending on when and where you book it. (Q31)\nT: It's all a bit of a gamble really.\nM: Yes, and hire car companies are also using revenue management to set their tariffs, (Q32) because they are also dealing with a \"commodity\" if you like ... so the cost of hiring a car will depend on demand.\nT: Well, thank you, Mark, for that overview ... that was well researched. Now let's get on with your main topic for today...",
+          "questionGroups": [
+            {
+              "id": "qg-s3-1",
+              "heading": "Questions 24-27",
+              "instructions": "Circle the correct answer.",
+              "questions": [
+                {
+                  "number": 24,
+                  "type": "multiple-choice",
+                  "text": "Mark is going to talk briefly about",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "marketing new products."
+                    },
+                    {
+                      "label": "B",
+                      "text": "pricing strategies."
+                    },
+                    {
+                      "label": "C",
+                      "text": "managing large companies."
+                    },
+                    {
+                      "label": "D",
+                      "text": "setting sales targets."
+                    }
+                  ],
+                  "answer": "B"
+                },
+                {
+                  "number": 25,
+                  "type": "multiple-choice",
+                  "text": "According to Susan, air fares are lowest when they",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "include weekend travel."
+                    },
+                    {
+                      "label": "B",
+                      "text": "are booked well in advance."
+                    },
+                    {
+                      "label": "C",
+                      "text": "are non-refundable."
+                    },
+                    {
+                      "label": "D",
+                      "text": "are for business travel only."
+                    }
+                  ],
+                  "answer": "C"
+                },
+                {
+                  "number": 26,
+                  "type": "multiple-choice",
+                  "text": "Mark thinks revenue management is",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "interesting."
+                    },
+                    {
+                      "label": "B",
+                      "text": "complicated."
+                    },
+                    {
+                      "label": "C",
+                      "text": "time-consuming."
+                    },
+                    {
+                      "label": "D",
+                      "text": "reasonable."
+                    }
+                  ],
+                  "answer": "D"
+                },
+                {
+                  "number": 27,
+                  "type": "multiple-choice",
+                  "text": "The airline companies want to",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "increase profits."
+                    },
+                    {
+                      "label": "B",
+                      "text": "benefit the passenger."
+                    },
+                    {
+                      "label": "C",
+                      "text": "sell cheap seats."
+                    },
+                    {
+                      "label": "D",
+                      "text": "improve the service."
+                    }
+                  ],
+                  "answer": "A"
+                }
+              ]
+            },
+            {
+              "id": "qg-s3-2",
+              "heading": "Questions 28-32",
+              "instructions": "Complete the notes using NO MORE THAN THREE WORDS for each answer.",
+              "images":[
+                {
+                  "src": "_page_63_Figure_1a.jpeg",
+                  "alt": ""
+                }
+              ],
+              "questions": [
+                {
+                  "number": 28,
+                  "type": "gapfill",
+                  "text": "Two reasons for the new approach to pricing — first:",
+                  "answer": "law has changed",
+                  "acceptableAnswers": [
+                    "law changes",
+                    "changes in law",
+                    "the law has changed"
+                  ]
+                },
+                {
+                  "number": 29,
+                  "type": "gapfill",
+                  "text": "Two reasons for the new approach to pricing — second:",
+                  "answer": "computer programs",
+                  "acceptableAnswers": [
+                    "powerful computer programs"
+                  ]
+                },
+                {
+                  "number": 30,
+                  "type": "gapfill",
+                  "text": "In future people will be able to book airline tickets ______",
+                  "answer": "from home",
+                  "acceptableAnswers": [
+                    "from home computer",
+                    "from their home computer",
+                    "home computer"
+                  ]
+                },
+                {
+                  "number": 31,
+                  "type": "gapfill",
+                  "text": "Also being marketed in this way are ______",
+                  "answer": "hotels",
+                  "acceptableAnswers": [
+                    "hotel beds",
+                    "hotel rooms",
+                    "rooms"
+                  ]
+                },
+                {
+                  "number": 32,
+                  "type": "gapfill",
+                  "text": "And also ______",
+                  "answer": "hire cars"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionNumber": 4,
+          "title": "Section 4 — Space Management in Supermarkets",
+          "questionRange": "Questions 33-42",
+          "audioFile": "Test 3 - Section 4.mp3",
+          "speakerInfo": "Marketing Consultant",
+          "instructions": "Complete the table. Write NO MORE THAN THREE WORDS for each answer.",
+          
+          "answerKey": [
+            {
+              "questionNumber": 33,
+              "answer": "displays//products//displays and products"
+            },
+            {
+              "questionNumber": 34,
+              "answer": "(hidden) TV cameras"
+            },
+            {
+              "questionNumber": 35,
+              "answer": "recorder//recording"
+            },
+            {
+              "questionNumber": 36,
+              "answer": "\"Spaceman\""
+            },
+            {
+              "questionNumber": 37,
+              "answer": "position/shelf/spot/place"
+            },
+            {
+              "questionNumber": 38,
+              "answer": "walk (straight/right) past // ignore//pass"
+            },
+            {
+              "questionNumber": 39,
+              "answer": "at eye level//near customers' eyes"
+            },
+            {
+              "questionNumber": 40,
+              "answer": "hotspots"
+            },
+            {
+              "questionNumber": 41,
+              "answer": "special offers"
+            },
+            {
+              "questionNumber": 42,
+              "answer": "chocolates"
+            }
+          ],
+          "transcript": "Marketing Consultant:\nGood morning. Welcome to this talk on Space Management. And today I'm going to look particularly at space management in the supermarket.\nNow since the time supermarkets began, marketing consultants, like us, have been gathering information about customers' shopping habits.\nTo date, various research methods have been used to help promote the sales of supermarket products. There is, for example, the simple and direct questionnaire (Example) which provides information from customers about their views on displays and products (Q33) and then helps retailers make decisions about what to put where. Another method to help managers understand just how shoppers go around their stores are the hidden television cameras that film us as we shop and monitor our physical movement around the supermarket aisles: where do we start, what do we buy last, what attracts us, etc. (Q34)\nMore sophisticated techniques now include video surveillance and such devices as the eye movement recorder. This is a device which shoppers volunteer to wear taped into a headband, and which traces their eye movements as they walk round the shop recording the most eye-catching areas of shelves and aisles. (Q35) But with today's technology, Space Management is now a highly sophisticated method of manipulating the way we shop to ensure maximum profit. Supermarkets are able to invest millions of pounds in powerful computers which tell them what sells best and where.\nNow, an example of this is Spaceman which is a computer program that helps the retailer to decide which particular product sells best in which part of the store. (Q36) Now Spaceman works by receiving information from the electronic checkouts (where customers pay) on how well a product is selling in a particular position. Spaceman then suggests the most profitable combination of an article and its position in the store. (Q37)\nSo, let's have a look at what we know about supermarkets and the way people behave when they walk down the aisles and take the articles they think they need from the shelves.\nNow here's a diagram of one supermarket aisle and two rows of shelves. Here's the entrance at the top left-hand corner.\nNow products placed here, at the beginning of aisles, don't sell well. In tests, secret fixed cameras have filmed shoppers' movements around a store over a seven-day period. When the film is speeded up, it clearly shows that we walk straight past these areas on our way to the centre of an aisle. (Q38) Items placed here just don't attract people.\nWhen we finally stop at the centre of an aisle, we pause and take stock, casting our eyes along the length of it. Now products displayed here sell well and do even better if they are placed at eye level so that the customer's eyes hit upon them instantly. (Q39) Products here are snapped up and manufacturers pay a lot for these shelf areas which are known in the trade as hotspots. (Q40) Naturally everyone wants their products to be in a hotspot.\nBut the prime positions in the store are the ends of the aisles, otherwise known as Gondola ends. Now these stand out and grab our attention. For this reason new products are launched in these positions and manufacturers are charged widely varying prices for this privileged spot. Also, the end of an aisle may be used for promoting special offers which are frequently found waiting for us as we turn the corner of an aisle. (Q41)\nWell, now, eventually of course, we have to pay. Any spot where a supermarket can be sure we are going to stand still and concentrate for more than a few seconds is good for sales. That's why the shelves at the checkout have long been a favourite for manufacturers of chocolates — perhaps the most sure-fire \"impulse\" food of all. (Q42)",
+          "questionGroups": [
+            {
+              "id": "qg-s4-1",
+              "heading": "Questions 33-37",
+              "instructions": "Complete the table. Write NO MORE THAN THREE WORDS for each answer.",
+              "images": [
+                {
+                  "src": "_page_64_Figure_1a.jpeg",
+                  "alt": ""
+                }
+              ],
+              "questions": [
+                {
+                  "number": 33,
+                  "type": "gapfill",
+                  "text": "Questionnaires — what customers think about",
+                  "answer": "displays",
+                  "acceptableAnswers": [
+                    "products",
+                    "displays and products"
+                  ]
+                },
+                {
+                  "number": 34,
+                  "type": "gapfill",
+                  "text": "Research method — how customers move around supermarket aisles",
+                  "answer": "hidden TV cameras",
+                  "acceptableAnswers": [
+                    "TV cameras",
+                    "television cameras"
+                  ]
+                },
+                {
+                  "number": 35,
+                  "type": "gapfill",
+                  "text": "Eye movement ______",
+                  "answer": "recorder",
+                  "acceptableAnswers": [
+                    "recording"
+                  ]
+                },
+                {
+                  "number": 36,
+                  "type": "gapfill",
+                  "text": "Computer programs — e.g. ______",
+                  "answer": "Spaceman"
+                },
+                {
+                  "number": 37,
+                  "type": "gapfill",
+                  "text": "The best ______ for an article in the shop",
+                  "answer": "position",
+                  "acceptableAnswers": [
+                    "shelf",
+                    "spot",
+                    "place"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "qg-s4-2",
+              "heading": "Questions 38-42",
+              "instructions": "Label the diagram. Write NO MORE THAN THREE WORDS for each answer.",
+              "images": [
+                {
+                  "src": "_page_65_Picture_1a.jpeg",
+                  "alt": ""
+                }
+              ],
+              "questions": [
+                {
+                  "number": 38,
+                  "type": "gapfill",
+                  "text": "Products at the beginning of aisles — we ______",
+                  "answer": "walk straight past",
+                  "acceptableAnswers": [
+                    "walk past",
+                    "walk right past",
+                    "ignore",
+                    "pass",
+                    "walk straight by"
+                  ]
+                },
+                {
+                  "number": 39,
+                  "type": "gapfill",
+                  "text": "Products at the centre of an aisle sell well if placed ______",
+                  "answer": "at eye level",
+                  "acceptableAnswers": [
+                    "near customers' eyes",
+                    "at customers' eye level"
+                  ]
+                },
+                {
+                  "number": 40,
+                  "type": "gapfill",
+                  "text": "Shelf areas known in the trade as ______",
+                  "answer": "hotspots"
+                },
+                {
+                  "number": 41,
+                  "type": "gapfill",
+                  "text": "The end of an aisle may be used for promoting ______",
+                  "answer": "special offers"
+                },
+                {
+                  "number": 42,
+                  "type": "gapfill",
+                  "text": "The shelves at the checkout are a favourite for manufacturers of ______",
+                  "answer": "chocolates"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "testNumber": 4,
+      "sections": [
+        {
+          "sectionNumber": 1,
+          "title": "Section 1 — University Registration",
+          "questionRange": "Questions 1-12",
+          "audioFile": "Test 4 - Section 1.mp3",
+          "speakerInfo": "Female student, male student and clerk",
+          "instructions": "Circle the appropriate letter. Complete the registration form using NO MORE THAN THREE WORDS.",
+          "answerKey": [
+            {
+              "questionNumber": 1,
+              "answer": "C"
+            },
+            {
+              "questionNumber": 2,
+              "answer": "A"
+            },
+            {
+              "questionNumber": 3,
+              "answer": "B"
+            },
+            {
+              "questionNumber": 4,
+              "answer": "D"
+            },
+            {
+              "questionNumber": 5,
+              "answer": "D"
+            },
+            {
+              "questionNumber": 6,
+              "answer": "Julia Perkins"
+            },
+            {
+              "questionNumber": 7,
+              "answer": "15 Waratah Road"
+            },
+            {
+              "questionNumber": 8,
+              "answer": "Brisbane"
+            },
+            {
+              "questionNumber": 9,
+              "answer": "to be advised//not connected//no phone//none"
+            },
+            {
+              "questionNumber": 10,
+              "answer": "first year Law"
+            },
+            {
+              "questionNumber": 11,
+              "answer": "C"
+            },
+            {
+              "questionNumber": 12,
+              "answer": "D"
+            }
+          ],
+          "transcript": "F = Female student\nM = Male student\nC = Clerk\nF: Excuse me. Can you help me? I was looking for the Main Hall.\nM: Maybe I can, actually. I'm looking for the Main Hall, too. I think it's in the Administration building. Are you a new student? (Example)\nF: Yes, I am.\nRepeat\nM: I thought you looked as lost as me. I'm trying to find the admin building, too, so that I can register for my course. But I don't seem to be having much luck.\nF: Well, look, according to this map of the campus here, you go straight up the steps, turn left and the building is on the right. OK, let's see if we can find it. (Q1)\nM: Oh, this looks right. Oh, yeah, it must be. Look, there are hundreds of other people here!\nF: There must be at least 50 people in the queue — we'll be here till gone 2 o'clock at this rate. (Q2)\nM: And I'm starving!\nF: So am I.\nM: Actually, I was on my way to the canteen to get something for lunch. Why don't I go to the canteen and buy something and you stay here and wait?\nF: Good idea.\nM: What would you like? Pizza, sandwich, hot dog, fried rice. They do everything ...\nF: Oh, something easy. Take away fried rice sounds good.\nM: OK, fried ...\nF: No, on second thoughts, I'll have a cheese and tomato sandwich. (Q3)\nM: Right one cheese and tomato — anything to drink?\nF: Yeah, get me a coffee, would you?\nM: Oh, hot coffee's a bit hard to carry. What about a coke or an orange juice?\nF: Oh, um ... get me an orange juice, then. (Q4) Look, here's five dollars.\nM: Oh, take two dollars back, it shouldn't cost me more than three dollars.\nF: Well, keep the five and we'll sort it out later. Oh, and could you get me an apple as well? (Q5)\nM: OK. Back in a minute.\nF: Oh, hello. I'm here to register for the First Year Law course.\nC: I'll just have to fill out this form for our records. What's your name?\nF: Julia Perkins.\nC: Can you spell that for me?\nF: Yeah, that's J-U-L-I-A P-E-R-K-I-N-S. (Q6)\nC: Address?\nF: Flat 5, 15 Waratah Road, that's W-A-R-A-T-A-H, Brisbane. (Q7 and Q8)\nC: Brisbane ... And your telephone number?\nF: We haven't got the phone on yet. We've only just moved in.\nC: OK, well can you let us have the number once the phone's connected and I'll make a note here to be advised. (Q9) And the course?\nF: I beg your pardon?\nC: What course are you doing?\nF: First Year Law. (Q10)\nC: Right. Well, you'll have to go across to the Law Faculty and get this card stamped and then you come back here with it and pay your union fee.\nF: Thanks very much.\nM: Oh, there you are.\nF: I thought you were never going to come back.\nM: Sorry! The canteen was absolutely packed and I had to wait for ages. Then when I got to the front of the queue they had hardly any food left. So I had to get you a slice of pizza. I'm sorry. (Q11)\nF: Oh, that's OK. I could eat anything, I'm so hungry.\nM: And there's your bottle of orange juice and your apple. At least I managed that.\nF: Great. Thanks a lot.\nM: Oh and here's your $2 back.\nF: Don't worry about it. Buy me a cup of coffee later!\nM: Oh, alright then! So how'd you go?\nF: Well in order to register we've got to go to the Law Faculty and get this card stamped and then go back to the Admin building and pay the union fees. That means we're registered. After that we have to go to the notice board to find out about lectures and then we have to put our names down for tutorial groups and go to the library to ... (Q12)\nM: Great. Well first let's sit down and have our lunch.",
+          "questionGroups": [
+            {
+              "id": "qg-s1-1",
+              "heading": "Questions 1-5",
+              "instructions": "Circle the appropriate letter.",
+              "questions": [
+                {
+                  "number": 1,
+                  "type": "multiple-choice-image",
+                  "text": "Where is the administration building?",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": ""
+                    },
+                    {
+                      "label": "B",
+                      "text": ""
+                    },
+                    {
+                      "label": "C",
+                      "text": ""
+                    },
+                    {
+                      "label": "D",
+                      "text": ""
+                    }
+                  ],
+                  "image": "_page_80_Picture_11.jpeg",
+                  "answer": "C"
+                },
+                {
+                  "number": 2,
+                  "type": "multiple-choice",
+                  "text": "How many people are waiting in the queue?",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "50"
+                    },
+                    {
+                      "label": "B",
+                      "text": "100"
+                    },
+                    {
+                      "label": "C",
+                      "text": "200"
+                    },
+                    {
+                      "label": "D",
+                      "text": "300"
+                    }
+                  ],
+                  "answer": "A"
+                },
+                {
+                  "number": 3,
+                  "type": "multiple-choice-image",
+                  "text": "What does the woman order for lunch?",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": ""
+                    },
+                    {
+                      "label": "B",
+                      "text": ""
+                    },
+                    {
+                      "label": "C",
+                      "text": ""
+                    },
+                    {
+                      "label": "D",
+                      "text": ""
+                    }
+                  ],
+                  "image": "_page_80_Picture_18.jpeg",
+                  "answer": "B"
+                },
+                {
+                  "number": 4,
+                  "type": "multiple-choice-image",
+                  "text": "What does the woman order to drink?",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": ""
+                    },
+                    {
+                      "label": "B",
+                      "text": ""
+                    },
+                    {
+                      "label": "C",
+                      "text": ""
+                    },
+                    {
+                      "label": "D",
+                      "text": ""
+                    }
+                  ],
+                  "image": "_page_81_Picture_2.jpeg",
+                  "answer": "D"
+                },
+                {
+                  "number": 5,
+                  "type": "multiple-choice",
+                  "text": "How much money does the woman give the man?",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "$2.00"
+                    },
+                    {
+                      "label": "B",
+                      "text": "$3.00"
+                    },
+                    {
+                      "label": "C",
+                      "text": "$3.50"
+                    },
+                    {
+                      "label": "D",
+                      "text": "$5.00"
+                    }
+                  ],
+                  "answer": "D"
+                }
+              ]
+            },
+            {
+              "id": "qg-s1-2",
+              "heading": "Questions 6-10",
+              "instructions": "Complete the registration form using NO MORE THAN THREE WORDS.",
+              "images": [
+                {
+                  "src": "_page_82_Figure_1a.jpeg",
+                  "alt": ""
+                }
+              ],
+              "questions": [
+                {
+                  "number": 6,
+                  "type": "gapfill",
+                  "text": "Name of student",
+                  "answer": "Julia Perkins"
+                },
+                {
+                  "number": 7,
+                  "type": "gapfill",
+                  "text": "Address (Flat 5)",
+                  "answer": "15 Waratah Road"
+                },
+                {
+                  "number": 8,
+                  "type": "gapfill",
+                  "text": "Town",
+                  "answer": "Brisbane"
+                },
+                {
+                  "number": 9,
+                  "type": "gapfill",
+                  "text": "Tel",
+                  "answer": "to be advised",
+                  "acceptableAnswers": [
+                    "not connected",
+                    "no phone",
+                    "none"
+                  ]
+                },
+                {
+                  "number": 10,
+                  "type": "gapfill",
+                  "text": "Course",
+                  "answer": "first year Law"
+                }
+              ]
+            },
+            {
+              "id": "qg-s1-3",
+              "heading": "Questions 11-12",
+              "instructions": "Circle the appropriate letter.",
+              "questions": [
+                {
+                  "number": 11,
+                  "type": "multiple-choice-image",
+                  "text": "What did the man buy for her to eat?",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": ""
+                    },
+                    {
+                      "label": "B",
+                      "text": ""
+                    },
+                    {
+                      "label": "C",
+                      "text": ""
+                    },
+                    {
+                      "label": "D",
+                      "text": ""
+                    }
+                  ],
+                  "image": "_page_81_Picture_13.jpeg",
+                  "answer": "C"
+                },
+                {
+                  "number": 12,
+                  "type": "multiple-choice",
+                  "text": "What must the students do as part of registration at the university?",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Check the notice board in the Law Faculty."
+                    },
+                    {
+                      "label": "B",
+                      "text": "Find out about lectures."
+                    },
+                    {
+                      "label": "C",
+                      "text": "Organise tutorial groups."
+                    },
+                    {
+                      "label": "D",
+                      "text": "Pay the union fees."
+                    }
+                  ],
+                  "answer": "D"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionNumber": 2,
+          "title": "Section 2 — Student Banking",
+          "questionRange": "Questions 13-21",
+          "audioFile": "Test 4 - Section 2.mp3",
+          "speakerInfo": "Speaker (student banking)",
+          "instructions": "Complete the notes. Write NO MORE THAN THREE WORDS for each answer.",
+          "images": [
+            {
+              "src": "_page_83_Picture_1a.jpeg",
+              "alt": ""
+            }
+          ],
+          "answerKey": [
+            {
+              "questionNumber": 13,
+              "answer": "Hope Street"
+            },
+            {
+              "questionNumber": 14,
+              "answer": "evidence"
+            },
+            {
+              "questionNumber": 15,
+              "answer": "passport"
+            },
+            {
+              "questionNumber": 16,
+              "answer": "current/student (account)"
+            },
+            {
+              "questionNumber": 17,
+              "answer": "chequebook"
+            },
+            {
+              "questionNumber": 18,
+              "answer": "withdraw//draw (out)//take out"
+            },
+            {
+              "questionNumber": 19,
+              "answer": "directly from//right out of"
+            },
+            {
+              "questionNumber": 20,
+              "answer": "permission of/from bank"
+            },
+            {
+              "questionNumber": 21,
+              "answer": "4.30 pm or/to 5 pm"
+            }
+          ],
+          "transcript": "Speaker:\nThanks for turning up today to this short talk I'm going to give on student banking. Many of you are unfamiliar with the way banks work in this country and today's talk should just give you a few starting points. I will of course answer any questions at the end.\nRight. Well, as you probably know, you'll need to open a bank account while you're here — it's the safest place to keep your money and it's best to open an account with one of the major banks. You should each have a handout with the names and addresses ... there's Barclays in Realty Square, National Westminster in Preston Park, (Example) Lloyds in City Plaza and Midland in Hope Street. (Q13) OK. All these banks offer special student accounts. However, it's important to note that as an international student you'll not necessarily be eligible for all the facilities offered to resident students.\nNow, as an international student you will need to provide evidence that you can fund yourself for however long your course lasts. (Q14) Banks have different policies and the services that they'll offer you will depend on your individual circumstances and on the discretion of the bank manager involved. So it's a matter of going there and finding out about your own particular situation.\nRight, erm, when you do go to open a bank account, you should take some documentation with you. I've already mentioned that you must be able to support yourself. In addition to this most banks ask you to bring your passport and your letter or certificate of enrolment. (Q15) OK?\nNow, by far the most useful type of account to open is a current account. When you do this, you will actually get what is called a \"student account\" which is a current account with special concessions for students. (Q16) When you open the account, the bank will give you a chequebook and you can use this to draw money out as you need it. (Q17) If you need to write cheques in shops, you'll also need a cheque card. This is really an identity card which guarantees that correctly written cheques up to the value stated on the card will be honoured by the bank. OK?\nRight, er, if you want to draw out cash for yourself you can make the cheque payable in your own name or \"to cash\". You can also withdraw cash from a cashpoint machine with a cashcard. These are extremely useful as they enable you to withdraw cash from your account during the day or at night. (Q18)\nThere is also another card called Switch or Delta and you can use this to pay for things in shops. It takes the money right out of your account, so you don't need your chequebook. (Q19)\nNow — you may want to take more money out of the bank than you have in it. This is called having an overdraft. Be very careful with this — you should not do this without permission from your bank. (Q20) Overdrafts usually incur charges though some banks offer interest-free overdrafts to some students. But find out before you get one! Right?\nWell, that just leaves opening times — when can you go? Banks used to be open from 9.30 am until 3.30 pm from Monday to Friday but many main branches are now open until 4.30 or 5 pm on weekdays (Q21) and some of the bigger branches in London and other major cities are now open for a limited time on Saturdays. OK — any questions?",
+          "questionGroups": [
+            {
+              "id": "qg-s2-1",
+              "heading": "Questions 13-21",
+              "instructions": "Complete the notes. Write NO MORE THAN THREE WORDS for each answer.",
+              "questions": [
+                {
+                  "number": 13,
+                  "type": "gapfill",
+                  "text": "Midland bank — location",
+                  "answer": "Hope Street"
+                },
+                {
+                  "number": 14,
+                  "type": "gapfill",
+                  "text": "Must provide ______ that I can support myself",
+                  "answer": "evidence"
+                },
+                {
+                  "number": 15,
+                  "type": "gapfill",
+                  "text": "Take with me: ______ and letter of enrolment",
+                  "answer": "passport"
+                },
+                {
+                  "number": 16,
+                  "type": "gapfill",
+                  "text": "Recommended account",
+                  "answer": "current account",
+                  "acceptableAnswers": [
+                    "student account",
+                    "current",
+                    "student"
+                  ]
+                },
+                {
+                  "number": 17,
+                  "type": "gapfill",
+                  "text": "Bank supplies: ______ and cheque card which guarantees cheques",
+                  "answer": "chequebook"
+                },
+                {
+                  "number": 18,
+                  "type": "gapfill",
+                  "text": "Cashcard: you can ______ cash at any time",
+                  "answer": "withdraw",
+                  "acceptableAnswers": [
+                    "draw out",
+                    "draw",
+                    "take out"
+                  ]
+                },
+                {
+                  "number": 19,
+                  "type": "gapfill",
+                  "text": "Switch/Delta cards: take the money ______ the account",
+                  "answer": "directly from",
+                  "acceptableAnswers": [
+                    "right out of"
+                  ]
+                },
+                {
+                  "number": 20,
+                  "type": "gapfill",
+                  "text": "Overdraft — must have ______",
+                  "answer": "permission from bank",
+                  "acceptableAnswers": [
+                    "permission of bank",
+                    "permission of/from the bank",
+                    "permission"
+                  ]
+                },
+                {
+                  "number": 21,
+                  "type": "gapfill",
+                  "text": "Most banks open until ______ during the week",
+                  "answer": "4.30 pm",
+                  "acceptableAnswers": [
+                    "5 pm",
+                    "4.30 to 5 pm",
+                    "4.30 or 5 pm",
+                    "4.30pm",
+                    "5pm"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionNumber": 3,
+          "title": "Section 3 — Aluminium Cans",
+          "questionRange": "Questions 22-31",
+          "audioFile": "Test 4 - Section 3.mp3",
+          "speakerInfo": "Ilmar and Dawn (students)",
+          "instructions": "Complete the factsheet. Write NO MORE THAN THREE WORDS for each answer.",
+          
+          "answerKey": [
+            {
+              "questionNumber": 22,
+              "answer": "300 million"
+            },
+            {
+              "questionNumber": 23,
+              "answer": "paper clips"
+            },
+            {
+              "questionNumber": 24,
+              "answer": "magazine pages//pieces of paper//pages"
+            },
+            {
+              "questionNumber": 25,
+              "answer": "three times"
+            },
+            {
+              "questionNumber": 26,
+              "answer": "thicker"
+            },
+            {
+              "questionNumber": 27,
+              "answer": "label"
+            },
+            {
+              "questionNumber": 28,
+              "answer": "(a) dome"
+            },
+            {
+              "questionNumber": 29,
+              "answer": "flange (correct spelling)"
+            },
+            {
+              "questionNumber": 30,
+              "answer": "25%"
+            },
+            {
+              "questionNumber": 31,
+              "answer": "scored opening"
+            }
+          ],
+          "transcript": "I = Ilmar\nD = Dawn\nI: Hi, Dawn.\nD: Oh hi, Ilmar.\nI: I'm glad I've bumped into you. I've just found a great idea for the presentation we've got to do for Dr Banks next month.\nD: What, the one on everyday objects?\nI: Yes ... look at this article ... it's really interesting.\nD: The aluminium coke can?\nI: You know ... coca cola cans, soft drink cans. Look let's sit down here. Have you got a minute?\nD: Sure ... I'll just get my bag.\nD: OK, so you think we can get a presentation out of this article?\nI: I'm sure we can. First of all we can provide some interesting facts about the aluminium cans that we drink out of every day.\nD: Like ... ?\nI: Well, here ... it says that in the US they produce 300 million aluminium drink cans each day. (Q22)\nD: Wow! 300 million!\nI: Exactly. That's an enormous number. It says here \"outstrips the production of nails or paper clips\". (Q23) And they say that the manufacturers of these cans exercise as much attention and precision in producing them as aircraft manufacturers do when they make the wing of an aircraft!\nD: Really! Let's have a look.\nI: They're trying to produce the perfect can — as thin but as strong as possible.\nD: Mmm ... this bit's interesting ... \"today's can weighs about 0.48 ounces: thinner than two pieces of paper ... from this magazine say.\" (Q24)\nI: Yeah, and yet it can take a lot of weight.\nD: More than 90 pounds of pressure per square inch — three times the pressure of a car tyre. (Q25) OK, I agree, it's a good topic.\nI: What I thought was that we could do a large picture of a coke can and label it and then talk about the different parts. Look, I've done a rough picture here.\nD: OK, so where shall we start?\nI: Well, the lid is complicated. Let's start with the body first. I'll do a line from the centre of the can ... like this ... and label it \"body\". What does it say?\nD: It's made of aluminium, of course, and it's thicker at the bottom. (Q26)\nI: Right, so that it can take all that pressure.\nD: And then I think you should draw another line from the body for the label.\nI: Right \"label\". The aluminium is ironed out until it's so thin that it produces what does it say? (Q27)\nD: \"A reflective surface suitable for decoration.\"\nI: That's right apparently it helps advertisers, too.\nD: Yes, because it's so attractively decorated.\nI: Good ... and then there's the base.\nD: Yes, it says the bottom of the can is shaped like a dome so that it can resist the internal pressure. (Q28)\nI: That's interesting. I didn't know that.\nD: Nor did I. OK, so going up to the lid ... there are several things we can label here. There's the rim around the edge which seals the can.\nI: Got that. And there's a funny word for the seal isn't there?\nD: Yes, it's a flange. (Q29)\nI: What does it say about it?\nD: Well, the can's filled with coke or whatever and after that the top of the can is trimmed and then bent over to secure the lid.\nI: That's right, it looks like a seam. We could even do a blow-up of it like this F-L-A-N-G-E ...\nD: Yes, that would be clearer. I think we should label the lid itself and say that it constitutes twenty five percent of the total weight. (Q30)\nI: Twenty-five percent ... so it's stronger than the body of the can.\nD: So to save money, manufacturers make it smaller than the rest of the can!\nI: Didn't know that either ... so how do we open a can of coke?\nD: Mmm ... first of all there's the tab which we pull up to open the can and that's held in place by a rivet.\nI: Mmm ... I think that's too small for us to include.\nD: I agree, but we can talk about it in the presentation. We can show the opening though. (Q31)\nI: That's the bit of the can that drops down into the drink when we pull the tab.\nD: Yeah, hopefully. Sometimes the tab just breaks off.\nI: I know.\nD: Anyway the opening is scored so that it pushes in easily but doesn't detach itself.\nI: OK, we can show that by drawing a shadow of it inside the can, like this. I'll label it scored opening. Great ... well, I think we've got the basis of a really interesting presentation. Let's go and photocopy the article.\nD: Fine. I'll take it home and study it some more.",
+          "questionGroups": [
+            {
+              "id": "qg-s3-1",
+              "heading": "Questions 22-25",
+              "instructions": "Complete the factsheet. Write NO MORE THAN THREE WORDS for each answer.",
+              "images": [
+                {
+                  "src": "_page_84_Figure_1a.jpeg",
+                  "alt": ""
+                }
+              ],
+              "questions": [
+                {
+                  "number": 22,
+                  "type": "gapfill",
+                  "text": "______ produced every day in the US",
+                  "answer": "300 million",
+                  "acceptableAnswers": [
+                    "300 million cans"
+                  ]
+                },
+                {
+                  "number": 23,
+                  "type": "gapfill",
+                  "text": "More cans produced than nails or ______",
+                  "answer": "paper clips"
+                },
+                {
+                  "number": 24,
+                  "type": "gapfill",
+                  "text": "Each can weighs 0.48 ounces — thinner than two ______",
+                  "answer": "magazine pages",
+                  "acceptableAnswers": [
+                    "pieces of paper",
+                    "pages"
+                  ]
+                },
+                {
+                  "number": 25,
+                  "type": "gapfill",
+                  "text": "Can take more than 90 pounds of pressure per square inch — over ______ the pressure of a car tyre",
+                  "answer": "three times"
+                }
+              ]
+            },
+            {
+              "id": "qg-s3-2",
+              "heading": "Questions 26-31",
+              "instructions": "Label the aluminium can. Write NO MORE THAN THREE WORDS for each answer.",
+              "images": [
+                {
+                  "src": "_page_83_Figure_12.jpeg",
+                  "alt": ""
+                }
+              ],
+              "questions": [
+                {
+                  "number": 26,
+                  "type": "gapfill",
+                  "text": "Can body — ______ at the bottom",
+                  "answer": "thicker"
+                },
+                {
+                  "number": 27,
+                  "type": "gapfill",
+                  "text": "Reflective surface of aluminium can easily be decorated",
+                  "answer": "label"
+                },
+                {
+                  "number": 28,
+                  "type": "gapfill",
+                  "text": "______ to withstand pressure",
+                  "answer": "a dome",
+                  "acceptableAnswers": [
+                    "dome"
+                  ]
+                },
+                {
+                  "number": 29,
+                  "type": "gapfill",
+                  "text": "The rim around the edge which seals the can",
+                  "answer": "flange"
+                },
+                {
+                  "number": 30,
+                  "type": "gapfill",
+                  "text": "The lid — ______ of total weight",
+                  "answer": "25%",
+                  "acceptableAnswers": [
+                    "25 percent",
+                    "twenty five percent"
+                  ]
+                },
+                {
+                  "number": 31,
+                  "type": "gapfill",
+                  "text": "The opening — ______",
+                  "answer": "scored opening"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sectionNumber": 4,
+          "title": "Section 4 — Sports Studies",
+          "questionRange": "Questions 32-42",
+          "audioFile": "Test 4 - Section 4.mp3",
+          "speakerInfo": "Lecturer (Sports Studies department)",
+          "instructions": "Complete the lecture notes. Use NO MORE THAN THREE WORDS for each answer.",
+          "images": [
+            {
+              "src": "_page_85_Picture_1a.jpeg",
+              "alt": ""
+            }
+          ],
+          "answerKey": [
+            {
+              "questionNumber": 32,
+              "answer": "a university lecture"
+            },
+            {
+              "questionNumber": 33,
+              "answer": "Sports Studies (programme)"
+            },
+            {
+              "questionNumber": 34,
+              "answer": "management"
+            },
+            {
+              "questionNumber": 35,
+              "answer": "top athletes"
+            },
+            {
+              "questionNumber": 36,
+              "answer": "makes winners//makes them/people win"
+            },
+            {
+              "questionNumber": 37,
+              "answer": "market forces"
+            },
+            {
+              "questionNumber": 38,
+              "answer": "(other) leisure activities"
+            },
+            {
+              "questionNumber": 39,
+              "answer": "entertainment//to be entertained"
+            },
+            {
+              "questionNumber": 40,
+              "answer": "exercise science"
+            },
+            {
+              "questionNumber": 41,
+              "answer": "fitness testing//body measurements"
+            },
+            {
+              "questionNumber": 42,
+              "answer": "cellular research//cellular change//body cells"
+            }
+          ],
+          "transcript": "Lecturer:\nGood morning and welcome to the University's Open Day and to our mini-lecture from the Sports Studies department. Now the purpose of this lecture is twofold: one — we want you to experience a university lecture, to give you a taste of what listening to a university lecture is like, (Q32) and two — we want you to find out something about the Sports Studies program at this university. (Q33) So feel free to ask any questions during the talk and I'll do my best to answer them.\nRight — so what does a course in Sports Studies involve? Well, you wouldn't be blamed for not knowing the answer to this question because Sports Studies as a discipline is still comparatively new. But it's a growing area and one which is now firmly established at our university.\nNow there are three distinct strands to Sports Studies and you would need to choose fairly early on just which direction you wanted to follow. And I'll just run over these now. Firstly, we've got the Sports Psychology strand, secondly, we've got the Sports Management strand, (Q34) and last, but not least, there's the Sports Physiology strand. So just to recap there's Sports Psychology, Sports Management, and Sports Physiology.\nLet's look first at Psychology. Now the people who study Sports Psych want to work with top athletes, (Q35) and they're looking at what will take those athletes that one percent extra. What makes them win? (Q36) When all other things are equal, physically all other things are equal, they want to know ... what are the mental factors involved? The Sports Psychologist works closely with the athlete through his or her training program and becomes an integral part of the team. In fact you could say that they play just as important a role as the coach. So if you're interested in what makes people win this could be the area for you.\nNow secondly, we've got the strand which I referred to as Sports Management and this goes hand in hand with the area of Sports Marketing. So you might like to think of this area as having two branches: Management and Marketing. On the Management side we look at issues relating to the running of sports clubs, management of athletes that sort of thing. But then on the other side, we've got Sports Marketing. And this is the side that interests me more because here we will look at the market forces behind sport. (Q37) Questions like: why do people spend their money on a football match, or a tennis game rather, than say on buying a CD or going to the cinema? What are those market forces?\nSport used to just compete with sport. Nowadays it competes with other leisure activities. (Q38) The spectators go to sport to be entertained rather than out of loyalty to a team. (Q39) They want to have an evening out and they don't want the cheap seats any more — they want good seats, they want entertainment. And the professional sportsmen and women respond to this without question. They're there to give a performance. They provide the entertainment. So in the marketing course we address all these commercial issues and we look at how this hooks back into the Management of sport.\nNow the third branch of Sports Studies sometimes comes under another name and is also known as Exercise Science. (Q40) And again here we find that there are two distinct types of exercise science. The first is working very much at the macro level. What I call the huffing and puffing people. So this looks at fitness testing, body measurements, all that sort of thing. (Q41) But the more interesting side of sports physiology, at least in my view, is the side that looks at the micro level, looking at cellular change. They're doing cellular research, looking at changes in body cells when the body is under stress. (Q42)\nSo that just about brings us to the end of our mini-lecture for today. I hope you've found it interesting and I look forward to seeing you all on our course next year. Feel free to come and talk to me if you want any more information. I'll be over at that notice board near the main entrance.",
+          "questionGroups": [
+            {
+              "id": "qg-s4-1",
+              "heading": "Questions 32-42",
+              "instructions": "Complete the lecture notes. Use NO MORE THAN THREE WORDS for each answer.",
+              "questions": [
+                {
+                  "number": 32,
+                  "type": "gapfill",
+                  "text": "Purpose of the lecture — to experience ______",
+                  "answer": "a university lecture"
+                },
+                {
+                  "number": 33,
+                  "type": "gapfill",
+                  "text": "Purpose of the lecture — to find out about the ______",
+                  "answer": "Sports Studies",
+                  "acceptableAnswers": [
+                    "Sports Studies programme",
+                    "Sports Studies program"
+                  ]
+                },
+                {
+                  "number": 34,
+                  "type": "gapfill",
+                  "text": "One of the three strands of Sports Studies — Sports ______",
+                  "answer": "management"
+                },
+                {
+                  "number": 35,
+                  "type": "gapfill",
+                  "text": "Sports Psychology — people who study it want to work with ______",
+                  "answer": "top athletes"
+                },
+                {
+                  "number": 36,
+                  "type": "gapfill",
+                  "text": "Sports Psychology — what ______",
+                  "answer": "makes winners",
+                  "acceptableAnswers": [
+                    "makes them win",
+                    "makes people win"
+                  ]
+                },
+                {
+                  "number": 37,
+                  "type": "gapfill",
+                  "text": "Sports Marketing — looks at the ______ behind sport",
+                  "answer": "market forces"
+                },
+                {
+                  "number": 38,
+                  "type": "gapfill",
+                  "text": "Sport nowadays competes with other ______",
+                  "answer": "leisure activities",
+                  "acceptableAnswers": [
+                    "other leisure activities"
+                  ]
+                },
+                {
+                  "number": 39,
+                  "type": "gapfill",
+                  "text": "The spectators go to sport to be ______",
+                  "answer": "entertained",
+                  "acceptableAnswers": [
+                    "entertainment",
+                    "to be entertained"
+                  ]
+                },
+                {
+                  "number": 40,
+                  "type": "gapfill",
+                  "text": "Third branch of Sports Studies also known as ______",
+                  "answer": "exercise science"
+                },
+                {
+                  "number": 41,
+                  "type": "gapfill",
+                  "text": "Macro level — looks at ______",
+                  "answer": "fitness testing",
+                  "acceptableAnswers": [
+                    "body measurements"
+                  ]
+                },
+                {
+                  "number": 42,
+                  "type": "gapfill",
+                  "text": "Micro level — looks at ______",
+                  "answer": "cellular research",
+                  "acceptableAnswers": [
+                    "cellular change",
+                    "body cells"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

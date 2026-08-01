@@ -243,7 +243,7 @@ body {
 }
 .question-image img {
   max-width: 100%;
-  max-height: 180px;
+  max-height: 100%;
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border);
   margin-bottom: 8px;
@@ -437,7 +437,7 @@ body {
 /* ── Diagram labeling ── */
 .diagram-image {
   max-width: 100%;
-  max-height: 300px;
+  max-height: 100%;
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border);
   margin-bottom: 12px;
@@ -926,10 +926,12 @@ body {
 
           var qDiv = renderQuestion(firstQ, group.questionType);
           groupDiv.appendChild(qDiv);
-          // Push all questions to allQuestions for scoring (only first rendered)
-          (group.questions || []).forEach(function(q) {
-            allQuestions.push({ question: q, groupType: group.questionType, instructions: group.instructions || '' });
-          });
+          // Push ONE scoring entry for the whole pick-from-list group.
+          // questionNumbers/pickCount are merged onto firstQ above; pushing the
+          // raw q[1]/q[2] here left them without those fields, so checkAnswers'
+          // getGroupKey(q.questionNumbers) threw on `undefined.slice()` and the
+          // submit froze at "Checking & Saving...".
+          allQuestions.push({ question: firstQ, groupType: group.questionType, instructions: group.instructions || '' });
         }
       } else {
         // Regular groups: render each question individually

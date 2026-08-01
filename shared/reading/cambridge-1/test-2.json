@@ -1,0 +1,1074 @@
+{
+  "meta": {
+    "source": "cambridge-1",
+    "testNumber": 2,
+    "version": "1.0",
+    "generatedBy": "/init-textbook-reading",
+    "generatedAt": "2026-07-31T06:37:14.000Z"
+  },
+  "skills": {
+    "reading": {
+      "passages": [
+        {
+          "id": "passage-1",
+          "title": "Right and left-handedness in humans",
+          "text": "Why do humans, virtually alone among all animal species, display a distinct left or right-handedness? Not even our closest relatives among the apes possess such decided lateral asymmetry, as psychologists call it. Yet about 90 per cent of every human population that has ever lived appears to have been right-handed. Professor Bryan Turner at Deakin University has studied the research literature on left-handedness and found that handedness goes with sidedness. So nine out of ten people are right-handed and eight are right-footed. He noted that this distinctive asymmetry in the human population is itself systematic. \"Humans think in categories: black and white, up and down, left and right. It\"s a system of signs that enables us to categorise phenomena that are essentially ambiguous.'\n\nResearch has shown that there is a genetic or inherited element to handedness. But while left-handedness tends to run in families, neither left nor right handers will automatically produce off-spring with the same handedness; in fact about 6 per cent of children with two right-handed parents will be left-handed. However, among two left-handed parents, perhaps 40 per cent of the children will also be left-handed. With one right and one left-handed parent, 15 to 20 per cent of the offspring will be lefthanded. Even among identical twins who have exactly the same genes, one in six pairs will differ in their handedness.\n\nWhat then makes people left-handed if it is not simply genetic? Other factors must be at work and researchers have turned to the brain for clues. In the 1860s the French surgeon and anthropologist, Dr Paul Broca, made the remarkable finding that patients who had lost their powers of speech as a result of a stroke (a blood clot in the brain) had paralysis of the right half of their body. He noted that since the left hemisphere of the brain controls the right half of the body, and vice versa, the brain damage must have been in the brain's left hemisphere. Psychologists now believe that among right-handed people, probably 95 per cent have their language centre in the left hemisphere, while 5 per cent have rightsided language. Left-handers, however, do not show the reverse pattern but instead a majority also have their language in the left hemisphere. Some 30 per cent have right hemisphere language.\n\nDr Brinkman, a brain researcher at the Australian National University in Canberra, has suggested that evolution of speech went with right-handed preference. According to Brinkman, as the brain evolved, one side became specialised for fine control of movement (necessary for producing speech) and along with this evolution came righthand preference. According to Brinkman, most left-handers have left hemisphere dominance but also some capacity in the right hemisphere. She has observed that if a left-handed person is brain-damaged in the left hemisphere, the recovery of speech is quite often better and this is explained by the fact that left-handers have a more bilateral speech function.\n\nIn her studies of macaque monkeys, Brinkman has noticed that primates (monkeys) seem to learn a hand preference from their mother in the first year of life but this could be one hand or the other. In humans, however, the specialisation in (unction of the two hemispheres results in anatomical differences: areas that are involved with the production of speech are usually larger on the left side than on the right. Since monkeys have not acquired the art of speech, one would not expect to see such a variation but Brinkman claims to have discovered a trend in monkeys towards the asymmetry that is evident in the human brain.\n\nTwo American researchers, Geschwind and Galaburda, studied the brains of human embryos and discovered that the left-right asymmetry exists before birth. But as the brain develops, a number of things can affect it. Every brain is initially female in its organisation and it only becomes a male brain when the male foetus begins to secrete hormones. Geschwind and Galaburda knew that different parts of the brain mature at different rates; the right hemisphere develops first, then the left. Moreover, a girl's brain develops somewhat faster than that of a boy. So, if something happens to the brain's development during pregnancy, it is more likely to be affected in a male and the hemisphere more likely to be involved is the left. The brain may become less lateralised and this in turn could result in left-handedness and the development of certain superior skills that have their origins in the left hemisphere such as logic, rationality and abstraction. It should be no surprise then that among mathematicians and architects, left-handers tend to be more common and there are more left-handed males than females.\n\nThe results of this research may be some consolation to left-handers who have for centuries lived in a world designed to suit right-handed people. However, what is alarming, according to Mr. Charles Moore, a writer and journalist, is the way the word \"right\" reinforces its own virtue. Subliminally he says, language tells people to think that anything on the right can be trusted while anything on the left is dangerous or even sinister. We speak of lefthanded compliments and according to Moore, \"it is no coincidence that lefthanded children, forced to use their right hand, often develop a stammer as they are robbed of their freedom of speech\". However, as more research is undertaken on the causes of left-handedness, attitudes towards left-handed people are gradually changing for the better. Indeed when the champion tennis player Ivan Lendl was asked what the single thing was that he would choose in order to improve his game, he said he would like to become a lefthander.\n\n*Geoff Maslen*",
+          "images": [],
+          "questionGroups": [
+            {
+              "id": "qg-p1-1",
+              "heading": "Questions 1-7",
+              "instructions": "Use the information in the text to match the people (listed A-E) with the opinions (listed 1-7) below. Write the appropriate letter (A-E) in boxes 1-7 on your answer sheet. Some people match more than one opinion.",
+              "questionType": "matching",
+              "questions": [
+                {
+                  "number": 1,
+                  "text": "Human beings started to show a preference for right-handedness when they first developed language.",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Dr Broca"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Dr Brinkman"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Geschwind and Galaburda"
+                    },
+                    {
+                      "label": "D",
+                      "text": "Charles Moore"
+                    },
+                    {
+                      "label": "E",
+                      "text": "Professor Turner"
+                    }
+                  ]
+                },
+                {
+                  "number": 2,
+                  "text": "Society is prejudiced against left-handed people.",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Dr Broca"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Dr Brinkman"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Geschwind and Galaburda"
+                    },
+                    {
+                      "label": "D",
+                      "text": "Charles Moore"
+                    },
+                    {
+                      "label": "E",
+                      "text": "Professor Turner"
+                    }
+                  ]
+                },
+                {
+                  "number": 3,
+                  "text": "Boys are more likely to be left-handed.",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Dr Broca"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Dr Brinkman"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Geschwind and Galaburda"
+                    },
+                    {
+                      "label": "D",
+                      "text": "Charles Moore"
+                    },
+                    {
+                      "label": "E",
+                      "text": "Professor Turner"
+                    }
+                  ]
+                },
+                {
+                  "number": 4,
+                  "text": "After a stroke, left-handed people recover their speech more quickly than righthanded people.",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Dr Broca"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Dr Brinkman"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Geschwind and Galaburda"
+                    },
+                    {
+                      "label": "D",
+                      "text": "Charles Moore"
+                    },
+                    {
+                      "label": "E",
+                      "text": "Professor Turner"
+                    }
+                  ]
+                },
+                {
+                  "number": 5,
+                  "text": "People who suffer strokes on the left side of the brain usually lose their power of speech.",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Dr Broca"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Dr Brinkman"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Geschwind and Galaburda"
+                    },
+                    {
+                      "label": "D",
+                      "text": "Charles Moore"
+                    },
+                    {
+                      "label": "E",
+                      "text": "Professor Turner"
+                    }
+                  ]
+                },
+                {
+                  "number": 6,
+                  "text": "The two sides of the brain develop different functions before birth.",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Dr Broca"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Dr Brinkman"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Geschwind and Galaburda"
+                    },
+                    {
+                      "label": "D",
+                      "text": "Charles Moore"
+                    },
+                    {
+                      "label": "E",
+                      "text": "Professor Turner"
+                    }
+                  ]
+                },
+                {
+                  "number": 7,
+                  "text": "Asymmetry is a common feature of the human body.",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "Dr Broca"
+                    },
+                    {
+                      "label": "B",
+                      "text": "Dr Brinkman"
+                    },
+                    {
+                      "label": "C",
+                      "text": "Geschwind and Galaburda"
+                    },
+                    {
+                      "label": "D",
+                      "text": "Charles Moore"
+                    },
+                    {
+                      "label": "E",
+                      "text": "Professor Turner"
+                    }
+                  ]
+                }
+              ],
+              "options": [
+                {
+                  "label": "A",
+                  "text": "Dr Broca"
+                },
+                {
+                  "label": "B",
+                  "text": "Dr Brinkman"
+                },
+                {
+                  "label": "C",
+                  "text": "Geschwind and Galaburda"
+                },
+                {
+                  "label": "D",
+                  "text": "Charles Moore"
+                },
+                {
+                  "label": "E",
+                  "text": "Professor Turner"
+                }
+              ]
+            },
+            {
+              "id": "qg-p1-2",
+              "heading": "Questions 8-10",
+              "instructions": "Using the information in the passage, complete the table below. Write your answers in boxes 8-10 on your answer sheet.",
+              "questionType": "table-completion",
+              "images":[{
+                "src":"_page_49_Figure_1a.jpeg",
+                "alt":""
+              }], 
+              "questions": [
+                {
+                  "number": 8,
+                  "text": "One parent left-handed, one parent right-handed — percentage of children left-handed",
+                  "type": "gap-fill"
+                },
+                {
+                  "number": 9,
+                  "text": "Both parents left-handed — percentage of children left-handed",
+                  "type": "gap-fill"
+                },
+                {
+                  "number": 10,
+                  "text": "Both parents right-handed — percentage of children left-handed",
+                  "type": "gap-fill"
+                }
+              ]
+            },
+            {
+              "id": "qg-p1-3",
+              "heading": "Questions 11-12",
+              "instructions": "Choose the appropriate letters A-D and write them in boxes 11 and 12 on your answer sheet.",
+              "questionType": "multiple-choice",
+              "questions": [
+                {
+                  "number": 11,
+                  "text": "A study of monkeys has shown that",
+                  "type": "multiple-choice",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "monkeys are not usually right-handed."
+                    },
+                    {
+                      "label": "B",
+                      "text": "monkeys display a capacity for speech."
+                    },
+                    {
+                      "label": "C",
+                      "text": "monkey brains are smaller than human brains."
+                    },
+                    {
+                      "label": "D",
+                      "text": "monkey brains are asymmetric."
+                    }
+                  ]
+                },
+                {
+                  "number": 12,
+                  "text": "According to the writer, left-handed people",
+                  "type": "multiple-choice",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "will often develop a stammer."
+                    },
+                    {
+                      "label": "B",
+                      "text": "have undergone hardship for years."
+                    },
+                    {
+                      "label": "C",
+                      "text": "are untrustworthy."
+                    },
+                    {
+                      "label": "D",
+                      "text": "are good tennis players."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "passage-2",
+          "title": "Migratory beekeeping",
+          "text": "Of the 2,000 commercial beekeepers in the United States about half migrate This pays off in two ways Moving north in the summer and south in the winter lets bees work a longer blooming season, making more honey — and money — for their keepers. Second, beekeepers can carry their hives to farmers who need bees to pollinate their crops. Every spring a migratory beekeeper in California may move up to 160 million bees to flowering fields in Minnesota and every winter his family may haul the hives back to California, where farmers will rent the bees to pollinate almond and cherry trees.\n\nMigratory beekeeping is nothing new. The ancient Egyptians moved clay hives, probably on rafts, down the Nile to follow the bloom and nectar flow as it moved toward Cairo. In the 1880s North American beekeepers experimented with the same idea, moving bees on barges along the Mississippi and on waterways in Florida, but their lighter, wooden hives kept falling into the water. Other keepers tried the railroad and horse-drawn wagons, but that didn't prove practical. Not until the 1920s when cars and trucks became affordable and roads improved, did migratory beekeeping begin to catch on.\n\nFor the Californian beekeeper, the pollination season begins in February. At this time, the beehives are in particular demand by farmers who have almond groves; they need two hives an acre. For the three-week long bloom, beekeepers can hire out their hives for $32 each. It's a bonanza for the bees too. Most people consider almond honey too bitter to eat so the bees get to keep it for themselves.\n\nBy early March it is time to move the bees. It can take up to seven nights to pack the 4,000 or so hives that a beekeeper may own. These are not moved in the middle of the day because too many of the bees would end up homeless. But at night, the hives are stacked onto wooden pallets, back-to-back in sets of four, and lifted onto a truck. It is not necessary to wear gloves or a beekeeper's veil because the hives are not being opened and the bees should remain relatively quiet. Just in case some are still lively, bees can be pacified with a few puffs of smoke blown into each hive's narrow entrance.\n\nIn their new location, the beekeeper will pay the farmer to allow his bees to feed in such places as orange groves. The honey produced here is fragrant and sweet and can be sold by the beekeepers. To encourage the bees to produce as much honey as possible during this period, the beekeepers open the hives and stack extra boxes called supers on top. These temporary hive extensions contain frames of empty comb for the bees to fill with honey. In the brood chamber below, the bees will stash honey to eat later. To prevent the queen from crawling up to the top and laying eggs, a screen can be inserted between the brood chamber and the supers. Three weeks later the honey can be gathered.\n\nFoul smelling chemicals are often used to irritate the bees and drive them down into the hive's bottom boxes, leaving the honeyfilled supers more or less bee free. These can then be pulled off the hive. They are heavy with honey and may weigh up to 90 pounds each. The supers are taken to a warehouse. In the extracting room, the frames are lilted out and lowered into an \"uncapper\" where rotating blades shave away the wax that covers each cell. The uncapped frames are put in a carousel that sits on the bottom of a large stainless steel drum. The carousel is filled to capacity with 72 frames. A switch is flipped and the frames begin to whirl at 300 revolutions per minute; centrifugal force throws the honey out of the combs. Finally the honey is poured into barrels for shipment.\n\nAfter this, approximately a quarter of the hives weakened by disease, mites, or an ageing or dead queen, will have to be replaced. To create new colonies, a healthy double hive, teeming with bees, can be separated into two boxes. One half will hold the queen and a young, already mated queen can be put in the other half, to make two hives from one. By the time the flowers bloom, the new queens will be laying eggs, filling each hive with young worker bees. The beekeeper's family will then migrate with them to their summer location.\n\nAdapted from \"America's Beekeepers: Hives for Hire\" by Alan Mairson, National Geographic.",
+          "images": [
+            {
+              "id": "img-p2-1",
+              "src": "_page_49_Figure_3.jpeg",
+              "alt": "Migratory beekeepers moving hives"
+            }
+          ],
+          "questionGroups": [
+            {
+              "id": "qg-p2-1",
+              "heading": "Questions 13-19",
+              "instructions": "The flow chart below outlines the movements of the migratory beekeeper as described in Reading Passage 2. Complete the flow chart. Choose your answers from the box at the bottom of the page and write your answers in boxes 13-19 on your answer sheet.",
+              "questionType": "flow-chart-completion",
+              "images": [
+                {
+                  "id": "img-p2-flowchart",
+                  "src": "_page_52_Picture_1a.jpeg",
+                  "alt": "Flow chart of the movements of the migratory beekeeper"
+                }
+              ],
+              "questions": [
+                {
+                  "number": 13,
+                  "text": "Flow chart step 13",
+                  "type": "gap-fill"
+                },
+                {
+                  "number": 14,
+                  "text": "Flow chart step 14",
+                  "type": "gap-fill"
+                },
+                {
+                  "number": 15,
+                  "text": "Flow chart step 15",
+                  "type": "gap-fill"
+                },
+                {
+                  "number": 16,
+                  "text": "Flow chart step 16",
+                  "type": "gap-fill"
+                },
+                {
+                  "number": 17,
+                  "text": "Flow chart step 17",
+                  "type": "gap-fill"
+                },
+                {
+                  "number": 18,
+                  "text": "Flow chart step 18",
+                  "type": "gap-fill"
+                },
+                {
+                  "number": 19,
+                  "text": "Flow chart step 19",
+                  "type": "gap-fill"
+                }
+              ]
+            },
+            {
+              "id": "qg-p2-2",
+              "heading": "Questions 20-23",
+              "instructions": "Label the diagram below. Choose ONE OR TWO WORDS from the Reading Passage for each answer. Write your answers in boxes 20-23 on your answer sheet.",
+              "questionType": "diagram-labeling",
+              "images": [
+                {
+                  "id": "img-p2-diagram",
+                  "src": "_page_52_Picture_3.jpeg",
+                  "alt": "Diagram of a beehive with labelled parts"
+                }
+              ],
+              "questions": [
+                {
+                  "number": 20,
+                  "text": "box 20",
+                  "type": "diagram-labeling"
+                },
+                {
+                  "number": 21,
+                  "text": "box 21",
+                  "type": "diagram-labeling"
+                },
+                {
+                  "number": 22,
+                  "text": "box 22",
+                  "type": "diagram-labeling"
+                },
+                {
+                  "number": 23,
+                  "text": "box 23",
+                  "type": "diagram-labeling"
+                }
+              ]
+            },
+            {
+              "id": "qg-p2-3",
+              "heading": "Questions 24-27",
+              "instructions": "Do the following statements agree with the information given in Reading Passage 2? In boxes 24-27 write\nYES if the statement agrees with the information given\nNO if the statement contradicts the information given\nNOT GIVEN if there is no information about this",
+              "questionType": "yes-no-not-given",
+              "questions": [
+                {
+                  "number": 24,
+                  "text": "The Egyptians keep bees on the banks of the Nile.",
+                  "type": "yes-no-not-given"
+                },
+                {
+                  "number": 25,
+                  "text": "First attempts at migratory beekeeping in America were unsuccessful.",
+                  "type": "yes-no-not-given"
+                },
+                {
+                  "number": 26,
+                  "text": "Bees keep honey for themselves in the bottom of the hive.",
+                  "type": "yes-no-not-given"
+                },
+                {
+                  "number": 27,
+                  "text": "The honey is spun to make it liquid.",
+                  "type": "yes-no-not-given"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "passage-3",
+          "title": "TOURISM",
+          "text": "TOURISM\n\nA\n\nTourism, holidaymaking and travel are these days more significant social phenomena than most commentators have considered On the face of it there could not be a more trivial subject for a book And indeed since social scientists have had considerable difficulty explaining weightier topics such as work or politics it might be thought that they would have great difficulties in accounting for more trivial phenomena such as holidaymakmg However there are interesting parallels with the study of deviance This involves the investigation of bizarre and idiosyncratic social practices which happen to be defined as deviant in some societies but not necessarily in others The assumption is that the investigation of deviance can reveal interesting and significant aspects of normal societies It could be said that a similar analysis can be applied to tourism\n\nB\n\nTourism is a leisure activity which presupposes its opposite namely regulated and organised work It is one manifestation of how work and leisure are organised as separate and regulated spheres of social practice in modern societies Indeed acting as a tourist is one of the defining characteristics of being modern' and the popular concept of tourism is that it is organised within particular places and occurs for regularised periods of time Tourist relationships arise from a movement of people to and their stay in various destinations This necessarily involves some movement that is the journey and a period of stay in a new place or places The journey and the stay are by definition outside the normal places of residence and work and are of a short term and temporary nature and there is a clear intention to return \"home within a relatively short period of time\n\nC\n\nA substantial proportion of the population of modern societies engages in such tourist practices new socialised forms of provision have developed in order to cope with the mass character of the gazes of tourists as opposed to the individual character of travel Places are chosen to be visited and be gazed upon because there is an anticipation especially through daydreaming and fantasy of intense pleasures, either on a different scale or involving different senses from those customarily encountered Such anticipation is constructed and sustained through a variety of non-tourist practices such as films TV literature, magazines records and videos which construct and reinforce this daydreaming\n\nD\n\nTourists tend to visit features of landscape and townscape which separate them off from everyday experience Such aspects are viewed because they are taken to be in some sense out of the ordinary The viewing of these tourist sights often involves different forms of social patterning with a much greater sensitivity to visual elements of landscape or townscape than is normally found in everyday life People linger over these sights in a way that they would not normally do in their home environment and the vision is objectified or captured through photographs postcards films and so on which enable the memory to be endlessly reproduced and recaptured\n\nE\n\nOne of the earliest dissertations on the subject of tourism is Boorstins analysis of the pseudo event (1964) where he argues that contemporary Americans cannot experience reality' directly but thrive on \"pseudo events Isolated from the host environment and the local people the mass tourist travels in guided groups and finds pleasure in inauthentic contrived attractions gullibly enjoying the pseudo events and disregarding the real world outside Over time the images generated of different tourist sights come to constitute a closed self-perpetuating system of illusions which provide the tourist with the basis for selecting and evaluating potential places to visit Such visits are made says Boorstin, within the \"environmental bubble of the familiar American style hotel which insulates the tourist from the strangeness of the host environment\n\nF\n\nTo service the burgeoning tourist industry, an array of professionals has developed who attempt to reproduce ever-new objects for the tourist to look at These objects or places are located in a complex and changing hierarchy This depends upon the interplay between, on the one hand, competition between interests involved in the provision of such objects and, on the other hand changing class, gender, and generational distinctions of taste within the potential population of visitors It has been said that to be a tourist is one of the characteristics of the \"modern experience Not to go away is like not possessing a car or a nice house Travel is a marker of status in modern societies and is also thought to be necessary for good health The role of the professional, therefore, is to cater for the needs and tastes of the tourists in accordance with their class and overall expectations",
+          "images": [],
+          "questionGroups": [
+            {
+              "id": "qg-p3-1",
+              "heading": "Questions 28-32",
+              "instructions": "Reading Passage 3 has 6 paragraphs (A-F). Choose the most suitable heading for each paragraph from the list of headings below. Write the appropriate numbers (i-ix) in boxes 28-32 on your answer sheet. Paragraph D has been done for you as an example.\nNB There are more headings than paragraphs so you will not use all of them. You may use any heading more than once.",
+              "questionType": "matching-headings",
+              "options": [
+                {
+                  "label": "i",
+                  "text": "The politics of tourism"
+                },
+                {
+                  "label": "ii",
+                  "text": "The cost of tourism"
+                },
+                {
+                  "label": "iii",
+                  "text": "Justifying the study of tourism"
+                },
+                {
+                  "label": "iv",
+                  "text": "Tourism contrasted with travel"
+                },
+                {
+                  "label": "v",
+                  "text": "The essence of modern tourism"
+                },
+                {
+                  "label": "vi",
+                  "text": "Tourism versus leisure"
+                },
+                {
+                  "label": "vii",
+                  "text": "The artificiality of modern tourism"
+                },
+                {
+                  "label": "viii",
+                  "text": "The role of modern tour guides"
+                },
+                {
+                  "label": "ix",
+                  "text": "Creating an alternative to the everyday experience"
+                }
+              ],
+              "questions": [
+                {
+                  "number": 28,
+                  "text": "Paragraph A",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "i",
+                      "text": "The politics of tourism"
+                    },
+                    {
+                      "label": "ii",
+                      "text": "The cost of tourism"
+                    },
+                    {
+                      "label": "iii",
+                      "text": "Justifying the study of tourism"
+                    },
+                    {
+                      "label": "iv",
+                      "text": "Tourism contrasted with travel"
+                    },
+                    {
+                      "label": "v",
+                      "text": "The essence of modern tourism"
+                    },
+                    {
+                      "label": "vi",
+                      "text": "Tourism versus leisure"
+                    },
+                    {
+                      "label": "vii",
+                      "text": "The artificiality of modern tourism"
+                    },
+                    {
+                      "label": "viii",
+                      "text": "The role of modern tour guides"
+                    },
+                    {
+                      "label": "ix",
+                      "text": "Creating an alternative to the everyday experience"
+                    }
+                  ]
+                },
+                {
+                  "number": 29,
+                  "text": "Paragraph B",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "i",
+                      "text": "The politics of tourism"
+                    },
+                    {
+                      "label": "ii",
+                      "text": "The cost of tourism"
+                    },
+                    {
+                      "label": "iii",
+                      "text": "Justifying the study of tourism"
+                    },
+                    {
+                      "label": "iv",
+                      "text": "Tourism contrasted with travel"
+                    },
+                    {
+                      "label": "v",
+                      "text": "The essence of modern tourism"
+                    },
+                    {
+                      "label": "vi",
+                      "text": "Tourism versus leisure"
+                    },
+                    {
+                      "label": "vii",
+                      "text": "The artificiality of modern tourism"
+                    },
+                    {
+                      "label": "viii",
+                      "text": "The role of modern tour guides"
+                    },
+                    {
+                      "label": "ix",
+                      "text": "Creating an alternative to the everyday experience"
+                    }
+                  ]
+                },
+                {
+                  "number": 30,
+                  "text": "Paragraph C",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "i",
+                      "text": "The politics of tourism"
+                    },
+                    {
+                      "label": "ii",
+                      "text": "The cost of tourism"
+                    },
+                    {
+                      "label": "iii",
+                      "text": "Justifying the study of tourism"
+                    },
+                    {
+                      "label": "iv",
+                      "text": "Tourism contrasted with travel"
+                    },
+                    {
+                      "label": "v",
+                      "text": "The essence of modern tourism"
+                    },
+                    {
+                      "label": "vi",
+                      "text": "Tourism versus leisure"
+                    },
+                    {
+                      "label": "vii",
+                      "text": "The artificiality of modern tourism"
+                    },
+                    {
+                      "label": "viii",
+                      "text": "The role of modern tour guides"
+                    },
+                    {
+                      "label": "ix",
+                      "text": "Creating an alternative to the everyday experience"
+                    }
+                  ]
+                },
+                {
+                  "number": 31,
+                  "text": "Paragraph E",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "i",
+                      "text": "The politics of tourism"
+                    },
+                    {
+                      "label": "ii",
+                      "text": "The cost of tourism"
+                    },
+                    {
+                      "label": "iii",
+                      "text": "Justifying the study of tourism"
+                    },
+                    {
+                      "label": "iv",
+                      "text": "Tourism contrasted with travel"
+                    },
+                    {
+                      "label": "v",
+                      "text": "The essence of modern tourism"
+                    },
+                    {
+                      "label": "vi",
+                      "text": "Tourism versus leisure"
+                    },
+                    {
+                      "label": "vii",
+                      "text": "The artificiality of modern tourism"
+                    },
+                    {
+                      "label": "viii",
+                      "text": "The role of modern tour guides"
+                    },
+                    {
+                      "label": "ix",
+                      "text": "Creating an alternative to the everyday experience"
+                    }
+                  ]
+                },
+                {
+                  "number": 32,
+                  "text": "Paragraph F",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "i",
+                      "text": "The politics of tourism"
+                    },
+                    {
+                      "label": "ii",
+                      "text": "The cost of tourism"
+                    },
+                    {
+                      "label": "iii",
+                      "text": "Justifying the study of tourism"
+                    },
+                    {
+                      "label": "iv",
+                      "text": "Tourism contrasted with travel"
+                    },
+                    {
+                      "label": "v",
+                      "text": "The essence of modern tourism"
+                    },
+                    {
+                      "label": "vi",
+                      "text": "Tourism versus leisure"
+                    },
+                    {
+                      "label": "vii",
+                      "text": "The artificiality of modern tourism"
+                    },
+                    {
+                      "label": "viii",
+                      "text": "The role of modern tour guides"
+                    },
+                    {
+                      "label": "ix",
+                      "text": "Creating an alternative to the everyday experience"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "qg-p3-2",
+              "heading": "Questions 33-37",
+              "instructions": "Do the following statements agree with the views of the writer in Reading Passage 3? In boxes 33-37 write\nYES if the statement agrees with the writer\nNO if the statement contradicts the writer\nNOT GIVEN if it is impossible to say what the writer thinks about this",
+              "questionType": "yes-no-not-given",
+              "questions": [
+                {
+                  "number": 33,
+                  "text": "Tourism is a trivial subject.",
+                  "type": "yes-no-not-given"
+                },
+                {
+                  "number": 34,
+                  "text": "An analysis of deviance can act as a model for the analysis of tourism.",
+                  "type": "yes-no-not-given"
+                },
+                {
+                  "number": 35,
+                  "text": "Tourists usually choose to travel overseas.",
+                  "type": "yes-no-not-given"
+                },
+                {
+                  "number": 36,
+                  "text": "Tourists focus more on places they visit than those at home.",
+                  "type": "yes-no-not-given"
+                },
+                {
+                  "number": 37,
+                  "text": "Tour operators try to cheat tourists.",
+                  "type": "yes-no-not-given"
+                }
+              ]
+            },
+            {
+              "id": "qg-p3-3",
+              "heading": "Questions 38-41",
+              "instructions": "Choose one phrase (A-H) from the list of phrases to complete each key point below. Write the appropriate letters (A-H) in boxes 38-41 on your answer sheet.\nThe information in the completed sentences should be an accurate summary of points made by the writer.\nNB There are more phrases A-H than sentences so you will not use them all. You may use any phrase more than once.",
+              "questionType": "matching",
+              "options": [
+                {
+                  "label": "A",
+                  "text": "local people and their environment."
+                },
+                {
+                  "label": "B",
+                  "text": "the expectations of tourists."
+                },
+                {
+                  "label": "C",
+                  "text": "the phenomena of holidaymaking."
+                },
+                {
+                  "label": "D",
+                  "text": "the distinction we make between work and leisure."
+                },
+                {
+                  "label": "E",
+                  "text": "the individual character of travel."
+                },
+                {
+                  "label": "F",
+                  "text": "places seen in everyday life."
+                },
+                {
+                  "label": "G",
+                  "text": "photographs which recapture our holidays."
+                },
+                {
+                  "label": "H",
+                  "text": "sights designed specially for tourists."
+                }
+              ],
+              "questions": [
+                {
+                  "number": 38,
+                  "text": "Our concept of tourism arises from ...",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "local people and their environment."
+                    },
+                    {
+                      "label": "B",
+                      "text": "the expectations of tourists."
+                    },
+                    {
+                      "label": "C",
+                      "text": "the phenomena of holidaymaking."
+                    },
+                    {
+                      "label": "D",
+                      "text": "the distinction we make between work and leisure."
+                    },
+                    {
+                      "label": "E",
+                      "text": "the individual character of travel."
+                    },
+                    {
+                      "label": "F",
+                      "text": "places seen in everyday life."
+                    },
+                    {
+                      "label": "G",
+                      "text": "photographs which recapture our holidays."
+                    },
+                    {
+                      "label": "H",
+                      "text": "sights designed specially for tourists."
+                    }
+                  ]
+                },
+                {
+                  "number": 39,
+                  "text": "The media can be used to enhance ...",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "local people and their environment."
+                    },
+                    {
+                      "label": "B",
+                      "text": "the expectations of tourists."
+                    },
+                    {
+                      "label": "C",
+                      "text": "the phenomena of holidaymaking."
+                    },
+                    {
+                      "label": "D",
+                      "text": "the distinction we make between work and leisure."
+                    },
+                    {
+                      "label": "E",
+                      "text": "the individual character of travel."
+                    },
+                    {
+                      "label": "F",
+                      "text": "places seen in everyday life."
+                    },
+                    {
+                      "label": "G",
+                      "text": "photographs which recapture our holidays."
+                    },
+                    {
+                      "label": "H",
+                      "text": "sights designed specially for tourists."
+                    }
+                  ]
+                },
+                {
+                  "number": 40,
+                  "text": "People view tourist landscapes in a different way from ...",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "local people and their environment."
+                    },
+                    {
+                      "label": "B",
+                      "text": "the expectations of tourists."
+                    },
+                    {
+                      "label": "C",
+                      "text": "the phenomena of holidaymaking."
+                    },
+                    {
+                      "label": "D",
+                      "text": "the distinction we make between work and leisure."
+                    },
+                    {
+                      "label": "E",
+                      "text": "the individual character of travel."
+                    },
+                    {
+                      "label": "F",
+                      "text": "places seen in everyday life."
+                    },
+                    {
+                      "label": "G",
+                      "text": "photographs which recapture our holidays."
+                    },
+                    {
+                      "label": "H",
+                      "text": "sights designed specially for tourists."
+                    }
+                  ]
+                },
+                {
+                  "number": 41,
+                  "text": "Group tours encourage participants to look at ...",
+                  "type": "matching",
+                  "options": [
+                    {
+                      "label": "A",
+                      "text": "local people and their environment."
+                    },
+                    {
+                      "label": "B",
+                      "text": "the expectations of tourists."
+                    },
+                    {
+                      "label": "C",
+                      "text": "the phenomena of holidaymaking."
+                    },
+                    {
+                      "label": "D",
+                      "text": "the distinction we make between work and leisure."
+                    },
+                    {
+                      "label": "E",
+                      "text": "the individual character of travel."
+                    },
+                    {
+                      "label": "F",
+                      "text": "places seen in everyday life."
+                    },
+                    {
+                      "label": "G",
+                      "text": "photographs which recapture our holidays."
+                    },
+                    {
+                      "label": "H",
+                      "text": "sights designed specially for tourists."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "answerKeys": {
+    "reading": {
+      "passage-1": {
+        "1": "B",
+        "2": "D",
+        "3": "C",
+        "4": "B",
+        "5": "A",
+        "6": "C",
+        "7": "E",
+        "8": "15-20%",
+        "9": "40%",
+        "10": "6%",
+        "11": "D",
+        "12": "B"
+      },
+      "passage-2": {
+        "13": "prepare",
+        "14": "full",
+        "15": "smoke",
+        "16": "charge",
+        "17": "machines",
+        "18": "combs",
+        "19": "split",
+        "20": "(hexagonal) cells//comb",
+        "21": "frames (of comb)",
+        "22": "screen",
+        "23": "brood chamber",
+        "24": "NOT GIVEN",
+        "25": "YES",
+        "26": "YES",
+        "27": "NO"
+      },
+      "passage-3": {
+        "28": "iii",
+        "29": "v",
+        "30": "iv",
+        "31": "vii",
+        "32": "viii",
+        "33": "NO",
+        "34": "YES",
+        "35": "NOT GIVEN",
+        "36": "YES",
+        "37": "NOT GIVEN",
+        "38": "D",
+        "39": "B",
+        "40": "F",
+        "41": "H"
+      },
+      "_pedagogy": {
+        "qg-p1-1": {
+          "kcsTested": [
+            "kc-read-matching",
+            "kc-read-detail",
+            "kc-read-vocab-context",
+            "kc-read-main-idea"
+          ],
+          "strategySummary": "Skim for the people's names as anchors, then match each opinion by meaning — the questions paraphrase the text."
+        },
+        "qg-p1-2": {
+          "kcsTested": [
+            "kc-read-gapfill",
+            "kc-read-detail"
+          ],
+          "strategySummary": "Scan paragraph 2 for the three parent-combination figures and copy the exact percentages."
+        },
+        "qg-p1-3": {
+          "kcsTested": [
+            "kc-read-mc",
+            "kc-read-detail",
+            "kc-read-inference"
+          ],
+          "strategySummary": "Read each stem, find its paraphrase in the passage, and eliminate options that contradict the text."
+        },
+        "qg-p2-1": {
+          "kcsTested": [
+            "kc-read-gapfill",
+            "kc-read-detail",
+            "kc-read-vocab-context"
+          ],
+          "strategySummary": "Follow the beekeeper's movements step by step; scan for time cues like 'By early March'. The flow chart paraphrases the text."
+        },
+        "qg-p2-2": {
+          "kcsTested": [
+            "kc-read-detail",
+            "kc-read-gapfill"
+          ],
+          "strategySummary": "Locate the hive parts in the passage (supers, brood chamber, screen) and match each label to its description."
+        },
+        "qg-p2-3": {
+          "kcsTested": [
+            "kc-read-ynng",
+            "kc-read-detail",
+            "kc-read-vocab-context"
+          ],
+          "strategySummary": "Decide if the passage confirms (YES), contradicts (NO), or is silent (NOT GIVEN) about each statement — watch the paraphrase."
+        },
+        "qg-p3-1": {
+          "kcsTested": [
+            "kc-read-matching",
+            "kc-read-main-idea",
+            "kc-read-detail"
+          ],
+          "strategySummary": "Read each paragraph's gist and pick the heading that captures its main theme — the headings paraphrase the text."
+        },
+        "qg-p3-2": {
+          "kcsTested": [
+            "kc-read-ynng",
+            "kc-read-inference",
+            "kc-read-detail"
+          ],
+          "strategySummary": "Match each statement to the writer's view: YES if it agrees, NO if it contradicts, NOT GIVEN if unmentioned."
+        },
+        "qg-p3-3": {
+          "kcsTested": [
+            "kc-read-matching",
+            "kc-read-detail",
+            "kc-read-vocab-context"
+          ],
+          "strategySummary": "Work from the stems; skim for key words, then read the whole paragraph for gist before choosing the phrase."
+        }
+      }
+    }
+  }
+}
