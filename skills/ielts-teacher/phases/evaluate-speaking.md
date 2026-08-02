@@ -1,5 +1,21 @@
 # Speaking Evaluation (Full Cambridge Test)
 
+## CODE BOUNDARY (bất biến)
+
+- Agent chỉ ĐỌC dữ liệu: `.ielts/**`, `shared/**/*.json`, `shared/**/*.md`,
+  `textbook/**/*.md`, `phases/*.md`.
+- ĐƯỢC ĐỌC để render/chấm bài: `*.html`, `*.css`, `templates/**` (đọc HTML để
+  render bài test hoặc để evaluate — đây là workflow hệ thống, giữ nguyên).
+- CẤM ĐỌC code: mọi `.py`, `.js`, `server.py`, `ielts_cli.py`,
+  `generate_test_html.py`, `pronounce_cli.py`, `extract_listening.py`.
+  Code là black box — chỉ chạy qua lệnh CLI được ghi trong SKILL này.
+- CẤM EDIT: mọi file code (đặc biệt `.py` và `.js`). Lỗi code → báo lỗi + mời
+  user chạy `/developer-ielts-sys`.
+- Phát hiện thiếu CLI/renderer → báo user, KHÔNG tự viết HTML/JS thay.
+- Dữ liệu hợp lệ để EDIT: `.ielts/**`, `shared/**/*.json`, `textbook/**/*.md`.
+
+---
+
 The Speaking tab auto-loads tasks from `/api/speaking/{source}`, displays cue cards with Part 1/2/3 navigation, records audio + transcript via browser SpeechRecognition, and saves results to `.ielts/speaking/latest.json` with task context.
 
 **Step 1 — Read results:**

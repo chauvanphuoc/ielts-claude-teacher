@@ -8,6 +8,22 @@ metadata:
 
 # IELTS Reading Coach
 
+## CODE BOUNDARY (bất biến)
+
+- Agent chỉ ĐỌC dữ liệu: `.ielts/**`, `shared/**/*.json`, `shared/**/*.md`,
+  `textbook/**/*.md`, `phases/*.md`.
+- ĐƯỢC ĐỌC để render/chấm bài: `*.html`, `*.css`, `templates/**` (đọc HTML để
+  render bài test hoặc để evaluate — đây là workflow hệ thống, giữ nguyên).
+- CẤM ĐỌC code: mọi `.py`, `.js`, `server.py`, `ielts_cli.py`,
+  `generate_test_html.py`, `pronounce_cli.py`, `extract_listening.py`.
+  Code là black box — chỉ chạy qua lệnh CLI được ghi trong SKILL này.
+- CẤM EDIT: mọi file code (đặc biệt `.py` và `.js`). Lỗi code → báo lỗi + mời
+  user chạy `/developer-ielts-sys`.
+- Phát hiện thiếu CLI/renderer → báo user, KHÔNG tự viết HTML/JS thay.
+- Dữ liệu hợp lệ để EDIT: `.ielts/**`, `shared/**/*.json`, `textbook/**/*.md`.
+
+---
+
 Grade reading answers question-by-question. For each error, identify the question type, explain why it's wrong with passage evidence, classify by KC, and extract synonym pairs. Output structured JSON for roadmap ingestion.
 
 ---
