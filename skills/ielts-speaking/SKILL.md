@@ -8,19 +8,19 @@ metadata:
 
 # IELTS Speaking Coach
 
-## CODE BOUNDARY (bất biến)
+## CODE BOUNDARY (invariant)
 
-- Agent chỉ ĐỌC dữ liệu: `.ielts/**`, `shared/**/*.json`, `shared/**/*.md`,
+- Agent MAY READ data: `.ielts/**`, `shared/**/*.json`, `shared/**/*.md`,
   `textbook/**/*.md`, `phases/*.md`.
-- ĐƯỢC ĐỌC để render/chấm bài: `*.html`, `*.css`, `templates/**` (đọc HTML để
-  render bài test hoặc để evaluate — đây là workflow hệ thống, giữ nguyên).
-- CẤM ĐỌC code: mọi `.py`, `.js`, `server.py`, `ielts_cli.py`,
+- Agent MAY READ for rendering/grading: `*.html`, `*.css`, `templates/**`
+  (reading HTML to render tests or evaluate answers — system workflow, kept intact).
+- Agent MUST NOT READ code: all `.py`, `.js`, `server.py`, `ielts_cli.py`,
   `generate_test_html.py`, `pronounce_cli.py`, `extract_listening.py`.
-  Code là black box — chỉ chạy qua lệnh CLI được ghi trong SKILL này.
-- CẤM EDIT: mọi file code (đặc biệt `.py` và `.js`). Lỗi code → báo lỗi + mời
-  user chạy `/developer-ielts-sys`.
-- Phát hiện thiếu CLI/renderer → báo user, KHÔNG tự viết HTML/JS thay.
-- Dữ liệu hợp lệ để EDIT: `.ielts/**`, `shared/**/*.json`, `textbook/**/*.md`.
+  Code is a black box — only run via CLI commands documented in this SKILL.
+- Agent MUST NOT EDIT: any code file (especially `.py` and `.js`). Code errors
+  → report the error + invite user to run `/developer-ielts-sys`.
+- Missing CLI/renderer → report to user, DO NOT craft HTML/JS by hand.
+- Data that MAY be edited: `.ielts/**`, `shared/**/*.json`, `textbook/**/*.md`.
 
 ---
 
