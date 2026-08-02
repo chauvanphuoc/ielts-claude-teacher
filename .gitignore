@@ -6,7 +6,7 @@
 .gstack/
 __pycache__/
 # textbook
-# .ielts/*
+.ielts/*
 bak/*
 .deepeval/
 docs/*

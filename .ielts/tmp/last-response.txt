@@ -1,19 +1,13 @@
-📊 Kết quả Speaking — Cambridge 1, Test 1, Part 1 (Interview: Hobbies & Free Time)
+## KẾT QUẢ DIAGNOSTIC — 7/15 (47%)
 
-Tổng band: 5.5 (tăng từ 5.0). Chi tiết 4 tiêu chí:
-• Fluency & Coherence: 5.0
-• Lexical Resource: 5.5
-• Grammatical Range & Accuracy: 5.0
-• Pronunciation: 5.5
+**Reading 3/5:** Bạn bắt được main idea và detail tốt. Nhưng 2 lỗi T/F/NG giống hệt nhau: chọn TRUE khi đáp án là NOT GIVEN. Đây là lỗi kinh điển — bạn thấy câu "nghe có lý" thì nghĩ là TRUE, nhưng passage không hề đề cập.
 
-Điểm mạnh:
-Câu 1 và 2 trả lời rất tốt. Từ vựng viết của bạn đạt band 6.5–7: "overwhelmed with school schedules", "recharge my energy", "grueling exam", "fixed time commitment", "cherish a few quiet hours". Cấu trúc "It really depends on my mood" rất tự nhiên.
+Mẹo: TRUE = passage xác nhận. FALSE = passage phủ nhận. NOT GIVEN = passage im lặng.
 
-Điểm yếu — 3 vấn đề chính:
-1. Trả lời quá ngắn ở câu 3, 4, 5. Câu 3 chỉ nói trong 8 giây, câu 5 chỉ trả lời "No". Viết đầy đủ câu 3 rồi nhưng khi nói thì bỏ dở. IELTS chấm theo độ phát triển ý — câu trả lời 8 giây kéo cả band xuống.
-2. Phát âm sai từ nội dung (từ quan trọng): "V-pop" → nghe thành "bebop", "scroll through" → "grossing through", "Ho Chi Minh" → "Homan city", "volunteer" → "warranty". Sai từ khóa làm người nghe không hiểu.
-3. Ngữ pháp khi nói: "My school they have English as club", "joining them require a fixed commitment". Viết thì chuẩn nhưng nói thì mất chủ-vị.
+**Vocabulary 2/5:** Bạn thiếu collocations học thuật: "data indicates" (không phải "data report"), "comprehensive analysis" (không phải "report analysis"), "significant threat" (không phải "dangerous threat").
 
-Nhận định chính: Bạn viết được band 6.5–7 nhưng nói chỉ đạt 5–5.5. Đây là rào cản lớn nhất. Giỏi "nói trong đầu" nhưng chưa ra bằng lời. Khi nói, bạn phải lên khung ý trước rồi mới nói — đừng cố dịch từ câu viết.
+**Grammar 2/5:** Articles và conditional nắm được. Nhưng: mệnh đề quan hệ (which/what), present perfect với since, liên từ (but/despite).
 
-Lưu ý liên kết: phát âm sai còn liên quan đến listening — kỹ năng kc-listen-spelling của bạn đang weak (errorRate 1.0). Sửa phát âm sẽ giúp cả hai kỹ năng.
+**Writing ~Band 6.5:** Cấu trúc rõ ràng, cohesive devices tốt, CC đạt 7.0. Điểm yếu: ý tưởng an toàn, chưa có ví dụ cụ thể, từ vựng và ngữ pháp ở mức khá chứ chưa Band 7.
+
+Top 3 KCs cần tập trung: kc-read-tfng (T/F/NG), kc-write-lr (vocabulary collocations), kc-write-gra-complex (complex sentences).
