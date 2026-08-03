@@ -10,6 +10,15 @@ và project này tuân theo [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.3.1] - 2026-08-03
+
+### Fixed
+
+- `.gitignore` blanket ignore `.claude` → chỉ ignore `.claude/skills/` (symlink)
+- Track được `.claude/hooks/` và `.claude/settings.local.json` lên GitHub
+
+---
+
 ## [2.3.0] - 2026-08-03
 
 ### Added
