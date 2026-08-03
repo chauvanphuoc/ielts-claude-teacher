@@ -247,12 +247,13 @@
     var html2 = '';
     entries.forEach(function(t, i) {
       var date = t.date ? new Date(t.date).toLocaleDateString('vi-VN', { month: 'short', day: 'numeric' }) : '--';
-      var band = t.band || t.score || 0;
+      var rawBand = t.band || t.score || 0;
+      var band = typeof rawBand === 'number' ? rawBand : (parseFloat(rawBand) || 0);
       var label = t.skill ? (t.skill.charAt(0).toUpperCase() + t.skill.slice(1)) : (t.source || 'Test');
       html2 += '<div class="timeline-item">' +
         '<span class="timeline-date">' + date + '</span>' +
         '<span class="timeline-dot"></span>' +
-        '<span class="timeline-band">' + band.toFixed(1) + '</span>' +
+        '<span class="timeline-band">' + (band > 0 ? band.toFixed(1) : '--') + '</span>' +
         '<span class="timeline-label">' + label + '</span>' +
         '</div>';
       if (i < entries.length - 1) html2 += '<div class="timeline-line"></div>';
@@ -305,11 +306,18 @@
 
   var daysInMonth = new Date(year, month + 1, 0).getDate();
   var studyDates = {};
-  testHistory.forEach(function(t) {
-    if (t.date) {
+  function countStudyDate(t) {
+    if (t && t.date) {
       var d = new Date(t.date).getDate();
       studyDates[d] = (studyDates[d] || 0) + 1;
     }
+  }
+  testHistory.forEach(countStudyDate);
+  skillNames.forEach(function(s) {
+    var sh = skills[s] && skills[s].testHistory;
+    if (sh) sh.forEach(countStudyDate);
+    var bh = skills[s] && skills[s].bandHistory;
+    if (bh) bh.forEach(countStudyDate);
   });
 
   var heatmapDiv = document.getElementById('heatmap');

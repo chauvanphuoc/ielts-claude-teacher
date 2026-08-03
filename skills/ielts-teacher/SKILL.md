@@ -676,6 +676,14 @@ Skip KC update if `targetBand <= 0`.
 ### 5.4 — Update Test History
 Append to `testHistory`. Cap at 50 entries (oldest → archive).
 
+Entry shape (consumed by `templates/progress-dashboard.html` — timeline + calendar):
+```json
+{ "date": "2026-08-02", "type": "diagnostic|mini-test|full-test|mock", "skill": "reading",
+  "band": 5.5, "score": "3/5" }
+```
+- Prefer numeric `band`; `score` may be numeric or a `"X/Y"` string (the dashboard parses both safely).
+- Never omit both `band` and `score`, and never pass a non-numeric value as `band`.
+
 ### 5.5 — Archive latest.json
 Rename to `{skill}/archive/{date}-{testTitle}.json` to avoid double-ingestion.
 
