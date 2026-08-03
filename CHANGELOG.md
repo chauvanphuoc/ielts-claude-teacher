@@ -10,6 +10,19 @@ và project này tuân theo [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.3.2] - 2026-08-03
+
+### Added
+
+- `.claude/plans/` — implementation plans (pick-from-list)
+- `.claude/projects/memory/` — project memory (precise-html-generation)
+
+### Changed
+
+- `.claude/settings.local.json` — updated permissions and hooks config
+
+---
+
 ## [2.3.1] - 2026-08-03
 
 ### Fixed
