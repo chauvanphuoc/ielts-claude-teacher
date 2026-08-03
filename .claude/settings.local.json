@@ -9,7 +9,19 @@
       "Bash(git *)",
       "Bash(cp -r .ielts .ielts.bak*)",
       "Bash(rm -rf .ielts.bak*)",
-      "Bash(mkdir -p *)"
+      "Bash(mkdir -p *)",
+      "Bash(gh release create v2.3.1 --title v2.3.1 --notes '### Fixed *)",
+      "Bash(.venv/bin/python3 shared/ielts_cli.py reset-profile *)",
+      "Bash(.venv/bin/python3 shared/ielts_cli.py lesson-library *)",
+      "Bash(.venv/bin/python3 shared/ielts_cli.py migrate-lesson-library *)",
+      "Bash(.venv/bin/python3 shared/ielts_cli.py memory *)",
+      "Bash(.venv/bin/python3 shared/ielts_cli.py vocab *)",
+      "Bash(.venv/bin/python3 shared/ielts_cli.py synonym *)",
+      "Bash(.venv/bin/python3 shared/ielts_cli.py init)",
+      "Bash(python3 *)",
+      "Bash(.venv/bin/python3 -c \"import json; kc=json.load\\(open\\('.ielts/kc-graph-ielts.json'\\)\\); print\\(f'Knowledge Components: {len\\(kc.get\\(\\\\\"kcs\\\\\",[]\\)\\)}'\\); from collections import Counter; c=Counter\\(k['subject'] for k in kc.get\\('kcs',[]\\)\\); print\\(f'By subject: {dict\\(c\\)}'\\); rel=kc.get\\('relationships',[]\\); print\\(f'Relationships: {len\\(rel\\)}'\\); \")",
+      "WebFetch(domain:localhost)",
+      "Bash(git add *)"
     ]
   },
   "hooks": {
@@ -22,7 +34,35 @@
             "command": "bash .claude/hooks/code-boundary.sh"
           }
         ]
+      },
+      {
+        "matcher": "Bash(*trace-emit*close*)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash tools/trace-precheck.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash(*quality trace-emit*)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash tools/trace-hooks.sh",
+            "timeout": 5
+          }
+        ]
       }
     ]
-  }
+  },
+  "viewMode": "focus",
+  "spinnerTipsEnabled": false,
+  "output": {
+    "showThinking": false
+  },
+  "tuiViewMode": "fullscreen"
 }
