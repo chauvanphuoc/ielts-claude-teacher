@@ -6,6 +6,16 @@ Tất cả thay đổi đáng chú ý của IELTS Claude Teacher được ghi l�
 và project này tuân theo [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [Unreleased]
+
+---
+
+## [2.3.0] - 2026-08-03
+
+### Added
+- `/ielts-upgrade` slash command for safe GitHub upgrades — preserves all learning data while pulling latest code
+
+---
 
 ## [2.2.0] - 2026-08-03
 
