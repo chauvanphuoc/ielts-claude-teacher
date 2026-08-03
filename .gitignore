@@ -16,6 +16,8 @@ docs/*
 .ielts/student-profile.json
 .ielts/backup/
 .ielts/speaking/*.webm
+.ielts/dev-mode.active
+
 continuous-learning-framework-guide.md
 harness-loop-graph-of-ielts-system.md
 readme-ielts-system.md
