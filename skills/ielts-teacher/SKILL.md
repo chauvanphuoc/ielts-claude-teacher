@@ -5,7 +5,7 @@ description: |
   data, tracks your roadmap from band 4.0 to 9.0, identifies weak areas, and routes you
   to the right practice. You just talk to your teacher — Claude handles everything else.
 metadata:
-  version: 2.1.0
+  version: 2.2.0
 ---
 
 # IELTS Teacher v2 — Autonomous AI IELTS Coach
@@ -391,11 +391,136 @@ Pre-populate `--kc-targets` from the KC IDs selected in Phase 2.5. Pre-populate 
 **Why Listening is forbidden:** Listening requires authentic audio recordings. You cannot fabricate audio. Creating text-only "listening" questions (like spelling drills without real audio) produces invalid IELTS practice. You MUST use pre-generated Cambridge test HTML files from `.ielts/test-html/` which have embedded audio paths and transcripts.
 
 **For Reading/Writing/Speaking — follow this workflow:**
+
+**Content source priority (highest to lowest):**
+1. Web research (Aeon.co / TheConversation.com) — PREFERRED for authentic, current content
+2. Cambridge test JSON from `shared/` or `textbook/` — fallback for authentic academic content
+3. Claude's own IELTS knowledge — last resort
+
+### 3.3.0 — Determine Topic & Source
+
+1. From conversation context + selected KC, identify **1-2 English keywords** for the topic:
+
+   ```
+   KC = kc-read-inference, student: "con thích đọc về môi trường"
+   → keywords: "environment climate"
+
+   KC = kc-read-tfng, no student topic preference
+   → keywords from KC exerciseTemplates + common IELTS topics
+   ```
+
+2. Select source using KC→Source mapping:
+
+   | KC Group | Source | Rationale |
+   |----------|--------|-----------|
+   | `kc-read-main-idea`, `kc-read-inference`, `kc-read-tfng`, `kc-read-ynng`, `kc-read-vocab-context` | **Aeon.co** (ưu tiên) hoặc TheConversation.com | Essays có thesis rõ ràng, lập luận đa chiều, opinion rõ nét |
+   | `kc-read-detail`, `kc-read-gapfill`, `kc-read-matching`, `kc-read-mc` | **TheConversation.com** (ưu tiên) | Bài evidence-based, nhiều data/statistics cụ thể |
+   | `kc-write-tr`, `kc-write-lr` | **TheConversation.com** | Phân tích policy/social issues làm model Task 2 |
+   | `kc-write-cc`, `kc-speak-coherence` | **Aeon.co** (ưu tiên) | Cấu trúc lập luận mẫu, chủ đề thảo luận sâu |
+   | `kc-speak-lexical` | **TheConversation.com** | Topic vocabulary phong phú |
+
+   **Domain override:** nếu student mention chủ đề cụ thể:
+   - Philosophy, culture, ethics, art, psychology → Aeon.co
+   - Education, health, economy, policy, environment → TheConversation.com
+
+### 3.3.1 — Web Research (PREFERRED)
+
+**Goal:** Find 1-2 authentic articles to use as question source material.
+
+**⚠️ CRITICAL:** Web content is PREFERRED but NOT MANDATORY. If search fails after 2 attempts, fall back immediately — do NOT delay the student.
+
+Read detailed workflow: `skills/ielts-teacher/phases/web-research.md`
+
+**Hybrid fetch strategy — different sources, different methods:**
+
+| Source | Method | What You Get |
+|--------|--------|-------------|
+| **TheConversation.com** | `WebFetch` | Full article text (verbatim paragraphs, exact quotes) |
+| **Aeon.co** | `WebSearch` | Detailed summary from search index (thesis, key claims, specific details) |
+
+**Why the difference:** Aeon.co uses Cloudflare anti-bot protection — WebFetch returns HTTP 429. WebSearch can still access Aeon content through its search index, returning rich summaries with enough detail for question creation.
+
+**Quick steps — TheConversation path (verbatim):**
+
+1. **Construct search URL:**
+   `https://theconversation.com/global/search?q={url_encode(keywords)}&sort=relevancy&language=en&date=all`
+
+2. **Fetch search results** via `WebFetch`:
+   ```
+   WebFetch url="{search_url}" prompt="List the top 5 article results with title, URL, and one-line description. Flag non-article content."
+   ```
+
+3. **Pick best article:** academic tone, clear thesis, contains data/examples, full text accessible.
+
+4. **Fetch article content** via `WebFetch`:
+   ```
+   WebFetch url="{article_url}" prompt="Extract: 1) Main argument (2-3 sentences), 2) 2-4 key paragraphs (200-400 words, verbatim), 3) Specific data/statistics/expert quotes with exact wording."
+   ```
+
+5. **Save metadata:** title, author, source domain, URL.
+
+**Quick steps — Aeon path (summary-based):**
+
+1. **Construct search query:**
+   `aeon.co essay {topic_keywords}`
+
+2. **Search** via `WebSearch`:
+   ```
+   WebSearch query="aeon.co essay {topic_keywords}"
+   ```
+
+3. **Read the summary** from search results — identify:
+   - Article title, author, URL (must be `aeon.co/essays/...`)
+   - Thesis / main argument
+   - 4-6 key observations or claims
+   - Specific names, places, dates, data points
+   - Conclusion / human-parallel statements
+
+4. **Verify quality:** summary must have 4+ distinct claims. If not → try different keywords or switch to TheConversation.
+
+5. **Synthesize passage:** write a coherent 150-250 word passage from the summary details. Academic tone. Every fact must trace to a specific detail in the summary — **do NOT invent.**
+
+**⚠️ Aeon fidelity rule:** The WebSearch summary IS your source. Every claim, name, and data point in your passage MUST come from the summary. Never fabricate details to fill gaps. The passage should read like a condensed version of the article — accurate, coherent, but NOT verbatim (since you don't have the original text).
+
+**Fallback ladder (if web fails):**
+
+| Level | Condition | Action |
+|-------|-----------|--------|
+| 1 | Primary source returns nothing useful | Switch to the other source with the same topic |
+| 2 | Both sources fail | Broaden keywords, try once more |
+| 3 | No web access at all | Fallback to Cambridge JSON or Claude knowledge — `--source generated` |
+
+**Budget:** Max 2 WebFetch + 2 WebSearch calls per mini-test. Exceeding → Level 3 fallback.
+
+### 3.3.2 — Create Questions
+
 1. Read `skills/ielts-teacher/templates/mini-test.html`
-2. Generate 5 questions targeting the selected KC. Use `commonErrors` from KC graph for wrong answer patterns. **Prefer short excerpts from Cambridge test JSON** for authentic material.
-3. **Context completeness check — CRITICAL:** Every question must be **self-contained**. The `text` field must include ALL context needed to answer — never reference external materials, graphs, passages, or writing tasks without providing the excerpt/data inline. If a question asks about a graph, include the data description. If a question asks about a passage, include the excerpt. The student sees only what's in the HTML — they cannot see the external reference you imagined.
-4. **Self-review:** Verify each answer key. Re-read each question against source.
-4. Replace placeholders: `{{TEST_TITLE}}`, `{{INSTRUCTIONS}}`, `{{QUESTIONS_JSON}}`, `{{KC_TAGS}}`, `{{SKILL_LABEL}}`, `{{QUESTION_TYPE_LABEL}}`, `{{QUESTIONS_COUNT}}`, `{{SKILL_KEY}}` (skill id: `reading`/`listening`/`speaking`/`writing` — dùng trong `__TEST_CONFIG__` để POST kết quả). Kiểm tra đủ bằng cách grep `{{` sau khi thay — không được còn placeholder nào.
+2. **If TheConversation research succeeded:** generate 5 questions based on verbatim article paragraphs
+3. **If Aeon research succeeded:** generate 5 questions based on the synthesized passage (fidelity rule: every answer must trace to a detail in the WebSearch summary)
+4. **If fallback:** generate 5 questions from Cambridge JSON or Claude knowledge (existing behavior)
+4. Use `commonErrors` from KC graph for wrong answer patterns
+5. **Context completeness check — CRITICAL:** Every question must be **self-contained**. The `text` field must include ALL context needed to answer — never reference external materials, graphs, passages, or writing tasks without providing the excerpt/data inline. If a question asks about a graph, include the data description. If a question asks about a passage, include the excerpt. The student sees only what's in the HTML — they cannot see the external reference you imagined.
+6. **Fidelity rule:** never invent facts "based on the article." Every answer key MUST trace to the extracted text. If the article lacks a needed fact, change the question — never the article's content.
+7. **Self-review:** Verify each answer key against source material. For T/F/NG: confirm each NOT GIVEN is truly absent from the excerpt, even by paraphrase.
+
+### 3.3.3 — Fill Template & Save
+
+1. Replace placeholders:
+   - **Existing:** `{{TEST_TITLE}}`, `{{INSTRUCTIONS}}`, `{{QUESTIONS_JSON}}`, `{{KC_TAGS}}`, `{{SKILL_LABEL}}`, `{{QUESTION_TYPE_LABEL}}`, `{{QUESTIONS_COUNT}}`, `{{SKILL_KEY}}` (skill id: `reading`/`listening`/`speaking`/`writing` — dùng trong `__TEST_CONFIG__` để POST kết quả)
+   - **NEW:** `{{SOURCE_ATTRIBUTION_HTML}}` — article attribution HTML (see below) or empty string `""` if fallback
+
+2. **Source attribution format** (when web content is used):
+   ```html
+   <div class="source-attribution">
+     <span class="source-label">Source:</span>
+     <a href="{ARTICLE_URL}" target="_blank" rel="noopener">{ARTICLE_TITLE}</a>
+     <span class="source-author">by {AUTHOR}</span>
+     <span class="source-domain">{SOURCE_DOMAIN}</span>
+   </div>
+   ```
+   When no web source: `{{SOURCE_ATTRIBUTION_HTML}}` → `""` (empty string).
+
+3. Verify no `{{` placeholders remain by grepping after replacement.
 
 **⚠️ CRITICAL — Question JSON format (base-test.js schema):**
 The `window.__TEST_CONFIG__.questions` array must use EXACTLY this schema — `base-test.js` is strict. **Đây là contract duy nhất — CẤM mở `base-test.js`** (file `.js`, xem CODE BOUNDARY):
@@ -423,14 +548,16 @@ questions: [
 - ❌ **`short-answer`/`gap-fill` without `acceptableAnswers`** → Scoring uses exact match against `acceptableAnswers` array. Without it, only `correctAnswer` is checked. Always include common variations (with/without commas, units, articles). Example: `"acceptableAnswers": ["344,400", "344400"]`
 - ❌ **`textContent` render của `base-test.js:58`** — `base-test.js` dùng `innerHTML` (không phải `textContent`) để render question text. Điều này CHO PHÉP dùng HTML tags như `<strong>word</strong>`, `<br>`. Tuy nhiên **option text** (`opt.text`) vẫn dùng `escapeHtml()` nên HTML trong options sẽ bị escape (hiển thị dạng text, không render). Nếu cần format trong question thì dùng HTML trực tiếp trong `text` field.
 
-5. Save to `.ielts/lesson-plans/lesson-{date}-{seq}.html`
-6. Register in lesson library:
+4. Save to `.ielts/lesson-plans/lesson-{date}-{seq}.html`
+5. Register in lesson library:
    ```bash
    .venv/bin/python3 shared/ielts_cli.py lesson-library add \
      --id "lesson-{date}-{seq}" --title "{title}" --skill {skill} \
      --file ".ielts/lesson-plans/lesson-{date}-{seq}.html" \
-     --kc-tags "{kc-tags}" --source generated --trigger-error "{error description}"
+     --kc-tags "{kc-tags}" --source {web|generated} --trigger-error "{error description}"
    ```
+   - Use `--source web` when web research succeeded (include article URL in `--trigger-error`)
+   - Use `--source generated` when using fallback (Cambridge JSON or Claude knowledge)
 
 ### 3.3-L — Listening: Use Pre-generated Cambridge Test HTML
 
@@ -777,6 +904,7 @@ For detailed evaluation workflows, Read the phase file BEFORE starting evaluatio
 | Need CLI command reference | `skills/ielts-teacher/phases/commands.md` |
 | Calibrate writing / drift check | `skills/ielts-teacher/phases/calibrate-writing.md` |
 | Vocabulary SRS review | `skills/ielts-teacher/phases/vocab-review.md` |
+| Creating mini tests with web content | `skills/ielts-teacher/phases/web-research.md` |
 
 These files contain error→KC taxonomies, scoring rules, testHtmlUrl context loading patterns, and feedback format examples. The core KC update formula, SRS intervals, and level thresholds (above) are always available — the phase files add skill-specific detail.
 
@@ -808,6 +936,8 @@ Before a Cambridge test, scan `kcMastery` for KCs tested by that test's question
 - **Context budget:** If profile exceeds 100KB, load only: KC mastery summary + last 5 test history + active coach notes.
 - **Always update student-profile.json after every session.** It is your memory.
 - **Lesson library survives resets.** It lives in `.ielts/lesson-library.json`, separate from profile.
+- **Web research budget:** Max 2 WebFetch + 2 WebSearch calls per mini-test. TheConversation uses WebFetch (search + article), Aeon uses WebSearch (single query). If search fails after 2 attempts → fallback immediately to Cambridge JSON or Claude knowledge. Web content is a bonus, not a requirement — never delay the student.
+- **Source integrity:** Never fabricate article content. Every answer key must trace to the extracted text. Never claim web-sourced when using Cambridge JSON or Claude knowledge.
 
 ---
 

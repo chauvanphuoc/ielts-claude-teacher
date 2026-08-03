@@ -18,6 +18,45 @@
   Design: typography-driven, desktop-first, semantic colors, keyboard accessible.
 -->
 <link rel="stylesheet" href="/lessons/shared/base-test.css">
+<style>
+  /* Source attribution for web-researched content */
+  .source-attribution {
+    margin-top: 0.75rem;
+    padding: 0.6rem 0.85rem;
+    background: var(--color-surface-2, #f4f4f5);
+    border-left: 3px solid var(--color-accent, #2563eb);
+    border-radius: 0 4px 4px 0;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary, #6b7280);
+    line-height: 1.5;
+  }
+  .source-attribution a {
+    color: var(--color-accent, #2563eb);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .source-attribution a:hover {
+    color: var(--color-accent-hover, #1d4ed8);
+  }
+  .source-label {
+    font-weight: 600;
+    color: var(--color-text-primary, #1f2937);
+  }
+  .source-author {
+    color: var(--color-text-tertiary, #9ca3af);
+    margin-left: 0.35rem;
+  }
+  .source-domain {
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: 0.1rem 0.4rem;
+    background: var(--color-surface-3, #e5e7eb);
+    border-radius: 3px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+</style>
 </head>
 <body>
 
@@ -28,6 +67,7 @@
     <div class="test-badge" aria-label="Skill and question type">{{SKILL_LABEL}} · {{QUESTION_TYPE_LABEL}}</div>
     <h1 class="test-title">{{TEST_TITLE}}</h1>
     <p class="test-instructions">{{INSTRUCTIONS}}</p>
+    {{SOURCE_ATTRIBUTION_HTML}}
   </header>
 
   <!-- ═══════════════ QUESTIONS ═══════════════ -->
