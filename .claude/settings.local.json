@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -m venv .venv)",
+      "Bash(.venv/bin/pip install *)",
+      "WebFetch(domain:aeon.co)",
+      "WebSearch",
+      "Bash(ln -s /home/phuoccv/work/ielts-claude-teacher/skills/ielts-upgrade .claude/skills/ielts-upgrade)",
+      "Bash(git *)",
+      "Bash(cp -r .ielts .ielts.bak*)",
+      "Bash(rm -rf .ielts.bak*)",
+      "Bash(mkdir -p *)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Read|Edit|Write|MultiEdit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/code-boundary.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

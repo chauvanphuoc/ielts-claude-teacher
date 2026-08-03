@@ -2,7 +2,7 @@
 .env
 .DS_Store
 .gitignore
-.claude
+.claude/skills/
 .gstack/
 __pycache__/
 # textbook
