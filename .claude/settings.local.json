@@ -21,7 +21,11 @@
       "Bash(python3 *)",
       "Bash(.venv/bin/python3 -c \"import json; kc=json.load\\(open\\('.ielts/kc-graph-ielts.json'\\)\\); print\\(f'Knowledge Components: {len\\(kc.get\\(\\\\\"kcs\\\\\",[]\\)\\)}'\\); from collections import Counter; c=Counter\\(k['subject'] for k in kc.get\\('kcs',[]\\)\\); print\\(f'By subject: {dict\\(c\\)}'\\); rel=kc.get\\('relationships',[]\\); print\\(f'Relationships: {len\\(rel\\)}'\\); \")",
       "WebFetch(domain:localhost)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit -m 'chore: sync .claude plans, projects, and settings updates *)",
+      "Bash(git push *)",
+      "Bash(git commit -m 'chore: release v2.3.2 *)",
+      "Bash(git tag *)"
     ]
   },
   "hooks": {

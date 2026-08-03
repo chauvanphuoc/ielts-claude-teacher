@@ -72,7 +72,8 @@ Install IELTS Claude Teacher: run
 mkdir -p .claude/skills
 for d in skills/ielts-teacher skills/ielts-writing skills/ielts-reading \
          skills/ielts-listening skills/ielts-speaking \
-         skills/ielts-json-init skills/ielts-test-html; do
+         skills/ielts-json-init skills/ielts-test-html \
+         skills/ielts-upgrade skills/developer-ielts-sys; do
   ln -sfn "$(pwd)/$d" ".claude/skills/$(basename "$d")"
 done
 
@@ -108,6 +109,8 @@ Then add a `CLAUDE.md` section (or a short note) listing the available skills:
 - `/ielts-writing`, `/ielts-reading`, `/ielts-listening`, `/ielts-speaking` — per-skill coaches
 - `/init-textbook-{skill}` — build JSON test data from a textbook
 - `/create-test-html` — generate section-level HTML tests from JSON data
+- `/ielts-upgrade` — safely upgrade IELTS Claude Teacher from GitHub
+- `/developer-ielts-sys` — development mode for the IELTS system
 ```
 
 > If you haven't cloned the repository yet, first run:
@@ -226,6 +229,7 @@ The File Bridge server auto-discovers new sources — no restart needed.
 | `/ielts-writing` | Writing coach — 4-dimension scoring (TR / CC / LR / GRA), sentence-level feedback, band-upgraded rewrite. |
 | `/init-textbook-{reading\|listening\|speaking\|writing}` | Build structured JSON test data from a textbook's markdown. |
 | `/create-test-html` | Generate PIN-protected, section-level HTML tests from the JSON data. |
+| `/ielts-upgrade` | Safely pull the latest code from GitHub while preserving all learning data. |
 
 ### What you can say
 
